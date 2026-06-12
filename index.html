@@ -372,8 +372,13 @@
   .tk-n{font-family:var(--mono,ui-monospace,Menlo,monospace);font-size:12px;color:rgba(18,19,21,.6);min-width:2ch}
   .tk-t{font-family:var(--display);font-weight:900;letter-spacing:-.02em;line-height:1;
     font-size:clamp(38px,6vw,76px);transition:transform .3s ease,color .3s ease}
+  /* Texture-clipped hover needs vertical room: descenders and the last glyph's
+     right shoulder get clipped if the inline box is tight. Pad the label and
+     widen the background box so the texture covers the full glyph extent. */
+  .tk-t{padding:.18em .12em}
   .tk-l:hover .tk-t{transform:translateX(12px);color:transparent;
     background:url('images/scratches.webp') center/cover var(--paper);
+    background-origin:content-box;
     -webkit-background-clip:text;background-clip:text}
   .tk-l:hover .tk-t em{color:transparent}
   .tk-t em{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.06em;

@@ -6,6 +6,7 @@
 <title>Work — POWER SHIFTER | Digital Products & Generative Films | Vancouver</title>
 <meta name="description" content="Selected work across Digital and Studios. Software platforms, generative films, and hybrid engagements — made in the same room.">
 <link rel="stylesheet" href="https://use.typekit.net/pkh7feu.css">
+<link rel="preload" as="image" href="images/scratches.webp">
 <style>
   :root{
     --ink:#121315;
@@ -499,8 +500,10 @@
   .tk-n{font-family:var(--mono,ui-monospace,Menlo,monospace);font-size:12px;color:rgba(18,19,21,.6);min-width:2ch}
   .tk-t{font-family:var(--display);font-weight:900;letter-spacing:-.02em;line-height:1;
     font-size:clamp(38px,6vw,76px);transition:transform .3s ease,color .3s ease}
-  .tk-l:hover .tk-t{transform:translateX(12px);color:var(--paper)}
-  .tk-l:hover .tk-t em{color:var(--paper)}
+  .tk-l:hover .tk-t{transform:translateX(12px);color:transparent;
+    background:url('images/scratches.webp') center/cover var(--paper);
+    -webkit-background-clip:text;background-clip:text}
+  .tk-l:hover .tk-t em{color:transparent}
   .tk-t em{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.06em;
     letter-spacing:-.02em;padding-right:.08em}
   .tk-ar{font-size:clamp(20px,2.4vw,30px);opacity:0;transform:translateX(-14px);

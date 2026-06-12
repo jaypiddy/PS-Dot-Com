@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Work — POWER SHIFTER | Digital Products & Generative Films | Vancouver</title>
-<meta name="description" content="Selected work across Digital and Studios. Software platforms, generative films, and hybrid engagements — made in the same room.">
+<title>Why Scoping Software Projects Is Challenging — POWER SHIFTER Insights</title>
+<meta name="description" content="Estimates fail for structural reasons, not effort reasons. What we changed about how we scope digital product work.">
 <link rel="stylesheet" href="https://use.typekit.net/pkh7feu.css">
 <style>
   :root{
@@ -314,83 +314,59 @@
     padding:0 .1em .16em 0;
   }
 
-  /* Filter bar */
-  .work-filter{
-    position:sticky;top:0;z-index:40;
-    background:var(--paper);border-bottom:1px solid var(--line);
-  }
-  .filter-row{display:flex;gap:6px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap;align-items:center}
-  .ftab{
-    font-family:var(--text);font-weight:700;font-size:15px;letter-spacing:.02em;
-    padding:14px 24px;border:1px solid var(--line);background:transparent;
-    color:var(--ink);cursor:pointer;display:flex;gap:10px;align-items:baseline;
-    transition:background-color .3s ease,color .3s ease,border-color .3s ease;
-  }
-  .ftab .fc{color:var(--grey);font-weight:400;font-size:13px;transition:color .3s ease,opacity .3s ease}
-  .ftab:hover{border-color:var(--ink)}
-  .ftab.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-  .ftab.on .fc{color:var(--magenta)}
-  /* whole-button hover triggers the label cascade */
-  .ftab:hover .cascade .lt span{transform:translateY(-100%)}
-  .pending{font-family:var(--serif);font-style:italic;font-weight:500;
-    font-size:1.16em !important;letter-spacing:-.01em;color:var(--magenta) !important}
-  .ftab.on .pending{color:var(--magenta) !important}
+  /* ---------- Article page ---------- */
+  /* Sub-hero, article dialect: same component, smaller H1 so a 124-char title holds */
+  .sub-hero.article h1{font-size:clamp(36px,4.4vw,72px);line-height:1.02;max-width:22ch;text-wrap:balance}
+  .sub-hero.article .eyebrow a:hover{border-bottom:1px solid currentColor}
+  .sub-hero.article .sub-voice em{font-size:clamp(20px,2.2vw,32px);line-height:1.25;display:block;max-width:38em}
+  .byline{display:flex;gap:12px;flex-wrap:wrap;align-items:baseline;margin-top:26px;
+    padding-top:18px;border-top:1px solid var(--line-light);
+    font-family:var(--text);font-weight:700;font-size:13.5px;letter-spacing:.02em;
+    opacity:0;animation:settle .6s ease-out .75s forwards}
+  .byline .date,.byline .sep{color:rgba(250,250,247,.55);font-weight:400}
+  .byline a:hover{color:var(--magenta)}
 
-  /* Work grid */
-  .work-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:clamp(24px,3vw,44px);
-    padding-top:clamp(48px,6vh,72px);
-    padding-bottom:clamp(64px,8vh,100px);
-  }
-  .wcard{display:flex;flex-direction:column;position:relative}
-  .wcard.feature{grid-column:1 / -1}
-  .wframe{
-    aspect-ratio:16/9;background:var(--ink-soft);position:relative;
-    overflow:hidden;margin-bottom:18px;
-  }
-  .wcard.feature .wframe{aspect-ratio:21/9}
-  .wframe img{transition:transform .6s cubic-bezier(.22,1,.36,1)}
-  .wcard:hover .wframe img{transform:scale(1.03)}
-  .slot-frame{background:var(--ink-soft)}
-  .slot-frame.light{background:#e9e9e4}
-  .wtint{
-    position:absolute;inset:0;
-    background:linear-gradient(transparent 30%, rgba(18,19,21,.72) 100%);
-    z-index:1;pointer-events:none;
-  }
-  .wcard-overlay{
-    position:absolute;bottom:0;left:0;right:0;padding:clamp(22px,3vw,38px);
-    z-index:2;color:var(--paper);
-  }
-  .wcard-overlay h2{
-    font-family:var(--display);font-weight:700;
-    font-size:clamp(22px,2.4vw,36px);letter-spacing:-.01em;margin:10px 0 8px;
-  }
-  .wcard-overlay h2 i{font-family:var(--serif);font-style:italic;font-weight:500}
-  .wcard-overlay p{font-size:15px;color:rgba(250,250,247,.78);max-width:54ch;margin-bottom:12px}
-  .wtag{
-    font-family:var(--text);font-weight:700;font-size:11px;
-    letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);
-    display:block;margin-bottom:10px;
-  }
-  .wcard h3{
-    font-family:var(--display);font-weight:700;
-    font-size:clamp(18px,1.8vw,26px);letter-spacing:-.008em;margin-bottom:8px;
-  }
-  .wcard h3 i{font-family:var(--serif);font-style:italic;font-weight:500}
-  .wcard > p{font-size:14.5px;color:var(--grey);max-width:44ch;margin-bottom:10px}
-  .wgo{font-weight:700;font-size:13.5px;letter-spacing:.04em;margin-top:auto}
-  
-  .wcard-overlay .wgo{color:rgba(250,250,247,.9);font-size:14px}
-  
-  .slot-tag.dark{color:rgba(18,19,21,.35);border-color:rgba(18,19,21,.25)}
+  /* Masthead plate — wframe/wtint pattern from the work cards */
+  .masthead{padding-top:clamp(28px,4vh,52px)}
+  .masthead .wframe{aspect-ratio:21/9;margin-bottom:0}
+  .masthead .wframe img{width:100%;height:100%;object-fit:cover}
+  .masthead .wtint{display:none}
+  .masthead .wframe.dark .wtint{display:block}
+  .photo-credit{position:absolute;right:16px;bottom:12px;z-index:2;
+    font-size:11px;letter-spacing:.06em;color:rgba(250,250,247,.85);
+    text-shadow:0 1px 10px rgba(18,19,21,.6)}
 
-  /* Hybrid pending state */
-  .hybrid-slot .wframe{outline:1px dashed var(--line);outline-offset:-8px}
-  .pending-tag{color:var(--grey) !important}
-  .pending-go{color:var(--grey);pointer-events:none}
+  /* Body — reading column 700px, figures and embeds break to 980px */
+  .article-body{padding-top:clamp(48px,7vh,90px);padding-bottom:clamp(64px,9vh,110px)}
+  .prose{max-width:700px}
+  .prose>*+*{margin-top:1.35em}
+  .prose p{font-size:18px;line-height:1.65}
+  .prose a{color:var(--magenta);border-bottom:1px solid currentColor;transition:opacity .2s ease-out}
+  .prose a:hover{opacity:.7}
+  .prose h2{font-family:var(--display);font-weight:700;letter-spacing:-.015em;
+    font-size:clamp(26px,2.6vw,36px);line-height:1.12;margin-top:2.2em}
+  .prose h3{font-family:var(--display);font-weight:700;letter-spacing:-.01em;
+    font-size:clamp(20px,1.9vw,24px);line-height:1.2;margin-top:1.9em}
+  .prose ul,.prose ol{padding-left:1.4em}
+  .prose li{font-size:18px;line-height:1.65;margin-top:.5em}
+  .prose ul li::marker{color:var(--magenta)}
+  .prose ol li::marker{font-weight:700}
+  .prose ul ul,.prose ol ol{margin-top:.5em}
+  /* Quote — the body's serif voice moment */
+  .prose blockquote{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:-.02em;
+    font-size:clamp(22px,2.4vw,30px);line-height:1.3;
+    border-left:2px solid var(--magenta);padding-left:clamp(20px,2.5vw,34px);
+    margin-top:2em;margin-bottom:2em}
+  .prose figure{width:min(980px,100%);margin-top:2.2em;margin-bottom:2.2em}
+  .prose figure img{width:100%;background:var(--ink-soft)}
+  .prose figcaption{font-size:13px;color:var(--grey);padding-top:10px;
+    border-top:1px solid var(--line);max-width:700px}
+  .embed{width:min(980px,100%);margin-top:2.2em;margin-bottom:2.2em;background:var(--ink-soft)}
+  .embed.video{aspect-ratio:16/9}
+  .embed.podcast{height:150px;background:transparent}
+  .embed iframe{width:100%;height:100%;border:0;display:block}
+  /* Related uses the homepage insights .post pattern as-is */
+  .insights .posts .post{display:block}
 
   /* ---- Global page closer — token-driven, reuse across all key pages ----
      Matches homepage closer in scale. Swap h2 text + p + btn label per page.
@@ -411,11 +387,6 @@
   .page-closer .tel{font-family:var(--text);font-weight:700;font-size:15px;color:rgba(250,250,247,.78)}
   .page-closer .tel:hover{color:var(--magenta)}
 
-  @media(max-width:980px){.work-grid{grid-template-columns:1fr 1fr}.wcard.feature{grid-column:1/-1}}
-  @media(max-width:640px){.work-grid{grid-template-columns:1fr}}
-
-  /* Rise-in: case cells use the site reveal motion, staggered by column */
-  .work-grid .wcard.reveal{transition-delay:calc(var(--d,0)*70ms)}
 
   /* ---------- Button system ---------- */
   /* Primary — letter cascade */
@@ -502,6 +473,180 @@
   }
 </style>
 
+<style id="article-v2">
+  /* ============ ARTICLE BODY V2 — editorial magazine × dense Swiss ============
+     Hero, nav, masthead, closer, footer untouched. Reading column 700px,
+     breakouts 980px, Signal band full-bleed. Sections are indexed; the serif
+     speaks in the pull quote and the ledger numerals — Two Voices, in body form. */
+  body{overflow-x:clip}
+  .article-body{padding-top:clamp(56px,8vh,104px);padding-bottom:clamp(72px,10vh,120px)}
+  .prose{max-width:700px;margin-inline:auto;counter-reset:sect}
+  .prose>*+*{margin-top:1.5em}
+  .prose p{font-size:18px;line-height:1.68}
+
+  /* Breakout machinery — centered on the column */
+  .prose .breakout{width:min(980px,calc(100vw - 2*var(--gutter)));margin-left:50%;transform:translateX(-50%)}
+
+  /* Lede — drop cap opener */
+  .prose .lede{font-size:21px;line-height:1.62}
+  .prose .lede::first-letter{
+    font-family:var(--serif);font-weight:500;
+    float:left;font-size:4.6em;line-height:.8;
+    padding:.04em .16em 0 0;
+  }
+
+  /* Numbered section heads — rule, index, title */
+  .prose h2{
+    font-family:var(--display);font-weight:700;letter-spacing:-.015em;
+    font-size:clamp(30px,3.4vw,44px);line-height:1.05;
+    margin-top:3em;padding-top:26px;border-top:2px solid var(--ink);
+  }
+  .prose h2::before{
+    counter-increment:sect;content:"0" counter(sect);
+    display:block;
+    font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
+    font-size:12px;letter-spacing:.16em;color:var(--magenta);
+    margin-bottom:16px;
+  }
+
+  /* Ledger — the three failure modes as indexed rows */
+  .ledger{margin-top:2em}
+  .ledger .lrow{
+    display:grid;grid-template-columns:84px 1fr;gap:0 26px;align-items:start;
+    padding:28px 0;border-top:1px solid var(--line);
+  }
+  .ledger .lrow:last-child{border-bottom:1px solid var(--line)}
+  .ledger .ln{
+    font-family:var(--serif);font-style:italic;font-weight:500;
+    font-size:clamp(44px,5vw,64px);line-height:.85;color:var(--magenta);
+  }
+  .ledger h3{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.01em;margin:0 0 8px}
+  .ledger p{font-size:16.5px;line-height:1.6;opacity:.85;max-width:54ch;margin:0}
+  @media(max-width:620px){.ledger .lrow{grid-template-columns:48px 1fr;gap:0 16px}}
+
+  /* Pull quote — the body's voice moment, breakout width */
+  .pull{margin-top:3.2em;margin-bottom:3.2em;padding:30px 0 38px;
+    border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
+  .pull .eyebrow{color:var(--magenta);display:block;margin-bottom:24px}
+  .pull p{
+    font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:-.02em;
+    font-size:clamp(28px,3.6vw,46px);line-height:1.22;max-width:30ch;
+  }
+
+  /* Spec list — what we changed */
+  .prose ul.changes{list-style:none;padding:0}
+  .prose ul.changes>li{
+    position:relative;padding:18px 0 18px 32px;margin:0;
+    border-top:1px solid var(--line);font-size:17.5px;line-height:1.6;
+  }
+  .prose ul.changes>li:last-child{border-bottom:1px solid var(--line)}
+  .prose ul.changes>li::before{
+    content:"";position:absolute;left:2px;top:28px;width:8px;height:8px;background:var(--magenta);
+  }
+  .prose ul.changes ul{list-style:none;padding:0;margin-top:.6em}
+  .prose ul.changes ul li{font-size:15.5px;color:var(--grey);padding-left:20px;position:relative;margin-top:.4em}
+  .prose ul.changes ul li::before{content:"—";position:absolute;left:0;color:var(--magenta)}
+
+  /* Sequence — indexed steps */
+  .prose ol.seq{list-style:none;padding:0;counter-reset:seq}
+  .prose ol.seq li{
+    counter-increment:seq;display:grid;grid-template-columns:56px 1fr;align-items:baseline;
+    padding:16px 0;margin:0;border-top:1px solid var(--line);
+    font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.01em;line-height:1.3;
+  }
+  .prose ol.seq li:last-child{border-bottom:1px solid var(--line)}
+  .prose ol.seq li::before{
+    content:"0" counter(seq);
+    font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
+    font-size:12px;letter-spacing:.16em;color:var(--magenta);
+  }
+
+  /* Figure — plate + spec caption */
+  .prose figure.breakout{margin-top:3em;margin-bottom:3em}
+  .fig-art{display:block;width:100%;height:auto;aspect-ratio:16/9;background:var(--ink-soft);object-fit:cover}
+  .prose figure.breakout figcaption{
+    display:flex;gap:16px;align-items:baseline;
+    font-size:13px;color:var(--grey);line-height:1.5;
+    padding-top:12px;margin-top:12px;border-top:1px solid var(--ink);max-width:none;
+  }
+  .prose figure.breakout figcaption b{
+    font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--magenta);white-space:nowrap;
+  }
+
+  /* Signal band — full-bleed mid-article capture */
+  .prose .signal{
+    width:100vw;margin-left:50%;transform:translateX(-50%);
+    background:var(--ink);color:var(--paper);
+    margin-top:3.4em;margin-bottom:3.4em;
+  }
+  .signal-in{
+    max-width:980px;margin-inline:auto;
+    padding:clamp(44px,7vh,72px) var(--gutter);
+    display:grid;grid-template-columns:1.5fr 1fr;gap:36px;align-items:center;
+  }
+  .sig-line{
+    font-family:var(--display);font-weight:500;letter-spacing:-.01em;
+    font-size:clamp(22px,2.4vw,30px) !important;line-height:1.25 !important;
+  }
+  .signal .field{display:flex;border:1px solid var(--line-light)}
+  .signal input{flex:1;min-width:0;background:transparent;border:0;color:var(--paper);font-family:var(--text);font-size:14px;padding:13px 14px}
+  .signal input:focus{outline:none}
+  .signal button{background:var(--paper);color:var(--ink);border:0;font-family:var(--text);font-weight:700;font-size:13px;padding:0 22px;cursor:pointer;transition:background .2s ease-out,color .2s ease-out}
+  .signal button:hover{background:var(--magenta);color:var(--paper)}
+  @media(max-width:760px){.signal-in{grid-template-columns:1fr;gap:24px}}
+
+  /* End mark */
+  .prose p.end::after{
+    content:"";display:inline-block;width:10px;height:10px;
+    background:var(--magenta);margin-left:10px;
+  }
+
+  /* Masthead slot */
+  .masthead .wframe{position:relative;overflow:hidden}
+  .masthead .wframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .masthead .wtint{position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(rgba(18,19,21,.38),rgba(18,19,21,.12) 45%,rgba(18,19,21,.52))}
+
+  /* Related — editorial index rows */
+  .related-v2{padding:clamp(72px,10vh,120px) 0;border-top:1px solid var(--line)}
+  .rel-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:36px}
+  .rel-head h2{font-family:var(--display);font-weight:500;font-size:clamp(32px,3.6vw,52px);letter-spacing:-.015em}
+  .rel-head .swipe{font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.03em}
+  .rel-rows{display:flex;flex-direction:column}
+  .rel-row{
+    display:grid;grid-template-columns:3ch 1fr auto 28px;
+    gap:clamp(14px,2.4vw,32px);align-items:baseline;
+    padding:24px 0;border-top:1px solid var(--ink);
+  }
+  .rel-row:last-child{border-bottom:1px solid var(--ink)}
+  .rel-n{font-family:var(--mono,ui-monospace,Menlo,monospace);font-size:12px;letter-spacing:.1em;color:var(--magenta)}
+  .rel-row .stream{
+    font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--grey);display:block;margin-bottom:7px;transition:color .2s ease-out;
+  }
+  .rel-row .rel-title{
+    display:block;
+    font-family:var(--display);font-weight:700;letter-spacing:-.01em;line-height:1.12;
+    font-size:clamp(21px,2.4vw,30px);transition:transform .3s cubic-bezier(.22,1,.36,1);
+  }
+  .rel-date{font-size:13px;color:var(--grey);white-space:nowrap}
+  .rel-ar{font-size:20px;color:var(--magenta);opacity:0;transform:translateX(-10px);
+    transition:opacity .25s ease-out,transform .25s ease-out}
+  .rel-row:hover .rel-title{transform:translateX(10px)}
+  .rel-row:hover .stream{color:var(--magenta)}
+  .rel-row:hover .rel-ar{opacity:1;transform:translateX(0)}
+  @media(max-width:640px){
+    .rel-row{grid-template-columns:3ch 1fr 22px}
+    .rel-date{display:none}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    .rel-row .rel-title,.rel-ar{transition:none}
+  }
+</style>
+
 </head>
 <body>
 
@@ -565,246 +710,145 @@
 
 
 <!-- Sub-page hero: same DNA as homepage, ~50vh, clearly a sub-section -->
-<section class="sub-hero">
+<section class="sub-hero article">
   <div class="sub-hero-inner wrap">
-    <span class="eyebrow">Our work</span>
-    <h1 class="rise">The receipts.</h1>
-    <p class="sub-voice"><em class="voice mag">Twenty-two projects. Two practices. One room.</em></p>
+    <span class="eyebrow" id="cats"><a href="#">Digital Products</a> · <a href="#">Process</a> · <a href="#">AI</a></span>
+    <h1 class="rise" id="title">Why scoping digital product and software development projects is challenging — and what to do about it</h1>
+    <p class="sub-voice"><em class="voice mag" id="excerpt">Estimates fail for structural reasons, not effort reasons. Here is what we changed.</em></p>
+    <div class="byline" id="byline">
+      <a href="#" id="authorEl">By Steven Bone</a>
+      <span class="sep" id="authorSep">·</span>
+      <span class="date">June 12, 2026</span>
+    </div>
   </div>
 </section>
 
-<!-- Filter bar -->
-<div class="work-filter" id="workFilter">
-  <div class="wrap filter-row">
-    <button class="ftab on" data-cat="all"><span class="fl cascade">All</span> <span class="fc">22</span></button>
-    <button class="ftab" data-cat="digital"><span class="fl cascade">Digital</span> <span class="fc">16</span></button>
-    <button class="ftab" data-cat="studios"><span class="fl cascade">Studios</span> <span class="fc">6</span></button>
-    <button class="ftab" data-cat="hybrid"><span class="fl cascade">Hybrid</span> <span class="fc pending">In production</span></button>
+<!-- Masthead plate — wframe pattern; .dark drives the wtint scrim (Masthead Dark Overlay checkbox) -->
+<section class="masthead wrap" id="masthead">
+  <div class="wframe dark" id="plate">
+    <img src="images/iron_mountain.jpg" alt="">
+    <div class="wtint"></div>
+    <span class="photo-credit" id="photoCredit">Anton Darius via Unsplash</span>
   </div>
-</div>
+</section>
 
-<!-- Work grid -->
-<section class="work-grid wrap">
+<!-- Body — editorial magazine × dense Swiss -->
+<article class="article-body wrap">
+  <div class="prose">
+    <p class="lede">Every software estimate is a forecast about a system that does not exist yet, made by people with incomplete information, for stakeholders who will change their minds. That is not a criticism of anyone involved. It is the <strong>structural condition</strong> of the work, and pretending otherwise is where most scoping pain begins.</p>
+    <p>We have run fixed-bid projects, time-and-materials projects, and everything between. The pattern that emerges is consistent: the estimate is never wrong because the team was slow. It is wrong because the <em>thing being estimated changed</em> while it was being built — usually for good reasons, discovered honestly, mid-flight. More on how we absorb that in our <a href="#">Rapid MVP approach</a>.</p>
 
-  <!-- Featured: Iron Mountain — Studios -->
-  <a class="wcard feature" data-cat="studios" href="#">
-    <div class="wframe">
-      <img src="images/iron_mountain.jpg" alt="Iron Mountain — The Summit" style="width:100%;height:100%;object-fit:cover">
-      <div class="wtint"></div>
-      <div class="wcard-overlay">
-        <h2>Iron Mountain — <i>The Summit</i></h2>
-        <p>A generative film with a blockbuster look. Silver ADDY, 2026.</p>
-        <span class="wgo swipe">Watch the film →</span>
+    <h2>The three places scope actually breaks</h2>
+    <p>When a project lands somewhere other than its estimate, the cause is almost always one of three discoveries that could not have been made earlier.</p>
+
+    <div class="ledger">
+      <div class="lrow">
+        <span class="ln">1</span>
+        <div>
+          <h3>The integration surprise</h3>
+          <p>The client's existing systems are documented optimistically. The API that "definitely supports webhooks" supports them in a deprecated version. Nobody knows this until a developer is inside it.</p>
+        </div>
+      </div>
+      <div class="lrow">
+        <span class="ln">2</span>
+        <div>
+          <h3>The decision latency</h3>
+          <p>Approvals modeled as same-day take eleven. The team idles or speculates; both cost money.</p>
+        </div>
+      </div>
+      <div class="lrow">
+        <span class="ln">3</span>
+        <div>
+          <h3>The success problem</h3>
+          <p>The product works, stakeholders see it working, and they immediately want it to do more. This is the best problem to have and the worst one to have priced.</p>
+        </div>
       </div>
     </div>
-  </a>
 
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/telus.jpg" alt="TELUS Rewards" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>TELUS Rewards</h3>
-    <p>A loyalty platform 300,000 people enrolled in within six months.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
+    <aside class="pull breakout">
+      <span class="eyebrow">The pattern</span>
+      <p>The estimate is never wrong because the team was slow. It is wrong because <span class="mag">the thing being estimated changed</span> while it was being built.</p>
+    </aside>
 
-  <a class="wcard" data-cat="studios" href="#">
-    <div class="wframe">
-      <img src="images/celestial.jpg" alt="Celestial AI" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>Celestial AI</h3>
-    <p>A luminous story of light itself — photonic fabric unlocking a new era of intelligence.</p>
-    <span class="wgo swipe">Watch the film →</span>
-  </a>
+    <h2>What we changed</h2>
+    <p>The fix is not better guessing. It is restructuring what gets promised:</p>
+    <ul class="changes">
+      <li><strong>Fixed scope for the first two weeks only</strong> — long enough to hit the integration surprises while they are cheap</li>
+      <li><strong>A decision SLA written into the agreement,</strong> with named owners
+        <ul><li>If the SLA slips, the timeline slips with it, visibly and without negotiation</li></ul>
+      </li>
+      <li><strong>Change priced as a feature</strong> of the engagement, not an exception to it</li>
+    </ul>
+    <p>The sequencing matters as much as the structure:</p>
+    <ol class="seq">
+      <li>Scope the unknowns first, not the deliverables</li>
+      <li>Build the riskiest integration in week one</li>
+      <li>Re-estimate at the two-week mark with real data</li>
+    </ol>
 
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/hall.jpg" alt="Hall Constructors field ticketing app" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>Hall Constructors</h3>
-    <p>Paper tickets to a field-ready platform — trucking operations digitized end to end.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
+    <figure class="breakout">
+      <img class="fig-art" src="images/sxs.jpg" alt="Scope drift across a 12-week engagement">
+      <figcaption><b>Fig. 01</b><span>Scope drift across a typical 12-week engagement. The two-week re-estimate point is where forecast and reality converge.</span></figcaption>
+    </figure>
 
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/energizer.jpg" alt="Energizer POC" style="width:100%;height:100%;object-fit:cover">
+    <div class="signal">
+      <div class="signal-in">
+        <p class="sig-line">Scoping is one dispatch of many. <em class="voice mag">The Signal</em> ships what we're learning — monthly, short, no filler.</p>
+        <div class="field">
+          <input type="email" placeholder="Email address" aria-label="Email address">
+          <button type="button">Subscribe</button>
+        </div>
+      </div>
     </div>
-    <h3>Energizer</h3>
-    <p>Product-market fit validated in 30 days with a rapid proof of concept.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
 
-  <a class="wcard" data-cat="studios" href="#">
-    <div class="wframe">
-      <img src="images/ernest.jpg" alt="Ernest Packaging — Four Dreams" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>Ernest Packaging — <i>Four Dreams</i></h3>
-    <p>Four surreal dreams brought to life. Silver ADDY, 2026.</p>
-    <span class="wgo swipe">Watch the shorts →</span>
-  </a>
+    <p>We talked through this model on the Brand Experience Podcast — watch or listen below.</p>
 
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/sxs.jpg" alt="SxS Technologies" style="width:100%;height:100%;object-fit:cover">
+    <div class="embed video breakout">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Scoping talk" loading="lazy" allowfullscreen></iframe>
     </div>
-    <h3>SxS Technologies</h3>
-    <p>Brand and platform for 4D + AI structural analytics. Beyond the digital twin.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
 
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/nva.jpg" alt="NVA careers platform" style="width:100%;height:100%;object-fit:cover">
+    <div class="embed podcast breakout">
+      <iframe src="https://www.podbean.com/player-v2/?i=placeholder" title="The Brand Experience Podcast" loading="lazy"></iframe>
     </div>
-    <h3>NVA</h3>
-    <p>A careers platform for North America's largest veterinary community.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
 
-  <!-- Hybrid placeholder — in production -->
-  <div class="wcard hybrid-slot" data-cat="hybrid">
-    <div class="wframe slot-frame">
-      <span class="slot-tag">Hybrid case study — in production</span>
-    </div>
-    <span class="wtag pending-tag">Hybrid · In production</span>
-    <h3>Content + vessel, same room</h3>
-    <p>The first fully documented hybrid Digital + Studios engagement.</p>
-    <span class="wgo pending-go">Coming soon</span>
+    <p class="end">None of this makes estimating easy. It makes the estimate honest about what it is — a forecast with a known revision point — and that single change has done more for client trust than any accuracy improvement ever did.</p>
   </div>
+</article>
 
-  <a class="wcard" data-cat="studios" href="#">
-    <div class="wframe">
-      <img src="images/algorithm_trap.jpg" alt="The Algorithm Trap" style="width:100%;height:100%;object-fit:cover">
+<!-- Related — editorial index rows; section collapses at zero relations -->
+<section class="related-v2" id="related">
+  <div class="wrap">
+    <div class="rel-head">
+      <h2>Related <em class="voice mag">reading</em></h2>
+      <a class="swipe" href="insights.html">All insights →</a>
     </div>
-    <h3>The Algorithm Trap</h3>
-    <p>Fast, raw, restless — vignettes that mirror the endless scroll.</p>
-    <span class="wgo swipe">Watch the film →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/koodo.jpg" alt="Koodo accessories tool" style="width:100%;height:100%;object-fit:cover">
+    <div class="rel-rows">
+      <a class="rel-row" href="#">
+        <span class="rel-n">01</span>
+        <span class="rel-meta"><span class="stream">Digital Products</span><span class="rel-title">Composable development with AI agents</span></span>
+        <span class="rel-date">May 28, 2026</span>
+        <span class="rel-ar">→</span>
+      </a>
+      <a class="rel-row" href="#">
+        <span class="rel-n">02</span>
+        <span class="rel-meta"><span class="stream">Process</span><span class="rel-title">Working software in weeks, not quarters</span></span>
+        <span class="rel-date">April 3, 2026</span>
+        <span class="rel-ar">→</span>
+      </a>
+      <a class="rel-row" href="#">
+        <span class="rel-n">03</span>
+        <span class="rel-meta"><span class="stream">AI</span><span class="rel-title">The brand experience podcast</span></span>
+        <span class="rel-date">February 19, 2026</span>
+        <span class="rel-ar">→</span>
+      </a>
     </div>
-    <h3>Koodo</h3>
-    <p>A one-stop accessories catalogue for every retail team member.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/discover_parks.jpg" alt="Discover Parks app" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>BC Parks Foundation</h3>
-    <p>Discover Parks — helping British Columbians find their way outside.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <a class="wcard" data-cat="studios" href="#">
-    <div class="wframe">
-      <img src="images/maple_health.jpg" alt="Maple Health" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>Maple Health</h3>
-    <p>An AI-animated story of care — the quiet empathy that defines healthcare.</p>
-    <span class="wgo swipe">Watch the film →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/bcwhf.jpg" alt="Unmasking Gender Inequity report" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>BC Women's Health Foundation</h3>
-    <p>Unmasking Gender Inequity — research the public could actually read.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/angel_oak.jpg" alt="Angel Oak" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>Angel Oak</h3>
-    <p>+40% organic leads through a redesigned digital platform.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <a class="wcard" data-cat="studios" href="#">
-    <div class="wframe">
-      <img src="images/rapid_mvp.jpg" alt="Rapid MVP — Luma" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>Rapid MVP</h3>
-    <p>Meet Luma — a brilliant idea that didn't have to wait to shine.</p>
-    <span class="wgo swipe">Watch the film →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/chinatown.jpg" alt="Vancouver Chinatown BIA app" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>Vancouver Chinatown BIA</h3>
-    <p>A functional and cosmetic redesign connecting people to Chinatown's businesses.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/vessel_intel.jpg" alt="NCIS — Nautical Claims Investigative Service platform" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>NCIS</h3>
-    <p>A high-speed investigative intelligence platform for maritime security operations.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/phinity.jpg" alt="Phinity smart pool care" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>Phinity</h3>
-    <p>Smart water care — hardware, app, and brand in one launch.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/xyon.jpg" alt="XYON Health" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>XYON</h3>
-    <p>A digital front door for personalized hair-health treatment.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/luxxee.jpg" alt="Luxxee" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>Luxxee</h3>
-    <p>An editorial platform for the world of luxury watches.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/delta_controls.jpg" alt="Delta Controls" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>Delta Controls</h3>
-    <p>Best UX for Product, Vancouver UX Awards.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe slot-frame light">
-      <span class="slot-tag dark">UI — lululemon</span>
-    </div>
-    <h3>lululemon</h3>
-    <p>Digital experience work for one of Vancouver's signature brands.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
+  </div>
 </section>
 
 <!-- Global page closer — same scale as homepage, page-specific copy -->
 <section class="page-closer" id="contact">
   <div class="wrap">
-    <h2 class="rise">The work speaks. <em class="voice mag">Let's add yours.</em></h2>
+    <h2 class="rise">Read enough? <em class="voice mag">Let's build.</em></h2>
     <p>Cinema in days. Software in weeks. You'll work directly with the people who make it — no account layer, no brief telephone.</p>
     <div class="pc-row">
       <a class="btn solid cascade" href="#">Start a project →</a>
@@ -932,13 +976,6 @@
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
-  // Case cells rise on scroll entry, staggered by column
-  document.querySelectorAll('.work-grid .wcard').forEach((c,i)=>{
-    c.classList.add('reveal');
-    c.style.setProperty('--d', String(i%3));
-    ro.observe(c);
-  });
-
   // Proof spine: only runs if proofRow exists (homepage only)
   const proofRow = document.getElementById('proofRow');
   if (proofRow) {
@@ -964,20 +1001,6 @@
 
 
 <script>
-  // Filter
-  const ftabs = document.querySelectorAll('.ftab');
-  const wcards = document.querySelectorAll('[data-cat]');
-  ftabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      ftabs.forEach(t => t.classList.remove('on'));
-      tab.classList.add('on');
-      const cat = tab.dataset.cat;
-      wcards.forEach(c => {
-        c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
-      });
-    });
-  });
-
 // ---------- Button system ----------
 // Primary: letter cascade
 document.querySelectorAll('.cascade').forEach(function(btn){
@@ -1032,5 +1055,69 @@ document.querySelectorAll('.swipe').forEach(function(el){
 </script>
 
 
+
+<!-- ============ FIXTURE BAR — data-spec stress states. Delete at build. ============ -->
+<style>
+  .fixtures{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--ink);color:var(--paper);
+    display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:10px var(--gutter);
+    font-family:var(--text);font-size:11.5px;border-top:1px solid var(--line-light)}
+  .fixtures b{letter-spacing:.1em;text-transform:uppercase;font-size:10px;color:var(--magenta);margin-right:8px}
+  .fixtures button{background:none;border:1px solid rgba(250,250,247,.3);color:inherit;cursor:pointer;
+    font:inherit;padding:5px 10px}
+  .fixtures button:hover{border-color:var(--magenta)}
+  .fixtures button[aria-pressed="true"]{background:var(--magenta);border-color:var(--magenta);color:var(--paper)}
+  body{padding-bottom:52px}
+</style>
+<div class="fixtures" role="group" aria-label="Data fixtures">
+  <b>Fixtures</b>
+  <button data-fx="longTitle" aria-pressed="false">124-char title</button>
+  <button data-fx="shortTitle" aria-pressed="false">9-char title</button>
+  <button data-fx="noMasthead" aria-pressed="false">No masthead (3)</button>
+  <button data-fx="darkOverlay" aria-pressed="true">Dark overlay (44)</button>
+  <button data-fx="noAuthor" aria-pressed="false">No author (4)</button>
+  <button data-fx="noCats" aria-pressed="false">0 categories</button>
+  <button data-fx="noCredit" aria-pressed="false">No credit (63)</button>
+  <button data-fx="noRelated" aria-pressed="false">0 related (63)</button>
+</div>
+<script>
+(function(){
+  var TITLES = {
+    base: "Why scoping digital product and software development projects is challenging \u2014 and what to do about it",
+    long: "Why scoping digital product and software development projects is challenging and what every founder, PM, and engineering lead can do about it",
+    short: "Test Blog"
+  };
+  var state = {longTitle:false, shortTitle:false, noMasthead:false, darkOverlay:true, noAuthor:false, noCats:false, noCredit:false, noRelated:false};
+  function setTitle(t){
+    var h = document.getElementById('title');
+    h.innerHTML = '';
+    h.textContent = t;
+    if (typeof splitRise === 'function') splitRise(h);
+    h.classList.add('in');
+  }
+  function render(opts){
+    if (!opts || opts.title) setTitle(state.longTitle ? TITLES.long : state.shortTitle ? TITLES.short : TITLES.base);
+    document.getElementById('masthead').hidden = state.noMasthead;
+    document.getElementById('plate').classList.toggle('dark', state.darkOverlay);
+    document.getElementById('authorEl').style.display = state.noAuthor ? 'none' : '';
+    document.getElementById('authorSep').style.display = state.noAuthor ? 'none' : '';
+    document.getElementById('cats').style.display = state.noCats ? 'none' : '';
+    document.getElementById('photoCredit').style.display = state.noCredit ? 'none' : '';
+    document.getElementById('related').hidden = state.noRelated;
+  }
+  document.querySelectorAll('.fixtures button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var k = btn.dataset.fx;
+      state[k] = !state[k];
+      if(k==='longTitle' && state.longTitle) state.shortTitle = false;
+      if(k==='shortTitle' && state.shortTitle) state.longTitle = false;
+      document.querySelectorAll('.fixtures button').forEach(function(b){
+        b.setAttribute('aria-pressed', String(!!state[b.dataset.fx]));
+      });
+      render({title: (k==='longTitle'||k==='shortTitle')});
+    });
+  });
+  render({title:false});
+})();
+</script>
 </body>
 </html>

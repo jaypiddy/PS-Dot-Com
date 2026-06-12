@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Work — POWER SHIFTER | Digital Products & Generative Films | Vancouver</title>
-<meta name="description" content="Selected work across Digital and Studios. Software platforms, generative films, and hybrid engagements — made in the same room.">
+<title>Thinking in Public — POWER SHIFTER Insights</title>
+<meta name="description" content="Build — how we make software with AI. Frames — how we make films with it. Founder's Focus — where it's all going, whether you agree or not.">
 <link rel="stylesheet" href="https://use.typekit.net/pkh7feu.css">
 <style>
   :root{
@@ -392,6 +392,44 @@
   .pending-tag{color:var(--grey) !important}
   .pending-go{color:var(--grey);pointer-events:none}
 
+  /* ---------- Insights collection page ---------- */
+  /* H1 carries the homepage tease: magenta box on the serif word */
+  .sub-hero .boxed{
+    font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:-.02em;
+    background:var(--magenta);color:var(--paper);display:inline-block;
+    padding:.08em .18em .14em;border-radius:2px;transform:translateY(.04em);
+  }
+  .sub-hero .streams{
+    margin-top:22px;max-width:74ch;font-size:17px;line-height:1.6;
+    color:rgba(250,250,247,.72);
+    opacity:0;animation:settle .6s ease-out .55s forwards;
+  }
+  .sub-hero .streams b{color:var(--paper);font-weight:700}
+
+  /* Card additions on top of the wcard system */
+  .wcard .excerpt{
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  }
+  .idate{font-size:12.5px;color:var(--grey);display:block;margin-top:10px}
+  .wcard.feature .idate{color:rgba(250,250,247,.6)}
+
+  /* Founder's Focus dialect — pure typography on ink, no image */
+  .wcard.ff{background:var(--ink);color:var(--paper);padding:clamp(24px,2.6vw,38px);
+    display:flex;flex-direction:column;min-height:100%}
+  .wcard.ff h3{
+    font-family:var(--display);font-weight:900;letter-spacing:-.015em;
+    font-size:clamp(22px,2.2vw,30px);line-height:1.12;margin-bottom:14px;
+  }
+  .wcard.ff h3 em{font-family:var(--serif);font-style:italic;font-weight:500}
+  .wcard.ff > p{color:rgba(250,250,247,.7)}
+  .wcard.ff .idate{color:rgba(250,250,247,.55)}
+  .wcard.ff .wgo{color:rgba(250,250,247,.9)}
+
+  /* Load more */
+  .more-row{display:flex;justify-content:center;padding-bottom:clamp(72px,10vh,110px)}
+  .more-row .btn{border-color:var(--ink);color:var(--ink)}
+  .more-row .btn:hover{background:transparent;color:var(--ink)}
+
   /* ---- Global page closer — token-driven, reuse across all key pages ----
      Matches homepage closer in scale. Swap h2 text + p + btn label per page.
      mag class = magenta, voice class = serif italic. Both or either. */
@@ -413,9 +451,6 @@
 
   @media(max-width:980px){.work-grid{grid-template-columns:1fr 1fr}.wcard.feature{grid-column:1/-1}}
   @media(max-width:640px){.work-grid{grid-template-columns:1fr}}
-
-  /* Rise-in: case cells use the site reveal motion, staggered by column */
-  .work-grid .wcard.reveal{transition-delay:calc(var(--d,0)*70ms)}
 
   /* ---------- Button system ---------- */
   /* Primary — letter cascade */
@@ -502,6 +537,74 @@
   }
 </style>
 
+<style id="insights-v3">
+  /* ============ COLLECTION V3 — ruled sheet, indexed cards ============
+     Hero, filter, closer, footer untouched. The grid becomes the homepage
+     work-section's hairline-ruled sheet; every post is an indexed cell with
+     a mono meta row. Stream dialects: Build = grotesque, Frames = serif
+     accent, Founder's Focus = 900 on ink with magenta serif voice. */
+  .work-grid{display:block;padding-top:clamp(40px,5vh,64px);padding-bottom:clamp(28px,4vh,48px)}
+  .sheet{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .sheet .wcard{background:var(--paper);margin:0;padding:clamp(20px,2.4vw,32px);display:flex;flex-direction:column}
+  .sheet .wcard.feature{grid-column:1/-1;padding:0}
+  .sheet .wcard.ff{background:var(--ink);color:var(--paper)}
+
+  /* Meta row — mono index · stream · date */
+  .cmeta{display:flex;gap:16px;align-items:baseline;margin-bottom:16px}
+  .cn{font-family:var(--mono,ui-monospace,Menlo,monospace);font-size:11px;letter-spacing:.12em;
+    color:var(--grey);transition:color .25s ease-out}
+  .wcard:hover .cn{color:var(--magenta)}
+  .cmeta .wtag{margin-bottom:0}
+  .cmeta .idate{margin-left:auto;margin-top:0}
+  .idate{font-family:var(--mono,ui-monospace,Menlo,monospace);font-size:11px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--grey)}
+  .wcard.ff .idate{color:rgba(250,250,247,.5)}
+  .wcard.ff .cn{color:rgba(250,250,247,.5)}
+
+  /* Frame — thumbnail slot fills the plate */
+  .sheet .wframe{margin-bottom:0}
+  .sheet .wframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .6s cubic-bezier(.22,1,.36,1)}
+  .wcard:hover .wframe img{transform:scale(1.03)}
+
+  /* Type scale up */
+  .sheet .wcard h3{font-family:var(--display);font-weight:700;letter-spacing:-.012em;line-height:1.14;
+    font-size:clamp(21px,1.9vw,28px);margin:18px 0 10px;text-wrap:pretty}
+  .sheet .wcard h3 i{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:-.01em}
+  .sheet .wcard .excerpt{font-size:15px;line-height:1.55;color:var(--grey);margin-bottom:16px;max-width:46ch}
+  .sheet .wgo{margin-top:auto;padding-top:6px}
+
+  /* Featured — full-bleed overlay cell, statement type */
+  .sheet .feature .wcard-overlay{padding:clamp(26px,3.4vw,48px)}
+  .fmeta{display:flex;gap:16px;align-items:baseline}
+  .fmeta .cn{color:rgba(250,250,247,.6)}
+  .fmeta .idate{color:rgba(250,250,247,.6)}
+  .sheet .feature .wcard-overlay h2{font-weight:900;letter-spacing:-.02em;line-height:1;
+    font-size:clamp(30px,3.8vw,58px);max-width:18ch;margin:14px 0 14px}
+  .sheet .feature .wcard-overlay h2 i{font-family:var(--serif);font-style:italic;font-weight:500}
+  .sheet .feature .excerpt{font-size:16px;line-height:1.5;max-width:60ch;color:rgba(250,250,247,.8)}
+  .sheet .feature .wgo{margin-top:16px;display:inline-block}
+
+  /* Founder's Focus dialect — opinion in 900, the voice in magenta serif */
+  .sheet .wcard.ff h3{font-weight:900;letter-spacing:-.018em;line-height:1.08;
+    font-size:clamp(24px,2.3vw,34px);margin-top:20px}
+  .sheet .wcard.ff h3 em{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--magenta)}
+  .sheet .wcard.ff .excerpt{color:rgba(250,250,247,.65)}
+
+  /* Rise-in: cells use the site reveal motion, staggered by column */
+  .sheet .wcard.reveal{transition-delay:calc(var(--d,0)*70ms)}
+
+  @media(max-width:980px){.sheet{grid-template-columns:1fr 1fr}}
+  @media(max-width:640px){
+    .sheet{grid-template-columns:1fr}
+    .sheet .feature .wcard-overlay h2{font-size:clamp(26px,7vw,34px)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .sheet .wframe img{transition:none}
+    .wcard:hover .wframe img{transform:none}
+  }
+</style>
+
 </head>
 <body>
 
@@ -564,247 +667,131 @@
 
 
 
-<!-- Sub-page hero: same DNA as homepage, ~50vh, clearly a sub-section -->
+<!-- Sub-page hero: the homepage tease becomes the page H1 -->
 <section class="sub-hero">
   <div class="sub-hero-inner wrap">
-    <span class="eyebrow">Our work</span>
-    <h1 class="rise">The receipts.</h1>
-    <p class="sub-voice"><em class="voice mag">Twenty-two projects. Two practices. One room.</em></p>
+    <span class="eyebrow" style="color:var(--magenta)">Insights</span>
+    <h1 class="rise">Thinking in <span class="boxed">public</span></h1>
+    <p class="streams"><b>Build</b> — how to make products people love. <b>Frames</b> — how to make films that are remembered. <b>Founder's Focus</b> — where it's all going, whether you agree or not.</p>
   </div>
 </section>
 
-<!-- Filter bar -->
+<!-- Stream filter — F1 ink fill + cascade, counts read from Notion at build -->
 <div class="work-filter" id="workFilter">
   <div class="wrap filter-row">
-    <button class="ftab on" data-cat="all"><span class="fl cascade">All</span> <span class="fc">22</span></button>
-    <button class="ftab" data-cat="digital"><span class="fl cascade">Digital</span> <span class="fc">16</span></button>
-    <button class="ftab" data-cat="studios"><span class="fl cascade">Studios</span> <span class="fc">6</span></button>
-    <button class="ftab" data-cat="hybrid"><span class="fl cascade">Hybrid</span> <span class="fc pending">In production</span></button>
+    <button class="ftab on" data-cat="all"><span class="fl cascade">All</span> <span class="fc">94</span></button>
+    <button class="ftab" data-cat="build"><span class="fl cascade">Build</span> <span class="fc">58</span></button>
+    <button class="ftab" data-cat="frames"><span class="fl cascade">Frames</span> <span class="fc">22</span></button>
+    <button class="ftab" data-cat="ff"><span class="fl cascade">Founder's Focus</span> <span class="fc">14</span></button>
   </div>
 </div>
 
-<!-- Work grid -->
+<!-- Post grid — ruled sheet, indexed cells -->
 <section class="work-grid wrap">
+  <div class="sheet">
 
-  <!-- Featured: Iron Mountain — Studios -->
-  <a class="wcard feature" data-cat="studios" href="#">
+  <!-- Featured (Featured checkbox, 1/94) — 21:9 overlay cell -->
+  <a class="wcard feature" data-cat="frames" href="#" id="featured">
     <div class="wframe">
-      <img src="images/iron_mountain.jpg" alt="Iron Mountain — The Summit" style="width:100%;height:100%;object-fit:cover">
+      <img src="images/iron_mountain.jpg" alt="" style="width:100%;height:100%;object-fit:cover">
       <div class="wtint"></div>
       <div class="wcard-overlay">
-        <h2>Iron Mountain — <i>The Summit</i></h2>
-        <p>A generative film with a blockbuster look. Silver ADDY, 2026.</p>
-        <span class="wgo swipe">Watch the film →</span>
+        <span class="fmeta"><span class="cn">01</span><span class="wtag">Frames · Featured</span><span class="idate">May 14, 2026</span></span>
+        <h2>Power Shifter Studios takes home two Silver <i>ADDYs</i></h2>
+        <p class="excerpt">Iron Mountain's "The Summit" and Ernest Packaging's "Four Dreams" — two generative films, two Silver ADDYs, one room in Vancouver.</p>
+        <span class="wgo swipe">Read the post →</span>
       </div>
     </div>
   </a>
 
-  <a class="wcard" data-cat="digital" href="#">
+  <a class="wcard" data-cat="build" href="article.html">
+    <span class="cmeta"><span class="cn">02</span><span class="wtag">Build</span><span class="idate">June 12, 2026</span></span>
     <div class="wframe">
-      <img src="images/telus.jpg" alt="TELUS Rewards" style="width:100%;height:100%;object-fit:cover">
+      <img src="images/sxs.jpg" alt="" style="width:100%;height:100%;object-fit:cover">
     </div>
-    <h3>TELUS Rewards</h3>
-    <p>A loyalty platform 300,000 people enrolled in within six months.</p>
-    <span class="wgo swipe">Read the case →</span>
+    <h3 id="stressTitle">Why scoping digital product and software development projects is challenging — and what to do about it</h3>
+    <p class="excerpt" id="stressExcerpt">Estimates fail for structural reasons, not effort reasons. Here is what we changed.</p>
+    <span class="wgo swipe">Read the post →</span>
   </a>
 
-  <a class="wcard" data-cat="studios" href="#">
+  <a class="wcard" data-cat="build" href="#">
+    <span class="cmeta"><span class="cn">03</span><span class="wtag">Build</span><span class="idate">June 3, 2025</span></span>
     <div class="wframe">
-      <img src="images/celestial.jpg" alt="Celestial AI" style="width:100%;height:100%;object-fit:cover">
+      <img src="images/hall.jpg" alt="" style="width:100%;height:100%;object-fit:cover">
     </div>
-    <h3>Celestial AI</h3>
-    <p>A luminous story of light itself — photonic fabric unlocking a new era of intelligence.</p>
-    <span class="wgo swipe">Watch the film →</span>
+    <h3>Can vibe design and coding AI apps build a <i>real</i> product?</h3>
+    <p class="excerpt">We pressure-tested the 2026 vibe-stack against a production brief. The results were not what either camp predicted.</p>
+    <span class="wgo swipe">Read the post →</span>
   </a>
 
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/hall.jpg" alt="Hall Constructors field ticketing app" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>Hall Constructors</h3>
-    <p>Paper tickets to a field-ready platform — trucking operations digitized end to end.</p>
-    <span class="wgo swipe">Read the case →</span>
+  <!-- Founder's Focus dialect — opinion is words; type-only on ink -->
+  <a class="wcard ff" data-cat="ff" href="#">
+    <span class="cmeta"><span class="cn">04</span><span class="wtag">Founder's Focus</span><span class="idate">January 22, 2025</span></span>
+    <h3>Designing for <em>rage</em>: how platforms profit from chaos</h3>
+    <p class="excerpt">Engagement metrics reward the worst room in the building. A founder's case for walking away from the algorithm economy.</p>
+    <span class="wgo swipe">Read the post →</span>
   </a>
 
-  <a class="wcard" data-cat="digital" href="#">
+  <a class="wcard" data-cat="build" href="#">
+    <span class="cmeta"><span class="cn">05</span><span class="wtag">Build</span><span class="idate">May 28, 2026</span></span>
     <div class="wframe">
-      <img src="images/energizer.jpg" alt="Energizer POC" style="width:100%;height:100%;object-fit:cover">
+      <img src="images/phinity.jpg" alt="" style="width:100%;height:100%;object-fit:cover">
     </div>
-    <h3>Energizer</h3>
-    <p>Product-market fit validated in 30 days with a rapid proof of concept.</p>
-    <span class="wgo swipe">Read the case →</span>
+    <h3>Composable development with AI agents</h3>
+    <p class="excerpt">How agent-orchestrated builds changed our definition of a sprint — and what survived contact with a real client deadline.</p>
+    <span class="wgo swipe">Read the post →</span>
   </a>
 
-  <a class="wcard" data-cat="studios" href="#">
+  <a class="wcard" data-cat="frames" href="#">
+    <span class="cmeta"><span class="cn">06</span><span class="wtag">Frames</span><span class="idate">February 19, 2026</span></span>
     <div class="wframe">
-      <img src="images/ernest.jpg" alt="Ernest Packaging — Four Dreams" style="width:100%;height:100%;object-fit:cover">
+      <img src="images/maple_health.jpg" alt="" style="width:100%;height:100%;object-fit:cover">
     </div>
-    <h3>Ernest Packaging — <i>Four Dreams</i></h3>
-    <p>Four surreal dreams brought to life. Silver ADDY, 2026.</p>
-    <span class="wgo swipe">Watch the shorts →</span>
+    <h3>The brand experience <i>podcast</i></h3>
+    <p class="excerpt">A conversation about products people use and stories people remember — and why one engine should make both.</p>
+    <span class="wgo swipe">Listen to the episode →</span>
   </a>
 
-  <a class="wcard" data-cat="digital" href="#">
+  <a class="wcard" data-cat="build" href="#">
+    <span class="cmeta"><span class="cn">07</span><span class="wtag">Build</span><span class="idate">November 6, 2025</span></span>
     <div class="wframe">
-      <img src="images/sxs.jpg" alt="SxS Technologies" style="width:100%;height:100%;object-fit:cover">
+      <img src="images/telus.jpg" alt="" style="width:100%;height:100%;object-fit:cover">
     </div>
-    <h3>SxS Technologies</h3>
-    <p>Brand and platform for 4D + AI structural analytics. Beyond the digital twin.</p>
-    <span class="wgo swipe">Read the case →</span>
+    <h3>Big news: say hello to PSI — the future of brand experience has arrived</h3>
+    <p class="excerpt">One design culture, two practices. Why we rebuilt the agency around an AI-native engine.</p>
+    <span class="wgo swipe">Read the post →</span>
   </a>
 
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/nva.jpg" alt="NVA careers platform" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>NVA</h3>
-    <p>A careers platform for North America's largest veterinary community.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <!-- Hybrid placeholder — in production -->
-  <div class="wcard hybrid-slot" data-cat="hybrid">
-    <div class="wframe slot-frame">
-      <span class="slot-tag">Hybrid case study — in production</span>
-    </div>
-    <span class="wtag pending-tag">Hybrid · In production</span>
-    <h3>Content + vessel, same room</h3>
-    <p>The first fully documented hybrid Digital + Studios engagement.</p>
-    <span class="wgo pending-go">Coming soon</span>
-  </div>
-
-  <a class="wcard" data-cat="studios" href="#">
-    <div class="wframe">
-      <img src="images/algorithm_trap.jpg" alt="The Algorithm Trap" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>The Algorithm Trap</h3>
-    <p>Fast, raw, restless — vignettes that mirror the endless scroll.</p>
-    <span class="wgo swipe">Watch the film →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/koodo.jpg" alt="Koodo accessories tool" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>Koodo</h3>
-    <p>A one-stop accessories catalogue for every retail team member.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/discover_parks.jpg" alt="Discover Parks app" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>BC Parks Foundation</h3>
-    <p>Discover Parks — helping British Columbians find their way outside.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <a class="wcard" data-cat="studios" href="#">
-    <div class="wframe">
-      <img src="images/maple_health.jpg" alt="Maple Health" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>Maple Health</h3>
-    <p>An AI-animated story of care — the quiet empathy that defines healthcare.</p>
-    <span class="wgo swipe">Watch the film →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/bcwhf.jpg" alt="Unmasking Gender Inequity report" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>BC Women's Health Foundation</h3>
-    <p>Unmasking Gender Inequity — research the public could actually read.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/angel_oak.jpg" alt="Angel Oak" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>Angel Oak</h3>
-    <p>+40% organic leads through a redesigned digital platform.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <a class="wcard" data-cat="studios" href="#">
-    <div class="wframe">
-      <img src="images/rapid_mvp.jpg" alt="Rapid MVP — Luma" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>Rapid MVP</h3>
-    <p>Meet Luma — a brilliant idea that didn't have to wait to shine.</p>
-    <span class="wgo swipe">Watch the film →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/chinatown.jpg" alt="Vancouver Chinatown BIA app" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>Vancouver Chinatown BIA</h3>
-    <p>A functional and cosmetic redesign connecting people to Chinatown's businesses.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/vessel_intel.jpg" alt="NCIS — Nautical Claims Investigative Service platform" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>NCIS</h3>
-    <p>A high-speed investigative intelligence platform for maritime security operations.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/phinity.jpg" alt="Phinity smart pool care" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>Phinity</h3>
-    <p>Smart water care — hardware, app, and brand in one launch.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/xyon.jpg" alt="XYON Health" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>XYON</h3>
-    <p>A digital front door for personalized hair-health treatment.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/luxxee.jpg" alt="Luxxee" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>Luxxee</h3>
-    <p>An editorial platform for the world of luxury watches.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
-    <div class="wframe">
-      <img src="images/delta_controls.jpg" alt="Delta Controls" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <h3>Delta Controls</h3>
-    <p>Best UX for Product, Vancouver UX Awards.</p>
-    <span class="wgo swipe">Read the case →</span>
-  </a>
-
-  <a class="wcard" data-cat="digital" href="#">
+  <!-- No-thumbnail state (3/94) — slot frame, never a broken image -->
+  <a class="wcard" data-cat="build" href="#" id="noThumbCard">
+    <span class="cmeta"><span class="cn">08</span><span class="wtag">Build</span><span class="idate">March 3, 2019</span></span>
     <div class="wframe slot-frame light">
-      <span class="slot-tag dark">UI — lululemon</span>
+      <span class="slot-tag dark">No thumbnail</span>
     </div>
-    <h3>lululemon</h3>
-    <p>Digital experience work for one of Vancouver's signature brands.</p>
-    <span class="wgo swipe">Read the case →</span>
+    <h3>Test Blog</h3>
+    <p class="excerpt">The shortest post in the archive — six blocks, nine-character title, no masthead. The renderer's floor.</p>
+    <span class="wgo swipe">Read the post →</span>
   </a>
 
+  <a class="wcard ff" data-cat="ff" href="#">
+    <span class="cmeta"><span class="cn">09</span><span class="wtag">Founder's Focus</span><span class="idate">September 9, 2024</span></span>
+    <h3>The specialist trap is a <em>generalist's</em> argument</h3>
+    <p class="excerpt">Fifteen years of being told to niche down. A counter-case from an agency that survived by refusing.</p>
+    <span class="wgo swipe">Read the post →</span>
+  </a>
+
+  </div>
 </section>
+
+<!-- Static rough-in: production paginates from Notion -->
+<div class="more-row wrap">
+  <a class="btn cascade" href="#">Load more →</a>
+</div>
 
 <!-- Global page closer — same scale as homepage, page-specific copy -->
 <section class="page-closer" id="contact">
   <div class="wrap">
-    <h2 class="rise">The work speaks. <em class="voice mag">Let's add yours.</em></h2>
+    <h2 class="rise">Enough reading. <em class="voice mag">Start something.</em></h2>
     <p>Cinema in days. Software in weeks. You'll work directly with the people who make it — no account layer, no brief telephone.</p>
     <div class="pc-row">
       <a class="btn solid cascade" href="#">Start a project →</a>
@@ -932,8 +919,8 @@
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
-  // Case cells rise on scroll entry, staggered by column
-  document.querySelectorAll('.work-grid .wcard').forEach((c,i)=>{
+  // Collection cells rise on scroll entry, staggered by column
+  document.querySelectorAll('.sheet .wcard').forEach((c,i)=>{
     c.classList.add('reveal');
     c.style.setProperty('--d', String(i%3));
     ro.observe(c);
@@ -1032,5 +1019,41 @@ document.querySelectorAll('.swipe').forEach(function(el){
 </script>
 
 
+
+<!-- FIXTURE BAR — listing stress states. Delete at build. -->
+<style>
+  .fixtures{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--ink);color:var(--paper);
+    display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:10px var(--gutter);
+    font-family:var(--text);font-size:11.5px;border-top:1px solid var(--line-light)}
+  .fixtures b{letter-spacing:.1em;text-transform:uppercase;font-size:10px;color:var(--magenta);margin-right:8px}
+  .fixtures button{background:none;border:1px solid rgba(250,250,247,.3);color:inherit;cursor:pointer;font:inherit;padding:5px 10px}
+  .fixtures button:hover{border-color:var(--magenta)}
+  .fixtures button[aria-pressed="true"]{background:var(--magenta);border-color:var(--magenta);color:var(--paper)}
+  body{padding-bottom:52px}
+</style>
+<div class="fixtures" role="group" aria-label="Data fixtures">
+  <b>Fixtures</b>
+  <button data-fx="excerpt706" aria-pressed="false">706-char excerpt</button>
+  <button data-fx="noFeatured" aria-pressed="false">No featured post</button>
+</div>
+<script>
+(function(){
+  var LONG = "Estimates fail for structural reasons, not effort reasons. " +
+    "After fifteen years of fixed bids, hybrid retainers, time-and-materials engagements, and every contract structure between, the pattern is unmistakable: the estimate is never wrong because the team was slow, it is wrong because the thing being estimated changed while it was being built, usually for good reasons, discovered honestly, mid-flight, by people acting in good faith on all sides of the table. This post walks through the three places scope actually breaks, the contract structure we adopted in response, the two-week re-estimate point that made forecasts honest, and why pricing change as a feature of the engagement rather than an exception to it has done more for client trust than any improvement in raw estimating accuracy ever did.";
+  var BASE = "Estimates fail for structural reasons, not effort reasons. Here is what we changed.";
+  var state = {excerpt706:false, noFeatured:false};
+  function render(){
+    document.getElementById('stressExcerpt').textContent = state.excerpt706 ? LONG : BASE;
+    document.getElementById('featured').style.display = state.noFeatured ? 'none' : '';
+  }
+  document.querySelectorAll('.fixtures button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var k = btn.dataset.fx; state[k] = !state[k];
+      btn.setAttribute('aria-pressed', String(state[k]));
+      render();
+    });
+  });
+})();
+</script>
 </body>
 </html>

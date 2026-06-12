@@ -108,12 +108,19 @@
   .stat + .stat{padding-left:28px}
   .stat b{font-family:var(--display);font-weight:700;font-size:clamp(26px,2.6vw,40px);letter-spacing:-.015em;display:block;line-height:1.1}
   .stat > span{font-size:13.5px;color:var(--grey);display:block;margin-top:6px;line-height:1.4}
-  .logos{display:flex;flex-wrap:wrap;align-items:baseline;gap:18px 40px;margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
-  .logos span{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.06em;color:var(--grey);opacity:.75;transition:color .2s ease-out,opacity .2s ease-out;cursor:default}
-  .logos span.lc{text-transform:lowercase;letter-spacing:.01em}
-  .logos span.mc{letter-spacing:.01em}
-  .logos span:not(.lc):not(.mc){text-transform:uppercase;font-size:13.5px;letter-spacing:.1em}
-  .logos span:hover{color:var(--ink);opacity:1}
+  /* Client wall — hairline-ruled sheet, same construction as the insights grid */
+  .logos{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);margin-top:34px}
+  .logos .cell{background:var(--paper);display:flex;align-items:center;justify-content:center;
+    padding:clamp(24px,3vw,38px) 16px;color:var(--grey);
+    transition:color .2s ease-out}
+  .logos .cell:hover{color:var(--ink)}
+  .logos .cell .logo-mask{opacity:.78;transition:opacity .2s ease-out;max-width:72%}
+  .logos .cell:hover .logo-mask{opacity:1}
+  @media(max-width:640px){
+    .logos{grid-template-columns:repeat(2,1fr)}
+    .logos .cell:last-child{grid-column:span 2}
+  }
   @media(max-width:860px){.proof-row{grid-template-columns:1fr 1fr}.stat{border-right:0;border-bottom:1px solid var(--line);padding:14px 0}.stat + .stat{padding-left:0}}
 
   /* ---------- Block 4 — The seam ---------- */
@@ -485,15 +492,15 @@
       <div class="stat"><b><span class="odo"><span class="col" style="--d:2"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx">× Silver ADDY</span></b><span>Power Shifter Studios, 2026</span></div>
     </div>
     <div class="logos" aria-label="Selected clients">
-      <span class="logo-mask" style="--mask-image: url('images/logos/telus.png'); width: 141px; height: 28px;" aria-label="Telus"></span>
-      <span class="logo-mask" style="--mask-image: url('images/logos/energizer.png'); width: 110px; height: 28px;" aria-label="Energizer"></span>
-      <span class="logo-mask" style="--mask-image: url('images/logos/lululemon.png'); width: 28px; height: 28px;" aria-label="Lululemon"></span>
-      <span class="logo-mask" style="--mask-image: url('images/logos/deloitte.png'); width: 150px; height: 28px;" aria-label="Deloitte"></span>
-      <span class="logo-mask" style="--mask-image: url('images/logos/kpmg.png'); width: 68px; height: 28px;" aria-label="KPMG"></span>
-      <span class="logo-mask" style="--mask-image: url('images/logos/grammarly.png'); width: 131px; height: 28px;" aria-label="Grammarly"></span>
-      <span class="logo-mask" style="--mask-image: url('images/logos/akamai.png'); width: 68px; height: 28px;" aria-label="Akamai"></span>
-      <span class="logo-mask" style="--mask-image: url('images/logos/iron-mountain.png'); width: 98px; height: 28px;" aria-label="Iron Mountain"></span>
-      <span class="logo-mask" style="--mask-image: url('images/logos/canucks.png'); width: 29px; height: 28px;" aria-label="Canucks"></span>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/telus.png'); width: 141px; height: 28px;" aria-label="Telus"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/energizer.png'); width: 110px; height: 28px;" aria-label="Energizer"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/lululemon.png'); width: 28px; height: 28px;" aria-label="Lululemon"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/deloitte.png'); width: 150px; height: 28px;" aria-label="Deloitte"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/kpmg.png'); width: 68px; height: 28px;" aria-label="KPMG"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/grammarly.png'); width: 131px; height: 28px;" aria-label="Grammarly"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/akamai.png'); width: 68px; height: 28px;" aria-label="Akamai"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/iron-mountain.png'); width: 98px; height: 28px;" aria-label="Iron Mountain"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/canucks.png'); width: 29px; height: 28px;" aria-label="Canucks"></span></div>
     </div>
   </div>
 </section>

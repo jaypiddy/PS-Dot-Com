@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>V2 Two Voices — POWER SHIFTER — Digital Products &amp; Generative Films | Vancouver</title>
-<meta name="description" content="Made to use. Made to remember. A product studio and a film studio with one design culture — the work and the place it lives, made in the same room. Software in weeks, cinema in days.">
+<title>Work — POWER SHIFTER | Digital Products & Generative Films | Vancouver</title>
+<meta name="description" content="Selected work across Digital and Studios. Software platforms, generative films, and hybrid engagements — made in the same room.">
 <link rel="stylesheet" href="https://use.typekit.net/pkh7feu.css">
 <style>
   :root{
@@ -221,7 +221,6 @@
     html{scroll-behavior:auto}
   }
 </style>
-
 <style id="two-voices">
   /* ============ VARIANT 2 — TWO VOICES ============
      Register contrast, not volume contrast.
@@ -280,6 +279,140 @@
     background:linear-gradient(rgba(18,19,21,.60), rgba(18,19,21,.50) 40%, rgba(18,19,21,.75) 100%)}
   .hero-reel.live{opacity:1}
   header{z-index:50}
+</style>
+
+<style id="work-page">
+  /* Sub-page hero — same system, ~50vh, clearly a section header not a full takeover */
+  .sub-hero{
+    background:var(--ink);color:var(--paper);
+    min-height:50vh;display:flex;align-items:flex-end;
+    padding-bottom:clamp(48px,6vh,80px);padding-top:120px;
+    border-bottom:1px solid var(--line-on-ink);
+    position:relative;overflow:hidden;
+  }
+  /* Same contour watermark as homepage — keeps the DNA */
+  .sub-hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 93.93 148.41' fill='none' stroke='rgba(250,250,247,.06)' stroke-width='.6'%3E%3Cpath d='M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z'/%3E%3Cpath d='M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z'/%3E%3C/svg%3E")
+    no-repeat right -4% top -15% / auto 140%;
+  }
+  .sub-hero-inner{position:relative;z-index:2;width:100%}
+  .sub-hero .eyebrow{color:var(--magenta);display:block;margin-bottom:18px}
+  .sub-hero h1{
+    font-family:var(--display);font-weight:900;
+    font-size:clamp(52px,7vw,108px);line-height:.96;letter-spacing:-.02em;
+  }
+  .sub-hero .sub-voice{
+    margin-top:16px;
+    opacity:0;transform:translateY(12px);
+    animation:settle .6s ease-out .55s forwards;
+  }
+  .sub-hero .sub-voice em{
+    font-family:var(--serif);font-style:italic;font-weight:500;
+    font-size:clamp(26px,3.2vw,52px);letter-spacing:-.02em;
+    color:var(--magenta);line-height:1.1;display:block;
+    padding:0 .1em .16em 0;
+  }
+
+  /* Filter bar */
+  .work-filter{
+    position:sticky;top:0;z-index:40;
+    background:var(--paper);border-bottom:1px solid var(--line);
+  }
+  .filter-row{display:flex;gap:6px;padding:14px 0;flex-wrap:wrap;align-items:center}
+  .ftab{
+    font-family:var(--text);font-weight:700;font-size:15px;letter-spacing:.02em;
+    padding:14px 24px;border:1px solid var(--line);background:transparent;
+    color:var(--ink);cursor:pointer;display:flex;gap:10px;align-items:baseline;
+    transition:background-color .3s ease,color .3s ease,border-color .3s ease;
+  }
+  .ftab .fc{color:var(--grey);font-weight:400;font-size:13px;transition:color .3s ease,opacity .3s ease}
+  .ftab:hover{border-color:var(--ink)}
+  .ftab.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .ftab.on .fc{color:var(--magenta)}
+  /* whole-button hover triggers the label cascade */
+  .ftab:hover .cascade .lt span{transform:translateY(-100%)}
+  .pending{font-family:var(--serif);font-style:italic;font-weight:500;
+    font-size:1.16em !important;letter-spacing:-.01em;color:var(--magenta) !important}
+  .ftab.on .pending{color:var(--magenta) !important}
+
+  /* Work grid */
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:clamp(24px,3vw,44px);
+    padding-top:clamp(48px,6vh,72px);
+    padding-bottom:clamp(64px,8vh,100px);
+  }
+  .wcard{display:flex;flex-direction:column;position:relative}
+  .wcard.feature{grid-column:1 / -1}
+  .wframe{
+    aspect-ratio:16/9;background:var(--ink-soft);position:relative;
+    overflow:hidden;margin-bottom:18px;
+  }
+  .wcard.feature .wframe{aspect-ratio:21/9}
+  .wframe img{transition:transform .6s cubic-bezier(.22,1,.36,1)}
+  .wcard:hover .wframe img{transform:scale(1.03)}
+  .slot-frame{background:var(--ink-soft)}
+  .slot-frame.light{background:#e9e9e4}
+  .wtint{
+    position:absolute;inset:0;
+    background:linear-gradient(transparent 30%, rgba(18,19,21,.72) 100%);
+    z-index:1;pointer-events:none;
+  }
+  .wcard-overlay{
+    position:absolute;bottom:0;left:0;right:0;padding:clamp(22px,3vw,38px);
+    z-index:2;color:var(--paper);
+  }
+  .wcard-overlay h2{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(22px,2.4vw,36px);letter-spacing:-.01em;margin:10px 0 8px;
+  }
+  .wcard-overlay h2 i{font-family:var(--serif);font-style:italic;font-weight:500}
+  .wcard-overlay p{font-size:15px;color:rgba(250,250,247,.78);max-width:54ch;margin-bottom:12px}
+  .wtag{
+    font-family:var(--text);font-weight:700;font-size:11px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);
+    display:block;margin-bottom:10px;
+  }
+  .wcard h3{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(18px,1.8vw,26px);letter-spacing:-.008em;margin-bottom:8px;
+  }
+  .wcard h3 i{font-family:var(--serif);font-style:italic;font-weight:500}
+  .wcard > p{font-size:14.5px;color:var(--grey);max-width:44ch;margin-bottom:10px}
+  .wgo{font-weight:700;font-size:13.5px;letter-spacing:.04em;margin-top:auto}
+  
+  .wcard-overlay .wgo{color:rgba(250,250,247,.9);font-size:14px}
+  
+  .slot-tag.dark{color:rgba(18,19,21,.35);border-color:rgba(18,19,21,.25)}
+
+  /* Hybrid pending state */
+  .hybrid-slot .wframe{outline:1px dashed var(--line);outline-offset:-8px}
+  .pending-tag{color:var(--grey) !important}
+  .pending-go{color:var(--grey);pointer-events:none}
+
+  /* ---- Global page closer — token-driven, reuse across all key pages ----
+     Matches homepage closer in scale. Swap h2 text + p + btn label per page.
+     mag class = magenta, voice class = serif italic. Both or either. */
+  .page-closer{background:var(--ink);color:var(--paper);padding:clamp(100px,14vh,180px) 0}
+  .page-closer h2{
+    font-family:var(--display);font-weight:900;
+    font-size:clamp(40px,6vw,96px);line-height:1;letter-spacing:-.02em;max-width:18ch
+  }
+  .page-closer p{margin-top:26px;font-size:18px;max-width:52ch;color:rgba(250,250,247,.78)}
+  .pc-row{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-top:38px}
+  .page-closer .btn{
+    font-weight:700;font-size:14px;letter-spacing:.03em;padding:16px 30px;
+    border:1px solid var(--paper);background:var(--paper);color:var(--ink);
+    display:inline-block;transition:all .2s ease-out
+  }
+  .page-closer .btn:hover{background:var(--magenta);border-color:var(--magenta);color:var(--paper)}
+  .page-closer .tel{font-family:var(--text);font-weight:700;font-size:15px;color:rgba(250,250,247,.78)}
+  .page-closer .tel:hover{color:var(--magenta)}
+
+  @media(max-width:980px){.work-grid{grid-template-columns:1fr 1fr}.wcard.feature{grid-column:1/-1}}
+  @media(max-width:640px){.work-grid{grid-template-columns:1fr}}
 
   /* ---------- Button system ---------- */
   /* Primary — letter cascade */
@@ -365,6 +498,7 @@
     .takeover,.tk-l,.tk-t,.tk-ar,.menu-btn .plus,.tk-close .x{transition:none}
   }
 </style>
+
 </head>
 <body>
 
@@ -426,152 +560,279 @@
 </div>
 
 
-<!-- Block 1 — Thesis hero -->
-<section class="hero">
-  <video id="heroReel" class="hero-reel" muted autoplay loop playsinline
-         poster="" aria-hidden="true"></video>
-  <div class="reel-tint" aria-hidden="true"></div>
-  <svg class="contour contour-hero" viewBox="0 0 93.93 148.41" aria-hidden="true"><path d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg>
-  <div class="reel-slot" aria-hidden="true"><span class="slot-tag">Hero reel — Studios to supply · Digital + Studios interleaved · muted · poster-first</span></div>
-  <div class="hero-inner wrap">
-    <h1 class="rise"><span class="caps">Made to use.</span><br><em class="voice">Made to remember.</em></h1>
-    <div class="hero-sub">
-      <p>A product studio and a film studio with one design culture — the work and the place it lives, made in the same room.</p>
-      <div class="hero-ctas">
-        <a class="btn solid cascade" href="#digital">Digital →</a>
-        <a class="btn cascade" href="#studios">Studios →</a>
-      </div>
-    </div>
+
+<!-- Sub-page hero: same DNA as homepage, ~50vh, clearly a sub-section -->
+<section class="sub-hero">
+  <div class="sub-hero-inner wrap">
+    <span class="eyebrow">Our work</span>
+    <h1 class="rise">The receipts.</h1>
+    <p class="sub-voice"><em class="voice mag">Twenty-two projects. Two practices. One room.</em></p>
   </div>
 </section>
 
-<!-- Block 2 — Two doors -->
-<section class="doors" aria-label="Our two practices">
-  <a class="door digital" id="digital" href="#">
-    <span class="eyebrow">01 — Product</span>
-    <h2>Digital</h2>
-    <p class="lead">Working software in weeks, <em class="voice">not&nbsp;months.</em></p>
-    <p class="body">Product strategy, design, and engineering — designers at heart, all the way down to the dev team. MVPs in 4–6 weeks. Platforms that hold at enterprise scale.</p>
-    <span class="enter swipe">Enter Digital</span>
-  </a>
-  <div class="seam" aria-hidden="true"></div>
-  <a class="door studios" id="studios" href="#">
-    <span class="eyebrow">02 — Film</span>
-    <h2>Studios</h2>
-    <p class="lead">Anyone can generate. <em class="voice">Few&nbsp;can&nbsp;direct.</em></p>
-    <p class="body">Cinematic film, audio, and motion from people who made it the old way first. Two Silver ADDYs say the craft survived the pipeline.</p>
-    <span class="enter swipe">Enter Studios</span>
-  </a>
-</section>
-
-<!-- Stitch — two voices marquee -->
-<div class="stitch" aria-hidden="true">
-  <div class="stitch-track"><span class="g">Made to use</span><span class="dot">·</span><span class="v">Made to remember</span><span class="dot">·</span><span class="g">Software in weeks</span><span class="dot">·</span><span class="v">Cinema in days</span><span class="dot">·</span><span class="g">Made to use</span><span class="dot">·</span><span class="v">Made to remember</span><span class="dot">·</span><span class="g">Software in weeks</span><span class="dot">·</span><span class="v">Cinema in days</span><span class="dot">·</span><span class="g">Made to use</span><span class="dot">·</span><span class="v">Made to remember</span><span class="dot">·</span><span class="g">Software in weeks</span><span class="dot">·</span><span class="v">Cinema in days</span><span class="dot">·</span><span class="g">Made to use</span><span class="dot">·</span><span class="v">Made to remember</span><span class="dot">·</span><span class="g">Software in weeks</span><span class="dot">·</span><span class="v">Cinema in days</span><span class="dot">·</span></div>
+<!-- Filter bar -->
+<div class="work-filter" id="workFilter">
+  <div class="wrap filter-row">
+    <button class="ftab on" data-cat="all"><span class="fl cascade">All</span> <span class="fc">22</span></button>
+    <button class="ftab" data-cat="digital"><span class="fl cascade">Digital</span> <span class="fc">16</span></button>
+    <button class="ftab" data-cat="studios"><span class="fl cascade">Studios</span> <span class="fc">6</span></button>
+    <button class="ftab" data-cat="hybrid"><span class="fl cascade">Hybrid</span> <span class="fc pending">In production</span></button>
+  </div>
 </div>
 
-<!-- Block 3 — Proof spine -->
-<section class="proof">
-  <div class="wrap proof-inner reveal">
-    <span class="eyebrow">The receipts</span>
-    <div class="proof-row" id="proofRow">
-      <div class="stat"><b><span class="odo"><span class="col" style="--d:3"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="ch">,</span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx">+</span></b><span>enrollments in six months — TELUS Rewards</span></div>
-      <div class="stat"><b><span class="odo"><span class="col" style="--d:3"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx"> days</span></b><span>from idea to validated proof of concept — Energizer</span></div>
-      <div class="stat"><b><span class="odo"><span class="ch">+</span><span class="col" style="--d:4"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx">%</span></b><span>organic leads — Angel Oak</span></div>
-      <div class="stat"><b><span class="odo"><span class="col" style="--d:2"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx">× Silver ADDY</span></b><span>Power Shifter Studios, 2026</span></div>
+<!-- Work grid -->
+<section class="work-grid wrap">
+
+  <!-- Featured: Iron Mountain — Studios -->
+  <a class="wcard feature" data-cat="studios" href="#">
+    <div class="wframe">
+      <img src="images/iron_mountain.jpg" alt="Iron Mountain — The Summit" style="width:100%;height:100%;object-fit:cover">
+      <div class="wtint"></div>
+      <div class="wcard-overlay">
+        <span class="wtag">Studios</span>
+        <h2>Iron Mountain — <i>The Summit</i></h2>
+        <p>A generative film with a blockbuster look. Silver ADDY, 2026.</p>
+        <span class="wgo swipe">Watch the film →</span>
+      </div>
     </div>
-    <div class="logos" aria-label="Selected clients">
-      <span class="logo-mask" style="--mask-image: url('images/logos/telus.png'); width: 141px; height: 28px;" aria-label="Telus"></span>
-      <span class="logo-mask" style="--mask-image: url('images/logos/energizer.png'); width: 110px; height: 28px;" aria-label="Energizer"></span>
-      <span class="logo-mask" style="--mask-image: url('images/logos/lululemon.png'); width: 28px; height: 28px;" aria-label="Lululemon"></span>
-      <span class="logo-mask" style="--mask-image: url('images/logos/deloitte.png'); width: 150px; height: 28px;" aria-label="Deloitte"></span>
-      <span class="logo-mask" style="--mask-image: url('images/logos/kpmg.png'); width: 68px; height: 28px;" aria-label="KPMG"></span>
-      <span class="logo-mask" style="--mask-image: url('images/logos/grammarly.png'); width: 131px; height: 28px;" aria-label="Grammarly"></span>
-      <span class="logo-mask" style="--mask-image: url('images/logos/akamai.png'); width: 68px; height: 28px;" aria-label="Akamai"></span>
-      <span class="logo-mask" style="--mask-image: url('images/logos/iron-mountain.png'); width: 98px; height: 28px;" aria-label="Iron Mountain"></span>
-      <span class="logo-mask" style="--mask-image: url('images/logos/canucks.png'); width: 29px; height: 28px;" aria-label="Canucks"></span>
+  </a>
+
+  <a class="wcard" data-cat="digital" href="#">
+    <div class="wframe">
+      <img src="images/telus.jpg" alt="TELUS Rewards" style="width:100%;height:100%;object-fit:cover">
     </div>
+    <span class="wtag">Digital</span>
+    <h3>TELUS Rewards</h3>
+    <p>A loyalty platform 300,000 people enrolled in within six months.</p>
+    <span class="wgo swipe">Read the case →</span>
+  </a>
+
+  <a class="wcard" data-cat="studios" href="#">
+    <div class="wframe">
+      <img src="images/celestial.jpg" alt="Celestial AI" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <span class="wtag">Studios</span>
+    <h3>Celestial AI</h3>
+    <p>A luminous story of light itself — photonic fabric unlocking a new era of intelligence.</p>
+    <span class="wgo swipe">Watch the film →</span>
+  </a>
+
+  <a class="wcard" data-cat="digital" href="#">
+    <div class="wframe">
+      <img src="images/hall.jpg" alt="Hall Constructors field ticketing app" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <span class="wtag">Digital</span>
+    <h3>Hall Constructors</h3>
+    <p>Paper tickets to a field-ready platform — trucking operations digitized end to end.</p>
+    <span class="wgo swipe">Read the case →</span>
+  </a>
+
+  <a class="wcard" data-cat="digital" href="#">
+    <div class="wframe">
+      <img src="images/energizer.jpg" alt="Energizer POC" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <span class="wtag">Digital · Rapid MVP</span>
+    <h3>Energizer</h3>
+    <p>Product-market fit validated in 30 days with a rapid proof of concept.</p>
+    <span class="wgo swipe">Read the case →</span>
+  </a>
+
+  <a class="wcard" data-cat="studios" href="#">
+    <div class="wframe">
+      <img src="images/ernest.jpg" alt="Ernest Packaging — Four Dreams" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <span class="wtag">Studios</span>
+    <h3>Ernest Packaging — <i>Four Dreams</i></h3>
+    <p>Four surreal dreams brought to life. Silver ADDY, 2026.</p>
+    <span class="wgo swipe">Watch the shorts →</span>
+  </a>
+
+  <a class="wcard" data-cat="digital" href="#">
+    <div class="wframe">
+      <img src="images/sxs.jpg" alt="SxS Technologies" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <span class="wtag">Digital</span>
+    <h3>SxS Technologies</h3>
+    <p>Brand and platform for 4D + AI structural analytics. Beyond the digital twin.</p>
+    <span class="wgo swipe">Read the case →</span>
+  </a>
+
+  <a class="wcard" data-cat="digital" href="#">
+    <div class="wframe">
+      <img src="images/nva.jpg" alt="NVA careers platform" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <span class="wtag">Digital</span>
+    <h3>NVA</h3>
+    <p>A careers platform for North America's largest veterinary community.</p>
+    <span class="wgo swipe">Read the case →</span>
+  </a>
+
+  <!-- Hybrid placeholder — in production -->
+  <div class="wcard hybrid-slot" data-cat="hybrid">
+    <div class="wframe slot-frame">
+      <span class="slot-tag">Hybrid case study — in production</span>
+    </div>
+    <span class="wtag pending-tag">Hybrid · In production</span>
+    <h3>Content + vessel, same room</h3>
+    <p>The first fully documented hybrid Digital + Studios engagement.</p>
+    <span class="wgo pending-go">Coming soon</span>
   </div>
+
+  <a class="wcard" data-cat="studios" href="#">
+    <div class="wframe">
+      <img src="images/algorithm_trap.jpg" alt="The Algorithm Trap" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <span class="wtag">Studios</span>
+    <h3>The Algorithm Trap</h3>
+    <p>Fast, raw, restless — vignettes that mirror the endless scroll.</p>
+    <span class="wgo swipe">Watch the film →</span>
+  </a>
+
+  <a class="wcard" data-cat="digital" href="#">
+    <div class="wframe">
+      <img src="images/koodo.jpg" alt="Koodo accessories tool" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <span class="wtag">Digital</span>
+    <h3>Koodo</h3>
+    <p>A one-stop accessories catalogue for every retail team member.</p>
+    <span class="wgo swipe">Read the case →</span>
+  </a>
+
+  <a class="wcard" data-cat="digital" href="#">
+    <div class="wframe">
+      <img src="images/discover_parks.jpg" alt="Discover Parks app" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <span class="wtag">Digital</span>
+    <h3>BC Parks Foundation</h3>
+    <p>Discover Parks — helping British Columbians find their way outside.</p>
+    <span class="wgo swipe">Read the case →</span>
+  </a>
+
+  <a class="wcard" data-cat="studios" href="#">
+    <div class="wframe">
+      <img src="images/maple_health.jpg" alt="Maple Health" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <span class="wtag">Studios</span>
+    <h3>Maple Health</h3>
+    <p>An AI-animated story of care — the quiet empathy that defines healthcare.</p>
+    <span class="wgo swipe">Watch the film →</span>
+  </a>
+
+  <a class="wcard" data-cat="digital" href="#">
+    <div class="wframe">
+      <img src="images/bcwhf.jpg" alt="Unmasking Gender Inequity report" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <span class="wtag">Digital</span>
+    <h3>BC Women's Health Foundation</h3>
+    <p>Unmasking Gender Inequity — research the public could actually read.</p>
+    <span class="wgo swipe">Read the case →</span>
+  </a>
+
+  <a class="wcard" data-cat="digital" href="#">
+    <div class="wframe">
+      <img src="images/angel_oak.jpg" alt="Angel Oak" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <span class="wtag">Digital</span>
+    <h3>Angel Oak</h3>
+    <p>+40% organic leads through a redesigned digital platform.</p>
+    <span class="wgo swipe">Read the case →</span>
+  </a>
+
+  <a class="wcard" data-cat="studios" href="#">
+    <div class="wframe">
+      <img src="images/rapid_mvp.jpg" alt="Rapid MVP — Luma" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <span class="wtag">Studios</span>
+    <h3>Rapid MVP</h3>
+    <p>Meet Luma — a brilliant idea that didn't have to wait to shine.</p>
+    <span class="wgo swipe">Watch the film →</span>
+  </a>
+
+  <a class="wcard" data-cat="digital" href="#">
+    <div class="wframe">
+      <img src="images/chinatown.jpg" alt="Vancouver Chinatown BIA app" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <span class="wtag">Digital</span>
+    <h3>Vancouver Chinatown BIA</h3>
+    <p>A functional and cosmetic redesign connecting people to Chinatown's businesses.</p>
+    <span class="wgo swipe">Read the case →</span>
+  </a>
+
+  <a class="wcard" data-cat="digital" href="#">
+    <div class="wframe">
+      <img src="images/vessel_intel.jpg" alt="NCIS — Nautical Claims Investigative Service platform" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <span class="wtag">Digital</span>
+    <h3>NCIS</h3>
+    <p>A high-speed investigative intelligence platform for maritime security operations.</p>
+    <span class="wgo swipe">Read the case →</span>
+  </a>
+
+  <a class="wcard" data-cat="digital" href="#">
+    <div class="wframe">
+      <img src="images/phinity.jpg" alt="Phinity smart pool care" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <span class="wtag">Digital</span>
+    <h3>Phinity</h3>
+    <p>Smart water care — hardware, app, and brand in one launch.</p>
+    <span class="wgo swipe">Read the case →</span>
+  </a>
+
+  <a class="wcard" data-cat="digital" href="#">
+    <div class="wframe">
+      <img src="images/xyon.jpg" alt="XYON Health" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <span class="wtag">Digital</span>
+    <h3>XYON</h3>
+    <p>A digital front door for personalized hair-health treatment.</p>
+    <span class="wgo swipe">Read the case →</span>
+  </a>
+
+  <a class="wcard" data-cat="digital" href="#">
+    <div class="wframe">
+      <img src="images/luxxee.jpg" alt="Luxxee" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <span class="wtag">Digital</span>
+    <h3>Luxxee</h3>
+    <p>An editorial platform for the world of luxury watches.</p>
+    <span class="wgo swipe">Read the case →</span>
+  </a>
+
+  <a class="wcard" data-cat="digital" href="#">
+    <div class="wframe slot-frame light">
+      <span class="slot-tag dark">UI — Delta Controls</span>
+    </div>
+    <span class="wtag">Digital</span>
+    <h3>Delta Controls</h3>
+    <p>Best UX for Product, Vancouver UX Awards.</p>
+    <span class="wgo swipe">Read the case →</span>
+  </a>
+
+  <a class="wcard" data-cat="digital" href="#">
+    <div class="wframe slot-frame light">
+      <span class="slot-tag dark">UI — lululemon</span>
+    </div>
+    <span class="wtag">Digital</span>
+    <h3>lululemon</h3>
+    <p>Digital experience work for one of Vancouver's signature brands.</p>
+    <span class="wgo swipe">Read the case →</span>
+  </a>
+
 </section>
 
-<!-- Block 4 — The seam -->
-<section class="engine">
-  <svg class="contour contour-engine" viewBox="0 0 93.93 148.41" aria-hidden="true"><path d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg>
-  <div class="wrap engine-grid reveal">
-    <div><h2 class="rise">One room.<br><em class="voice">No fence.</em></h2><span class="rule"></span></div>
-    <div>
-      <p>Digital products and a film studio. Not as strange as it sounds.<br>
-      Most brands hire one agency to build the product and another shop to tell its story, then pay both to argue across the fence.</p>
-      <p><strong>We never built the fence.</strong></p>
-      <p>From the beginning, we have refused to stay in our lane. Designers, strategists, engineers and filmmakers work in the same room, solving the same problem from different angles.</p>
-      <p>That has always been the advantage.</p>
-      <p>AI scales it. Design runs it. And no, we were never a dev shop.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Block 5 — Selected work -->
-<section class="work" id="work">
+<!-- Global page closer — same scale as homepage, page-specific copy -->
+<section class="page-closer">
   <div class="wrap">
-    <div class="head reveal">
-      <h2 class="rise">Selected work</h2>
-      <a class="all swipe" href="#">All work →</a>
-    </div>
-    <div class="cards reveal">
-      <a class="card" href="#">
-        <div class="frame"><img src="images/iron_mountain.jpg" alt="Iron Mountain The Summit" style="width: 100%; height: 100%; object-fit: cover;"></div>
-        <div class="meta">
-          <span class="tag">Studios</span>
-          <h3>Iron Mountain — <i>The Summit</i></h3>
-          <p>A cinematic spot with a blockbuster look, made on a generative pipeline. Silver ADDY, 2026.</p>
-          <span class="go swipe">Watch the film →</span>
-        </div>
-      </a>
-      <a class="card" href="#">
-        <div class="frame"><img src="images/telus.jpg" alt="TELUS Rewards" style="width: 100%; height: 100%; object-fit: cover;"></div>
-        <div class="meta">
-          <span class="tag">Digital</span>
-          <h3>TELUS Rewards</h3>
-          <p>A loyalty platform 300,000 people enrolled in within six months.</p>
-          <span class="go swipe">Read the case →</span>
-        </div>
-      </a>
-      <a class="card" href="#">
-        <div class="frame"><img src="images/energizer.jpg" alt="Energizer POC" style="width: 100%; height: 100%; object-fit: cover;"></div>
-        <div class="meta">
-          <span class="tag">Digital · Rapid MVP</span>
-          <h3>Energizer</h3>
-          <p>Product-market fit validated in 30 days with a rapid proof of concept.</p>
-          <span class="go swipe">Read the case →</span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- Block 6 — Insights -->
-<section class="insights" id="insights">
-  <div class="wrap reveal">
-    <h2 class="rise">Thinking in <em class="voice" style="background: var(--magenta); color: var(--paper); display: inline-block; padding: 0.1em 0.2em 0.15em; border-radius: 2px; transform: translateY(0.15em);">public</em></h2>
-    <p class="streams"><b>Build</b> — how to make products people love. <b>Frames</b> — how to make films that are remembered. <b>Founder's Focus</b> — where it's all going, whether you agree or not.</p>
-    <div class="posts">
-      <a class="post" href="#"><span class="stream">Frames</span><h3>Power Shifter Studios takes home two Silver ADDYs</h3><span>May 2026</span></a>
-      <a class="post" href="#"><span class="stream">Build</span><h3>Can vibe design and coding AI apps build a real product?</h3><span>June 2025</span></a>
-      <a class="post" href="#"><span class="stream">Founder's Focus</span><h3>Designing for rage: how platforms profit from chaos</h3><span>January 2025</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- Block 7 — Closer -->
-<section class="closer" id="contact">
-  <div class="wrap reveal">
-    <h2 class="rise">Great work used to take months. <em class="voice mag">Now it takes nerve.</em></h2>
-    <p>Cinema in days. Software in weeks. Bring the idea — you'll work directly with the people who make it. There's no account layer to get past.</p>
-    <div class="row">
+    <h2 class="rise">The work speaks. <em class="voice mag">Let's add yours.</em></h2>
+    <p>Cinema in days. Software in weeks. You'll work directly with the people who make it — no account layer, no brief telephone.</p>
+    <div class="pc-row">
       <a class="btn solid cascade" href="#">Start a project →</a>
-      <a class="tel" href="tel:+1-604-227-9952">+1 (604) 227-9952</a>
+      <a class="tel" href="tel:+16042279952">+1 (604) 227-9952</a>
     </div>
   </div>
 </section>
+
+
 
 <footer>
   <div class="wrap foot">
@@ -619,13 +880,17 @@
   // simpler: flip nav based on scroll position bands
   const darkBands = () => {
     const y = window.scrollY + 40;
-    const hero = document.querySelector('.hero');
-    const work = document.getElementById('work');
+    const hero   = document.querySelector('.hero, .sub-hero');
+    const workEl = document.getElementById('work');
     const closer = document.getElementById('contact');
+    const heroH  = hero   ? hero.offsetTop + hero.offsetHeight   : 0;
+    const workT  = workEl ? workEl.offsetTop                     : Infinity;
+    const workB  = workEl ? workEl.offsetTop + workEl.offsetHeight: Infinity;
+    const closerT= closer ? closer.offsetTop                     : Infinity;
     const inDark =
-      (y < hero.offsetTop + hero.offsetHeight) ||
-      (y > work.offsetTop && y < work.offsetTop + work.offsetHeight) ||
-      (y > closer.offsetTop);
+      (heroH  > 0 && y < heroH)  ||
+      (workEl && y > workT && y < workB) ||
+      (closer && y > closerT);
     nav.style.color = inDark ? 'var(--paper)' : 'var(--ink)';
     document.querySelector('header').classList.toggle('on-light', !inDark);
   };
@@ -708,30 +973,22 @@
   }
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.13/hls.min.js"></script>
+
+
 <script>
-  // Cloudflare Stream hero reel
-  const STREAM = {
-    video: 'dcde8adcb14fb52708c8ce6cf631658f',
-    customer: 'customer-xv1aafyshr3tbknu'
-  };
-  (function(){
-    if (STREAM.customer.includes('REPLACE')) return; // waits for the customer code
-    const v = document.getElementById('heroReel');
-    const base = `https://${STREAM.customer}.cloudflarestream.com/${STREAM.video}`;
-    v.poster = `${base}/thumbnails/thumbnail.jpg?time=1s&height=1080`;
-    const src = `${base}/manifest/video.m3u8`;
-    const live = () => { v.classList.add('live'); document.querySelector('.hero').classList.add('reel-live'); };
-    v.loop = true;
-    v.addEventListener('ended', () => { v.currentTime = 0; v.play(); });
-    if (v.canPlayType('application/vnd.apple.mpegurl')) {
-      v.src = src; v.addEventListener('loadeddata', live, {once:true});
-    } else if (window.Hls && Hls.isSupported()) {
-      const h = new Hls({capLevelToPlayerSize:true});
-      h.loadSource(src); h.attachMedia(v);
-      h.on(Hls.Events.FRAG_LOADED, live);
-    }
-  })();
+  // Filter
+  const ftabs = document.querySelectorAll('.ftab');
+  const wcards = document.querySelectorAll('[data-cat]');
+  ftabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      ftabs.forEach(t => t.classList.remove('on'));
+      tab.classList.add('on');
+      const cat = tab.dataset.cat;
+      wcards.forEach(c => {
+        c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  });
 
 // ---------- Button system ----------
 // Primary: letter cascade
@@ -785,5 +1042,7 @@ document.querySelectorAll('.swipe').forEach(function(el){
   ov.querySelectorAll('.tk-l').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });
 })();
 </script>
+
+
 </body>
 </html>

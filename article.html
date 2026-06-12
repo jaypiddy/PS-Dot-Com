@@ -316,8 +316,11 @@
 
   /* ---------- Article page ---------- */
   /* Sub-hero, article dialect: same component, smaller H1 so a 124-char title holds */
-  .sub-hero .back{display:inline-block;margin-bottom:24px;
+  .sub-hero .back{display:inline-block;margin-bottom:28px;
     font-family:var(--text);font-weight:700;font-size:13.5px;letter-spacing:.03em}
+  .byline .cats{color:var(--magenta)}
+  .byline .cats a:hover{border-bottom:1px solid currentColor;color:var(--magenta)}
+  .byline .vbar{padding:0 2px}
   .sub-hero.article h1{font-size:clamp(36px,4.4vw,72px);line-height:1.02;max-width:22ch;text-wrap:balance}
   .sub-hero.article .eyebrow a:hover{border-bottom:1px solid currentColor}
   .sub-hero.article .sub-voice em{font-size:clamp(20px,2.2vw,32px);line-height:1.25;display:block;max-width:38em}
@@ -717,14 +720,15 @@
 <!-- Sub-page hero: same DNA as homepage, ~50vh, clearly a sub-section -->
 <section class="sub-hero article">
   <div class="sub-hero-inner wrap">
-    <a class="back swipe" href="insights.html">← All insights</a><br>
-    <span class="eyebrow" id="cats"><a href="#">Digital Products</a> · <a href="#">Process</a> · <a href="#">AI</a></span>
+    <a class="back swipe" href="insights.html">← Back to all Insights</a>
     <h1 class="rise" id="title">Why scoping digital product and software development projects is challenging — and what to do about it</h1>
     <p class="sub-voice"><em class="voice mag" id="excerpt">Estimates fail for structural reasons, not effort reasons. Here is what we changed.</em></p>
     <div class="byline" id="byline">
       <a href="#" id="authorEl">By Steven Bone</a>
       <span class="sep" id="authorSep">·</span>
       <span class="date">June 12, 2026</span>
+      <span class="sep vbar" id="catSep">|</span>
+      <span class="eyebrow cats" id="cats"><a href="#">Digital Products</a> · <a href="#">Process</a> · <a href="#">AI</a></span>
     </div>
   </div>
 </section>
@@ -1116,6 +1120,7 @@ document.querySelectorAll('.swipe').forEach(function(el){
     document.getElementById('authorEl').style.display = state.noAuthor ? 'none' : '';
     document.getElementById('authorSep').style.display = state.noAuthor ? 'none' : '';
     document.getElementById('cats').style.display = state.noCats ? 'none' : '';
+    document.getElementById('catSep').style.display = state.noCats ? 'none' : '';
     document.getElementById('photoCredit').style.display = state.noCredit ? 'none' : '';
     document.getElementById('related').hidden = state.noRelated;
   }

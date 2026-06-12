@@ -496,15 +496,16 @@
   .takeover{position:fixed;inset:0;z-index:90;background:var(--magenta);color:var(--ink);
     display:flex;flex-direction:column;padding:0 var(--gutter);
     transform:translateY(-100%);visibility:hidden;
-    transition:transform .55s cubic-bezier(.76,0,.24,1),visibility 0s linear .55s}
+    transition:transform .55s cubic-bezier(.76,0,.24,1) .18s,visibility 0s linear .73s}
   .takeover.open{transform:translateY(0);visibility:visible;transition-delay:0s}
 
   .tk-top{display:flex;align-items:center;justify-content:space-between;
     padding:16px 0;max-width:var(--max);margin:0 auto;width:100%}
   .tk-top .logo svg{display:block}
-  /* Logo fades in after the panel lands, fades out ahead of the retract */
-  .tk-top .logo{opacity:0;transition:opacity .2s ease}
-  .takeover.open .tk-top .logo{opacity:1;transition:opacity .35s ease .25s}
+  /* Logo fades in once the panel has landed; on close it fades fully
+     before the panel begins its retract (panel close is delayed .18s) */
+  .tk-top .logo{opacity:0;transition:opacity .16s ease}
+  .takeover.open .tk-top .logo{opacity:1;transition:opacity .3s ease .55s}
   .tk-close{font-family:var(--text);font-weight:700;font-size:12px;letter-spacing:.1em;
     text-transform:uppercase;display:inline-flex;align-items:center;gap:9px;cursor:pointer;
     background:none;border:0;color:var(--ink);padding:6px 0}

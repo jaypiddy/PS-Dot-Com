@@ -642,6 +642,9 @@
     .rel-date{display:none}
   }
 
+  /* Rise-in: index rows use the site reveal motion, staggered by row */
+  .rel-row.reveal{transition-delay:calc(var(--d,0)*70ms)}
+
   @media(prefers-reduced-motion:reduce){
     .rel-row .rel-title,.rel-ar{transition:none}
   }
@@ -975,6 +978,15 @@
     es.forEach(e=>{ if(e.isIntersecting){ setTimeout(() => e.target.classList.add('in'), 250); ro.unobserve(e.target);} });
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+  // Related index rows rise on scroll entry, staggered top-to-bottom
+  const relHead = document.querySelector('.rel-head');
+  if (relHead) { relHead.classList.add('reveal'); ro.observe(relHead); }
+  document.querySelectorAll('.rel-row').forEach((r,i)=>{
+    r.classList.add('reveal');
+    r.style.setProperty('--d', String(i));
+    ro.observe(r);
+  });
 
   // Proof spine: only runs if proofRow exists (homepage only)
   const proofRow = document.getElementById('proofRow');

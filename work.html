@@ -467,6 +467,9 @@
   .tk-top{display:flex;align-items:center;justify-content:space-between;
     padding:16px 0;max-width:var(--max);margin:0 auto;width:100%}
   .tk-top .logo svg{display:block}
+  /* Logo fades in after the panel lands, fades out ahead of the retract */
+  .tk-top .logo{opacity:0;transition:opacity .2s ease}
+  .takeover.open .tk-top .logo{opacity:1;transition:opacity .35s ease .25s}
   .tk-close{font-family:var(--text);font-weight:700;font-size:12px;letter-spacing:.1em;
     text-transform:uppercase;display:inline-flex;align-items:center;gap:9px;cursor:pointer;
     background:none;border:0;color:var(--ink);padding:6px 0}
@@ -498,7 +501,8 @@
   body.menu-open{overflow:hidden}
 
   @media (prefers-reduced-motion: reduce){
-    .takeover,.tk-l,.tk-t,.tk-ar,.menu-btn .plus,.tk-close .x{transition:none}
+    .takeover,.tk-l,.tk-t,.tk-ar,.menu-btn .plus,.tk-close .x,.tk-top .logo{transition:none}
+    .tk-top .logo{opacity:1}
   }
 </style>
 

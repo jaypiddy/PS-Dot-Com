@@ -124,7 +124,7 @@
   @media(max-width:860px){.proof-row{grid-template-columns:1fr 1fr}.stat{border-right:0;border-bottom:1px solid var(--line);padding:14px 0}.stat + .stat{padding-left:0}}
 
   /* ---------- Block 4 — The seam ---------- */
-  .engine{padding-top:clamp(90px,12vh,160px);padding-bottom:clamp(90px,12vh,160px)}
+  .engine{position:relative;overflow:hidden;padding-top:clamp(90px,12vh,160px);padding-bottom:clamp(90px,12vh,160px)}
   .engine-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,5vw,90px)}
   .engine h2{font-family:var(--display);font-weight:500;font-size:clamp(40px,4.6vw,72px);line-height:1.02;letter-spacing:-.015em}
     .engine p{font-size:clamp(18px,1.5vw,21px);line-height:1.6;max-width:58ch}
@@ -274,6 +274,18 @@
   /* Contour watermark — the line-art softener */
   .contour{position:absolute;pointer-events:none;fill:none;stroke-width:.6}
   .contour-hero{top:-10%;right:-6%;height:130%;width:auto;stroke:rgba(250,250,247,.07);z-index:1}
+  /* Slash field — the logo's askew gesture, here in the light coloration */
+  .slash-field{position:absolute;inset:0;width:100%;height:100%;
+    stroke:rgba(250,250,247,.11);stroke-width:.9;fill:none;z-index:0;pointer-events:none}
+  .slash-field.on-light{stroke:rgba(18,19,21,.07)}
+  .slash-field path{fill:none;stroke:inherit}
+  .slash-field .sa{animation:shearUp var(--dur) ease-in-out var(--dly,0s) infinite alternate}
+  .slash-field .sb{animation:shearDn var(--dur) ease-in-out var(--dly,0s) infinite alternate}
+  @keyframes shearUp{from{transform:translateY(0)}to{transform:translateY(calc(var(--sh)*-1))}}
+  @keyframes shearDn{from{transform:translateY(0)}to{transform:translateY(var(--sh))}}
+  @media(prefers-reduced-motion:reduce){
+    .slash-field .sa,.slash-field .sb{animation:none}
+  }
   .contour-engine{top:-20%;right:4%;height:150%;width:auto;stroke:rgba(18,19,21,.05)}
   .engine{position:relative;overflow:hidden}
   .engine .wrap{position:relative;z-index:2}
@@ -507,7 +519,7 @@
 
 <!-- Block 4 — The seam -->
 <section class="engine">
-  <svg class="contour contour-engine" viewBox="0 0 93.93 148.41" aria-hidden="true"><path d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg>
+  <svg class="slash-field on-light" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="pair" transform="translate(1240 90) scale(2.0)" style="--dur:26s;--sh:10.4px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1130 420) scale(1.2)" style="--dur:34s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1330 540) scale(1.6)" style="--dur:22s;--sh:9.2px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1390 260) scale(1.0)" style="--dur:30s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1180 650) scale(0.8)" style="--dur:38s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g></svg>
   <div class="wrap engine-grid reveal">
     <div><h2 class="rise">One room.<br><em class="voice">No fence.</em></h2><span class="rule"></span></div>
     <div>
@@ -697,6 +709,12 @@
     es.forEach(e=>{ if(e.isIntersecting){ setTimeout(() => e.target.classList.add('in'), 250); ro.unobserve(e.target);} });
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+  // Random seed: each visit starts every pair at a different phase of its cycle
+  document.querySelectorAll('.slash-field .pair').forEach(p=>{
+    const d = parseFloat(getComputedStyle(p).getPropertyValue('--dur')) || 30;
+    p.style.setProperty('--dly', (-(Math.random()*d)).toFixed(2)+'s');
+  });
+
 
   // Proof spine: only runs if proofRow exists (homepage only)
   const proofRow = document.getElementById('proofRow');

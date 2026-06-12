@@ -1034,40 +1034,5 @@ document.querySelectorAll('.swipe').forEach(function(el){
 
 
 
-<!-- FIXTURE BAR — listing stress states. Delete at build. -->
-<style>
-  .fixtures{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--ink);color:var(--paper);
-    display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:10px var(--gutter);
-    font-family:var(--text);font-size:11.5px;border-top:1px solid var(--line-light)}
-  .fixtures b{letter-spacing:.1em;text-transform:uppercase;font-size:10px;color:var(--magenta);margin-right:8px}
-  .fixtures button{background:none;border:1px solid rgba(250,250,247,.3);color:inherit;cursor:pointer;font:inherit;padding:5px 10px}
-  .fixtures button:hover{border-color:var(--magenta)}
-  .fixtures button[aria-pressed="true"]{background:var(--magenta);border-color:var(--magenta);color:var(--paper)}
-  body{padding-bottom:52px}
-</style>
-<div class="fixtures" role="group" aria-label="Data fixtures">
-  <b>Fixtures</b>
-  <button data-fx="excerpt706" aria-pressed="false">706-char excerpt</button>
-  <button data-fx="noFeatured" aria-pressed="false">No featured post</button>
-</div>
-<script>
-(function(){
-  var LONG = "Estimates fail for structural reasons, not effort reasons. " +
-    "After fifteen years of fixed bids, hybrid retainers, time-and-materials engagements, and every contract structure between, the pattern is unmistakable: the estimate is never wrong because the team was slow, it is wrong because the thing being estimated changed while it was being built, usually for good reasons, discovered honestly, mid-flight, by people acting in good faith on all sides of the table. This post walks through the three places scope actually breaks, the contract structure we adopted in response, the two-week re-estimate point that made forecasts honest, and why pricing change as a feature of the engagement rather than an exception to it has done more for client trust than any improvement in raw estimating accuracy ever did.";
-  var BASE = "Estimates fail for structural reasons, not effort reasons. Here is what we changed.";
-  var state = {excerpt706:false, noFeatured:false};
-  function render(){
-    document.getElementById('stressExcerpt').textContent = state.excerpt706 ? LONG : BASE;
-    document.getElementById('featured').style.display = state.noFeatured ? 'none' : '';
-  }
-  document.querySelectorAll('.fixtures button').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var k = btn.dataset.fx; state[k] = !state[k];
-      btn.setAttribute('aria-pressed', String(state[k]));
-      render();
-    });
-  });
-})();
-</script>
 </body>
 </html>

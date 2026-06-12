@@ -1000,16 +1000,22 @@ document.querySelectorAll('.swipe').forEach(function(el){
   var ov = document.getElementById('takeover');
   var close = document.getElementById('menuClose');
   if(!btn || !ov) return;
+  var hoverTimer = null, suppressUntil = 0;
   function setOpen(open){
+    if(!open) suppressUntil = Date.now() + 500; // grace: closing parks the cursor on the button
     ov.classList.toggle('open', open);
     document.body.classList.toggle('menu-open', open);
     btn.setAttribute('aria-expanded', open);
     ov.setAttribute('aria-hidden', !open);
   }
   btn.addEventListener('click', function(){ setOpen(!ov.classList.contains('open')); });
-  // Hover opens on pointer devices; mouse out of the takeover closes
+  // Hover opens on pointer devices (150ms intent delay); mouse out of the takeover closes
   if(window.matchMedia('(hover: hover)').matches){
-    btn.addEventListener('mouseenter', function(){ setOpen(true); });
+    btn.addEventListener('mouseenter', function(){
+      if(Date.now() < suppressUntil) return;
+      hoverTimer = setTimeout(function(){ setOpen(true); }, 150);
+    });
+    btn.addEventListener('mouseleave', function(){ clearTimeout(hoverTimer); });
     ov.addEventListener('mouseleave', function(){ setOpen(false); });
   }
   if(close) close.addEventListener('click', function(){ setOpen(false); });

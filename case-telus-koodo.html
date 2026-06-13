@@ -323,15 +323,24 @@
   }
 
 
-  /* Koodo wordmark ambient field — same shear DNA as .slash-field,
-     scoped to dark Koodo asset zones. Solid logo, sits behind the
-     device shot / kiosk video. */
+  /* Koodo wordmark ambient field — HTML divs with CSS-masked logo,
+     positioned by percentage inside the field's parent. Animation
+     runs on the <span>, which is bulletproof across browsers
+     regardless of parent stacking / 3D context. */
   .koodo-field{position:absolute;inset:0;width:100%;height:100%;
-    color:rgba(250,250,247,.13);z-index:0;pointer-events:none}
-  .koodo-field .kg.sa{animation:shearUp var(--dur) ease-in-out var(--dly) infinite alternate}
-  .koodo-field .kg.sb{animation:shearDn var(--dur) ease-in-out var(--dly) infinite alternate}
+    color:rgba(250,250,247,.13);z-index:0;pointer-events:none;overflow:hidden}
+  .koodo-field .kw{
+    position:absolute;
+    left:var(--x);top:var(--y);width:var(--w);aspect-ratio:154/51;
+    background-color:currentColor;
+    -webkit-mask:url('images/koodo-mark.svg') center/contain no-repeat;
+            mask:url('images/koodo-mark.svg') center/contain no-repeat;
+    will-change:transform;
+  }
+  .koodo-field .kw.sa{animation:shearUp var(--dur) ease-in-out var(--dly) infinite alternate}
+  .koodo-field .kw.sb{animation:shearDn var(--dur) ease-in-out var(--dly) infinite alternate}
   @media(prefers-reduced-motion:reduce){
-    .koodo-field .kg.sa,.koodo-field .kg.sb{animation:none}
+    .koodo-field .kw.sa,.koodo-field .kw.sb{animation:none}
   }
   /* Stack the device shot above the koodo-field (cs-shot is already
      absolute via the device-mockup CSS; z-index alone is enough). */
@@ -861,23 +870,6 @@
 </head>
 <body>
 
-<!-- Reusable Koodo wordmark (solid o's). Ambient background motif on this page only. -->
-<svg width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
-  <symbol id="koodo-mark" viewBox="0 0 154 51">
-    <g transform="translate(-586.143 -205.77389)" fill="currentColor">
-      <!-- k -->
-      <path d="M 587.143,255.53339 L 595.446,255.53339 L 595.446,237.49768 L 604.643,247.67625 L 616.25,247.67625 L 602.67857,232.85482 L 614.64286,219.28339 L 603.21429,219.28339 L 595.446,228.03339 L 595.446,218.56911 L 587.143,218.56911 L 587.143,255.53339 z"/>
-      <!-- first o (solid) -->
-      <path d="M 627.89068,218.66942 C 619.88299,218.66942 613.40626,225.14616 613.40625,233.15385 C 613.40625,241.16153 619.88298,247.66942 627.89068,247.66942 C 635.89836,247.66942 642.40622,241.16154 642.40625,233.15385 C 642.40625,225.14616 635.89835,218.66941 627.89068,218.66942 z"/>
-      <!-- second o (solid) -->
-      <path d="M 660.09375,218.79442 C 652.08284,218.79442 645.59373,225.28349 645.59375,233.29442 C 645.59375,241.30533 652.08282,247.79442 660.09375,247.79442 C 668.10467,247.79442 674.59375,241.30533 674.59375,233.29442 C 674.59375,225.2835 668.10466,218.79441 660.09375,218.79442 z"/>
-      <!-- d (with its bowl) -->
-      <path fill-rule="evenodd" d="M 699.8125,206.77389 L 699.8125,222.05514 C 697.53525,220.46307 694.76866,218.89889 691.78125,218.89889 C 684.90984,218.89889 677.40625,223.68079 677.40625,233.55514 C 677.40625,241.30816 684.0282,247.61764 691.78125,247.61764 C 700.28519,247.61764 706.5,240.07072 706.5,233.55514 L 706.5,206.77389 L 699.8125,206.77389 z M 691.5625,225.43014 C 695.93186,225.43015 699.46875,228.9983 699.46875,233.36764 C 699.46877,237.73698 695.93184,241.27389 691.5625,241.27389 C 687.19318,241.27389 683.625,237.73698 683.625,233.36764 C 683.62501,228.9983 687.19316,225.43014 691.5625,225.43014 z"/>
-      <!-- third o (solid) -->
-      <path d="M 723.73426,218.74264 C 715.72774,218.74264 709.24998,225.2448 709.25,233.24264 C 709.25,241.24048 715.72772,247.74263 723.73426,247.74264 C 731.74078,247.74264 738.24999,241.24047 738.25,233.24264 C 738.25,225.2448 731.74076,218.74264 723.73426,218.74264 z"/>
-    </g>
-  </symbol>
-</svg>
 <header>
   <div class="nav on-dark" id="nav">
     <a class="logo" href="index.html" aria-label="POWER SHIFTER home"><svg class="wordmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 25" fill="currentColor" aria-hidden="true" focusable="false">
@@ -956,7 +948,7 @@
 <!-- Masthead plate — wframe pattern with dark scrim -->
 <section class="masthead wrap" id="masthead">
   <div class="wframe dark" id="plate">
-    <svg class="koodo-field" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="kg sa" style="--dur:5.6s;--dly:-1.2s;--sh:13.2px"><use href="#koodo-mark" x="60" y="90" width="420" height="139.1"/></g><g class="kg sb" style="--dur:7.6s;--dly:-5.8s;--sh:8.4px"><use href="#koodo-mark" x="580" y="150" width="110" height="36.4"/></g><g class="kg sa" style="--dur:4.8s;--dly:-2.4s;--sh:15.6px"><use href="#koodo-mark" x="1240" y="60" width="280" height="92.7"/></g><g class="kg sb" style="--dur:8.4s;--dly:-3.5s;--sh:7.2px"><use href="#koodo-mark" x="220" y="280" width="80" height="26.5"/></g><g class="kg sa" style="--dur:4.4s;--dly:-1.6s;--sh:16.8px"><use href="#koodo-mark" x="780" y="340" width="360" height="119.2"/></g><g class="kg sb" style="--dur:6.4s;--dly:-5.3s;--sh:9.6px"><use href="#koodo-mark" x="1380" y="300" width="140" height="46.4"/></g><g class="kg sb" style="--dur:5.2s;--dly:-0.8s;--sh:10.8px"><use href="#koodo-mark" x="40" y="470" width="240" height="79.5"/></g><g class="kg sa" style="--dur:9.2s;--dly:-7.0s;--sh:7.2px"><use href="#koodo-mark" x="460" y="540" width="90" height="29.8"/></g><g class="kg sb" style="--dur:6.0s;--dly:-3.4s;--sh:12.0px"><use href="#koodo-mark" x="980" y="560" width="200" height="66.2"/></g><g class="kg sa" style="--dur:4.8s;--dly:-2.8s;--sh:14.4px"><use href="#koodo-mark" x="1320" y="540" width="320" height="106.0"/></g><g class="kg sa" style="--dur:7.2s;--dly:-4.4s;--sh:9.6px"><use href="#koodo-mark" x="160" y="740" width="160" height="53.0"/></g><g class="kg sb" style="--dur:8.0s;--dly:-2.2s;--sh:8.4px"><use href="#koodo-mark" x="700" y="760" width="110" height="36.4"/></g><g class="kg sa" style="--dur:4.2s;--dly:-0.4s;--sh:15.6px"><use href="#koodo-mark" x="1080" y="780" width="380" height="125.8"/></g><g class="kg sb" style="--dur:9.6s;--dly:-7.4s;--sh:6.0px"><use href="#koodo-mark" x="820" y="700" width="70" height="23.2"/></g></svg>
+    <div class="koodo-field" aria-hidden="true"><span class="kw sa" style="--x:3.75%;--y:10.0%;--w:26.25%;--dur:5.6s;--dly:-1.2s;--sh:13.2px"></span><span class="kw sb" style="--x:36.25%;--y:16.67%;--w:6.88%;--dur:7.6s;--dly:-5.8s;--sh:8.4px"></span><span class="kw sa" style="--x:77.5%;--y:6.67%;--w:17.5%;--dur:4.8s;--dly:-2.4s;--sh:15.6px"></span><span class="kw sb" style="--x:13.75%;--y:31.11%;--w:5.0%;--dur:8.4s;--dly:-3.5s;--sh:7.2px"></span><span class="kw sa" style="--x:48.75%;--y:37.78%;--w:22.5%;--dur:4.4s;--dly:-1.6s;--sh:16.8px"></span><span class="kw sb" style="--x:86.25%;--y:33.33%;--w:8.75%;--dur:6.4s;--dly:-5.3s;--sh:9.6px"></span><span class="kw sb" style="--x:2.5%;--y:52.22%;--w:15.0%;--dur:5.2s;--dly:-0.8s;--sh:10.8px"></span><span class="kw sa" style="--x:28.75%;--y:60.0%;--w:5.62%;--dur:9.2s;--dly:-7.0s;--sh:7.2px"></span><span class="kw sb" style="--x:61.25%;--y:62.22%;--w:12.5%;--dur:6.0s;--dly:-3.4s;--sh:12.0px"></span><span class="kw sa" style="--x:82.5%;--y:60.0%;--w:20.0%;--dur:4.8s;--dly:-2.8s;--sh:14.4px"></span><span class="kw sa" style="--x:10.0%;--y:82.22%;--w:10.0%;--dur:7.2s;--dly:-4.4s;--sh:9.6px"></span><span class="kw sb" style="--x:43.75%;--y:84.44%;--w:6.88%;--dur:8.0s;--dly:-2.2s;--sh:8.4px"></span><span class="kw sa" style="--x:67.5%;--y:86.67%;--w:23.75%;--dur:4.2s;--dly:-0.4s;--sh:15.6px"></span><span class="kw sb" style="--x:51.25%;--y:77.78%;--w:4.38%;--dur:9.6s;--dly:-7.4s;--sh:6.0px"></span></div>
     <img class="cs-shot" src="images/telus_catalogue.png" alt="The TELUS accessories catalogue, responsive across MacBook and iPhone">
     <div class="wtint"></div>
   </div>
@@ -994,7 +986,7 @@
 
     <figure class="breakout fig-tilt">
       <div class="fig-plate">
-        <svg class="koodo-field" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="kg sa" style="--dur:5.6s;--dly:-1.2s;--sh:13.2px"><use href="#koodo-mark" x="60" y="90" width="420" height="139.1"/></g><g class="kg sb" style="--dur:7.6s;--dly:-5.8s;--sh:8.4px"><use href="#koodo-mark" x="580" y="150" width="110" height="36.4"/></g><g class="kg sa" style="--dur:4.8s;--dly:-2.4s;--sh:15.6px"><use href="#koodo-mark" x="1240" y="60" width="280" height="92.7"/></g><g class="kg sb" style="--dur:8.4s;--dly:-3.5s;--sh:7.2px"><use href="#koodo-mark" x="220" y="280" width="80" height="26.5"/></g><g class="kg sa" style="--dur:4.4s;--dly:-1.6s;--sh:16.8px"><use href="#koodo-mark" x="780" y="340" width="360" height="119.2"/></g><g class="kg sb" style="--dur:6.4s;--dly:-5.3s;--sh:9.6px"><use href="#koodo-mark" x="1380" y="300" width="140" height="46.4"/></g><g class="kg sb" style="--dur:5.2s;--dly:-0.8s;--sh:10.8px"><use href="#koodo-mark" x="40" y="470" width="240" height="79.5"/></g><g class="kg sa" style="--dur:9.2s;--dly:-7.0s;--sh:7.2px"><use href="#koodo-mark" x="460" y="540" width="90" height="29.8"/></g><g class="kg sb" style="--dur:6.0s;--dly:-3.4s;--sh:12.0px"><use href="#koodo-mark" x="980" y="560" width="200" height="66.2"/></g><g class="kg sa" style="--dur:4.8s;--dly:-2.8s;--sh:14.4px"><use href="#koodo-mark" x="1320" y="540" width="320" height="106.0"/></g><g class="kg sa" style="--dur:7.2s;--dly:-4.4s;--sh:9.6px"><use href="#koodo-mark" x="160" y="740" width="160" height="53.0"/></g><g class="kg sb" style="--dur:8.0s;--dly:-2.2s;--sh:8.4px"><use href="#koodo-mark" x="700" y="760" width="110" height="36.4"/></g><g class="kg sa" style="--dur:4.2s;--dly:-0.4s;--sh:15.6px"><use href="#koodo-mark" x="1080" y="780" width="380" height="125.8"/></g><g class="kg sb" style="--dur:9.6s;--dly:-7.4s;--sh:6.0px"><use href="#koodo-mark" x="820" y="700" width="70" height="23.2"/></g></svg>
+        <div class="koodo-field" aria-hidden="true"><span class="kw sa" style="--x:3.75%;--y:10.0%;--w:26.25%;--dur:5.6s;--dly:-1.2s;--sh:13.2px"></span><span class="kw sb" style="--x:36.25%;--y:16.67%;--w:6.88%;--dur:7.6s;--dly:-5.8s;--sh:8.4px"></span><span class="kw sa" style="--x:77.5%;--y:6.67%;--w:17.5%;--dur:4.8s;--dly:-2.4s;--sh:15.6px"></span><span class="kw sb" style="--x:13.75%;--y:31.11%;--w:5.0%;--dur:8.4s;--dly:-3.5s;--sh:7.2px"></span><span class="kw sa" style="--x:48.75%;--y:37.78%;--w:22.5%;--dur:4.4s;--dly:-1.6s;--sh:16.8px"></span><span class="kw sb" style="--x:86.25%;--y:33.33%;--w:8.75%;--dur:6.4s;--dly:-5.3s;--sh:9.6px"></span><span class="kw sb" style="--x:2.5%;--y:52.22%;--w:15.0%;--dur:5.2s;--dly:-0.8s;--sh:10.8px"></span><span class="kw sa" style="--x:28.75%;--y:60.0%;--w:5.62%;--dur:9.2s;--dly:-7.0s;--sh:7.2px"></span><span class="kw sb" style="--x:61.25%;--y:62.22%;--w:12.5%;--dur:6.0s;--dly:-3.4s;--sh:12.0px"></span><span class="kw sa" style="--x:82.5%;--y:60.0%;--w:20.0%;--dur:4.8s;--dly:-2.8s;--sh:14.4px"></span><span class="kw sa" style="--x:10.0%;--y:82.22%;--w:10.0%;--dur:7.2s;--dly:-4.4s;--sh:9.6px"></span><span class="kw sb" style="--x:43.75%;--y:84.44%;--w:6.88%;--dur:8.0s;--dly:-2.2s;--sh:8.4px"></span><span class="kw sa" style="--x:67.5%;--y:86.67%;--w:23.75%;--dur:4.2s;--dly:-0.4s;--sh:15.6px"></span><span class="kw sb" style="--x:51.25%;--y:77.78%;--w:4.38%;--dur:9.6s;--dly:-7.4s;--sh:6.0px"></span></div>
         <img class="cs-shot" src="images/koodo_welcome.png" alt="The Koodo-branded accessories catalogue shown on a laptop">
       </div>
       <figcaption><b>Fig. 01</b><span>Same platform, a different face: the Koodo-branded instance carries its own inventory, pricing, and identity — walled off from the two TELUS audiences on the same build.</span></figcaption>
@@ -1011,7 +1003,7 @@
 
     <figure class="breakout fig-tilt">
       <div class="fig-plate">
-        <svg class="koodo-field" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="kg sa" style="--dur:5.6s;--dly:-1.2s;--sh:13.2px"><use href="#koodo-mark" x="60" y="90" width="420" height="139.1"/></g><g class="kg sb" style="--dur:7.6s;--dly:-5.8s;--sh:8.4px"><use href="#koodo-mark" x="580" y="150" width="110" height="36.4"/></g><g class="kg sa" style="--dur:4.8s;--dly:-2.4s;--sh:15.6px"><use href="#koodo-mark" x="1240" y="60" width="280" height="92.7"/></g><g class="kg sb" style="--dur:8.4s;--dly:-3.5s;--sh:7.2px"><use href="#koodo-mark" x="220" y="280" width="80" height="26.5"/></g><g class="kg sa" style="--dur:4.4s;--dly:-1.6s;--sh:16.8px"><use href="#koodo-mark" x="780" y="340" width="360" height="119.2"/></g><g class="kg sb" style="--dur:6.4s;--dly:-5.3s;--sh:9.6px"><use href="#koodo-mark" x="1380" y="300" width="140" height="46.4"/></g><g class="kg sb" style="--dur:5.2s;--dly:-0.8s;--sh:10.8px"><use href="#koodo-mark" x="40" y="470" width="240" height="79.5"/></g><g class="kg sa" style="--dur:9.2s;--dly:-7.0s;--sh:7.2px"><use href="#koodo-mark" x="460" y="540" width="90" height="29.8"/></g><g class="kg sb" style="--dur:6.0s;--dly:-3.4s;--sh:12.0px"><use href="#koodo-mark" x="980" y="560" width="200" height="66.2"/></g><g class="kg sa" style="--dur:4.8s;--dly:-2.8s;--sh:14.4px"><use href="#koodo-mark" x="1320" y="540" width="320" height="106.0"/></g><g class="kg sa" style="--dur:7.2s;--dly:-4.4s;--sh:9.6px"><use href="#koodo-mark" x="160" y="740" width="160" height="53.0"/></g><g class="kg sb" style="--dur:8.0s;--dly:-2.2s;--sh:8.4px"><use href="#koodo-mark" x="700" y="760" width="110" height="36.4"/></g><g class="kg sa" style="--dur:4.2s;--dly:-0.4s;--sh:15.6px"><use href="#koodo-mark" x="1080" y="780" width="380" height="125.8"/></g><g class="kg sb" style="--dur:9.6s;--dly:-7.4s;--sh:6.0px"><use href="#koodo-mark" x="820" y="700" width="70" height="23.2"/></g></svg>
+        <div class="koodo-field" aria-hidden="true"><span class="kw sa" style="--x:3.75%;--y:10.0%;--w:26.25%;--dur:5.6s;--dly:-1.2s;--sh:13.2px"></span><span class="kw sb" style="--x:36.25%;--y:16.67%;--w:6.88%;--dur:7.6s;--dly:-5.8s;--sh:8.4px"></span><span class="kw sa" style="--x:77.5%;--y:6.67%;--w:17.5%;--dur:4.8s;--dly:-2.4s;--sh:15.6px"></span><span class="kw sb" style="--x:13.75%;--y:31.11%;--w:5.0%;--dur:8.4s;--dly:-3.5s;--sh:7.2px"></span><span class="kw sa" style="--x:48.75%;--y:37.78%;--w:22.5%;--dur:4.4s;--dly:-1.6s;--sh:16.8px"></span><span class="kw sb" style="--x:86.25%;--y:33.33%;--w:8.75%;--dur:6.4s;--dly:-5.3s;--sh:9.6px"></span><span class="kw sb" style="--x:2.5%;--y:52.22%;--w:15.0%;--dur:5.2s;--dly:-0.8s;--sh:10.8px"></span><span class="kw sa" style="--x:28.75%;--y:60.0%;--w:5.62%;--dur:9.2s;--dly:-7.0s;--sh:7.2px"></span><span class="kw sb" style="--x:61.25%;--y:62.22%;--w:12.5%;--dur:6.0s;--dly:-3.4s;--sh:12.0px"></span><span class="kw sa" style="--x:82.5%;--y:60.0%;--w:20.0%;--dur:4.8s;--dly:-2.8s;--sh:14.4px"></span><span class="kw sa" style="--x:10.0%;--y:82.22%;--w:10.0%;--dur:7.2s;--dly:-4.4s;--sh:9.6px"></span><span class="kw sb" style="--x:43.75%;--y:84.44%;--w:6.88%;--dur:8.0s;--dly:-2.2s;--sh:8.4px"></span><span class="kw sa" style="--x:67.5%;--y:86.67%;--w:23.75%;--dur:4.2s;--dly:-0.4s;--sh:15.6px"></span><span class="kw sb" style="--x:51.25%;--y:77.78%;--w:4.38%;--dur:9.6s;--dly:-7.4s;--sh:6.0px"></span></div>
         <img class="cs-shot" src="images/koodo_filters.png" alt="The responsive filtering experience shown on desktop and phone">
       </div>
       <figcaption><b>Fig. 02</b><span>The filtering experience: 700+ SKUs narrowed to the right accessory in seconds — phone, tablet, or the desktop at the back of the store.</span></figcaption>
@@ -1189,7 +1181,7 @@
   // amplitude jitters +-15%, opacity jitters per pair.
   (function(){
     const r = (lo,hi)=>lo+Math.random()*(hi-lo);
-    document.querySelectorAll('.slash-field .pair, .koodo-field .kg').forEach(p=>{
+    document.querySelectorAll('.slash-field .pair, .koodo-field .kw').forEach(p=>{
       const cs = getComputedStyle(p);
       const baseDur = parseFloat(cs.getPropertyValue('--dur')) || 20;
       const baseSh  = parseFloat(cs.getPropertyValue('--sh'))  || 8;

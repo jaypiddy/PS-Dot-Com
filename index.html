@@ -110,14 +110,27 @@
   .stat b{font-family:var(--display);font-weight:700;font-size:clamp(26px,2.6vw,40px);letter-spacing:-.015em;display:block;line-height:1.1}
   .stat > span{font-size:13.5px;color:var(--grey);display:block;margin-top:6px;line-height:1.4}
   /* Client wall — hairline-ruled sheet, same construction as the insights grid */
+  /* Client wall — checkerboard. Odd cells render dark (ink) with a
+     cream-tinted logo; even cells render light (paper) with an ink
+     logo. On hover, dark cells lift via the logo turning magenta;
+     light cells lift via the background turning magenta with the
+     logo inverting to cream. Same magenta accent, asymmetric reveal. */
   .logos{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
     background:var(--line);border:1px solid var(--line);margin-top:34px}
-  .logos .cell{background:var(--paper);display:flex;align-items:center;justify-content:center;
-    padding:clamp(24px,3vw,38px) 16px;color:var(--grey);
-    transition:color .2s ease-out}
-  .logos .cell:hover{color:var(--ink)}
-  .logos .cell .logo-mask{opacity:.78;transition:opacity .2s ease-out;max-width:72%}
+  .logos .cell{display:flex;align-items:center;justify-content:center;
+    padding:clamp(24px,3vw,38px) 16px;
+    transition:background-color .45s cubic-bezier(.4,0,.2,1),
+               color .45s cubic-bezier(.4,0,.2,1)}
+  .logos .cell .logo-mask{opacity:.88;max-width:72%;
+    transition:opacity .45s cubic-bezier(.4,0,.2,1),
+               background-color .45s cubic-bezier(.4,0,.2,1)}
   .logos .cell:hover .logo-mask{opacity:1}
+  /* Dark cells (corners + centre on 3-col grid) */
+  .logos .cell:nth-child(odd){background:var(--ink);color:var(--paper)}
+  .logos .cell:nth-child(odd):hover{color:var(--magenta)}
+  /* Light cells (edges) */
+  .logos .cell:nth-child(even){background:var(--paper);color:var(--ink)}
+  .logos .cell:nth-child(even):hover{background:var(--magenta);color:var(--paper)}
   @media(max-width:640px){
     .logos{grid-template-columns:repeat(2,1fr)}
     .logos .cell:last-child{grid-column:span 2}

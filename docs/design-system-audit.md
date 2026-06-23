@@ -243,7 +243,7 @@ Two related but distinct embeds for video on the site:
 | Marketing/explainer videos (user-initiated, with controls, audio, captions) | `.video-frame` (NEW) | Cloudflare Stream iframe player | `/digital` Validator; reusable on Studios, About, case studies |
 | Decorative card loops (autoplay-muted, hover-trigger, no controls) | `.wframe[data-video]` (existing) | Plain `<video>` tag with frame-0 poster | `/work` cards; see `docs/VIDEO_PIPELINE.md` for the clip spec |
 
-Structure (`.video-frame`):
+Structure (`.video-frame`), with the live UID from the `/digital` Validator implementation:
 
 ```html
 <div class="video-frame" aria-label="Rapid MVP explainer video">
@@ -258,6 +258,8 @@ Structure (`.video-frame`):
 ```
 
 CSS picks: 16:9 aspect-ratio, dark placeholder background (the box holds while Stream loads its own poster), soft 8px radius, generous box-shadow for depth on dark sections. Iframe absolutely positioned to fill. No JS — Stream handles controls, captions, lazy load, and adaptive HLS internally.
+
+**Cloudflare Stream dashboard exposes three values per video — only the Video ID is needed for this pattern.** The HLS Manifest URL and Dash Manifest URL are for custom-player workflows where you wire the streaming source into your own video element (the homepage hero reel does this with `hls.js`). The Stream iframe player derives its streaming source from the UID + customer subdomain internally — no manifest URL needed.
 
 CSS for `.validator-band` ink variant: section gets `background:var(--ink); color:var(--paper)`. H2 paper, p paper at .86 opacity, `<strong>` full paper, `em.voice` stays magenta. The `.btn.solid.cascade` (paper bg + ink text) already reads on dark from the homepage closer pattern.
 

@@ -807,18 +807,17 @@
     </div>
     <div>
       <!-- Cloudflare Stream explainer video — Rapid MVP service line.
-           Customer subdomain is shared with the homepage hero reel STREAM config:
+           Customer subdomain shared with the homepage hero reel STREAM config:
              customer-xv1aafyshr3tbknu.cloudflarestream.com
-           The video UID is the pending swap point — replace BOTH occurrences
-           of REPLACE_VALIDATOR_VIDEO_UID below (iframe src + poster URL param)
-           with the actual UID from the Cloudflare Stream dashboard. Two-place
-           swap because the poster is generated from the same UID's thumbnails
-           endpoint, frame 0. Once the UID is in, the embed needs no further
-           configuration — Cloudflare handles controls, poster, captions
-           (if uploaded), lazy load, and adaptive HLS streaming. -->
+           Video UID (UPDATED June 23 2026): b95bdf8570cc633d7f96867d40bad336.
+           Appears in two places below — iframe src and the URL-encoded poster
+           param (the poster is generated from the same UID's thumbnails
+           endpoint at frame 0). No further configuration needed — Cloudflare
+           handles controls, poster, captions (if uploaded), lazy load, and
+           adaptive HLS streaming inside the iframe player. -->
       <div class="video-frame" aria-label="Rapid MVP explainer video">
         <iframe
-          src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/REPLACE_VALIDATOR_VIDEO_UID/iframe?poster=https%3A%2F%2Fcustomer-xv1aafyshr3tbknu.cloudflarestream.com%2FREPLACE_VALIDATOR_VIDEO_UID%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0s"
+          src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/b95bdf8570cc633d7f96867d40bad336/iframe?poster=https%3A%2F%2Fcustomer-xv1aafyshr3tbknu.cloudflarestream.com%2Fb95bdf8570cc633d7f96867d40bad336%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0s"
           loading="lazy"
           allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
           allowfullscreen="true"

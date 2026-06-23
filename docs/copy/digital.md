@@ -90,7 +90,7 @@ _Tool tease. Two-column INK band — section flips to ink background to read as 
 
 ### Video embed
 
-_Cloudflare Stream explainer video. Iframe player (controls, audio, captions if uploaded, lazy load, adaptive HLS all handled by Cloudflare). Customer subdomain `customer-xv1aafyshr3tbknu.cloudflarestream.com` — same account as the homepage hero reel. The video UID needs to be pasted into both occurrences of `REPLACE_VALIDATOR_VIDEO_UID` in `digital.html` (iframe src + poster URL param)._
+_Cloudflare Stream explainer video. Iframe player (controls, audio, captions if uploaded, lazy load, adaptive HLS all handled by Cloudflare). Customer subdomain `customer-xv1aafyshr3tbknu.cloudflarestream.com` — same Stream account as the homepage hero reel. Video UID: `b95bdf8570cc633d7f96867d40bad336` (set live June 23 2026). The UID appears in two places inside `digital.html` — iframe `src` and the URL-encoded `poster` parameter — both pointing at the same Stream UID's resources (the iframe player and the frame-0 thumbnails endpoint)._
 
 ---
 
@@ -253,7 +253,7 @@ _Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of th
 
     b) **Terminal block replaced with Cloudflare Stream video embed.** The `.terminal` CSS pattern (six lines of scripted CLI output with role-coded magenta signal line) is stripped from `digital.html` entirely. The right column now carries a `.video-frame` block — a new generic 16:9 video container — holding a Cloudflare Stream iframe player. The Stream iframe handles controls, captions (when uploaded), lazy loading, and adaptive HLS — no JS to wire on our side.
 
-    **Pending input — pasted later by JP:** the Cloudflare video UID. The HTML has `REPLACE_VALIDATOR_VIDEO_UID` as a literal placeholder in **two** places (iframe `src` and the URL-encoded `poster` parameter). Customer subdomain is already wired (`customer-xv1aafyshr3tbknu.cloudflarestream.com` — same account as the homepage hero reel, confirmed from `index.html` STREAM config). Once the UID lands, the swap is a single find-and-replace across both occurrences and the video is live; no other code or asset changes required.
+    **Video UID — live as of June 23 2026:** `b95bdf8570cc633d7f96867d40bad336`. Customer subdomain `customer-xv1aafyshr3tbknu.cloudflarestream.com` (same Stream account as the homepage hero reel — confirmed from `index.html` STREAM config). The UID appears in two places inside the iframe URL in `digital.html`: the iframe `src` (pointing at the Stream iframe player endpoint) and the URL-encoded `poster` parameter (pointing at the same UID's `thumbnails/thumbnail.jpg?time=0s` endpoint, so the player shows the frame-0 still while loading). The Cloudflare dashboard exposes three values per video — Video ID, HLS Manifest URL, Dash Manifest URL — only the Video ID is needed for the iframe player pattern. The HLS and Dash manifests are for custom-player workflows (the homepage hero reel uses HLS via hls.js and builds the `.m3u8` URL from UID + customer subdomain).
 
     **Pattern split codified:** the site now has two video embed conventions, both legitimate.
     - **Cloudflare Stream iframe player** (`.video-frame` wrapper) — for marketing/explainer videos the visitor plays deliberately. Controls visible. Audio expected. Used on `/digital` for the Rapid MVP explainer. Reusable on Studios, About, case studies, anywhere a narrated video earns the visit.

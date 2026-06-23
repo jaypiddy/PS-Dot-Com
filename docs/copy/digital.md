@@ -42,11 +42,11 @@ _Wording note: the Energizer caption here drops "from" ("idea to validated…") 
 
 ---
 
-## Offers — "Three ways in"
+## Offers — "Two ways in"
 
-_Three-up offer grid. Numbered, no icons. Each tile has a number, an offer name, a one-sentence frame, and a CTA._
+_Two-up offer grid. Numbered, no icons. Each tile has a number, an offer name, a one-sentence frame, and a CTA._
 
-**H2:** Three ways in
+**H2:** Two ways in
 
 ### Offer 01 — Rapid MVP
 
@@ -58,19 +58,9 @@ _Three-up offer grid. Numbered, no icons. Each tile has a number, an offer name,
 
 **CTA:** Rapid MVP →
 
-### Offer 02 — AI Content Operations
+### Offer 02 — Product Design & Engineering
 
 **NUM:** 02
-
-**H3:** AI Content Operations
-
-**BODY:** Ten times the content without ten times the headcount — generation in, structured content out, every channel served.
-
-**CTA:** Content Operations →
-
-### Offer 03 — Product Design & Engineering
-
-**NUM:** 03
 
 **H3:** Product Design & Engineering
 
@@ -210,3 +200,6 @@ _Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of th
 
 6. **Validator linkage.**
    The hero CTA targets `#validator` — an in-page anchor on the Digital hub. If the Validator becomes its own page (likely; the IA's content-blocking doc treats it as an offer), this CTA's destination changes.
+
+7. **AI Content Operations removed.**
+   The prototype HTML carries a third offer card titled "AI Content Operations" between Rapid MVP and Product Design & Engineering. JP confirmed on June 23 2026 that this isn't an offering Power Shifter actually has — it appears to have been invented during the Claude Design prototype session and slipped into the v1 file. The deck now lists two offers, the H2 reads "Two ways in," and Product Design & Engineering is renumbered from 03 to 02. Do not reintroduce from the prototype HTML.

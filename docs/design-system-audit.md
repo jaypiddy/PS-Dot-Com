@@ -153,14 +153,14 @@ The Digital practice page deck (`docs/copy/digital.md`, INTERIM status) has 8 co
 | Sub-page hero (with 2 CTAs) | `.sub-hero` + new `.sub-hero-ctas` extension | `work.html:591-599` + new | **Reuse + extend** — see new pattern A |
 | Outcome strip (4 stats) | `.proof` + `.proof-row` + `.stat` + `.odo` | `index.html:517-526` | **Reuse** |
 | Offers — "Two ways in" (2 numbered cards) | `.doors` + `.door` | `index.html:493-510` | **Reuse** — paired comparison fits perfectly |
-| Validator H2 + body | `.article-body .prose` body paragraph treatment OR `.engine` two-column band | `article.html` / `index.html:541-555` | **Reuse `.engine`** — argument on left, terminal on right matches the band structure |
-| Validator terminal demo | — | none | **NEW pattern B** (see below) |
+| Validator H2 + body | `.engine` two-column band with new `.validator-band` ink variant | `index.html:541-555` + new | **Reuse `.engine`** — argument on left, video on right matches the band structure. Section flipped to ink June 23 2026 — see Pattern D |
+| Validator video embed | `.video-frame` (NEW) + Cloudflare Stream iframe | none | **NEW pattern D** (see below). Replaced the earlier `.terminal` demo |
 | How we work — "Early and often" | `.engine` + `.engine-grid` | `index.html:541-555` | **Reuse** — second engine band on the page; pattern was always intended for reuse |
 | Selected work (4 cards) | `.work` + `.card` | `index.html:557-594` | **Reuse** — extend to 4 cards in the same grid |
 | Partners row | — | none directly | **NEW pattern C** (see below); informed by `.logos` mask system |
 | Page closer | `.page-closer` | `work.html:829-839` | **Reuse** |
 
-**Two `.engine` bands on one page (Validator + How we work).** That's a deliberate rhythm — both are "argument on left, evidence on right" sections, and using the same component twice reinforces the rhythm rather than diluting the pattern. The two are visually distinct because the right column carries different content (terminal block vs. prose body).
+**Two `.engine` bands on one page (Validator + How we work).** That's a deliberate rhythm — both are "argument on left, evidence on right" sections, and using the same component twice reinforces the rhythm rather than diluting the pattern. The two are visually distinct because the right column carries different content (video vs. prose body) AND the section backgrounds differ (ink vs. paper after the June 23 2026 ink-flip).
 
 ---
 
@@ -188,9 +188,11 @@ CSS adapts `.hero-ctas` from `index.html:485-489` (homepage) to the sub-hero sca
 
 ### Pattern B — `.terminal` block
 
-The Validator section calls for a 6-line scripted exchange in a monospace block, lines revealing in sequence on scroll. Role-coded by leading icon: `$` (prompt), `✓` (ok), `▲` (warn), `→` (signal).
+The Validator section originally called for a 6-line scripted exchange in a monospace block, lines revealing in sequence on scroll. Role-coded by leading icon: `$` (prompt), `✓` (ok), `▲` (warn), `→` (signal).
 
-Proposed structure:
+**Status on `/digital` (as of June 23 2026): pattern removed from the page.** The terminal block was replaced with a Cloudflare Stream explainer video for the Rapid MVP service line — see `digital.md` Notes 14 for the rationale. The CSS and HTML have been stripped from `digital.html`. The pattern stays catalogued here as a reusable design-system component for future pages.
+
+Proposed structure (preserved for reuse):
 
 ```html
 <div class="terminal breakout">
@@ -205,7 +207,7 @@ Proposed structure:
 </div>
 ```
 
-CSS picks: dark ink background, paper text, monospace family (system stack — no new web font), magenta accent on `.signal` line. Lines reveal via the existing `.reveal` → `.in` observer with a staggered `--td` delay per line, mirroring the takeover-menu cascade and proof-row stat cascade. Don't introduce a new animation system.
+CSS picks: dark ink background, paper text, monospace family (system stack — no new web font), magenta accent on `.signal` line. Lines reveal via the existing `.reveal` → `.in` observer with a staggered `--td` delay per line, mirroring the takeover-menu cascade and proof-row stat cascade. Don't introduce a new animation system. Full CSS block is available in the commit history of `digital.html` (see commit prior to the June 23 2026 video swap) — paste into the next page that uses the pattern.
 
 **Reuse beyond `/digital`:** case studies showing technical work (a CLI exchange as an alternative to a static figure inside the body), engineering-stream Insights articles, the Studios page if visualizing an AI pipeline command flow. Lives as a body-component variant (`.terminal.breakout`) so it slots into `.article-body .prose` wherever needed.
 
@@ -230,12 +232,47 @@ CSS picks: flex row with gap, each `.ptier` is a pill with display-weight name +
 
 **Reuse beyond `/digital`:** the About page is the obvious second home — partner credentials belong there as much as on `/digital`. Skip the footer — the footer is already busy. Don't re-use on case studies — credibility there comes from named results, not stack badges.
 
+### Pattern D — `.video-frame` + `.validator-band` ink variant
+
+Added June 23 2026 as a paired change. The `.validator-band` modifier now has two responsibilities: (1) scope the engine band to 1fr/1fr instead of canonical 5fr/7fr, and (2) flip the section background paper → ink so the Validator reads as the page's strongest CTA. The new `.video-frame` is the section-column video container holding the Cloudflare Stream iframe player.
+
+Two related but distinct embeds for video on the site:
+
+| Use case | Pattern | Embed type | Where |
+|---|---|---|---|
+| Marketing/explainer videos (user-initiated, with controls, audio, captions) | `.video-frame` (NEW) | Cloudflare Stream iframe player | `/digital` Validator; reusable on Studios, About, case studies |
+| Decorative card loops (autoplay-muted, hover-trigger, no controls) | `.wframe[data-video]` (existing) | Plain `<video>` tag with frame-0 poster | `/work` cards; see `docs/VIDEO_PIPELINE.md` for the clip spec |
+
+Structure (`.video-frame`):
+
+```html
+<div class="video-frame" aria-label="Rapid MVP explainer video">
+  <iframe
+    src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/<VIDEO_UID>/iframe?poster=https%3A%2F%2Fcustomer-xv1aafyshr3tbknu.cloudflarestream.com%2F<VIDEO_UID>%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0s"
+    loading="lazy"
+    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+    allowfullscreen="true"
+    title="<descriptive title>"
+  ></iframe>
+</div>
+```
+
+CSS picks: 16:9 aspect-ratio, dark placeholder background (the box holds while Stream loads its own poster), soft 8px radius, generous box-shadow for depth on dark sections. Iframe absolutely positioned to fill. No JS — Stream handles controls, captions, lazy load, and adaptive HLS internally.
+
+CSS for `.validator-band` ink variant: section gets `background:var(--ink); color:var(--paper)`. H2 paper, p paper at .86 opacity, `<strong>` full paper, `em.voice` stays magenta. The `.btn.solid.cascade` (paper bg + ink text) already reads on dark from the homepage closer pattern.
+
+**Reuse beyond `/digital`:**
+- `.video-frame` — Studios (the reel beyond the hero), About (founder explainer if one is filmed), individual case studies needing a polished play-through clip outside the article body.
+- `.validator-band` ink variant — useful anywhere a paper page needs one section to "break" the rhythm and pull the eye. Don't overuse — one ink section per page is the rule. Multiple paper-to-ink flips on one page would lose the punctuating effect.
+
+**Customer subdomain:** `customer-xv1aafyshr3tbknu.cloudflarestream.com` is the single Stream account for the site (homepage hero reel + Validator explainer + any future Stream videos all share it). Confirmed in `index.html` STREAM config and now in `digital.html` Validator iframe.
+
 ---
 
 ## Resolved during the `/digital` build-out
 
 1. **Selected work card count: 4-up.** Resolved with the new `.cards.four-up` modifier — `grid-template-columns:repeat(4,1fr)` at desktop, `repeat(2,1fr)` at ≤1100px, `1fr` at ≤680px. The `:nth-child(n+2) .meta` rule widens the padding-left selector from the homepage's `(2),(3)` to all cards beyond the first.
-2. **Two `.engine` bands on one page.** Resolved: kept both bands. The Validator band uses the new `.validator-band` modifier (1fr/1fr grid + smaller H2) to accommodate H2 + body + CTA on the left and the `.terminal` block on the right. The How-we-work band uses the canonical 5fr/7fr split. Repetition is the rhythm, not a weakness — the two are clearly distinguished by their right-column content (terminal vs prose).
+2. **Two `.engine` bands on one page.** Resolved: kept both bands, with the second band now also flipped to ink. The Validator band uses the `.validator-band` modifier (1fr/1fr grid + smaller H2 + ink background — see Pattern D for the June 23 2026 video-swap update) to accommodate H2 + body + CTA on the left and the Cloudflare Stream explainer video on the right. The How-we-work band uses the canonical 5fr/7fr split on paper. Repetition is the rhythm, not a weakness — the two are now clearly distinguished by both their right-column content (video vs prose) and their backgrounds (ink vs paper).
 3. **Hero scale: 50vh.** Resolved: kept the standard `.sub-hero` 50vh — the design system says sub-page hero is a section header, not a takeover. Hub pages aren't an architectural exception. CTA row added via the new `.sub-hero-ctas` extension instead of bumping the hero height.
 
 ## Open follow-ons

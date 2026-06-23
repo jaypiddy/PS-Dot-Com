@@ -80,7 +80,7 @@ _Routes to `#contact`._
 
 ## Validator
 
-_Tool tease. Two-column: argument on the left, faux terminal demonstrating the validator's output on the right. The terminal block is interactive flourish — copy reads as a realistic exchange._
+_Tool tease. Two-column INK band — section flips to ink background to read as the page's strongest CTA. Argument on the left, Cloudflare Stream explainer video on the right (16:9). The video is the asset that conveys what the Validator does — the previous terminal demo was decorative flourish, replaced June 23 2026._
 
 **H2:** Don't take the meeting yet. Take the test.
 
@@ -88,18 +88,9 @@ _Tool tease. Two-column: argument on the left, faux terminal demonstrating the v
 
 **CTA:** Validate your MVP →
 
-### Terminal demo
+### Video embed
 
-_Six-line scripted exchange in a monospace block, lines reveal in sequence. Role-coded with a leading icon (`$` prompt, `✓` ok, `▲` warn, `→` signal)._
-
-| Role | Line |
-|---|---|
-| PROMPT | `$ validate "marketplace app, two-sided, 12-week ask"` |
-| OK | `✓ core loop — buildable in scope` |
-| OK | `✓ auth + payments — known patterns` |
-| WARN | `▲ reviews + messaging — cut from v1, sequence to v2` |
-| WARN | `▲ 12 weeks — realistic at 6 with scope above` |
-| SIGNAL | `→ signal: build it. smaller, sooner.` |
+_Cloudflare Stream explainer video. Iframe player (controls, audio, captions if uploaded, lazy load, adaptive HLS all handled by Cloudflare). Customer subdomain `customer-xv1aafyshr3tbknu.cloudflarestream.com` — same account as the homepage hero reel. The video UID needs to be pasted into both occurrences of `REPLACE_VALIDATOR_VIDEO_UID` in `digital.html` (iframe src + poster URL param)._
 
 ---
 
@@ -246,10 +237,28 @@ _Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of th
     - **Hero body:** "MVPs in 4–6 weeks; platforms that hold at enterprise scale." — "MVPs" is the explicit qualifier, and the second clause explicitly contrasts the platform side. The two-clause structure carries the scoping.
     - **Offer 01 — Rapid MVP, lead:** "A working MVP in 4–6 weeks — pressure-tested before a dollar is committed." — inside the Rapid MVP card, naturally scoped.
     - **Offer 01 — Rapid MVP, body:** "Start with the Validator. Then six weeks to a real product in market…" — inside the Rapid MVP card, naturally scoped.
-    - **Validator terminal demo:** "▲ 12 weeks — realistic at 6 with scope above" — inside a sample Validator output for a hypothetical marketplace MVP. The Validator front-doors the Rapid MVP offer, so the demo is naturally scoped.
 
     **Where the specific-number claim is NOT allowed:**
     - **Page closer.** The closer body is page-level and spans both service lines. The original closer body ("In six weeks you'll be testing software, not reviewing decks…") was rewritten on June 23 2026 to drop the timeframe entirely and lean on visibility + direct collaboration instead — both true regardless of project length. New body: "You'll see the work in progress, not reveal meetings — and you'll work directly with the people making it. No account layer, no brief telephone." Echoes the "Early and often" engine band's visibility promise.
     - **Future Studios cross-link copy, About page positioning, Partners pitch deck reuse** — anywhere a whole-practice numeric claim would land.
 
     The homepage closer ("Cinema in days. Software in weeks.") is a masterbrand-velocity claim covering both Digital and Studios. "Cinema in days" is itself a numeric duration claim (the Studios analogue of "MVPs in 4-6 weeks") and the same scoping logic applies — when revisited, those claims should sit inside service-line context, not at the masterbrand level. Its own editorial call.
+
+14. **Validator section — flipped to ink background, terminal replaced with Cloudflare Stream explainer video.**
+    JP feedback on June 23 2026: "The rapid MVP section kind of blurs in with the page. I want this to feel like a stronger call to action, so I would like to use the black background. I also don't think that the image we have there with the mono text, monotype text is of a benefit. We've got an explainer video that I think is much stronger for being able to convey the idea of what the Rapid MVP is."
+
+    **Two changes applied:**
+
+    a) **Section background flipped paper → ink.** Adds a paper/ink/paper sandwich between the offers block above and the how-we-work band below. The Validator now reads as the page's strongest CTA rather than a third paper-on-paper section blending into the rhythm. `.validator-band` now sets `background:var(--ink); color:var(--paper)` with paper H2, paper p (.86 opacity), full-paper `<strong>`. `em.voice` stays magenta. The button (`.btn.solid.cascade`) stays paper-on-ink — high contrast on the dark section, matches the homepage closer's solid CTA treatment on its dark band.
+
+    b) **Terminal block replaced with Cloudflare Stream video embed.** The `.terminal` CSS pattern (six lines of scripted CLI output with role-coded magenta signal line) is stripped from `digital.html` entirely. The right column now carries a `.video-frame` block — a new generic 16:9 video container — holding a Cloudflare Stream iframe player. The Stream iframe handles controls, captions (when uploaded), lazy loading, and adaptive HLS — no JS to wire on our side.
+
+    **Pending input — pasted later by JP:** the Cloudflare video UID. The HTML has `REPLACE_VALIDATOR_VIDEO_UID` as a literal placeholder in **two** places (iframe `src` and the URL-encoded `poster` parameter). Customer subdomain is already wired (`customer-xv1aafyshr3tbknu.cloudflarestream.com` — same account as the homepage hero reel, confirmed from `index.html` STREAM config). Once the UID lands, the swap is a single find-and-replace across both occurrences and the video is live; no other code or asset changes required.
+
+    **Pattern split codified:** the site now has two video embed conventions, both legitimate.
+    - **Cloudflare Stream iframe player** (`.video-frame` wrapper) — for marketing/explainer videos the visitor plays deliberately. Controls visible. Audio expected. Used on `/digital` for the Rapid MVP explainer. Reusable on Studios, About, case studies, anywhere a narrated video earns the visit.
+    - **Plain `<video>` tag** with frame-0 poster — for decorative card loops on `/work` (3-8s, muted, autoplay on hover, no controls). Documented in `docs/VIDEO_PIPELINE.md`. The clip spec (3-8s, 1280×720, H.264, ~1-2.5MB, audio stripped, faststart, frame-0 IS the poster) applies to this pattern only.
+
+    **`.terminal` pattern preserved in the design system audit doc** as a reusable component (case studies showing technical work, Insights articles citing CLI exchanges, Studios pipeline documentation) — just not used on `/digital` anymore. Each page that wants the pattern will redefine the CSS inline per project convention (no shared stylesheet). The audit doc's "New patterns" §B entry for `.terminal` stays catalogued; needs an updated note on the next audit-doc pass noting that the pattern is currently unused but available, and a new §C entry for `.video-frame`.
+
+    **Magenta budget after the change** is still inside the 2-per-viewport ceiling. The Validator viewport at rest now has one magenta surface (`em.voice` on "Take the test."). The terminal's signal-line magenta is gone. The CTA hover state on `.btn.solid` adds a second magenta surface but only during interaction (not at rest), so the budget holds.

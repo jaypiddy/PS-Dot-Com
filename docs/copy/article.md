@@ -1,0 +1,223 @@
+# Article template
+
+**Route:** `/article` (file: `article.html`)
+**Source HTML:** `article.html`
+**Last sync commit:** `a64031d`
+**Status:** LIVE (template chrome) · sample body content is paginated dynamically from Notion in production
+
+The shared chrome (header, takeover menu, footer) on this page is governed by `_shared.md`. This file covers the page-specific copy above the footer: sub-page hero, masthead plate, article body, related-reading section, page closer.
+
+This is a **template page**. The sample article currently in the HTML is "Why scoping digital product and software development projects is challenging — and what to do about it" by Steven Bone — used as the canonical example to demonstrate every editorial component the template supports. In production, the title, byline, excerpt, masthead image, body content, and related-reading list all come from the Notion Blogs database for the article matching the route slug. This file documents (a) the template's structural copy that's the same on every article, and (b) the sample content currently in the rough-in.
+
+---
+
+## Sub-page hero
+
+_50vh sub-hero. Back link returns to `/insights`; H1 + sub-voice + byline strip set the article's identity. All four fields below come from Notion in production._
+
+**CTA (back):** ← Back to all Insights
+
+**H1 (dynamic):** Why scoping digital product and software development projects is challenging — and what to do about it
+
+**SUB-VOICE (serif italic, magenta, dynamic):** Estimates fail for structural reasons, not effort reasons. Here is what we changed.
+
+**MICRO (byline, dynamic — separators are template-level):**
+
+| Role | Field | Sample value |
+|---|---|---|
+| BYLINE | By _(Author name)_ | By Steven Bone |
+| SEP | · | · |
+| DATE | _(published date)_ | June 12, 2026 |
+| SEP | \| | \| |
+| CATS | _(comma-joined category names)_ | Digital Products · Process · AI |
+
+_Author and category fields link to filtered insights views in production._
+
+---
+
+## Masthead plate
+
+_Full-width 21:9 image plate below the hero. Image asset and photo credit come from the Blogs record. The dark scrim is toggled by a "Masthead Dark Overlay" checkbox on the record._
+
+**MICRO (photo credit, dynamic):** Anton Darius via Unsplash
+
+_The masthead collapses gracefully if no image is set on the record (slot-frame fallback, same pattern as the no-thumbnail state in `insights.md`)._
+
+---
+
+## Article body
+
+_Editorial magazine × dense Swiss layout. The body content is fully dynamic per article. The patterns documented below are the components the template's renderer supports — when authoring new posts in Notion, these are the building blocks available._
+
+### Component: Lede paragraph
+
+The first paragraph of the body is class `lede` and gets typographic emphasis. Bold the structural idea.
+
+**Sample (LEDE, dynamic):** Every software estimate is a forecast about a system that does not exist yet, made by people with incomplete information, for stakeholders who will change their minds. That is not a criticism of anyone involved. It is the **structural condition** of the work, and pretending otherwise is where most scoping pain begins.
+
+### Component: Body paragraph
+
+Standard prose. Inline italic for emphasis; inline links for cross-references.
+
+**Sample (BODY, dynamic):** We have run fixed-bid projects, time-and-materials projects, and everything between. The pattern that emerges is consistent: the estimate is never wrong because the team was slow. It is wrong because *the thing being estimated changed* while it was being built — usually for good reasons, discovered honestly, mid-flight. More on how we absorb that in our [Rapid MVP approach](#).
+
+### Component: H2 section heading
+
+Lowercase or sentence-case, the editorial register decides. This template's renderer treats H2s as the navigable section anchors.
+
+**Sample (H2):** The three places scope actually breaks
+
+### Component: Ledger (numbered ledger rows)
+
+Three-row maximum recommended. Each row is a hand-numbered claim with a 1-line H3 and a 1-paragraph BODY. Used for taxonomies, mechanisms, places-where, etc.
+
+**Sample ledger row 1:**
+- **NUM:** 1
+- **H3:** The integration surprise
+- **BODY:** The client's existing systems are documented optimistically. The API that "definitely supports webhooks" supports them in a deprecated version. Nobody knows this until a developer is inside it.
+
+**Sample ledger row 2:**
+- **NUM:** 2
+- **H3:** The decision latency
+- **BODY:** Approvals modeled as same-day take eleven. The team idles or speculates; both cost money.
+
+**Sample ledger row 3:**
+- **NUM:** 3
+- **H3:** The success problem
+- **BODY:** The product works, stakeholders see it working, and they immediately want it to do more. This is the best problem to have and the worst one to have priced.
+
+### Component: Pull-quote breakout (aside)
+
+Right-rail or center breakout. Eyebrow + a single pull sentence with one magenta-emphasized span.
+
+**Sample (PULL):**
+- **EYEBROW:** The pattern
+- **BODY:** The estimate is never wrong because the team was slow. It is wrong because *the thing being estimated changed* while it was being built.
+_("the thing being estimated changed" rendered in magenta via `span.mag`.)_
+
+### Component: Bulleted list (changes)
+
+Used for unordered, weighted lists. Bold the leading claim of each line; nested list for sub-points if needed.
+
+**Sample (LIST):**
+- **Fixed scope for the first two weeks only** — long enough to hit the integration surprises while they are cheap
+- **A decision SLA written into the agreement,** with named owners
+  - If the SLA slips, the timeline slips with it, visibly and without negotiation
+- **Change priced as a feature** of the engagement, not an exception to it
+
+### Component: Ordered list (sequence)
+
+Used for explicit ordering claims. The class `seq` renders a deliberate, mechanical look.
+
+**Sample (LIST):**
+1. Scope the unknowns first, not the deliverables
+2. Build the riskiest integration in week one
+3. Re-estimate at the two-week mark with real data
+
+### Component: Figure with caption
+
+Full-bleed breakout figure. Image + a `b`-prefixed figure number + caption.
+
+**Sample (FIGURE):**
+- **ALT:** Scope drift across a 12-week engagement
+- **CAPTION-NUM:** Fig. 01
+- **CAPTION-BODY:** Scope drift across a typical 12-week engagement. The two-week re-estimate point is where forecast and reality converge.
+
+### Component: Signal newsletter embed
+
+Inline newsletter signup. One-line tease + signup field + Subscribe button.
+
+**SIGNAL-LEDE:** Scoping is one dispatch of many. *The Signal* ships what we're learning — monthly, short, no filler.
+
+**MICRO (input placeholder):** Email address
+
+**CTA:** Subscribe
+
+### Component: Video embed (breakout)
+
+Inline YouTube embed (or other), full-bleed breakout. No copy on the template; the prose intro frames it.
+
+**Sample intro paragraph:** We talked through this model on the Brand Experience Podcast — watch or listen below.
+
+### Component: Podcast embed (breakout)
+
+Inline Podbean embed (or other), full-bleed breakout. Same pattern as video.
+
+### Component: End paragraph
+
+The last paragraph carries class `end` — typographic finish, slightly different vertical rhythm. Used as the closing argument.
+
+**Sample (BODY, end):** None of this makes estimating easy. It makes the estimate honest about what it is — a forecast with a known revision point — and that single change has done more for client trust than any accuracy improvement ever did.
+
+---
+
+## Related reading
+
+_Below the article body, above the page closer. Indexed editorial rows (3 maximum recommended) routing to other articles. Section collapses entirely when the article has zero related posts._
+
+**H2:** Related *reading*
+_("reading" in serif italic + magenta — `em.voice.mag`.)_
+
+**CTA (header):** All insights →
+
+### Row 01 (dynamic)
+
+- **INDEX:** 01
+- **STREAM:** Digital Products
+- **REL-TITLE:** Composable development with AI agents
+- **MICRO (date):** May 28, 2026
+
+### Row 02 (dynamic)
+
+- **INDEX:** 02
+- **STREAM:** Process
+- **REL-TITLE:** Working software in weeks, not months
+- **MICRO (date):** April 3, 2026
+
+### Row 03 (dynamic)
+
+- **INDEX:** 03
+- **STREAM:** AI
+- **REL-TITLE:** The brand experience podcast
+- **MICRO (date):** February 19, 2026
+
+---
+
+## Page closer
+
+_Magenta CTA band at the foot of the page, above the footer. Same scale as the homepage closer; page-specific H2 + sub-voice._
+
+**H2 (CAPS + SUB-VOICE pair):**
+- **CAPS:** Read enough?
+- **SUB-VOICE:** Let's build.
+_(SUB-VOICE renders as serif italic in magenta — `em.voice.mag`.)_
+
+**BODY:** Cinema in days. Software in weeks. You'll work directly with the people who make it — no account layer, no brief telephone.
+
+**CTA (solid):** Start a project →
+**CTA (tel):** +1 (604) 227-9952
+
+---
+
+## Notes & open calls
+
+1. **Sample content vs. template chrome.**
+   The hero title/excerpt/byline, masthead photo credit, body content, and related rows are all dynamic per article. The template chrome (back link label, byline format, "Related reading" H2, "All insights →" CTA, page-closer copy) is the same on every article and is owned by this file. Edits to dynamic fields belong in Notion; edits to the chrome belong here.
+
+2. **Components available to authors.**
+   The "Article body" section above enumerates every component the renderer supports: lede, body paragraph, H2, ledger (numbered rows), pull-quote breakout, bulleted list (incl. nested), ordered sequence list, figure with caption, signal embed, video embed, podcast embed, end paragraph. When a new component is added to the renderer, document it here so authors have a current menu.
+
+3. **The Signal embed is global.**
+   Every article in the rough-in shows the Signal newsletter signup mid-body. Decide whether: (a) it's inserted automatically by the renderer at a fixed scroll position, (b) authors place it where it fits the article's rhythm, or (c) it's reserved for certain article lengths only. The current rough-in shows option (b).
+
+4. **Related-reading source.**
+   The three related rows in the rough-in are static. Production needs a rule: by stream, by category, by manual curation field in Notion, or some blend. Specify before launch — random / blank-on-zero is the current fallback.
+
+5. **The article in the rough-in is real, the author may not be referenceable.**
+   The Steven Bone byline on this template is currently a placeholder. Before this content surfaces under that byline in production, confirm Steven Bone is a referenceable contributor — or replace with the actual author of the scoping piece when written.
+
+6. **Embedded video and podcast destinations.**
+   The video embed currently targets a Rick Astley placeholder URL; the podcast embed targets a Podbean placeholder. Both ship as broken until real destinations are wired. Per-article values come from Notion fields on the Blogs record.
+
+7. **"Working software in weeks, not months" in Row 02.**
+   This canonical line appears as a related-reading title — both an article subject and a piece of canon. When the canon shifts (it just did, from "not quarters" to "not months"), this row's title needs to track. Already aligned at sync commit `a64031d`.

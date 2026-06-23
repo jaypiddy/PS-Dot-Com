@@ -1,32 +1,44 @@
-# Copy deck
+# Copy deck (repo mirror)
 
-The site's user-facing copy, versioned alongside the HTML. One file per page. Shared chrome (header, menu, footer) lives in `_shared.md`.
+**Master deck lives in Notion.** This directory mirrors it.
 
-This deck is the source of truth for site copy from the date the first page lands. **Copy changes are made here first, then propagated to HTML in the same commit.** Anything else is drift waiting to happen.
+- **Master:** [Copy Deck — powershifter.com](https://app.notion.com/p/388b37adcd5b81e9946af8f38d89d5ad) under the powershifter.com CMS page in the powershifteragency workspace
+- **This mirror:** `docs/copy/` in `jaypiddy/PS-Dot-Com`
+- **Rendering:** the static HTML in the repo root
 
-The legacy markdown docs in `/mnt/user-data/outputs/POWER_SHIFTER_*` are superseded by this deck.
+When copy on the live site disagrees with the Notion deck, the Notion deck wins. When this mirror disagrees with the Notion deck, the Notion deck wins. The legacy `POWER_SHIFTER_*` markdown docs in `/mnt/user-data/outputs/` are obsolete.
 
 ## Files
 
-| File | Page | Route | Status |
-|---|---|---|---|
-| `home.md` | Homepage | `/` | LIVE |
-| `_shared.md` | Header, takeover menu, footer | n/a — appears on every page | LIVE |
-| `digital.md` | Digital practice | `/digital` | INTERIM |
-| `studios.md` | Studios practice | `/studios` | INTERIM |
-| `about.md` | About | `/about` | INTERIM |
-| _(deferred)_ | Work grid | `/work` | not yet extracted |
-| _(deferred)_ | Insights collection | `/insights` | not yet extracted |
-| _(deferred)_ | Article template | `/article` | not yet extracted (template-level, real content paginates from Notion) |
-| _(deferred)_ | Case study: TELUS & Koodo | `/case-telus-koodo` | not yet extracted |
-| _(deferred)_ | Contact | `/contact` | full-page vs. footer-section decision pending; deferred either way until the structural choice lands |
+| File | Page | Route | Notion page | Status |
+|---|---|---|---|---|
+| _(parent overview)_ | Copy Deck — powershifter.com | n/a | [open](https://app.notion.com/p/388b37adcd5b81e9946af8f38d89d5ad) | n/a |
+| `_shared.md` | Shared chrome (header, menu, footer) | n/a — every page | [open](https://app.notion.com/p/388b37adcd5b818398b5fdf56f64d450) | LIVE |
+| `home.md` | Homepage | `/` | [open](https://app.notion.com/p/388b37adcd5b81c29b6fcdfc35260f02) | LIVE |
+| `digital.md` | Digital practice | `/digital` | [open](https://app.notion.com/p/388b37adcd5b810d8869e75c2367594f) | INTERIM |
+| `studios.md` | Studios practice | `/studios` | [open](https://app.notion.com/p/388b37adcd5b81ba9beafe136dfc6c58) | INTERIM |
+| `about.md` | About | `/about` | [open](https://app.notion.com/p/388b37adcd5b8188867ef30cf05e7f2b) | INTERIM |
+| _(deferred)_ | Work grid | `/work` | not yet extracted | — |
+| _(deferred)_ | Insights collection | `/insights` | not yet extracted | — |
+| _(deferred)_ | Article template | `/article` | not yet extracted (template-level, real content paginates from Notion) | — |
+| _(deferred)_ | Case study: TELUS & Koodo | `/case-telus-koodo` | not yet extracted | — |
+| _(deferred)_ | Contact | `/contact` | full-page vs. footer-section decision pending; deferred either way until the structural choice lands | — |
 
 **Status meanings:**
 
 - **LIVE** — copy reflects what's currently shipped in the static site HTML. Drift is a bug.
 - **INTERIM** — copy extracted from a prototype HTML that hasn't been built into the static site yet. Open calls and conflicts with current canon are flagged in each file's **Notes** section. Promotes to LIVE when the page lands in the repo.
 
-Pages with no HTML and no prototype — Careers — are not in the deck. They get added when they're built. No skeleton files; skeletons invite stale copy.
+Pages with no HTML and no prototype — Careers — are not in the deck. They get added when they're built.
+
+## Workflow
+
+1. Copy change → edit the page in **Notion** first.
+2. Mirror the edit in the corresponding `docs/copy/*.md` file in this repo.
+3. Propagate to the matching HTML location(s) in the static site.
+4. Steps 2 and 3 land in the same Git commit. Step 1 is done before that commit, not after it.
+
+Skipping step 1 means Notion is no longer the source of truth and the deck drifts. Skipping steps 2 or 3 means the live site stops matching the deck. Either failure mode puts us back in the Webflow situation where nobody knows what's live and what's a draft.
 
 ## Conventions
 
@@ -35,7 +47,7 @@ Pages with no HTML and no prototype — Careers — are not in the deck. They ge
 Each page file mirrors the HTML's section structure:
 
 - **H1** = page name + route
-- **Metadata block** below H1: route, status, source HTML file, last sync commit
+- **Metadata block** below H1: route, status, source HTML file, last sync commit, link back to the Notion page
 - **H2** = section name. Matches the HTML `<!-- Block N — Name -->` markers where they exist
 - **Section role line** under each H2 (italic, one line): what the section is for
 - **Copy lines** within each section, each prefixed with a role label in **bold**
@@ -81,16 +93,8 @@ When a word or phrase has a non-obvious visual treatment baked in (e.g. magenta 
 
 ### Approved canon lines
 
-The lines below are the canonical Power Shifter brand statements. They appear in multiple places; when one changes, every appearance updates in the same commit.
+The lines below are the canonical Power Shifter brand statements. They appear in multiple places; when one changes, every appearance updates in the same commit (and the Notion master updates first).
 
 1. Made to use. / Made to remember.
 2. Anyone can generate. / Few can direct.
 3. Working software in weeks, not months.
-
-## Workflow
-
-1. Copy change requested → edit the relevant `.md` file in this deck.
-2. Propagate the change to the matching HTML location(s) in the same commit.
-3. Update the **last sync commit** field in the file's metadata block.
-
-If you only touch the HTML and skip the deck, the deck drifts and we're back to where we started in a week. Don't.

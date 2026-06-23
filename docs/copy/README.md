@@ -12,12 +12,21 @@ The legacy markdown docs in `/mnt/user-data/outputs/POWER_SHIFTER_*` are superse
 |---|---|---|---|
 | `home.md` | Homepage | `/` | LIVE |
 | `_shared.md` | Header, takeover menu, footer | n/a — appears on every page | LIVE |
+| `digital.md` | Digital practice | `/digital` | INTERIM |
+| `studios.md` | Studios practice | `/studios` | INTERIM |
+| `about.md` | About | `/about` | INTERIM |
 | _(deferred)_ | Work grid | `/work` | not yet extracted |
 | _(deferred)_ | Insights collection | `/insights` | not yet extracted |
 | _(deferred)_ | Article template | `/article` | not yet extracted (template-level, real content paginates from Notion) |
 | _(deferred)_ | Case study: TELUS & Koodo | `/case-telus-koodo` | not yet extracted |
+| _(deferred)_ | Contact | `/contact` | full-page vs. footer-section decision pending; deferred either way until the structural choice lands |
 
-Pages that don't have HTML yet — Digital practice, Studios practice, About, Contact — are not in the deck. They get added when they're built. No skeleton files; skeletons invite stale copy.
+**Status meanings:**
+
+- **LIVE** — copy reflects what's currently shipped in the static site HTML. Drift is a bug.
+- **INTERIM** — copy extracted from a prototype HTML that hasn't been built into the static site yet. Open calls and conflicts with current canon are flagged in each file's **Notes** section. Promotes to LIVE when the page lands in the repo.
+
+Pages with no HTML and no prototype — Careers — are not in the deck. They get added when they're built. No skeleton files; skeletons invite stale copy.
 
 ## Conventions
 

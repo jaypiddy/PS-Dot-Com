@@ -177,11 +177,11 @@ _Webflow line removed: the v1 prototype was authored before the Webflow directio
 
 ## Closer
 
-_Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of the input; two CTAs._
+_Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of the input and reinforces the visibility + direct-collaboration promise (timeline-agnostic — holds for both service lines); two CTAs._
 
-**H2:** The roadmap isn't the product.
+**H2:** The roadmap isn't the product. *Bring the idea.*
 
-**BODY:** Bring the idea. In six weeks you'll be testing software, not reviewing decks.
+**BODY:** You'll see the work in progress, not reveal meetings — and you'll work directly with the people making it. No account layer, no brief telephone.
 
 **CTA (solid):** Start a project →
 **CTA (tel):** +1 (604) 227-9952
@@ -236,3 +236,20 @@ _Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of th
 
 12. **Takeover menu link 02 (Digital) — cross-page rewire still pending.**
     Every existing built page's takeover menu (`work.html`, `insights.html`, `article.html`, `case-telus-koodo.html`) carries link 02 pointing to `index.html#digital` (the anchor on the homepage doors block). Now that `digital.html` is live, link 02 should route to `digital.html` instead. The `digital.html` page itself still has link 02 pointing to `index.html#digital` to stay consistent with the other pages — diverging on one page only would create inconsistent navigation. The cross-page rewire is its own commit and touches every page with a takeover. Same kind of follow-on applies to links 03 (Studios), 05 (About), and 06 (Contact) when those pages ship.
+
+13. **Editorial constraint — "six weeks" / "4-6 weeks" claims scoped to Rapid MVP only.**
+    The specific-number cadence claim is the Rapid MVP service line's claim, not a whole-practice claim. The reality of the Product Design & Engineering offer is that platforms — even AI-assisted, even agentic-pipeline-supported — still run months, not weeks. Putting a specific timeframe number into any whole-page surface (page closer, partner pitches, About page positioning) reads as an overpromise on the enterprise build work that is the larger part of the practice's actual delivery.
+
+    **Scope of this constraint:** specific-number claims like `six weeks`, `4–6 weeks`, `30 days`, or any numeric duration framing. The H1's generic `Working software in weeks, not months.` is a different category — directional brand canon, paired with the contrasting `not months.` clause, deliberately ambiguous on which projects land in weeks vs which run longer. That phrasing is shared with the homepage doors block, the shared chrome taglines, the article template's related-reading row, and the deck overview — it stays as-is. If the H1 framing is ever revisited, that's a cross-page edit and its own decision.
+
+    **Where the specific-number claim IS allowed on `/digital`** (each one qualified by service-line context):
+    - **Hero body:** "MVPs in 4–6 weeks; platforms that hold at enterprise scale." — "MVPs" is the explicit qualifier, and the second clause explicitly contrasts the platform side. The two-clause structure carries the scoping.
+    - **Offer 01 — Rapid MVP, lead:** "A working MVP in 4–6 weeks — pressure-tested before a dollar is committed." — inside the Rapid MVP card, naturally scoped.
+    - **Offer 01 — Rapid MVP, body:** "Start with the Validator. Then six weeks to a real product in market…" — inside the Rapid MVP card, naturally scoped.
+    - **Validator terminal demo:** "▲ 12 weeks — realistic at 6 with scope above" — inside a sample Validator output for a hypothetical marketplace MVP. The Validator front-doors the Rapid MVP offer, so the demo is naturally scoped.
+
+    **Where the specific-number claim is NOT allowed:**
+    - **Page closer.** The closer body is page-level and spans both service lines. The original closer body ("In six weeks you'll be testing software, not reviewing decks…") was rewritten on June 23 2026 to drop the timeframe entirely and lean on visibility + direct collaboration instead — both true regardless of project length. New body: "You'll see the work in progress, not reveal meetings — and you'll work directly with the people making it. No account layer, no brief telephone." Echoes the "Early and often" engine band's visibility promise.
+    - **Future Studios cross-link copy, About page positioning, Partners pitch deck reuse** — anywhere a whole-practice numeric claim would land.
+
+    The homepage closer ("Cinema in days. Software in weeks.") is a masterbrand-velocity claim covering both Digital and Studios. "Cinema in days" is itself a numeric duration claim (the Studios analogue of "MVPs in 4-6 weeks") and the same scoping logic applies — when revisited, those claims should sit inside service-line context, not at the masterbrand level. Its own editorial call.

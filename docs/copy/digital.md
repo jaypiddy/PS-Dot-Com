@@ -1,9 +1,9 @@
 # Digital practice
 
 **Route:** `/digital` (file: `digital.html`)
-**Source HTML:** `digital.html` (stub) · originally extracted from `PS_Digital_Hub_v1.html` (Claude Design prototype, June 11 2026)
-**Last sync commit:** _to be set on the stub-out commit_
-**Status:** INTERIM — chrome + hero + page closer are LIVE-quality; 6 interior sections are stubbed via `.stub-section` markers pending build-out (see Notes 10)
+**Source HTML:** `digital.html` · originally extracted from `PS_Digital_Hub_v1.html` (Claude Design prototype, June 11 2026)
+**Last sync commit:** _to be set on the build-out commit_
+**Status:** LIVE — all 8 sections (chrome, hero, outcome strip, offers, validator, how-we-work, selected work, partners, page closer) implemented to LIVE quality. Two cards in Selected Work still point to `#` until those case studies are built (Energizer, Delta Controls, Angel Oak); TELUS Rewards links to `case-telus-koodo.html`.
 
 The shared chrome (header, takeover menu, footer) on this page is governed by `_shared.md`. This file covers only the page-specific copy.
 
@@ -36,11 +36,11 @@ _The receipts. Four count-up numerals (count-up JS in the prototype), one per st
 | Role | Number | Unit | Caption |
 |---|---|---|---|
 | STAT | 300,000 | + | enrollments in six months — TELUS Rewards |
-| STAT | 30 | days | idea to validated proof of concept — Energizer |
+| STAT | 30 | days | from idea to validated proof of concept — Energizer |
 | STAT | +40 | % | organic leads — Angel Oak |
 | STAT | Best UX | _(no numeric)_ | Vancouver UX Awards — Delta Controls |
 
-_Wording note: the Energizer caption here drops "from" ("idea to validated…") where the homepage proof spine keeps it ("from idea to validated…"). Pick one when both pages ship live._
+_Stat 4 has no numeric — renders as serif italic text inside the same `.stat b` container, no `.odo` element. CSS rule `.stat b > em{font-style:italic;font-family:var(--serif);font-weight:500}` covers the variant._
 
 ---
 
@@ -52,23 +52,29 @@ _Two-up offer grid. Numbered, no icons. Each tile has a number, an offer name, a
 
 ### Offer 01 — Rapid MVP
 
-**NUM:** 01
+**NUM:** 01 — Pressure-test
 
 **H3:** Rapid MVP
 
-**BODY:** A working MVP in 4–6 weeks — pressure-tested before a dollar is committed.
+**LEAD:** A working MVP in 4–6 weeks — *pressure-tested before a dollar is committed.*
 
-**CTA:** Rapid MVP →
+**BODY:** Start with the Validator. Then six weeks to a real product in market, scoped against what we've already shipped.
+
+**CTA:** Start with the Validator
+_Routes to `https://rapidmvp.powershifter.com/validate`._
 
 ### Offer 02 — Product Design & Engineering
 
-**NUM:** 02
+**NUM:** 02 — Build
 
 **H3:** Product Design & Engineering
 
-**BODY:** The core practice — platforms and products designed and built by one team, holding at enterprise scale.
+**LEAD:** The core practice — platforms and products designed and built by one team, *holding at enterprise scale.*
 
-**CTA:** The practice →
+**BODY:** Designers, strategists and engineers in the same room. No account layer. Senior people on the work, AI in the pipeline.
+
+**CTA:** Start a project
+_Routes to `#contact`._
 
 ---
 
@@ -164,9 +170,8 @@ _Credentialed partnerships strip. No header. Lead sentence + a horizontal row of
 - Contentful · Silver Partner
 - Sanity · Agency Partner
 - Vercel · Expert
-- Webflow · Enterprise Partner
 
-_Note: the prototype was authored before the Webflow direction was abandoned. The Webflow line may need to come out when this page is built; the partner tier list more broadly needs verification of current standing before paid reuse._
+_Webflow line removed: the v1 prototype was authored before the Webflow direction was abandoned. Partner tier standings for the three remaining still need verification before paid reuse — see Notes 3._
 
 ---
 
@@ -188,11 +193,11 @@ _Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of th
 1. **Hero H1 — resolved to canon "not months."**
    The original v1 prototype's hero read "Working software in weeks, not quarters." Resolved on June 23 2026 (stub commit) to the current canon "Working software in weeks, *not months.*" — matching `home.md`, `article.html`, `_shared.md` taglines, and the deck overview. The H1 now renders with `em.voice` on "not months." mirroring the homepage doors block's Digital door lead line exactly. The "not quarters" wording is retired permanently.
 
-2. **Energizer caption wording.**
-   The outcome strip here reads "idea to validated proof of concept — Energizer." The homepage proof spine reads "from idea to validated proof of concept — Energizer." Standardize on one form when both pages ship.
+2. **Energizer caption wording — resolved to homepage form.**
+   The outcome strip on /digital now reads "from idea to validated proof of concept — Energizer," matching the homepage proof spine verbatim. The v1 prototype's shorter "idea to validated…" wording is retired. Both pages now carry identical caption text — the receipts don't drift between the homepage and the practice page.
 
-3. **Partner list.**
-   Webflow is named in the partners row. The site has since moved off Webflow to static HTML on Vercel. When this page builds, decide: (a) drop Webflow from the row, (b) keep it as a historical partner credential, or (c) replace with the current actual stack. Plus: all four partner tiers (Contentful Silver, Sanity Agency, Vercel Expert, Webflow Enterprise) need verification before reuse on paid outbound — they appear unflagged in the prototype.
+3. **Webflow partner line dropped; remaining tier verification still open.**
+   The v1 prototype carried four partner-tier chips: Contentful Silver, Sanity Agency, Vercel Expert, Webflow Enterprise. Webflow was dropped on the build-out commit (June 23 2026) — Power Shifter moved off Webflow to static HTML on Vercel, so naming Webflow as a current partner would misrepresent the stack. The three remaining tier standings (Contentful Silver, Sanity Agency, Vercel Expert) still need verification before paid reuse — these were unflagged in the prototype and should be confirmed against current partner-portal status before this page is used in paid outbound or pitches.
 
 4. **Stats parity with the homepage.**
    The Best UX / Delta Controls stat replaces the "2× Silver ADDY" stat used on the homepage proof spine. Each page should pick the four proof points most relevant to its dialect. Both stats are real; this is a curation choice, not a conflict.
@@ -212,15 +217,22 @@ _Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of th
 9. **Validator time-to-complete — resolved to "just a few minutes."**
    Three surfaces previously claimed ~2 minutes (Digital practice hero CTA, `rapidmvp.powershifter.com` homepage hero) and one said ~5 minutes (`/validate` intro screen). JP decided on June 23 2026 to drop the specific-number framing entirely in favour of "just a few minutes" — more honest, doesn't lock to a number that has to be defended, and absorbs the natural variability of how long users actually take. The Digital practice hero CTA is now `Validate your idea in just a few minutes →`. The Validator app's homepage `~2 min` claim and the `/validate` intro screen's `Takes ~5 minutes. No obligation.` sit in the separate `jaypiddy/idea-validator-app` repo and need the same update at the validator app's styling refresh — likely standardize on `Takes just a few minutes.` on the `/validate` intro and drop the time claim from the marketing hero, since the time number reads as more credible when it appears right before the user starts answering questions.
 
-10. **Page stubbed; design-system audit doc created.**
-    `digital.html` was stubbed on June 23 2026 with the hero and page closer fully wired and the 6 interior content sections (outcome strip, offers, validator, how-we-work, selected work, partners) marked as `.stub-section` placeholders carrying their pattern reference inline. The full pattern mapping for this page lives in `docs/design-system-audit.md`, which JP requested as the "first right of refusal" reference doc — for every section, the audit documents the existing pattern being inherited (or, in two cases, the new pattern being introduced). The next pass on this page replaces each stub block with the actual implementation pulling the inherited pattern's CSS from its source file. Status remains INTERIM until all 6 stubs are filled in; the H1, body, CTAs, and closer are already at LIVE quality and don't change.
+10. **Page built out — all 6 sections live.**
+    `digital.html` was built out on June 23 2026 (commit after the stub commit). All 6 interior sections are now real implementations, no stubs remaining. The full pattern mapping is in `docs/design-system-audit.md`. Section-to-pattern resolution:
+    - **Outcome strip:** `.proof` + `.proof-row` + 4 `.stat` cells. Stats 1-3 (TELUS, Energizer, Angel Oak) reuse the homepage proof spine HTML verbatim. Stat 4 (Best UX / Delta Controls) is the new text-only variant — `<b><em>Best UX</em></b>` inside `.stat`, no `.odo`. Logos strip omitted (it's the homepage's job).
+    - **Offers:** `.doors.compact` (new variant — sub-page scale, ~48vh per door) with two `.door.digital` cards. Both light-styled since the offers are stages, not opposites; differentiation comes from numbered eyebrows + lead emphasis. "Two ways in" H2 sits in a constrained `.wrap` above the full-bleed doors block.
+    - **Validator:** `.engine.validator-band` (new variant — 1fr/1fr grid instead of canonical 5fr/7fr, H2 dialed to clamp(32px,3.6vw,54px) so it fits the half-width column). Right column carries the new `.terminal` component.
+    - **How we work:** canonical `.engine` band (5fr/7fr), second one on the page — deliberate rhythm reuse. H2 left with magenta `.rule`, 3-paragraph prose body right ending in the bench credentials line.
+    - **Selected work:** `.work` section with `.cards.four-up` (new variant — extends homepage 3-up to 4-up; breaks to 2-up at ≤1100px, 1-up at ≤680px). Only TELUS Rewards links to a real case study; the other three point to `#` until those cases are built.
+    - **Partners:** new `.partners-strip` — 3 partner-tier chips (Contentful Silver, Sanity Agency, Vercel Expert). Webflow dropped per Notes 3.
+    Page status moves from INTERIM to LIVE on this commit. Inherited work.html JS (`.work-grid`/`.wcard`/`[data-cat]` bindings) remains in place as harmless no-ops — JS cleanup is a separate follow-on pass.
 
-11. **New design-system patterns introduced for this page.**
-    Three new patterns were introduced as part of the stub (all documented in `docs/design-system-audit.md` §"New patterns to add to the system"):
-    - **Pattern A — `.sub-hero-ctas`:** extension of `.sub-hero` to support a row of CTAs in the hero. Used here for the Validator + Start-a-project pair. Reusable on `/studios`, `/about`, possibly later Insights stream landing pages.
-    - **Pattern B — `.terminal.breakout`:** monospace 6-line scripted CLI exchange, role-coded by leading icon (`$` prompt, `✓` ok, `▲` warn, `→` signal). Built as a body-component variant so it slots into `.article-body .prose` wherever needed — case studies showing technical work, engineering-stream Insights articles, the Studios AI-pipeline visualization.
-    - **Pattern C — `.partners-strip`:** horizontal row of partner-tier chips (named in text, not logo'd — distinct from the homepage `.logos` mask system). Reusable on `/about`.
-    Also added in the same commit: a `.sub-body` class for hero body prose with bolded mid-sections (sibling of the existing `.sub-voice` italic-magenta treatment and `.streams` 3-stream paragraph treatment) — codifies the hub-page hero body pattern that was missing from the sub-hero system.
+11. **New design-system patterns now in production.**
+    Three new patterns + one extension class were introduced for this page and are now live (all documented in `docs/design-system-audit.md` §"New patterns to add to the system"):
+    - **Pattern A — `.sub-hero-ctas`:** extension of `.sub-hero` to support a row of CTAs in the hero. Live in this page's hero (Validator + Start-a-project pair). Reusable on `/studios`, `/about`, and any future hub-style page.
+    - **Pattern B — `.terminal`:** monospace 6-line scripted CLI exchange, role-coded by leading icon (`$` prompt, `✓` ok, `▲` warn, `→` signal). Live in the Validator section. Lines reveal in sequence via the existing `.reveal` → `.in` observer, staggered 180ms per line. Reusable as `.terminal.breakout` inside `.article-body .prose` on case studies showing technical work, engineering-stream Insights articles, or the Studios AI-pipeline visualization.
+    - **Pattern C — `.partners-strip`:** horizontal row of partner-tier chips (display-weight name + serif-italic tier label). Live in the Partners section. Distinct from `.logos` (which masks client logos via mask-image). Reusable on `/about` when that page ships.
+    Also live: a `.sub-body` class for hero body prose with bolded mid-sections (sibling of the existing `.sub-voice` italic-magenta treatment and `.streams` 3-stream paragraph treatment), and a `.stat b > em` rule for text-only outcome-strip values.
 
-12. **Takeover menu link 02 (Digital) — cross-page rewire pending.**
-    Every existing built page's takeover menu (`work.html`, `insights.html`, `article.html`, `case-telus-koodo.html`) carries link 02 pointing to `index.html#digital` (the anchor on the homepage doors block). Now that `digital.html` exists, link 02 should route to `digital.html` instead. The `digital.html` stub committed today still has link 02 pointing to `index.html#digital` to stay consistent with the other pages — diverging on one page only would create inconsistent navigation. The cross-page rewire is its own commit and touches every page with a takeover. Same kind of follow-on applies to links 03 (Studios), 05 (About), and 06 (Contact) when those pages ship.
+12. **Takeover menu link 02 (Digital) — cross-page rewire still pending.**
+    Every existing built page's takeover menu (`work.html`, `insights.html`, `article.html`, `case-telus-koodo.html`) carries link 02 pointing to `index.html#digital` (the anchor on the homepage doors block). Now that `digital.html` is live, link 02 should route to `digital.html` instead. The `digital.html` page itself still has link 02 pointing to `index.html#digital` to stay consistent with the other pages — diverging on one page only would create inconsistent navigation. The cross-page rewire is its own commit and touches every page with a takeover. Same kind of follow-on applies to links 03 (Studios), 05 (About), and 06 (Contact) when those pages ship.

@@ -232,11 +232,18 @@ CSS picks: flex row with gap, each `.ptier` is a pill with display-weight name +
 
 ---
 
-## Open questions before stub goes to JP
+## Resolved during the `/digital` build-out
 
-1. **Selected work card count: 3 or 4?** Homepage uses 3 cards. `/digital`'s INTERIM copy calls for 4 (TELUS Rewards, Energizer, Delta Controls, Angel Oak). Either works in the `.work` grid — extend the grid template to 4 columns at desktop, drop to 2 at tablet, 1 at mobile. Leaning 4 — gives the page enough work density to justify a "selected" framing instead of "featured."
-2. **Two `.engine` bands on one page.** Validator uses one (argument left, terminal right). How-we-work uses another (H2 left, prose right). Confirm this density is the intent — alternative is to introduce a `.terminal-band` variant that visually distinguishes the Validator section. Leaning two-bands — repetition is rhythm, not weakness.
-3. **Takeover menu link 02 (Digital).** Currently points to `index.html#digital` (the anchor on the homepage doors block). When `digital.html` ships, link 02 should route there. Same applies to link 03 (Studios → `studios.html`), link 05 (About → `about.html`), link 06 (Contact → `contact.html` or `#contact`). Updating one means updating across every page that includes the takeover (work, insights, article, case-X). Flagged for the rewire commit when `/digital` ships.
+1. **Selected work card count: 4-up.** Resolved with the new `.cards.four-up` modifier — `grid-template-columns:repeat(4,1fr)` at desktop, `repeat(2,1fr)` at ≤1100px, `1fr` at ≤680px. The `:nth-child(n+2) .meta` rule widens the padding-left selector from the homepage's `(2),(3)` to all cards beyond the first.
+2. **Two `.engine` bands on one page.** Resolved: kept both bands. The Validator band uses the new `.validator-band` modifier (1fr/1fr grid + smaller H2) to accommodate H2 + body + CTA on the left and the `.terminal` block on the right. The How-we-work band uses the canonical 5fr/7fr split. Repetition is the rhythm, not a weakness — the two are clearly distinguished by their right-column content (terminal vs prose).
+3. **Hero scale: 50vh.** Resolved: kept the standard `.sub-hero` 50vh — the design system says sub-page hero is a section header, not a takeover. Hub pages aren't an architectural exception. CTA row added via the new `.sub-hero-ctas` extension instead of bumping the hero height.
+
+## Open follow-ons
+
+1. **Takeover menu link 02 (Digital).** Every existing page's takeover still points link 02 to `index.html#digital`. Now that `digital.html` is live, link 02 should route to `digital.html`. Same kind of follow-on applies to links 03 (Studios → `studios.html`), 05 (About → `about.html`), and 06 (Contact → `contact.html` or `#contact`) when those pages ship. The cross-page rewire is its own commit touching every page with a takeover (`work.html`, `insights.html`, `article.html`, `case-telus-koodo.html`, `digital.html`).
+2. **JS cleanup on `digital.html`.** Inherited scripts from `work.html` still bind to `.wcard`, `.work-grid`, `[data-cat]`, and `.wframe[data-video]` — selectors that don't exist on `/digital`. These are no-ops, not errors, but should be pared down once the inherited `work-filter`/`work-grid` CSS rules (also unused on `/digital`) are removed too.
+3. **Three remaining `/digital` Selected Work case studies.** Energizer, Delta Controls, and Angel Oak cards link to `#` — full case studies need to be written and built (the `ps-case-study-writer` skill carries the seven non-negotiables for these). Only the TELUS Rewards card points to a real case (`case-telus-koodo.html`).
+4. **Partner tier verification.** Contentful Silver, Sanity Agency, and Vercel Expert are named in the Partners section but standings should be verified against current partner-portal status before paid reuse on outbound or pitches.
 
 ---
 

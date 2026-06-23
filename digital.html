@@ -353,34 +353,104 @@
   }
   .sub-hero .sub-body strong{font-weight:700;color:var(--ink);opacity:1}
 
-  /* Scaffold markers — interior sections that have been mapped to a pattern in
-     docs/design-system-audit.md but not yet implemented. These get replaced
-     section-by-section as each one is built. The marker carries the pattern
-     reference inline so the architectural decision is in the code, not just the doc. */
-  .stub-section{
-    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-    padding:clamp(60px,8vh,90px) 0;background:var(--paper);
-  }
-  .stub-section + .stub-section{border-top:0}
-  .stub-section .stub-inner{
-    max-width:var(--max);margin:0 auto;padding:0 var(--gutter);
-    display:flex;flex-direction:column;gap:8px;
-  }
-  .stub-section .stub-label{
-    font-family:var(--text);font-weight:700;font-size:12px;letter-spacing:.14em;
-    text-transform:uppercase;color:var(--magenta);
-  }
-  .stub-section .stub-title{
-    font-family:var(--display);font-weight:500;font-size:clamp(22px,2.2vw,32px);
-    letter-spacing:-.01em;color:var(--ink);
-  }
-  .stub-section .stub-meta{
-    font-size:14px;color:var(--grey);font-family:var(--text);
-  }
-  .stub-section .stub-meta code{
+  /* Card grid 4-up variant — pattern 4b extension for /digital.
+     Pattern reference: docs/design-system-audit.md §2 (pattern 4b).
+     Adds a 4-column desktop layout to the existing .cards/.card system. The
+     :nth-child(n+2) rule widens the homepage's (2),(3) selector so every card
+     beyond the first picks up the inner-gutter padding-left, which keeps the
+     left edge of each card's meta block flush with its frame. */
+  .cards.four-up{grid-template-columns:repeat(4,1fr)}
+  .cards.four-up .card:nth-child(n+2) .meta{padding-left:26px}
+  @media(max-width:1100px){.cards.four-up{grid-template-columns:repeat(2,1fr)}.cards.four-up .card:nth-child(2n+1) .meta{padding-left:0}.cards.four-up .card:nth-child(2n) .meta{padding-left:26px}}
+  @media(max-width:680px){.cards.four-up{grid-template-columns:1fr}.cards.four-up .card .meta{padding-left:0}}
+  /* Hover lift on cards — make the .go arrow light up magenta as the visited cue */
+  .card:hover h3{color:var(--magenta)}
+  .card:hover .go{color:var(--magenta)}
+  .work .all:hover{color:var(--magenta);border-color:var(--magenta)}
+
+  /* Offers section — wraps a .doors block on a sub-page.
+     The homepage doors block IS the section (no separate H2); on /digital the
+     offers section needs an introductory "Two ways in" H2 above the doors. */
+  .offers-section{padding-top:clamp(70px,10vh,120px);background:var(--paper)}
+  .offers-section .wrap{padding-bottom:24px}
+  .offers-h{font-family:var(--display);font-weight:500;font-size:clamp(34px,4vw,60px);letter-spacing:-.015em}
+
+  /* Doors compact variant — sub-page scale.
+     The homepage .doors uses min-height:84vh because doors IS the page block.
+     On a sub-page, that's too tall. .doors.compact removes the min-height
+     constraint and dials the per-door min-height down from 54-84vh to ~48vh. */
+  .doors.compact{min-height:auto}
+  .doors.compact .door{min-height:48vh}
+  @media(max-width:860px){.doors.compact .door{min-height:38vh}}
+
+  /* Validator-band — engine variant.
+     Pattern reference: docs/design-system-audit.md §"New patterns" — adjusts
+     the canonical .engine band for the Validator section. Two changes from canonical:
+     (1) 1fr/1fr grid instead of 5fr/7fr — the left column needs room for H2 + body + CTA;
+     (2) H2 dialed from clamp(40px,4.6vw,72px) to clamp(32px,3.6vw,54px) so the headline
+     doesn't overflow the half-width column. */
+  .validator-band .engine-grid{grid-template-columns:1fr 1fr;align-items:start}
+  .validator-band h2{font-size:clamp(32px,3.6vw,54px)}
+  .validator-band p{font-size:clamp(16px,1.3vw,19px);margin-top:18px;max-width:48ch}
+  .validator-band .vbtn{margin-top:24px;display:inline-block}
+  @media(max-width:860px){.validator-band .engine-grid{grid-template-columns:1fr}}
+
+  /* NEW pattern B — .terminal.
+     Pattern reference: docs/design-system-audit.md §"New patterns" B.
+     Dark ink card with a faux macOS-window dot row (the ::before pseudo carries
+     the three traffic-light dots via box-shadow stacking). Lines reveal in sequence
+     when the parent .reveal element flips to .in — staggered by 180ms per line.
+     Reusable as .terminal.breakout inside .article-body .prose, or standalone in
+     any section that needs a scripted CLI exchange. Role colours stay restrained:
+     prompt is dim, ok/warn are full text, only the signal line takes magenta. */
+  .terminal{background:var(--ink);border-radius:8px;padding:36px 28px 24px;color:var(--paper);
     font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
-    font-size:13px;background:rgba(18,19,21,.06);padding:2px 6px;border-radius:3px;
+    box-shadow:0 18px 44px rgba(18,19,21,.18);position:relative;overflow:hidden}
+  .terminal::before{content:"";position:absolute;top:16px;left:18px;
+    width:10px;height:10px;border-radius:50%;background:rgba(250,250,247,.18);
+    box-shadow:18px 0 0 rgba(250,250,247,.18), 36px 0 0 rgba(250,250,247,.18)}
+  .terminal .term-body{margin:0;padding:0;font-size:13.5px;line-height:1.95;
+    white-space:pre-wrap;word-break:break-word;color:rgba(250,250,247,.92)}
+  .terminal .ln{display:block;opacity:0;transform:translateY(6px);
+    transition:opacity .5s ease-out, transform .5s ease-out}
+  .reveal.in .terminal .ln{opacity:1;transform:none}
+  .reveal.in .terminal .ln:nth-child(1){transition-delay:0s}
+  .reveal.in .terminal .ln:nth-child(2){transition-delay:.18s}
+  .reveal.in .terminal .ln:nth-child(3){transition-delay:.36s}
+  .reveal.in .terminal .ln:nth-child(4){transition-delay:.54s}
+  .reveal.in .terminal .ln:nth-child(5){transition-delay:.72s}
+  .reveal.in .terminal .ln:nth-child(6){transition-delay:.9s}
+  .terminal .ln.prompt{color:rgba(250,250,247,.55)}
+  .terminal .ln.ok{color:rgba(250,250,247,.86)}
+  .terminal .ln.warn{color:rgba(250,250,247,.86)}
+  .terminal .ln.signal{color:var(--magenta);font-weight:700;margin-top:8px}
+  @media(prefers-reduced-motion:reduce){
+    .terminal .ln{opacity:1;transform:none;transition:none}
   }
+
+  /* NEW pattern C — .partners + .partners-strip.
+     Pattern reference: docs/design-system-audit.md §"New patterns" C.
+     Lede sentence + horizontal flex row of partner-tier chips. Each chip pairs
+     a display-weight name with a serif-italic tier descriptor (echoes the .voice
+     italic-on-serif treatment used everywhere else on the site). Magenta surfaces
+     only on hover — single-magenta budget per viewport already committed elsewhere
+     in this section's neighbours, this just provides the interaction cue. */
+  .partners{padding-top:clamp(60px,8vh,100px);padding-bottom:clamp(60px,8vh,100px);
+    background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .partners-lede{font-size:clamp(16px,1.3vw,19px);line-height:1.5;color:var(--grey);max-width:62ch;margin-bottom:30px}
+  .partners-strip{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .ptier{display:inline-flex;gap:10px;align-items:baseline;padding:12px 20px;
+    border:1px solid var(--line);border-radius:999px;
+    transition:border-color .2s ease,color .2s ease}
+  .ptier b{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.005em}
+  .ptier em{font-family:var(--serif);font-style:italic;font-weight:500;font-size:14px;color:var(--grey);transition:color .2s ease}
+  .ptier:hover{border-color:var(--magenta);color:var(--magenta)}
+  .ptier:hover em{color:var(--magenta)}
+
+  /* Outcome-strip text stat — when a .stat carries text instead of an .odo numeral.
+     Inherits .stat b's serif at the same 52-96px scale; <em> adds the italic
+     read so it feels like a category value rather than a measurement. */
+  .stat b > em{font-style:italic;font-family:var(--serif);font-weight:500}
 
   /* Filter bar */
   .work-filter{
@@ -664,67 +734,182 @@
 </section>
 
 
-<!-- Outcome strip — stub. Pattern: .proof + .proof-row + .stat + .odo (audit §2 pattern 6).
+<!-- Outcome strip — .proof + .proof-row + .stat + .odo pattern.
+     Pattern reference: docs/design-system-audit.md §2 (pattern 6).
      Source: index.html:517-540, CSS index.html:99-138, 275.
-     Copy: 4 stats per docs/copy/digital.md (TELUS Rewards 300k+, Energizer 30 days, Angel Oak +40%, Delta Controls Best UX). -->
-<section class="stub-section">
-  <div class="stub-inner">
-    <span class="stub-label">Outcome strip — stub</span>
-    <p class="stub-title">The receipts — four proof stats</p>
-    <p class="stub-meta">Pattern: <code>.proof</code> + odometer trio · Source: <code>index.html:517-540</code> · Copy: <code>docs/copy/digital.md</code></p>
+     Stats 1-3 copied verbatim from the homepage proof spine (identical captions; the
+     receipts shouldn't drift between the homepage and the practice page). Stat 4 is
+     text-only ("Best UX") — no odometer, no suffix, just <em> for italic serif.
+     The #proofRow id hooks into the existing reveal+go observer in this file's <script>
+     (graceful no-op on pages without #proofRow, see digital.html:921-934). Logos strip
+     is intentionally omitted — that's the homepage's job; the practice page doesn't
+     repeat the client wall. -->
+<section class="proof">
+  <div class="wrap proof-inner reveal">
+    <span class="eyebrow">The receipts</span>
+    <div class="proof-row" id="proofRow">
+      <div class="stat"><b><span class="odo"><span class="col" style="--d:3"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="ch">,</span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx">+</span></b><span>enrollments in six months — TELUS Rewards</span></div>
+      <div class="stat"><b><span class="odo"><span class="col" style="--d:3"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx"> days</span></b><span>from idea to validated proof of concept — Energizer</span></div>
+      <div class="stat"><b><span class="odo"><span class="ch">+</span><span class="col" style="--d:4"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx">%</span></b><span>organic leads — Angel Oak</span></div>
+      <div class="stat"><b><em>Best UX</em></b><span>Vancouver UX Awards — Delta Controls</span></div>
+    </div>
   </div>
 </section>
 
-<!-- Offers (Two ways in) — stub. Pattern: .doors + .door two-up comparison (audit §2 pattern 5).
-     Source: index.html:493-510, CSS index.html:80-96, 228-241, 264-265.
-     Copy: 2 numbered cards per docs/copy/digital.md (Rapid MVP 01, Product Design & Engineering 02). -->
-<section class="stub-section">
-  <div class="stub-inner">
-    <span class="stub-label">Offers — stub</span>
-    <p class="stub-title">Two ways in — Rapid MVP, Product Design &amp; Engineering</p>
-    <p class="stub-meta">Pattern: <code>.doors</code> two-up · Source: <code>index.html:493-510</code> · Copy: <code>docs/copy/digital.md</code></p>
+<!-- Offers — "Two ways in" — .doors + .door two-up comparison.
+     Pattern reference: docs/design-system-audit.md §2 (pattern 5).
+     Source: index.html:493-510, CSS index.html:80-96, 207-208.
+     Both offers are .door.digital (paper-on-paper) — they're sequential stages, not
+     paired opposites like the homepage Digital-vs-Studios contrast. Differentiation
+     comes from the numbered eyebrows + the H2 + the lead emphasis, not the background.
+     Using .door.studios styling here would visually misread as "this is the Studios
+     offer" — kept light on both sides on purpose. NEW: .doors.compact reduces the
+     min-height from 84vh (homepage takeover scale) to ~48vh (sub-page section scale)
+     — see audit doc for the new variant. -->
+<section class="offers-section" id="offers">
+  <div class="wrap reveal">
+    <h2 class="offers-h">Two ways in</h2>
+  </div>
+  <div class="doors compact" aria-label="Two ways to engage Digital">
+    <a class="door digital" href="https://rapidmvp.powershifter.com/validate">
+      <span class="eyebrow">01 — Pressure-test</span>
+      <h2>Rapid MVP</h2>
+      <p class="lead">A working MVP in 4–6 weeks — <em class="voice">pressure-tested before a dollar is committed.</em></p>
+      <p class="body">Start with the Validator. Then six weeks to a real product in market, scoped against what we've already shipped.</p>
+      <span class="enter swipe">Start with the Validator</span>
+    </a>
+    <div class="seam" aria-hidden="true"></div>
+    <a class="door digital" href="#contact">
+      <span class="eyebrow">02 — Build</span>
+      <h2>Product Design &amp; Engineering</h2>
+      <p class="lead">The core practice — platforms and products designed and built by one team, <em class="voice">holding at enterprise scale.</em></p>
+      <p class="body">Designers, strategists and engineers in the same room. No account layer. Senior people on the work, AI in the pipeline.</p>
+      <span class="enter swipe">Start a project</span>
+    </a>
   </div>
 </section>
 
-<!-- Validator — stub. Pattern: .engine + .engine-grid two-column band (audit §2 pattern 7).
-     Right column carries the new .terminal.breakout component (new pattern B in audit).
-     Source: index.html:541-555 + new. Copy: 6-line scripted exchange per docs/copy/digital.md. -->
-<section class="stub-section">
-  <div class="stub-inner">
-    <span class="stub-label">Validator — stub</span>
-    <p class="stub-title">Don't take the meeting yet. Take the test.</p>
-    <p class="stub-meta">Pattern: <code>.engine</code> two-column + NEW <code>.terminal.breakout</code> · Source: <code>index.html:541-555</code> + new · Copy: <code>docs/copy/digital.md</code></p>
+<!-- Validator — .engine + .engine-grid two-column band + NEW .terminal component.
+     Pattern reference: docs/design-system-audit.md §2 (pattern 7) + new pattern B.
+     Source: index.html:541-555, CSS index.html:141-146, 209-210, 304-305.
+     The .validator-band modifier scopes the engine to a 1fr/1fr split (the canonical
+     5fr/7fr is too lean on the left for the argument-CTA stack) and dials the H2 down
+     from the canonical 40-72px to 32-54px so the headline doesn't overflow the column.
+     NEW .terminal component is a body-system variant — see audit §"New patterns" B
+     and the CSS additions block below. Reusable on case studies showing technical work. -->
+<section class="engine validator-band" id="validator">
+  <div class="wrap engine-grid reveal">
+    <div>
+      <h2 class="rise">Don't take the meeting yet.<br><em class="voice">Take the test.</em></h2>
+      <p>Run your idea through the MVP Validator — execution risk, scope realism, and technical feasibility, scored against everything we've ever shipped. <strong>You'll know what to cut before we ever talk.</strong></p>
+      <a class="btn solid cascade vbtn" href="https://rapidmvp.powershifter.com/validate">Validate your MVP →</a>
+    </div>
+    <div>
+      <div class="terminal" aria-label="Sample validator output">
+        <pre class="term-body"><span class="ln prompt">$ validate "marketplace app, two-sided, 12-week ask"</span>
+<span class="ln ok">✓ core loop — buildable in scope</span>
+<span class="ln ok">✓ auth + payments — known patterns</span>
+<span class="ln warn">▲ reviews + messaging — cut from v1, sequence to v2</span>
+<span class="ln warn">▲ 12 weeks — realistic at 6 with scope above</span>
+<span class="ln signal">→ signal: build it. smaller, sooner.</span></pre>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- How we work — stub. Pattern: .engine + .engine-grid two-column band (audit §2 pattern 7).
-     Second engine band on the page — deliberate rhythm reuse.
-     Source: index.html:541-555, CSS index.html:141-146. Copy: 3-paragraph body per docs/copy/digital.md. -->
-<section class="stub-section">
-  <div class="stub-inner">
-    <span class="stub-label">How we work — stub</span>
-    <p class="stub-title">Early and often. Sometimes ugly.</p>
-    <p class="stub-meta">Pattern: <code>.engine</code> two-column · Source: <code>index.html:541-555</code> · Copy: <code>docs/copy/digital.md</code></p>
+<!-- How we work — "Early and often" — .engine + .engine-grid two-column band.
+     Pattern reference: docs/design-system-audit.md §2 (pattern 7).
+     Source: index.html:541-555 (homepage "one room / no fence" usage).
+     Canonical 5fr/7fr split (H2 left with magenta .rule, prose right). This is the
+     second .engine band on the page — deliberate rhythm reuse. The right column
+     carries three paragraphs: the early-and-often principle, the AI-assisted /
+     senior-led sprint structure, and the bench credentials line. -->
+<section class="engine how-band">
+  <div class="wrap engine-grid reveal">
+    <div>
+      <h2 class="rise">Early and often.<br><em class="voice">Sometimes ugly.</em></h2>
+      <span class="rule"></span>
+    </div>
+    <div>
+      <p>You'll see the work in rough cuts, not reveal meetings. Showing you things early — wireframes mid-thought, builds mid-sprint — means we're <strong>never more than one degree off course, and never for long.</strong> No ta-da moments. No surprises in week eleven.</p>
+      <p>Sprints run AI-assisted and senior-led: the machines draft, the experts decide, and you watch it happen. You work directly with the designers and engineers on your product — there's no account layer relaying messages between you and the people doing the work.</p>
+      <p><strong>The bench:</strong> leadership that shipped for Microsoft, Starbucks, Nike, Nintendo, and Coca-Cola before ever sitting in an agency pitch.</p>
+    </div>
   </div>
 </section>
 
-<!-- Selected work — stub. Pattern: .work + .card homepage 3-up extended to 4 cards (audit §2 pattern 4b).
-     Source: index.html:557-594. Copy: 4 cards per docs/copy/digital.md (TELUS Rewards, Energizer, Delta Controls, Angel Oak). -->
-<section class="stub-section">
-  <div class="stub-inner">
-    <span class="stub-label">Selected work — stub</span>
-    <p class="stub-title">Digital, selected — four cards</p>
-    <p class="stub-meta">Pattern: <code>.work</code> + <code>.card</code> (extended to 4-up) · Source: <code>index.html:557-594</code> · Copy: <code>docs/copy/digital.md</code></p>
+<!-- Selected work — "Digital, selected" — .work + .cards.four-up + .card.
+     Pattern reference: docs/design-system-audit.md §2 (pattern 4b).
+     Source: index.html:557-594 (homepage 3-up), CSS index.html:148-167.
+     Extended to 4-up via NEW .cards.four-up modifier (adds the 4th column at desktop,
+     breaks to 2-up at ≤1100px, 1-up at ≤680px). The :nth-child padding rule is widened
+     from (2),(3) to (n+2) so cards 2-4 all get the inner gutter. Only TELUS Rewards
+     links to a real case study (case-telus-koodo.html) at the moment — the other three
+     point to # until those cases are built. -->
+<section class="work" id="selected-work">
+  <div class="wrap">
+    <div class="head reveal">
+      <h2 class="rise">Digital, selected</h2>
+      <a class="all swipe" href="work.html">All work →</a>
+    </div>
+    <div class="cards four-up reveal">
+      <a class="card" href="case-telus-koodo.html">
+        <div class="frame"><img src="images/telus.jpg" alt="TELUS Rewards" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="meta">
+          <span class="tag">Platform</span>
+          <h3>TELUS Rewards</h3>
+          <p>300,000 enrollments in six months.</p>
+          <span class="go swipe">Read the case →</span>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <div class="frame"><img src="images/energizer.jpg" alt="Energizer" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="meta">
+          <span class="tag">Rapid MVP</span>
+          <h3>Energizer</h3>
+          <p>Product-market fit validated in 30 days.</p>
+          <span class="go swipe">Read the case →</span>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <div class="frame"><img src="images/delta_controls.jpg" alt="Delta Controls" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="meta">
+          <span class="tag">Product · Best UX, VUX</span>
+          <h3>Delta Controls</h3>
+          <p>IoT configuration, moved to the cloud.</p>
+          <span class="go swipe">Read the case →</span>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <div class="frame"><img src="images/angel_oak.jpg" alt="Angel Oak" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="meta">
+          <span class="tag">Web · SEO</span>
+          <h3>Angel Oak</h3>
+          <p>+40% organic leads from a user-first redesign.</p>
+          <span class="go swipe">Read the case →</span>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
-<!-- Partners — stub. NEW pattern: .partners-strip (audit §"New patterns" C).
-     No precedent on the site. Copy: 3 partner-tier chips per docs/copy/digital.md (Contentful Silver, Sanity Agency, Vercel Expert). -->
-<section class="stub-section">
-  <div class="stub-inner">
-    <span class="stub-label">Partners — stub</span>
-    <p class="stub-title">Certified, not just familiar</p>
-    <p class="stub-meta">Pattern: NEW <code>.partners-strip</code> · No precedent · Copy: <code>docs/copy/digital.md</code></p>
+<!-- Partners — NEW .partners-strip pattern.
+     Pattern reference: docs/design-system-audit.md §"New patterns" C.
+     No precedent on the site (distinct from .logos which masks client logos on the
+     homepage proof spine — that's customers we've shipped for, this is platforms
+     we're certified on). Lede + horizontal row of partner-tier chips with serif-italic
+     tier label. Webflow line dropped per docs/copy/digital.md Notes 3 — the prototype
+     was authored before the Webflow direction was abandoned. Partner tier standings
+     for Contentful, Sanity, and Vercel still need verification before paid reuse
+     (see Notes 3 and the persistent parking-lot item). -->
+<section class="partners">
+  <div class="wrap reveal">
+    <p class="partners-lede">Certified, not just familiar — and this site runs on the same stack we build for clients.</p>
+    <div class="partners-strip">
+      <span class="ptier"><b>Contentful</b> <em>Silver Partner</em></span>
+      <span class="ptier"><b>Sanity</b> <em>Agency Partner</em></span>
+      <span class="ptier"><b>Vercel</b> <em>Expert</em></span>
+    </div>
   </div>
 </section>
 

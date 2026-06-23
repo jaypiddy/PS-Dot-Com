@@ -1,13 +1,11 @@
 # Digital practice
 
-**Route:** `/digital`
-**Source HTML:** `PS_Digital_Hub_v1.html` (Claude Design prototype, June 11 2026)
-**Last sync commit:** _n/a — page not yet built into the static site_
-**Status:** INTERIM
+**Route:** `/digital` (file: `digital.html`)
+**Source HTML:** `digital.html` (stub) · originally extracted from `PS_Digital_Hub_v1.html` (Claude Design prototype, June 11 2026)
+**Last sync commit:** _to be set on the stub-out commit_
+**Status:** INTERIM — chrome + hero + page closer are LIVE-quality; 6 interior sections are stubbed via `.stub-section` markers pending build-out (see Notes 10)
 
-This is interim copy extracted verbatim from the v1 prototype. Lines that conflict with the canon currently shipped on the homepage are flagged in the **Notes & conflicts** section at the bottom. When the page is built into the static site, those conflicts get resolved at the build commit and this file's status moves to LIVE.
-
-The shared chrome (header, takeover menu, footer) on this page will be governed by `_shared.md`. This file covers only the page-specific copy.
+The shared chrome (header, takeover menu, footer) on this page is governed by `_shared.md`. This file covers only the page-specific copy.
 
 ---
 
@@ -17,13 +15,17 @@ _Identity-first hero. Eyebrow names the practice scope; H1 makes the velocity cl
 
 **EYEBROW:** Digital — product strategy, design & engineering
 
-**H1:** Working software in weeks, not quarters.
-_Conflict: current homepage canon reads "not months." See Notes below._
+**H1:** Working software in weeks, *not months.*
+_("not months" rendered as serif italic via `em.voice`. Matches the homepage doors block's Digital door lead line exactly — same wording, scaled up to H1 for the hub page._
 
 **BODY:** Designers at heart, all the way down to the dev team. **AI does the volume. Senior people make the calls.** MVPs in 4–6 weeks; platforms that hold at enterprise scale.
+_Renders inside `<p class="sub-body">` — a new sibling of the existing `.sub-voice` class (which carries serif-italic-on-magenta lines). `.sub-body` is plain prose with bolded mid-sections, intended for hub pages where the hero needs to qualify the H1 with weighted prose rather than an italic voice flourish._
 
 **CTA (solid):** Validate your idea in just a few minutes →
+_Routes to `https://rapidmvp.powershifter.com/validate` (per Notes 6, 9). Lives inside the new `.sub-hero-ctas` extension to `.sub-hero` — see Notes 10._
+
 **CTA (outline):** Start a project
+_Routes to `#contact` (the page closer)._
 
 ---
 
@@ -183,8 +185,8 @@ _Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of th
 
 ## Notes & conflicts
 
-1. **Hero H1: "not quarters" vs canon "not months."**
-   The hero on this prototype reads "Working software in weeks, not quarters." Current canon (`home.md`, `article.html`, `_shared.md` taglines, the deck's README) reads "not months." When this page is built, the H1 must become **Working software in weeks, not months.** to stay aligned. The "not quarters" wording is retired.
+1. **Hero H1 — resolved to canon "not months."**
+   The original v1 prototype's hero read "Working software in weeks, not quarters." Resolved on June 23 2026 (stub commit) to the current canon "Working software in weeks, *not months.*" — matching `home.md`, `article.html`, `_shared.md` taglines, and the deck overview. The H1 now renders with `em.voice` on "not months." mirroring the homepage doors block's Digital door lead line exactly. The "not quarters" wording is retired permanently.
 
 2. **Energizer caption wording.**
    The outcome strip here reads "idea to validated proof of concept — Energizer." The homepage proof spine reads "from idea to validated proof of concept — Energizer." Standardize on one form when both pages ship.
@@ -209,3 +211,16 @@ _Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of th
 
 9. **Validator time-to-complete — resolved to "just a few minutes."**
    Three surfaces previously claimed ~2 minutes (Digital practice hero CTA, `rapidmvp.powershifter.com` homepage hero) and one said ~5 minutes (`/validate` intro screen). JP decided on June 23 2026 to drop the specific-number framing entirely in favour of "just a few minutes" — more honest, doesn't lock to a number that has to be defended, and absorbs the natural variability of how long users actually take. The Digital practice hero CTA is now `Validate your idea in just a few minutes →`. The Validator app's homepage `~2 min` claim and the `/validate` intro screen's `Takes ~5 minutes. No obligation.` sit in the separate `jaypiddy/idea-validator-app` repo and need the same update at the validator app's styling refresh — likely standardize on `Takes just a few minutes.` on the `/validate` intro and drop the time claim from the marketing hero, since the time number reads as more credible when it appears right before the user starts answering questions.
+
+10. **Page stubbed; design-system audit doc created.**
+    `digital.html` was stubbed on June 23 2026 with the hero and page closer fully wired and the 6 interior content sections (outcome strip, offers, validator, how-we-work, selected work, partners) marked as `.stub-section` placeholders carrying their pattern reference inline. The full pattern mapping for this page lives in `docs/design-system-audit.md`, which JP requested as the "first right of refusal" reference doc — for every section, the audit documents the existing pattern being inherited (or, in two cases, the new pattern being introduced). The next pass on this page replaces each stub block with the actual implementation pulling the inherited pattern's CSS from its source file. Status remains INTERIM until all 6 stubs are filled in; the H1, body, CTAs, and closer are already at LIVE quality and don't change.
+
+11. **New design-system patterns introduced for this page.**
+    Three new patterns were introduced as part of the stub (all documented in `docs/design-system-audit.md` §"New patterns to add to the system"):
+    - **Pattern A — `.sub-hero-ctas`:** extension of `.sub-hero` to support a row of CTAs in the hero. Used here for the Validator + Start-a-project pair. Reusable on `/studios`, `/about`, possibly later Insights stream landing pages.
+    - **Pattern B — `.terminal.breakout`:** monospace 6-line scripted CLI exchange, role-coded by leading icon (`$` prompt, `✓` ok, `▲` warn, `→` signal). Built as a body-component variant so it slots into `.article-body .prose` wherever needed — case studies showing technical work, engineering-stream Insights articles, the Studios AI-pipeline visualization.
+    - **Pattern C — `.partners-strip`:** horizontal row of partner-tier chips (named in text, not logo'd — distinct from the homepage `.logos` mask system). Reusable on `/about`.
+    Also added in the same commit: a `.sub-body` class for hero body prose with bolded mid-sections (sibling of the existing `.sub-voice` italic-magenta treatment and `.streams` 3-stream paragraph treatment) — codifies the hub-page hero body pattern that was missing from the sub-hero system.
+
+12. **Takeover menu link 02 (Digital) — cross-page rewire pending.**
+    Every existing built page's takeover menu (`work.html`, `insights.html`, `article.html`, `case-telus-koodo.html`) carries link 02 pointing to `index.html#digital` (the anchor on the homepage doors block). Now that `digital.html` exists, link 02 should route to `digital.html` instead. The `digital.html` stub committed today still has link 02 pointing to `index.html#digital` to stay consistent with the other pages — diverging on one page only would create inconsistent navigation. The cross-page rewire is its own commit and touches every page with a takeover. Same kind of follow-on applies to links 03 (Studios), 05 (About), and 06 (Contact) when those pages ship.

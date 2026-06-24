@@ -45,16 +45,16 @@ _Open call: verify the judging-category claim before "judged against everything"
 
 ---
 
-## Block 3 — Films index — "The work"
+## Block 3 — Films index — "The films"
 
-_Canonical `.work` + `.cards.four-up` + `.card` pattern (reused from `/digital` "Digital, selected" and the homepage "Selected work"), with a `.wcard.feature` hero card on top — ported verbatim from `/work.html`. JP brief June 24 2026: "The design pattern for the film case studies should be the same pattern/component as on the digital page" + "Lets add this exact component from the work.html page below the title WORK and above the rows of films on the studios page." The original Pattern I (featured rows + 4-up grid hybrid) was decommissioned — every grid film is now an equal card. The featured `.wcard.feature` on top serves as the "lead piece" hero treatment for the strongest film (Iron Mountain — The Summit, the ADDY winner). Iron Mountain also stays as card #1 in the grid — deliberate editorial layering: the featured card sells the trophy; the grid card sells the story. See Notes 16 + Notes 17._
+_Canonical `.work` + `.cards.four-up` + `.card` pattern (reused from `/digital` "Digital, selected" and the homepage "Selected work"), with a `.wcard.feature` hero card on top — ported verbatim from `/work.html`. JP brief June 24 2026: "The design pattern for the film case studies should be the same pattern/component as on the digital page" + "Lets add this exact component from the work.html page below the title WORK and above the rows of films on the studios page." The original Pattern I (featured rows + 4-up grid hybrid) was decommissioned — every grid film is now an equal card. The featured `.wcard.feature` on top serves as the "lead piece" hero treatment for the strongest film (Iron Mountain — The Summit, the ADDY winner). Iron Mountain also stays as card #1 in the grid — deliberate editorial layering: the featured card sells the trophy; the grid card sells the story. See Notes 16 + Notes 17 + Notes 18._
 
-**H2:** The work
-**ALL-WORK LINK (`.all swipe`):** All work → _(routes to `work.html`; the .swipe JS auto-wraps "work" italic-serif, matching /digital's "All work" treatment exactly)_
+**H2:** The films
+**ALL-WORK LINK (`.all swipe`):** See all the work → _(routes to `work.html`; the .swipe JS auto-wraps "work" italic-serif. Copy is "see all the WORK" not "all FILMS" because /work.html is the aggregate index of both Digital and Studios pieces — calling it "all the work" honours that aggregation. See Notes 18.)_
 
 ### Featured card — Iron Mountain (`.wcard.feature` from /work.html)
 
-_Hero treatment, 21:9 cinematic frame, paper-on-tint text overlay. Lives between the H2 row and the 4-up grid below. The h2 element comes verbatim from /work.html (work.html's choice) — the section H2 "The work" above is visually larger via the responsive font-size rules so the hierarchy still reads correctly._
+_Hero treatment, 21:9 cinematic frame, paper-on-tint text overlay. Lives between the H2 row and the 4-up grid below. The h2 element comes verbatim from /work.html (work.html's choice) — the section H2 "The films" above is visually larger via the responsive font-size rules so the hierarchy still reads correctly._
 
 **IMAGE:** `images/iron_mountain.jpg` (full-bleed cover, 21:9 aspect on the featured variant)
 **H2:** Iron Mountain — *The Summit*
@@ -454,9 +454,9 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
     ```
     .work                       ← dark ink band, padded
       .wrap
-        .head                   ← H2 + "All work →" link, flex baseline
+        .head                   ← H2 + "See all the work →" link, flex baseline
           h2.rise               ← display weight, late-serif italic via .swipe
-          a.all.swipe           ← "All work →" (work auto-italicized)
+          a.all.swipe           ← "See all the work →" (work auto-italicized)
         .cards.four-up.reveal   ← 4-column grid, 1px line-light gaps
           a.card                ← each film (ink bg)
             .frame              ← 16:10 aspect image
@@ -486,7 +486,7 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
 
     **All Watch links stub to `#`** until film case-study pages exist. Same status as /digital Selected Work — only TELUS Koodo links to a real case study; the other three /digital cards stub. Six film case-study pages remain on the parking lot — Iron Mountain and Ernest are the highest priority once their stills and offline cuts are exported.
 
-    **"All work →" link** routes to `work.html`. Matches /digital's exact destination. The /work page currently shows 22 mixed Digital + Studios projects; filtering /work for films-only is a future improvement (parked).
+    **"See all the work →" link** routes to `work.html`. Aggregate index of all Digital + Studios projects (22 currently). The copy says "see all the WORK" not "all FILMS" because /work.html is the aggregate — calling it "all the work" honours that aggregation. /digital uses "All work →" with the same destination; the slightly longer phrasing on /studios is deliberate (see Notes 18). Filtering /work for films-only is a future improvement (parked).
 
     **Why this is the right move.**
     - One masterbrand, two doors — and one component vocabulary across both
@@ -532,7 +532,7 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
     </a>
     ```
 
-    Placement: between the `.head` div (H2 "The work" + "All work →") and the `.cards.four-up` grid. No layout container around it — just a direct child of `.wrap`.
+    Placement: between the `.head` div (H2 "The films" + "See all the work →") and the `.cards.four-up` grid. No layout container around it — just a direct child of `.wrap`.
 
     **Iron Mountain appears TWICE on the page.** Once in the featured hero card on top, once as card #1 in the 4-up grid below. Different body copy by design:
     - Featured: "A generative film with a blockbuster look. Silver ADDY, 2026." — sells the trophy
@@ -540,6 +540,35 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
 
     Editorial layering is intentional — the featured card is the magazine cover for the lead piece; the grid card is the table-of-contents entry. The two pieces of copy do different jobs.
 
-    **Hierarchy note.** The featured card uses `<h2>` (verbatim from /work.html). The section's H2 "The work" above is visually larger via responsive font-size rules (`clamp(36px,4vw,60px)` for `.work h2` vs `clamp(22px,2.4vw,36px)` for `.wcard-overlay h2`), so the visual hierarchy reads correctly even though both are technically h2 elements. SEO/accessibility-strict would prefer the featured card to be h3 (subordinate to section h2); the current state honors JP's "exact component" brief over the semantic preference. Easy follow-up if it becomes a concern.
+    **Hierarchy note.** The featured card uses `<h2>` (verbatim from /work.html). The section's H2 "The films" above is visually larger via responsive font-size rules (`clamp(36px,4vw,60px)` for `.work h2` vs `clamp(22px,2.4vw,36px)` for `.wcard-overlay h2`), so the visual hierarchy reads correctly even though both are technically h2 elements. SEO/accessibility-strict would prefer the featured card to be h3 (subordinate to section h2); the current state honors JP's "exact component" brief over the semantic preference. Easy follow-up if it becomes a concern.
 
     **Audit doc.** Pattern K added (the `.wcard.feature` hero card from /work.html, now also used on /studios Block 3).
+
+18. **Block 3 H2 + CTA copy update (June 24 2026).**
+
+    **JP brief.** "Now, let 'The work' to 'The films', keeping the CTA to the right, 'See all the work' as it is an aggregate of work and films."
+
+    Two small copy changes on Block 3:
+
+    | Element | Before | After |
+    |---|---|---|
+    | H2 | The work | The films |
+    | All-work link | All work → | See all the work → |
+
+    **Rationale on H2.** "The work" was inherited from the /digital pattern where the section is the studio's catch-all work showcase. On /studios specifically, every card IS a film — saying "The films" is more precise and honours the Studios voice ("every flex attached to a name, a credit, or a trophy"). "The work" reads as generic; "The films" reads as a curated craft category.
+
+    **Rationale on CTA.** The CTA still routes to `work.html` (the site-wide aggregate of Digital + Studios projects, 22 currently). The previous "All work →" copy matched /digital's CTA exactly. JP's call: on /studios, where the section above is now "The films," a CTA saying "All work →" creates a small but real semantic mismatch — "all" of what? "The films" suggests this section IS all the films, so "All work →" reads ambiguously.
+
+    The new "See all the work →" copy fixes both:
+    - "see all the WORK" not "all FILMS" — because /work.html is the aggregate of Digital + Studios pieces, not a films-only filter. Calling it "all the work" honours that aggregation.
+    - The longer phrasing creates a clearer semantic seam — "this is the films section; for everything else, see all the work."
+
+    **Side-effects of the copy change.**
+
+    - The `.swipe` JS still auto-wraps the last word ("work") in italic-serif. "See all the *work*" reads as the same italic-serif final-word treatment, just preceded by "See all the" instead of "All." Cascade hover animation, magenta swipe, and arrow translation all unchanged.
+    - /digital still uses "All work →" — the two pages now have slightly different aggregator-link phrasing. That's deliberate: /digital's section is "Digital, selected" (filtered subset, not a category), so "All work →" reads as "for everything else" naturally. /studios' section is "The films" (a category in itself), so the longer copy creates the semantic seam.
+    - The font-size, letter-spacing, border-bottom, and color-on-hover rules on `.all.swipe` are unchanged — the visual treatment is identical, just two more words in the copy.
+
+    **No HTML structural change.** Single string swap on each of `<h2 class="rise">` and `<a class="all swipe">`. All Notes 16 + Notes 17 component anatomy still accurate; the H2 + CTA references inside them are updated to match. Pattern K reference in the audit doc also updated.
+
+    **/digital parity check.** Should /digital's "All work →" also become "See all the work →"? Probably not — /digital's H2 is "Digital, selected" which already creates the semantic seam ("here's selected; for all, see..."). The change is /studios-specific because /studios' H2 "The films" doesn't carry the "selected" qualifier. If a future commit makes /digital's H2 "The platforms" or similar category name, then /digital should mirror the longer CTA for the same reason.

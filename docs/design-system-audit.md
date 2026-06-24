@@ -489,7 +489,7 @@ Studios Block 4. Square portrait + name + role + credit-line one-sheet in a 3-up
 
 ### Pattern K — `.wcard.feature` (cinematic hero card)
 
-Originally on `/work.html` (CSS at `work.html` lines 356-393), promoting Iron Mountain — The Summit to the top of the work-grid index. **Reused on `/studios` Block 3 (June 24 2026)** between the `.head` row (H2 "The work" + "All work →") and the `.cards.four-up` films grid. JP brief: "Lets add this exact component from the work.html page below the title WORK and above the rows of films on the studios page." The component is direct CSS reuse — rules ported verbatim to `studios.html` with a `.work .` selector prefix to scope them to the films section. See `studios.md` Notes 17.
+Originally on `/work.html` (CSS at `work.html` lines 356-393), promoting Iron Mountain — The Summit to the top of the work-grid index. **Reused on `/studios` Block 3 (June 24 2026)** between the `.head` row (H2 "The films" + "See all the work →") and the `.cards.four-up` films grid. JP brief: "Lets add this exact component from the work.html page below the title WORK and above the rows of films on the studios page." The component is direct CSS reuse — rules ported verbatim to `studios.html` with a `.work .` selector prefix to scope them to the films section. See `studios.md` Notes 17 + Notes 18.
 
 A single full-width hero with image-as-background and overlaid text. Distinct from `.card` (Pattern 4b — stacked image-then-meta layout) and from the decommissioned Pattern I (custom featured+grid hybrid). The `.wtint` gradient overlay ensures text legibility regardless of image content.
 

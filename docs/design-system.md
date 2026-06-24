@@ -125,9 +125,13 @@ Two-column section: H2 left (with a draw-on magenta `.rule`), prose right
 - **Solid — `.btn.solid`:** fills magenta on hover.
 
 ### Eyebrow
-`.eyebrow` — `--text` 700, 12px, .14em, UPPERCASE, magenta. One formula: either a bare
-section label ("Insights") or "Section — descriptor" ("About — one culture, two practices").
-Pick one per context; color comes from the shared rule, never inline.
+`.eyebrow` — `--text` 700, 12px, .14em, UPPERCASE, magenta. One formula site-wide (every
+eyebrow, page hero **and** section): hub/practice pages use "Section — descriptor"
+("About — one culture, two practices", "Proof — the receipts"); detail pages use
+"Category · Client/Topic" ("Digital · TELUS & Koodo"). Bare section labels ("Insights",
+"Leadership") and the older "The X" device are retired — the brand word may survive as the
+*descriptor* (e.g. "Proof — the receipts"). Color comes from the shared rule, never inline.
+See §7 item 7.
 
 ### The "voice" rule (Two Voices)
 `em.voice` = serif italic emphasis inside display type.
@@ -173,16 +177,19 @@ ink/paper for rhythm. About, for example: ink hero → paper story → paper ros
    exactly two: the **voice line** (`.sub-voice > em.voice.mag`, serif italic magenta —
    declarative hub statements; Work, Insights, Article, Case) and the **body line**
    (`.sub-body`, prose, `--paper` on the ink hero — explanatory heroes; Digital, About).
-   The legacy `.streams` (Insights) and `.reel-body` (Studios) variants are migrated onto
-   `.sub-body`; Studios keeps `--paper` over the reel scrim and `reel-hero` stays the
-   sanctioned exception (item 4).
+   The legacy `.streams` (Insights) and `.reel-body` (Studios) *hero* variants are migrated
+   onto `.sub-body`; Studios keeps `--paper` over the reel scrim and `reel-hero` stays the
+   sanctioned exception (item 4). (The homepage keeps a separate `.streams` paragraph in its
+   insights *teaser* — a content-section descriptor, not a hero supporting line.)
 6. **Voice-color rule (Two Voices).** `em.voice.mag` = magenta = the emotional/pivot line
    (hero voice line, page closers). Bare `em.voice` = cream = emphasis that is part of the
    headline itself. Applied site-wide.
-7. **Eyebrow convention, one per page-type.** Hub/practice pages (index, work, digital,
-   studios, insights, about) use `Section — descriptor`. Detail pages (article,
-   case-telus-koodo) use `Category · Client/Topic`. Color comes from the shared `.eyebrow`
-   rule — never inline.
+7. **Eyebrow convention, one per page-type — applied to every eyebrow (page hero AND each
+   section).** Hub/practice pages (index, work, digital, studios, insights, about) use
+   `Section — descriptor`. Detail pages (article, case-telus-koodo) use
+   `Category · Client/Topic`. Bare section labels and the older "The X" device are retired;
+   a brand word may survive as the descriptor (e.g. "Proof — the receipts",
+   "Challenge — the constraint"). Color comes from the shared `.eyebrow` rule — never inline.
 
 ## 8 · Resolved this round
 

@@ -78,7 +78,7 @@ The CSS for these patterns currently lives **inline in each HTML page**. That's 
 
 ### 6. Proof spine — `.proof` + `.proof-row` + `.stat` + `.odo`
 
-- "The receipts" eyebrow + 4-stat row, each stat with animated odometer numeral + `.sfx` suffix + caption
+- "Proof — the receipts" eyebrow + 4-stat row, each stat with animated odometer numeral + `.sfx` suffix + caption
 - Odometer mechanism: each digit is a `.col` of 0-9-0-9 spans; CSS variable `--d` per column determines target offset; `.proof-row.go` triggers `transform: translateY(...)` on `.col`
 - On homepage, includes a `.logos` strip below the stats (8-cell mask-image client logo row)
 
@@ -315,7 +315,7 @@ The 9 logos: Telus, Energizer, Lululemon, Deloitte, KPMG, Grammarly, Akamai, Iro
 ```html
 <div class="proof-spine" id="proof-spine">
   <div class="wrap reveal">
-    <span class="eyebrow">The roster</span>
+    <span class="eyebrow">Studios — selected clients</span>
     <div class="logos" aria-label="Selected clients">
       <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/<name>.png'); width: <px>px; height: 28px;" aria-label="<Brand>"></span></div>
       <!-- repeat for each cell -->
@@ -324,7 +324,7 @@ The 9 logos: Telus, Energizer, Lululemon, Deloitte, KPMG, Grammarly, Akamai, Iro
 </div>
 ```
 
-**Eyebrow choice — "Studios — selected clients":** the proof-spine eyebrow follows the ratified hub convention (`Section — descriptor`, design-system.md §7 item 7). It replaced the earlier brand-pattern label "The roster" ("The X" family, e.g. the homepage "The receipts") when the eyebrow convention was locked.
+**Eyebrow choice — "Studios — selected clients":** the proof-spine eyebrow follows the ratified hub convention (`Section — descriptor`, design-system.md §7 item 7). It replaced the earlier brand-pattern label "The roster" — part of the now-retired "The X" eyebrow family (e.g. the homepage's former "The receipts", now "Proof — the receipts") — when the eyebrow convention was locked and applied to every eyebrow site-wide.
 
 **Reuse beyond `/digital`:** the same 9-logo roster ships verbatim on `/studios` when that page builds (see `studios.md` Block 2b). The Studios voice spec fits a logo-roster cleanly — every logo is a name-attached flex. The cross-practice mix in the roster (Digital + Studios clients combined) is intentional — one masterbrand, two doors.
 
@@ -493,7 +493,7 @@ The iframe has NO `src` on page load — empty in the DOM, takes no network. JS 
 ## Resolved — site-wide merge (June 2026)
 
 1. **Takeover/footer nav rewired across all 8 pages.** Resolves prior follow-on #1: every page's takeover and footer nav now route Work→`work.html`, Digital→`digital.html`, Studios→`studios.html`, Insights→`insights.html`, About→`about.html`, Contact→`#contact` (Careers→`#` until built). The active page carries `.is-current` + `aria-current="page"` (takeover) and `aria-current="page"` (footer); detail pages mark their parent (case→Work, article→Insights); `index.html` has no menu item of its own.
-2. **§8 consistency trio ratified** (now locked in `design-system.md` §7 as items 5/6/7): supporting line collapsed to two variants — `.streams` (Insights) and `.reel-body` (Studios) migrated onto `.sub-body` (Studios keeps `--paper` over the reel scrim); voice-color rule applied site-wide (`em.voice.mag` = magenta pivot/closer, bare `em.voice` = cream in-headline emphasis); eyebrow convention set per page-type (hub `Section — descriptor`, detail `Category · Client/Topic`).
+2. **§8 consistency trio ratified** (now locked in `design-system.md` §7 as items 5/6/7): supporting line collapsed to two variants — `.streams` (Insights) and `.reel-body` (Studios) migrated onto `.sub-body` (Studios keeps `--paper` over the reel scrim); voice-color rule applied site-wide (`em.voice.mag` = magenta pivot/closer, bare `em.voice` = cream in-headline emphasis); eyebrow convention set per page-type (hub `Section — descriptor`, detail `Category · Client/Topic`), applied to every eyebrow (page hero and each section) — bare-label and "The X" forms retired, brand words kept as descriptors (e.g. "Proof — the receipts", "Challenge — the constraint").
 3. **Craft Layer + Concierge rolled out site-wide** in production mode (no `data-spice-review`): `ps-spice.css/js` + `ps-concierge.css/js` on all 8 pages; `image-slot.js` on `about.html` only.
 
 ## Open follow-ons

@@ -173,29 +173,29 @@ _No tool names in any of these labels. Discipline language only._
 
 ## Block 5b — How we work — the one-two punch
 
-_Two-module one-two punch — shared verbatim with `/digital`. Module 1 (Early & Often) runs canonical 5fr/7fr `.engine` layout; Module 2 (Direct-to-Expert) runs mirrored 7fr/5fr via `.engine.mirror`. Pattern shipped on `/digital` June 23 2026 — see `digital.md` Notes 15 and `digital.html` for the live implementation. When this page builds, lift the HTML + CSS directly from the `/digital` implementation — no editorial polish, no rewriting._
+_Two-module one-two punch — same framework as `/digital` (Early & Often + Direct-to-Expert), but the body copy is reworked for Studios voice with a film-discipline twist (June 23 2026 — see Notes 13). Module 1 runs the canonical 5fr/7fr `.engine` layout; Module 2 runs mirrored 7fr/5fr via `.engine.mirror`. Pattern E shapes lifted from `/digital`; copy diverges. H2s stay verbatim — they're the framework anchors that read true for either practice._
 
 ### Module 1 — Early & Often
 
 **H2:** Early and often. *Sometimes ugly.*
 
-**BODY:** You will see the work while it is still changing: rough cuts, wireframes mid-thought, builds mid-sprint.
+**BODY:** You'll see the work while it's still changing: rough boards, generative drafts mid-thought, cuts mid-grade.
 
-**BODY:** That keeps us close to the problem and able to **correct course before a small miss becomes an expensive one.**
+**BODY:** That keeps us close to the cut and able to **fix a shot before it becomes a reshoot.**
 
-**BODY:** We avoid ta-da moments at all costs. No polished surprise in week eleven. Just visible progress, sharper decisions, and work that gets better because you saw it early enough to shape it.
+**BODY:** No ta-da reveals. No polished surprise at picture lock. Just visible progress, sharper notes, and a film that gets better because you saw it early enough to shape it.
 
 ### Module 2 — Direct-to-Expert
 
 **H2:** *Expertise compounds.*
 
-**BODY:** You are the experts in your business. We are the experts in turning complex digital problems into products people want to use.
+**BODY:** You are the experts in your brand. We are the experts in turning impossible boards into films that hold at broadcast scale.
 
-**BODY:** Put the right people in the same room and progress compounds. You work directly with the strategists, designers, and engineers doing the work. **No account-layer relay. No game of telephone.**
+**BODY:** Put the right people in the same room and progress compounds. You work directly with the directors, editors, and the leads shaping the look. **No account-layer relay. No notes via PM.**
 
-**BODY:** Your expertise. Ours. One team, solving the right problem sooner.
+**BODY:** Your brand. Our craft. One team. The film gets there sooner.
 
-**Voice note for Studios:** the copy is universal across both practices and ships unchanged. The Studios voice spec ("Every flex attached to a name, a credit, or a trophy") still governs the rest of the page; these two modules are an exception — they describe the working principles common to both Digital and Studios.
+**Voice note for Studios (updated June 23 2026):** the previous brief called this block "universal across both practices and ships unchanged." JP overrode that — the two-module framework is the shared canon, but the body copy reads better through film-discipline vocabulary. The translation map: `rough cuts → rough boards` · `wireframes mid-thought → generative drafts mid-thought` · `builds mid-sprint → cuts mid-grade` · `correct course before a small miss → fix a shot before it becomes a reshoot` · `polished surprise in week eleven → polished surprise at picture lock` · `complex digital problems / products people want to use → impossible boards / films that hold at broadcast scale` · `strategists, designers, and engineers doing the work → directors, editors, and the leads shaping the look` · `game of telephone → notes via PM` · `the right problem sooner → the film gets there sooner`. The Studios voice spec ("Every flex attached to a name, a credit, or a trophy") doesn't apply here — these modules describe how the work happens, not what was won; the flex-with-a-name beats live in Blocks 2, 3, and 4 instead.
 
 ---
 
@@ -354,3 +354,30 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
     - **Pattern H — `.proof-bar`:** single declarative trophy line on ink background, between hero and roster. Studios Block 2. Distinct from `.proof` (multi-stat outcome strip) and from `.proof-spine` (logo grid).
     - **Pattern I — `.films` + `.film-featured` + `.film-card` + `.film-grid`:** featured-row + 4-up-grid film index. Studios Block 3. The featured rows use a 7fr/5fr media+meta split; the grid is the standard 4-up below a horizontal rule. Reusable for any future media-index page (case studies, podcast episodes, etc.).
     - **Pattern J — `.credits` + `.credit-card`:** name + role + credit-line one-sheet in a 3-up grid. Studios Block 4. Reusable on `/about` if that page wants a credits-style format for a particular team subset, but the canonical `/about` is a full bio grid (not this).
+
+13. **Block 5b — film-twist copy override (June 23 2026).**
+    The initial /studios build (commit `d654459`) shipped Block 5b as a direct paste of the /digital copy, per studios.md's earlier voice note calling the modules "universal across both practices and ships unchanged."
+
+    JP overrode that on review: "We can have the same early and often and direct to expert section with a generative film twist." The framework (Early & Often + Direct-to-Expert as the two working principles) stays — those concepts are shared canon. The body copy is now Studios-specific film-discipline language.
+
+    **Translation map** (for future cross-page sync, and so the same move can be made if a third practice ever ships its own version):
+
+    | /digital | /studios |
+    |---|---|
+    | rough cuts | rough boards |
+    | wireframes mid-thought | generative drafts mid-thought |
+    | builds mid-sprint | cuts mid-grade |
+    | correct course before a small miss becomes an expensive one | fix a shot before it becomes a reshoot |
+    | polished surprise in week eleven | polished surprise at picture lock |
+    | complex digital problems | impossible boards |
+    | products people want to use | films that hold at broadcast scale |
+    | strategists, designers, and engineers doing the work | directors, editors, and the leads shaping the look |
+    | game of telephone | notes via PM |
+    | Your expertise. Ours. | Your brand. Our craft. |
+    | solving the right problem sooner | The film gets there sooner |
+
+    **H2s stay verbatim.** "Early and often. *Sometimes ugly.*" and "*Expertise compounds.*" read true for either practice; they're the anchor labels, not the argument. Diverging them would lose the masterbrand seam between the two doors.
+
+    **Anchors stay the same** — `#how-we-work` and `#direct-to-expert` match `/digital`. Intentional: a visitor coming from the homepage's two-doors block to either practice page lands at the same anchor for the same conceptual section, even though the copy is tuned to the practice.
+
+    **Voice spec override.** The Studios voice spec ("Every flex attached to a name, a credit, or a trophy") doesn't apply to these two modules — they describe how the work happens, not what was won. The flex-with-a-name beats live in Blocks 2 (proof bar — Two Silver ADDYs), 3 (films index — each film tied to a client and a title), and 4 (credits — three named directors with on-the-record credit lines). Block 5b is the working-principles interlude between the proof stack and the closer.

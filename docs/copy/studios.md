@@ -20,7 +20,7 @@ _Excerpted from the companion copy doc; preserved verbatim because it governs ev
 
 ## Block 1 — Reel hero
 
-_Full-bleed autoplay reel as background. H1 carries the canonical statement; sub-paragraph names the provenance; small scroll prompt at the foot._
+_Full-bleed autoplay reel as background. H1 carries the canonical statement; sub-paragraph names the provenance; canonical button at the foot scrolls down to the films index. Button uses the site's `.btn .cascade` vocabulary (matches the homepage Digital/Studios pair and the page-closer "Start a film") — see Notes 15._
 
 **H1 (two-line):**
 - **H1 line 1:** Anyone can generate.
@@ -28,7 +28,8 @@ _Full-bleed autoplay reel as background. H1 carries the canonical statement; sub
 
 **BODY:** Power Shifter Studios. Film, audio, and motion on generative pipelines — run by people who came up through ILM, Ridley Scott, and Ogilvy, not a prompt library.
 
-**MICRO (scroll prompt):** Watch the work ↓
+**CTA (outline `.btn`):** Watch the work →
+_Routes to `#films` (in-page scroll to the films index). Renders as outline-on-dark via the canonical `.btn` rule (`border:1px solid var(--paper)`) — the cascade letter-and-arrow hover animation comes along for free._
 
 ---
 
@@ -41,24 +42,6 @@ _High-contrast strip above the films index. No header. One declarative line of t
 **BODY:** *The Summit* (Iron Mountain) · *Four Dreams* (Ernest Packaging) — judged against everything, not just the AI category.
 
 _Open call: verify the judging-category claim before "judged against everything" ships. If the ADDYs were entered in an AI-specific category, the qualifying sentence dies._
-
----
-
-## Block 2b — The roster
-
-_Logo-roster trust signal — direct reuse of `.proof-spine` pattern shipped on `/digital` June 23 2026. Pairs with Block 2's award/film proof bar as the second social proof surface: Block 2 is "what we won and what we made"; Block 2b is "who trusts us." The Studios voice spec ("Every flex attached to a name, a credit, or a trophy") fits a logo-roster cleanly — each logo IS a name-attached flex. Lift the HTML + CSS directly from `digital.html` when this page builds. Position: between Block 2 (Proof bar above) and Block 3 (Films index below)._
-
-**EYEBROW:** The roster
-
-**LOGO GRID (9 logos, 3x3 — same as `/digital` and homepage):**
-
-| Row 1 | Row 2 | Row 3 |
-|---|---|---|
-| Telus | Energizer | Lululemon |
-| Deloitte | KPMG | Grammarly |
-| Akamai | Iron Mountain | Canucks |
-
-_Same 9 logos across all three surfaces (homepage proof spine, `/digital` roster, `/studios` roster). Roster includes both Digital clients (TELUS, Deloitte, KPMG, Grammarly, Akamai) and Studios-relevant clients (Iron Mountain — "The Summit" film; Energizer; Lululemon; Canucks). The cross-practice mix is intentional — one masterbrand, two doors._
 
 ---
 
@@ -151,6 +134,24 @@ _A credits block, not a leadership block. Each entry leads with a square portrai
 
 **CTA (block footer):** Meet the whole team →
 _(Routes to `/about`.)_
+
+---
+
+## Block 2b — The roster
+
+_Logo-roster trust signal — direct reuse of `.proof-spine` pattern shipped on `/digital` June 23 2026. Pairs with Block 2's award/film proof bar as the second social proof surface: Block 2 is "what we won and what we made"; Block 2b is "who trusts us." The Studios voice spec ("Every flex attached to a name, a credit, or a trophy") fits a logo-roster cleanly — each logo IS a name-attached flex. Lift the HTML + CSS directly from `digital.html` when this page builds. Position: between Block 4 (Credits above) and Block 5b (One-two punch below). Moved here June 24 2026 per JP — editorial sequence now reads work → people → who trusts those people → how we work. See Notes 15._
+
+**EYEBROW:** The roster
+
+**LOGO GRID (9 logos, 3x3 — same as `/digital` and homepage):**
+
+| Row 1 | Row 2 | Row 3 |
+|---|---|---|
+| Telus | Energizer | Lululemon |
+| Deloitte | KPMG | Grammarly |
+| Akamai | Iron Mountain | Canucks |
+
+_Same 9 logos across all three surfaces (homepage proof spine, `/digital` roster, `/studios` roster). Roster includes both Digital clients (TELUS, Deloitte, KPMG, Grammarly, Akamai) and Studios-relevant clients (Iron Mountain — "The Summit" film; Energizer; Lululemon; Canucks). The cross-practice mix is intentional — one masterbrand, two doors._
 
 ---
 
@@ -397,3 +398,27 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
     **Carried parking-lot item:** replace the three placeholders with real headshots once shot. Same aspect ratio (1:1), same paths. Drop-in `str_replace` per file or just overwrite the JPGs at the same path. Until then the placeholders read as intentional (paper bg + bold initials + "PORTRAIT" caption) rather than broken.
 
     **Bios still on /about.** The Block 4 footer CTA `Meet the whole team →` still routes to /about (currently stubbed to `#`); this is the credit roll, not the team page. Pattern J's "credits one-sheet" identity holds — the override added the portrait slot, not the bio slot.
+
+15. **Reel-hero button standardized + roster relocated (June 24 2026).**
+
+    **Button vocabulary.** The reel-hero scroll-prompt button was originally styled with a custom `.reel-scroll` class — uppercase, .14em letter-spacing, .28-alpha border. That diverged from the site's canonical button vocabulary (`.btn` + `.cascade` modifier) used on the homepage Digital/Studios pair and on every page-closer ("Start a project" on `/digital`, "Start a film" on `/studios`). JP's call on review: one button vocabulary, not two.
+
+    Swapped to `<a class="btn cascade" href="#films">Watch the work →</a>`:
+    - **Class**: `.btn cascade` (outline variant — paper border on dark video background, transparent fill)
+    - **Arrow**: `→` instead of `↓` so the `.cascade .ar` hover animation (translateX 5px + magenta color) makes visual sense — the right-arrow translating right is the canonical interaction; a down-arrow translating right would have read broken
+    - **Animation timing**: preserved the .7s settle-in delay via a new `.reel-hero .btn` rule so the button still lands after H1 (.2s) and body (.45s) in the hero sequence
+    - **Hover behavior**: the cascade letter-roll and arrow slide both come along for free from the global `.cascade` rules — no extra wiring
+
+    The scroll-down semantics still hold via the `href="#films"` anchor + the button's position at the bottom of the hero. JP confirmed `→` over `↓` is the right call — visual style consistency outweighs the strict UX literalism of the down-arrow.
+
+    **Roster relocated (Block 2b → after Block 4).** The roster was originally between Block 2 (proof bar — trophies) and Block 3 (films — the work). New position: after Block 4 (credits — the directors) and before Block 5b (one-two punch — how we work). New editorial sequence:
+
+    ```
+    hero → trophies → work → people → who trusts those people → how we work → CTA
+    ```
+
+    The roster reads more powerfully after the directors are introduced — "here's who runs this; here's who hires them" is a stronger logical seam than "here's our trophies; here's our roster; here's the work" which front-loaded all the social proof before any of the work was shown. The HTML section order, the studios.md heading order, and the HTML comment on the .proof-spine section were all updated to match.
+
+    **Block name stays "2b"** even though it's no longer adjacent to Block 2. Renaming would invalidate every existing reference in the notes, comments, and audit doc; the "2b" is a stable identifier now, not a positional one.
+
+    **No copy changes** — the roster's eyebrow ("The roster") and 9-logo grid are unchanged. The cross-practice mix (Digital + Studios clients combined) still holds per the one-masterbrand-two-doors IA.

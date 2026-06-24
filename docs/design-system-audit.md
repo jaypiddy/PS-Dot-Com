@@ -334,7 +334,7 @@ The 9 logos: Telus, Energizer, Lululemon, Deloitte, KPMG, Grammarly, Akamai, Iro
 
 ### Pattern G — `.reel-hero` (full-bleed Cloudflare Stream video hero)
 
-Studios Block 1. Full-bleed Cloudflare Stream video as hero background, with overlaid H1 + body + scroll prompt. Distinct from `.sub-hero` (paper background, no video) and from the homepage's hero (different scale + interaction). Ink underlay so the video fade-in doesn't flash white; `.reel-vignette` darkens the bottom band for text legibility against any video content.
+Studios Block 1. Full-bleed Cloudflare Stream video as hero background, with overlaid H1 + body + scroll-prompt button. Distinct from `.sub-hero` (paper background, no video) and from the homepage's hero (different scale + interaction). Ink underlay so the video fade-in doesn't flash white; `.reel-vignette` darkens the bottom band for text legibility against any video content.
 
 ```html
 <section class="reel-hero" id="reel-hero">
@@ -347,10 +347,12 @@ Studios Block 1. Full-bleed Cloudflare Stream video as hero background, with ove
   <div class="reel-inner wrap">
     <h1 class="rise"><span>…</span><span><em class="voice">…</em></span></h1>
     <p class="reel-body">…</p>
-    <a class="reel-scroll" href="#anchor">Watch the work ↓</a>
+    <a class="btn cascade" href="#anchor">Watch the work →</a>
   </div>
 </section>
 ```
+
+**Button vocabulary (June 24 2026 update).** The reel-hero scroll prompt uses the canonical `.btn .cascade` button (outline variant — paper border on dark video background) — same vocabulary as the homepage Digital/Studios pair and every page-closer button. The original Pattern G shipped with a custom `.reel-scroll` class that diverged from this — uppercase, lower opacity, different border alpha. That was removed; see `studios.md` Notes 15. The settle-in animation timing (.7s delay so the button lands after H1 + body in the sequence) is preserved via a `.reel-hero .btn` rule.
 
 **Sizing.** Iframe sized `width:max(100%,177.78vh); height:max(56.25vw,100%)` centered with `transform:translate(-50%,-50%)` to guarantee 16:9 video always covers the hero box regardless of viewport aspect ratio. `min-height:88vh` on `.reel-hero` so the hero feels cinematic (taller than the standard 50vh `.sub-hero`).
 

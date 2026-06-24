@@ -714,8 +714,14 @@
   .reel-hero h1 span{display:block}
   .reel-hero h1 .voice{font-family:"late-serif",Georgia,serif;font-style:italic;font-weight:400;color:var(--magenta);letter-spacing:-0.01em}
   .reel-hero .reel-body{font-size:clamp(16px,1.4vw,21px);max-width:780px;color:rgba(250,250,247,.88);margin-bottom:36px;line-height:1.5;opacity:0;transform:translateY(12px);animation:settle .8s ease-out .45s forwards}
-  .reel-hero .reel-scroll{font-family:var(--text);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,250,247,.78);border:1px solid rgba(250,250,247,.28);padding:14px 22px;display:inline-block;transition:color .2s,border-color .2s,background .2s;opacity:0;transform:translateY(10px);animation:settle .8s ease-out .7s forwards}
-  .reel-hero .reel-scroll:hover{color:var(--ink);background:var(--paper);border-color:var(--paper)}
+  /* Reel-hero scroll-prompt button uses the canonical .btn .cascade
+     vocabulary (matches the homepage Digital/Studios pair and the page
+     closer "Start a film"). The .reel-scroll custom class was removed
+     June 24 2026 — see studios.md Notes 15. The settle-in animation
+     timing (.7s delay so the button lands after H1 + body) is
+     preserved here. The .btn rule globally defines border:1px solid
+     var(--paper) which works against the dark video background. */
+  .reel-hero .btn{opacity:0;transform:translateY(10px);animation:settle .8s ease-out .7s forwards}
 
   /* Pattern H — Proof bar. Single high-contrast declarative trophy line.
      Studios Block 2. Ink background, paper text. No section header. */
@@ -850,7 +856,6 @@
 </div>
 
 
-
 <!-- ====================================================================
      STUDIOS PAGE BODY
      Built June 23 2026. Reference: docs/copy/studios.md (status: LIVE after
@@ -895,7 +900,7 @@
       <span><em class="voice">Few can direct.</em></span>
     </h1>
     <p class="reel-body">Power Shifter Studios. Film, audio, and motion on generative pipelines — run by people who came up through ILM, Ridley Scott, and Ogilvy, not a prompt library.</p>
-    <a class="reel-scroll" href="#films">Watch the work ↓</a>
+    <a class="btn cascade" href="#films">Watch the work →</a>
   </div>
 </section>
 
@@ -912,30 +917,6 @@
 <section class="proof-bar" id="awards">
   <div class="wrap">
     <p class="proof-bar-stat"><strong>Two Silver ADDYs, 2026.</strong> <span class="proof-bar-body"><em>The Summit</em> (Iron Mountain) &middot; <em>Four Dreams</em> (Ernest Packaging) — judged against everything, not just the AI category.</span></p>
-  </div>
-</section>
-
-
-<!-- Block 2b — The roster. Direct reuse of .proof-spine (Pattern F) from
-     /digital. Same 9 logos, same 3x3 checkerboard, same .logo-mask
-     currentColor technique. The Studios voice spec ("Every flex attached
-     to a name, a credit, or a trophy") fits the logo-roster cleanly —
-     each logo IS a name-attached flex. Position: between Block 2 proof
-     bar (awards/films) and Block 3 films index (the work itself). -->
-<section class="proof-spine" id="proof-spine">
-  <div class="wrap reveal">
-    <span class="eyebrow">The roster</span>
-    <div class="logos" aria-label="Selected clients">
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/telus.png'); width: 141px; height: 28px;" aria-label="Telus"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/energizer.png'); width: 110px; height: 28px;" aria-label="Energizer"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/lululemon.png'); width: 28px; height: 28px;" aria-label="Lululemon"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/deloitte.png'); width: 150px; height: 28px;" aria-label="Deloitte"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/kpmg.png'); width: 68px; height: 28px;" aria-label="KPMG"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/grammarly.png'); width: 131px; height: 28px;" aria-label="Grammarly"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/akamai.png'); width: 68px; height: 28px;" aria-label="Akamai"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/iron-mountain.png'); width: 98px; height: 28px;" aria-label="Iron Mountain"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/canucks.png'); width: 29px; height: 28px;" aria-label="Canucks"></span></div>
-    </div>
   </div>
 </section>
 
@@ -1071,6 +1052,34 @@
 </section>
 
 
+<!-- Block 2b — The roster. Direct reuse of .proof-spine (Pattern F) from
+     /digital. Same 9 logos, same 3x3 checkerboard, same .logo-mask
+     currentColor technique. The Studios voice spec ("Every flex attached
+     to a name, a credit, or a trophy") fits the logo-roster cleanly —
+     each logo IS a name-attached flex. Position: between Block 4 credits
+     (named directors) and Block 5b one-two-punch (working principles).
+     Moved here from its original position (between Block 2 proof-bar
+     and Block 3 films) on June 24 2026 per JP — editorial sequence
+     now reads as work → people → who trusts those people → how we work.
+     See studios.md Notes 15. -->
+<section class="proof-spine" id="proof-spine">
+  <div class="wrap reveal">
+    <span class="eyebrow">The roster</span>
+    <div class="logos" aria-label="Selected clients">
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/telus.png'); width: 141px; height: 28px;" aria-label="Telus"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/energizer.png'); width: 110px; height: 28px;" aria-label="Energizer"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/lululemon.png'); width: 28px; height: 28px;" aria-label="Lululemon"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/deloitte.png'); width: 150px; height: 28px;" aria-label="Deloitte"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/kpmg.png'); width: 68px; height: 28px;" aria-label="KPMG"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/grammarly.png'); width: 131px; height: 28px;" aria-label="Grammarly"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/akamai.png'); width: 68px; height: 28px;" aria-label="Akamai"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/iron-mountain.png'); width: 98px; height: 28px;" aria-label="Iron Mountain"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/canucks.png'); width: 29px; height: 28px;" aria-label="Canucks"></span></div>
+    </div>
+  </div>
+</section>
+
+
 <!-- Block 5 — How it's made — "The pipeline is new. The discipline isn't."
      DEFERRED to a follow-up commit. Requires three generated stills
      (Board / Generation / Final, same shot across all three states) that
@@ -1149,9 +1158,6 @@
     </div>
   </div>
 </section>
-
-
-
 
 
 <footer>
@@ -1348,7 +1354,6 @@
     po.observe(proofRow);
   }
 </script>
-
 
 
 <script>

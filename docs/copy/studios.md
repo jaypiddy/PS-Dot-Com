@@ -119,7 +119,7 @@ _Uses `.go.swipe`. The same .swipe JS that wraps "case" italic-serif on /digital
 
 _A credits block, not a leadership block. Each entry leads with a square portrait that doubles as a bio-video poster — but with one important difference from typical poster-and-video patterns: the still IS the first frame of the bio video, served via Cloudflare Stream's thumbnail API. No separate portrait files exist in the repo. On rollover the full Cloudflare Stream iframe lazy-loads over the still (see Notes 19 + Notes 20). Name + role + credit line styled like a one-sheet. Bios still live on /about — this is the credit roll, not the team page. Closes with a link out._
 
-**H2:** Directed by people who earned the word
+**H2:** Directed by people who earned the title
 
 ### Credit 01
 
@@ -304,7 +304,7 @@ _Carried from the companion copy doc; resolve before this page goes LIVE._
 
 | Line | Lives at | Never used for |
 |---|---|---|
-| Directed by people who earned the word | /studios credits header | Taglines, Digital contexts |
+| Directed by people who earned the title | /studios credits header | Taglines, Digital contexts |
 | The pipeline is new. The discipline isn't. | /studios process block; eligible for talks/decks | Homepage |
 | Bring the board you were told was unshootable. | /studios closer; eligible for outbound to CDs | Digital contexts |
 

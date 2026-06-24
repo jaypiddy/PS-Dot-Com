@@ -47,61 +47,59 @@ _Open call: verify the judging-category claim before "judged against everything"
 
 ## Block 3 — Films index — "The work"
 
-_Header, then two featured rows (the award winners, full-width, inline-playing) followed by a four-up grid for the rest. Ordering rule from the companion doc: award winners first, then by ambition not recency._
+_Canonical `.work` + `.cards.four-up` + `.card` pattern (reused from `/digital` "Digital, selected" and the homepage "Selected work"). JP brief June 24 2026: "The design pattern for the film case studies should be the same pattern/component as on the digital page." The original Pattern I (featured rows + 4-up grid hybrid) was decommissioned — every film is now an equal card in the grid. Award winners no longer get a structurally featured position; the trophy mention moves into the body line, matching the homepage Iron Mountain card precedent. See Notes 16._
 
 **H2:** The work
+**ALL-WORK LINK (`.all swipe`):** All work → _(routes to `work.html`; the .swipe JS auto-wraps "work" italic-serif, matching /digital's "All work" treatment exactly)_
 
-### Featured 01 — Iron Mountain
+**Layout:** 6 films in a 4-up grid, wrapping to row 1 (4 cards) + row 2 (2 cards + 2 placeholders). Placeholders are invisible `.card.placeholder` divs filling cells 7-8 with the same ink background as real cards, so the 1px line-light gap rhythm stays consistent with /digital's 4-card layout. Ordering: award winners first (mirroring /digital ordering convention), then by ambition not recency.
 
-**AWARD:** Silver ADDY · 2026
+**Eyebrow `.tag` taxonomy:** Each film carries a short 1-3 word label, optional middle-dot separator. Mirrors /digital's "Platform" / "Rapid MVP" / "Product · Best UX, VUX" / "Web · SEO" pattern. The two ADDY winners do NOT carry the trophy in the tag — the proof bar above (Block 2) already calls out both awards by name, and the body line repeats the mention.
 
+**CTA on every card:** Watch the film →
+_Uses `.go.swipe`. The same .swipe JS that wraps "case" italic-serif on /digital wraps "film" italic-serif here, with the same magenta swipe-on-hover. All CTAs stub to `#` until film case-study pages exist._
+
+### Card 01 — Iron Mountain
+
+**TAG:** Branded · Live-Action
 **H3:** Iron Mountain — *The Summit*
+**BODY:** Musicians climb to a summit and discover the power they carried all along: their data. Silver ADDY, 2026.
+**CTA:** Watch the film →
 
-**BODY:** Musicians climb to a summit and discover the power they carried all along: their data.
+### Card 02 — Ernest Packaging
 
-**CTA:** Watch →
-
-### Featured 02 — Ernest Packaging
-
-**AWARD:** Silver ADDY · 2026
-
+**TAG:** Branded · Character
 **H3:** Ernest Packaging — *Four Dreams*
+**BODY:** Four surreal dreams brought to life — characters that speak, move, and feel as if they've always existed. Silver ADDY, 2026.
+**CTA:** Watch the film →
 
-**BODY:** Four surreal dreams brought to life — characters that speak, move, and feel as if they've always existed.
+### Card 03 — Celestial AI
 
-**CTA:** Watch →
-
-### Grid 03 — Celestial AI
-
+**TAG:** Branded · AI
 **H3:** Celestial AI
-
 **BODY:** A story told in light itself — photonic fabric as cinema.
+**CTA:** Watch the film →
 
-**CTA:** Watch →
+### Card 04 — The Algorithm Trap
 
-### Grid 04 — The Algorithm Trap
-
+**TAG:** Original · Short
 **H3:** The Algorithm Trap
-
 **BODY:** Fast, raw, restless — the endless scroll, mirrored back at itself.
+**CTA:** Watch the film →
 
-**CTA:** Watch →
+### Card 05 — Maple Health
 
-### Grid 05 — Maple Health
-
+**TAG:** Branded · Animation
 **H3:** Maple Health
-
 **BODY:** The quiet moments of empathy that define real healthcare, animated.
+**CTA:** Watch the film →
 
-**CTA:** Watch →
+### Card 06 — Rapid MVP / Luma
 
-### Grid 06 — Rapid MVP / Luma
-
+**TAG:** Original · IP
 **H3:** Rapid MVP — *Luma*
-
 **BODY:** A brilliant idea left waiting — until it didn't have to be.
-
-**CTA:** Watch →
+**CTA:** Watch the film →
 
 ---
 
@@ -422,3 +420,64 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
     **Block name stays "2b"** even though it's no longer adjacent to Block 2. Renaming would invalidate every existing reference in the notes, comments, and audit doc; the "2b" is a stable identifier now, not a positional one.
 
     **No copy changes** — the roster's eyebrow ("The roster") and 9-logo grid are unchanged. The cross-practice mix (Digital + Studios clients combined) still holds per the one-masterbrand-two-doors IA.
+
+16. **Films index swapped to canonical `.work` pattern (June 24 2026).**
+
+    **JP brief.** "The design pattern for the film case studies should be the same pattern/component as on the digital page." Direct quote on review of Pattern I (the custom featured+grid hybrid I'd shipped on the initial /studios build).
+
+    **What was decommissioned.** Pattern I in the audit doc — a Studios-only pattern with:
+    - Two featured rows for ADDY winners: 7fr media + 5fr meta side-by-side, full-width
+    - 4-up grid for the remaining four films below
+    - Custom award eyebrow (`.film-award` magenta uppercase)
+    - Custom play badge (`.film-play` circular icon on each tile)
+    - Custom CTA styling (`.film-cta` border-bottom underline)
+    - ~38 lines of CSS
+
+    All of that diverged from the canonical work-grid component used on `/digital` "Digital, selected" and the homepage "Selected work."
+
+    **What replaced it.** Direct reuse of `.work` + `.cards.four-up` + `.card` (the canonical pattern). All CSS for this pattern already lives in studios.html (came along with the digital.html clone). Zero new CSS needed for Block 3 itself — just the markup swap. Pattern I CSS rules removed entirely.
+
+    **Component anatomy** (matches /digital exactly):
+
+    ```
+    .work                       ← dark ink band, padded
+      .wrap
+        .head                   ← H2 + "All work →" link, flex baseline
+          h2.rise               ← display weight, late-serif italic via .swipe
+          a.all.swipe           ← "All work →" (work auto-italicized)
+        .cards.four-up.reveal   ← 4-column grid, 1px line-light gaps
+          a.card                ← each film (ink bg)
+            .frame              ← 16:10 aspect image
+            .meta
+              .tag              ← eyebrow (uppercase, .12em tracking)
+              h3                ← display weight, <i>...</i> for italic film name
+              p                 ← body line, .72-alpha paper
+              .go.swipe         ← "Watch the film →" (film auto-italicized)
+    ```
+
+    **Six films, 4-up grid.** Wraps to row 1 (4 cards) + row 2 (2 cards + 2 placeholders). Two `<div class="card placeholder" aria-hidden="true"></div>` fill cells 7-8 — they inherit the .card ink background so empty cells don't expose the .cards parent's line-light gap color, and the 1px gap-line rhythm stays consistent with /digital's 4-card layout. Single CSS rule for the placeholder: `.work .card.placeholder{pointer-events:none;padding:0}`.
+
+    **Eyebrow `.tag` taxonomy.** Each film carries 1-3 word category labels, mirroring /digital's tag pattern ("Platform" / "Rapid MVP" / "Product · Best UX, VUX" / "Web · SEO"). Choices:
+
+    - Iron Mountain — *The Summit*: `Branded · Live-Action`
+    - Ernest Packaging — *Four Dreams*: `Branded · Character`
+    - Celestial AI: `Branded · AI`
+    - The Algorithm Trap: `Original · Short`
+    - Maple Health: `Branded · Animation`
+    - Rapid MVP — *Luma*: `Original · IP`
+
+    The two ADDY winners deliberately do NOT carry "ADDY 2026" in the tag — the proof bar at the top of /studios (Block 2) already names both films and both awards; the body line on each ADDY card repeats "Silver ADDY, 2026." for the second mention. Putting the same award in three places would dull the flex.
+
+    **CTA "Watch the film →"** uses `.go.swipe`. The .swipe JS at the bottom of studios.html (came along with the /digital clone) wraps the last word ("film") in `<span class="hl">` — italic-serif Late Serif at 1.18em, with the magenta box that swipes in on hover. Direct mirror of /digital's "Read the *case* →" treatment (where "case" is italic-serif).
+
+    **Italic film names in `<h3>`** via `<i>...</i>` — "Iron Mountain — `<i>`The Summit`</i>`", "Ernest Packaging — `<i>`Four Dreams`</i>`", "Rapid MVP — `<i>`Luma`</i>`". Same `<i>` treatment used on the homepage Iron Mountain card (precedent at `index.html:569`). The `.card h3 i` rule renders these in late-serif italic regardless of bg.
+
+    **All Watch links stub to `#`** until film case-study pages exist. Same status as /digital Selected Work — only TELUS Koodo links to a real case study; the other three /digital cards stub. Six film case-study pages remain on the parking lot — Iron Mountain and Ernest are the highest priority once their stills and offline cuts are exported.
+
+    **"All work →" link** routes to `work.html`. Matches /digital's exact destination. The /work page currently shows 22 mixed Digital + Studios projects; filtering /work for films-only is a future improvement (parked).
+
+    **Why this is the right move.**
+    - One masterbrand, two doors — and one component vocabulary across both
+    - Visual rhythm of /digital's 4-up grid carries directly: same ink band, same gap lines, same italic-word CTAs, same tag scale and tracking
+    - Films now read as work-of-equal-stature with Digital projects (not as a separate visual category that requires a different mental parse)
+    - The award winners' status is communicated through copy (eyebrow + body + Block 2 proof bar above) rather than through structural prominence — which is the editorial choice the /digital page also makes (TELUS Rewards isn't structurally larger than Angel Oak; its impact is communicated in the copy)

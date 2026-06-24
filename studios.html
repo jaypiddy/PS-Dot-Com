@@ -731,44 +731,29 @@
   .proof-bar-body{color:rgba(250,250,247,.72);font-weight:400}
   .proof-bar-body em{font-style:italic;color:var(--paper);font-weight:500}
 
-  /* Pattern I — Films index. Featured rows (7fr media + 5fr meta, side-by-side)
-     followed by a 4-up grid for the rest. Studios Block 3. Award winners first
-     per the studios.md ordering rule. Each film tile has poster + play badge;
-     click routes to a future case-study page (currently stubbed to "#"). */
-  .films{padding:96px 0 96px}
-  .films-heading{font-family:var(--display);font-size:clamp(48px,5.5vw,84px);font-weight:600;line-height:1;letter-spacing:-.02em;margin-bottom:64px}
-  .film-featured{display:grid;grid-template-columns:7fr 5fr;gap:40px;margin-bottom:72px;align-items:center}
-  .film-featured:nth-child(even-row){grid-template-columns:5fr 7fr}
-  .film-media{display:block;position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--ink)}
-  .film-media img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
-  .film-media:hover img{transform:scale(1.035)}
-  .film-play{position:absolute;bottom:20px;left:20px;background:var(--paper);color:var(--ink);width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;transition:background .2s,color .2s;pointer-events:none}
-  .film-media:hover .film-play{background:var(--magenta);color:var(--paper)}
-  .film-meta{padding:0 0 0 8px}
-  .film-award{font-family:var(--text);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);display:block;margin-bottom:16px}
-  .film-meta h3{font-family:var(--display);font-size:clamp(26px,2.6vw,36px);font-weight:600;line-height:1.12;letter-spacing:-.012em;margin-bottom:16px}
-  .film-meta h3 em{font-family:"late-serif",Georgia,serif;font-style:italic;font-weight:400}
-  .film-meta p{font-size:17px;line-height:1.55;color:var(--grey);margin-bottom:24px;max-width:46ch}
-  .film-cta{font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.04em;display:inline-block;border-bottom:1px solid var(--ink);padding-bottom:2px;transition:color .2s,border-color .2s}
-  .film-cta:hover{color:var(--magenta);border-bottom-color:var(--magenta)}
-  .film-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:48px;padding-top:48px;border-top:1px solid var(--line)}
-  .film-card{display:flex;flex-direction:column}
-  .film-card .film-media{aspect-ratio:4/3;margin-bottom:20px}
-  .film-card .film-play{width:40px;height:40px;font-size:12px;bottom:14px;left:14px}
-  .film-card h3{font-family:var(--display);font-size:clamp(19px,1.5vw,22px);font-weight:600;line-height:1.2;margin-bottom:10px;letter-spacing:-.005em}
-  .film-card h3 em{font-family:"late-serif",Georgia,serif;font-style:italic;font-weight:400}
-  .film-card p{font-size:15px;line-height:1.5;color:var(--grey);margin-bottom:14px;flex:1}
-  @media (max-width:1024px){
-    .film-grid{grid-template-columns:repeat(2,1fr)}
-  }
-  @media (max-width:760px){
-    .film-featured{grid-template-columns:1fr;gap:24px;margin-bottom:56px}
-    .film-meta{padding:0}
-    .films-heading{margin-bottom:40px}
-  }
-  @media (max-width:520px){
-    .film-grid{grid-template-columns:1fr}
-  }
+  /* Pattern I — DECOMMISSIONED June 24 2026. The Studios films index
+     originally shipped with a custom featured+grid pattern (7fr/5fr
+     featured rows for award winners + 4-up grid for the rest). JP's
+     brief on review: "The design pattern for the film case studies
+     should be the same pattern/component as on the digital page."
+     Swapped for the canonical .work + .cards.four-up + .card pattern
+     used on /digital "Digital, selected" and the homepage "Selected
+     work" — same dark ink band, same eyebrow .tag taxonomy, same
+     .go.swipe italic-last-word CTA. All the CSS for that pattern
+     (lines 129-145 + 354-361 of this file, came along with the
+     digital.html clone) is reused as-is. No new CSS for Block 3 —
+     just the markup swap. See studios.md Notes 16 + audit doc
+     §Pattern I (now marked DECOMMISSIONED).
+
+     ONE SMALL ADDITION: 6 films in a 4-up grid means row 2 has 2
+     real cards + 2 empty cells. Without intervention, those empties
+     show the .cards parent's line-light background. A placeholder
+     card (.card.placeholder) fills cells 7-8 with the .card ink
+     background so the empties read as blank dark cards and the 1px
+     gap-line rhythm stays consistent with /digital's 4-card layout.
+     pointer-events:none keeps them un-clickable. aria-hidden="true"
+     keeps them out of the accessibility tree. */
+  .work .card.placeholder{pointer-events:none;padding:0}
 
   /* Pattern J — Credits one-sheet. Three credits in a 3-up grid; each is
      portrait + name + role + credit line. Portraits added June 24 2026
@@ -921,86 +906,95 @@
 </section>
 
 
-<!-- Block 3 — Films index — "The work". Pattern I in design-system-audit.md.
-     Header, two featured rows (.film-featured 7fr+5fr media+meta), then a
-     4-up grid (.film-grid + .film-card) for the rest. Ordering rule from
-     studios.md: award winners first, then by ambition not recency. Akamai
-     (when public) likely takes slot one in a later refresh.
+<!-- Block 3 — Films index — "The work". Canonical .work + .cards.four-up
+     + .card pattern (reused from /digital "Digital, selected" and the
+     homepage "Selected work"). JP brief June 24 2026: "The design
+     pattern for the film case studies should be the same pattern/
+     component as on the digital page." Pattern I (custom featured+
+     grid) was decommissioned in this same commit.
 
-     All "Watch" CTAs currently route to "#" (case-study pages don't exist
-     yet — same status as /digital's Selected Work). Each film still uses
-     its uploaded poster image from /images. No video loops on the tiles
-     in this commit — adding inline video previews is a follow-up. -->
-<section class="films" id="films">
+     Eyebrow .tag taxonomy: each film carries a short "Branded · X" or
+     "Original · X" label (mirrors /digital's "Platform" / "Rapid MVP"
+     / "Product · Best UX, VUX" / "Web · SEO" pattern — short, 1-3
+     words, optional middle-dot separator). The two ADDY winners
+     carry the trophy mention in the body line (matches the homepage's
+     Iron Mountain card precedent), not the eyebrow — the proof bar
+     above already calls out both awards by name.
+
+     CTA "Watch the film →" uses .go.swipe — the same .swipe JS that
+     wraps "case" italic-serif on /digital wraps "film" italic-serif
+     here, with the same magenta swipe-on-hover. All Watch links stub
+     to "#" until film case-study pages exist. Italic film names in
+     h3 titles via <i> (Studios canonical — "Iron Mountain — <i>The
+     Summit</i>", "Ernest Packaging — <i>Four Dreams</i>", "Rapid MVP
+     — <i>Luma</i>").
+
+     Layout: 6 films in 4-up wraps to row 1 (4 cards) + row 2 (2 cards
+     + 2 placeholders). Placeholders fill cells 7-8 with .card ink bg
+     so the line-light gap rhythm stays consistent. -->
+<section class="work" id="films">
   <div class="wrap">
-    <h2 class="films-heading">The work</h2>
-
-    <!-- Featured 01 — Iron Mountain — The Summit (Silver ADDY 2026) -->
-    <article class="film-featured">
-      <a class="film-media" href="#" aria-label="Watch The Summit — Iron Mountain">
-        <img src="images/iron_mountain.jpg" alt="Still from The Summit — Iron Mountain" loading="lazy">
-        <span class="film-play" aria-hidden="true">▶</span>
+    <div class="head reveal">
+      <h2 class="rise">The work</h2>
+      <a class="all swipe" href="work.html">All work →</a>
+    </div>
+    <div class="cards four-up reveal">
+      <a class="card" href="#">
+        <div class="frame"><img src="images/iron_mountain.jpg" alt="Iron Mountain The Summit" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="meta">
+          <span class="tag">Branded &middot; Live-Action</span>
+          <h3>Iron Mountain &mdash; <i>The Summit</i></h3>
+          <p>Musicians climb to a summit and discover the power they carried all along: their data. Silver ADDY, 2026.</p>
+          <span class="go swipe">Watch the film &rarr;</span>
+        </div>
       </a>
-      <div class="film-meta">
-        <span class="film-award">Silver ADDY &middot; 2026</span>
-        <h3>Iron Mountain — <em>The Summit</em></h3>
-        <p>Musicians climb to a summit and discover the power they carried all along: their data.</p>
-        <a class="film-cta" href="#">Watch →</a>
-      </div>
-    </article>
-
-    <!-- Featured 02 — Ernest Packaging — Four Dreams (Silver ADDY 2026) -->
-    <article class="film-featured">
-      <a class="film-media" href="#" aria-label="Watch Four Dreams — Ernest Packaging">
-        <img src="images/ernest.jpg" alt="Still from Four Dreams — Ernest Packaging" loading="lazy">
-        <span class="film-play" aria-hidden="true">▶</span>
+      <a class="card" href="#">
+        <div class="frame"><img src="images/ernest.jpg" alt="Ernest Packaging Four Dreams" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="meta">
+          <span class="tag">Branded &middot; Character</span>
+          <h3>Ernest Packaging &mdash; <i>Four Dreams</i></h3>
+          <p>Four surreal dreams brought to life &mdash; characters that speak, move, and feel as if they've always existed. Silver ADDY, 2026.</p>
+          <span class="go swipe">Watch the film &rarr;</span>
+        </div>
       </a>
-      <div class="film-meta">
-        <span class="film-award">Silver ADDY &middot; 2026</span>
-        <h3>Ernest Packaging — <em>Four Dreams</em></h3>
-        <p>Four surreal dreams brought to life — characters that speak, move, and feel as if they've always existed.</p>
-        <a class="film-cta" href="#">Watch →</a>
-      </div>
-    </article>
-
-    <!-- 4-up grid for remaining four films. Ordering: by ambition, not recency. -->
-    <div class="film-grid">
-      <article class="film-card">
-        <a class="film-media" href="#" aria-label="Watch Celestial AI">
-          <img src="images/celestial.jpg" alt="Still from Celestial AI" loading="lazy">
-          <span class="film-play" aria-hidden="true">▶</span>
-        </a>
-        <h3>Celestial AI</h3>
-        <p>A story told in light itself — photonic fabric as cinema.</p>
-        <a class="film-cta" href="#">Watch →</a>
-      </article>
-      <article class="film-card">
-        <a class="film-media" href="#" aria-label="Watch The Algorithm Trap">
-          <img src="images/algorithm_trap.jpg" alt="Still from The Algorithm Trap" loading="lazy">
-          <span class="film-play" aria-hidden="true">▶</span>
-        </a>
-        <h3>The Algorithm Trap</h3>
-        <p>Fast, raw, restless — the endless scroll, mirrored back at itself.</p>
-        <a class="film-cta" href="#">Watch →</a>
-      </article>
-      <article class="film-card">
-        <a class="film-media" href="#" aria-label="Watch Maple Health">
-          <img src="images/maple_health.jpg" alt="Still from Maple Health" loading="lazy">
-          <span class="film-play" aria-hidden="true">▶</span>
-        </a>
-        <h3>Maple Health</h3>
-        <p>The quiet moments of empathy that define real healthcare, animated.</p>
-        <a class="film-cta" href="#">Watch →</a>
-      </article>
-      <article class="film-card">
-        <a class="film-media" href="#" aria-label="Watch Luma — Rapid MVP">
-          <img src="images/rapid_mvp.jpg" alt="Still from Luma — Rapid MVP" loading="lazy">
-          <span class="film-play" aria-hidden="true">▶</span>
-        </a>
-        <h3>Rapid MVP — <em>Luma</em></h3>
-        <p>A brilliant idea left waiting — until it didn't have to be.</p>
-        <a class="film-cta" href="#">Watch →</a>
-      </article>
+      <a class="card" href="#">
+        <div class="frame"><img src="images/celestial.jpg" alt="Celestial AI" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="meta">
+          <span class="tag">Branded &middot; AI</span>
+          <h3>Celestial AI</h3>
+          <p>A story told in light itself &mdash; photonic fabric as cinema.</p>
+          <span class="go swipe">Watch the film &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <div class="frame"><img src="images/algorithm_trap.jpg" alt="The Algorithm Trap" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="meta">
+          <span class="tag">Original &middot; Short</span>
+          <h3>The Algorithm Trap</h3>
+          <p>Fast, raw, restless &mdash; the endless scroll, mirrored back at itself.</p>
+          <span class="go swipe">Watch the film &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <div class="frame"><img src="images/maple_health.jpg" alt="Maple Health" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="meta">
+          <span class="tag">Branded &middot; Animation</span>
+          <h3>Maple Health</h3>
+          <p>The quiet moments of empathy that define real healthcare, animated.</p>
+          <span class="go swipe">Watch the film &rarr;</span>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <div class="frame"><img src="images/rapid_mvp.jpg" alt="Rapid MVP Luma" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="meta">
+          <span class="tag">Original &middot; IP</span>
+          <h3>Rapid MVP &mdash; <i>Luma</i></h3>
+          <p>A brilliant idea left waiting &mdash; until it didn't have to be.</p>
+          <span class="go swipe">Watch the film &rarr;</span>
+        </div>
+      </a>
+      <div class="card placeholder" aria-hidden="true"></div>
+      <div class="card placeholder" aria-hidden="true"></div>
     </div>
   </div>
 </section>

@@ -385,7 +385,13 @@ Studios Block 2. High-contrast single-line strip between hero and roster. Ink ba
 
 ### Pattern I — `.films` + `.film-featured` + `.film-card` + `.film-grid` (featured-plus-grid media index)
 
-Studios Block 3. Two featured rows on top (`.film-featured`, 7fr media + 5fr meta side-by-side at desktop), then a 4-up grid (`.film-grid` containing `.film-card`s) for the remaining items. Each item has a poster image with `.film-play` badge, a title (with optional italic film-name treatment), a body line, and a `Watch →` CTA.
+**STATUS: DECOMMISSIONED June 24 2026.** Replaced on `/studios` Block 3 by direct reuse of the canonical `.work` + `.cards.four-up` + `.card` pattern (Pattern 4b in §2 above, also documented as the pattern used by /digital "Digital, selected" and the homepage "Selected work"). JP brief on review: "The design pattern for the film case studies should be the same pattern/component as on the digital page." All Pattern I CSS rules (`.films`, `.films-heading`, `.film-featured`, `.film-media`, `.film-play`, `.film-meta`, `.film-award`, `.film-grid`, `.film-card`, `.film-cta`) were deleted from `studios.html` in the same commit. See `studios.md` Notes 16. The Pattern I documentation below is preserved as a historical record of what was tried — do NOT revive it without explicit cause. If a future hub page needs a featured+grid hybrid, evaluate whether the canonical `.cards` + `.cards.four-up` (with an optional `.cards.featured` modifier) can do the job before re-introducing a parallel component vocabulary.
+
+---
+
+#### Historical record (decommissioned)
+
+Studios Block 3 (until June 24 2026). Two featured rows on top (`.film-featured`, 7fr media + 5fr meta side-by-side at desktop), then a 4-up grid (`.film-grid` containing `.film-card`s) for the remaining items. Each item has a poster image with `.film-play` badge, a title (with optional italic film-name treatment), a body line, and a `Watch →` CTA.
 
 ```html
 <section class="films" id="films">
@@ -420,15 +426,9 @@ Studios Block 3. Two featured rows on top (`.film-featured`, 7fr media + 5fr met
 </section>
 ```
 
-**Featured rows: media aspect-ratio 16:9.** Grid cards: 4:3, smaller play badge. Featured rows separate themselves from the grid with `border-top:1px solid var(--line)` on `.film-grid` + `margin-top:48px;padding-top:48px` — a clear visual rule between "featured" and "the rest."
+**Featured rows: media aspect-ratio 16:9.** Grid cards: 4:3, smaller play badge. Featured rows separated themselves from the grid with `border-top:1px solid var(--line)` on `.film-grid` + `margin-top:48px;padding-top:48px` — a clear visual rule between "featured" and "the rest."
 
-**Ordering rule (carried from `studios.md`).** Featured rows = award winners first. Grid = by ambition, not recency. When a stronger opener exists (e.g. Akamai when public), promote it to a featured row and demote one of the current featured films to the grid.
-
-**Currently:** all `Watch →` CTAs route to `#` because case-study pages for the films don't exist yet. Inline video previews (the `.work` `.media + <video>` pattern from `/work`) are a follow-up — each film needs encoded MP4/WebM + frame-0 poster.
-
-**Responsive:** featured rows collapse to single-column stack at ≤760px (meta below media); grid steps 4-up → 2-up at ≤1024px → 1-up at ≤520px.
-
-**Reuse beyond `/studios`:** the featured+grid mechanic generalizes to any media-index page — case study collections, podcast episode lists, talks index. The featured-row pattern is good for surfacing 1-3 hero items; the grid handles the long tail.
+**Why it was decommissioned.** The featured+grid hybrid created a parallel component vocabulary on /studios that diverged from the rest of the site. The site's work-grid component (`.work` + `.cards.four-up` + `.card`, with `.tag` eyebrows and `.go.swipe` italic-last-word CTAs) already exists, ships on /digital and the homepage, and visually carries award status via copy (Block 2 proof bar + per-card body line) rather than structure. Maintaining two parallel patterns for the same job ("show our best work in a grid") was the wrong trade — one masterbrand, one component vocabulary.
 
 ---
 

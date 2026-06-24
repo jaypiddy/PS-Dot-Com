@@ -168,13 +168,20 @@ The Digital practice page deck (`docs/copy/digital.md`, INTERIM status) has 8 co
 
 ### Pattern A — `.sub-hero` with hero CTAs
 
-The sub-hero pattern currently has eyebrow → H1 → sub-voice. Hub pages like `/digital`, `/studios`, `/about` need a CTA row in the hero. Extending `.sub-hero` with an optional `.sub-hero-ctas` child:
+**Status on `/digital` (as of June 23 2026): pattern decommissioned.** The `.sub-hero-ctas` row was removed from `/digital` per JP's call — see `digital.md` Notes 18. The two issues: the pill shape (`border-radius:999px`) read off against the page's square `.btn.solid` vocabulary, and the primary CTA was a redundant pre-driver to the Validator section sitting one viewport below the hero. CSS and HTML stripped entirely.
+
+The pattern stays catalogued here as a reference, but **do not revive the pill design** on future hub pages (Studios, About). If those pages genuinely need hero-level CTAs:
+- Use the existing global `.btn.solid` square-button vocabulary (no `border-radius` override)
+- Verify the CTA isn't already driving to a destination immediately below the hero (if it is, the in-section CTA is sufficient — don't pre-drive)
+
+Proposed structure (preserved for reference, NOT for verbatim reuse):
 
 ```html
 <div class="sub-hero-inner wrap">
   <span class="eyebrow">…</span>
   <h1 class="rise">…</h1>
   <p class="sub-voice"><em class="voice mag">…</em></p>
+  <!-- If a future hub page needs hero CTAs, use globals; no pills: -->
   <div class="sub-hero-ctas">
     <a class="btn solid cascade" href="…">Primary →</a>
     <a class="btn cascade" href="…">Secondary</a>
@@ -182,9 +189,9 @@ The sub-hero pattern currently has eyebrow → H1 → sub-voice. Hub pages like 
 </div>
 ```
 
-CSS adapts `.hero-ctas` from `index.html:485-489` (homepage) to the sub-hero scale. `.btn.solid` and `.btn` styles already exist globally and don't need to change.
+The full original CSS block (with `border-radius:999px` pill styling) is available in commit history of `digital.html` prior to the June 23 2026 decommission — but if revived for a future page, the pill border-radius must drop in favor of the square `.btn.solid` treatment used throughout the rest of the site.
 
-**Reuse beyond `/digital`:** `/studios` hub page (Reel CTA + Brief CTA), `/about` (Careers CTA + Contact CTA), possibly the Insights stream landing pages if those become their own pages later.
+**Default decision for future hub pages:** ship the hero without a CTA row unless there's a specific conversion path the page closer + takeover menu can't cover. The hero standing on H1 + sub-body alone reads more confidently than a hero pre-driving its own content.
 
 ### Pattern B — `.terminal` block
 

@@ -11,7 +11,7 @@ The shared chrome (header, takeover menu, footer) on this page is governed by `_
 
 ## Hero
 
-_Identity-first hero. Eyebrow names the practice scope; H1 makes the velocity claim; sub-paragraph qualifies and bolds the AI/senior pairing; two CTAs route to the validator and to a project start._
+_Identity-first hero. Eyebrow names the practice scope; H1 makes the velocity claim; sub-paragraph qualifies and bolds the AI/senior pairing. The hero stands on its own — no CTA row. Visitor scrolls into Outcome strip + Validator section directly._
 
 **EYEBROW:** Digital — product strategy, design & engineering
 
@@ -21,11 +21,7 @@ _("not months" rendered as serif italic via `em.voice`. Matches the homepage doo
 **BODY:** Designers at heart, all the way down to the dev team. **AI does the volume. Senior people make the calls.** MVPs in 4–6 weeks; platforms that hold at enterprise scale.
 _Renders inside `<p class="sub-body">` — a new sibling of the existing `.sub-voice` class (which carries serif-italic-on-magenta lines). `.sub-body` is plain prose with bolded mid-sections, intended for hub pages where the hero needs to qualify the H1 with weighted prose rather than an italic voice flourish._
 
-**CTA (solid):** Validate your idea in just a few minutes →
-_Routes to `https://rapidmvp.powershifter.com/validate` (per Notes 6, 9). Lives inside the new `.sub-hero-ctas` extension to `.sub-hero` — see Notes 10._
-
-**CTA (outline):** Start a project
-_Routes to `#contact` (the page closer)._
+_The hero CTA row (the `.sub-hero-ctas` pattern with "Validate your idea in just a few minutes →" + "Start a project") was removed June 23 2026 — see Notes 18. "Start a project" persists in the page closer + takeover menu; no path-to-conversion lost._
 
 ---
 
@@ -250,7 +246,7 @@ _Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of th
 
 11. **New design-system patterns now in production.**
     Three new patterns + one extension class were introduced for this page and are now live (all documented in `docs/design-system-audit.md` §"New patterns to add to the system"):
-    - **Pattern A — `.sub-hero-ctas`:** extension of `.sub-hero` to support a row of CTAs in the hero. Live in this page's hero (Validator + Start-a-project pair). Reusable on `/studios`, `/about`, and any future hub-style page.
+    - **Pattern A — `.sub-hero-ctas`:** ~~extension of `.sub-hero` to support a row of CTAs in the hero. Live in this page's hero (Validator + Start-a-project pair). Reusable on `/studios`, `/about`, and any future hub-style page.~~ **Decommissioned June 23 2026 — see Notes 18.** The pill design and the pre-driver redundancy meant the pattern got stripped from `/digital`. Do not revive in pill form on future hub pages.
     - **Pattern B — `.terminal`:** monospace 6-line scripted CLI exchange, role-coded by leading icon (`$` prompt, `✓` ok, `▲` warn, `→` signal). Live in the Validator section. Lines reveal in sequence via the existing `.reveal` → `.in` observer, staggered 180ms per line. Reusable as `.terminal.breakout` inside `.article-body .prose` on case studies showing technical work, engineering-stream Insights articles, or the Studios AI-pipeline visualization.
     - **Pattern C — `.partners-strip`:** horizontal row of partner-tier chips (display-weight name + serif-italic tier label). Live in the Partners section. Distinct from `.logos` (which masks client logos via mask-image). Reusable on `/about` when that page ships.
     Also live: a `.sub-body` class for hero body prose with bolded mid-sections (sibling of the existing `.sub-voice` italic-magenta treatment and `.streams` 3-stream paragraph treatment), and a `.stat b > em` rule for text-only outcome-strip values.
@@ -355,3 +351,20 @@ _Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of th
     **Why the homepage didn't have the bug:** `index.html` was scaffolded without the wordmark-text logo strip; the only `.logos` rule it carries is the canonical grid. `digital.html` inherited the wordmark scaffolding from a much earlier scaffolding pass and the dead rules were never cleaned up when the canonical pattern was adopted.
 
     **Lesson for future patterns:** when copying a CSS pattern from another page that uses the same class name as an existing rule on the destination page, audit for cascade conflicts before shipping. The pre-commit `grep -nE '^\s*\.<className>\s*\{'` check would have surfaced this — adding it as a routine step before any cross-page CSS reuse.
+
+18. **Hero CTA row removed — Pattern A (`.sub-hero-ctas`) decommissioned (June 23 2026).**
+    JP screenshot + brief: "Let's lose this CTA. The pills and letter spacing don't work and the MVP driver is not that far down the page."
+
+    **What got stripped:** the entire `.sub-hero-ctas` row sitting under the hero H1/body, which carried two pill-shaped CTAs: `Validate your idea in just a few minutes →` (driving to `https://rapidmvp.powershifter.com/validate`) and `Start a project` (anchor to `#contact`). Both used `border-radius:999px` — the pill shape that JP flagged as off-brand against the page's square `.btn.solid` vocabulary used everywhere else.
+
+    **Why both, not just the Validator one:** JP's brief named "this CTA" referring to the screenshot — which showed the whole row. The pills-don't-work issue applied to both buttons (same `border-radius:999px` rule). The "MVP driver is not that far down the page" rationale applied specifically to the Validator pill — but leaving "Start a project" alone as a single pill would have left the pill criticism unresolved.
+
+    **No path-to-conversion lost.** Outbound routes preserved:
+    - **Validator app:** the in-page Validator section (`#validator`, the ink band one section below the hero) still drives to `https://rapidmvp.powershifter.com/validate` via its own CTA (`Validate your MVP →`). The hero-level pre-driver was redundant — the visitor sees the in-page Validator section after scrolling about one viewport.
+    - **Start a project:** persists in the page closer (`#contact`, near the bottom of the page) and in the takeover menu (link 06 on every page with the chrome).
+
+    **What got stripped from CSS:** the entire `.sub-hero-ctas` rule block (formerly lines 326-343) — flex container styling, the pill-shaped `.sub-hero-ctas .btn` rule with `border-radius:999px`, hover states, and the `.btn.solid` variant. Replaced with a 9-line comment documenting the decommission and the rationale.
+
+    **Pattern A status:** decommissioned from `/digital`. Stays catalogued in the audit doc only if a future hub page (Studios, About) genuinely needs hero-level CTAs in a non-pill treatment — not as the current pill design. If those pages need a hero CTA row, redesign it around the existing `.btn.solid` square button vocabulary, not by reviving the pill shape.
+
+    **Visual consequence:** the hero now stands on H1 + sub-body alone. The 50vh hero height stays the same (the CTA row was inside the 50vh band, not extending it). The visual rhythm goes hero → outcome strip → offers (two doors) → Validator (ink band) — the same flow, just without a pre-driver above the strip.

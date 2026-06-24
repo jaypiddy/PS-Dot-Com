@@ -16,5 +16,12 @@ KB_URL = "https://powershifter.com/docs/concierge-knowledge.md"
 # Use "*" only for local testing.
 ALLOWED_ORIGIN = "https://powershifter.com"
 
+# Optional soft abuse gate. If set, the page must send the SAME value as the
+# X-PS-Token header — set CONFIG.clientToken in ps-concierge.js to match.
+# It's client-visible, so it only deters scripted / no-Origin abuse; pair it
+# with a Cloudflare Rate Limiting rule (and/or Turnstile) for real protection.
+# Generate one with:  openssl rand -hex 16
+# CLIENT_TOKEN = "paste-a-random-hex-string"
+
 # SECRET — do NOT put the key here. Set it once with:
 #   wrangler secret put ANTHROPIC_API_KEY

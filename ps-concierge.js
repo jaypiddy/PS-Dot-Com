@@ -18,7 +18,13 @@
   var CONFIG = {
     endpoint: null,
     knowledgeUrl: 'docs/concierge-knowledge.md',  // curated KB; injected into the system prompt
-    formEndpoint: null,  // PRODUCTION: POST { name, email, message } target (Worker /contact, Formspree, etc.). null = prototype (stores locally + confirms).
+    // Soft abuse gate for the Worker. If you set CLIENT_TOKEN on the Worker,
+    // put the SAME value here — the page then sends it as the X-PS-Token header.
+    // NOTE: this ships in client code (readable in page source), so it deters
+    // scripted/no-Origin abuse, not a determined attacker. Pair it with
+    // Cloudflare rate-limiting / Turnstile for real protection.
+    clientToken: null,
+    formEndpoint: null,  // PRODUCTION: POST { name, email, message } target (Worker /contact, Formspree, etc.). null = honest mailto fallback (opens the visitor's mail client to CONFIG.email).
     phone: '+1 (604) 227-9952',
     phoneHref: 'tel:+16042279952',
     email: 'hello@powershifter.com'   // TODO: confirm the real inbound address before launch
@@ -78,8 +84,10 @@
     if (CONFIG.endpoint){
       // Production: the Worker owns the system prompt + knowledge base,
       // so we send only the conversation history.
+      var headers = { 'Content-Type':'application/json' };
+      if (CONFIG.clientToken) headers['X-PS-Token'] = CONFIG.clientToken;
       var r = await fetch(CONFIG.endpoint, {
-        method:'POST', headers:{'Content-Type':'application/json'},
+        method:'POST', headers: headers,
         body: JSON.stringify({ messages: history })
       });
       if(!r.ok) throw new Error('endpoint '+r.status);
@@ -95,7 +103,7 @@
   /* ---------- tiny safe formatter ---------- */
   function fmt(s){
     var esc = s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    esc = esc.replace(/\bhttps?:\/\/[^\s)]+|\b[\w.-]+\.html\b/g, function(u){
+    esc = esc.replace(/\bhttps?:\/\/[^\s)<>"']+|\b[\w.-]+\.html\b/g, function(u){
       return '<a href="'+u+'">'+u.replace(/^https?:\/\//,'')+'</a>'; });
     esc = esc.replace(/([\w.+-]+@[\w-]+\.[\w.-]+)/g, '<a href="mailto:$1">$1</a>');
     esc = esc.replace(/\*([^*\n]+)\*/g, '<em>$1</em>');
@@ -224,18 +232,31 @@
       if(!data.message){ fvErr.textContent='Tell us a line about what you’re building.'; return; }
       fvErr.textContent=''; fvSubmit.disabled=true; fvSubmit.textContent='Sending…';
       try{
+        var first = data.name ? data.name.split(/\s+/)[0].replace(/[<>&]/g,'') : 'thanks';
+        var renderSuccess = function(headline, bodyHtml){
+          fv.innerHTML =
+            '<div class="cc-fv-head"><b>Send us a note</b>'+
+              '<button type="button" class="cc-fv-back2" style="background:none;border:0;color:rgba(250,250,247,.7);cursor:pointer;font:inherit;font-weight:700;font-size:12px;letter-spacing:.04em">Close</button></div>'+
+            '<div class="cc-fv-success"><span class="cc-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M20 6L9 17l-5-5"/></svg></span>'+
+              '<h4>'+headline+'</h4>'+
+              '<p>'+bodyHtml+'</p></div>';
+          fv.querySelector('.cc-fv-back2').addEventListener('click', function(){ openForm(false); });
+        };
         if(CONFIG.formEndpoint){
           var rr = await fetch(CONFIG.formEndpoint, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
           if(!rr.ok) throw new Error('form '+rr.status);
+          // Keep a local backup only when the note was actually delivered.
+          try{ var leads=JSON.parse(localStorage.getItem('psConciergeLeads')||'[]'); leads.push(Object.assign({at:Date.now()},data)); localStorage.setItem('psConciergeLeads',JSON.stringify(leads)); }catch(_){}
+          renderSuccess('Got it, '+first+'.', 'The right person will be in touch shortly. If it’s urgent, <em>call us</em> at '+CONFIG.phone+'.');
+        } else {
+          // No form backend wired yet — don't claim we received it (a localStorage-
+          // only "capture" never reaches the studio). Hand off honestly through the
+          // visitor's own mail client so the note actually lands in our inbox.
+          var subject = 'New project inquiry — ' + (data.name || 'website');
+          var lines = ['Name: '+data.name, 'Email: '+data.email, '', data.message];
+          window.location.href = 'mailto:'+CONFIG.email+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.join('\n'));
+          renderSuccess('Almost there, '+first+'.', 'We’ve opened your email app so this reaches us directly at <a href="mailto:'+CONFIG.email+'">'+CONFIG.email+'</a>. Prefer the phone? <em>'+CONFIG.phone+'</em>.');
         }
-        try{ var leads=JSON.parse(localStorage.getItem('psConciergeLeads')||'[]'); leads.push(Object.assign({at:Date.now()},data)); localStorage.setItem('psConciergeLeads',JSON.stringify(leads)); }catch(_){}
-        fv.innerHTML =
-          '<div class="cc-fv-head"><b>Send us a note</b>'+
-            '<button type="button" class="cc-fv-back2" style="background:none;border:0;color:rgba(250,250,247,.7);cursor:pointer;font:inherit;font-weight:700;font-size:12px;letter-spacing:.04em">Close</button></div>'+
-          '<div class="cc-fv-success"><span class="cc-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M20 6L9 17l-5-5"/></svg></span>'+
-            '<h4>Got it, '+(data.name? data.name.split(/\s+/)[0].replace(/[<>&]/g,'') : 'thanks')+'.</h4>'+
-            '<p>The right person will be in touch shortly. If it’s urgent, <em>call us</em> at '+CONFIG.phone+'.</p></div>';
-        fv.querySelector('.cc-fv-back2').addEventListener('click', function(){ openForm(false); });
       }catch(err){
         fvErr.textContent='Couldn’t send just now — call '+CONFIG.phone+' and we’ll sort it.';
         fvSubmit.disabled=false; fvSubmit.textContent='Send to the studio';

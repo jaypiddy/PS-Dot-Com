@@ -42,6 +42,7 @@ In `ps-concierge.js`, set the endpoint:
 ```js
 var CONFIG = {
   endpoint: 'https://ps-concierge.<your-subdomain>.workers.dev',
+  clientToken: null,   // set to your CLIENT_TOKEN value if you enabled the token gate
   ...
 };
 ```
@@ -49,6 +50,8 @@ var CONFIG = {
 That's the only client change. With `endpoint` set, the page stops using
 the in-page prototype API and talks to the Worker. With `endpoint: null`
 it falls back to the prototype helper (handy for local dev in Claude).
+If you set `CLIENT_TOKEN` in `wrangler.toml`, set `CONFIG.clientToken` to the
+same string so the page's `X-PS-Token` header is accepted.
 
 ## Request / response contract
 
@@ -75,8 +78,15 @@ needed (just wait out the 5-minute cache, or bump `KB_TTL_MS`).
   [Cloudflare Rate Limiting rule](https://developers.cloudflare.com/waf/rate-limiting-rules/)
   on the Worker route, or use KV / a Durable Object for per-IP limits.
   The module-scope cache here is best-effort only.
-- **Origin lock:** `ALLOWED_ORIGIN` rejects cross-origin POSTs. Keep it set
-  in production; use `"*"` only for local testing.
+- **Origin lock:** `ALLOWED_ORIGIN` rejects cross-origin POSTs — and now also
+  rejects requests with **no** `Origin` header (curl/scripts) when set to a
+  concrete origin. Keep it set in production; use `"*"` only for local testing.
+- **Soft client token:** set `CLIENT_TOKEN` in `wrangler.toml` and the same
+  value as `CONFIG.clientToken` in `ps-concierge.js`. The page then sends it as
+  `X-PS-Token`; the Worker 403s anything without it. This stops scripted abuse
+  CORS can't — but the token ships in client code, so treat it as a speed-bump
+  and pair it with the rate-limiting rule above (and/or
+  [Turnstile](https://developers.cloudflare.com/turnstile/)).
 - **Model output cap:** `max_tokens` is 1024 (matches the prototype). Tune
   in `src/index.js` if you want longer replies.
 - **Cost control:** Haiku-class models keep this cheap; the short-reply

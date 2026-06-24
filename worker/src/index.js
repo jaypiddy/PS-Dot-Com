@@ -20,6 +20,8 @@
  *   MODEL           e.g. "claude-haiku-4-5"
  *   KB_URL          public URL of docs/concierge-knowledge.md
  *   ALLOWED_ORIGIN  your site origin, e.g. "https://powershifter.com"
+ *   CLIENT_TOKEN    optional shared token the page must send as X-PS-Token
+ *                   (soft abuse gate; pair with CF rate-limiting / Turnstile)
  * Secret:
  *   ANTHROPIC_API_KEY
  */
@@ -57,7 +59,7 @@ function corsHeaders(env) {
   return {
     "Access-Control-Allow-Origin": env.ALLOWED_ORIGIN || "*",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Headers": "Content-Type, X-PS-Token",
     "Vary": "Origin",
   };
 }
@@ -86,12 +88,24 @@ export default {
     if (request.method !== "POST")
       return new Response("Method Not Allowed", { status: 405, headers: cors });
 
-    // Optional origin allow-list
-    if (env.ALLOWED_ORIGIN) {
+    // Origin allow-list. The widget is cross-origin to the Worker, so a real
+    // browser always sends Origin — reject BOTH missing and mismatched when
+    // ALLOWED_ORIGIN is a concrete origin. (Earlier this let a no-Origin
+    // request — e.g. curl/scripts — slip through. CORS only constrains
+    // browsers anyway; the shared-token gate below covers non-browser clients.)
+    if (env.ALLOWED_ORIGIN && env.ALLOWED_ORIGIN !== "*") {
       const origin = request.headers.get("Origin");
-      if (origin && origin !== env.ALLOWED_ORIGIN)
+      if (origin !== env.ALLOWED_ORIGIN)
         return json({ error: "forbidden origin" }, 403, cors);
     }
+
+    // Soft shared-token gate (optional). If CLIENT_TOKEN is set, the page must
+    // send the same value as X-PS-Token (CONFIG.clientToken). Stops scripted /
+    // no-Origin abuse of this paid proxy. NOTE: the token ships in client code,
+    // so it's a speed-bump, not a true secret — pair with Cloudflare
+    // rate-limiting / Turnstile for real protection.
+    if (env.CLIENT_TOKEN && request.headers.get("X-PS-Token") !== env.CLIENT_TOKEN)
+      return json({ error: "forbidden" }, 403, cors);
 
     let body;
     try { body = await request.json(); } catch { return json({ error: "bad json" }, 400, cors); }
@@ -122,8 +136,10 @@ export default {
       });
 
       if (!resp.ok) {
-        const detail = await resp.text();
-        return json({ error: "upstream", status: resp.status, detail }, 502, cors);
+        // Log upstream detail server-side; don't echo Anthropic's raw error
+        // body back to the client.
+        console.error("anthropic upstream error", resp.status, await resp.text());
+        return json({ error: "upstream", status: resp.status }, 502, cors);
       }
 
       const data = await resp.json();

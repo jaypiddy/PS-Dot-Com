@@ -487,6 +487,36 @@ Studios Block 4. Square portrait + name + role + credit-line one-sheet in a 3-up
 
 ---
 
+### Pattern K — `.wcard.feature` (cinematic hero card)
+
+Originally on `/work.html` (CSS at `work.html` lines 356-393), promoting Iron Mountain — The Summit to the top of the work-grid index. **Reused on `/studios` Block 3 (June 24 2026)** between the `.head` row (H2 "The work" + "All work →") and the `.cards.four-up` films grid. JP brief: "Lets add this exact component from the work.html page below the title WORK and above the rows of films on the studios page." The component is direct CSS reuse — rules ported verbatim to `studios.html` with a `.work .` selector prefix to scope them to the films section. See `studios.md` Notes 17.
+
+A single full-width hero with image-as-background and overlaid text. Distinct from `.card` (Pattern 4b — stacked image-then-meta layout) and from the decommissioned Pattern I (custom featured+grid hybrid). The `.wtint` gradient overlay ensures text legibility regardless of image content.
+
+```html
+<a class="wcard feature reveal" data-cat="studios" href="#">
+  <div class="wframe">
+    <img src="…" alt="…" style="width:100%;height:100%;object-fit:cover">
+    <div class="wtint"></div>
+    <div class="wcard-overlay">
+      <h2>Iron Mountain — <i>The Summit</i></h2>
+      <p>A generative film with a blockbuster look. Silver ADDY, 2026.</p>
+      <span class="wgo swipe">Watch the film →</span>
+    </div>
+  </div>
+</a>
+```
+
+**Cinematic aspect.** `.wframe` base is 16:9; the `.feature` variant overrides to 21:9 — the ultrawide aspect signals "hero piece" without needing additional structural treatment. The image fills the frame via `object-fit:cover`.
+
+**Tint overlay.** `linear-gradient(transparent 30%, rgba(18,19,21,.72) 100%)` — keeps the top 30% of the image clean while darkening the bottom band where the overlay text lives. `z-index:1` puts it above the image; the overlay sits at `z-index:2`.
+
+**Overlay typography.** `.wcard-overlay h2` uses the display weight at `clamp(22px,2.4vw,36px)` — smaller than the section's `<h2 class="rise">` at `clamp(36px,4vw,60px)`, so visual hierarchy reads correctly even though both are technically `<h2>` elements. The italic film name via `<i>` uses Late Serif at weight 500. Body line `.wcard-overlay p` is paper at 78% alpha for slight recession; `.wcard-overlay .wgo` is paper at 90% alpha with the `.swipe` italic-last-word treatment.
+
+**Reuse beyond `/studios`:** any hub page that needs a single hero-piece treatment above a grid. The `.feature` modifier in the `.work-grid` context on `/work.html` (where it lives natively) makes the card span the full grid width via `grid-column:1 / -1`; when used outside a grid (as on `/studios` Block 3 inside a plain `.wrap`), the card just renders as a full-width block by default.
+
+---
+
 ## How to use this file
 
 Before stubbing a new page:

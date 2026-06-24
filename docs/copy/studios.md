@@ -47,14 +47,26 @@ _Open call: verify the judging-category claim before "judged against everything"
 
 ## Block 3 — Films index — "The work"
 
-_Canonical `.work` + `.cards.four-up` + `.card` pattern (reused from `/digital` "Digital, selected" and the homepage "Selected work"). JP brief June 24 2026: "The design pattern for the film case studies should be the same pattern/component as on the digital page." The original Pattern I (featured rows + 4-up grid hybrid) was decommissioned — every film is now an equal card in the grid. Award winners no longer get a structurally featured position; the trophy mention moves into the body line, matching the homepage Iron Mountain card precedent. See Notes 16._
+_Canonical `.work` + `.cards.four-up` + `.card` pattern (reused from `/digital` "Digital, selected" and the homepage "Selected work"), with a `.wcard.feature` hero card on top — ported verbatim from `/work.html`. JP brief June 24 2026: "The design pattern for the film case studies should be the same pattern/component as on the digital page" + "Lets add this exact component from the work.html page below the title WORK and above the rows of films on the studios page." The original Pattern I (featured rows + 4-up grid hybrid) was decommissioned — every grid film is now an equal card. The featured `.wcard.feature` on top serves as the "lead piece" hero treatment for the strongest film (Iron Mountain — The Summit, the ADDY winner). Iron Mountain also stays as card #1 in the grid — deliberate editorial layering: the featured card sells the trophy; the grid card sells the story. See Notes 16 + Notes 17._
 
 **H2:** The work
 **ALL-WORK LINK (`.all swipe`):** All work → _(routes to `work.html`; the .swipe JS auto-wraps "work" italic-serif, matching /digital's "All work" treatment exactly)_
 
+### Featured card — Iron Mountain (`.wcard.feature` from /work.html)
+
+_Hero treatment, 21:9 cinematic frame, paper-on-tint text overlay. Lives between the H2 row and the 4-up grid below. The h2 element comes verbatim from /work.html (work.html's choice) — the section H2 "The work" above is visually larger via the responsive font-size rules so the hierarchy still reads correctly._
+
+**IMAGE:** `images/iron_mountain.jpg` (full-bleed cover, 21:9 aspect on the featured variant)
+**H2:** Iron Mountain — *The Summit*
+**BODY:** A generative film with a blockbuster look. Silver ADDY, 2026.
+**CTA:** Watch the film →
+_(Uses `.wgo.swipe` — same .swipe JS auto-wraps "film" italic-serif as on the grid cards below.)_
+
+### Grid (6 films in `.cards.four-up`)
+
 **Layout:** 6 films in a 4-up grid, wrapping to row 1 (4 cards) + row 2 (2 cards + 2 placeholders). Placeholders are invisible `.card.placeholder` divs filling cells 7-8 with the same ink background as real cards, so the 1px line-light gap rhythm stays consistent with /digital's 4-card layout. Ordering: award winners first (mirroring /digital ordering convention), then by ambition not recency.
 
-**Eyebrow `.tag` taxonomy:** Each film carries a short 1-3 word label, optional middle-dot separator. Mirrors /digital's "Platform" / "Rapid MVP" / "Product · Best UX, VUX" / "Web · SEO" pattern. The two ADDY winners do NOT carry the trophy in the tag — the proof bar above (Block 2) already calls out both awards by name, and the body line repeats the mention.
+**Eyebrow `.tag` taxonomy:** Each film carries a short 1-3 word label, optional middle-dot separator. Mirrors /digital's "Platform" / "Rapid MVP" / "Product · Best UX, VUX" / "Web · SEO" pattern. The two ADDY winners do NOT carry the trophy in the tag — the proof bar above (Block 2) already calls out both awards by name, the featured card repeats Iron Mountain's ADDY, and the body line repeats the mention.
 
 **CTA on every card:** Watch the film →
 _Uses `.go.swipe`. The same .swipe JS that wraps "case" italic-serif on /digital wraps "film" italic-serif here, with the same magenta swipe-on-hover. All CTAs stub to `#` until film case-study pages exist._
@@ -481,3 +493,53 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
     - Visual rhythm of /digital's 4-up grid carries directly: same ink band, same gap lines, same italic-word CTAs, same tag scale and tracking
     - Films now read as work-of-equal-stature with Digital projects (not as a separate visual category that requires a different mental parse)
     - The award winners' status is communicated through copy (eyebrow + body + Block 2 proof bar above) rather than through structural prominence — which is the editorial choice the /digital page also makes (TELUS Rewards isn't structurally larger than Angel Oak; its impact is communicated in the copy)
+
+17. **`.wcard.feature` hero card added above the grid (June 24 2026).**
+
+    **JP brief.** "Lets add this exact component from the work.html page below the title WORK and above the rows of films on the studios page." Posted with a screenshot of the Iron Mountain — The Summit featured card from /work.html showing the 21:9 cinematic frame, "Iron Mountain — *The Summit*" h2, "A generative film with a blockbuster look. Silver ADDY, 2026." body, and "Watch the *film* →" CTA with the magenta swipe-on-hover italic-word treatment.
+
+    **What it is.** The `.wcard.feature` component from /work.html — the same hero-row treatment that promotes Iron Mountain to the top of the work-grid index. Distinct from the canonical `.card` grid cards in /digital "Digital, selected" — the `.wcard.feature` is a single full-width hero with image-as-background and overlaid text (`.wcard-overlay` with `.wtint` gradient for legibility), versus `.card` which is a stacked image-then-meta layout.
+
+    **Why it's not a contradiction with Notes 16.** Pattern I (decommissioned in Notes 16) was a custom-built featured+grid hybrid. The `.wcard.feature` here is direct reuse of an existing site component from /work.html — not a new pattern. The decommission rule was "one masterbrand, one component vocabulary"; reusing the /work.html hero card honors that rule by pulling from existing site CSS rather than inventing parallel styling.
+
+    **CSS ported.** From `work.html` lines 356-393, with one tweak: the `.work .` selector prefix (so the rules only apply inside Block 3's `<section class="work">`, not site-wide — keeps the namespace tidy). Eleven rules total:
+    - `.work .wcard` — flex column container
+    - `.work .wframe` — base 16:9 image frame
+    - `.work .wcard.feature .wframe` — overrides to 21:9 cinematic on the featured variant
+    - `.work .wtint` — gradient overlay (transparent → ink 72%, bottom-up)
+    - `.work .wcard-overlay` — absolute-positioned bottom-anchored text container
+    - `.work .wcard-overlay h2` — display weight + italic name via `<i>`
+    - `.work .wcard-overlay h2 i` — late-serif italic for film name
+    - `.work .wcard-overlay p` — paper-78%-alpha body
+    - `.work .wgo` — base CTA styling (font-weight 700, .04em tracking)
+    - `.work .wcard-overlay .wgo` — color override for paper-on-tint
+
+    Added one additional rule on `.work .wcard`: `margin-bottom:clamp(40px,5vh,72px)` so the featured card has breathing room above the grid below.
+
+    **HTML markup** (verbatim from /work.html line 615-625, with `.reveal` added for scroll animation):
+
+    ```html
+    <a class="wcard feature reveal" data-cat="studios" href="#">
+      <div class="wframe">
+        <img src="images/iron_mountain.jpg" alt="..." style="width:100%;height:100%;object-fit:cover">
+        <div class="wtint"></div>
+        <div class="wcard-overlay">
+          <h2>Iron Mountain — <i>The Summit</i></h2>
+          <p>A generative film with a blockbuster look. Silver ADDY, 2026.</p>
+          <span class="wgo swipe">Watch the film →</span>
+        </div>
+      </div>
+    </a>
+    ```
+
+    Placement: between the `.head` div (H2 "The work" + "All work →") and the `.cards.four-up` grid. No layout container around it — just a direct child of `.wrap`.
+
+    **Iron Mountain appears TWICE on the page.** Once in the featured hero card on top, once as card #1 in the 4-up grid below. Different body copy by design:
+    - Featured: "A generative film with a blockbuster look. Silver ADDY, 2026." — sells the trophy
+    - Grid #1:  "Musicians climb to a summit and discover the power they carried all along: their data. Silver ADDY, 2026." — sells the story
+
+    Editorial layering is intentional — the featured card is the magazine cover for the lead piece; the grid card is the table-of-contents entry. The two pieces of copy do different jobs.
+
+    **Hierarchy note.** The featured card uses `<h2>` (verbatim from /work.html). The section's H2 "The work" above is visually larger via responsive font-size rules (`clamp(36px,4vw,60px)` for `.work h2` vs `clamp(22px,2.4vw,36px)` for `.wcard-overlay h2`), so the visual hierarchy reads correctly even though both are technically h2 elements. SEO/accessibility-strict would prefer the featured card to be h3 (subordinate to section h2); the current state honors JP's "exact component" brief over the semantic preference. Easy follow-up if it becomes a concern.
+
+    **Audit doc.** Pattern K added (the `.wcard.feature` hero card from /work.html, now also used on /studios Block 3).

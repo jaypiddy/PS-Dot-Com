@@ -438,14 +438,19 @@ Studios Block 4. Square portrait + name + role + credit-line one-sheet in a 3-up
 
 **Layout note (June 24 2026 update).** This pattern was originally portrait-less per the studios.md brief; portraits were added when JP overrode that on review. The 1px ink rule moved from `.credit-card`'s `border-top` to `.credit-name`'s `border-top` so the rule sits between the portrait and the meta rather than stranding above the photo. If portraits ever get dropped on a future hub page using this pattern, move the rule back to `.credit-card`.
 
+**Bio-video rollover (June 24 2026 update).** Each card optionally carries a `data-video-uid` attribute pointing to a Cloudflare Stream video. When present, a `<iframe class="credit-video">` is lazy-loaded into the portrait on first hover and fades in over the still — bio-video posters that become full bio-videos on rollover. The handler reuses the existing `matchMedia('(hover: hover)')` + `prefers-reduced-motion` gates from the `.wframe[data-video]` hover-video pattern; touch devices and reduced-motion users see only the still portrait. See `studios.md` Notes 19.
+
 ```html
 <section class="credits" id="credits">
   <div class="wrap reveal">
     <h2 class="credits-heading rise">Heading</h2>
     <div class="credits-grid">
-      <article class="credit-card">
+      <article class="credit-card" data-video-uid="<cloudflare-stream-uid>">
         <div class="credit-portrait">
           <img src="images/portraits/<slug>.jpg" alt="Portrait for Name" loading="lazy">
+          <iframe class="credit-video" aria-hidden="true" tabindex="-1"
+                  frameborder="0"
+                  allow="autoplay; encrypted-media; picture-in-picture"></iframe>
         </div>
         <h3 class="credit-name">Name</h3>
         <p class="credit-role">Role // Title</p>
@@ -458,7 +463,11 @@ Studios Block 4. Square portrait + name + role + credit-line one-sheet in a 3-up
 </section>
 ```
 
-**Portrait specs.** 1:1 aspect ratio, `object-fit:cover`. Paper background on the wrapper so failures-to-load show the brand neutral rather than a broken-image icon. Recommended source: 800×800 minimum, JPEG at 88+ quality. Placeholders generated for the initial Studios build (`images/portraits/{jp,johnny,russ}.jpg`) use the paper-tone + display-initials treatment; drop-in swap when real headshots arrive at the same paths.
+The iframe has NO `src` on page load — empty in the DOM, takes no network. JS attaches the src on first mouseenter, listens for the iframe's `load` event, toggles `.loaded` class. The CSS hover rule `.credit-card:hover .credit-video.loaded{opacity:1}` only fires when both states are true — no blank-iframe flash during initial load.
+
+**Iframe sizing for 16:9 source over 1:1 container.** `width:177.78%; height:100%; transform:translate(-50%,-50%)` centers the iframe and makes it 1.7778× wider than the square container — the Stream player's 16:9 frame fills the square vertically and crops horizontally. Works for landscape bio videos (the standard talking-head aspect). If a future video is shot 9:16 portrait, invert the math: `width:100%; height:177.78%`.
+
+**Portrait specs.** 1:1 aspect ratio, `object-fit:cover`. Paper background on the wrapper so failures-to-load show the brand neutral rather than a broken-image icon. Recommended source: 800×800 minimum, JPEG at 88+ quality. Placeholders generated for the initial Studios build (`images/portraits/{jp,johnny,russ}.jpg`) use the paper-tone + display-initials treatment; drop-in swap when real headshots arrive at the same paths. The stills double as bio-video posters once `data-video-uid` is present — they stay visible until the iframe finishes loading.
 
 **Mobile behavior.** At ≤880px the grid collapses to single-column and `.credit-portrait` caps at 360px max-width so the portraits read as thumbnail headshots, not full-bleed posters.
 
@@ -468,7 +477,7 @@ Studios Block 4. Square portrait + name + role + credit-line one-sheet in a 3-up
 
 **Currently:** `Meet the whole team →` routes to `#` because `/about` isn't built yet. Swap to `about.html` when that page ships (same parking-lot item as the takeover menu link 05).
 
-**Reuse beyond `/studios`:** any block that wants to surface a focused subset of people with portraits + credits — a case-study credits roll (Director / Editor / Strategist), a Speaking page (recent talks given), a Press page (recent press credits). Use sparingly — the canonical people-introduction format is `/about`'s full bio grid, not this.
+**Reuse beyond `/studios`:** any block that wants to surface a focused subset of people with portraits + credits — a case-study credits roll (Director / Editor / Strategist), a Speaking page (recent talks given), a Press page (recent press credits). Use sparingly — the canonical people-introduction format is `/about`'s full bio grid, not this. The bio-video rollover variant scales to those use cases automatically — just add `data-video-uid` per card and the JS handler picks it up.
 
 ---
 

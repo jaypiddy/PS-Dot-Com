@@ -117,27 +117,30 @@ _Uses `.go.swipe`. The same .swipe JS that wraps "case" italic-serif on /digital
 
 ## Block 4 — Provenance / credits
 
-_A credits block, not a leadership block. Each entry leads with a square portrait, then name + role + credit line, styled like a one-sheet. Bios still live on /about — this is the credit roll, not the team page. Closes with a link out. (The original brief said "no portraits, no bios" — that was overridden June 24 2026; see Notes 14.)_
+_A credits block, not a leadership block. Each entry leads with a square portrait that doubles as a bio-video poster (Cloudflare Stream iframe lazy-loaded on first hover, fading in over the still — see Notes 19). Name + role + credit line styled like a one-sheet. Bios still live on /about — this is the credit roll, not the team page. Closes with a link out. (The original brief said "no portraits, no bios" — that was overridden June 24 2026; see Notes 14. Bio-video rollover added the same day; see Notes 19.)_
 
 **H2:** Directed by people who earned the word
 
 ### Credit 01
 
-**PORTRAIT:** `images/portraits/jp.jpg` (placeholder — swap for real headshot when shot)
+**PORTRAIT:** `images/portraits/jp.jpg` (placeholder still — swap for real headshot when shot; still doubles as bio-video poster)
+**BIO VIDEO (Cloudflare Stream UID):** `5b2c36cd3793f90eafb8e5ae4538c405`
 **NAME:** JP Holecka
 **ROLE:** Director // Head of Gen AI
 **CREDIT LINE:** Little Women · 21 Jump Street · Black Dog Films (Ridley Scott) · ILM, commercial division
 
 ### Credit 02
 
-**PORTRAIT:** `images/portraits/johnny.jpg` (placeholder — swap for real headshot when shot)
+**PORTRAIT:** `images/portraits/johnny.jpg` (placeholder still — swap for real headshot when shot; still doubles as bio-video poster)
+**BIO VIDEO (Cloudflare Stream UID):** `04d16613add2e8e7f984b9fed118c723`
 **NAME:** Johnny Darrell
 **ROLE:** Director // Editor
 **CREDIT LINE:** Sausage Party: Foodtopia (Amazon) · Cloudy with a Chance of Meatballs (Sony / Lord Miller) · 25 years in CGI and story
 
 ### Credit 03
 
-**PORTRAIT:** `images/portraits/russ.jpg` (placeholder — swap for real headshot when shot)
+**PORTRAIT:** `images/portraits/russ.jpg` (placeholder still — swap for real headshot when shot; still doubles as bio-video poster)
+**BIO VIDEO (Cloudflare Stream UID):** `77ed0d921519c6f587a1821691e583c8`
 **NAME:** Russ Jarman Price
 **ROLE:** Chairman
 **CREDIT LINE:** Ogilvy London, Creative Partner · Ogilvy Caribbean, Chairman
@@ -572,3 +575,88 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
     **No HTML structural change.** Single string swap on each of `<h2 class="rise">` and `<a class="all swipe">`. All Notes 16 + Notes 17 component anatomy still accurate; the H2 + CTA references inside them are updated to match. Pattern K reference in the audit doc also updated.
 
     **/digital parity check.** Should /digital's "All work →" also become "See all the work →"? Probably not — /digital's H2 is "Digital, selected" which already creates the semantic seam ("here's selected; for all, see..."). The change is /studios-specific because /studios' H2 "The films" doesn't carry the "selected" qualifier. If a future commit makes /digital's H2 "The platforms" or similar category name, then /digital should mirror the longer CTA for the same reason.
+
+19. **Bio-video rollover on credit cards (June 24 2026).**
+
+    **JP brief.** "Here are three cloudflare video links for the biography images on the website. Place swap ou the temp static images for these videos that should loop on card rollover."
+
+    Three Cloudflare Stream UIDs:
+    - JP Holecka: `5b2c36cd3793f90eafb8e5ae4538c405`
+    - Johnny Darrell: `04d16613add2e8e7f984b9fed118c723`
+    - Russ Jarman Price: `77ed0d921519c6f587a1821691e583c8`
+
+    **What was added.** A Cloudflare Stream iframe per credit card, layered over the still portrait, lazy-loaded on first hover. The still portraits stay in place — they double as video posters (visible until the iframe loads + on touch devices + when reduced-motion is set). The video fades in over the still on rollover; fades back out on rollout.
+
+    **Why iframes, not `<video>` tags.** /work.html's `.wframe[data-video]` pattern uses local MP4/WebM with the native `<video>` element. The credit videos are Cloudflare Stream-hosted (no local MP4 access). Stream iframes handle decode, loop, autoplay, and adaptive bitrate selection automatically — same pattern as the reel-hero on Block 1 and the Validator explainer on /digital.
+
+    **Markup pattern per card.**
+
+    ```html
+    <article class="credit-card" data-video-uid="<UID>">
+      <div class="credit-portrait">
+        <img src="images/portraits/<slug>.jpg" alt="..." loading="lazy">
+        <iframe class="credit-video" aria-hidden="true" tabindex="-1"
+                frameborder="0"
+                allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+      </div>
+      <h3 class="credit-name">...</h3>
+      ...
+    </article>
+    ```
+
+    The iframe has NO `src` attribute on page load — it's an empty element in the DOM, takes no network. JS attaches the src on first mouseenter.
+
+    **CSS (added to studios.html).** Six rules in the .credit-portrait block:
+
+    ```css
+    .credit-portrait{position:relative;...}    /* added position:relative for iframe absolute positioning */
+    .credit-portrait .credit-video{
+      position:absolute;top:50%;left:50%;
+      width:177.78%;height:100%;               /* 16:9 over 1:1 = video covers square vertically */
+      transform:translate(-50%,-50%);
+      border:0;opacity:0;
+      transition:opacity .4s ease;
+      pointer-events:none;z-index:1
+    }
+    .credit-card:hover .credit-portrait .credit-video.loaded{opacity:1}
+    ```
+
+    The 177.78% width is the 16:9 ratio (16/9 = 1.7778) — the Stream player renders the source video at 16:9, so the iframe needs to be 1.7778x wider than its 1:1 container so the video fills the square vertically and crops the sides. Source aspect assumption: 16:9 landscape (standard bio video aspect). If a future video is shot 9:16 portrait, the math inverts and the override would need width:100%; height:177.78%; — easy follow-up if needed.
+
+    **JS pattern (added to the existing hover-video block in studios.html ~line 1340).** Reuses the same `matchMedia('(hover: hover)')` and `matchMedia('(prefers-reduced-motion: reduce)')` gates as the `.wframe[data-video]` handler — skips touch devices and reduced-motion users entirely.
+
+    ```javascript
+    document.querySelectorAll('.credit-card[data-video-uid]').forEach(card=>{
+      const iframe = card.querySelector('.credit-video');
+      if(!iframe) return;
+      const uid = card.dataset.videoUid;
+      const url = 'https://customer-xv1aafyshr3tbknu.cloudflarestream.com/' + uid +
+                  '/iframe?muted=true&autoplay=true&loop=true&controls=false&preload=auto';
+      let loaded = false;
+      card.addEventListener('mouseenter', ()=>{
+        if(loaded) return;
+        iframe.addEventListener('load', ()=>iframe.classList.add('loaded'), {once:true});
+        iframe.src = url;
+        loaded = true;
+      });
+    });
+    ```
+
+    **First-hover behavior.** Iframe src is set, Stream player initialises (~300-800ms depending on connection), the `load` event fires, `.loaded` class is added. CSS hover rule then shows the video at opacity:1. The still portrait fades to opacity:0 underneath because the iframe (z-index:1) covers it — except the iframe never paints until `.loaded` is set, so during loading the still stays fully visible (no blank-iframe flash).
+
+    **Subsequent hovers are instant.** Once `loaded === true`, the JS returns early; the iframe stays in the DOM with the video already playing in the background (autoplay+loop). CSS opacity transition does the visible show/hide.
+
+    **Why the video plays even when invisible.** The Stream iframe with `autoplay=true&loop=true&muted=true` plays continuously once loaded — there's no way to pause/resume an iframe without using the Stream Player JS API (which would add ~30KB to the page). Playing-while-invisible uses muted background bandwidth but is the cleanest implementation. Browsers throttle off-screen video automatically.
+
+    **Reduced-motion + touch device behavior.** The whole handler is gated behind both matchMedia checks — touch devices (no `(hover: hover)`) and reduced-motion users (`prefers-reduced-motion: reduce`) see ONLY the still portrait, never the video. Graceful degradation.
+
+    **Cloudflare Stream customer subdomain.** `customer-xv1aafyshr3tbknu.cloudflarestream.com` — same subdomain as the reel-hero (Block 1) and the Rapid MVP explainer on /digital. Single Cloudflare Stream account, all studios + product videos.
+
+    **Real headshots / portrait swap.** When real headshots are shot, drop them in at `images/portraits/{jp,johnny,russ}.jpg` (same paths). The still becomes the new poster; the bio-video stays the same. No code change needed.
+
+    **Iframe params explained.**
+    - `muted=true` — required for browser autoplay (un-muted videos can't autoplay without user gesture)
+    - `autoplay=true` — start playing immediately on load
+    - `loop=true` — restart on end (continuous loop)
+    - `controls=false` — hide player chrome (no play/pause/scrub UI)
+    - `preload=auto` — start buffering immediately on iframe load

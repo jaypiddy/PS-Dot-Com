@@ -46,6 +46,24 @@ _Open call: verify the judging-category claim before "judged against everything"
 
 ---
 
+## Block 2b — The roster
+
+_Logo-roster trust signal — direct reuse of `.proof-spine` pattern shipped on `/digital` June 23 2026. Pairs with Block 2's award/film proof bar as the second social proof surface: Block 2 is "what we won and what we made"; Block 2b is "who trusts us." The Studios voice spec ("Every flex attached to a name, a credit, or a trophy") fits a logo-roster cleanly — each logo IS a name-attached flex. Lift the HTML + CSS directly from `digital.html` when this page builds. Position: between Block 2 (Proof bar above) and Block 3 (Films index below)._
+
+**EYEBROW:** The roster
+
+**LOGO GRID (9 logos, 3x3 — same as `/digital` and homepage):**
+
+| Row 1 | Row 2 | Row 3 |
+|---|---|---|
+| Telus | Energizer | Lululemon |
+| Deloitte | KPMG | Grammarly |
+| Akamai | Iron Mountain | Canucks |
+
+_Same 9 logos across all three surfaces (homepage proof spine, `/digital` roster, `/studios` roster). Roster includes both Digital clients (TELUS, Deloitte, KPMG, Grammarly, Akamai) and Studios-relevant clients (Iron Mountain — "The Summit" film; Energizer; Lululemon; Canucks). The cross-practice mix is intentional — one masterbrand, two doors._
+
+---
+
 ## Block 3 — Films index — "The work"
 
 _Header, then two featured rows (the award winners, full-width, inline-playing) followed by a four-up grid for the rest. Ordering rule from the companion doc: award winners first, then by ambition not recency._

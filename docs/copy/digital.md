@@ -162,6 +162,24 @@ _Four-card filtered slice of the work library. Each card: image frame (UI motion
 
 ---
 
+## Social proof — the roster
+
+_Section eyebrow + 3x3 logo grid. Direct reuse of the homepage's proof-spine `.logos` block — same 9 logos, same checkerboard alternation, same `.logo-mask` currentColor technique. Sits between Selected Work and Partners as the visible-clients trust signal at section scope. See Notes 15._
+
+**EYEBROW:** The roster
+
+**LOGO GRID (9 logos, 3x3 — same as homepage):**
+
+| Row 1 | Row 2 | Row 3 |
+|---|---|---|
+| Telus | Energizer | Lululemon |
+| Deloitte | KPMG | Grammarly |
+| Akamai | Iron Mountain | Canucks |
+
+_Mobile: drops to 2-col grid, last cell (Canucks) spans both columns._
+
+---
+
 ## Partners
 
 _Credentialed partnerships strip. No header. Lead sentence + a horizontal row of partner-tier labels._
@@ -292,3 +310,35 @@ _Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of th
     **Section IDs:** Module 1 keeps the existing `id="how-we-work"` anchor (the takeover menu link still works). Module 2 has a new `id="direct-to-expert"` anchor for future deep linking.
 
     **Cross-page parity:** the same two modules ship verbatim on `/studios` when that page builds. See `studios.md` for the corresponding section in the Studios copy deck.
+
+16. **Social proof — `.proof-spine` client logo grid (June 23 2026).**
+    JP brief: "We should have a few social proofs on the digital and studio pages." After two attempts (the first uncommitted draft was a single case-study-excerpt card which read thin and redundant once a visitor clicked through to the case study itself), the landed move is a direct reuse of the homepage's `.proof-spine` `.logos` block — 9 client logos in a 3x3 grid with checkerboard alternation. Position: between Selected Work and Partners.
+
+    **Why the logo strip is the right move over testimonials or excerpts:**
+    The site has zero attributed client testimonials in the repo today. Manufacturing them is irresponsible. The page already has named clients in three other surfaces (outcome-strip stats, Selected Work cards, Partners certifications) — but each surface presents clients with context (outcome, project, certification). What was missing was the standalone roster: logos as trust signal, no context required. Logos function differently from project cards. Cards say "here's work we did." Logos say "here's who trusts us." Same names, different surface.
+
+    **Direct reuse, not a new pattern.** The `.logos` CSS and the 9-logo grid are copied verbatim from `index.html` Block 3 (lines 118-137 for CSS, 527-537 for HTML). The `.logo-mask` technique is the same masking pattern. The only new code is the section wrapper `.proof-spine` (paper bg, generous padding, magenta eyebrow). All 9 logo PNGs already live in `images/logos/`. No new asset uploads, no new design decisions.
+
+    **The 9 logos:** Telus, Energizer, Lululemon, Deloitte, KPMG, Grammarly, Akamai, Iron Mountain, Canucks. Same list as the homepage proof spine — see `index.html:527-537` for the source of truth. Logo widths in the inline style attributes are calibrated per-logo to normalize visual weight across the variable PNG aspect ratios — do not re-eyeball without re-measuring.
+
+    **Stack alignment with the existing /digital social proof:**
+    | Surface | Function |
+    |---|---|
+    | Outcome strip (4 stats) | Named quantitative outcomes |
+    | Selected Work (4 cards) | Named clients with project context |
+    | **The roster (.proof-spine)** | **Client logos as standalone trust signal** |
+    | Partners strip | Platform certifications |
+
+    Some client names appear in multiple surfaces (TELUS appears in outcome-strip + Selected Work + roster; Energizer appears in outcome-strip + roster). That's not redundancy — that's reinforcement across semantic registers. For ~B2B at this tier, multi-surface client name appearance is conventional and expected.
+
+    **Eyebrow choice — "The roster":** Matches the brand's "The X" eyebrow pattern from the homepage proof spine ("The receipts"). Avoids cliches ("Trusted by", "In good company"). "Roster" implies depth (it's the team-list word) without overclaiming a specific number. The homepage's "The receipts" is preserved as a homepage-only signature — using a different eyebrow on /digital prevents dilution.
+
+    **Cross-page parity:** the same `.proof-spine` block ships verbatim on `/studios` when that page builds. The Studios voice spec ("Every flex attached to a name, a credit, or a trophy") fits a logo-roster cleanly — a logo IS a name-attached flex. Same 9 logos work on Studios because the roster includes both Digital (TELUS, Deloitte, KPMG, Grammarly, Akamai) and Studios-relevant (Iron Mountain — "The Summit" film; Energizer; Lululemon; Canucks) clients across both practices. See `studios.md` for the cross-reference.
+
+    **What was NOT shipped (and why):**
+    - **Attributed client testimonials.** Zero verified inventory in the repo. Manufacturing them is off the table per the standing parking-lot item "Proof claim verification before paid reuse."
+    - **Awards strip.** The 2× Silver ADDY / Best UX Delta Controls / CEO of Year BC 2022 claims are flagged for verification before paid reuse — same parking-lot item.
+    - **Case-study excerpt cards.** Only 1 of the 21 case studies has shipped (TELUS Koodo). A row of excerpt cards from one case study reads thin; will revisit once more case studies build out.
+    - **Bench credentials line.** Explicitly declined by JP on June 23 2026 ("don't need the credentials there").
+
+    When real client testimonials get sourced (LinkedIn recommendations, sign-off letters, case study client interviews), a new pattern can host them — likely as a single hero-scale attributed quote between The roster and Partners, or as a card row replacing it. Defer that decision until the verified content exists.

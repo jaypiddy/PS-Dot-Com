@@ -295,6 +295,32 @@ Implementation note: source order in HTML stays H2-first → body-second for eve
 
 **Magenta budget across modules:** each H2 takes one `em.voice` magenta accent. With two modules separated by a viewport-height of scroll, only one H2 is in view at a time. Budget holds at one magenta surface per viewport.
 
+### Pattern F — `.proof-spine` + `.logos` (client logo roster)
+
+Added June 23 2026 in response to JP's social proof brief. **Direct reuse of the homepage's `.logos` block** (index.html Block 3, lines 118-137 CSS, 527-537 HTML) — same 9 logos, same 3x3 checkerboard with alternating ink/paper cells, same `.logo-mask` currentColor masking technique. The only net-new code is the section wrapper `.proof-spine` (paper bg, generous padding, magenta eyebrow). All 9 logo PNGs already live in `images/logos/`.
+
+The 9 logos: Telus, Energizer, Lululemon, Deloitte, KPMG, Grammarly, Akamai, Iron Mountain, Canucks. Logo widths in the inline style attributes are calibrated per-logo to normalize visual weight across variable PNG aspect ratios — copied verbatim from the homepage; do not re-eyeball without re-measuring.
+
+**Why this exists at section scope on `/digital`** (despite client names already appearing in the outcome strip and Selected Work cards): logos function semantically differently from project cards. Cards say "here's work we did." Logos say "here's who trusts us." Same names, different surface. For B2B at this tier, multi-surface client name appearance is conventional reinforcement, not redundancy.
+
+**The `.logo-mask` technique.** Each logo PNG is loaded as a `mask-image` rather than an `<img>` tag. The mask cuts the logo silhouette out of a `background-color: currentColor` span. Because `color` is inherited from the cell, the same logo renders paper-on-ink in odd cells and ink-on-paper in even cells without separate asset variants. On hover, `color` shifts to magenta — the logo "lights up" without a separate hover asset.
+
+```html
+<div class="proof-spine" id="proof-spine">
+  <div class="wrap reveal">
+    <span class="eyebrow">The roster</span>
+    <div class="logos" aria-label="Selected clients">
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/<name>.png'); width: <px>px; height: 28px;" aria-label="<Brand>"></span></div>
+      <!-- repeat for each cell -->
+    </div>
+  </div>
+</div>
+```
+
+**Eyebrow choice — "The roster":** matches the brand's "The X" eyebrow pattern (homepage uses "The receipts"). Different from the homepage to prevent dilution of that signature eyebrow.
+
+**Reuse beyond `/digital`:** the same 9-logo roster ships verbatim on `/studios` when that page builds (see `studios.md` Block 2b). The Studios voice spec fits a logo-roster cleanly — every logo is a name-attached flex. The cross-practice mix in the roster (Digital + Studios clients combined) is intentional — one masterbrand, two doors.
+
 ---
 
 ## Resolved during the `/digital` build-out

@@ -457,6 +457,44 @@
   .ptier:hover{border-color:var(--magenta);color:var(--magenta)}
   .ptier:hover em{color:var(--magenta)}
 
+  /* NEW pattern — .proof-spine + .logos (mirrored from homepage Block 3).
+     Pattern reference: docs/design-system-audit.md §"New patterns" F
+     (catalogued in audit doc on this commit). Direct reuse of the homepage's
+     proof-spine .logos pattern — 3-col grid with 1px gap exposing the line
+     bg, checkerboard alternation (odd cells ink/paper, even cells paper/ink),
+     magenta hover state on every cell. The .logo-mask technique renders each
+     logo as a CSS mask-image so the logo inherits currentColor — allowing
+     the same PNG to render paper-on-ink or ink-on-paper without separate
+     asset variants. Position on /digital: between Selected Work and Partners.
+     Functions as the visible-clients trust signal at section scope,
+     complementing the per-project named outcome strip above and the
+     platform-certification Partners strip below. See digital.md Notes 15. */
+  .logo-mask{display:inline-block;background-color:currentColor;
+    -webkit-mask-image:var(--mask-image);-webkit-mask-size:contain;
+    -webkit-mask-repeat:no-repeat;-webkit-mask-position:center;vertical-align:middle}
+  .proof-spine{padding:clamp(80px,11vh,140px) 0;background:var(--paper)}
+  .proof-spine .eyebrow{display:block;font-family:var(--text);font-weight:700;
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--magenta);margin-bottom:24px}
+  .logos{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line)}
+  .logos .cell{display:flex;align-items:center;justify-content:center;
+    padding:clamp(24px,3vw,38px) 16px;
+    transition:background-color .45s cubic-bezier(.4,0,.2,1),
+               color .45s cubic-bezier(.4,0,.2,1)}
+  .logos .cell .logo-mask{opacity:.88;max-width:72%;
+    transition:opacity .45s cubic-bezier(.4,0,.2,1),
+               background-color .45s cubic-bezier(.4,0,.2,1)}
+  .logos .cell:hover .logo-mask{opacity:1}
+  .logos .cell:nth-child(odd){background:var(--ink);color:var(--paper)}
+  .logos .cell:nth-child(odd):hover{color:var(--magenta)}
+  .logos .cell:nth-child(even){background:var(--paper);color:var(--ink)}
+  .logos .cell:nth-child(even):hover{background:var(--magenta);color:var(--paper)}
+  @media(max-width:640px){
+    .logos{grid-template-columns:repeat(2,1fr)}
+    .logos .cell:last-child{grid-column:span 2}
+  }
+
   /* Outcome-strip text stat — when a .stat carries text instead of an .odo numeral.
      Inherits .stat b's serif at the same 52-96px scale; <em> adds the italic
      read so it feels like a category value rather than a measurement. */
@@ -937,6 +975,41 @@
           <span class="go swipe">Read the case →</span>
         </div>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- Social proof — .proof-spine — visible-clients trust signal at section scope.
+     Pattern reference: docs/design-system-audit.md §"New patterns" F +
+     digital.md Notes 15. Inserted June 23 2026 in response to JP's social
+     proof brief. Direct reuse of the homepage's proof-spine .logos block
+     (index.html Block 3, lines 527-537) — same 9 logos, same 3x3 checkerboard,
+     same .logo-mask currentColor technique. Position: between Selected Work
+     (named-clients-with-project-context) and Partners (platform-certifications).
+     The three surfaces compose /digital's full social proof stack:
+       outcome-strip      named quantitative outcomes
+       Selected Work      named clients + project context
+       proof-spine        client logos as standalone roster (this)
+       Partners           platform certifications
+     Same pattern ships verbatim on /studios when that page builds — the
+     Studios voice spec ("Every flex attached to a name, a credit, or a
+     trophy") fits a logo-roster cleanly. See studios.md cross-reference.
+     Logo widths in inline style attributes are calibrated per-logo to
+     normalize visual weight across asset ratios — copied verbatim from the
+     homepage; do not re-eyeball without re-measuring. -->
+<section class="proof-spine" id="proof-spine">
+  <div class="wrap reveal">
+    <span class="eyebrow">The roster</span>
+    <div class="logos" aria-label="Selected clients">
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/telus.png'); width: 141px; height: 28px;" aria-label="Telus"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/energizer.png'); width: 110px; height: 28px;" aria-label="Energizer"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/lululemon.png'); width: 28px; height: 28px;" aria-label="Lululemon"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/deloitte.png'); width: 150px; height: 28px;" aria-label="Deloitte"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/kpmg.png'); width: 68px; height: 28px;" aria-label="KPMG"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/grammarly.png'); width: 131px; height: 28px;" aria-label="Grammarly"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/akamai.png'); width: 68px; height: 28px;" aria-label="Akamai"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/iron-mountain.png'); width: 98px; height: 28px;" aria-label="Iron Mountain"></span></div>
+      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/canucks.png'); width: 29px; height: 28px;" aria-label="Canucks"></span></div>
     </div>
   </div>
 </section>

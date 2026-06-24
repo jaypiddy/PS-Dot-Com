@@ -38,7 +38,7 @@ The CSS for these patterns currently lives **inline in each HTML page**. That's 
 ### 2. Sub-page hero — `.sub-hero`
 
 - ~50vh hero with `.slash-field` SVG decoration (six animated slash pairs at varying scale/delay)
-- Inner wrap: `.eyebrow` (small-caps label) → `h1.rise` → `.sub-voice` (serif italic on magenta `.voice.mag`) OR `.streams` (3-stream definition paragraph, insights only)
+- Inner wrap: `.eyebrow` (small-caps label) → `h1.rise` → supporting line, one of two sanctioned variants (§7 item 5): `.sub-voice` (voice line — serif italic magenta `.voice.mag`) or `.sub-body` (body line — prose, `--paper` on the ink hero). The legacy `.streams` (insights) variant has been migrated onto `.sub-body`.
 - **Variants:** `.sub-hero.article` (adds back-link), `.sub-hero.casestudy` (adds back-link + eyebrow + role/cats byline)
 - **Currently does NOT support hero CTAs.** When a hub page (like `/digital`) needs CTAs in the hero, extend with a `.sub-hero-ctas` row — see "New patterns" below.
 
@@ -70,7 +70,7 @@ The CSS for these patterns currently lives **inline in each HTML page**. That's 
 ### 5. Two-up comparison — `.doors` + `.door`
 
 - Flexbox split: two `<a>` anchors with a `.seam` divider between
-- Each `.door` has: `.eyebrow` (numbered, e.g. "01 — Product"), H2, `.lead` (display weight, with `em.voice` for the italic half), `p.body` (max 42ch), `.enter.swipe` CTA
+- Each `.door` has: `.eyebrow` (`Section — descriptor` convention per §7 item 7, e.g. "Digital — product"), H2, `.lead` (display weight, with `em.voice` for the italic half), `p.body` (max 42ch), `.enter.swipe` CTA
 - Variants: `.door.digital` (paper on ink-line border-top) vs `.door.studios` (ink on paper-light)
 - Interaction: hover on either door causes the non-hovered to recede via `flex: .82 / 1.18`; the `.seam` lights magenta on `:has(.door:hover)`
 
@@ -324,7 +324,7 @@ The 9 logos: Telus, Energizer, Lululemon, Deloitte, KPMG, Grammarly, Akamai, Iro
 </div>
 ```
 
-**Eyebrow choice — "The roster":** matches the brand's "The X" eyebrow pattern (homepage uses "The receipts"). Different from the homepage to prevent dilution of that signature eyebrow.
+**Eyebrow choice — "Studios — selected clients":** the proof-spine eyebrow follows the ratified hub convention (`Section — descriptor`, design-system.md §7 item 7). It replaced the earlier brand-pattern label "The roster" ("The X" family, e.g. the homepage "The receipts") when the eyebrow convention was locked.
 
 **Reuse beyond `/digital`:** the same 9-logo roster ships verbatim on `/studios` when that page builds (see `studios.md` Block 2b). The Studios voice spec fits a logo-roster cleanly — every logo is a name-attached flex. The cross-practice mix in the roster (Digital + Studios clients combined) is intentional — one masterbrand, two doors.
 
@@ -346,7 +346,7 @@ Studios Block 1. Full-bleed Cloudflare Stream video as hero background, with ove
   </div>
   <div class="reel-inner wrap">
     <h1 class="rise"><span>…</span><span><em class="voice">…</em></span></h1>
-    <p class="reel-body">…</p>
+    <p class="sub-body">…</p>
     <a class="btn cascade" href="#anchor">Watch the work →</a>
   </div>
 </section>
@@ -490,12 +490,17 @@ The iframe has NO `src` on page load — empty in the DOM, takes no network. JS 
 2. **Three `.engine` bands on one page (Validator + Module 1 + Module 2).** Resolved: kept all three, distinguished by content + layout + background. The Validator band uses the `.validator-band` ink variant (1fr/1fr + smaller H2 + ink background) holding the Cloudflare Stream video. Modules 1 and 2 of the one-two punch use canonical paper layouts — Module 1 at 5fr/7fr canonical, Module 2 at 7fr/5fr via `.engine.mirror`. Repetition is the rhythm, not a weakness — the three are distinguished by right-column content (video vs prose vs prose), backgrounds (ink vs paper vs paper), and layouts (1fr/1fr vs 5fr/7fr vs 7fr/5fr).
 3. **Hero scale: 50vh.** Resolved: kept the standard `.sub-hero` 50vh — the design system says sub-page hero is a section header, not a takeover. Hub pages aren't an architectural exception. CTA row added via the new `.sub-hero-ctas` extension instead of bumping the hero height.
 
+## Resolved — site-wide merge (June 2026)
+
+1. **Takeover/footer nav rewired across all 8 pages.** Resolves prior follow-on #1: every page's takeover and footer nav now route Work→`work.html`, Digital→`digital.html`, Studios→`studios.html`, Insights→`insights.html`, About→`about.html`, Contact→`#contact` (Careers→`#` until built). The active page carries `.is-current` + `aria-current="page"` (takeover) and `aria-current="page"` (footer); detail pages mark their parent (case→Work, article→Insights); `index.html` has no menu item of its own.
+2. **§8 consistency trio ratified** (now locked in `design-system.md` §7 as items 5/6/7): supporting line collapsed to two variants — `.streams` (Insights) and `.reel-body` (Studios) migrated onto `.sub-body` (Studios keeps `--paper` over the reel scrim); voice-color rule applied site-wide (`em.voice.mag` = magenta pivot/closer, bare `em.voice` = cream in-headline emphasis); eyebrow convention set per page-type (hub `Section — descriptor`, detail `Category · Client/Topic`).
+3. **Craft Layer + Concierge rolled out site-wide** in production mode (no `data-spice-review`): `ps-spice.css/js` + `ps-concierge.css/js` on all 8 pages; `image-slot.js` on `about.html` only.
+
 ## Open follow-ons
 
-1. **Takeover menu link 02 (Digital).** Every existing page's takeover still points link 02 to `index.html#digital`. Now that `digital.html` is live, link 02 should route to `digital.html`. Same kind of follow-on applies to links 03 (Studios → `studios.html`), 05 (About → `about.html`), and 06 (Contact → `contact.html` or `#contact`) when those pages ship. The cross-page rewire is its own commit touching every page with a takeover (`work.html`, `insights.html`, `article.html`, `case-telus-koodo.html`, `digital.html`).
-2. **JS cleanup on `digital.html`.** Inherited scripts from `work.html` still bind to `.wcard`, `.work-grid`, `[data-cat]`, and `.wframe[data-video]` — selectors that don't exist on `/digital`. These are no-ops, not errors, but should be pared down once the inherited `work-filter`/`work-grid` CSS rules (also unused on `/digital`) are removed too.
-3. **Three remaining `/digital` Selected Work case studies.** Energizer, Delta Controls, and Angel Oak cards link to `#` — full case studies need to be written and built (the `ps-case-study-writer` skill carries the seven non-negotiables for these). Only the TELUS Rewards card points to a real case (`case-telus-koodo.html`).
-4. **Partner tier verification.** Contentful Silver, Sanity Agency, and Vercel Expert are named in the Partners section but standings should be verified against current partner-portal status before paid reuse on outbound or pitches.
+1. **JS cleanup on `digital.html`.** Inherited scripts from `work.html` still bind to `.wcard`, `.work-grid`, `[data-cat]`, and `.wframe[data-video]` — selectors that don't exist on `/digital`. These are no-ops, not errors, but should be pared down once the inherited `work-filter`/`work-grid` CSS rules (also unused on `/digital`) are removed too.
+2. **Three remaining `/digital` Selected Work case studies.** Energizer, Delta Controls, and Angel Oak cards link to `#` — full case studies need to be written and built (the `ps-case-study-writer` skill carries the seven non-negotiables for these). Only the TELUS Rewards card points to a real case (`case-telus-koodo.html`).
+3. **Partner tier verification.** Contentful Silver, Sanity Agency, and Vercel Expert are named in the Partners section but standings should be verified against current partner-portal status before paid reuse on outbound or pitches.
 
 ---
 

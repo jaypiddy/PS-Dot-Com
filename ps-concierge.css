@@ -1,0 +1,131 @@
+/* =====================================================================
+   PS · CONCIERGE  —  ps-concierge.css
+   Persistent corner concierge (lower-left). Real AI chat in the
+   prototype (window.claude.complete); in production the model call is
+   swapped for a Cloudflare Worker endpoint — see ps-concierge.js CONFIG.
+   Reuses brand tokens; square panel, soft circular launcher, magenta
+   accent. House easing cubic-bezier(.76,0,.24,1).
+   ===================================================================== */
+:root{ --cc-ease:cubic-bezier(.76,0,.24,1); }
+
+.cc-root,.cc-root *{box-sizing:border-box}
+.cc-root{position:fixed;left:24px;bottom:24px;z-index:9000;font-family:var(--text)}
+@media(max-width:560px){.cc-root{left:14px;bottom:14px;right:14px}}
+
+/* ---------- Launcher (soft circular ink mark) ---------- */
+.cc-launch{position:relative;width:60px;height:60px;border-radius:50%;
+  background:var(--ink);color:var(--paper);border:0;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 30px rgba(18,19,21,.28);
+  transition:transform .3s var(--cc-ease),background .3s var(--cc-ease)}
+.cc-launch:hover{transform:translateY(-2px)}
+.cc-launch::after{content:"";position:absolute;inset:0;border-radius:50%;
+  border:1px solid var(--magenta);transform:scale(1);opacity:.0;
+  transition:transform .5s var(--cc-ease),opacity .5s var(--cc-ease)}
+.cc-launch:hover::after{transform:scale(1.18);opacity:.55}
+.cc-launch .cc-dot{width:9px;height:9px;border-radius:50%;background:var(--magenta);
+  position:absolute;top:15px;right:15px;transition:transform .3s var(--cc-ease)}
+.cc-launch svg{width:26px;height:26px}
+.cc-root.cc-open .cc-launch{display:none}
+@media(max-width:560px){.cc-root.cc-open .cc-launch{display:none}}
+
+/* ---------- Panel ---------- */
+.cc-panel{position:absolute;left:0;bottom:0;width:372px;max-width:calc(100vw - 28px);
+  height:min(560px,calc(100vh - 48px));background:var(--paper);color:var(--ink);
+  border:1px solid var(--line);box-shadow:0 30px 70px rgba(18,19,21,.34);
+  display:flex;flex-direction:column;overflow:hidden;
+  opacity:0;transform:translateY(14px) scale(.98);transform-origin:left bottom;
+  pointer-events:none;transition:opacity .32s var(--cc-ease),transform .32s var(--cc-ease)}
+.cc-root.cc-open .cc-panel{opacity:1;transform:none;pointer-events:auto}
+@media(max-width:560px){.cc-panel{width:100%;height:min(72vh,560px)}}
+
+/* Header (ink) */
+.cc-head{flex:none;background:var(--ink);color:var(--paper);
+  padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.cc-head .cc-id{display:flex;align-items:center;gap:10px}
+.cc-head .cc-id b{font-family:var(--display);font-weight:500;font-size:15px;letter-spacing:-.01em}
+.cc-head .cc-id .cc-pulse{width:7px;height:7px;border-radius:50%;background:var(--magenta)}
+.cc-head .cc-sub{display:block;font-size:11px;letter-spacing:.04em;color:rgba(250,250,247,.55);margin-top:1px}
+.cc-x{background:none;border:0;color:rgba(250,250,247,.6);font-size:19px;line-height:1;cursor:pointer;padding:2px 4px}
+.cc-x:hover{color:var(--paper)}
+
+/* Thread */
+.cc-thread{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:14px;
+  background:var(--paper)}
+.cc-msg{max-width:86%;font-size:14px;line-height:1.5;white-space:pre-wrap}
+.cc-msg.bot{align-self:flex-start;color:var(--ink)}
+.cc-msg.bot .cc-bubble{background:#fff;border:1px solid var(--line);padding:11px 14px}
+.cc-msg.me{align-self:flex-end}
+.cc-msg.me .cc-bubble{background:var(--ink);color:var(--paper);padding:11px 14px}
+.cc-msg .cc-bubble em{font-family:var(--serif);font-style:italic}
+.cc-msg .cc-bubble a{color:var(--magenta);text-decoration:underline}
+.cc-typing{align-self:flex-start;display:flex;gap:5px;padding:12px 14px;border:1px solid var(--line);background:#fff}
+.cc-typing span{width:6px;height:6px;border-radius:50%;background:var(--grey,#9a9a9a);animation:ccBlink 1.2s infinite}
+.cc-typing span:nth-child(2){animation-delay:.18s}
+.cc-typing span:nth-child(3){animation-delay:.36s}
+@keyframes ccBlink{0%,60%,100%{opacity:.25}30%{opacity:1}}
+
+/* Quick-reply chips */
+.cc-chips{flex:none;display:flex;flex-wrap:wrap;gap:8px;padding:0 18px 14px}
+.cc-chip{font-family:var(--text);font-weight:700;font-size:12px;letter-spacing:.02em;
+  background:none;border:1px solid var(--line);color:var(--ink);padding:8px 12px;cursor:pointer;
+  transition:background .2s var(--cc-ease),color .2s var(--cc-ease),border-color .2s}
+.cc-chip:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* Composer */
+.cc-form{flex:none;display:flex;align-items:flex-end;gap:8px;padding:12px 14px;border-top:1px solid var(--line)}
+.cc-input{flex:1;font-family:var(--text);font-size:14px;line-height:1.4;color:var(--ink);
+  background:#fff;border:1px solid var(--line);padding:10px 12px;resize:none;max-height:96px;min-height:42px}
+.cc-input:focus{outline:none;border-color:var(--ink)}
+.cc-send{flex:none;width:42px;height:42px;background:var(--magenta);color:var(--paper);border:0;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:opacity .2s}
+.cc-send:disabled{opacity:.4;cursor:not-allowed}
+.cc-send svg{width:18px;height:18px}
+
+/* Human-handoff footer */
+.cc-foot{flex:none;display:flex;align-items:center;gap:14px;padding:10px 16px;border-top:1px solid var(--line-light);
+  background:var(--paper);font-size:11.5px;letter-spacing:.02em}
+.cc-foot a{color:var(--ink);font-weight:700;text-decoration:none;border-bottom:1px solid var(--line)}
+.cc-foot a:hover{color:var(--magenta);border-color:var(--magenta)}
+.cc-foot .cc-sep{color:var(--line);}
+
+@media(prefers-reduced-motion:reduce){
+  .cc-panel,.cc-launch,.cc-launch::after,.cc-formview{transition:none}
+}
+
+/* ---------- In-panel contact form (Email handoff) ---------- */
+.cc-formview{position:absolute;inset:0;background:var(--paper);z-index:3;
+  display:flex;flex-direction:column;transform:translateY(100%);pointer-events:none;
+  transition:transform .34s var(--cc-ease)}
+.cc-formview.on{transform:none;pointer-events:auto}
+.cc-fv-head{flex:none;background:var(--ink);color:var(--paper);padding:16px 18px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px}
+.cc-fv-head b{font-family:var(--display);font-weight:500;font-size:15px;letter-spacing:-.01em}
+.cc-fv-back{background:none;border:0;color:rgba(250,250,247,.7);cursor:pointer;
+  font-family:var(--text);font-weight:700;font-size:12px;letter-spacing:.04em;
+  display:flex;align-items:center;gap:7px;padding:2px 0}
+.cc-fv-back:hover{color:var(--paper)}
+.cc-fv-back svg{width:15px;height:15px}
+.cc-fv-body{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:14px}
+.cc-field{display:flex;flex-direction:column;gap:6px}
+.cc-field label{font-family:var(--text);font-weight:700;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--grey,#6f6f6f)}
+.cc-field input,.cc-field textarea{font-family:var(--text);font-size:14px;line-height:1.4;
+  color:var(--ink);background:#fff;border:1px solid var(--line);padding:10px 12px}
+.cc-field textarea{resize:none;min-height:92px}
+.cc-field input:focus,.cc-field textarea:focus{outline:none;border-color:var(--ink)}
+.cc-fv-err{color:var(--magenta);font-size:12px;min-height:1em}
+.cc-fv-submit{margin-top:2px;background:var(--ink);color:var(--paper);border:0;padding:13px 16px;
+  font-family:var(--text);font-weight:700;font-size:13px;letter-spacing:.04em;cursor:pointer;
+  transition:background .2s var(--cc-ease)}
+.cc-fv-submit:hover{background:var(--magenta)}
+.cc-fv-submit:disabled{opacity:.5;cursor:not-allowed}
+.cc-fv-note{font-size:11.5px;color:var(--grey,#6f6f6f);line-height:1.45}
+.cc-fv-note a{color:var(--ink);font-weight:700}
+.cc-fv-success{flex:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+  gap:14px;padding:28px 24px}
+.cc-fv-success .cc-tick{width:44px;height:44px;border:1px solid var(--magenta);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:var(--magenta)}
+.cc-fv-success h4{font-family:var(--display);font-weight:500;font-size:24px;letter-spacing:-.01em}
+.cc-fv-success p{font-size:14px;line-height:1.55;color:var(--ink)}
+.cc-fv-success em{font-family:var(--serif);font-style:italic}

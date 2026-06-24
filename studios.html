@@ -10,6 +10,10 @@
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="https://use.typekit.net/pkh7feu.css">
 <link rel="preload" as="image" href="images/scratches-v2.webp">
+<!-- PS Craft Layer (design-spice pass) -->
+<link rel="stylesheet" href="ps-spice.css">
+<!-- PS Concierge (corner AI concierge) -->
+<link rel="stylesheet" href="ps-concierge.css">
 <style>
   :root{
     --ink:#121315;
@@ -342,11 +346,11 @@
      Sibling of .streams (defined inside .sub-hero on insights.html). */
   .sub-hero .sub-body{
     margin-top:18px;font-size:clamp(16px,1.3vw,19px);line-height:1.5;
-    color:var(--ink);opacity:.85;max-width:62ch;
+    color:var(--paper);opacity:.85;max-width:62ch;
     opacity:0;transform:translateY(12px);
     animation:settle .6s ease-out .55s forwards;
   }
-  .sub-hero .sub-body strong{font-weight:700;color:var(--ink);opacity:1}
+  .sub-hero .sub-body strong{font-weight:700;color:var(--paper);opacity:1}
 
   /* Card grid 4-up variant — pattern 4b extension for /digital.
      Pattern reference: docs/design-system-audit.md §2 (pattern 4b).
@@ -713,7 +717,7 @@
   .reel-hero h1{font-family:var(--display);font-weight:600;font-size:clamp(48px,7.2vw,116px);line-height:.94;letter-spacing:-0.02em;margin-bottom:28px;opacity:0;transform:translateY(14px);animation:settle .8s ease-out .2s forwards}
   .reel-hero h1 span{display:block}
   .reel-hero h1 .voice{font-family:"late-serif",Georgia,serif;font-style:italic;font-weight:400;color:var(--magenta);letter-spacing:-0.01em}
-  .reel-hero .reel-body{font-size:clamp(16px,1.4vw,21px);max-width:780px;color:rgba(250,250,247,.88);margin-bottom:36px;line-height:1.5;opacity:0;transform:translateY(12px);animation:settle .8s ease-out .45s forwards}
+  .reel-hero .sub-body{font-size:clamp(16px,1.4vw,21px);max-width:780px;color:rgba(250,250,247,.88);margin-bottom:36px;line-height:1.5;opacity:0;transform:translateY(12px);animation:settle .8s ease-out .45s forwards}
   /* Reel-hero scroll-prompt button uses the canonical .btn .cascade
      vocabulary (matches the homepage Digital/Studios pair and the page
      closer "Start a film"). The .reel-scroll custom class was removed
@@ -812,8 +816,7 @@
   .credit-name{font-family:var(--display);font-size:clamp(22px,1.8vw,28px);font-weight:600;letter-spacing:-.01em;margin-bottom:8px;border-top:1px solid var(--ink);padding-top:24px}
   .credit-role{font-family:var(--text);font-size:13px;color:var(--magenta);font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:20px}
   .credit-line{font-size:15px;line-height:1.55;color:var(--grey)}
-  .credits-cta{font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.04em;display:inline-block;border-bottom:1px solid var(--ink);padding-bottom:2px;transition:color .2s,border-color .2s}
-  .credits-cta:hover{color:var(--magenta);border-bottom-color:var(--magenta)}
+  .credits-cta{font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.04em;display:inline-block}
   @media (max-width:880px){
     .credits-grid{grid-template-columns:1fr;gap:40px}
     .credit-portrait{max-width:360px}
@@ -868,10 +871,10 @@
   </div>
   <div class="tk-links">
     <a class="tk-l" style="--td:0.08s" href="work.html"><span class="tk-n">01</span><span class="tk-t">Work</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.13s" href="index.html#digital"><span class="tk-n">02</span><span class="tk-t">Digital</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.18s" href="index.html#studios"><span class="tk-n">03</span><span class="tk-t">Studios</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.13s" href="digital.html"><span class="tk-n">02</span><span class="tk-t">Digital</span><span class="tk-ar">→</span></a>
+    <a class="tk-l is-current" aria-current="page" style="--td:0.18s" href="studios.html"><span class="tk-n">03</span><span class="tk-t">Studios</span><span class="tk-ar">→</span></a>
     <a class="tk-l" style="--td:0.23s" href="insights.html"><span class="tk-n">04</span><span class="tk-t">Insights</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.28s" href="#"><span class="tk-n">05</span><span class="tk-t">About</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.28s" href="about.html"><span class="tk-n">05</span><span class="tk-t">About</span><span class="tk-ar">→</span></a>
     <a class="tk-l" style="--td:0.33s" href="#contact"><span class="tk-n">06</span><span class="tk-t">Contact</span><span class="tk-ar">→</span></a>
   </div>
   <div class="tk-foot">
@@ -924,7 +927,7 @@
       <span>Anyone can generate.</span>
       <span><em class="voice">Few can direct.</em></span>
     </h1>
-    <p class="reel-body">Power Shifter Studios. Film, audio, and motion on generative pipelines — run by people who came up through ILM, Ridley Scott, and Ogilvy, not a prompt library.</p>
+    <p class="sub-body">Power Shifter Studios. Film, audio, and motion on generative pipelines — run by people who came up through ILM, Ridley Scott, and Ogilvy, not a prompt library.</p>
     <a class="btn cascade" href="#films">Watch the work →</a>
   </div>
 </section>
@@ -1115,7 +1118,7 @@
         <p class="credit-line">Ogilvy London, Creative Partner &middot; Ogilvy Caribbean, Chairman</p>
       </article>
     </div>
-    <a class="credits-cta" href="#">Meet the whole team →</a>
+    <a class="credits-cta swipe" href="#">Meet the whole team →</a>
   </div>
 </section>
 
@@ -1130,9 +1133,25 @@
      and Block 3 films) on June 24 2026 per JP — editorial sequence
      now reads as work → people → who trusts those people → how we work.
      See studios.md Notes 15. -->
+<!-- Client testimonial banner — above the roster. The logos say WHO trusts us;
+     this says what it FELT like. PLACEHOLDER COPY — replace the quote and the
+     bracketed attribution with a real, approved client testimonial before launch. -->
+<section class="quote-banner">
+  <div class="wrap reveal">
+    <blockquote>
+      <span class="qb-mark" aria-hidden="true">&ldquo;</span>
+      <p class="quote-t">We handed them a board everyone called unshootable. What came back looked like it had a studio budget behind it.</p>
+      <p class="quote-by">
+        <span class="qb-name">[Name Surname]</span>
+        <span class="qb-role">[Title, Client]</span>
+      </p>
+    </blockquote>
+  </div>
+</section>
+
 <section class="proof-spine" id="proof-spine">
   <div class="wrap reveal">
-    <span class="eyebrow">The roster</span>
+    <span class="eyebrow">Studios — selected clients</span>
     <div class="logos" aria-label="Selected clients">
       <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/telus.png'); width: 141px; height: 28px;" aria-label="Telus"></span></div>
       <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/energizer.png'); width: 110px; height: 28px;" aria-label="Energizer"></span></div>
@@ -1237,10 +1256,10 @@
       </div>
       <ul>
         <li><a href="work.html">Work</a></li>
-        <li><a href="index.html#digital">Digital</a></li>
-        <li><a href="index.html#studios">Studios</a></li>
+        <li><a href="digital.html">Digital</a></li>
+        <li><a href="studios.html" aria-current="page">Studios</a></li>
         <li><a href="insights.html">Insights</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="#">Careers</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -1523,5 +1542,9 @@ document.querySelectorAll('.swipe').forEach(function(el){
 </script>
 
 
+<!-- PS Craft Layer -->
+<script src="ps-spice.js"></script>
+<!-- PS Concierge -->
+<script src="ps-concierge.js"></script>
 </body>
 </html>

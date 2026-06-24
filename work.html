@@ -7,6 +7,10 @@
 <meta name="description" content="Selected work across Digital and Studios. Software platforms, generative films, and hybrid engagements — made in the same room.">
 <link rel="stylesheet" href="https://use.typekit.net/pkh7feu.css">
 <link rel="preload" as="image" href="images/scratches-v2.webp">
+<!-- PS Craft Layer (design-spice pass) -->
+<link rel="stylesheet" href="ps-spice.css">
+<!-- PS Concierge (corner AI concierge) -->
+<link rel="stylesheet" href="ps-concierge.css">
 <style>
   :root{
     --ink:#121315;
@@ -573,11 +577,11 @@
     <button class="tk-close" id="menuClose">Close <span class="x">×</span></button>
   </div>
   <div class="tk-links">
-    <a class="tk-l" style="--td:0.08s" href="work.html"><span class="tk-n">01</span><span class="tk-t">Work</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.13s" href="index.html#digital"><span class="tk-n">02</span><span class="tk-t">Digital</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.18s" href="index.html#studios"><span class="tk-n">03</span><span class="tk-t">Studios</span><span class="tk-ar">→</span></a>
+    <a class="tk-l is-current" aria-current="page" style="--td:0.08s" href="work.html"><span class="tk-n">01</span><span class="tk-t">Work</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.13s" href="digital.html"><span class="tk-n">02</span><span class="tk-t">Digital</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.18s" href="studios.html"><span class="tk-n">03</span><span class="tk-t">Studios</span><span class="tk-ar">→</span></a>
     <a class="tk-l" style="--td:0.23s" href="insights.html"><span class="tk-n">04</span><span class="tk-t">Insights</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.28s" href="#"><span class="tk-n">05</span><span class="tk-t">About</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.28s" href="about.html"><span class="tk-n">05</span><span class="tk-t">About</span><span class="tk-ar">→</span></a>
     <a class="tk-l" style="--td:0.33s" href="#contact"><span class="tk-n">06</span><span class="tk-t">Contact</span><span class="tk-ar">→</span></a>
   </div>
   <div class="tk-foot">
@@ -592,7 +596,7 @@
 <section class="sub-hero">
   <svg class="slash-field" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="pair" transform="translate(1060 230) scale(2.2)" style="--dur:15.6s;--dly:0s;--sh:10.4px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(780 460) scale(1.3)" style="--dur:20.4s;--dly:-9s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1260 520) scale(1.7)" style="--dur:13.2s;--dly:-15s;--sh:9.2px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(640 260) scale(1.0)" style="--dur:18s;--dly:-4s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(940 560) scale(1.1)" style="--dur:22.8s;--dly:-21s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1380 360) scale(1.2)" style="--dur:18.6s;--dly:-6s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g></svg>
   <div class="sub-hero-inner wrap">
-    <span class="eyebrow">Our work</span>
+    <span class="eyebrow">Work — twenty-two projects, two practices</span>
     <h1 class="rise">The receipts.</h1>
     <p class="sub-voice"><em class="voice mag">Twenty-two projects. Two practices. One room.</em></p>
   </div>
@@ -848,11 +852,11 @@
         <p class="tagline">Made to use.<br><em class="voice">Made to remember.</em></p>
       </div>
       <ul>
-        <li><a href="work.html">Work</a></li>
-        <li><a href="index.html#digital">Digital</a></li>
-        <li><a href="index.html#studios">Studios</a></li>
+        <li><a href="work.html" aria-current="page">Work</a></li>
+        <li><a href="digital.html">Digital</a></li>
+        <li><a href="studios.html">Studios</a></li>
         <li><a href="insights.html">Insights</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="#">Careers</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -1112,5 +1116,9 @@ document.querySelectorAll('.swipe').forEach(function(el){
 </script>
 
 
+<!-- PS Craft Layer -->
+<script src="ps-spice.js"></script>
+<!-- PS Concierge -->
+<script src="ps-concierge.js"></script>
 </body>
 </html>

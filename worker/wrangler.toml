@@ -1,0 +1,20 @@
+name = "ps-concierge"
+main = "src/index.js"
+compatibility_date = "2024-11-01"
+
+# Public, non-secret config. Edit these for your deployment.
+[vars]
+# Anthropic model id. Match the prototype, or change as you like.
+MODEL = "claude-haiku-4-5"
+
+# Public URL of the knowledge base markdown (served from your site).
+# The Worker fetches + caches this (5 min) and injects it into the prompt,
+# so the team edits ONE markdown file to update the bot.
+KB_URL = "https://powershifter.com/docs/concierge-knowledge.md"
+
+# Lock the endpoint to your site origin (CORS + a basic abuse guard).
+# Use "*" only for local testing.
+ALLOWED_ORIGIN = "https://powershifter.com"
+
+# SECRET — do NOT put the key here. Set it once with:
+#   wrangler secret put ANTHROPIC_API_KEY

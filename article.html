@@ -7,6 +7,10 @@
 <meta name="description" content="Estimates fail for structural reasons, not effort reasons. What we changed about how we scope digital product work.">
 <link rel="stylesheet" href="https://use.typekit.net/pkh7feu.css">
 <link rel="preload" as="image" href="images/scratches-v2.webp">
+<!-- PS Craft Layer (design-spice pass) -->
+<link rel="stylesheet" href="ps-spice.css">
+<!-- PS Concierge (corner AI concierge) -->
+<link rel="stylesheet" href="ps-concierge.css">
 <style>
   :root{
     --ink:#121315;
@@ -724,10 +728,10 @@
   </div>
   <div class="tk-links">
     <a class="tk-l" style="--td:0.08s" href="work.html"><span class="tk-n">01</span><span class="tk-t">Work</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.13s" href="index.html#digital"><span class="tk-n">02</span><span class="tk-t">Digital</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.18s" href="index.html#studios"><span class="tk-n">03</span><span class="tk-t">Studios</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.23s" href="insights.html"><span class="tk-n">04</span><span class="tk-t">Insights</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.28s" href="#"><span class="tk-n">05</span><span class="tk-t">About</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.13s" href="digital.html"><span class="tk-n">02</span><span class="tk-t">Digital</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.18s" href="studios.html"><span class="tk-n">03</span><span class="tk-t">Studios</span><span class="tk-ar">→</span></a>
+    <a class="tk-l is-current" aria-current="page" style="--td:0.23s" href="insights.html"><span class="tk-n">04</span><span class="tk-t">Insights</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.28s" href="about.html"><span class="tk-n">05</span><span class="tk-t">About</span><span class="tk-ar">→</span></a>
     <a class="tk-l" style="--td:0.33s" href="#contact"><span class="tk-n">06</span><span class="tk-t">Contact</span><span class="tk-ar">→</span></a>
   </div>
   <div class="tk-foot">
@@ -798,7 +802,7 @@
     </div>
 
     <aside class="pull breakout">
-      <span class="eyebrow">The pattern</span>
+      <span class="eyebrow">Build · Scoping</span>
       <p>The estimate is never wrong because the team was slow. It is wrong because <span class="mag">the thing being estimated changed</span> while it was being built.</p>
     </aside>
 
@@ -900,10 +904,10 @@
       </div>
       <ul>
         <li><a href="work.html">Work</a></li>
-        <li><a href="index.html#digital">Digital</a></li>
-        <li><a href="index.html#studios">Studios</a></li>
-        <li><a href="insights.html">Insights</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="digital.html">Digital</a></li>
+        <li><a href="studios.html">Studios</a></li>
+        <li><a href="insights.html" aria-current="page">Insights</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="#">Careers</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -1121,5 +1125,9 @@ document.querySelectorAll('.swipe').forEach(function(el){
 
 
 
+<!-- PS Craft Layer -->
+<script src="ps-spice.js"></script>
+<!-- PS Concierge -->
+<script src="ps-concierge.js"></script>
 </body>
 </html>

@@ -3,9 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>V2 Two Voices — POWER SHIFTER — Digital Products &amp; Generative Films | Vancouver</title>
-<meta name="description" content="Made to use. Made to remember. A product studio and a film studio with one design culture — the work and the place it lives, made in the same room. Software in weeks, cinema in days.">
-<link rel="stylesheet" href="https://use.typekit.net/pkh7feu.css">
+<title>About — POWER SHIFTER</title>
+<meta name="description" content="One design culture, two practices. Meet the leadership behind POWER SHIFTER — digital product and film studio, Vancouver, BC.">
+<meta property="og:title" content="About — POWER SHIFTER">
+<meta property="og:description" content="One design culture, two practices. Meet the leadership behind POWER SHIFTER.">
+<meta property="og:type" content="website">
+<!-- Typekit loaded async so the page paints immediately even when the kit
+     is unreachable (e.g. this review sandbox). -->
+<link rel="stylesheet" href="https://use.typekit.net/pkh7feu.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://use.typekit.net/pkh7feu.css"></noscript>
 <link rel="preload" as="image" href="images/scratches-v2.webp">
 <!-- PS Craft Layer (design-spice pass) -->
 <link rel="stylesheet" href="ps-spice.css">
@@ -113,36 +119,16 @@
   .stat + .stat{padding-left:28px}
   .stat b{font-family:var(--display);font-weight:700;font-size:clamp(26px,2.6vw,40px);letter-spacing:-.015em;display:block;line-height:1.1}
   .stat > span{font-size:13.5px;color:var(--grey);display:block;margin-top:6px;line-height:1.4}
-  /* Client wall — hairline-ruled sheet, same construction as the insights grid */
-  /* Client wall — checkerboard. Odd cells render dark (ink) with a
-     cream-tinted logo; even cells render light (paper) with an ink
-     logo. On hover, dark cells lift via the logo turning magenta;
-     light cells lift via the background turning magenta with the
-     logo inverting to cream. Same magenta accent, asymmetric reveal. */
-  .logos{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-    background:var(--line);border:1px solid var(--line);margin-top:34px}
-  .logos .cell{display:flex;align-items:center;justify-content:center;
-    padding:clamp(24px,3vw,38px) 16px;
-    transition:background-color .45s cubic-bezier(.4,0,.2,1),
-               color .45s cubic-bezier(.4,0,.2,1)}
-  .logos .cell .logo-mask{opacity:.88;max-width:72%;
-    transition:opacity .45s cubic-bezier(.4,0,.2,1),
-               background-color .45s cubic-bezier(.4,0,.2,1)}
-  .logos .cell:hover .logo-mask{opacity:1}
-  /* Dark cells (corners + centre on 3-col grid) */
-  .logos .cell:nth-child(odd){background:var(--ink);color:var(--paper)}
-  .logos .cell:nth-child(odd):hover{color:var(--magenta)}
-  /* Light cells (edges) */
-  .logos .cell:nth-child(even){background:var(--paper);color:var(--ink)}
-  .logos .cell:nth-child(even):hover{background:var(--magenta);color:var(--paper)}
-  @media(max-width:640px){
-    .logos{grid-template-columns:repeat(2,1fr)}
-    .logos .cell:last-child{grid-column:span 2}
-  }
+  /* The vestigial `.logos` flex-wrap wordmark strip (used `<span>` children
+     with .lc/.mc modifiers) was removed June 23 2026 — see digital.md Notes 17.
+     The live `.logos` pattern is the 3x3 image-mask grid defined ~line 479
+     (Pattern F in docs/design-system-audit.md). Mixing the two created a
+     leaked `padding-top:26px` on the grid which rendered as a grey bar
+     above the first row of cells. */
   @media(max-width:860px){.proof-row{grid-template-columns:1fr 1fr}.stat{border-right:0;border-bottom:1px solid var(--line);padding:14px 0}.stat + .stat{padding-left:0}}
 
   /* ---------- Block 4 — The seam ---------- */
-  .engine{position:relative;overflow:hidden;padding-top:clamp(90px,12vh,160px);padding-bottom:clamp(90px,12vh,160px)}
+  .engine{padding-top:clamp(90px,12vh,160px);padding-bottom:clamp(90px,12vh,160px)}
   .engine-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,5vw,90px)}
   .engine h2{font-family:var(--display);font-weight:500;font-size:clamp(40px,4.6vw,72px);line-height:1.02;letter-spacing:-.015em}
     .engine p{font-size:clamp(18px,1.5vw,21px);line-height:1.6;max-width:58ch}
@@ -173,7 +159,6 @@
   /* ---------- Block 6 — Insights ---------- */
   .insights{padding-top:clamp(80px,10vh,130px);padding-bottom:clamp(80px,10vh,130px);border-bottom:1px solid var(--line)}
   .insights h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,3.6vw,54px);letter-spacing:-.015em;margin-bottom:18px}
-  .insights .boxed{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:-.02em;background:var(--magenta);color:var(--paper);display:inline-block;padding:.08em .18em .14em;border-radius:2px;transform:translateY(.04em)}
   .insights .streams{font-size:17px;line-height:1.6;max-width:74ch;color:var(--grey);margin-bottom:46px}
   .insights .streams b{color:var(--ink);font-weight:700}
   .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px)}
@@ -247,7 +232,6 @@
     html{scroll-behavior:auto}
   }
 </style>
-
 <style id="two-voices">
   /* ============ VARIANT 2 — TWO VOICES ============
      Register contrast, not volume contrast.
@@ -293,18 +277,6 @@
   /* Contour watermark — the line-art softener */
   .contour{position:absolute;pointer-events:none;fill:none;stroke-width:.6}
   .contour-hero{top:-10%;right:-6%;height:130%;width:auto;stroke:rgba(250,250,247,.07);z-index:1}
-  /* Slash field — the logo's askew gesture, here in the light coloration */
-  .slash-field{position:absolute;inset:0;width:100%;height:100%;
-    stroke:rgba(250,250,247,.11);stroke-width:.9;fill:none;z-index:0;pointer-events:none}
-  .slash-field.on-light{stroke:rgba(18,19,21,.07)}
-  .slash-field path{fill:none;stroke:inherit}
-  .slash-field .sa{animation:shearUp var(--dur) ease-in-out var(--dly,0s) infinite alternate}
-  .slash-field .sb{animation:shearDn var(--dur) ease-in-out var(--dly,0s) infinite alternate}
-  @keyframes shearUp{from{transform:translateY(0)}to{transform:translateY(calc(var(--sh)*-1))}}
-  @keyframes shearDn{from{transform:translateY(0)}to{transform:translateY(var(--sh))}}
-  @media(prefers-reduced-motion:reduce){
-    .slash-field .sa,.slash-field .sb{animation:none}
-  }
   .contour-engine{top:-20%;right:4%;height:150%;width:auto;stroke:rgba(18,19,21,.05)}
   .engine{position:relative;overflow:hidden}
   .engine .wrap{position:relative;z-index:2}
@@ -318,6 +290,323 @@
     background:linear-gradient(rgba(18,19,21,.60), rgba(18,19,21,.50) 40%, rgba(18,19,21,.75) 100%)}
   .hero-reel.live{opacity:1}
   header{z-index:50}
+</style>
+
+<style id="work-page">
+  /* Sub-page hero — same system, ~50vh, clearly a section header not a full takeover */
+  .sub-hero{
+    background:var(--ink);color:var(--paper);
+    min-height:50vh;display:flex;align-items:flex-end;
+    padding-bottom:clamp(48px,6vh,80px);padding-top:120px;
+    border-bottom:1px solid var(--line-on-ink);
+    position:relative;overflow:hidden;
+  }
+  /* Same contour watermark as homepage — keeps the DNA */
+  /* Slash field — the logo's askew gesture as background weather.
+     Each // pair shears: one slash drifts up while its twin drifts down,
+     then they re-align. Periods 22-38s, desynced via negative delays. */
+  .slash-field{position:absolute;inset:0;width:100%;height:100%;
+    stroke:rgba(250,250,247,.11);stroke-width:.9;fill:none;z-index:1;pointer-events:none}
+  .slash-field path{fill:none;stroke:inherit}
+  .slash-field .sa{animation:shearUp var(--dur) ease-in-out var(--dly) infinite alternate}
+  .slash-field .sb{animation:shearDn var(--dur) ease-in-out var(--dly) infinite alternate}
+  @keyframes shearUp{from{transform:translateY(0)}to{transform:translateY(calc(var(--sh)*-1))}}
+  @keyframes shearDn{from{transform:translateY(0)}to{transform:translateY(var(--sh))}}
+  @media(prefers-reduced-motion:reduce){
+    .slash-field .sa,.slash-field .sb{animation:none}
+  }
+  .sub-hero-inner{position:relative;z-index:2;width:100%}
+  .sub-hero .eyebrow{color:var(--magenta);display:block;margin-bottom:18px}
+  .sub-hero h1{
+    font-family:var(--display);font-weight:900;
+    font-size:clamp(52px,7vw,108px);line-height:.96;letter-spacing:-.02em;
+  }
+  .sub-hero .sub-voice{
+    margin-top:16px;
+    opacity:0;transform:translateY(12px);
+    animation:settle .6s ease-out .55s forwards;
+  }
+  .sub-hero .sub-voice em{
+    font-family:var(--serif);font-style:italic;font-weight:500;
+    font-size:clamp(26px,3.2vw,52px);letter-spacing:-.02em;
+    color:var(--magenta);line-height:1.1;display:block;
+    padding:0 .1em .16em 0;
+  }
+
+  /* The .sub-hero-ctas pattern (Pattern A in docs/design-system-audit.md) was
+     removed June 23 2026 — see digital.md Notes 18. JP's call: the pills and
+     letter spacing read off from the rest of the page's square `.btn.solid`
+     vocabulary, AND the Validator/MVP section sits one section below the
+     hero — pre-driving to it from the hero CTA row was redundant. "Start a
+     project" persists in the page closer (line ~1054) and the takeover menu,
+     so no path-to-conversion was lost. Pattern A is decommissioned from
+     /digital and stays catalogued in the audit doc only if a future hub
+     page (Studios, About) genuinely needs hero-level CTAs in a non-pill
+     treatment — not as the current pill design. */
+
+  /* Sub-hero body paragraph — alternative to .sub-voice when the page wants
+     regular prose with bold mid-sections instead of the italic-magenta voice line.
+     Sibling of .streams (defined inside .sub-hero on insights.html). */
+  .sub-hero .sub-body{
+    margin-top:18px;font-size:clamp(16px,1.3vw,19px);line-height:1.5;
+    color:var(--ink);opacity:.85;max-width:62ch;
+    opacity:0;transform:translateY(12px);
+    animation:settle .6s ease-out .55s forwards;
+  }
+  .sub-hero .sub-body strong{font-weight:700;color:var(--ink);opacity:1}
+
+  /* Card grid 4-up variant — pattern 4b extension for /digital.
+     Pattern reference: docs/design-system-audit.md §2 (pattern 4b).
+     Adds a 4-column desktop layout to the existing .cards/.card system. The
+     :nth-child(n+2) rule widens the homepage's (2),(3) selector so every card
+     beyond the first picks up the inner-gutter padding-left, which keeps the
+     left edge of each card's meta block flush with its frame. */
+  .cards.four-up{grid-template-columns:repeat(4,1fr)}
+  .cards.four-up .card:nth-child(n+2) .meta{padding-left:26px}
+  @media(max-width:1100px){.cards.four-up{grid-template-columns:repeat(2,1fr)}.cards.four-up .card:nth-child(2n+1) .meta{padding-left:0}.cards.four-up .card:nth-child(2n) .meta{padding-left:26px}}
+  @media(max-width:680px){.cards.four-up{grid-template-columns:1fr}.cards.four-up .card .meta{padding-left:0}}
+  /* Hover lift on cards — make the .go arrow light up magenta as the visited cue */
+  .card:hover h3{color:var(--magenta)}
+  .card:hover .go{color:var(--magenta)}
+  .work .all:hover{color:var(--magenta);border-color:var(--magenta)}
+
+  /* Offers section — wraps a .doors block on a sub-page.
+     The homepage doors block IS the section (no separate H2); on /digital the
+     offers section needs an introductory "Two ways in" H2 above the doors. */
+  .offers-section{padding-top:clamp(70px,10vh,120px);background:var(--paper)}
+  .offers-section .wrap{padding-bottom:24px}
+  .offers-h{font-family:var(--display);font-weight:500;font-size:clamp(34px,4vw,60px);letter-spacing:-.015em}
+
+  /* Doors compact variant — sub-page scale.
+     The homepage .doors uses min-height:84vh because doors IS the page block.
+     On a sub-page, that's too tall. .doors.compact removes the min-height
+     constraint and dials the per-door min-height down from 54-84vh to ~48vh. */
+  .doors.compact{min-height:auto}
+  .doors.compact .door{min-height:48vh}
+  @media(max-width:860px){.doors.compact .door{min-height:38vh}}
+
+  /* Validator-band — engine variant, INK background.
+     Pattern reference: docs/design-system-audit.md §"New patterns".
+     Three departures from the canonical .engine band:
+     (1) INK background (var(--ink)) with paper text — flips the section from
+         paper-on-paper to ink-on-paper, creating a paper/ink/paper sandwich
+         between offers above and how-we-work below. Makes the Validator read
+         as the page's strongest call-to-action rather than blending into the
+         surrounding sections. (June 23 2026 edit — see digital.md Notes 14.)
+     (2) 1fr/1fr grid instead of 5fr/7fr — the left column needs room for
+         H2 + body + CTA, and the right column carries the explainer video
+         at 16:9 (which needs roughly half-page width to land at viewable size).
+     (3) H2 dialed from clamp(40px,4.6vw,72px) to clamp(32px,3.6vw,54px) so
+         the headline doesn't overflow the half-width column. */
+  .validator-band{background:var(--ink);color:var(--paper)}
+  .validator-band .engine-grid{grid-template-columns:1fr 1fr;align-items:center;gap:clamp(32px,4vw,72px)}
+  .validator-band h2{font-size:clamp(32px,3.6vw,54px);color:var(--paper)}
+  .validator-band h2 em.voice{color:var(--magenta)}
+  .validator-band p{font-size:clamp(16px,1.3vw,19px);margin-top:18px;max-width:48ch;color:rgba(250,250,247,.86)}
+  .validator-band p strong{color:var(--paper)}
+  .validator-band .vbtn{margin-top:24px;display:inline-block}
+  @media(max-width:860px){.validator-band .engine-grid{grid-template-columns:1fr;gap:36px}}
+
+  /* NEW pattern — .engine.mirror — alternating layout variant for the one-two punch.
+     Pairs with the canonical .engine pattern to create JP's "alternating one-two
+     punch" rhythm on services pages: Module 1 runs canonical 5fr/7fr (H2 left,
+     body right), Module 2 runs mirrored 7fr/5fr (body left, H2 right). The two
+     modules read as a zigzag at desktop scale. On mobile (≤860px) both stack
+     identically — H2 over body — because the "mirror" rhythm doesn't read at
+     narrow widths and stacking H2-first preserves source order + cognitive flow.
+     Source order in HTML stays H2-first → body-second for every module
+     regardless of layout, for accessibility and progressive enhancement. */
+  .engine.mirror .engine-grid{grid-template-columns:7fr 5fr}
+  .engine.mirror .engine-grid > div:first-child{order:2}
+  .engine.mirror .engine-grid > div:nth-child(2){order:1}
+  @media(max-width:860px){
+    .engine.mirror .engine-grid{grid-template-columns:1fr}
+    .engine.mirror .engine-grid > div:first-child{order:0}
+    .engine.mirror .engine-grid > div:nth-child(2){order:0}
+  }
+
+  /* NEW pattern — .video-frame.
+     Pattern reference: docs/design-system-audit.md §"New patterns" C
+     (to be catalogued on next audit-doc pass — see digital.md Notes 14).
+     Generic 16:9 video container for section-column embeds. Distinct from
+     the article-body .embed.video pattern (which is .article-body .prose-scoped
+     and supports .breakout for full-bleed). The .video-frame is the
+     section-column variant — used here on /digital for the Cloudflare Stream
+     explainer; reusable wherever a marketing/explainer video lives inside
+     a section grid column. Dark placeholder bg holds the box while the
+     Stream iframe loads its own poster. Soft radius matches the terminal
+     pattern's previous treatment, preserving the section's visual silhouette. */
+  .video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#0a0b0c;
+    border-radius:8px;overflow:hidden;box-shadow:0 18px 44px rgba(0,0,0,.32)}
+  .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+
+  /* NEW pattern C — .partners + .partners-strip.
+     Pattern reference: docs/design-system-audit.md §"New patterns" C.
+     Lede sentence + horizontal flex row of partner-tier chips. Each chip pairs
+     a display-weight name with a serif-italic tier descriptor (echoes the .voice
+     italic-on-serif treatment used everywhere else on the site). Magenta surfaces
+     only on hover — single-magenta budget per viewport already committed elsewhere
+     in this section's neighbours, this just provides the interaction cue. */
+  .partners{padding-top:clamp(60px,8vh,100px);padding-bottom:clamp(60px,8vh,100px);
+    background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .partners-lede{font-size:clamp(16px,1.3vw,19px);line-height:1.5;color:var(--grey);max-width:62ch;margin-bottom:30px}
+  .partners-strip{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .ptier{display:inline-flex;gap:10px;align-items:baseline;padding:12px 20px;
+    border:1px solid var(--line);border-radius:999px;
+    transition:border-color .2s ease,color .2s ease}
+  .ptier b{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.005em}
+  .ptier em{font-family:var(--serif);font-style:italic;font-weight:500;font-size:14px;color:var(--grey);transition:color .2s ease}
+  .ptier:hover{border-color:var(--magenta);color:var(--magenta)}
+  .ptier:hover em{color:var(--magenta)}
+
+  /* NEW pattern — .proof-spine + .logos (mirrored from homepage Block 3).
+     Pattern reference: docs/design-system-audit.md §"New patterns" F
+     (catalogued in audit doc on this commit). Direct reuse of the homepage's
+     proof-spine .logos pattern — 3-col grid with 1px gap exposing the line
+     bg, checkerboard alternation (odd cells ink/paper, even cells paper/ink),
+     magenta hover state on every cell. The .logo-mask technique renders each
+     logo as a CSS mask-image so the logo inherits currentColor — allowing
+     the same PNG to render paper-on-ink or ink-on-paper without separate
+     asset variants. Position on /digital: between Selected Work and Partners.
+     Functions as the visible-clients trust signal at section scope,
+     complementing the per-project named outcome strip above and the
+     platform-certification Partners strip below. See digital.md Notes 15. */
+  .logo-mask{display:inline-block;background-color:currentColor;
+    -webkit-mask-image:var(--mask-image);-webkit-mask-size:contain;
+    -webkit-mask-repeat:no-repeat;-webkit-mask-position:center;vertical-align:middle}
+  .proof-spine{padding:clamp(80px,11vh,140px) 0;background:var(--paper)}
+  .proof-spine .eyebrow{display:block;font-family:var(--text);font-weight:700;
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--magenta);margin-bottom:24px}
+  .logos{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line)}
+  .logos .cell{display:flex;align-items:center;justify-content:center;
+    padding:clamp(24px,3vw,38px) 16px;
+    transition:background-color .45s cubic-bezier(.4,0,.2,1),
+               color .45s cubic-bezier(.4,0,.2,1)}
+  .logos .cell .logo-mask{opacity:.88;max-width:72%;
+    transition:opacity .45s cubic-bezier(.4,0,.2,1),
+               background-color .45s cubic-bezier(.4,0,.2,1)}
+  .logos .cell:hover .logo-mask{opacity:1}
+  .logos .cell:nth-child(odd){background:var(--ink);color:var(--paper)}
+  .logos .cell:nth-child(odd):hover{color:var(--magenta)}
+  .logos .cell:nth-child(even){background:var(--paper);color:var(--ink)}
+  .logos .cell:nth-child(even):hover{background:var(--magenta);color:var(--paper)}
+  @media(max-width:640px){
+    .logos{grid-template-columns:repeat(2,1fr)}
+    .logos .cell:last-child{grid-column:span 2}
+  }
+
+  /* Outcome-strip text stat — when a .stat carries text instead of an .odo numeral.
+     Inherits .stat b's serif at the same 52-96px scale; <em> adds the italic
+     read so it feels like a category value rather than a measurement. */
+  .stat b > em{font-style:italic;font-family:var(--serif);font-weight:500}
+
+  /* Filter bar */
+  .work-filter{
+    position:sticky;top:0;z-index:40;
+    background:var(--paper);border-bottom:1px solid var(--line);
+  }
+  .filter-row{display:flex;gap:6px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap;align-items:center}
+  .ftab{
+    font-family:var(--text);font-weight:700;font-size:15px;letter-spacing:.02em;
+    padding:14px 24px;border:1px solid var(--line);background:transparent;
+    color:var(--ink);cursor:pointer;display:flex;gap:10px;align-items:baseline;
+    transition:background-color .3s ease,color .3s ease,border-color .3s ease;
+  }
+  .ftab .fc{color:var(--grey);font-weight:400;font-size:13px;transition:color .3s ease,opacity .3s ease}
+  .ftab:hover{border-color:var(--ink)}
+  .ftab.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .ftab.on .fc{color:var(--magenta)}
+  /* whole-button hover triggers the label cascade */
+  .ftab:hover .cascade .lt span{transform:translateY(-100%)}
+  .pending{font-family:var(--serif);font-style:italic;font-weight:500;
+    font-size:1.16em !important;letter-spacing:-.01em;color:var(--magenta) !important}
+  .ftab.on .pending{color:var(--magenta) !important}
+
+  /* Work grid */
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:clamp(24px,3vw,44px);
+    padding-top:clamp(48px,6vh,72px);
+    padding-bottom:clamp(64px,8vh,100px);
+  }
+  .wcard{display:flex;flex-direction:column;position:relative}
+  .wcard.feature{grid-column:1 / -1}
+  .wframe{
+    aspect-ratio:16/9;background:var(--ink-soft);position:relative;
+    overflow:hidden;margin-bottom:18px;
+  }
+  .wcard.feature .wframe{aspect-ratio:21/9}
+  .slot-frame{background:var(--ink-soft)}
+  .slot-frame.light{background:#e9e9e4}
+  .wtint{
+    position:absolute;inset:0;
+    background:linear-gradient(transparent 30%, rgba(18,19,21,.72) 100%);
+    z-index:1;pointer-events:none;
+  }
+  .wcard-overlay{
+    position:absolute;bottom:0;left:0;right:0;padding:clamp(22px,3vw,38px);
+    z-index:2;color:var(--paper);
+  }
+  .wcard-overlay h2{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(22px,2.4vw,36px);letter-spacing:-.01em;margin:10px 0 8px;
+  }
+  .wcard-overlay h2 i{font-family:var(--serif);font-style:italic;font-weight:500}
+  .wcard-overlay p{font-size:15px;color:rgba(250,250,247,.78);max-width:54ch;margin-bottom:12px}
+  .wtag{
+    font-family:var(--text);font-weight:700;font-size:11px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);
+    display:block;margin-bottom:10px;
+  }
+  .wcard h3{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(18px,1.8vw,26px);letter-spacing:-.008em;margin-bottom:8px;
+  }
+  .wcard h3 i{font-family:var(--serif);font-style:italic;font-weight:500}
+  .wcard > p{font-size:14.5px;color:var(--grey);max-width:44ch;margin-bottom:10px}
+  .wgo{font-weight:700;font-size:13.5px;letter-spacing:.04em;margin-top:auto}
+  
+  .wcard-overlay .wgo{color:rgba(250,250,247,.9);font-size:14px}
+  
+  .slot-tag.dark{color:rgba(18,19,21,.35);border-color:rgba(18,19,21,.25)}
+
+  /* Hybrid pending state */
+  .hybrid-slot .wframe{outline:1px dashed var(--line);outline-offset:-8px}
+  .pending-tag{color:var(--grey) !important}
+  .pending-go{color:var(--grey);pointer-events:none}
+
+  /* ---- Global page closer — token-driven, reuse across all key pages ----
+     Matches homepage closer in scale. Swap h2 text + p + btn label per page.
+     mag class = magenta, voice class = serif italic. Both or either. */
+  .page-closer{background:var(--ink);color:var(--paper);padding:clamp(100px,14vh,180px) 0}
+  .page-closer h2{
+    font-family:var(--display);font-weight:900;
+    font-size:clamp(40px,6vw,96px);line-height:1;letter-spacing:-.02em;max-width:18ch
+  }
+  .page-closer p{margin-top:26px;font-size:18px;max-width:52ch;color:rgba(250,250,247,.78)}
+  .pc-row{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-top:38px}
+  .page-closer .btn{
+    font-weight:700;font-size:14px;letter-spacing:.03em;padding:16px 30px;
+    border:1px solid var(--paper);background:var(--paper);color:var(--ink);
+    display:inline-block;transition:all .2s ease-out
+  }
+  .page-closer .btn:hover{background:var(--magenta);border-color:var(--magenta);color:var(--paper)}
+  .page-closer .tel{font-family:var(--text);font-weight:700;font-size:15px;color:rgba(250,250,247,.78)}
+  .page-closer .tel:hover{color:var(--magenta)}
+
+  @media(max-width:980px){.work-grid{grid-template-columns:1fr 1fr}.wcard.feature{grid-column:1/-1}}
+  @media(max-width:640px){.work-grid{grid-template-columns:1fr}}
+
+  /* Hover video loop — sits above the still, fades in when playing */
+  .wframe .hover-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    opacity:0;transition:opacity .35s ease;pointer-events:none;z-index:1}
+  .wframe .hover-video.playing{opacity:1}
+
+  /* Rise-in: case cells use the site reveal motion, staggered by column */
+  .work-grid .wcard.reveal{transition-delay:calc(var(--d,0)*70ms)}
 
   /* ---------- Button system ---------- */
   /* Primary — letter cascade */
@@ -404,16 +693,214 @@
   .tk-ar{font-size:clamp(20px,2.4vw,30px);opacity:0;transform:translateX(-14px);
     transition:opacity .3s ease,transform .3s ease;margin-left:auto;color:var(--paper)}
   .tk-l:hover .tk-ar{opacity:1;transform:translateX(0)}
+  /* Active / current page — persistent arrow + solid numeral so you always
+     know where you are in the menu. */
+  .tk-l.is-current .tk-n{color:var(--ink)}
+  .tk-l.is-current .tk-ar{opacity:1;transform:translateX(0)}
+  .tk-l.is-current .tk-t{transform:translateX(12px)}
   .tk-foot{padding:18px 0 26px;max-width:var(--max);margin:0 auto;width:100%;
     display:flex;justify-content:space-between;align-items:center;
     font-family:var(--text);font-weight:700;font-size:13px;color:rgba(18,19,21,.65)}
   .tk-foot a:hover{color:var(--paper)}
   body.menu-open{overflow:hidden}
 
+  /* Small-screen takeover — fit six links + foot, drop hover-only flourishes. */
+  @media (max-width:560px){
+    .takeover{overflow-y:auto}
+    .tk-links{justify-content:center;gap:2px;padding:72px 0 8px}
+    .tk-t{font-size:clamp(34px,10vw,54px);padding:.12em .1em}
+    .tk-l{padding:10px 0;gap:12px}
+    .tk-foot{flex-direction:column;align-items:flex-start;gap:6px;padding:14px 0 22px}
+  }
+
   @media (prefers-reduced-motion: reduce){
     .takeover,.tk-l,.tk-t,.tk-ar,.menu-btn .plus,.tk-close .x,.tk-top .logo{transition:none}
     .tk-top .logo{opacity:1}
   }
+
+  /* ======================================================================
+     STUDIOS-SPECIFIC PATTERNS (Patterns G, H, I, J in design-system-audit.md)
+     Shipped June 23 2026 with the initial /studios build.
+     ====================================================================== */
+
+  /* Pattern G — Reel hero. Full-bleed Cloudflare Stream video bg with overlay
+     content. Studios Block 1. Ink underlay, video plays muted+loop+autoplay,
+     text sits on a darkened bottom-band via .reel-vignette for legibility. */
+  .reel-hero{position:relative;min-height:88vh;background:var(--ink);color:var(--paper);overflow:hidden;display:flex;align-items:flex-end}
+  .reel-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+  .reel-video{position:absolute;top:50%;left:50%;width:max(100%,177.78vh);height:max(56.25vw,100%);transform:translate(-50%,-50%);border:0;pointer-events:none}
+  .reel-vignette{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(18,19,21,.55) 0%,rgba(18,19,21,0) 28%,rgba(18,19,21,0) 52%,rgba(18,19,21,.88) 100%);pointer-events:none}
+  .reel-inner{position:relative;z-index:2;padding:96px 0 64px;width:100%}
+  .reel-hero h1{font-family:var(--display);font-weight:600;font-size:clamp(48px,7.2vw,116px);line-height:.94;letter-spacing:-0.02em;margin-bottom:28px;opacity:0;transform:translateY(14px);animation:settle .8s ease-out .2s forwards}
+  .reel-hero h1 span{display:block}
+  .reel-hero h1 .voice{font-family:"late-serif",Georgia,serif;font-style:italic;font-weight:400;color:var(--magenta);letter-spacing:-0.01em}
+  .reel-hero .reel-body{font-size:clamp(16px,1.4vw,21px);max-width:780px;color:rgba(250,250,247,.88);margin-bottom:36px;line-height:1.5;opacity:0;transform:translateY(12px);animation:settle .8s ease-out .45s forwards}
+  /* Reel-hero scroll-prompt button uses the canonical .btn .cascade
+     vocabulary (matches the homepage Digital/Studios pair and the page
+     closer "Start a film"). The .reel-scroll custom class was removed
+     June 24 2026 — see studios.md Notes 15. The settle-in animation
+     timing (.7s delay so the button lands after H1 + body) is
+     preserved here. The .btn rule globally defines border:1px solid
+     var(--paper) which works against the dark video background. */
+  .reel-hero .btn{opacity:0;transform:translateY(10px);animation:settle .8s ease-out .7s forwards}
+
+  /* Pattern H — Proof bar. Single high-contrast declarative trophy line.
+     Studios Block 2. Ink background, paper text. No section header. */
+  .proof-bar{background:var(--ink);color:var(--paper);padding:36px 0;border-top:1px solid rgba(250,250,247,.12);border-bottom:1px solid rgba(250,250,247,.12)}
+  .proof-bar-stat{font-family:var(--display);font-size:clamp(18px,1.9vw,24px);font-weight:500;letter-spacing:-.01em;line-height:1.45}
+  .proof-bar-stat strong{font-weight:700}
+  .proof-bar-body{color:rgba(250,250,247,.72);font-weight:400}
+  .proof-bar-body em{font-style:italic;color:var(--paper);font-weight:500}
+
+  /* Pattern I — DECOMMISSIONED June 24 2026. The Studios films index
+     originally shipped with a custom featured+grid pattern (7fr/5fr
+     featured rows for award winners + 4-up grid for the rest). JP's
+     brief on review: "The design pattern for the film case studies
+     should be the same pattern/component as on the digital page."
+     Swapped for the canonical .work + .cards.four-up + .card pattern
+     used on /digital "Digital, selected" and the homepage "Selected
+     work" — same dark ink band, same eyebrow .tag taxonomy, same
+     .go.swipe italic-last-word CTA. All the CSS for that pattern
+     (lines 129-145 + 354-361 of this file, came along with the
+     digital.html clone) is reused as-is. No new CSS for Block 3 —
+     just the markup swap. See studios.md Notes 16 + audit doc
+     §Pattern I (now marked DECOMMISSIONED).
+
+     ONE SMALL ADDITION: 6 films in a 4-up grid means row 2 has 2
+     real cards + 2 empty cells. Without intervention, those empties
+     show the .cards parent's line-light background. A placeholder
+     card (.card.placeholder) fills cells 7-8 with the .card ink
+     background so the empties read as blank dark cards and the 1px
+     gap-line rhythm stays consistent with /digital's 4-card layout.
+     pointer-events:none keeps them un-clickable. aria-hidden="true"
+     keeps them out of the accessibility tree. */
+  .work .card.placeholder{pointer-events:none;padding:0}
+
+  /* .wcard.feature — ported verbatim from /work.html (CSS at work.html
+     lines 356-393). JP brief June 24 2026: "Lets add this exact
+     component from the work.html page below the title WORK and above
+     the rows of films on the studios page." Hero/featured treatment
+     for the strongest piece (Iron Mountain — The Summit, the ADDY
+     winner) — cinematic 21:9 frame with a paper-text-on-tint
+     overlay carrying h2 + body + Watch CTA. The .w-namespaced
+     classes don't collide with the .card / .work rules already on
+     studios (those came from the digital.html clone). Lives between
+     the .head (H2 "The films") and the .cards.four-up grid below.
+     See studios.md Notes 17. */
+  .work .wcard{display:flex;flex-direction:column;position:relative;margin-bottom:clamp(40px,5vh,72px)}
+  .work .wframe{aspect-ratio:16/9;background:var(--ink-soft);position:relative;overflow:hidden;margin-bottom:18px}
+  .work .wcard.feature .wframe{aspect-ratio:21/9;margin-bottom:0}
+  .work .wtint{position:absolute;inset:0;background:linear-gradient(transparent 30%, rgba(18,19,21,.72) 100%);z-index:1;pointer-events:none}
+  .work .wcard-overlay{position:absolute;bottom:0;left:0;right:0;padding:clamp(22px,3vw,38px);z-index:2;color:var(--paper)}
+  .work .wcard-overlay h2{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.4vw,36px);letter-spacing:-.01em;margin:10px 0 8px;color:var(--paper)}
+  .work .wcard-overlay h2 i{font-family:var(--serif);font-style:italic;font-weight:500}
+  .work .wcard-overlay p{font-size:15px;color:rgba(250,250,247,.78);max-width:54ch;margin-bottom:12px}
+  .work .wgo{font-weight:700;font-size:13.5px;letter-spacing:.04em;margin-top:auto;display:inline-block}
+  .work .wcard-overlay .wgo{color:rgba(250,250,247,.9);font-size:14px}
+
+  /* Pattern J — Credits one-sheet. Three credits in a 3-up grid; each is
+     portrait + name + role + credit line. Portraits added June 24 2026
+     overriding the original "no portraits, no bios" brief — see
+     studios.md Notes 14. The 1px ink rule moved from .credit-card's
+     border-top onto .credit-name's border-top so the one-sheet credit-
+     block visual is preserved (portrait → ink rule → name) instead of
+     stranding the rule above the photo. Bios still live on /about.
+     Studios Block 4. Block footer carries a CTA routing to /about. */
+  .credits{padding:96px 0;background:var(--paper);border-top:1px solid var(--line)}
+  .credits-heading{font-family:var(--display);font-size:clamp(36px,4vw,60px);font-weight:600;line-height:1.05;letter-spacing:-.015em;margin-bottom:64px;max-width:960px}
+  .credits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-bottom:48px}
+  .credit-card{display:flex;flex-direction:column}
+  .credit-portrait{display:block;width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--paper);position:relative}
+  .credit-portrait img{width:100%;height:100%;object-fit:cover;display:block}
+  /* Bio-video rollover (June 24 2026). Each credit card has a Cloudflare
+     Stream iframe layered over the still portrait, lazy-loaded on first
+     hover. Iframe is sized 177.78% wide (16:9 ratio over 1:1 container)
+     so the 16:9 source fills the square portrait vertically and crops
+     horizontally. opacity:0 hides until both .loaded class is applied
+     (iframe load event has fired) AND the card is hovered. pointer-
+     events:none keeps the iframe transparent to clicks; aria-hidden +
+     tabindex=-1 keep it out of the accessibility tree. See studios.md
+     Notes 19. */
+  .credit-portrait .credit-video{
+    position:absolute;top:50%;left:50%;
+    width:177.78%;height:100%;
+    transform:translate(-50%,-50%);
+    border:0;opacity:0;
+    transition:opacity .4s ease;
+    pointer-events:none;z-index:1
+  }
+  .credit-card:hover .credit-portrait .credit-video.loaded{opacity:1}
+  .credit-name{font-family:var(--display);font-size:clamp(22px,1.8vw,28px);font-weight:600;letter-spacing:-.01em;margin-bottom:8px;border-top:1px solid var(--ink);padding-top:24px}
+  .credit-role{font-family:var(--text);font-size:13px;color:var(--magenta);font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:20px}
+  .credit-line{font-size:15px;line-height:1.55;color:var(--grey)}
+  .credits-cta{font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.04em;display:inline-block}
+  @media (max-width:880px){
+    .credits-grid{grid-template-columns:1fr;gap:40px}
+    .credit-portrait{max-width:360px}
+  }
+</style>
+
+<style id="about-page">
+  /* ---------- About — two-voices emphasis ---------- */
+  .sub-hero h1 em.voice,.engine h2 em.voice,.page-closer h2 em.voice{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:-.01em}
+  em.voice.mag,.voice.mag{color:var(--magenta)}
+  /* Hero supporting line sits on the INK hero — force legible paper text
+     (the shared .sub-body rule defaults to ink, which was invisible here). */
+  .sub-hero .sub-body{color:var(--paper);opacity:.82}
+  .sub-hero .sub-body strong{color:var(--paper);opacity:1}
+
+  /* ---------- Block 2 — Story prose ---------- */
+  .story-body p{font-size:clamp(18px,1.5vw,21px);line-height:1.6;max-width:60ch}
+  .story-body p + p{margin-top:1.15em}
+  .story-body p strong{font-weight:700}
+
+  /* ---------- Block 3 — One team roster ---------- */
+  .team{padding-top:clamp(80px,11vh,150px);padding-bottom:clamp(80px,11vh,150px);background:var(--paper);border-top:1px solid var(--line)}
+  .team-head{max-width:760px;margin-bottom:clamp(48px,6vw,84px)}
+  .team-head .eyebrow{color:var(--magenta);display:block;margin-bottom:18px}
+  .team-head h2{font-family:var(--display);font-weight:500;font-size:clamp(40px,4.6vw,72px);line-height:1.02;letter-spacing:-.015em;margin-bottom:20px}
+  .team-sub{font-size:clamp(18px,1.6vw,22px);line-height:1.45;color:var(--ink);max-width:54ch}
+  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(30px,3vw,56px) clamp(24px,2.4vw,40px);counter-reset:lead}
+  .lead-card{display:flex;flex-direction:column;counter-increment:lead}
+  .lead-portrait{position:relative;margin-bottom:0;background:var(--ink-soft);overflow:hidden}
+  .lead-portrait image-slot{display:block;width:100%;aspect-ratio:4/5;transition:transform .7s cubic-bezier(.22,1,.36,1)}
+  .lead-card:hover .lead-portrait image-slot{transform:scale(1.035)}
+  .lead-card h3{position:relative;font-family:var(--display);font-weight:600;font-size:clamp(22px,1.9vw,28px);letter-spacing:-.01em;margin:22px 0 6px;padding-top:20px;border-top:1px solid var(--line)}
+  .lead-card h3::before{content:counter(lead,decimal-leading-zero);display:block;font-family:var(--serif);font-style:italic;font-weight:500;font-size:17px;line-height:1;color:var(--magenta);margin-bottom:12px}
+  .lead-card h3::after{content:"";position:absolute;top:-1px;left:0;width:44px;height:2px;background:var(--magenta);transform:scaleX(0);transform-origin:left center;transition:transform .8s cubic-bezier(.22,1,.36,1) .12s}
+  .lead-card.in h3::after{transform:scaleX(1)}
+  @media(prefers-reduced-motion:reduce){.lead-card h3::after{transform:scaleX(1)}.lead-portrait image-slot{transition:none}}
+  .lead-role{font-family:var(--text);font-weight:700;font-size:13px;letter-spacing:.02em;color:var(--grey,#6f6f6f);margin-bottom:16px}
+  .lead-bio{font-size:15.5px;line-height:1.55;color:var(--ink);opacity:.82}
+  .lead-bio em{font-family:var(--serif);font-style:italic}
+  @media(max-width:980px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:620px){.team-grid{grid-template-columns:1fr;max-width:430px}}
+
+  /* ---------- Block 4 — How we work (ink) ---------- */
+  .principles{background:var(--ink);color:var(--paper);padding-top:clamp(90px,12vh,160px);padding-bottom:clamp(90px,12vh,160px)}
+  .principles .eyebrow{color:var(--magenta);display:block;margin-bottom:18px}
+  .principles h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,4vw,60px);line-height:1.04;letter-spacing:-.015em;margin-bottom:clamp(44px,6vw,72px);max-width:18ch}
+  .pr-list{list-style:none;display:flex;flex-direction:column;border-top:1px solid var(--line-light)}
+  .pr-list li{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,68px);align-items:baseline;padding:clamp(26px,3.4vw,44px) 0;border-bottom:1px solid var(--line-light)}
+  .pr-n{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;letter-spacing:.1em;color:var(--magenta);padding-top:.45em}
+  .pr-list p{font-family:var(--display);font-weight:400;font-size:clamp(22px,2.6vw,40px);line-height:1.18;letter-spacing:-.01em;max-width:26ch}
+  .pr-list p strong{font-weight:700}
+  @media(max-width:680px){.pr-list li{grid-template-columns:1fr;gap:10px}}
+
+  /* ---------- Block 5 — Recognition ---------- */
+  .recognition{background:var(--paper);padding-top:clamp(64px,8vh,110px);padding-bottom:clamp(64px,8vh,110px);border-top:1px solid var(--line)}
+  .recognition .eyebrow{color:var(--magenta);display:block;margin-bottom:36px}
+  .rec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .rec{padding:6px 32px 6px 0;border-right:1px solid var(--line)}
+  .rec:last-child{border-right:0}
+  .rec + .rec{padding-left:32px}
+  .rec b{display:block;font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(26px,2.6vw,40px);letter-spacing:-.01em;line-height:1.1;margin-bottom:12px}
+  .rec span{font-family:var(--text);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey,#6f6f6f)}
+  .rec span em{font-style:italic;text-transform:none;letter-spacing:0;font-weight:400}
+  @media(max-width:760px){.rec-grid{grid-template-columns:1fr}.rec{border-right:0;border-bottom:1px solid var(--line);padding:18px 0}.rec + .rec{padding-left:0}.rec:last-child{border-bottom:0}}
+
+  /* ---------- Block 6 — Land acknowledgement ---------- */
+  .anywhere .anywhere-body{font-size:clamp(16px,1.4vw,20px);line-height:1.6;color:var(--ink);opacity:.9;max-width:64ch}
 </style>
 </head>
 <body>
@@ -466,7 +953,7 @@
     <a class="tk-l" style="--td:0.13s" href="digital.html"><span class="tk-n">02</span><span class="tk-t">Digital</span><span class="tk-ar">→</span></a>
     <a class="tk-l" style="--td:0.18s" href="studios.html"><span class="tk-n">03</span><span class="tk-t">Studios</span><span class="tk-ar">→</span></a>
     <a class="tk-l" style="--td:0.23s" href="insights.html"><span class="tk-n">04</span><span class="tk-t">Insights</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.28s" href="about.html"><span class="tk-n">05</span><span class="tk-t">About</span><span class="tk-ar">→</span></a>
+    <a class="tk-l is-current" aria-current="page" style="--td:0.28s" href="about.html"><span class="tk-n">05</span><span class="tk-t">About</span><span class="tk-ar">→</span></a>
     <a class="tk-l" style="--td:0.33s" href="#contact"><span class="tk-n">06</span><span class="tk-t">Contact</span><span class="tk-ar">→</span></a>
   </div>
   <div class="tk-foot">
@@ -476,152 +963,147 @@
 </div>
 
 
-<!-- Block 1 — Thesis hero -->
-<section class="hero">
-  <video id="heroReel" class="hero-reel" muted autoplay loop playsinline
-         poster="" aria-hidden="true"></video>
-  <div class="reel-tint" aria-hidden="true"></div>
-  <svg class="contour contour-hero" viewBox="0 0 93.93 148.41" aria-hidden="true"><path d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg>
-  <div class="reel-slot" aria-hidden="true"><span class="slot-tag">Hero reel — Studios to supply · Digital + Studios interleaved · muted · poster-first</span></div>
-  <div class="hero-inner wrap">
-    <h1 class="rise"><span class="caps">Made to use.</span><br><em class="voice">Made to remember.</em></h1>
-    <div class="hero-sub">
-      <p>A product studio and a film studio with one design culture — the work and the place it lives, made in the same room.</p>
-      <div class="hero-ctas">
-        <a class="btn solid cascade" href="#digital">Digital →</a>
-        <a class="btn cascade" href="#studios">Studios →</a>
-      </div>
-    </div>
+<!-- ====================================================================
+     ABOUT PAGE BODY
+     Built June 24 2026. Reference: docs/copy/about.md (status: INTERIM).
+     Leadership-only roster by design (JP's call): six leads, no full-team
+     wall. Block 2 adversity alternate omitted; Block 7 Careers teaser
+     dropped until /careers exists. Shared chrome per _shared.md. Craft
+     Layer (ps-spice.css/js) applied in production mode, consistent with
+     /digital and /studios.
+     PORTRAITS use <image-slot> placeholders for the design phase — human
+     photography, never generated (about.md Note 5). In the static build,
+     replace each <image-slot> with a real <img src="images/…">. ========= -->
+
+<!-- Block 1 — Identity hero. Quiet .sub-hero statement (JP's call: let the
+     H1 claim carry it). H1 = page thesis; .sub-body bolds the trick. -->
+<section class="sub-hero" data-screen-label="About">
+  <svg class="slash-field" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="pair" transform="translate(1060 230) scale(2.2)" style="--dur:15.6s;--dly:0s;--sh:10.4px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(780 460) scale(1.3)" style="--dur:20.4s;--dly:-9s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1260 520) scale(1.7)" style="--dur:13.2s;--dly:-15s;--sh:9.2px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(640 260) scale(1.0)" style="--dur:18s;--dly:-4s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(940 560) scale(1.1)" style="--dur:22.8s;--dly:-21s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1380 360) scale(1.2)" style="--dur:18.6s;--dly:-6s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g></svg>
+  <div class="sub-hero-inner wrap">
+    <span class="eyebrow">About — one culture, two practices</span>
+    <h1 class="rise">Designers at heart. <em class="voice">From software to&nbsp;cinema.</em></h1>
+    <p class="sub-body">One design culture, two practices, fifteen-plus years. <strong>The engineers think like designers. The directors do too. That's the whole trick.</strong></p>
   </div>
 </section>
 
-<!-- Block 2 — Two doors -->
-<section class="doors" aria-label="Our two practices">
-  <a class="door digital" id="digital" href="#">
-    <span class="eyebrow">Digital — product</span>
-    <h2>Digital</h2>
-    <p class="lead">Working software in weeks, <em class="voice">not&nbsp;months.</em></p>
-    <p class="body">Product strategy, design, and engineering — designers at heart, all the way down to the dev team. MVPs in 4–6 weeks. Platforms that hold at enterprise scale.</p>
-    <span class="enter swipe">Enter Digital</span>
-  </a>
-  <div class="seam" aria-hidden="true"></div>
-  <a class="door studios" id="studios" href="#">
-    <span class="eyebrow">Studios — film</span>
-    <h2>Studios</h2>
-    <p class="lead">Anyone can generate.<br><em class="voice">Few&nbsp;can&nbsp;direct.</em></p>
-    <p class="body">Cinematic film, audio, and motion from people who made it the old way first. Two Silver ADDYs say the craft survived the pipeline.</p>
-    <span class="enter swipe">Enter Studios</span>
-  </a>
-</section>
-
-<!-- Stitch — two voices marquee -->
-<div class="stitch" aria-hidden="true">
-  <div class="stitch-track"><span class="g">Made to use</span><span class="dot">·</span><span class="v">Made to remember</span><span class="dot">·</span><span class="g">Software in weeks</span><span class="dot">·</span><span class="v">Cinema in days</span><span class="dot">·</span><span class="g">Made to use</span><span class="dot">·</span><span class="v">Made to remember</span><span class="dot">·</span><span class="g">Software in weeks</span><span class="dot">·</span><span class="v">Cinema in days</span><span class="dot">·</span><span class="g">Made to use</span><span class="dot">·</span><span class="v">Made to remember</span><span class="dot">·</span><span class="g">Software in weeks</span><span class="dot">·</span><span class="v">Cinema in days</span><span class="dot">·</span><span class="g">Made to use</span><span class="dot">·</span><span class="v">Made to remember</span><span class="dot">·</span><span class="g">Software in weeks</span><span class="dot">·</span><span class="v">Cinema in days</span><span class="dot">·</span></div>
-</div>
-
-<!-- Block 3 — Proof spine -->
-<section class="proof">
-  <div class="wrap proof-inner reveal">
-    <span class="eyebrow">The receipts</span>
-    <div class="proof-row" id="proofRow">
-      <div class="stat"><b><span class="odo"><span class="col" style="--d:3"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="ch">,</span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx">+</span></b><span>enrollments in six months — TELUS Rewards</span></div>
-      <div class="stat"><b><span class="odo"><span class="col" style="--d:3"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx"> days</span></b><span>from idea to validated proof of concept — Energizer</span></div>
-      <div class="stat"><b><span class="odo"><span class="ch">+</span><span class="col" style="--d:4"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx">%</span></b><span>organic leads — Angel Oak</span></div>
-      <div class="stat"><b><span class="odo"><span class="col" style="--d:2"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx">× Silver ADDY</span></b><span>Power Shifter Studios, 2026</span></div>
-    </div>
-    <div class="logos" aria-label="Selected clients">
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/telus.png'); width: 141px; height: 28px;" aria-label="Telus"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/energizer.png'); width: 110px; height: 28px;" aria-label="Energizer"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/lululemon.png'); width: 28px; height: 28px;" aria-label="Lululemon"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/deloitte.png'); width: 150px; height: 28px;" aria-label="Deloitte"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/kpmg.png'); width: 68px; height: 28px;" aria-label="KPMG"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/grammarly.png'); width: 131px; height: 28px;" aria-label="Grammarly"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/akamai.png'); width: 68px; height: 28px;" aria-label="Akamai"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/iron-mountain.png'); width: 98px; height: 28px;" aria-label="Iron Mountain"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/canucks.png'); width: 29px; height: 28px;" aria-label="Canucks"></span></div>
-    </div>
-  </div>
-</section>
-
-<!-- Block 4 — The seam -->
-<section class="engine">
-  <svg class="slash-field on-light" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="pair" transform="translate(1240 90) scale(2.0)" style="--dur:15.6s;--sh:10.4px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1130 420) scale(1.2)" style="--dur:20.4s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1330 540) scale(1.6)" style="--dur:13.2s;--sh:9.2px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1390 260) scale(1.0)" style="--dur:18s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1180 650) scale(0.8)" style="--dur:22.8s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g></svg>
+<!-- Block 2 — The story. Canonical .engine layout: H2 left, prose right.
+     Adversity alternate paragraph intentionally omitted (about.md Note 1). -->
+<section class="engine" id="story">
   <div class="wrap engine-grid reveal">
-    <div><h2 class="rise">One room.<br><em class="voice">No fence.</em></h2><span class="rule"></span></div>
     <div>
-      <p>Digital products and a film studio. Not as strange as it sounds.<br>
-      Most brands hire one agency to build the product and another shop to tell its story, then pay both to argue across the fence.</p>
-      <p><strong>We never built the fence.</strong></p>
-      <p>From the beginning, we have refused to stay in our lane. Designers, strategists, engineers and filmmakers work in the same room, solving the same problem from different angles.</p>
-      <p>That has always been the advantage.</p>
-      <p>AI scales it. Design runs it. And no, we were never a dev shop.</p>
+      <h2 class="rise">The studio happened to us</h2>
+      <span class="rule"></span>
+    </div>
+    <div class="story-body">
+      <p>POWER SHIFTER started as a digital product studio and stayed one — design-led from the first hire, never a dev shop, building platforms and products for brands like TELUS, Energizer, and lululemon. The founder came up the other way around: film and television, then commercial production alongside Ridley Scott's Black Dog Films and ILM, then design.</p>
+      <p>That history sat quietly for fifteen years. Then generative AI made it relevant overnight. Most of the field is still making spec spots. We're making the real thing, on <strong>six-figure client budgets</strong> — a second practice we didn't plan, staffed by people who've been making pictures for decades. We didn't chase the trend. The trend circled back to where we started.</p>
+      <p>So now there are two doors: software and cinema. Behind both, the same design culture and the same rule — <strong>the work and the place it lives, made in the same room.</strong></p>
     </div>
   </div>
 </section>
 
-<!-- Block 5 — Selected work -->
-<section class="work" id="work">
+<!-- Block 3 — One team. Leadership roster (six leads). Portraits are
+     <image-slot> placeholders; replace with real <img> in the static build. -->
+<section class="team" id="team">
   <div class="wrap">
-    <div class="head reveal">
-      <h2 class="rise">Selected work</h2>
-      <a class="all swipe" href="work.html">All work →</a>
+    <div class="team-head">
+      <span class="eyebrow">Leadership</span>
+      <h2 class="rise">One team</h2>
+      <p class="team-sub">Six leads, two practices, no fence between them. Experts, regardless of seniority — and you'll work with them directly.</p>
     </div>
-    <div class="cards reveal">
-      <a class="card" href="#">
-        <div class="frame"><img src="images/iron_mountain.jpg" alt="Iron Mountain The Summit" style="width: 100%; height: 100%; object-fit: cover;"></div>
-        <div class="meta">
-          <span class="tag">Studios</span>
-          <h3>Iron Mountain — <i>The Summit</i></h3>
-          <p>A cinematic spot with a blockbuster look, made on a generative pipeline. Silver ADDY, 2026.</p>
-          <span class="go swipe">Watch the film →</span>
-        </div>
-      </a>
-      <a class="card" href="#">
-        <div class="frame"><img src="images/telus.jpg" alt="TELUS Rewards" style="width: 100%; height: 100%; object-fit: cover;"></div>
-        <div class="meta">
-          <span class="tag">Digital</span>
-          <h3>TELUS Rewards</h3>
-          <p>A loyalty platform 300,000 people enrolled in within six months.</p>
-          <span class="go swipe">Read the case →</span>
-        </div>
-      </a>
-      <a class="card" href="#">
-        <div class="frame"><img src="images/energizer.jpg" alt="Energizer POC" style="width: 100%; height: 100%; object-fit: cover;"></div>
-        <div class="meta">
-          <span class="tag">Digital · Rapid MVP</span>
-          <h3>Energizer</h3>
-          <p>Product-market fit validated in 30 days with a rapid proof of concept.</p>
-          <span class="go swipe">Read the case →</span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- Block 6 — Insights -->
-<section class="insights" id="insights">
-  <div class="wrap reveal">
-    <h2 class="rise">Thinking in <span class="boxed">public</span></h2>
-    <p class="streams"><b>Build</b> — how to make products people love. <b>Frames</b> — how to make films that are remembered. <b>Founder's Focus</b> — where it's all going, whether you agree or not.</p>
-    <div class="posts">
-      <a class="post" href="insights.html"><span class="stream">Frames</span><h3>Power Shifter Studios takes home two Silver ADDYs</h3><span>May 2026</span></a>
-      <a class="post" href="article.html"><span class="stream">Build</span><h3>Can vibe design and coding AI apps build a real product?</h3><span>June 2025</span></a>
-      <a class="post" href="insights.html"><span class="stream">Founder's Focus</span><h3>Designing for rage: how platforms profit from chaos</h3><span>January 2025</span></a>
+    <div class="team-grid">
+      <article class="lead-card reveal">
+        <div class="lead-portrait"><image-slot id="about-jp" shape="rect" fit="cover" placeholder="JP Holecka — portrait"></image-slot></div>
+        <h3>JP Holecka</h3>
+        <p class="lead-role">Founder &amp; CEO · Director, Studios</p>
+        <p class="lead-bio">Thirty years across film, television, and design. Production credits include <em>Little Women</em> and <em>21 Jump Street</em>; commercial work alongside Ridley Scott's Black Dog Films, ILM's commercial division, and agency partners including Wieden+Kennedy and Goodby, Silverstein. Founded POWER SHIFTER to bring production discipline to digital product — then, two decades later, brought digital product discipline back to production. CEO of the Year, BC, 2022.</p>
+      </article>
+      <article class="lead-card reveal">
+        <div class="lead-portrait"><image-slot id="about-gina" shape="rect" fit="cover" placeholder="Gina Asuncion Bernier — portrait"></image-slot></div>
+        <h3>Gina Asuncion Bernier</h3>
+        <p class="lead-role">Chief of Staff</p>
+        <p class="lead-bio">Fifteen-plus years running the operational layer for C-suites, founders, and boards — including a first tour at POWER SHIFTER. Back to keep the place steady while it moves fast.</p>
+      </article>
+      <article class="lead-card reveal">
+        <div class="lead-portrait"><image-slot id="about-ted" shape="rect" fit="cover" placeholder="Ted Morgan — portrait"></image-slot></div>
+        <h3>Ted Morgan</h3>
+        <p class="lead-role">Partner / Client Delivery</p>
+        <p class="lead-bio">Fifteen-plus years leading delivery for Coca-Cola, Microsoft, Starwood, and A&amp;W. Owns the promise that what we say on day one is what ships.</p>
+      </article>
+      <article class="lead-card reveal">
+        <div class="lead-portrait"><image-slot id="about-cary" shape="rect" fit="cover" placeholder="Cary Newfeldt — portrait"></image-slot></div>
+        <h3>Cary Newfeldt</h3>
+        <p class="lead-role">Partner / Technology</p>
+        <p class="lead-bio">Two decades leading engineering teams at Nike, Starbucks, Microsoft, and Nintendo. A technologist who hires designers' brains into developers' chairs — the reason "never a dev shop" is true at the code level.</p>
+      </article>
+      <article class="lead-card reveal">
+        <div class="lead-portrait"><image-slot id="about-johnny" shape="rect" fit="cover" placeholder="Johnny Darrell — portrait"></image-slot></div>
+        <h3>Johnny Darrell</h3>
+        <p class="lead-role">Director / Editor</p>
+        <p class="lead-bio">Twenty-five years in CGI animation and storytelling. Directed on <em>Sausage Party: Foodtopia</em> (Amazon) and Lord Miller's <em>Cloudy with a Chance of Meatballs</em> (Sony). Was directing synthetic performances before the machines made it easy.</p>
+      </article>
+      <article class="lead-card reveal">
+        <div class="lead-portrait"><image-slot id="about-russ" shape="rect" fit="cover" placeholder="Russ Jarman Price — portrait"></image-slot></div>
+        <h3>Russ Jarman Price</h3>
+        <p class="lead-role">Chairman</p>
+        <p class="lead-bio">Former Creative Partner, Ogilvy London, and Chairman, Ogilvy Caribbean. Global rebrands and award-winning campaigns. The editorial standard the studio answers to.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- Block 7 — Closer -->
-<section class="closer" id="contact">
+<!-- Block 4 — How we work, in four sentences. Ink band; monospace numerals. -->
+<section class="principles" id="how-we-work">
+  <div class="wrap">
+    <span class="eyebrow">How we work</span>
+    <h2 class="rise">How we work, in four sentences</h2>
+    <ol class="pr-list reveal">
+      <li><span class="pr-n">01</span><p>You work directly with the experts — our account team is <strong>small, senior, and rides in the back.</strong></p></li>
+      <li><span class="pr-n">02</span><p>You'll see the work early and often, sometimes ugly — so we're <strong>never more than one degree off course,</strong> and never for long.</p></li>
+      <li><span class="pr-n">03</span><p>Decisions get made <strong>at the edges,</strong> by the people closest to the work.</p></li>
+      <li><span class="pr-n">04</span><p>We hire for <strong>culture contributions,</strong> not culture fit.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- Block 5 — Recognition. Three-up. Verify all three before paid reuse (about.md Note 4). -->
+<section class="recognition" id="recognition">
   <div class="wrap reveal">
-    <h2 class="rise">Great work used to take months. <em class="voice mag">Now it takes nerve.</em></h2>
-    <p>Cinema in days. Software in weeks. Bring the idea — you'll work directly with the people who make it. There's no account layer to get past.</p>
-    <div class="row">
-      <a class="btn solid cascade" href="#">Start a project →</a>
-      <a class="tel" href="tel:+1-604-227-9952">+1 (604) 227-9952</a>
+    <span class="eyebrow">Recognition</span>
+    <div class="rec-grid">
+      <div class="rec"><b>CEO of the Year</b><span>BC Business, 2022</span></div>
+      <div class="rec"><b>Two Silver ADDYs</b><span><em>The Summit</em> &middot; <em>Four Dreams</em>, 2026</span></div>
+      <div class="rec"><b>Best UX for Product</b><span>Vancouver UX Awards — Delta Controls</span></div>
     </div>
   </div>
 </section>
+
+<!-- Block 6 — Work-from-anywhere. (Land acknowledgement stays in the footer per _shared.md; this on-page block now carries the distributed-talent story.) -->
+<section class="engine anywhere" id="anywhere">
+  <div class="wrap engine-grid reveal">
+    <div>
+      <h2 class="rise">The best experts don’t live where you’d <em class="voice mag">assume.</em></h2>
+      <span class="rule"></span>
+    </div>
+    <div>
+      <p class="anywhere-body">POWER SHIFTER is a work-from-anywhere agency. Our experts are spread across Canada — coast to coast and every point between, from city cores to the suburbs to small towns. We hire for the work, not the postal code, because the best people rarely cluster where you’d expect them to. And that “same room” we keep mentioning? It’s a discipline, not an address — we just bring it with us.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact closer — standard page ending (#contact anchor used by nav + footer).
+     Careers teaser (about.md Block 7) dropped until /careers ships. -->
+<section class="page-closer" id="contact">
+  <div class="wrap">
+    <h2 class="rise">Two doors: software and cinema. <em class="voice mag">Same room.</em></h2>
+    <p>Bring us the problem. You'll work with the people who solve it.</p>
+    <div class="pc-row">
+      <a class="btn solid cascade" href="#contact">Start a project →</a>
+      <a class="tel" href="tel:+16042279952">+1 (604) 227-9952</a>
+    </div>
+  </div>
+</section>
+
 
 <footer>
   <div class="wrap foot">
@@ -635,7 +1117,7 @@
         <li><a href="digital.html">Digital</a></li>
         <li><a href="studios.html">Studios</a></li>
         <li><a href="insights.html">Insights</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="about.html" aria-current="page">About</a></li>
         <li><a href="#">Careers</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -669,13 +1151,17 @@
   // simpler: flip nav based on scroll position bands
   const darkBands = () => {
     const y = window.scrollY + 40;
-    const hero = document.querySelector('.hero');
-    const work = document.getElementById('work');
+    const hero   = document.querySelector('.hero, .sub-hero');
+    const workEl = document.getElementById('work');
     const closer = document.getElementById('contact');
+    const heroH  = hero   ? hero.offsetTop + hero.offsetHeight   : 0;
+    const workT  = workEl ? workEl.offsetTop                     : Infinity;
+    const workB  = workEl ? workEl.offsetTop + workEl.offsetHeight: Infinity;
+    const closerT= closer ? closer.offsetTop                     : Infinity;
     const inDark =
-      (y < hero.offsetTop + hero.offsetHeight) ||
-      (y > work.offsetTop && y < work.offsetTop + work.offsetHeight) ||
-      (y > closer.offsetTop);
+      (heroH  > 0 && y < heroH)  ||
+      (workEl && y > workT && y < workB) ||
+      (closer && y > closerT);
     nav.style.color = inDark ? 'var(--paper)' : 'var(--ink)';
     document.querySelector('header').classList.toggle('on-light', !inDark);
   };
@@ -754,6 +1240,68 @@
   })();
 
 
+  // Hover video loops: lazy-load on first hover, never on touch or reduced motion
+  if (window.matchMedia('(hover: hover)').matches &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.wframe[data-video]').forEach(frame=>{
+      const card = frame.closest('.wcard') || frame;
+      let vid = null, resetTimer = null;
+      card.addEventListener('mouseenter', ()=>{
+        clearTimeout(resetTimer);
+        if(!vid){
+          vid = document.createElement('video');
+          vid.muted = true; vid.loop = true; vid.playsInline = true;
+          vid.className = 'hover-video';
+          const base = frame.dataset.video.replace(/\.mp4$/, '');
+          [['webm','video/webm'],['mp4','video/mp4']].forEach(([ext,type])=>{
+            const s = document.createElement('source');
+            s.src = base + '.' + ext; s.type = type;
+            vid.appendChild(s);
+          });
+          frame.appendChild(vid);
+        }
+        vid.play().then(()=>vid.classList.add('playing')).catch(()=>{});
+      });
+      card.addEventListener('mouseleave', ()=>{
+        if(!vid) return;
+        vid.pause();                       // freeze on the current frame
+        vid.classList.remove('playing');   // fade the frozen frame out
+        resetTimer = setTimeout(()=>{ vid.currentTime = 0; }, 420); // rewind only once hidden
+      });
+    });
+
+    // Credit-card bio videos: same lazy-on-first-hover pattern, but for
+    // Cloudflare Stream iframes (the credit cards use Stream UIDs rather
+    // than local MP4/WebM, so we layer an iframe over the still portrait
+    // and let Stream handle decode + loop). Page load fires zero iframe
+    // requests; on first mouseenter we set the src, the Stream player
+    // autoplays muted+looped, and a 'load' event toggles .loaded so the
+    // CSS opacity transition only fires after the video is actually
+    // ready (no blank-iframe flash). Subsequent hovers are instant
+    // (browser caches the iframe). See studios.md Notes 19.
+    document.querySelectorAll('.credit-card[data-video-uid]').forEach(card=>{
+      const iframe = card.querySelector('.credit-video');
+      if(!iframe) return;
+      const uid = card.dataset.videoUid;
+      const url = 'https://customer-xv1aafyshr3tbknu.cloudflarestream.com/' + uid +
+                  '/iframe?muted=true&autoplay=true&loop=true&controls=false&preload=auto';
+      let loaded = false;
+      card.addEventListener('mouseenter', ()=>{
+        if(loaded) return;
+        iframe.addEventListener('load', ()=>iframe.classList.add('loaded'), {once:true});
+        iframe.src = url;
+        loaded = true;
+      });
+    });
+  }
+
+  // Case cells rise on scroll entry, staggered by column
+  document.querySelectorAll('.work-grid .wcard').forEach((c,i)=>{
+    c.classList.add('reveal');
+    c.style.setProperty('--d', String(i%3));
+    ro.observe(c);
+  });
+
   // Proof spine: only runs if proofRow exists (homepage only)
   const proofRow = document.getElementById('proofRow');
   if (proofRow) {
@@ -776,30 +1324,21 @@
   }
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.13/hls.min.js"></script>
+
 <script>
-  // Cloudflare Stream hero reel
-  const STREAM = {
-    video: 'dcde8adcb14fb52708c8ce6cf631658f',
-    customer: 'customer-xv1aafyshr3tbknu'
-  };
-  (function(){
-    if (STREAM.customer.includes('REPLACE')) return; // waits for the customer code
-    const v = document.getElementById('heroReel');
-    const base = `https://${STREAM.customer}.cloudflarestream.com/${STREAM.video}`;
-    v.poster = `${base}/thumbnails/thumbnail.jpg?time=1s&height=1080`;
-    const src = `${base}/manifest/video.m3u8`;
-    const live = () => { v.classList.add('live'); document.querySelector('.hero').classList.add('reel-live'); };
-    v.loop = true;
-    v.addEventListener('ended', () => { v.currentTime = 0; v.play(); });
-    if (v.canPlayType('application/vnd.apple.mpegurl')) {
-      v.src = src; v.addEventListener('loadeddata', live, {once:true});
-    } else if (window.Hls && Hls.isSupported()) {
-      const h = new Hls({capLevelToPlayerSize:true});
-      h.loadSource(src); h.attachMedia(v);
-      h.on(Hls.Events.FRAG_LOADED, live);
-    }
-  })();
+  // Filter
+  const ftabs = document.querySelectorAll('.ftab');
+  const wcards = document.querySelectorAll('[data-cat]');
+  ftabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      ftabs.forEach(t => t.classList.remove('on'));
+      tab.classList.add('on');
+      const cat = tab.dataset.cat;
+      wcards.forEach(c => {
+        c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  });
 
 // ---------- Button system ----------
 // Primary: letter cascade
@@ -859,6 +1398,9 @@ document.querySelectorAll('.swipe').forEach(function(el){
   ov.querySelectorAll('.tk-l').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });
 })();
 </script>
+
+
+<script src="image-slot.js"></script>
 <!-- PS Craft Layer -->
 <script src="ps-spice.js"></script>
 <!-- PS Concierge -->

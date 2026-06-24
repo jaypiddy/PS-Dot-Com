@@ -7,6 +7,10 @@
 <meta name="description" content="Working software in weeks, not months. Designers at heart, all the way down to the dev team. AI does the volume. Senior people make the calls.">
 <link rel="stylesheet" href="https://use.typekit.net/pkh7feu.css">
 <link rel="preload" as="image" href="images/scratches-v2.webp">
+<!-- PS Craft Layer (design-spice pass) -->
+<link rel="stylesheet" href="ps-spice.css">
+<!-- PS Concierge (corner AI concierge) -->
+<link rel="stylesheet" href="ps-concierge.css">
 <style>
   :root{
     --ink:#121315;
@@ -339,11 +343,11 @@
      Sibling of .streams (defined inside .sub-hero on insights.html). */
   .sub-hero .sub-body{
     margin-top:18px;font-size:clamp(16px,1.3vw,19px);line-height:1.5;
-    color:var(--ink);opacity:.85;max-width:62ch;
+    color:var(--paper);opacity:.85;max-width:62ch;
     opacity:0;transform:translateY(12px);
     animation:settle .6s ease-out .55s forwards;
   }
-  .sub-hero .sub-body strong{font-weight:700;color:var(--ink);opacity:1}
+  .sub-hero .sub-body strong{font-weight:700;color:var(--paper);opacity:1}
 
   /* Card grid 4-up variant — pattern 4b extension for /digital.
      Pattern reference: docs/design-system-audit.md §2 (pattern 4b).
@@ -743,10 +747,10 @@
   </div>
   <div class="tk-links">
     <a class="tk-l" style="--td:0.08s" href="work.html"><span class="tk-n">01</span><span class="tk-t">Work</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.13s" href="index.html#digital"><span class="tk-n">02</span><span class="tk-t">Digital</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.18s" href="index.html#studios"><span class="tk-n">03</span><span class="tk-t">Studios</span><span class="tk-ar">→</span></a>
+    <a class="tk-l is-current" aria-current="page" style="--td:0.13s" href="digital.html"><span class="tk-n">02</span><span class="tk-t">Digital</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.18s" href="studios.html"><span class="tk-n">03</span><span class="tk-t">Studios</span><span class="tk-ar">→</span></a>
     <a class="tk-l" style="--td:0.23s" href="insights.html"><span class="tk-n">04</span><span class="tk-t">Insights</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.28s" href="#"><span class="tk-n">05</span><span class="tk-t">About</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.28s" href="about.html"><span class="tk-n">05</span><span class="tk-t">About</span><span class="tk-ar">→</span></a>
     <a class="tk-l" style="--td:0.33s" href="#contact"><span class="tk-n">06</span><span class="tk-t">Contact</span><span class="tk-ar">→</span></a>
   </div>
   <div class="tk-foot">
@@ -989,6 +993,22 @@
      Logo widths in inline style attributes are calibrated per-logo to
      normalize visual weight across asset ratios — copied verbatim from the
      homepage; do not re-eyeball without re-measuring. -->
+<!-- Client testimonial banner — above the roster. The logos say WHO trusts us;
+     this says what it FELT like. PLACEHOLDER COPY — replace the quote and the
+     bracketed attribution with a real, approved client testimonial before launch. -->
+<section class="quote-banner">
+  <div class="wrap reveal">
+    <blockquote>
+      <span class="qb-mark" aria-hidden="true">&ldquo;</span>
+      <p class="quote-t">They shipped working software in six weeks that two other shops had quoted us six months for &mdash; and it&rsquo;s still the cleanest part of our platform.</p>
+      <p class="quote-by">
+        <span class="qb-name">[Name Surname]</span>
+        <span class="qb-role">[Title, Client]</span>
+      </p>
+    </blockquote>
+  </div>
+</section>
+
 <section class="proof-spine" id="proof-spine">
   <div class="wrap reveal">
     <span class="eyebrow">The roster</span>
@@ -1019,6 +1039,7 @@
   <div class="wrap reveal">
     <p class="partners-lede">Certified, not just familiar — and this site runs on the same stack we build for clients.</p>
     <div class="partners-strip">
+      <span class="ptier"><b>Webflow</b> <em>Enterprise Certified Expert</em></span>
       <span class="ptier"><b>Contentful</b> <em>Silver Partner</em></span>
       <span class="ptier"><b>Sanity</b> <em>Agency Partner</em></span>
       <span class="ptier"><b>Vercel</b> <em>Expert</em></span>
@@ -1060,10 +1081,10 @@
       </div>
       <ul>
         <li><a href="work.html">Work</a></li>
-        <li><a href="index.html#digital">Digital</a></li>
-        <li><a href="index.html#studios">Studios</a></li>
+        <li><a href="digital.html" aria-current="page">Digital</a></li>
+        <li><a href="studios.html">Studios</a></li>
         <li><a href="insights.html">Insights</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="#">Careers</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -1323,5 +1344,9 @@ document.querySelectorAll('.swipe').forEach(function(el){
 </script>
 
 
+<!-- PS Craft Layer -->
+<script src="ps-spice.js"></script>
+<!-- PS Concierge -->
+<script src="ps-concierge.js"></script>
 </body>
 </html>

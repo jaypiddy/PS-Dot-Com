@@ -94,17 +94,29 @@ _Cloudflare Stream explainer video. Iframe player (controls, audio, captions if 
 
 ---
 
-## How we work — "Early and often"
+## How we work — the one-two punch
 
-_Two-column band: H2 left, prose right. Body argues the no-account-layer working pattern, ending in a bench/credentials line._
+_Two adjacent .engine bands with alternating layouts. Module 1 (Early & Often) runs canonical 5fr/7fr; Module 2 (Direct-to-Expert) runs mirrored 7fr/5fr via the `.engine.mirror` modifier. Copy is verbatim from JP's off-platform draft (June 23 2026) — do not edit without re-syncing. Same copy ships verbatim on `/studios` when that page builds. See Notes 16._
 
-**H2:** Early and often. Sometimes ugly.
+### Module 1 — Early & Often
 
-**BODY:** You'll see the work in rough cuts, not reveal meetings. Showing you things early — wireframes mid-thought, builds mid-sprint — means we're **never more than one degree off course, and never for long.** No ta-da moments. No surprises in week eleven.
+**H2:** Early and often. *Sometimes ugly.*
 
-**BODY:** Sprints run AI-assisted and senior-led: the machines draft, the experts decide, and you watch it happen. You work directly with the designers and engineers on your product — there's no account layer relaying messages between you and the people doing the work.
+**BODY:** You will see the work while it is still changing: rough cuts, wireframes mid-thought, builds mid-sprint.
 
-**BODY (bench line):** **The bench:** leadership that shipped for Microsoft, Starbucks, Nike, Nintendo, and Coca-Cola before ever sitting in an agency pitch.
+**BODY:** That keeps us close to the problem and able to **correct course before a small miss becomes an expensive one.**
+
+**BODY:** We avoid ta-da moments at all costs. No polished surprise in week eleven. Just visible progress, sharper decisions, and work that gets better because you saw it early enough to shape it.
+
+### Module 2 — Direct-to-Expert
+
+**H2:** *Expertise compounds.*
+
+**BODY:** You are the experts in your business. We are the experts in turning complex digital problems into products people want to use.
+
+**BODY:** Put the right people in the same room and progress compounds. You work directly with the strategists, designers, and engineers doing the work. **No account-layer relay. No game of telephone.**
+
+**BODY:** Your expertise. Ours. One team, solving the right problem sooner.
 
 ---
 
@@ -262,3 +274,21 @@ _Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of th
     **`.terminal` pattern preserved in the design system audit doc** as a reusable component (case studies showing technical work, Insights articles citing CLI exchanges, Studios pipeline documentation) — just not used on `/digital` anymore. Each page that wants the pattern will redefine the CSS inline per project convention (no shared stylesheet). The audit doc's "New patterns" §B entry for `.terminal` stays catalogued; needs an updated note on the next audit-doc pass noting that the pattern is currently unused but available, and a new §C entry for `.video-frame`.
 
     **Magenta budget after the change** is still inside the 2-per-viewport ceiling. The Validator viewport at rest now has one magenta surface (`em.voice` on "Take the test."). The terminal's signal-line magenta is gone. The CTA hover state on `.btn.solid` adds a second magenta surface but only during interaction (not at rest), so the budget holds.
+
+15. **How we work — two-module one-two punch (June 23 2026).**
+    JP brief: "One of the key pieces to Power Shifter's success has not only been our early and often and sometimes ugly, but it's paired with the philosophy of direct-to-expert. I want this as an alternating one-two punch on the services pages, the first being early and often, the second being direct-to-expert. Use the same copy on both /digital and /studios."
+
+    Implementation: replaced the single "Early and often" engine band on `/digital` with two adjacent `.engine` bands. Module 1 keeps the canonical 5fr/7fr layout (H2 left, body right). Module 2 uses the new `.engine.mirror` modifier — 7fr/5fr, with `order` flipping the columns so body reads left and H2 reads right at desktop. The two read as a zigzag at desktop scale; on mobile both stack identically (H2 → body) because the mirror rhythm doesn't read at narrow widths.
+
+    **Verbatim copy constraint:** the H2s and body paragraphs ship word-for-word as JP supplied them — no editorial polish, no rewriting. Two stylistic decisions inside JP's copy that the page handles:
+    - **Module 1 voice accent.** "Early and often. *Sometimes ugly.*" splits H2 across two beats; the second beat ("Sometimes ugly.") takes `em.voice` (magenta italic late-serif). Matches the page's H2 pattern from the hero, validator, and homepage.
+    - **Module 2 voice accent.** "Expertise compounds." is a single phrase — no two-beat split to lean on. The full phrase takes `em.voice` (magenta italic). One magenta accent per H2, both H2s separated by a viewport-height of scroll so they don't compete inside one viewport. Magenta budget holds (2-per-viewport ceiling).
+
+    **What the swap displaced — bench credentials line.** The previous Early-and-often body ended in "**The bench:** leadership that shipped for Microsoft, Starbucks, Nike, Nintendo, and Coca-Cola before ever sitting in an agency pitch." That line is now off the page. It's a real credentials claim that earns its keep somewhere. Three places it can credibly land when needed:
+    1. As a bench strip directly under the partners-strip section (`/digital`)
+    2. As an About-page lead (`/about` when built — see `studios.md` "Dependency on /about" note)
+    3. As a homepage proof-spine modifier (currently the proof spine is client logos; a roster bench strip below would add complementary credibility)
+
+    **Section IDs:** Module 1 keeps the existing `id="how-we-work"` anchor (the takeover menu link still works). Module 2 has a new `id="direct-to-expert"` anchor for future deep linking.
+
+    **Cross-page parity:** the same two modules ship verbatim on `/studios` when that page builds. See `studios.md` for the corresponding section in the Studios copy deck.

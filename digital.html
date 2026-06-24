@@ -405,6 +405,24 @@
   .validator-band .vbtn{margin-top:24px;display:inline-block}
   @media(max-width:860px){.validator-band .engine-grid{grid-template-columns:1fr;gap:36px}}
 
+  /* NEW pattern — .engine.mirror — alternating layout variant for the one-two punch.
+     Pairs with the canonical .engine pattern to create JP's "alternating one-two
+     punch" rhythm on services pages: Module 1 runs canonical 5fr/7fr (H2 left,
+     body right), Module 2 runs mirrored 7fr/5fr (body left, H2 right). The two
+     modules read as a zigzag at desktop scale. On mobile (≤860px) both stack
+     identically — H2 over body — because the "mirror" rhythm doesn't read at
+     narrow widths and stacking H2-first preserves source order + cognitive flow.
+     Source order in HTML stays H2-first → body-second for every module
+     regardless of layout, for accessibility and progressive enhancement. */
+  .engine.mirror .engine-grid{grid-template-columns:7fr 5fr}
+  .engine.mirror .engine-grid > div:first-child{order:2}
+  .engine.mirror .engine-grid > div:nth-child(2){order:1}
+  @media(max-width:860px){
+    .engine.mirror .engine-grid{grid-template-columns:1fr}
+    .engine.mirror .engine-grid > div:first-child{order:0}
+    .engine.mirror .engine-grid > div:nth-child(2){order:0}
+  }
+
   /* NEW pattern — .video-frame.
      Pattern reference: docs/design-system-audit.md §"New patterns" C
      (to be catalogued on next audit-doc pass — see digital.md Notes 14).
@@ -828,23 +846,42 @@
   </div>
 </section>
 
-<!-- How we work — "Early and often" — .engine + .engine-grid two-column band.
-     Pattern reference: docs/design-system-audit.md §2 (pattern 7).
-     Source: index.html:541-555 (homepage "one room / no fence" usage).
-     Canonical 5fr/7fr split (H2 left with magenta .rule, prose right). This is the
-     second .engine band on the page — deliberate rhythm reuse. The right column
-     carries three paragraphs: the early-and-often principle, the AI-assisted /
-     senior-led sprint structure, and the bench credentials line. -->
-<section class="engine how-band">
+<!-- How we work — TWO-MODULE ONE-TWO PUNCH (June 23 2026).
+     JP's brief: the practice is built on two paired principles — "early and
+     often, sometimes ugly" AND "direct-to-expert" — that need to read as a
+     one-two punch on the services pages. Implemented as two adjacent .engine
+     bands with alternating layouts: Module 1 (Early & Often) runs canonical
+     5fr/7fr; Module 2 (Direct-to-Expert) runs mirrored 7fr/5fr via the new
+     .engine.mirror modifier. Copy is verbatim from JP's off-platform draft —
+     do not edit without re-syncing with him. Same copy ships verbatim on
+     /studios when that page builds (see docs/copy/studios.md). -->
+
+<!-- Module 1 — Early and often. Sometimes ugly. (canonical .engine layout) -->
+<section class="engine how-band" id="how-we-work">
   <div class="wrap engine-grid reveal">
     <div>
       <h2 class="rise">Early and often.<br><em class="voice">Sometimes ugly.</em></h2>
       <span class="rule"></span>
     </div>
     <div>
-      <p>You'll see the work in rough cuts, not reveal meetings. Showing you things early — wireframes mid-thought, builds mid-sprint — means we're <strong>never more than one degree off course, and never for long.</strong> No ta-da moments. No surprises in week eleven.</p>
-      <p>Sprints run AI-assisted and senior-led: the machines draft, the experts decide, and you watch it happen. You work directly with the designers and engineers on your product — there's no account layer relaying messages between you and the people doing the work.</p>
-      <p><strong>The bench:</strong> leadership that shipped for Microsoft, Starbucks, Nike, Nintendo, and Coca-Cola before ever sitting in an agency pitch.</p>
+      <p>You will see the work while it is still changing: rough cuts, wireframes mid-thought, builds mid-sprint.</p>
+      <p>That keeps us close to the problem and able to <strong>correct course before a small miss becomes an expensive one.</strong></p>
+      <p>We avoid ta-da moments at all costs. No polished surprise in week eleven. Just visible progress, sharper decisions, and work that gets better because you saw it early enough to shape it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Module 2 — Expertise compounds. (mirrored .engine.mirror layout) -->
+<section class="engine mirror how-band" id="direct-to-expert">
+  <div class="wrap engine-grid reveal">
+    <div>
+      <h2 class="rise"><em class="voice">Expertise compounds.</em></h2>
+      <span class="rule"></span>
+    </div>
+    <div>
+      <p>You are the experts in your business. We are the experts in turning complex digital problems into products people want to use.</p>
+      <p>Put the right people in the same room and progress compounds. You work directly with the strategists, designers, and engineers doing the work. <strong>No account-layer relay. No game of telephone.</strong></p>
+      <p>Your expertise. Ours. One team, solving the right problem sooner.</p>
     </div>
   </div>
 </section>

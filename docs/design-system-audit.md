@@ -269,12 +269,38 @@ CSS for `.validator-band` ink variant: section gets `background:var(--ink); colo
 
 **Customer subdomain:** `customer-xv1aafyshr3tbknu.cloudflarestream.com` is the single Stream account for the site (homepage hero reel + Validator explainer + any future Stream videos all share it). Confirmed in `index.html` STREAM config and now in `digital.html` Validator iframe.
 
+### Pattern E — `.engine.mirror` (alternating one-two punch layout)
+
+Added June 23 2026. Pairs with the canonical `.engine` pattern to create JP's "alternating one-two punch" rhythm on services pages. Two adjacent `.engine` bands flip their column proportions and source order for visual cadence.
+
+**Module 1 (canonical):** `5fr/7fr`, H2 left + body right.
+**Module 2 (mirror):** `7fr/5fr` via `.engine.mirror`, body left + H2 right at desktop.
+
+The two read as a zigzag at desktop scale. On mobile (≤860px), both stack identically (H2 → body) — the mirror rhythm doesn't read at narrow widths, and stacking H2-first preserves source order + cognitive flow.
+
+Implementation note: source order in HTML stays H2-first → body-second for every module regardless of layout, for accessibility. The visual flip uses CSS `order:` on the grid children rather than reordering the DOM.
+
+```css
+.engine.mirror .engine-grid{grid-template-columns:7fr 5fr}
+.engine.mirror .engine-grid > div:first-child{order:2}
+.engine.mirror .engine-grid > div:nth-child(2){order:1}
+@media(max-width:860px){
+  .engine.mirror .engine-grid{grid-template-columns:1fr}
+  .engine.mirror .engine-grid > div:first-child{order:0}
+  .engine.mirror .engine-grid > div:nth-child(2){order:0}
+}
+```
+
+**Reuse beyond `/digital`:** Studios — the same one-two punch ships verbatim on `/studios` when that page builds (see `studios.md` Block 5b). The pattern extends naturally to any services-page rhythm: three modules would go canonical → mirror → canonical; four would zigzag fully. Don't break the alternation — that's the whole point.
+
+**Magenta budget across modules:** each H2 takes one `em.voice` magenta accent. With two modules separated by a viewport-height of scroll, only one H2 is in view at a time. Budget holds at one magenta surface per viewport.
+
 ---
 
 ## Resolved during the `/digital` build-out
 
 1. **Selected work card count: 4-up.** Resolved with the new `.cards.four-up` modifier — `grid-template-columns:repeat(4,1fr)` at desktop, `repeat(2,1fr)` at ≤1100px, `1fr` at ≤680px. The `:nth-child(n+2) .meta` rule widens the padding-left selector from the homepage's `(2),(3)` to all cards beyond the first.
-2. **Two `.engine` bands on one page.** Resolved: kept both bands, with the second band now also flipped to ink. The Validator band uses the `.validator-band` modifier (1fr/1fr grid + smaller H2 + ink background — see Pattern D for the June 23 2026 video-swap update) to accommodate H2 + body + CTA on the left and the Cloudflare Stream explainer video on the right. The How-we-work band uses the canonical 5fr/7fr split on paper. Repetition is the rhythm, not a weakness — the two are now clearly distinguished by both their right-column content (video vs prose) and their backgrounds (ink vs paper).
+2. **Three `.engine` bands on one page (Validator + Module 1 + Module 2).** Resolved: kept all three, distinguished by content + layout + background. The Validator band uses the `.validator-band` ink variant (1fr/1fr + smaller H2 + ink background) holding the Cloudflare Stream video. Modules 1 and 2 of the one-two punch use canonical paper layouts — Module 1 at 5fr/7fr canonical, Module 2 at 7fr/5fr via `.engine.mirror`. Repetition is the rhythm, not a weakness — the three are distinguished by right-column content (video vs prose vs prose), backgrounds (ink vs paper vs paper), and layouts (1fr/1fr vs 5fr/7fr vs 7fr/5fr).
 3. **Hero scale: 50vh.** Resolved: kept the standard `.sub-hero` 50vh — the design system says sub-page hero is a section header, not a takeover. Hub pages aren't an architectural exception. CTA row added via the new `.sub-hero-ctas` extension instead of bumping the hero height.
 
 ## Open follow-ons

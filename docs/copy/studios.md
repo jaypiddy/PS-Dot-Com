@@ -155,6 +155,34 @@ _No tool names in any of these labels. Discipline language only._
 
 ---
 
+## Block 5b — How we work — the one-two punch
+
+_Two-module one-two punch — shared verbatim with `/digital`. Module 1 (Early & Often) runs canonical 5fr/7fr `.engine` layout; Module 2 (Direct-to-Expert) runs mirrored 7fr/5fr via `.engine.mirror`. Pattern shipped on `/digital` June 23 2026 — see `digital.md` Notes 15 and `digital.html` for the live implementation. When this page builds, lift the HTML + CSS directly from the `/digital` implementation — no editorial polish, no rewriting._
+
+### Module 1 — Early & Often
+
+**H2:** Early and often. *Sometimes ugly.*
+
+**BODY:** You will see the work while it is still changing: rough cuts, wireframes mid-thought, builds mid-sprint.
+
+**BODY:** That keeps us close to the problem and able to **correct course before a small miss becomes an expensive one.**
+
+**BODY:** We avoid ta-da moments at all costs. No polished surprise in week eleven. Just visible progress, sharper decisions, and work that gets better because you saw it early enough to shape it.
+
+### Module 2 — Direct-to-Expert
+
+**H2:** *Expertise compounds.*
+
+**BODY:** You are the experts in your business. We are the experts in turning complex digital problems into products people want to use.
+
+**BODY:** Put the right people in the same room and progress compounds. You work directly with the strategists, designers, and engineers doing the work. **No account-layer relay. No game of telephone.**
+
+**BODY:** Your expertise. Ours. One team, solving the right problem sooner.
+
+**Voice note for Studios:** the copy is universal across both practices and ships unchanged. The Studios voice spec ("Every flex attached to a name, a credit, or a trophy") still governs the rest of the page; these two modules are an exception — they describe the working principles common to both Digital and Studios.
+
+---
+
 ## Block 6 — What we make
 
 _Four-up service list. One sentence each, no icons._

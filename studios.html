@@ -1068,23 +1068,28 @@
 
 <!-- Block 4 — Provenance / credits. Pattern J in design-system-audit.md.
      Originally specified as "no portraits, no bios" — that brief was
-     overridden June 24 2026 (see studios.md Notes 14). Each card now
-     leads with a square portrait (currently a generated placeholder
-     in images/portraits/) above the name/role/credit-line. Full bios
-     still live on /about. Three credits: JP, Johnny Darrell, Russ
-     Jarman Price. Block footer CTA routes to /about (currently
-     stubbed to "#" — /about not built yet).
+     overridden June 24 2026 (see studios.md Notes 14). Each card leads
+     with a square portrait above the name/role/credit-line; the
+     portrait is the first frame of the bio video, served via Cloudflare
+     Stream's thumbnail API (see studios.md Notes 20). On hover, the
+     full bio video lazy-loads in an iframe layered over the still (see
+     Notes 19). Full bios still live on /about. Three credits: JP,
+     Johnny Darrell, Russ Jarman Price. Block footer CTA routes to
+     /about (currently stubbed to "#" — /about not built yet).
 
-     PARKING LOT: replace placeholder portraits (initials over paper
-     on a centered rule) with real headshots when shot. Same
-     aspect-ratio (1:1) and same path. Drop-in swap. -->
+     NOTE: No local portrait files needed. Stream thumbnail URL is
+     constructed from the same UID used for the bio-video iframe —
+     the still updates automatically when the underlying video is
+     re-uploaded or replaced. To preview a different frame, change
+     the time=0s param in the img src (e.g., time=2s for 2 seconds
+     in). Crop is centered 800x800 via fit=crop&width=800&height=800. -->
 <section class="credits" id="credits">
   <div class="wrap reveal">
     <h2 class="credits-heading rise">Directed by people who earned the word</h2>
     <div class="credits-grid">
       <article class="credit-card" data-video-uid="5b2c36cd3793f90eafb8e5ae4538c405">
         <div class="credit-portrait">
-          <img src="images/portraits/jp.jpg" alt="Portrait placeholder for JP Holecka" loading="lazy">
+          <img src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/5b2c36cd3793f90eafb8e5ae4538c405/thumbnails/thumbnail.jpg?time=0s&width=800&height=800&fit=crop" alt="JP Holecka, Director and Head of Gen AI" loading="lazy">
           <iframe class="credit-video" aria-hidden="true" tabindex="-1" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
         </div>
         <h3 class="credit-name">JP Holecka</h3>
@@ -1093,7 +1098,7 @@
       </article>
       <article class="credit-card" data-video-uid="04d16613add2e8e7f984b9fed118c723">
         <div class="credit-portrait">
-          <img src="images/portraits/johnny.jpg" alt="Portrait placeholder for Johnny Darrell" loading="lazy">
+          <img src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/04d16613add2e8e7f984b9fed118c723/thumbnails/thumbnail.jpg?time=0s&width=800&height=800&fit=crop" alt="Johnny Darrell, Director and Editor" loading="lazy">
           <iframe class="credit-video" aria-hidden="true" tabindex="-1" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
         </div>
         <h3 class="credit-name">Johnny Darrell</h3>
@@ -1102,7 +1107,7 @@
       </article>
       <article class="credit-card" data-video-uid="77ed0d921519c6f587a1821691e583c8">
         <div class="credit-portrait">
-          <img src="images/portraits/russ.jpg" alt="Portrait placeholder for Russ Jarman Price" loading="lazy">
+          <img src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/77ed0d921519c6f587a1821691e583c8/thumbnails/thumbnail.jpg?time=0s&width=800&height=800&fit=crop" alt="Russ Jarman Price, Chairman" loading="lazy">
           <iframe class="credit-video" aria-hidden="true" tabindex="-1" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
         </div>
         <h3 class="credit-name">Russ Jarman Price</h3>

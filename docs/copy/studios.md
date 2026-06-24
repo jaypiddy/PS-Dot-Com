@@ -117,13 +117,13 @@ _Uses `.go.swipe`. The same .swipe JS that wraps "case" italic-serif on /digital
 
 ## Block 4 — Provenance / credits
 
-_A credits block, not a leadership block. Each entry leads with a square portrait that doubles as a bio-video poster (Cloudflare Stream iframe lazy-loaded on first hover, fading in over the still — see Notes 19). Name + role + credit line styled like a one-sheet. Bios still live on /about — this is the credit roll, not the team page. Closes with a link out. (The original brief said "no portraits, no bios" — that was overridden June 24 2026; see Notes 14. Bio-video rollover added the same day; see Notes 19.)_
+_A credits block, not a leadership block. Each entry leads with a square portrait that doubles as a bio-video poster — but with one important difference from typical poster-and-video patterns: the still IS the first frame of the bio video, served via Cloudflare Stream's thumbnail API. No separate portrait files exist in the repo. On rollover the full Cloudflare Stream iframe lazy-loads over the still (see Notes 19 + Notes 20). Name + role + credit line styled like a one-sheet. Bios still live on /about — this is the credit roll, not the team page. Closes with a link out._
 
 **H2:** Directed by people who earned the word
 
 ### Credit 01
 
-**PORTRAIT:** `images/portraits/jp.jpg` (placeholder still — swap for real headshot when shot; still doubles as bio-video poster)
+**PORTRAIT (still):** Cloudflare Stream first-frame thumbnail of the bio video — auto-derived from the UID below, no separate file
 **BIO VIDEO (Cloudflare Stream UID):** `5b2c36cd3793f90eafb8e5ae4538c405`
 **NAME:** JP Holecka
 **ROLE:** Director // Head of Gen AI
@@ -131,7 +131,7 @@ _A credits block, not a leadership block. Each entry leads with a square portrai
 
 ### Credit 02
 
-**PORTRAIT:** `images/portraits/johnny.jpg` (placeholder still — swap for real headshot when shot; still doubles as bio-video poster)
+**PORTRAIT (still):** Cloudflare Stream first-frame thumbnail of the bio video — auto-derived from the UID below, no separate file
 **BIO VIDEO (Cloudflare Stream UID):** `04d16613add2e8e7f984b9fed118c723`
 **NAME:** Johnny Darrell
 **ROLE:** Director // Editor
@@ -139,7 +139,7 @@ _A credits block, not a leadership block. Each entry leads with a square portrai
 
 ### Credit 03
 
-**PORTRAIT:** `images/portraits/russ.jpg` (placeholder still — swap for real headshot when shot; still doubles as bio-video poster)
+**PORTRAIT (still):** Cloudflare Stream first-frame thumbnail of the bio video — auto-derived from the UID below, no separate file
 **BIO VIDEO (Cloudflare Stream UID):** `77ed0d921519c6f587a1821691e583c8`
 **NAME:** Russ Jarman Price
 **ROLE:** Chairman
@@ -660,3 +660,38 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
     - `loop=true` — restart on end (continuous loop)
     - `controls=false` — hide player chrome (no play/pause/scrub UI)
     - `preload=auto` — start buffering immediately on iframe load
+
+20. **Portrait stills swapped to Cloudflare Stream thumbnails (June 24 2026).**
+
+    **JP brief.** "Can you have the 1st frame of the video render as the still image for the biography, skipping the need to upload an image for the non-hover state?"
+
+    Cloudflare Stream auto-generates thumbnails for every video. Pattern:
+
+    ```
+    https://customer-xv1aafyshr3tbknu.cloudflarestream.com/<UID>/thumbnails/thumbnail.jpg?time=0s&width=800&height=800&fit=crop
+    ```
+
+    Params explained:
+    - `time=0s` — first frame (literal "1st frame" per JP's brief)
+    - `width=800` + `height=800` — output size
+    - `fit=crop` — center-crop to the specified aspect (1:1 square here)
+
+    **Each card now uses ONE source of truth — the UID.**
+    - Still poster: Stream thumbnail URL, hardcoded in `<img src>`
+    - Hover bio video: Stream iframe URL, lazy-built from `data-video-uid` in JS
+
+    Both URLs derive from the same UID. When a video is re-uploaded or replaced in Stream, both the still and the playing video update automatically — no separate file to swap.
+
+    **Local portrait files removed.** `images/portraits/jp.jpg`, `images/portraits/johnny.jpg`, `images/portraits/russ.jpg` were placeholder JPGs generated with Pillow during the initial Studios build (paper-tone background + display-weight initials over a centered rule). They're now orphaned by this change and were `git rm`'d in the same commit. The `images/portraits/` directory is empty and could be removed too, but git doesn't track empty directories so it'll just disappear on the next clone.
+
+    **Why hardcode the URL instead of building it from `data-video-uid` in JS.** If JS fails to load (slow connection, disabled JS, CSP issues), the img src needs to already point at a real URL — otherwise the user sees a broken-image icon. The duplication (UID appears in both `<img src>` and `data-video-uid`) is a minor cost for graceful degradation.
+
+    **First-frame caveat.** `time=0s` returns the literal first frame of the video. If a video begins with a fade-in from black, the still would be black. JP confirmed the brief explicitly ("1st frame"), so this matches the spec. If a future video starts with a fade-in and the still needs to be later in the cut, change `time=0s` to `time=2s` or similar in the relevant img src. Easy per-card tweak.
+
+    **Alt text upgrade.** Previously "Portrait placeholder for JP Holecka" — clearly placeholder-language. Now real alt text: "JP Holecka, Director and Head of Gen AI" / "Johnny Darrell, Director and Editor" / "Russ Jarman Price, Chairman". The still IS the bio asset now, not a stand-in.
+
+    **CSS unchanged.** The `.credit-portrait img{object-fit:cover}` rule still applies — Cloudflare Stream serves a clean 800×800 image, but `object-fit:cover` handles any minor edge cases (e.g., the 800×800 thumbnail loading at a different aspect than expected due to fit=crop edge behavior).
+
+    **Stream thumbnail performance.** Cloudflare serves the thumbnails from their edge CDN. First-load latency is similar to any other image; subsequent visits hit the browser cache. The thumbnail URL is stable per UID + params, so it caches cleanly.
+
+    **What this changes about the parking lot.** "Replace placeholder portraits with real headshots when shot" is gone — there's nothing to replace. The bio videos themselves ARE the headshot source. When new bio videos are produced, the stills update automatically on upload to Stream.

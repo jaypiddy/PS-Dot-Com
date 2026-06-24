@@ -440,6 +440,8 @@ Studios Block 4. Square portrait + name + role + credit-line one-sheet in a 3-up
 
 **Bio-video rollover (June 24 2026 update).** Each card optionally carries a `data-video-uid` attribute pointing to a Cloudflare Stream video. When present, a `<iframe class="credit-video">` is lazy-loaded into the portrait on first hover and fades in over the still — bio-video posters that become full bio-videos on rollover. The handler reuses the existing `matchMedia('(hover: hover)')` + `prefers-reduced-motion` gates from the `.wframe[data-video]` hover-video pattern; touch devices and reduced-motion users see only the still portrait. See `studios.md` Notes 19.
 
+**Still poster sourced from the video (June 24 2026 update).** The portrait's `<img src>` is also derived from the same Cloudflare Stream UID — pointing at Stream's thumbnail API at `time=0s` (first frame, 800×800 center-crop). No separate portrait file exists in the repo. One UID per card; both the still poster and the playing iframe video derive from it. When the video is re-uploaded or replaced in Stream, both surfaces update automatically. See `studios.md` Notes 20.
+
 ```html
 <section class="credits" id="credits">
   <div class="wrap reveal">
@@ -447,7 +449,8 @@ Studios Block 4. Square portrait + name + role + credit-line one-sheet in a 3-up
     <div class="credits-grid">
       <article class="credit-card" data-video-uid="<cloudflare-stream-uid>">
         <div class="credit-portrait">
-          <img src="images/portraits/<slug>.jpg" alt="Portrait for Name" loading="lazy">
+          <img src="https://customer-<sub>.cloudflarestream.com/<UID>/thumbnails/thumbnail.jpg?time=0s&width=800&height=800&fit=crop"
+               alt="Name, Role" loading="lazy">
           <iframe class="credit-video" aria-hidden="true" tabindex="-1"
                   frameborder="0"
                   allow="autoplay; encrypted-media; picture-in-picture"></iframe>
@@ -467,7 +470,7 @@ The iframe has NO `src` on page load — empty in the DOM, takes no network. JS 
 
 **Iframe sizing for 16:9 source over 1:1 container.** `width:177.78%; height:100%; transform:translate(-50%,-50%)` centers the iframe and makes it 1.7778× wider than the square container — the Stream player's 16:9 frame fills the square vertically and crops horizontally. Works for landscape bio videos (the standard talking-head aspect). If a future video is shot 9:16 portrait, invert the math: `width:100%; height:177.78%`.
 
-**Portrait specs.** 1:1 aspect ratio, `object-fit:cover`. Paper background on the wrapper so failures-to-load show the brand neutral rather than a broken-image icon. Recommended source: 800×800 minimum, JPEG at 88+ quality. Placeholders generated for the initial Studios build (`images/portraits/{jp,johnny,russ}.jpg`) use the paper-tone + display-initials treatment; drop-in swap when real headshots arrive at the same paths. The stills double as bio-video posters once `data-video-uid` is present — they stay visible until the iframe finishes loading.
+**Portrait still specs (June 24 2026 update).** No local portrait file needed. The `<img src>` points at Cloudflare Stream's thumbnail API derived from the same `data-video-uid`. Params: `time=0s` for the literal first frame (per JP's brief), `width=800&height=800` for the output size, `fit=crop` for centered 1:1 crop. The `.credit-portrait img{object-fit:cover}` rule handles any minor edge cases. If a video begins with a fade-in from black and the still needs to be later in the cut, change `time=0s` to `time=2s` or similar per card — easy tweak. When the underlying video is re-uploaded in Stream, both the still poster and the playing video update automatically.
 
 **Mobile behavior.** At ≤880px the grid collapses to single-column and `.credit-portrait` caps at 360px max-width so the portraits read as thumbnail headshots, not full-bleed posters.
 

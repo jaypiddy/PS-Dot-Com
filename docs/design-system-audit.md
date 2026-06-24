@@ -328,6 +328,137 @@ The 9 logos: Telus, Energizer, Lululemon, Deloitte, KPMG, Grammarly, Akamai, Iro
 
 **Reuse beyond `/digital`:** the same 9-logo roster ships verbatim on `/studios` when that page builds (see `studios.md` Block 2b). The Studios voice spec fits a logo-roster cleanly — every logo is a name-attached flex. The cross-practice mix in the roster (Digital + Studios clients combined) is intentional — one masterbrand, two doors.
 
+**Reuse confirmed:** shipped on `/studios` in the initial Studios build (June 23 2026). Same 9 logos, identical HTML and CSS. See `studios.md` Notes 7.
+
+---
+
+### Pattern G — `.reel-hero` (full-bleed Cloudflare Stream video hero)
+
+Studios Block 1. Full-bleed Cloudflare Stream video as hero background, with overlaid H1 + body + scroll prompt. Distinct from `.sub-hero` (paper background, no video) and from the homepage's hero (different scale + interaction). Ink underlay so the video fade-in doesn't flash white; `.reel-vignette` darkens the bottom band for text legibility against any video content.
+
+```html
+<section class="reel-hero" id="reel-hero">
+  <div class="reel-bg">
+    <iframe class="reel-video"
+            src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/<UID>/iframe?muted=true&autoplay=true&loop=true&controls=false&preload=auto"
+            …></iframe>
+    <div class="reel-vignette"></div>
+  </div>
+  <div class="reel-inner wrap">
+    <h1 class="rise"><span>…</span><span><em class="voice">…</em></span></h1>
+    <p class="reel-body">…</p>
+    <a class="reel-scroll" href="#anchor">Watch the work ↓</a>
+  </div>
+</section>
+```
+
+**Sizing.** Iframe sized `width:max(100%,177.78vh); height:max(56.25vw,100%)` centered with `transform:translate(-50%,-50%)` to guarantee 16:9 video always covers the hero box regardless of viewport aspect ratio. `min-height:88vh` on `.reel-hero` so the hero feels cinematic (taller than the standard 50vh `.sub-hero`).
+
+**Browser autoplay.** Cloudflare Stream iframe query string MUST include `muted=true` for browsers to allow autoplay without user interaction. `controls=false` removes the player chrome. `preload=auto` starts the buffer immediately.
+
+**Reuse beyond `/studios`:** any future hub page that wants a cinematic full-bleed video hero (e.g. a future case-study landing page, a Studios sub-route). Not appropriate for `/digital` (paper bg is the design system's hub-page default) or `/about` (people-first, not media-first).
+
+---
+
+### Pattern H — `.proof-bar` (single declarative trophy strip)
+
+Studios Block 2. High-contrast single-line strip between hero and roster. Ink background, paper text. No section header. One declarative claim, one supporting clause. Distinct from `.proof` (multi-stat outcome strip with odometers — `/digital` Block 2) and from `.proof-spine` (logo grid — Pattern F).
+
+```html
+<section class="proof-bar" id="awards">
+  <div class="wrap">
+    <p class="proof-bar-stat">
+      <strong>Two Silver ADDYs, 2026.</strong>
+      <span class="proof-bar-body">…qualifying clause with <em>italicized</em> proper nouns…</span>
+    </p>
+  </div>
+</section>
+```
+
+**Type scale.** `clamp(18px,1.9vw,24px)` — bigger than body but smaller than H2. The single declarative line is the entire payload; type weight + ink background carry the gravity, no need to over-scale.
+
+**Reuse beyond `/studios`:** any page that wants to drop a single declarative claim above the fold without a section header — a stat-of-record on `/about`, a certification claim on a case study landing, etc. Use sparingly — one per page maximum; the whole point is high contrast.
+
+---
+
+### Pattern I — `.films` + `.film-featured` + `.film-card` + `.film-grid` (featured-plus-grid media index)
+
+Studios Block 3. Two featured rows on top (`.film-featured`, 7fr media + 5fr meta side-by-side at desktop), then a 4-up grid (`.film-grid` containing `.film-card`s) for the remaining items. Each item has a poster image with `.film-play` badge, a title (with optional italic film-name treatment), a body line, and a `Watch →` CTA.
+
+```html
+<section class="films" id="films">
+  <div class="wrap">
+    <h2 class="films-heading">The work</h2>
+
+    <article class="film-featured">
+      <a class="film-media" href="…">
+        <img src="…" alt="…">
+        <span class="film-play" aria-hidden="true">▶</span>
+      </a>
+      <div class="film-meta">
+        <span class="film-award">Silver ADDY · 2026</span>
+        <h3>Client — <em>Film name</em></h3>
+        <p>One-line synopsis.</p>
+        <a class="film-cta" href="…">Watch →</a>
+      </div>
+    </article>
+
+    <!-- repeat .film-featured for the second featured row -->
+
+    <div class="film-grid">
+      <article class="film-card">
+        <a class="film-media" href="…">…</a>
+        <h3>…</h3>
+        <p>…</p>
+        <a class="film-cta" href="…">Watch →</a>
+      </article>
+      <!-- 3 more .film-card -->
+    </div>
+  </div>
+</section>
+```
+
+**Featured rows: media aspect-ratio 16:9.** Grid cards: 4:3, smaller play badge. Featured rows separate themselves from the grid with `border-top:1px solid var(--line)` on `.film-grid` + `margin-top:48px;padding-top:48px` — a clear visual rule between "featured" and "the rest."
+
+**Ordering rule (carried from `studios.md`).** Featured rows = award winners first. Grid = by ambition, not recency. When a stronger opener exists (e.g. Akamai when public), promote it to a featured row and demote one of the current featured films to the grid.
+
+**Currently:** all `Watch →` CTAs route to `#` because case-study pages for the films don't exist yet. Inline video previews (the `.work` `.media + <video>` pattern from `/work`) are a follow-up — each film needs encoded MP4/WebM + frame-0 poster.
+
+**Responsive:** featured rows collapse to single-column stack at ≤760px (meta below media); grid steps 4-up → 2-up at ≤1024px → 1-up at ≤520px.
+
+**Reuse beyond `/studios`:** the featured+grid mechanic generalizes to any media-index page — case study collections, podcast episode lists, talks index. The featured-row pattern is good for surfacing 1-3 hero items; the grid handles the long tail.
+
+---
+
+### Pattern J — `.credits` + `.credit-card` (credits one-sheet)
+
+Studios Block 4. Name + role + credit-line one-sheet in a 3-up grid. No portraits, no bios — full bios live on `/about`. Each `.credit-card` has a thin top rule (1px ink), name (display weight), role (small magenta caps), credit line (grey body). Block footer carries a CTA routing to `/about`.
+
+```html
+<section class="credits" id="credits">
+  <div class="wrap reveal">
+    <h2 class="credits-heading rise">Heading</h2>
+    <div class="credits-grid">
+      <article class="credit-card">
+        <h3 class="credit-name">Name</h3>
+        <p class="credit-role">Role // Title</p>
+        <p class="credit-line">Credit · Credit · Credit · Credit</p>
+      </article>
+      <!-- 2 more .credit-card -->
+    </div>
+    <a class="credits-cta" href="about.html">Meet the whole team →</a>
+  </div>
+</section>
+```
+
+**Role color: magenta.** Small all-caps with `letter-spacing:.04em`. The magenta picks up the brand throughline; it counts against the 2-per-viewport magenta budget. At desktop the credits block has 3 magenta role labels — over budget visually but tightly packed in the role row, so reads as ONE magenta cluster, not three separate magenta surfaces. Acceptable. Verify in QA that the credits block + any other magenta element on screen don't compound.
+
+**Credit-card top rule.** 1px solid ink (not the lighter `var(--line)`) — the cards are foregrounded credits, not footnotes.
+
+**Currently:** `Meet the whole team →` routes to `#` because `/about` isn't built yet. Swap to `about.html` when that page ships (same parking-lot item as the takeover menu link 05).
+
+**Reuse beyond `/studios`:** any block that wants to surface a focused subset of people without portraits — a case-study credits roll (Director / Editor / Strategist), a Speaking page (recent talks given), a Press page (recent press credits). Use sparingly — the canonical people-introduction format is `/about`'s full bio grid, not this.
+
 ---
 
 ## Resolved during the `/digital` build-out

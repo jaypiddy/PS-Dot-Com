@@ -1,14 +1,12 @@
 # Studios practice
 
 **Route:** `/studios`
-**Source HTML:** `PS_Studios_Hub_v1.html` (Claude Design prototype, June 11 2026)
+**Source HTML:** `studios.html` (built into static site June 23 2026)
 **Companion copy doc:** `POWER_SHIFTER_Studios_Copy_v1.md` (v1, June 2026 — supplies voice notes, ledger, and open calls preserved at the bottom of this file)
-**Last sync commit:** _n/a — page not yet built into the static site_
-**Status:** INTERIM
+**Last sync commit:** _set at build commit_
+**Status:** LIVE (Blocks 1, 2, 2b, 3, 4, 5b, 8 shipped; Blocks 5, 6, 7 deferred — see Notes 1)
 
-This is interim copy extracted verbatim from the v1 prototype HTML, with the voice notes and ledger from the companion copy doc preserved in the **Notes** section below. When the page is built into the static site, open calls get resolved at the build commit and this file's status moves to LIVE.
-
-The shared chrome (header, takeover menu, footer) on this page will be governed by `_shared.md`. This file covers only the page-specific copy.
+This page was built into the static site June 23 2026 from the interim copy in this file. Open calls noted at the bottom remain open and resolve at follow-up commits. The shared chrome (header, takeover menu, footer) on this page is governed by `_shared.md`. This file covers only the page-specific copy.
 
 ---
 
@@ -302,3 +300,57 @@ _Carried from the companion copy doc; resolve before this page goes LIVE._
 ### Dependency on /about
 
 The full bios for all six leads (Eilish, Ted, Cary, JP, Johnny, Russ) consolidate on /about — single grid, practice tags, the one-team statement. The W+K / Goodby positioning resolves there in prose. /digital optionally carries a one-line senior-bench strip (Microsoft · Starbucks · Nike · Nintendo pedigree), no faces.
+
+---
+
+## Build notes
+
+_Append-only. New notes added at the bottom; references in the codebase cite by note number._
+
+1. **Initial /studios build — spine commit (June 23 2026).**
+    Built into the static site at `studios.html` based on the chrome lifted verbatim from `digital.html` (head + header + takeover menu + footer + scripts). The base CSS, typography, color tokens, and reusable patterns (`.proof-spine`, `.engine` + `.engine.mirror`, `.page-closer`) come along with the clone — orphan CSS from `/digital`-specific patterns (`.sub-hero`, `.validator-band`, `.terminal`, `.offers-section`, etc.) currently rides along unused. Acceptable for the static prototype phase; clean up in a follow-up commit if size or maintainability becomes an issue.
+
+    **Blocks shipped:** 1 (Reel hero, Pattern G), 2 (Proof bar, Pattern H), 2b (The roster — reuse of Pattern F from `/digital`), 3 (Films index, Pattern I), 4 (Credits one-sheet, Pattern J), 5b (One-two punch — reuse of Pattern E from `/digital`), 8 (Closer — reuse of `.page-closer` with Studios copy).
+
+    **Blocks deferred:** 5 (How it's made — needs three generated stills for Board / Generation / Final states; the lede ships but the visual strip can't), 6 (What we make — services 4-up text grid), 7 (For agencies — pending the "Ask Toronto" / Leo Burnett referenceability resolution).
+
+    HTML comments inside `studios.html` mark each deferred block's insertion point so the follow-up commits are surgical inserts, not restructures.
+
+2. **Reel hero video — using the homepage hero reel UID.**
+    The reel-hero `<iframe>` (Block 1, Pattern G) points to Cloudflare Stream UID `dcde8adcb14fb52708c8ce6cf631658f` — the same UID that drives the homepage hero reel. This is intentional, not a placeholder: the homepage reel IS the Studios reel (it's the masterbrand showcase of Studios work). If a `/studios`-specific reel gets cut later, swap the UID via `str_replace` on the iframe `src`; everything else stays. Customer subdomain `customer-xv1aafyshr3tbknu.cloudflarestream.com` per `docs/VIDEO_PIPELINE.md`.
+
+    Iframe query string: `?muted=true&autoplay=true&loop=true&controls=false&preload=auto`. Standard background-video parameter set. Browsers require `muted=true` for autoplay to succeed without user interaction.
+
+3. **Hero H1 voice treatment.**
+    Two-line H1: `Anyone can generate.` (display weight, paper color) over `Few can direct.` (late-serif italic via `em.voice`, magenta). The italic line is the differentiator — same pattern the homepage uses for the Studios door lede. Both lines render as `<span>` children inside `<h1>` with `display:block` for the line break; `<br>` would have worked too but `<span>` lets the CSS hook line-by-line if needed later (separate animation timing, asymmetric letter-spacing, etc.).
+
+4. **Films index — "Watch" CTAs route to "#".**
+    All six `Watch →` links in Block 3 route to `#` because none of the films have case-study pages yet. Same status as `/digital`'s Selected Work (3 of 4 cards still route to `#`, only Koodo links to a real case study). Pattern: when individual film case-studies build, swap the `href="#"` to the case-study URL via `str_replace` per film. Iron Mountain and Ernest are highest priority since they're the award winners and the featured rows.
+
+5. **Films index — poster-only, no inline video loops in this commit.**
+    Each film tile uses its uploaded poster image from `/images/<slug>.jpg` (sourced June 2026: `iron_mountain.jpg`, `ernest.jpg`, `celestial.jpg`, `algorithm_trap.jpg`, `maple_health.jpg`, `rapid_mvp.jpg`). Inline video previews (the `.work` `.media + <video>` pattern from `/work`) are a follow-up — they require encoding each film to muted-loop MP4 + WebM, generating frame-0 posters, and uploading to `/videos`. The play badge (`.film-play`) sits on the poster image as a visual affordance for the future video-on-hover behavior.
+
+6. **"Judged against everything" claim — UNVERIFIED. (Open call carried.)**
+    The Block 2 proof bar's qualifying line `judged against everything, not just the AI category` ships in the static prototype but remains an unverified claim. If the ADDYs were entered in an AI-specific category, the qualifier dies and the bar shortens to just the award + film names + agencies. Verify the judging-context before any paid outbound, PR pitch, or production publish. Carried open call from `studios.md` original brief.
+
+7. **Roster — direct paste from `/digital`, identical 9-logo set.**
+    Same 9 logos, same widths, same `.proof-spine` + `.logos` + `.cell` + `.logo-mask` HTML structure as `/digital` line ~992. The roster's cross-practice mix (Telus, Deloitte, KPMG, Grammarly, Akamai → Digital; Iron Mountain, Energizer, Lululemon, Canucks → Studios-adjacent) is intentional per the one-masterbrand-two-doors IA. If a Studios-specific subset is wanted later, override the 9 logos in this file's HTML and update the roster grid; the underlying CSS doesn't need to change.
+
+8. **Credits CTA `Meet the whole team →` routes to "#".**
+    `/about` isn't built yet. When `about.html` ships, swap the `href="#"` on `.credits-cta` to `about.html`. Carried as a pending cross-page rewire item alongside the takeover menu link 05.
+
+9. **Takeover menu link 03 (Studios) still points to `index.html#studios`.**
+    Per the existing convention on `/digital` (where link 02 still points to `index.html#digital` rather than `digital.html`), the takeover menu on `/studios` ships unchanged. The full cross-page takeover rewire — pointing 02 → `digital.html` and 03 → `studios.html` on every page — is a single dedicated commit that will touch all built pages at once. Carried in the `/digital` Notes 12 parking lot.
+
+10. **Closer H2 voice line — `unshootable` in magenta italic.**
+    Block 8's H2 carries the late-serif italic + magenta treatment via `em.voice.mag` on the word `unshootable.` — same dual-class pattern as `/digital`'s closer (`em.voice.mag` on `Bring the idea.`). The body line below (`The budget used to be the ceiling. Now it's the idea.`) sits in plain prose. CTA copy: `Start a film →` (not `Start a project →` — Studios-specific). Phone number identical to `/digital` — one masterbrand, one phone.
+
+11. **Orphan CSS riding along from `/digital` clone.**
+    The full CSS block from `digital.html` was copied with the clone, which means `studios.html` carries definitions for patterns it doesn't use: `.sub-hero` (paper hero variant), `.sub-voice`, `.validator-band`, `.terminal`, `.offers-section`, `.partners-strip`, `.cards.four-up`, `.work` grid styles, and others. The rules don't render because no HTML elements reference them, but they add page weight. **Acceptable for now** — each page is intentionally self-contained, and the prototype phase prioritizes pattern propagation over byte-trimming. Clean up in a maintenance commit later, or once a shared `assets/css/site.css` is introduced.
+
+12. **New patterns this build added to the system (audit doc).**
+    Four new patterns documented in `docs/design-system-audit.md`:
+    - **Pattern G — `.reel-hero`:** full-bleed Cloudflare Stream video background with overlaid H1 + body + scroll prompt. Studios Block 1. Distinct from `.sub-hero` (paper bg, no video) and from the homepage's hero treatment.
+    - **Pattern H — `.proof-bar`:** single declarative trophy line on ink background, between hero and roster. Studios Block 2. Distinct from `.proof` (multi-stat outcome strip) and from `.proof-spine` (logo grid).
+    - **Pattern I — `.films` + `.film-featured` + `.film-card` + `.film-grid`:** featured-row + 4-up-grid film index. Studios Block 3. The featured rows use a 7fr/5fr media+meta split; the grid is the standard 4-up below a horizontal rule. Reusable for any future media-index page (case studies, podcast episodes, etc.).
+    - **Pattern J — `.credits` + `.credit-card`:** name + role + credit-line one-sheet in a 3-up grid. Studios Block 4. Reusable on `/about` if that page wants a credits-style format for a particular team subset, but the canonical `/about` is a full bio grid (not this).

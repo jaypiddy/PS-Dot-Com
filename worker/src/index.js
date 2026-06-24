@@ -64,6 +64,14 @@ function corsHeaders(env) {
   };
 }
 
+// Caps that bound token cost (and abuse): per-message length, total
+// characters across the thread, and turn count. Over-long single messages are
+// truncated (friendlier than rejecting a big paste); oldest turns are dropped
+// until the whole thread fits the budget.
+const MAX_MSG_CHARS = 4000;
+const MAX_TOTAL_CHARS = 16000;
+const MAX_TURNS = 24;
+
 // Anthropic requires the first message to be role:"user" and roles to
 // alternate. The page seeds an assistant greeting, so drop leading
 // assistant turns and collapse any accidental repeats.
@@ -71,13 +79,24 @@ function sanitize(messages) {
   let msgs = Array.isArray(messages) ? messages.filter(
     (m) => m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string" && m.content.trim()
   ) : [];
+  // truncate any single over-long message
+  msgs = msgs.map((m) => ({
+    role: m.role,
+    content: m.content.length > MAX_MSG_CHARS ? m.content.slice(0, MAX_MSG_CHARS) : m.content,
+  }));
   while (msgs.length && msgs[0].role !== "user") msgs.shift();
   const out = [];
   for (const m of msgs) {
     if (out.length && out[out.length - 1].role === m.role) out[out.length - 1].content += "\n\n" + m.content;
     else out.push({ role: m.role, content: m.content });
   }
-  return out.slice(-24); // cap context
+  // cap turn count, then drop oldest turns until under the character budget
+  let kept = out.slice(-MAX_TURNS);
+  let total = kept.reduce((n, m) => n + m.content.length, 0);
+  while (kept.length > 1 && total > MAX_TOTAL_CHARS) { total -= kept[0].content.length; kept.shift(); }
+  // re-establish "first message is role:user" after any trimming
+  while (kept.length && kept[0].role !== "user") kept.shift();
+  return kept;
 }
 
 export default {

@@ -342,3 +342,16 @@ _Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of th
     - **Bench credentials line.** Explicitly declined by JP on June 23 2026 ("don't need the credentials there").
 
     When real client testimonials get sourced (LinkedIn recommendations, sign-off letters, case study client interviews), a new pattern can host them — likely as a single hero-scale attributed quote between The roster and Partners, or as a card row replacing it. Defer that decision until the verified content exists.
+
+17. **CSS leak — vestigial `.logos` flex rule overriding the new image-mask grid (fixed June 23 2026).**
+    JP screenshot showed a grey bar across the top of the logo grid on `/digital` that wasn't present on the homepage's identical pattern.
+
+    **Root cause:** `digital.html` carried six dead lines of CSS from an earlier wordmark-text logo strip scaffolding (lines 112-117 of the pre-fix file): `.logos{display:flex;flex-wrap:wrap;...;padding-top:26px;border-top:1px solid var(--line)}` plus four `.logos span` styling rules using `.lc` and `.mc` text modifiers. The original use case was a row of text wordmarks (`<span class="logos">CLIENT</span>` children), not an image grid. Nothing on the page actually rendered with that pattern — the markup was dead but the CSS persisted.
+
+    When the new `.proof-spine` Pattern F shipped (commit 7f9bdec), it added a second `.logos` rule at line 479 — the canonical 3x3 image-mask grid copied from the homepage. CSS cascade dynamics: the new grid rule overrode the old rule's `display`, `gap`, `background`, and `border` properties. But `padding-top:26px` and `margin-top:34px` from the old rule **were not overridden** because the new rule doesn't set them. Result: 26px of padding leaked into the inside-top of the grid container. Because the grid itself has `background:var(--line)` (the light-grey line color) — used to make the 1px gaps between cells visible — that 26px of leaked padding rendered as a solid grey bar above the first row of cells.
+
+    **Fix:** Stripped all six vestigial `.logos` and `.logos span*` rules entirely. The only live `.logos` use on the page is now the image-mask grid at line 479 — single canonical rule, no cascade conflicts. Confirmed by `grep -E '^\s*\.logos' digital.html` returning only the grid rule and its mobile breakpoint.
+
+    **Why the homepage didn't have the bug:** `index.html` was scaffolded without the wordmark-text logo strip; the only `.logos` rule it carries is the canonical grid. `digital.html` inherited the wordmark scaffolding from a much earlier scaffolding pass and the dead rules were never cleaned up when the canonical pattern was adopted.
+
+    **Lesson for future patterns:** when copying a CSS pattern from another page that uses the same class name as an existing rule on the destination page, audit for cascade conflicts before shipping. The pre-commit `grep -nE '^\s*\.<className>\s*\{'` check would have surfaced this — adding it as a routine step before any cross-page CSS reuse.

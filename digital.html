@@ -109,12 +109,12 @@
   .stat + .stat{padding-left:28px}
   .stat b{font-family:var(--display);font-weight:700;font-size:clamp(26px,2.6vw,40px);letter-spacing:-.015em;display:block;line-height:1.1}
   .stat > span{font-size:13.5px;color:var(--grey);display:block;margin-top:6px;line-height:1.4}
-  .logos{display:flex;flex-wrap:wrap;align-items:baseline;gap:18px 40px;margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
-  .logos span{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.06em;color:var(--grey);opacity:.75;transition:color .2s ease-out,opacity .2s ease-out;cursor:default}
-  .logos span.lc{text-transform:lowercase;letter-spacing:.01em}
-  .logos span.mc{letter-spacing:.01em}
-  .logos span:not(.lc):not(.mc){text-transform:uppercase;font-size:13.5px;letter-spacing:.1em}
-  .logos span:hover{color:var(--ink);opacity:1}
+  /* The vestigial `.logos` flex-wrap wordmark strip (used `<span>` children
+     with .lc/.mc modifiers) was removed June 23 2026 — see digital.md Notes 17.
+     The live `.logos` pattern is the 3x3 image-mask grid defined ~line 479
+     (Pattern F in docs/design-system-audit.md). Mixing the two created a
+     leaked `padding-top:26px` on the grid which rendered as a grey bar
+     above the first row of cells. */
   @media(max-width:860px){.proof-row{grid-template-columns:1fr 1fr}.stat{border-right:0;border-bottom:1px solid var(--line);padding:14px 0}.stat + .stat{padding-left:0}}
 
   /* ---------- Block 4 — The seam ---------- */

@@ -432,7 +432,9 @@ Studios Block 3. Two featured rows on top (`.film-featured`, 7fr media + 5fr met
 
 ### Pattern J — `.credits` + `.credit-card` (credits one-sheet)
 
-Studios Block 4. Name + role + credit-line one-sheet in a 3-up grid. No portraits, no bios — full bios live on `/about`. Each `.credit-card` has a thin top rule (1px ink), name (display weight), role (small magenta caps), credit line (grey body). Block footer carries a CTA routing to `/about`.
+Studios Block 4. Square portrait + name + role + credit-line one-sheet in a 3-up grid. Each `.credit-card` has a `.credit-portrait` square at the top (1:1 aspect, `object-fit:cover`), then a 1px ink rule sitting on `.credit-name`'s top edge, then name (display weight), role (small magenta caps), credit line (grey body). Bios live on `/about`. Block footer carries a CTA routing to `/about`.
+
+**Layout note (June 24 2026 update).** This pattern was originally portrait-less per the studios.md brief; portraits were added when JP overrode that on review. The 1px ink rule moved from `.credit-card`'s `border-top` to `.credit-name`'s `border-top` so the rule sits between the portrait and the meta rather than stranding above the photo. If portraits ever get dropped on a future hub page using this pattern, move the rule back to `.credit-card`.
 
 ```html
 <section class="credits" id="credits">
@@ -440,6 +442,9 @@ Studios Block 4. Name + role + credit-line one-sheet in a 3-up grid. No portrait
     <h2 class="credits-heading rise">Heading</h2>
     <div class="credits-grid">
       <article class="credit-card">
+        <div class="credit-portrait">
+          <img src="images/portraits/<slug>.jpg" alt="Portrait for Name" loading="lazy">
+        </div>
         <h3 class="credit-name">Name</h3>
         <p class="credit-role">Role // Title</p>
         <p class="credit-line">Credit · Credit · Credit · Credit</p>
@@ -451,13 +456,17 @@ Studios Block 4. Name + role + credit-line one-sheet in a 3-up grid. No portrait
 </section>
 ```
 
-**Role color: magenta.** Small all-caps with `letter-spacing:.04em`. The magenta picks up the brand throughline; it counts against the 2-per-viewport magenta budget. At desktop the credits block has 3 magenta role labels — over budget visually but tightly packed in the role row, so reads as ONE magenta cluster, not three separate magenta surfaces. Acceptable. Verify in QA that the credits block + any other magenta element on screen don't compound.
+**Portrait specs.** 1:1 aspect ratio, `object-fit:cover`. Paper background on the wrapper so failures-to-load show the brand neutral rather than a broken-image icon. Recommended source: 800×800 minimum, JPEG at 88+ quality. Placeholders generated for the initial Studios build (`images/portraits/{jp,johnny,russ}.jpg`) use the paper-tone + display-initials treatment; drop-in swap when real headshots arrive at the same paths.
+
+**Mobile behavior.** At ≤880px the grid collapses to single-column and `.credit-portrait` caps at 360px max-width so the portraits read as thumbnail headshots, not full-bleed posters.
+
+**Role color: magenta.** Small all-caps with `letter-spacing:.04em`. Counts against the 2-per-viewport magenta budget — at desktop the credits block shows three magenta role labels in close proximity, reading as one magenta cluster rather than three separate surfaces. Verify in QA that the credits block + any other magenta element on screen don't compound.
 
 **Credit-card top rule.** 1px solid ink (not the lighter `var(--line)`) — the cards are foregrounded credits, not footnotes.
 
 **Currently:** `Meet the whole team →` routes to `#` because `/about` isn't built yet. Swap to `about.html` when that page ships (same parking-lot item as the takeover menu link 05).
 
-**Reuse beyond `/studios`:** any block that wants to surface a focused subset of people without portraits — a case-study credits roll (Director / Editor / Strategist), a Speaking page (recent talks given), a Press page (recent press credits). Use sparingly — the canonical people-introduction format is `/about`'s full bio grid, not this.
+**Reuse beyond `/studios`:** any block that wants to surface a focused subset of people with portraits + credits — a case-study credits roll (Director / Editor / Strategist), a Speaking page (recent talks given), a Press page (recent press credits). Use sparingly — the canonical people-introduction format is `/about`'s full bio grid, not this.
 
 ---
 

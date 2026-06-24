@@ -765,19 +765,27 @@
   }
 
   /* Pattern J — Credits one-sheet. Three credits in a 3-up grid; each is
-     name + role + credit line. No portraits, no bios — bios live on /about.
-     Studios Block 4. Block footer carries a CTA to /about. */
+     portrait + name + role + credit line. Portraits added June 24 2026
+     overriding the original "no portraits, no bios" brief — see
+     studios.md Notes 14. The 1px ink rule moved from .credit-card's
+     border-top onto .credit-name's border-top so the one-sheet credit-
+     block visual is preserved (portrait → ink rule → name) instead of
+     stranding the rule above the photo. Bios still live on /about.
+     Studios Block 4. Block footer carries a CTA routing to /about. */
   .credits{padding:96px 0;background:var(--paper);border-top:1px solid var(--line)}
   .credits-heading{font-family:var(--display);font-size:clamp(36px,4vw,60px);font-weight:600;line-height:1.05;letter-spacing:-.015em;margin-bottom:64px;max-width:960px}
   .credits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-bottom:48px}
-  .credit-card{border-top:1px solid var(--ink);padding-top:24px}
-  .credit-name{font-family:var(--display);font-size:clamp(22px,1.8vw,28px);font-weight:600;letter-spacing:-.01em;margin-bottom:8px}
+  .credit-card{display:flex;flex-direction:column}
+  .credit-portrait{display:block;width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--paper)}
+  .credit-portrait img{width:100%;height:100%;object-fit:cover;display:block}
+  .credit-name{font-family:var(--display);font-size:clamp(22px,1.8vw,28px);font-weight:600;letter-spacing:-.01em;margin-bottom:8px;border-top:1px solid var(--ink);padding-top:24px}
   .credit-role{font-family:var(--text);font-size:13px;color:var(--magenta);font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:20px}
   .credit-line{font-size:15px;line-height:1.55;color:var(--grey)}
   .credits-cta{font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.04em;display:inline-block;border-bottom:1px solid var(--ink);padding-bottom:2px;transition:color .2s,border-color .2s}
   .credits-cta:hover{color:var(--magenta);border-bottom-color:var(--magenta)}
   @media (max-width:880px){
-    .credits-grid{grid-template-columns:1fr;gap:32px}
+    .credits-grid{grid-template-columns:1fr;gap:40px}
+    .credit-portrait{max-width:360px}
   }
 </style>
 
@@ -1018,25 +1026,41 @@
 
 
 <!-- Block 4 — Provenance / credits. Pattern J in design-system-audit.md.
-     Not a leadership block — a credits one-sheet. Name + role + credit line,
-     no portraits, no bios (full bios live on /about per studios.md). Three
-     credits: JP, Johnny Darrell, Russ Jarman Price. Block footer CTA routes
-     to /about (currently stubbed to "#" — /about not built yet). -->
+     Originally specified as "no portraits, no bios" — that brief was
+     overridden June 24 2026 (see studios.md Notes 14). Each card now
+     leads with a square portrait (currently a generated placeholder
+     in images/portraits/) above the name/role/credit-line. Full bios
+     still live on /about. Three credits: JP, Johnny Darrell, Russ
+     Jarman Price. Block footer CTA routes to /about (currently
+     stubbed to "#" — /about not built yet).
+
+     PARKING LOT: replace placeholder portraits (initials over paper
+     on a centered rule) with real headshots when shot. Same
+     aspect-ratio (1:1) and same path. Drop-in swap. -->
 <section class="credits" id="credits">
   <div class="wrap reveal">
     <h2 class="credits-heading rise">Directed by people who earned the word</h2>
     <div class="credits-grid">
       <article class="credit-card">
+        <div class="credit-portrait">
+          <img src="images/portraits/jp.jpg" alt="Portrait placeholder for JP Holecka" loading="lazy">
+        </div>
         <h3 class="credit-name">JP Holecka</h3>
         <p class="credit-role">Director // Head of Gen AI</p>
         <p class="credit-line">Little Women &middot; 21 Jump Street &middot; Black Dog Films (Ridley Scott) &middot; ILM, commercial division</p>
       </article>
       <article class="credit-card">
+        <div class="credit-portrait">
+          <img src="images/portraits/johnny.jpg" alt="Portrait placeholder for Johnny Darrell" loading="lazy">
+        </div>
         <h3 class="credit-name">Johnny Darrell</h3>
         <p class="credit-role">Director // Editor</p>
         <p class="credit-line">Sausage Party: Foodtopia (Amazon) &middot; Cloudy with a Chance of Meatballs (Sony / Lord Miller) &middot; 25 years in CGI and story</p>
       </article>
       <article class="credit-card">
+        <div class="credit-portrait">
+          <img src="images/portraits/russ.jpg" alt="Portrait placeholder for Russ Jarman Price" loading="lazy">
+        </div>
         <h3 class="credit-name">Russ Jarman Price</h3>
         <p class="credit-role">Chairman</p>
         <p class="credit-line">Ogilvy London, Creative Partner &middot; Ogilvy Caribbean, Chairman</p>

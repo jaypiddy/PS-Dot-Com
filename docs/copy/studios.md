@@ -124,24 +124,27 @@ _Header, then two featured rows (the award winners, full-width, inline-playing) 
 
 ## Block 4 — Provenance / credits
 
-_Not a leadership block — a credits block. Name, role, credit line, styled like a one-sheet. No portraits, no bios; full bios live on /about. Closes with a link out._
+_A credits block, not a leadership block. Each entry leads with a square portrait, then name + role + credit line, styled like a one-sheet. Bios still live on /about — this is the credit roll, not the team page. Closes with a link out. (The original brief said "no portraits, no bios" — that was overridden June 24 2026; see Notes 14.)_
 
 **H2:** Directed by people who earned the word
 
 ### Credit 01
 
+**PORTRAIT:** `images/portraits/jp.jpg` (placeholder — swap for real headshot when shot)
 **NAME:** JP Holecka
 **ROLE:** Director // Head of Gen AI
 **CREDIT LINE:** Little Women · 21 Jump Street · Black Dog Films (Ridley Scott) · ILM, commercial division
 
 ### Credit 02
 
+**PORTRAIT:** `images/portraits/johnny.jpg` (placeholder — swap for real headshot when shot)
 **NAME:** Johnny Darrell
 **ROLE:** Director // Editor
 **CREDIT LINE:** Sausage Party: Foodtopia (Amazon) · Cloudy with a Chance of Meatballs (Sony / Lord Miller) · 25 years in CGI and story
 
 ### Credit 03
 
+**PORTRAIT:** `images/portraits/russ.jpg` (placeholder — swap for real headshot when shot)
 **NAME:** Russ Jarman Price
 **ROLE:** Chairman
 **CREDIT LINE:** Ogilvy London, Creative Partner · Ogilvy Caribbean, Chairman
@@ -381,3 +384,16 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
     **Anchors stay the same** — `#how-we-work` and `#direct-to-expert` match `/digital`. Intentional: a visitor coming from the homepage's two-doors block to either practice page lands at the same anchor for the same conceptual section, even though the copy is tuned to the practice.
 
     **Voice spec override.** The Studios voice spec ("Every flex attached to a name, a credit, or a trophy") doesn't apply to these two modules — they describe how the work happens, not what was won. The flex-with-a-name beats live in Blocks 2 (proof bar — Two Silver ADDYs), 3 (films index — each film tied to a client and a title), and 4 (credits — three named directors with on-the-record credit lines). Block 5b is the working-principles interlude between the proof stack and the closer.
+
+14. **Block 4 — portraits added (override of original "no portraits" brief, June 24 2026).**
+    The original Block 4 brief (carried in this file) called for "no portraits, no bios; full bios live on /about" — a credits one-sheet styled like a film credit roll, text-only. JP overrode that: "Let's put placeholder images for JP, Russ, and Johnny."
+
+    **What shipped:** three placeholder portrait JPGs at `images/portraits/{jp,johnny,russ}.jpg` (800×800, paper-toned background with display-weight initials and a small "PORTRAIT" caption under a centered rule). Each card now leads with a square portrait above the name/role/credit-line.
+
+    **Visual change to Pattern J:** the 1px ink rule that used to sit on `.credit-card`'s `border-top` (above the name in the text-only version) moved to `.credit-name`'s `border-top` — so the rule now sits between the portrait and the name. The one-sheet credit-block visual signature is preserved (portrait → ink rule → name → role → credit-line) instead of stranding the rule above the photo.
+
+    **Mobile behavior:** at ≤880px the grid collapses to 1-column with `.credit-portrait{max-width:360px}` so the portraits don't stretch full-width on phones — keeps them legible at a thumbnail-headshot scale, not a poster scale.
+
+    **Carried parking-lot item:** replace the three placeholders with real headshots once shot. Same aspect ratio (1:1), same paths. Drop-in `str_replace` per file or just overwrite the JPGs at the same path. Until then the placeholders read as intentional (paper bg + bold initials + "PORTRAIT" caption) rather than broken.
+
+    **Bios still on /about.** The Block 4 footer CTA `Meet the whole team →` still routes to /about (currently stubbed to `#`); this is the credit roll, not the team page. Pattern J's "credits one-sheet" identity holds — the override added the portrait slot, not the bio slot.

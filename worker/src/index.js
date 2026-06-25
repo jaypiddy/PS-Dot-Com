@@ -32,6 +32,7 @@
  * ROUTES
  *   POST /          → concierge chat (Anthropic)
  *   POST /contact   → contact form → email via Resend
+ *   POST /log       → conversation transcript → email via Resend (on session end)
  */
 
 const SYSTEM = `You are the concierge for POWER SHIFTER — a design-led studio in Vancouver, BC with two practices: Digital (product strategy, design & engineering) and Studios (generative-AI film & content with real production discipline). You greet visitors on the website and help them figure out if there's a fit, then hand them to the team.
@@ -126,6 +127,13 @@ export default {
         return json({ error: "forbidden origin" }, 403, cors);
     }
 
+    const path = new URL(request.url).pathname.replace(/\/+$/, "");
+
+    // /log is fired by the page via a keepalive request on unload, which can't
+    // set custom headers — so it carries its token in the BODY and is routed
+    // before the header-based token gate. (Origin is still enforced above.)
+    if (path.endsWith("/log")) return handleLog(request, env, cors);
+
     // Soft shared-token gate (optional). If CLIENT_TOKEN is set, the page must
     // send the same value as X-PS-Token (CONFIG.clientToken). Stops scripted /
     // no-Origin abuse of this paid proxy. NOTE: the token ships in client code,
@@ -135,7 +143,7 @@ export default {
       return json({ error: "forbidden" }, 403, cors);
 
     // Route: POST /contact → contact-form email (Resend); anything else → chat.
-    if (new URL(request.url).pathname.replace(/\/+$/, "").endsWith("/contact"))
+    if (path.endsWith("/contact"))
       return handleContact(request, env, cors);
 
     let body;
@@ -227,6 +235,52 @@ async function handleContact(request, env, cors) {
     });
     if (!resp.ok) {
       console.error("resend error", resp.status, await resp.text());
+      return json({ error: "send failed" }, 502, cors);
+    }
+    return json({ ok: true }, 200, cors);
+  } catch (err) {
+    return json({ error: "exception", detail: String(err) }, 500, cors);
+  }
+}
+
+// POST /log — emails a conversation transcript via Resend when a session ends.
+// Token arrives in the BODY (the page sends this via a keepalive request on page
+// unload, which cannot set custom headers). Empty/trivial sessions are skipped.
+async function handleLog(request, env, cors) {
+  let body;
+  try { body = await request.json(); } catch { return json({ error: "bad json" }, 400, cors); }
+  if (env.CLIENT_TOKEN && body.token !== env.CLIENT_TOKEN) return json({ error: "forbidden" }, 403, cors);
+
+  const msgs = Array.isArray(body.messages) ? body.messages.filter(
+    (m) => m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string" && m.content.trim()
+  ) : [];
+  // The greeting is an assistant turn, so "no user turns" = nobody actually
+  // talked. Skip those (bots, idle openers) so the inbox isn't flooded.
+  const userTurns = msgs.filter((m) => m.role === "user").length;
+  if (userTurns < 1) return json({ ok: true, skipped: true }, 200, cors);
+  if (!env.RESEND_API_KEY || !env.CONTACT_TO || !env.CONTACT_FROM)
+    return json({ error: "server not configured" }, 500, cors);
+
+  const transcript = msgs.slice(-80)
+    .map((m) => (m.role === "user" ? "Visitor" : "Concierge") + ": " + m.content.slice(0, 2000))
+    .join("\n\n")
+    .slice(0, 24000);
+  const firstUser = ((msgs.find((m) => m.role === "user") || {}).content || "conversation")
+    .replace(/\s+/g, " ").slice(0, 60);
+
+  try {
+    const resp = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { "Authorization": "Bearer " + env.RESEND_API_KEY, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        from: env.CONTACT_FROM,
+        to: [env.CONTACT_TO],
+        subject: "Concierge transcript — " + firstUser,
+        text: transcript + "\n\n— " + userTurns + " visitor message(s).",
+      }),
+    });
+    if (!resp.ok) {
+      console.error("resend log error", resp.status, await resp.text());
       return json({ error: "send failed" }, 502, cors);
     }
     return json({ ok: true }, 200, cors);

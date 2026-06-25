@@ -282,6 +282,30 @@
     if(wasOpen==='1') open(true);
   }
 
+  /* ---------- transcript logging on session end ---------- */
+  // When the visitor leaves (tab close / navigate away / tab hidden), fire the
+  // conversation to the Worker /log route, which emails it to the studio.
+  // keepalive + text/plain (token in the body) → no CORS preflight, so the
+  // request survives page unload. Skips empty sessions; won't re-send unless
+  // new messages were added since the last flush.
+  var loggedCount = 0;
+  function flushLog(){
+    if(!CONFIG.endpoint) return;
+    if(history.length <= loggedCount) return;
+    if(!history.some(function(m){ return m.role==='user'; })) return;
+    loggedCount = history.length;
+    try{
+      fetch(CONFIG.endpoint.replace(/\/+$/,'') + '/log', {
+        method:'POST',
+        headers:{'Content-Type':'text/plain;charset=UTF-8'},
+        body: JSON.stringify({ token: CONFIG.clientToken, messages: history }),
+        keepalive: true
+      });
+    }catch(e){}
+  }
+  window.addEventListener('pagehide', flushLog);
+  document.addEventListener('visibilitychange', function(){ if(document.visibilityState==='hidden') flushLog(); });
+
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', build);
   else build();
 })();

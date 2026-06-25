@@ -62,7 +62,7 @@ via [Resend](https://resend.com) — no inbox address shown to visitors.
    **create an API key** (`re_…`).
 2. On the Worker, add:
    - secret `RESEND_API_KEY`
-   - var `CONTACT_TO` — where leads land, e.g. `hello@powershifter.com`
+   - var `CONTACT_TO` — where leads land, e.g. `bd@powershifter.com`
    - var `CONTACT_FROM` — a Resend-verified sender, e.g.
      `POWER SHIFTER <concierge@powershifter.com>`
 3. In `ps-concierge.js`, set `CONFIG.formEndpoint` to `<worker-url>/contact`.

@@ -203,7 +203,7 @@ onto `.sub-body`; the voice-color and eyebrow conventions are applied site-wide.
 - Proof claims pending verification: Angel Oak "+40%", the ADDY judging category,
   Contentful/Sanity/Vercel partner tiers. (Mirrored in `concierge-knowledge.md`.)
 - **Careers** route not built — `#` for now.
-- **Concierge email** still placeholder `hello@powershifter.com` — confirm real inbox.
+- **Concierge email** confirmed: `bd@powershifter.com` (live inbox, already in production elsewhere).
 - **Stream UIDs** for any nav hover-reel idea TBD.
 
 ---

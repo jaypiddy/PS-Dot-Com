@@ -27,7 +27,7 @@
     formEndpoint: null,  // PRODUCTION: POST { name, email, message } target (Worker /contact, Formspree, etc.). null = honest mailto fallback (opens the visitor's mail client to CONFIG.email).
     phone: '+1 (604) 227-9952',
     phoneHref: 'tel:+16042279952',
-    email: 'hello@powershifter.com'   // TODO: confirm the real inbound address before launch
+    email: 'bd@powershifter.com'
   };
 
   /* ---------------------------------------------------------------

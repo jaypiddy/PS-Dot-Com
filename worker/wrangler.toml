@@ -25,9 +25,9 @@ ALLOWED_ORIGIN = "https://powershifter.com"
 
 # Contact form (POST /contact → email via Resend). Set these to turn the
 # concierge "Email us" form into a real form that emails the studio.
-#   CONTACT_TO   = "hello@powershifter.com"
+#   CONTACT_TO   = "bd@powershifter.com"
 #   CONTACT_FROM = "POWER SHIFTER <concierge@powershifter.com>"   # must be a Resend-verified sender
-# CONTACT_TO = "hello@powershifter.com"
+# CONTACT_TO = "bd@powershifter.com"
 # CONTACT_FROM = "POWER SHIFTER <concierge@powershifter.com>"
 
 # SECRETS — do NOT put keys here. Set them once with:

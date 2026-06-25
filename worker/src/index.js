@@ -22,7 +22,7 @@
  *   ALLOWED_ORIGIN  your site origin, e.g. "https://powershifter.com"
  *   CLIENT_TOKEN    optional shared token the page must send as X-PS-Token
  *                   (soft abuse gate; pair with CF rate-limiting / Turnstile)
- *   CONTACT_TO      where contact-form emails land, e.g. "hello@powershifter.com"
+ *   CONTACT_TO      where contact-form emails land, e.g. "bd@powershifter.com"
  *   CONTACT_FROM    a Resend-verified sender, e.g.
  *                   "POWER SHIFTER <concierge@powershifter.com>"
  * Secrets:

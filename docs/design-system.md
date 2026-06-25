@@ -52,11 +52,15 @@ kit never blanks the page — see §7 "black-on-blank" lesson.
 
 ## 2 · Typography scale
 
-- **Hero H1 (sub-hero):** `--display` 900, `clamp(52px,7vw,108px)`, line-height .96, letter-spacing -.02em
-- **Section H2 (.engine):** `--display` 500, `clamp(40px,4.6vw,72px)`, line-height 1.02
+- **Hero H1 (sub-hero):** `--display`, `clamp(52px,7vw,108px)`, line-height .96, letter-spacing -.02em
+- **Section H2 (.engine):** `--display`, `clamp(40px,4.6vw,72px)`, line-height 1.02
 - **Eyebrow:** `--mono` 700, 12px, letter-spacing .14em, UPPERCASE, color `--magenta`
-- **Body:** `--text`, `clamp(16px,1.5vw,21px)`, line-height 1.5–1.6
-- **Serif voice:** `--serif` italic 500 — used inline as `em.voice` (see §5 voice rule)
+- **Body:** `--text` 400, `clamp(16px,1.5vw,21px)`, line-height 1.5–1.6
+- **Serif voice:** `--serif` italic — used inline as `em.voice` (see §5 voice rule)
+
+> **Weight note:** `--display` (articulat-heavy-cf) ships a single **900** cut and `--serif`
+> (joly-headline) a single **700** italic cut, so the `font-weight` values in the headline/voice
+> CSS resolve to those. `--text` has 400 (body) + 700 (UI); `--mono` is variable 200–700.
 
 ---
 
@@ -86,10 +90,10 @@ draw-on rules. Don't let it become decorative or appear 3–4× in one screen.
   moment — keep it.
 - **Active page:** `.tk-l.is-current` + `aria-current="page"` → persistent arrow +
   solid numeral. Set on the link matching the current route.
-- **Link wiring (canonical):** Work→`work.html`, Digital→`digital.html`,
-  Studios→`studios.html`, Insights→`insights.html`, About→`about.html`,
-  Contact→`#contact`. (Practice links previously pointed at homepage anchors — fixed.)
-  Careers→`#` until the page exists.
+- **Link wiring (canonical, extensionless):** Work→`/work`, Digital→`/digital`,
+  Studios→`/studios`, Insights→`/insights`, About→`/about`. **Contact removed from the nav**
+  (the `#contact` page-closer + the concierge handle contact now). Careers→`#` until the page
+  exists. Legal links live in the footer: `/terms-and-conditions`, `/privacy-policy`.
 - **Mobile:** takeover scrolls if short; foot stacks; type clamps down (≤560px).
 
 ### Hero — canonical `sub-hero`
@@ -126,7 +130,7 @@ Two-column section: H2 left (with a draw-on magenta `.rule`), prose right
 - **Solid — `.btn.solid`:** fills magenta on hover.
 
 ### Eyebrow
-`.eyebrow` — `--text` 700, 12px, .14em, UPPERCASE, magenta. One formula site-wide (every
+`.eyebrow` — `--mono` 700, 12px, .14em, UPPERCASE, magenta. One formula site-wide (every
 eyebrow, page hero **and** section): hub/practice pages use "Section — descriptor"
 ("About — one culture, two practices", "Proof — the receipts"); detail pages use
 "Category · Client/Topic" ("Digital · TELUS & Koodo"). Bare section labels ("Insights",
@@ -169,9 +173,12 @@ ink/paper for rhythm. About, for example: ink hero → paper story → paper ros
 1. **Text on ink = `--paper`.** The `.sub-hero .sub-body` rule defaulted to `--ink`,
    rendering invisible on the ink hero (About **and** Digital). Fixed to `--paper`.
    Rule: any text on an ink surface is paper; never ink-on-ink.
-2. **Typekit loads async** so a blocked kit can't blank the page.
-3. **Nav links wired** to standalone pages (Work/Digital/Studios/Insights/About);
-   **active state** via `.is-current` + `aria-current`.
+2. **Typekit should load async** (`media="print" onload="this.media='all'"` + `<noscript>`) so a
+   blocked kit can't blank the page. *Status: implemented on about.html; the other 9 pages load the
+   kit synchronously — safe to retrofit.*
+3. **Nav links wired** to standalone pages (Work/Digital/Studios/Insights/About), **extensionless**
+   (Vercel clean URLs); **active state** via `.is-current` + `aria-current`. **Contact removed
+   from the nav** (the `#contact` closer + concierge handle it).
 4. **Studios `reel-hero` is the one sanctioned hero exception**; all other subpages
    use `sub-hero`.
 5. **Supporting line — two sanctioned variants.** The hero supporting line collapses to
@@ -211,9 +218,12 @@ onto `.sub-body`; the voice-color and eyebrow conventions are applied site-wide.
 
 ## 10 · File map
 
-- Pages: `index.html`, `work.html`, `digital.html`, `studios.html`, `insights.html`,
-  `article.html`, `case-telus-koodo.html`, `about.html`
+- Pages (served **extensionless** via Vercel `cleanUrls`; old `.html` 308-redirects):
+  `/` (index), `/work`, `/digital`, `/studios`, `/insights`, `/article`, `/case-telus-koodo`,
+  `/about`. Legal pages built from the article template: `/terms-and-conditions`, `/privacy-policy`.
+- Fonts: Adobe Typekit kit `xkk7api` (see §1). Menu hover loop: `images/scratches-v2.webp`
+  (animated WebP, filled into nav words via `background-clip:text`) — swap per `docs/menu-hover-loop.md`.
 - Shared chrome copy: `docs/copy/_shared.md` · per-page copy: `docs/copy/*.md`
 - Exhaustive pattern catalogue: `docs/design-system-audit.md`
-- Additive layers: `ps-spice.*`, `ps-concierge.*`, `worker/`
+- Additive layers: `ps-spice.*`, `ps-concierge.*`, `worker/`; deploy config: `vercel.json`
 - `*-preview.html` files are review-only (Craft Layer toggle panel) — do not ship.

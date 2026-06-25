@@ -34,7 +34,7 @@ These already exist as CSS custom properties on every page. Port them verbatim.
 |---|---|---|
 | `--display` | `articulat-heavy-cf`, Helvetica Neue, … | The confident sans (heavy 900) — headlines, big statements |
 | `--text` | `articulat-cf`, … | UI / body / labels |
-| `--serif` | `mezzotint-cf`, Georgia, … | The **human/emotional** voice — italic, used as the counter-voice (readable at small sizes) |
+| `--serif` | `decoy`, Georgia, … | The **human/emotional** voice — light (300) italic counter-voice; the weight contrast against the 900 sans is the point |
 | `--mono` | `config-mono-vf`, ui-monospace, … | Eyebrows + small index numerals (nav/related/ledger) |
 
 Fonts load via Adobe Typekit (`use.typekit.net/xkk7api.css`). **Load it async**

@@ -16,14 +16,14 @@
      It holds the API key and the SYSTEM preamble server-side.
      --------------------------------------------------------------- */
   var CONFIG = {
-    endpoint: null,
+    endpoint: 'https://ps-concierge.jp-440.workers.dev',
     knowledgeUrl: 'docs/concierge-knowledge.md',  // curated KB; injected into the system prompt
-    // Soft abuse gate for the Worker. If you set CLIENT_TOKEN on the Worker,
-    // put the SAME value here — the page then sends it as the X-PS-Token header.
+    // Soft abuse gate for the Worker. Matches CLIENT_TOKEN set on the Worker;
+    // the page sends it as the X-PS-Token header.
     // NOTE: this ships in client code (readable in page source), so it deters
     // scripted/no-Origin abuse, not a determined attacker. Pair it with
     // Cloudflare rate-limiting / Turnstile for real protection.
-    clientToken: null,
+    clientToken: '7d771b12790faeefb8eaac7af37e5892',
     formEndpoint: null,  // PRODUCTION: POST { name, email, message } target (Worker /contact, Formspree, etc.). null = honest mailto fallback (opens the visitor's mail client to CONFIG.email).
     phone: '+1 (604) 227-9952',
     phoneHref: 'tel:+16042279952',

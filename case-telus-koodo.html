@@ -75,7 +75,10 @@
   .hero-sub{margin-top:34px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px;border-top:1px solid var(--line-light);padding-top:26px}
   .hero-sub p{font-family:var(--text);font-size:18px;line-height:1.5;max-width:46ch;color:rgba(250,250,247,.78)}
   .hero-ctas{display:flex;gap:14px}
-  .btn{font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.03em;padding:14px 26px;border:1px solid var(--paper);transition:background .2s ease-out,color .2s ease-out,border-color .2s ease-out;display:inline-block}
+  .btn{font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.03em;padding:14px 26px;border:1px solid var(--paper);transition:background .2s ease-out,color .2s ease-out,border-color .2s ease-out,transform .12s ease-out;display:inline-block}
+  /* Press feedback — scale on :active (web-animation-design) */
+  .btn:active{transform:scale(.97)}
+  @media(prefers-reduced-motion:reduce){.btn:active{transform:none}}
   .btn:hover{background:var(--paper);color:var(--ink)}
   .btn.solid{background:var(--paper);color:var(--ink)}
   .btn.solid:hover{background:var(--magenta);border-color:var(--magenta);color:var(--paper)}
@@ -804,6 +807,10 @@
   /* Body figure: device plate, contain, pointer-tracked 3D tilt */
   .prose figure.breakout .fig-plate{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;
     background:var(--ink)}
+  /* Figure entrance — scale-fade reveal on scroll (ease-out cubic, marketing) */
+  .prose figure.breakout .fig-plate.reveal{opacity:0;transform:scale(.96);transition:opacity .6s cubic-bezier(.215,.61,.355,1),transform .6s cubic-bezier(.215,.61,.355,1);will-change:transform,opacity}
+  .prose figure.breakout .fig-plate.reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.prose figure.breakout .fig-plate.reveal{opacity:1;transform:none;transition:none}}
   .fig-plate .cs-shot{padding:clamp(16px,3vw,48px);transform-style:preserve-3d;
     transition:transform .6s cubic-bezier(.22,1,.36,1)}
   .fig-tilt{perspective:1200px}
@@ -968,7 +975,7 @@
     <p>Then the wish lists: shared by multiple buyers per dealer location, without duplicate lists and double orders turning into a cost and logistics problem. And one constraint with upside — the Koodo experience would be the first responsive design ever produced for the Koodo brand, setting the precedent for every Koodo channel that followed.</p>
 
     <figure class="breakout fig-tilt">
-      <div class="fig-plate">
+      <div class="fig-plate reveal">
         
         <img class="cs-shot" src="images/koodo_welcome.png" alt="The Koodo-branded accessories catalogue shown on a laptop">
       </div>
@@ -985,7 +992,7 @@
     <p>The catalogue UX took three weeks of hypothesis and testing on the filtering problem alone. The result let a dealer narrow 700+ SKUs to the right accessory in seconds, on a phone, a tablet, or the desktop at the back of the store. The shared wish-list system — built jointly by UX, front-end, and back-end — let multiple buyers per location research, build, and share lists that fed TELUS's fulfilment workflow, with no training and no FAQ required.</p>
 
     <figure class="breakout fig-tilt">
-      <div class="fig-plate">
+      <div class="fig-plate reveal">
         
         <img class="cs-shot" src="images/koodo_filters.png" alt="The responsive filtering experience shown on desktop and phone">
       </div>

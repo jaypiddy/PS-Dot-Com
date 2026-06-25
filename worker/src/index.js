@@ -22,8 +22,16 @@
  *   ALLOWED_ORIGIN  your site origin, e.g. "https://powershifter.com"
  *   CLIENT_TOKEN    optional shared token the page must send as X-PS-Token
  *                   (soft abuse gate; pair with CF rate-limiting / Turnstile)
- * Secret:
+ *   CONTACT_TO      where contact-form emails land, e.g. "hello@powershifter.com"
+ *   CONTACT_FROM    a Resend-verified sender, e.g.
+ *                   "POWER SHIFTER <concierge@powershifter.com>"
+ * Secrets:
  *   ANTHROPIC_API_KEY
+ *   RESEND_API_KEY   (only needed for the POST /contact route)
+ *
+ * ROUTES
+ *   POST /          → concierge chat (Anthropic)
+ *   POST /contact   → contact form → email via Resend
  */
 
 const SYSTEM = `You are the concierge for POWER SHIFTER — a design-led studio in Vancouver, BC with two practices: Digital (product strategy, design & engineering) and Studios (generative-AI film & content with real production discipline). You greet visitors on the website and help them figure out if there's a fit, then hand them to the team.
@@ -126,6 +134,10 @@ export default {
     if (env.CLIENT_TOKEN && request.headers.get("X-PS-Token") !== env.CLIENT_TOKEN)
       return json({ error: "forbidden" }, 403, cors);
 
+    // Route: POST /contact → contact-form email (Resend); anything else → chat.
+    if (new URL(request.url).pathname.replace(/\/+$/, "").endsWith("/contact"))
+      return handleContact(request, env, cors);
+
     let body;
     try { body = await request.json(); } catch { return json({ error: "bad json" }, 400, cors); }
 
@@ -180,4 +192,45 @@ function json(obj, status, cors) {
     status,
     headers: { "content-type": "application/json", ...cors },
   });
+}
+
+// POST /contact — emails the concierge contact form via Resend.
+// Needs secret RESEND_API_KEY and vars CONTACT_TO + CONTACT_FROM.
+async function handleContact(request, env, cors) {
+  let body;
+  try { body = await request.json(); } catch { return json({ error: "bad json" }, 400, cors); }
+
+  const clean = (s, n) => String(s == null ? "" : s).trim().slice(0, n);
+  const name = clean(body.name, 200).replace(/[\r\n]+/g, " ");
+  const email = clean(body.email, 200);
+  const message = clean(body.message, 5000);
+
+  if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return json({ error: "invalid email" }, 400, cors);
+  if (!message) return json({ error: "empty message" }, 400, cors);
+  if (!env.RESEND_API_KEY || !env.CONTACT_TO || !env.CONTACT_FROM)
+    return json({ error: "server not configured" }, 500, cors);
+
+  try {
+    const resp = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer " + env.RESEND_API_KEY,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: env.CONTACT_FROM,
+        to: [env.CONTACT_TO],
+        reply_to: email,                       // replying to the email goes to the visitor
+        subject: "New project inquiry" + (name ? " — " + name : ""),
+        text: `Name: ${name || "(not given)"}\nEmail: ${email}\n\n${message}`,
+      }),
+    });
+    if (!resp.ok) {
+      console.error("resend error", resp.status, await resp.text());
+      return json({ error: "send failed" }, 502, cors);
+    }
+    return json({ ok: true }, 200, cors);
+  } catch (err) {
+    return json({ error: "exception", detail: String(err) }, 500, cors);
+  }
 }

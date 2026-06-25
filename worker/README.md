@@ -53,6 +53,24 @@ it falls back to the prototype helper (handy for local dev in Claude).
 If you set `CLIENT_TOKEN` in `wrangler.toml`, set `CONFIG.clientToken` to the
 same string so the page's `X-PS-Token` header is accepted.
 
+## Contact form route (`POST /contact`)
+
+Turns the concierge "Email us" panel into a real form that emails the studio
+via [Resend](https://resend.com) — no inbox address shown to visitors.
+
+1. In Resend: **verify a sending domain** (Domains → add the DNS records), then
+   **create an API key** (`re_…`).
+2. On the Worker, add:
+   - secret `RESEND_API_KEY`
+   - var `CONTACT_TO` — where leads land, e.g. `hello@powershifter.com`
+   - var `CONTACT_FROM` — a Resend-verified sender, e.g.
+     `POWER SHIFTER <concierge@powershifter.com>`
+3. In `ps-concierge.js`, set `CONFIG.formEndpoint` to `<worker-url>/contact`.
+
+The Worker validates name/email/message, sends the email with `reply_to` set to
+the visitor (so a reply reaches them), and returns `{ ok: true }`. The page shows
+its success state; with `formEndpoint` unset it falls back to an honest `mailto:`.
+
 ## Request / response contract
 
 **Request** (POST, JSON):

@@ -32,7 +32,7 @@ These already exist as CSS custom properties on every page. Port them verbatim.
 ### Type families ("Two Voices")
 | Token | Stack | Voice |
 |---|---|---|
-| `--display` | `articulat-heavy-cf`, Helvetica Neue, … | The confident sans (heavy 900) — headlines, big statements |
+| `--display` | `joly-headline`, Helvetica Neue, … | The headline voice (Joly Headline, 700) — headlines, big statements |
 | `--text` | `articulat-cf`, … | UI / body / labels |
 | `--serif` | `decoy`, Georgia, … | The **human/emotional** voice — light (300) italic counter-voice; the weight contrast against the 900 sans is the point |
 | `--mono` | `config-mono-vf`, ui-monospace, … | Eyebrows + small index numerals (nav/related/ledger) |

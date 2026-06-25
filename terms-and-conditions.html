@@ -3,15 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — POWER SHIFTER</title>
-<meta name="description" content="One design culture, two practices. Meet the leadership behind POWER SHIFTER — digital product and film studio, Vancouver, BC.">
-<meta property="og:title" content="About — POWER SHIFTER">
-<meta property="og:description" content="One design culture, two practices. Meet the leadership behind POWER SHIFTER.">
-<meta property="og:type" content="website">
-<!-- Typekit loaded async so the page paints immediately even when the kit
-     is unreachable (e.g. this review sandbox). -->
-<link rel="stylesheet" href="https://use.typekit.net/pkh7feu.css" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://use.typekit.net/pkh7feu.css"></noscript>
+<title>Terms &amp; Conditions — POWER SHIFTER</title>
+<meta name="description" content="POWER SHIFTER terms and conditions of use.">
+<link rel="stylesheet" href="https://use.typekit.net/pkh7feu.css">
 <link rel="preload" as="image" href="images/scratches-v2.webp">
 <!-- PS Craft Layer (design-spice pass) -->
 <link rel="stylesheet" href="ps-spice.css">
@@ -119,12 +113,12 @@
   .stat + .stat{padding-left:28px}
   .stat b{font-family:var(--display);font-weight:700;font-size:clamp(26px,2.6vw,40px);letter-spacing:-.015em;display:block;line-height:1.1}
   .stat > span{font-size:13.5px;color:var(--grey);display:block;margin-top:6px;line-height:1.4}
-  /* The vestigial `.logos` flex-wrap wordmark strip (used `<span>` children
-     with .lc/.mc modifiers) was removed June 23 2026 — see digital.md Notes 17.
-     The live `.logos` pattern is the 3x3 image-mask grid defined ~line 479
-     (Pattern F in docs/design-system-audit.md). Mixing the two created a
-     leaked `padding-top:26px` on the grid which rendered as a grey bar
-     above the first row of cells. */
+  .logos{display:flex;flex-wrap:wrap;align-items:baseline;gap:18px 40px;margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
+  .logos span{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.06em;color:var(--grey);opacity:.75;transition:color .2s ease-out,opacity .2s ease-out;cursor:default}
+  .logos span.lc{text-transform:lowercase;letter-spacing:.01em}
+  .logos span.mc{letter-spacing:.01em}
+  .logos span:not(.lc):not(.mc){text-transform:uppercase;font-size:13.5px;letter-spacing:.1em}
+  .logos span:hover{color:var(--ink);opacity:1}
   @media(max-width:860px){.proof-row{grid-template-columns:1fr 1fr}.stat{border-right:0;border-bottom:1px solid var(--line);padding:14px 0}.stat + .stat{padding-left:0}}
 
   /* ---------- Block 4 — The seam ---------- */
@@ -333,250 +327,64 @@
     padding:0 .1em .16em 0;
   }
 
-  /* The .sub-hero-ctas pattern (Pattern A in docs/design-system-audit.md) was
-     removed June 23 2026 — see digital.md Notes 18. JP's call: the pills and
-     letter spacing read off from the rest of the page's square `.btn.solid`
-     vocabulary, AND the Validator/MVP section sits one section below the
-     hero — pre-driving to it from the hero CTA row was redundant. "Start a
-     project" persists in the page closer (line ~1054) and the takeover menu,
-     so no path-to-conversion was lost. Pattern A is decommissioned from
-     /digital and stays catalogued in the audit doc only if a future hub
-     page (Studios, About) genuinely needs hero-level CTAs in a non-pill
-     treatment — not as the current pill design. */
+  /* ---------- Article page ---------- */
+  /* Sub-hero, article dialect: same component, smaller H1 so a 124-char title holds */
+  .sub-hero .back{display:inline-block;margin-bottom:28px;
+    font-family:var(--text);font-weight:700;font-size:13.5px;letter-spacing:.03em}
+  .byline .cats{color:rgba(250,250,247,.55);font-weight:400}
+  .byline .cats a:hover{color:var(--magenta)}
+  .byline .vbar{padding:0 2px}
+  .sub-hero.article h1{font-size:clamp(36px,4.4vw,72px);line-height:1.02;max-width:22ch;text-wrap:balance}
+  .sub-hero.article .eyebrow a:hover{border-bottom:1px solid currentColor}
+  .sub-hero.article .sub-voice em{font-size:clamp(20px,2.2vw,32px);line-height:1.25;display:block;max-width:38em}
+  .byline{display:flex;gap:12px;flex-wrap:wrap;align-items:baseline;margin-top:26px;
+    padding-top:18px;border-top:1px solid var(--line-light);
+    font-family:var(--text);font-weight:700;font-size:13.5px;letter-spacing:.02em;
+    opacity:0;animation:settle .6s ease-out .75s forwards}
+  .byline .date,.byline .sep{color:rgba(250,250,247,.55);font-weight:400}
+  .byline a:hover{color:var(--magenta)}
 
-  /* Sub-hero body paragraph — alternative to .sub-voice when the page wants
-     regular prose with bold mid-sections instead of the italic-magenta voice line.
-     Sibling of .streams (defined inside .sub-hero on insights.html). */
-  .sub-hero .sub-body{
-    margin-top:18px;font-size:clamp(16px,1.3vw,19px);line-height:1.5;
-    color:var(--ink);opacity:.85;max-width:62ch;
-    opacity:0;transform:translateY(12px);
-    animation:settle .6s ease-out .55s forwards;
-  }
-  .sub-hero .sub-body strong{font-weight:700;color:var(--ink);opacity:1}
+  /* Masthead plate — wframe/wtint pattern from the work cards */
+  .masthead{padding-top:clamp(28px,4vh,52px)}
+  .masthead .wframe{aspect-ratio:21/9;margin-bottom:0}
+  .masthead .wframe img{width:100%;height:100%;object-fit:cover}
+  .masthead .wtint{display:none}
+  .masthead .wframe.dark .wtint{display:block}
+  .photo-credit{position:absolute;right:16px;bottom:12px;z-index:2;
+    font-size:11px;letter-spacing:.06em;color:rgba(250,250,247,.85);
+    text-shadow:0 1px 10px rgba(18,19,21,.6)}
 
-  /* Card grid 4-up variant — pattern 4b extension for /digital.
-     Pattern reference: docs/design-system-audit.md §2 (pattern 4b).
-     Adds a 4-column desktop layout to the existing .cards/.card system. The
-     :nth-child(n+2) rule widens the homepage's (2),(3) selector so every card
-     beyond the first picks up the inner-gutter padding-left, which keeps the
-     left edge of each card's meta block flush with its frame. */
-  .cards.four-up{grid-template-columns:repeat(4,1fr)}
-  .cards.four-up .card:nth-child(n+2) .meta{padding-left:26px}
-  @media(max-width:1100px){.cards.four-up{grid-template-columns:repeat(2,1fr)}.cards.four-up .card:nth-child(2n+1) .meta{padding-left:0}.cards.four-up .card:nth-child(2n) .meta{padding-left:26px}}
-  @media(max-width:680px){.cards.four-up{grid-template-columns:1fr}.cards.four-up .card .meta{padding-left:0}}
-  /* Hover lift on cards — make the .go arrow light up magenta as the visited cue */
-  .card:hover h3{color:var(--magenta)}
-  .card:hover .go{color:var(--magenta)}
-  .work .all:hover{color:var(--magenta);border-color:var(--magenta)}
-
-  /* Offers section — wraps a .doors block on a sub-page.
-     The homepage doors block IS the section (no separate H2); on /digital the
-     offers section needs an introductory "Two ways in" H2 above the doors. */
-  .offers-section{padding-top:clamp(70px,10vh,120px);background:var(--paper)}
-  .offers-section .wrap{padding-bottom:24px}
-  .offers-h{font-family:var(--display);font-weight:500;font-size:clamp(34px,4vw,60px);letter-spacing:-.015em}
-
-  /* Doors compact variant — sub-page scale.
-     The homepage .doors uses min-height:84vh because doors IS the page block.
-     On a sub-page, that's too tall. .doors.compact removes the min-height
-     constraint and dials the per-door min-height down from 54-84vh to ~48vh. */
-  .doors.compact{min-height:auto}
-  .doors.compact .door{min-height:48vh}
-  @media(max-width:860px){.doors.compact .door{min-height:38vh}}
-
-  /* Validator-band — engine variant, INK background.
-     Pattern reference: docs/design-system-audit.md §"New patterns".
-     Three departures from the canonical .engine band:
-     (1) INK background (var(--ink)) with paper text — flips the section from
-         paper-on-paper to ink-on-paper, creating a paper/ink/paper sandwich
-         between offers above and how-we-work below. Makes the Validator read
-         as the page's strongest call-to-action rather than blending into the
-         surrounding sections. (June 23 2026 edit — see digital.md Notes 14.)
-     (2) 1fr/1fr grid instead of 5fr/7fr — the left column needs room for
-         H2 + body + CTA, and the right column carries the explainer video
-         at 16:9 (which needs roughly half-page width to land at viewable size).
-     (3) H2 dialed from clamp(40px,4.6vw,72px) to clamp(32px,3.6vw,54px) so
-         the headline doesn't overflow the half-width column. */
-  .validator-band{background:var(--ink);color:var(--paper)}
-  .validator-band .engine-grid{grid-template-columns:1fr 1fr;align-items:center;gap:clamp(32px,4vw,72px)}
-  .validator-band h2{font-size:clamp(32px,3.6vw,54px);color:var(--paper)}
-  .validator-band h2 em.voice{color:var(--magenta)}
-  .validator-band p{font-size:clamp(16px,1.3vw,19px);margin-top:18px;max-width:48ch;color:rgba(250,250,247,.86)}
-  .validator-band p strong{color:var(--paper)}
-  .validator-band .vbtn{margin-top:24px;display:inline-block}
-  @media(max-width:860px){.validator-band .engine-grid{grid-template-columns:1fr;gap:36px}}
-
-  /* NEW pattern — .engine.mirror — alternating layout variant for the one-two punch.
-     Pairs with the canonical .engine pattern to create JP's "alternating one-two
-     punch" rhythm on services pages: Module 1 runs canonical 5fr/7fr (H2 left,
-     body right), Module 2 runs mirrored 7fr/5fr (body left, H2 right). The two
-     modules read as a zigzag at desktop scale. On mobile (≤860px) both stack
-     identically — H2 over body — because the "mirror" rhythm doesn't read at
-     narrow widths and stacking H2-first preserves source order + cognitive flow.
-     Source order in HTML stays H2-first → body-second for every module
-     regardless of layout, for accessibility and progressive enhancement. */
-  .engine.mirror .engine-grid{grid-template-columns:7fr 5fr}
-  .engine.mirror .engine-grid > div:first-child{order:2}
-  .engine.mirror .engine-grid > div:nth-child(2){order:1}
-  @media(max-width:860px){
-    .engine.mirror .engine-grid{grid-template-columns:1fr}
-    .engine.mirror .engine-grid > div:first-child{order:0}
-    .engine.mirror .engine-grid > div:nth-child(2){order:0}
-  }
-
-  /* NEW pattern — .video-frame.
-     Pattern reference: docs/design-system-audit.md §"New patterns" C
-     (to be catalogued on next audit-doc pass — see digital.md Notes 14).
-     Generic 16:9 video container for section-column embeds. Distinct from
-     the article-body .embed.video pattern (which is .article-body .prose-scoped
-     and supports .breakout for full-bleed). The .video-frame is the
-     section-column variant — used here on /digital for the Cloudflare Stream
-     explainer; reusable wherever a marketing/explainer video lives inside
-     a section grid column. Dark placeholder bg holds the box while the
-     Stream iframe loads its own poster. Soft radius matches the terminal
-     pattern's previous treatment, preserving the section's visual silhouette. */
-  .video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#0a0b0c;
-    border-radius:8px;overflow:hidden;box-shadow:0 18px 44px rgba(0,0,0,.32)}
-  .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
-
-  /* NEW pattern C — .partners + .partners-strip.
-     Pattern reference: docs/design-system-audit.md §"New patterns" C.
-     Lede sentence + horizontal flex row of partner-tier chips. Each chip pairs
-     a display-weight name with a serif-italic tier descriptor (echoes the .voice
-     italic-on-serif treatment used everywhere else on the site). Magenta surfaces
-     only on hover — single-magenta budget per viewport already committed elsewhere
-     in this section's neighbours, this just provides the interaction cue. */
-  .partners{padding-top:clamp(60px,8vh,100px);padding-bottom:clamp(60px,8vh,100px);
-    background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .partners-lede{font-size:clamp(16px,1.3vw,19px);line-height:1.5;color:var(--grey);max-width:62ch;margin-bottom:30px}
-  .partners-strip{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-  .ptier{display:inline-flex;gap:10px;align-items:baseline;padding:12px 20px;
-    border:1px solid var(--line);border-radius:999px;
-    transition:border-color .2s ease,color .2s ease}
-  .ptier b{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.005em}
-  .ptier em{font-family:var(--serif);font-style:italic;font-weight:500;font-size:14px;color:var(--grey);transition:color .2s ease}
-  .ptier:hover{border-color:var(--magenta);color:var(--magenta)}
-  .ptier:hover em{color:var(--magenta)}
-
-  /* NEW pattern — .proof-spine + .logos (mirrored from homepage Block 3).
-     Pattern reference: docs/design-system-audit.md §"New patterns" F
-     (catalogued in audit doc on this commit). Direct reuse of the homepage's
-     proof-spine .logos pattern — 3-col grid with 1px gap exposing the line
-     bg, checkerboard alternation (odd cells ink/paper, even cells paper/ink),
-     magenta hover state on every cell. The .logo-mask technique renders each
-     logo as a CSS mask-image so the logo inherits currentColor — allowing
-     the same PNG to render paper-on-ink or ink-on-paper without separate
-     asset variants. Position on /digital: between Selected Work and Partners.
-     Functions as the visible-clients trust signal at section scope,
-     complementing the per-project named outcome strip above and the
-     platform-certification Partners strip below. See digital.md Notes 15. */
-  .logo-mask{display:inline-block;background-color:currentColor;
-    -webkit-mask-image:var(--mask-image);-webkit-mask-size:contain;
-    -webkit-mask-repeat:no-repeat;-webkit-mask-position:center;vertical-align:middle}
-  .proof-spine{padding:clamp(80px,11vh,140px) 0;background:var(--paper)}
-  .proof-spine .eyebrow{display:block;font-family:var(--text);font-weight:700;
-    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--magenta);margin-bottom:24px}
-  .logos{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-    background:var(--line);border:1px solid var(--line)}
-  .logos .cell{display:flex;align-items:center;justify-content:center;
-    padding:clamp(24px,3vw,38px) 16px;
-    transition:background-color .45s cubic-bezier(.4,0,.2,1),
-               color .45s cubic-bezier(.4,0,.2,1)}
-  .logos .cell .logo-mask{opacity:.88;max-width:72%;
-    transition:opacity .45s cubic-bezier(.4,0,.2,1),
-               background-color .45s cubic-bezier(.4,0,.2,1)}
-  .logos .cell:hover .logo-mask{opacity:1}
-  .logos .cell:nth-child(odd){background:var(--ink);color:var(--paper)}
-  .logos .cell:nth-child(odd):hover{color:var(--magenta)}
-  .logos .cell:nth-child(even){background:var(--paper);color:var(--ink)}
-  .logos .cell:nth-child(even):hover{background:var(--magenta);color:var(--paper)}
-  @media(max-width:640px){
-    .logos{grid-template-columns:repeat(2,1fr)}
-    .logos .cell:last-child{grid-column:span 2}
-  }
-
-  /* Outcome-strip text stat — when a .stat carries text instead of an .odo numeral.
-     Inherits .stat b's serif at the same 52-96px scale; <em> adds the italic
-     read so it feels like a category value rather than a measurement. */
-  .stat b > em{font-style:italic;font-family:var(--serif);font-weight:500}
-
-  /* Filter bar */
-  .work-filter{
-    position:sticky;top:0;z-index:40;
-    background:var(--paper);border-bottom:1px solid var(--line);
-  }
-  .filter-row{display:flex;gap:6px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap;align-items:center}
-  .ftab{
-    font-family:var(--text);font-weight:700;font-size:15px;letter-spacing:.02em;
-    padding:14px 24px;border:1px solid var(--line);background:transparent;
-    color:var(--ink);cursor:pointer;display:flex;gap:10px;align-items:baseline;
-    transition:background-color .3s ease,color .3s ease,border-color .3s ease;
-  }
-  .ftab .fc{color:var(--grey);font-weight:400;font-size:13px;transition:color .3s ease,opacity .3s ease}
-  .ftab:hover{border-color:var(--ink)}
-  .ftab.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-  .ftab.on .fc{color:var(--magenta)}
-  /* whole-button hover triggers the label cascade */
-  .ftab:hover .cascade .lt span{transform:translateY(-100%)}
-  .pending{font-family:var(--serif);font-style:italic;font-weight:500;
-    font-size:1.16em !important;letter-spacing:-.01em;color:var(--magenta) !important}
-  .ftab.on .pending{color:var(--magenta) !important}
-
-  /* Work grid */
-  .work-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:clamp(24px,3vw,44px);
-    padding-top:clamp(48px,6vh,72px);
-    padding-bottom:clamp(64px,8vh,100px);
-  }
-  .wcard{display:flex;flex-direction:column;position:relative}
-  .wcard.feature{grid-column:1 / -1}
-  .wframe{
-    aspect-ratio:16/9;background:var(--ink-soft);position:relative;
-    overflow:hidden;margin-bottom:18px;
-  }
-  .wcard.feature .wframe{aspect-ratio:21/9}
-  .slot-frame{background:var(--ink-soft)}
-  .slot-frame.light{background:#e9e9e4}
-  .wtint{
-    position:absolute;inset:0;
-    background:linear-gradient(transparent 30%, rgba(18,19,21,.72) 100%);
-    z-index:1;pointer-events:none;
-  }
-  .wcard-overlay{
-    position:absolute;bottom:0;left:0;right:0;padding:clamp(22px,3vw,38px);
-    z-index:2;color:var(--paper);
-  }
-  .wcard-overlay h2{
-    font-family:var(--display);font-weight:700;
-    font-size:clamp(22px,2.4vw,36px);letter-spacing:-.01em;margin:10px 0 8px;
-  }
-  .wcard-overlay h2 i{font-family:var(--serif);font-style:italic;font-weight:500}
-  .wcard-overlay p{font-size:15px;color:rgba(250,250,247,.78);max-width:54ch;margin-bottom:12px}
-  .wtag{
-    font-family:var(--text);font-weight:700;font-size:11px;
-    letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);
-    display:block;margin-bottom:10px;
-  }
-  .wcard h3{
-    font-family:var(--display);font-weight:700;
-    font-size:clamp(18px,1.8vw,26px);letter-spacing:-.008em;margin-bottom:8px;
-  }
-  .wcard h3 i{font-family:var(--serif);font-style:italic;font-weight:500}
-  .wcard > p{font-size:14.5px;color:var(--grey);max-width:44ch;margin-bottom:10px}
-  .wgo{font-weight:700;font-size:13.5px;letter-spacing:.04em;margin-top:auto}
-  
-  .wcard-overlay .wgo{color:rgba(250,250,247,.9);font-size:14px}
-  
-  .slot-tag.dark{color:rgba(18,19,21,.35);border-color:rgba(18,19,21,.25)}
-
-  /* Hybrid pending state */
-  .hybrid-slot .wframe{outline:1px dashed var(--line);outline-offset:-8px}
-  .pending-tag{color:var(--grey) !important}
-  .pending-go{color:var(--grey);pointer-events:none}
+  /* Body — reading column 700px, figures and embeds break to 980px */
+  .article-body{padding-top:clamp(48px,7vh,90px);padding-bottom:clamp(64px,9vh,110px)}
+  .prose{max-width:700px}
+  .prose>*+*{margin-top:1.35em}
+  .prose p{font-size:18px;line-height:1.65}
+  .prose a{color:var(--magenta);border-bottom:1px solid currentColor;transition:opacity .2s ease-out}
+  .prose a:hover{opacity:.7}
+  .prose h2{font-family:var(--display);font-weight:700;letter-spacing:-.015em;
+    font-size:clamp(26px,2.6vw,36px);line-height:1.12;margin-top:2.2em}
+  .prose h3{font-family:var(--display);font-weight:700;letter-spacing:-.01em;
+    font-size:clamp(20px,1.9vw,24px);line-height:1.2;margin-top:1.9em}
+  .prose ul,.prose ol{padding-left:1.4em}
+  .prose li{font-size:18px;line-height:1.65;margin-top:.5em}
+  .prose ul li::marker{color:var(--magenta)}
+  .prose ol li::marker{font-weight:700}
+  .prose ul ul,.prose ol ol{margin-top:.5em}
+  /* Quote — the body's serif voice moment */
+  .prose blockquote{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:-.02em;
+    font-size:clamp(22px,2.4vw,30px);line-height:1.3;
+    border-left:2px solid var(--magenta);padding-left:clamp(20px,2.5vw,34px);
+    margin-top:2em;margin-bottom:2em}
+  .prose figure{width:min(980px,100%);margin-top:2.2em;margin-bottom:2.2em}
+  .prose figure img{width:100%;background:var(--ink-soft)}
+  .prose figcaption{font-size:13px;color:var(--grey);padding-top:10px;
+    border-top:1px solid var(--line);max-width:700px}
+  .embed{width:min(980px,100%);margin-top:2.2em;margin-bottom:2.2em;background:var(--ink-soft)}
+  .embed.video{aspect-ratio:16/9}
+  .embed.podcast{height:150px;background:transparent}
+  .embed iframe{width:100%;height:100%;border:0;display:block}
+  /* Related uses the homepage insights .post pattern as-is */
+  .insights .posts .post{display:block}
 
   /* ---- Global page closer — token-driven, reuse across all key pages ----
      Matches homepage closer in scale. Swap h2 text + p + btn label per page.
@@ -597,16 +405,6 @@
   .page-closer .tel{font-family:var(--text);font-weight:700;font-size:15px;color:rgba(250,250,247,.78)}
   .page-closer .tel:hover{color:var(--magenta)}
 
-  @media(max-width:980px){.work-grid{grid-template-columns:1fr 1fr}.wcard.feature{grid-column:1/-1}}
-  @media(max-width:640px){.work-grid{grid-template-columns:1fr}}
-
-  /* Hover video loop — sits above the still, fades in when playing */
-  .wframe .hover-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-    opacity:0;transition:opacity .35s ease;pointer-events:none;z-index:1}
-  .wframe .hover-video.playing{opacity:1}
-
-  /* Rise-in: case cells use the site reveal motion, staggered by column */
-  .work-grid .wcard.reveal{transition-delay:calc(var(--d,0)*70ms)}
 
   /* ---------- Button system ---------- */
   /* Primary — letter cascade */
@@ -693,215 +491,195 @@
   .tk-ar{font-size:clamp(20px,2.4vw,30px);opacity:0;transform:translateX(-14px);
     transition:opacity .3s ease,transform .3s ease;margin-left:auto;color:var(--paper)}
   .tk-l:hover .tk-ar{opacity:1;transform:translateX(0)}
-  /* Active / current page — persistent arrow + solid numeral so you always
-     know where you are in the menu. */
-  .tk-l.is-current .tk-n{color:var(--ink)}
-  .tk-l.is-current .tk-ar{opacity:1;transform:translateX(0)}
-  .tk-l.is-current .tk-t{transform:translateX(12px)}
   .tk-foot{padding:18px 0 26px;max-width:var(--max);margin:0 auto;width:100%;
     display:flex;justify-content:space-between;align-items:center;
     font-family:var(--text);font-weight:700;font-size:13px;color:rgba(18,19,21,.65)}
   .tk-foot a:hover{color:var(--paper)}
   body.menu-open{overflow:hidden}
 
-  /* Small-screen takeover — fit six links + foot, drop hover-only flourishes. */
-  @media (max-width:560px){
-    .takeover{overflow-y:auto}
-    .tk-links{justify-content:center;gap:2px;padding:72px 0 8px}
-    .tk-t{font-size:clamp(34px,10vw,54px);padding:.12em .1em}
-    .tk-l{padding:10px 0;gap:12px}
-    .tk-foot{flex-direction:column;align-items:flex-start;gap:6px;padding:14px 0 22px}
-  }
-
   @media (prefers-reduced-motion: reduce){
     .takeover,.tk-l,.tk-t,.tk-ar,.menu-btn .plus,.tk-close .x,.tk-top .logo{transition:none}
     .tk-top .logo{opacity:1}
   }
+</style>
 
-  /* ======================================================================
-     STUDIOS-SPECIFIC PATTERNS (Patterns G, H, I, J in design-system-audit.md)
-     Shipped June 23 2026 with the initial /studios build.
-     ====================================================================== */
+<style id="article-v2">
+  /* ============ ARTICLE BODY V2 — editorial magazine × dense Swiss ============
+     Hero, nav, masthead, closer, footer untouched. Reading column 700px,
+     breakouts 980px, Signal band full-bleed. Sections are indexed; the serif
+     speaks in the pull quote and the ledger numerals — Two Voices, in body form. */
+  body{overflow-x:clip}
+  .article-body{padding-top:clamp(56px,8vh,104px);padding-bottom:clamp(72px,10vh,120px)}
+  .prose{max-width:700px;margin-inline:auto;counter-reset:sect}
+  .prose>*+*{margin-top:1.5em}
+  .prose p{font-size:18px;line-height:1.68}
 
-  /* Pattern G — Reel hero. Full-bleed Cloudflare Stream video bg with overlay
-     content. Studios Block 1. Ink underlay, video plays muted+loop+autoplay,
-     text sits on a darkened bottom-band via .reel-vignette for legibility. */
-  .reel-hero{position:relative;min-height:88vh;background:var(--ink);color:var(--paper);overflow:hidden;display:flex;align-items:flex-end}
-  .reel-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
-  .reel-video{position:absolute;top:50%;left:50%;width:max(100%,177.78vh);height:max(56.25vw,100%);transform:translate(-50%,-50%);border:0;pointer-events:none}
-  .reel-vignette{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(18,19,21,.55) 0%,rgba(18,19,21,0) 28%,rgba(18,19,21,0) 52%,rgba(18,19,21,.88) 100%);pointer-events:none}
-  .reel-inner{position:relative;z-index:2;padding:96px 0 64px;width:100%}
-  .reel-hero h1{font-family:var(--display);font-weight:600;font-size:clamp(48px,7.2vw,116px);line-height:.94;letter-spacing:-0.02em;margin-bottom:28px;opacity:0;transform:translateY(14px);animation:settle .8s ease-out .2s forwards}
-  .reel-hero h1 span{display:block}
-  .reel-hero h1 .voice{font-family:"late-serif",Georgia,serif;font-style:italic;font-weight:400;color:var(--magenta);letter-spacing:-0.01em}
-  .reel-hero .reel-body{font-size:clamp(16px,1.4vw,21px);max-width:780px;color:rgba(250,250,247,.88);margin-bottom:36px;line-height:1.5;opacity:0;transform:translateY(12px);animation:settle .8s ease-out .45s forwards}
-  /* Reel-hero scroll-prompt button uses the canonical .btn .cascade
-     vocabulary (matches the homepage Digital/Studios pair and the page
-     closer "Start a film"). The .reel-scroll custom class was removed
-     June 24 2026 — see studios.md Notes 15. The settle-in animation
-     timing (.7s delay so the button lands after H1 + body) is
-     preserved here. The .btn rule globally defines border:1px solid
-     var(--paper) which works against the dark video background. */
-  .reel-hero .btn{opacity:0;transform:translateY(10px);animation:settle .8s ease-out .7s forwards}
+  /* Breakout machinery — centered on the column */
+  .prose .breakout{width:min(980px,calc(100vw - 2*var(--gutter)));margin-left:50%;transform:translateX(-50%)}
 
-  /* Pattern H — Proof bar. Single high-contrast declarative trophy line.
-     Studios Block 2. Ink background, paper text. No section header. */
-  .proof-bar{background:var(--ink);color:var(--paper);padding:36px 0;border-top:1px solid rgba(250,250,247,.12);border-bottom:1px solid rgba(250,250,247,.12)}
-  .proof-bar-stat{font-family:var(--display);font-size:clamp(18px,1.9vw,24px);font-weight:500;letter-spacing:-.01em;line-height:1.45}
-  .proof-bar-stat strong{font-weight:700}
-  .proof-bar-body{color:rgba(250,250,247,.72);font-weight:400}
-  .proof-bar-body em{font-style:italic;color:var(--paper);font-weight:500}
-
-  /* Pattern I — DECOMMISSIONED June 24 2026. The Studios films index
-     originally shipped with a custom featured+grid pattern (7fr/5fr
-     featured rows for award winners + 4-up grid for the rest). JP's
-     brief on review: "The design pattern for the film case studies
-     should be the same pattern/component as on the digital page."
-     Swapped for the canonical .work + .cards.four-up + .card pattern
-     used on /digital "Digital, selected" and the homepage "Selected
-     work" — same dark ink band, same eyebrow .tag taxonomy, same
-     .go.swipe italic-last-word CTA. All the CSS for that pattern
-     (lines 129-145 + 354-361 of this file, came along with the
-     digital.html clone) is reused as-is. No new CSS for Block 3 —
-     just the markup swap. See studios.md Notes 16 + audit doc
-     §Pattern I (now marked DECOMMISSIONED).
-
-     ONE SMALL ADDITION: 6 films in a 4-up grid means row 2 has 2
-     real cards + 2 empty cells. Without intervention, those empties
-     show the .cards parent's line-light background. A placeholder
-     card (.card.placeholder) fills cells 7-8 with the .card ink
-     background so the empties read as blank dark cards and the 1px
-     gap-line rhythm stays consistent with /digital's 4-card layout.
-     pointer-events:none keeps them un-clickable. aria-hidden="true"
-     keeps them out of the accessibility tree. */
-  .work .card.placeholder{pointer-events:none;padding:0}
-
-  /* .wcard.feature — ported verbatim from /work.html (CSS at work.html
-     lines 356-393). JP brief June 24 2026: "Lets add this exact
-     component from the work.html page below the title WORK and above
-     the rows of films on the studios page." Hero/featured treatment
-     for the strongest piece (Iron Mountain — The Summit, the ADDY
-     winner) — cinematic 21:9 frame with a paper-text-on-tint
-     overlay carrying h2 + body + Watch CTA. The .w-namespaced
-     classes don't collide with the .card / .work rules already on
-     studios (those came from the digital.html clone). Lives between
-     the .head (H2 "The films") and the .cards.four-up grid below.
-     See studios.md Notes 17. */
-  .work .wcard{display:flex;flex-direction:column;position:relative;margin-bottom:clamp(40px,5vh,72px)}
-  .work .wframe{aspect-ratio:16/9;background:var(--ink-soft);position:relative;overflow:hidden;margin-bottom:18px}
-  .work .wcard.feature .wframe{aspect-ratio:21/9;margin-bottom:0}
-  .work .wtint{position:absolute;inset:0;background:linear-gradient(transparent 30%, rgba(18,19,21,.72) 100%);z-index:1;pointer-events:none}
-  .work .wcard-overlay{position:absolute;bottom:0;left:0;right:0;padding:clamp(22px,3vw,38px);z-index:2;color:var(--paper)}
-  .work .wcard-overlay h2{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.4vw,36px);letter-spacing:-.01em;margin:10px 0 8px;color:var(--paper)}
-  .work .wcard-overlay h2 i{font-family:var(--serif);font-style:italic;font-weight:500}
-  .work .wcard-overlay p{font-size:15px;color:rgba(250,250,247,.78);max-width:54ch;margin-bottom:12px}
-  .work .wgo{font-weight:700;font-size:13.5px;letter-spacing:.04em;margin-top:auto;display:inline-block}
-  .work .wcard-overlay .wgo{color:rgba(250,250,247,.9);font-size:14px}
-
-  /* Pattern J — Credits one-sheet. Three credits in a 3-up grid; each is
-     portrait + name + role + credit line. Portraits added June 24 2026
-     overriding the original "no portraits, no bios" brief — see
-     studios.md Notes 14. The 1px ink rule moved from .credit-card's
-     border-top onto .credit-name's border-top so the one-sheet credit-
-     block visual is preserved (portrait → ink rule → name) instead of
-     stranding the rule above the photo. Bios still live on /about.
-     Studios Block 4. Block footer carries a CTA routing to /about. */
-  .credits{padding:96px 0;background:var(--paper);border-top:1px solid var(--line)}
-  .credits-heading{font-family:var(--display);font-size:clamp(36px,4vw,60px);font-weight:600;line-height:1.05;letter-spacing:-.015em;margin-bottom:64px;max-width:960px}
-  .credits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-bottom:48px}
-  .credit-card{display:flex;flex-direction:column}
-  .credit-portrait{display:block;width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--paper);position:relative}
-  .credit-portrait img{width:100%;height:100%;object-fit:cover;display:block}
-  /* Bio-video rollover (June 24 2026). Each credit card has a Cloudflare
-     Stream iframe layered over the still portrait, lazy-loaded on first
-     hover. Iframe is sized 177.78% wide (16:9 ratio over 1:1 container)
-     so the 16:9 source fills the square portrait vertically and crops
-     horizontally. opacity:0 hides until both .loaded class is applied
-     (iframe load event has fired) AND the card is hovered. pointer-
-     events:none keeps the iframe transparent to clicks; aria-hidden +
-     tabindex=-1 keep it out of the accessibility tree. See studios.md
-     Notes 19. */
-  .credit-portrait .credit-video{
-    position:absolute;top:50%;left:50%;
-    width:177.78%;height:100%;
-    transform:translate(-50%,-50%);
-    border:0;opacity:0;
-    transition:opacity .4s ease;
-    pointer-events:none;z-index:1
+  /* Lede — drop cap opener */
+  .prose .lede{font-size:21px;line-height:1.62}
+  .prose .lede::first-letter{
+    font-family:var(--serif);font-weight:500;
+    float:left;font-size:4.6em;line-height:.8;
+    padding:.04em .16em 0 0;
   }
-  .credit-card:hover .credit-portrait .credit-video.loaded{opacity:1}
-  .credit-name{font-family:var(--display);font-size:clamp(22px,1.8vw,28px);font-weight:600;letter-spacing:-.01em;margin-bottom:8px;border-top:1px solid var(--ink);padding-top:24px}
-  .credit-role{font-family:var(--text);font-size:13px;color:var(--magenta);font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:20px}
-  .credit-line{font-size:15px;line-height:1.55;color:var(--grey)}
-  .credits-cta{font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.04em;display:inline-block}
-  @media (max-width:880px){
-    .credits-grid{grid-template-columns:1fr;gap:40px}
-    .credit-portrait{max-width:360px}
+
+  /* Numbered section heads — rule, index, title */
+  .prose h2{
+    font-family:var(--display);font-weight:700;letter-spacing:-.015em;
+    font-size:clamp(30px,3.4vw,44px);line-height:1.05;
+    margin-top:3em;padding-top:26px;border-top:2px solid var(--ink);
+  }
+  .prose h2::before{
+    counter-increment:sect;content:counter(sect,decimal-leading-zero);
+    display:block;
+    font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
+    font-size:12px;letter-spacing:.16em;color:var(--magenta);
+    margin-bottom:16px;
+  }
+
+  /* Ledger — the three failure modes as indexed rows */
+  .ledger{margin-top:2em}
+  .ledger .lrow{
+    display:grid;grid-template-columns:84px 1fr;gap:0 26px;align-items:start;
+    padding:28px 0;border-top:1px solid var(--line);
+  }
+  .ledger .lrow:last-child{border-bottom:1px solid var(--line)}
+  .ledger .ln{
+    font-family:var(--serif);font-style:italic;font-weight:500;
+    font-size:clamp(44px,5vw,64px);line-height:.85;color:var(--magenta);
+  }
+  .ledger h3{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.01em;margin:0 0 8px}
+  .ledger p{font-size:16.5px;line-height:1.6;opacity:.85;max-width:54ch;margin:0}
+  @media(max-width:620px){.ledger .lrow{grid-template-columns:48px 1fr;gap:0 16px}}
+
+  /* Pull quote — the body's voice moment, breakout width */
+  .pull{margin-top:3.2em;margin-bottom:3.2em;padding:30px 0 38px;
+    border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
+  .pull .eyebrow{color:var(--magenta);display:block;margin-bottom:24px}
+  .pull p{
+    font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:-.02em;
+    font-size:clamp(28px,3.6vw,46px);line-height:1.22;max-width:30ch;
+  }
+
+  /* Spec list — what we changed */
+  .prose ul.changes{list-style:none;padding:0}
+  .prose ul.changes>li{
+    position:relative;padding:18px 0 18px 32px;margin:0;
+    border-top:1px solid var(--line);font-size:17.5px;line-height:1.6;
+  }
+  .prose ul.changes>li:last-child{border-bottom:1px solid var(--line)}
+  .prose ul.changes>li::before{
+    content:"";position:absolute;left:2px;top:28px;width:8px;height:8px;background:var(--magenta);
+  }
+  .prose ul.changes ul{list-style:none;padding:0;margin-top:.6em}
+  .prose ul.changes ul li{font-size:15.5px;color:var(--grey);padding-left:20px;position:relative;margin-top:.4em}
+  .prose ul.changes ul li::before{content:"—";position:absolute;left:0;color:var(--magenta)}
+
+  /* Sequence — indexed steps */
+  .prose ol.seq{list-style:none;padding:0;counter-reset:seq}
+  .prose ol.seq li{
+    counter-increment:seq;display:grid;grid-template-columns:56px 1fr;align-items:baseline;
+    padding:16px 0;margin:0;border-top:1px solid var(--line);
+    font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.01em;line-height:1.3;
+  }
+  .prose ol.seq li:last-child{border-bottom:1px solid var(--line)}
+  .prose ol.seq li::before{
+    content:"0" counter(seq);
+    font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
+    font-size:12px;letter-spacing:.16em;color:var(--magenta);
+  }
+
+  /* Figure — plate + spec caption */
+  .prose figure.breakout{margin-top:3em;margin-bottom:3em}
+  .fig-art{display:block;width:100%;height:auto;aspect-ratio:16/9;background:var(--ink-soft);object-fit:cover}
+  .prose figure.breakout figcaption{
+    display:flex;gap:16px;align-items:baseline;
+    font-size:13px;color:var(--grey);line-height:1.5;
+    padding-top:12px;margin-top:12px;border-top:1px solid var(--ink);max-width:none;
+  }
+  .prose figure.breakout figcaption b{
+    font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--magenta);white-space:nowrap;
+  }
+
+  /* Signal band — full-bleed mid-article capture */
+  .prose .signal{
+    width:100vw;margin-left:50%;transform:translateX(-50%);
+    background:var(--ink);color:var(--paper);
+    margin-top:3.4em;margin-bottom:3.4em;
+  }
+  .signal-in{
+    max-width:980px;margin-inline:auto;
+    padding:clamp(44px,7vh,72px) var(--gutter);
+    display:grid;grid-template-columns:1.5fr 1fr;gap:36px;align-items:center;
+  }
+  .sig-line{
+    font-family:var(--display);font-weight:500;letter-spacing:-.01em;
+    font-size:clamp(22px,2.4vw,30px) !important;line-height:1.25 !important;
+  }
+  .signal .field{display:flex;border:1px solid var(--line-light)}
+  .signal input{flex:1;min-width:0;background:transparent;border:0;color:var(--paper);font-family:var(--text);font-size:14px;padding:13px 14px}
+  .signal input:focus{outline:none}
+  .signal button{background:var(--paper);color:var(--ink);border:0;font-family:var(--text);font-weight:700;font-size:13px;padding:0 22px;cursor:pointer;transition:background .2s ease-out,color .2s ease-out}
+  .signal button:hover{background:var(--magenta);color:var(--paper)}
+  @media(max-width:760px){.signal-in{grid-template-columns:1fr;gap:24px}}
+
+  /* End mark */
+  .prose p.end::after{
+    content:"";display:inline-block;width:10px;height:10px;
+    background:var(--magenta);margin-left:10px;
+  }
+
+  /* Masthead slot */
+  .masthead .wframe{position:relative;overflow:hidden}
+  .masthead .wframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .masthead .wtint{position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(rgba(18,19,21,.38),rgba(18,19,21,.12) 45%,rgba(18,19,21,.52))}
+
+  /* Related — editorial index rows */
+  .related-v2{padding:clamp(72px,10vh,120px) 0;border-top:1px solid var(--line)}
+  .rel-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:36px}
+  .rel-head h2{font-family:var(--display);font-weight:500;font-size:clamp(32px,3.6vw,52px);letter-spacing:-.015em}
+  .rel-head .swipe{font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.03em}
+  .rel-rows{display:flex;flex-direction:column}
+  .rel-row{
+    display:grid;grid-template-columns:3ch 1fr auto 28px;
+    gap:clamp(14px,2.4vw,32px);align-items:baseline;
+    padding:24px 0;border-top:1px solid var(--ink);
+  }
+  .rel-row:last-child{border-bottom:1px solid var(--ink)}
+  .rel-n{font-family:var(--mono,ui-monospace,Menlo,monospace);font-size:12px;letter-spacing:.1em;color:var(--magenta)}
+  .rel-row .stream{
+    font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--grey);display:block;margin-bottom:7px;transition:color .2s ease-out;
+  }
+  .rel-row .rel-title{
+    display:block;
+    font-family:var(--display);font-weight:700;letter-spacing:-.01em;line-height:1.12;
+    font-size:clamp(21px,2.4vw,30px);transition:transform .3s cubic-bezier(.22,1,.36,1);
+  }
+  .rel-date{font-size:13px;color:var(--grey);white-space:nowrap}
+  .rel-ar{font-size:20px;color:var(--magenta);opacity:0;transform:translateX(-10px);
+    transition:opacity .25s ease-out,transform .25s ease-out}
+  .rel-row:hover .rel-title{transform:translateX(10px)}
+  .rel-row:hover .stream{color:var(--magenta)}
+  .rel-row:hover .rel-ar{opacity:1;transform:translateX(0)}
+  @media(max-width:640px){
+    .rel-row{grid-template-columns:3ch 1fr 22px}
+    .rel-date{display:none}
+  }
+
+  /* Rise-in: index rows use the site reveal motion, staggered by row */
+  .rel-row.reveal{transition-delay:calc(var(--d,0)*70ms)}
+
+  @media(prefers-reduced-motion:reduce){
+    .rel-row .rel-title,.rel-ar{transition:none}
   }
 </style>
 
-<style id="about-page">
-  /* ---------- About — two-voices emphasis ---------- */
-  .sub-hero h1 em.voice,.engine h2 em.voice,.page-closer h2 em.voice{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:-.01em}
-  em.voice.mag,.voice.mag{color:var(--magenta)}
-  /* Hero supporting line sits on the INK hero — force legible paper text
-     (the shared .sub-body rule defaults to ink, which was invisible here). */
-  .sub-hero .sub-body{color:var(--paper);opacity:.82}
-  .sub-hero .sub-body strong{color:var(--paper);opacity:1}
-
-  /* ---------- Block 2 — Story prose ---------- */
-  .story-body p{font-size:clamp(18px,1.5vw,21px);line-height:1.6;max-width:60ch}
-  .story-body p + p{margin-top:1.15em}
-  .story-body p strong{font-weight:700}
-
-  /* ---------- Block 3 — One team roster ---------- */
-  .team{padding-top:clamp(80px,11vh,150px);padding-bottom:clamp(80px,11vh,150px);background:var(--paper);border-top:1px solid var(--line)}
-  .team-head{max-width:760px;margin-bottom:clamp(48px,6vw,84px)}
-  .team-head .eyebrow{color:var(--magenta);display:block;margin-bottom:18px}
-  .team-head h2{font-family:var(--display);font-weight:500;font-size:clamp(40px,4.6vw,72px);line-height:1.02;letter-spacing:-.015em;margin-bottom:20px}
-  .team-sub{font-size:clamp(18px,1.6vw,22px);line-height:1.45;color:var(--ink);max-width:54ch}
-  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(30px,3vw,56px) clamp(24px,2.4vw,40px);counter-reset:lead}
-  .lead-card{display:flex;flex-direction:column;counter-increment:lead}
-  .lead-portrait{position:relative;margin-bottom:0;background:var(--ink-soft);overflow:hidden}
-  .lead-portrait image-slot{display:block;width:100%;aspect-ratio:4/5;transition:transform .7s cubic-bezier(.22,1,.36,1)}
-  .lead-card:hover .lead-portrait image-slot{transform:scale(1.035)}
-  .lead-card h3{position:relative;font-family:var(--display);font-weight:600;font-size:clamp(22px,1.9vw,28px);letter-spacing:-.01em;margin:22px 0 6px;padding-top:20px;border-top:1px solid var(--line)}
-  .lead-card h3::before{content:counter(lead,decimal-leading-zero);display:block;font-family:var(--serif);font-style:italic;font-weight:500;font-size:17px;line-height:1;color:var(--magenta);margin-bottom:12px}
-  .lead-card h3::after{content:"";position:absolute;top:-1px;left:0;width:44px;height:2px;background:var(--magenta);transform:scaleX(0);transform-origin:left center;transition:transform .8s cubic-bezier(.22,1,.36,1) .12s}
-  .lead-card.in h3::after{transform:scaleX(1)}
-  @media(prefers-reduced-motion:reduce){.lead-card h3::after{transform:scaleX(1)}.lead-portrait image-slot{transition:none}}
-  .lead-role{font-family:var(--text);font-weight:700;font-size:13px;letter-spacing:.02em;color:var(--grey,#6f6f6f);margin-bottom:16px}
-  .lead-bio{font-size:15.5px;line-height:1.55;color:var(--ink);opacity:.82}
-  .lead-bio em{font-family:var(--serif);font-style:italic}
-  @media(max-width:980px){.team-grid{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:620px){.team-grid{grid-template-columns:1fr;max-width:430px}}
-
-  /* ---------- Block 4 — How we work (ink) ---------- */
-  .principles{background:var(--ink);color:var(--paper);padding-top:clamp(90px,12vh,160px);padding-bottom:clamp(90px,12vh,160px)}
-  .principles .eyebrow{color:var(--magenta);display:block;margin-bottom:18px}
-  .principles h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,4vw,60px);line-height:1.04;letter-spacing:-.015em;margin-bottom:clamp(44px,6vw,72px);max-width:18ch}
-  .pr-list{list-style:none;display:flex;flex-direction:column;border-top:1px solid var(--line-light)}
-  .pr-list li{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,68px);align-items:baseline;padding:clamp(26px,3.4vw,44px) 0;border-bottom:1px solid var(--line-light)}
-  .pr-n{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;letter-spacing:.1em;color:var(--magenta);padding-top:.45em}
-  .pr-list p{font-family:var(--display);font-weight:400;font-size:clamp(22px,2.6vw,40px);line-height:1.18;letter-spacing:-.01em;max-width:26ch}
-  .pr-list p strong{font-weight:700}
-  @media(max-width:680px){.pr-list li{grid-template-columns:1fr;gap:10px}}
-
-  /* ---------- Block 5 — Recognition ---------- */
-  .recognition{background:var(--paper);padding-top:clamp(64px,8vh,110px);padding-bottom:clamp(64px,8vh,110px);border-top:1px solid var(--line)}
-  .recognition .eyebrow{color:var(--magenta);display:block;margin-bottom:36px}
-  .rec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
-  .rec{padding:6px 32px 6px 0;border-right:1px solid var(--line)}
-  .rec:last-child{border-right:0}
-  .rec + .rec{padding-left:32px}
-  .rec b{display:block;font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(26px,2.6vw,40px);letter-spacing:-.01em;line-height:1.1;margin-bottom:12px}
-  .rec span{font-family:var(--text);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey,#6f6f6f)}
-  .rec span em{font-style:italic;text-transform:none;letter-spacing:0;font-weight:400}
-  @media(max-width:760px){.rec-grid{grid-template-columns:1fr}.rec{border-right:0;border-bottom:1px solid var(--line);padding:18px 0}.rec + .rec{padding-left:0}.rec:last-child{border-bottom:0}}
-
-  /* ---------- Block 6 — Land acknowledgement ---------- */
-  .anywhere .anywhere-body{font-size:clamp(16px,1.4vw,20px);line-height:1.6;color:var(--ink);opacity:.9;max-width:64ch}
-</style>
 </head>
 <body>
 
@@ -953,7 +731,7 @@
     <a class="tk-l" style="--td:0.13s" href="digital.html"><span class="tk-n">02</span><span class="tk-t">Digital</span><span class="tk-ar">→</span></a>
     <a class="tk-l" style="--td:0.18s" href="studios.html"><span class="tk-n">03</span><span class="tk-t">Studios</span><span class="tk-ar">→</span></a>
     <a class="tk-l" style="--td:0.23s" href="insights.html"><span class="tk-n">04</span><span class="tk-t">Insights</span><span class="tk-ar">→</span></a>
-    <a class="tk-l is-current" aria-current="page" style="--td:0.28s" href="about.html"><span class="tk-n">05</span><span class="tk-t">About</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.28s" href="about.html"><span class="tk-n">05</span><span class="tk-t">About</span><span class="tk-ar">→</span></a>
   </div>
   <div class="tk-foot">
     <a href="tel:+16042279952">+1 (604) 227-9952</a>
@@ -962,146 +740,117 @@
 </div>
 
 
-<!-- ====================================================================
-     ABOUT PAGE BODY
-     Built June 24 2026. Reference: docs/copy/about.md (status: INTERIM).
-     Leadership-only roster by design (JP's call): six leads, no full-team
-     wall. Block 2 adversity alternate omitted; Block 7 Careers teaser
-     dropped until /careers exists. Shared chrome per _shared.md. Craft
-     Layer (ps-spice.css/js) applied in production mode, consistent with
-     /digital and /studios.
-     PORTRAITS use <image-slot> placeholders for the design phase — human
-     photography, never generated (about.md Note 5). In the static build,
-     replace each <image-slot> with a real <img src="images/…">. ========= -->
 
-<!-- Block 1 — Identity hero. Quiet .sub-hero statement (JP's call: let the
-     H1 claim carry it). H1 = page thesis; .sub-body bolds the trick. -->
-<section class="sub-hero" data-screen-label="About">
+<!-- Sub-page hero: same DNA as homepage, ~50vh, clearly a sub-section -->
+<section class="sub-hero article">
   <svg class="slash-field" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="pair" transform="translate(1060 230) scale(2.2)" style="--dur:15.6s;--dly:0s;--sh:10.4px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(780 460) scale(1.3)" style="--dur:20.4s;--dly:-9s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1260 520) scale(1.7)" style="--dur:13.2s;--dly:-15s;--sh:9.2px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(640 260) scale(1.0)" style="--dur:18s;--dly:-4s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(940 560) scale(1.1)" style="--dur:22.8s;--dly:-21s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1380 360) scale(1.2)" style="--dur:18.6s;--dly:-6s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g></svg>
   <div class="sub-hero-inner wrap">
-    <span class="eyebrow">About — one culture, two practices</span>
-    <h1 class="rise">Designers at heart. <em class="voice">From software to&nbsp;cinema.</em></h1>
-    <p class="sub-body">One design culture, two practices, fifteen-plus years. <strong>The engineers think like designers. The directors do too. That's the whole trick.</strong></p>
+    <a class="back swipe" href="index.html">← Back home</a>
+    <span class="eyebrow">Legal · Terms &amp; Conditions</span>
+    <h1 class="rise" id="title">Terms &amp; Conditions</h1>
+    <p class="sub-voice"><em class="voice mag">Our lawyers made us publish this page — we swear.</em></p>
+    <div class="byline"><span class="date">Last updated: June 25, 2026</span></div>
   </div>
 </section>
 
-<!-- Block 2 — The story. Canonical .engine layout: H2 left, prose right.
-     Adversity alternate paragraph intentionally omitted (about.md Note 1). -->
-<section class="engine" id="story">
-  <div class="wrap engine-grid reveal">
-    <div>
-      <h2 class="rise">The studio happened to us</h2>
-      <span class="rule"></span>
-    </div>
-    <div class="story-body">
-      <p>POWER SHIFTER started as a digital product studio and stayed one — design-led from the first hire, never a dev shop, building platforms and products for brands like TELUS, Energizer, and lululemon. The founder came up the other way around: film and television, then commercial production alongside Ridley Scott's Black Dog Films and ILM, then design.</p>
-      <p>That history sat quietly for fifteen years. Then generative AI made it relevant overnight. Most of the field is still making spec spots. We're making the real thing, on <strong>six-figure client budgets</strong> — a second practice we didn't plan, staffed by people who've been making pictures for decades. We didn't chase the trend. The trend circled back to where we started.</p>
-      <p>So now there are two doors: software and cinema. Behind both, the same design culture and the same rule — <strong>the work and the place it lives, made in the same room.</strong></p>
-    </div>
-  </div>
-</section>
 
-<!-- Block 3 — One team. Leadership roster (six leads). Portraits are
-     <image-slot> placeholders; replace with real <img> in the static build. -->
-<section class="team" id="team">
-  <div class="wrap">
-    <div class="team-head">
-      <span class="eyebrow">Leadership — the people</span>
-      <h2 class="rise">One team</h2>
-      <p class="team-sub">Six leads, two practices, no fence between them. Experts, regardless of seniority — and you'll work with them directly.</p>
-    </div>
-    <div class="team-grid">
-      <article class="lead-card reveal">
-        <div class="lead-portrait"><image-slot id="about-jp" shape="rect" fit="cover" placeholder="JP Holecka — portrait"></image-slot></div>
-        <h3>JP Holecka</h3>
-        <p class="lead-role">Founder &amp; CEO · Director, Studios</p>
-        <p class="lead-bio">Thirty years across film, television, and design. Production credits include <em>Little Women</em> and <em>21 Jump Street</em>; commercial work alongside Ridley Scott's Black Dog Films, ILM's commercial division, and agency partners including Wieden+Kennedy and Goodby, Silverstein. Founded POWER SHIFTER to bring production discipline to digital product — then, two decades later, brought digital product discipline back to production. CEO of the Year, BC, 2022.</p>
-      </article>
-      <article class="lead-card reveal">
-        <div class="lead-portrait"><image-slot id="about-gina" shape="rect" fit="cover" placeholder="Gina Asuncion Bernier — portrait"></image-slot></div>
-        <h3>Gina Asuncion Bernier</h3>
-        <p class="lead-role">Chief of Staff</p>
-        <p class="lead-bio">Fifteen-plus years running the operational layer for C-suites, founders, and boards — including a first tour at POWER SHIFTER. Back to keep the place steady while it moves fast.</p>
-      </article>
-      <article class="lead-card reveal">
-        <div class="lead-portrait"><image-slot id="about-ted" shape="rect" fit="cover" placeholder="Ted Morgan — portrait"></image-slot></div>
-        <h3>Ted Morgan</h3>
-        <p class="lead-role">Partner / Client Delivery</p>
-        <p class="lead-bio">Fifteen-plus years leading delivery for Coca-Cola, Microsoft, Starwood, and A&amp;W. Owns the promise that what we say on day one is what ships.</p>
-      </article>
-      <article class="lead-card reveal">
-        <div class="lead-portrait"><image-slot id="about-cary" shape="rect" fit="cover" placeholder="Cary Newfeldt — portrait"></image-slot></div>
-        <h3>Cary Newfeldt</h3>
-        <p class="lead-role">Partner / Technology</p>
-        <p class="lead-bio">Two decades leading engineering teams at Nike, Starbucks, Microsoft, and Nintendo. A technologist who hires designers' brains into developers' chairs — the reason "never a dev shop" is true at the code level.</p>
-      </article>
-      <article class="lead-card reveal">
-        <div class="lead-portrait"><image-slot id="about-johnny" shape="rect" fit="cover" placeholder="Johnny Darrell — portrait"></image-slot></div>
-        <h3>Johnny Darrell</h3>
-        <p class="lead-role">Director / Editor</p>
-        <p class="lead-bio">Twenty-five years in CGI animation and storytelling. Directed on <em>Sausage Party: Foodtopia</em> (Amazon) and Lord Miller's <em>Cloudy with a Chance of Meatballs</em> (Sony). Was directing synthetic performances before the machines made it easy.</p>
-      </article>
-      <article class="lead-card reveal">
-        <div class="lead-portrait"><image-slot id="about-russ" shape="rect" fit="cover" placeholder="Russ Jarman Price — portrait"></image-slot></div>
-        <h3>Russ Jarman Price</h3>
-        <p class="lead-role">Chairman</p>
-        <p class="lead-bio">Former Creative Partner, Ogilvy London, and Chairman, Ogilvy Caribbean. Global rebrands and award-winning campaigns. The editorial standard the studio answers to.</p>
-      </article>
-    </div>
-  </div>
-</section>
+<!-- Legal copy -->
+<article class="article-body wrap">
+  <div class="prose">
+    <p class="lede">These Terms and Conditions of Use (the "Agreement") are between you and POWER SHIFTER Media Corp. ("POWER SHIFTER" or the "Company"). In consideration of the right to access and use the websites located at the Universal Resource Locator addresses https://powershifter.com (the "Sites" or the "Websites"), and to receive the services offered through the Websites, you agree to the terms and conditions of use set forth in this Agreement and acknowledge that you are at least 13 years of age.</p>
+    <p>This Agreement applies to the Services (as defined in the "Services" section below) currently offered by the Company and Services that the Company may choose to offer in the future (unless stated otherwise).</p>
+    <p>The Websites and the Services are available only to, and may only be used by, individuals and entities able to form legally binding contracts under applicable law. The Services offered hereunder are not available to children (persons under the age of 13) or to any user who has been suspended from any of the Sites, whose use has been restricted for any reason or whose registration has been revoked. If you are under the age of 13, you can use the Services only in conjunction with, and under the supervision of, your parents or guardians. If you do not qualify, please do not use the Websites or the Services. If you are acting on behalf of any entity or organization, you warrant and represent that you have the authority to bind the entity to this Agreement.</p>
+    <p>YOUR USE OF THE WEBSITES OR THE SERVICES CONSTITUTES YOUR ACCEPTANCE OF THIS AGREEMENT AND INDICATES YOUR WILLINGNESS TO BE BOUND BY THESE TERMS AND CONDITIONS.</p>
 
-<!-- Block 4 — How we work, in four sentences. Ink band; monospace numerals. -->
-<section class="principles" id="how-we-work">
-  <div class="wrap">
-    <span class="eyebrow">Principles — how we work</span>
-    <h2 class="rise">How we work, in four sentences</h2>
-    <ol class="pr-list reveal">
-      <li><span class="pr-n">01</span><p>You work directly with the experts — our account team is <strong>small, senior, and rides in the back.</strong></p></li>
-      <li><span class="pr-n">02</span><p>You'll see the work early and often, sometimes ugly — so we're <strong>never more than one degree off course,</strong> and never for long.</p></li>
-      <li><span class="pr-n">03</span><p>Decisions get made <strong>at the edges,</strong> by the people closest to the work.</p></li>
-      <li><span class="pr-n">04</span><p>We hire for <strong>culture contributions,</strong> not culture fit.</p></li>
-    </ol>
-  </div>
-</section>
+    <h2>Website Content</h2>
+    <p>The Websites present information and content including, but not limited to, articles, opinions, text, data, software applications, commentary, advertisements, graphics, illustrations, calendars, designs, games, reviews, video and audio files, programs, code, and photos, in addition to User Generated Content (as defined herein) (collectively, "Content"), that is owned or licensed by the Company. The Sites may also include materials owned by third parties and posted on the Sites by virtue of a license, grant or some other form of agreement between the third party and POWER SHIFTER. When used in this Agreement, "we", "us" and "our" mean POWER SHIFTER.</p>
+    <p>The Content contained on the Websites is for general information use only and has not been verified by POWER SHIFTER. POWER SHIFTER does not make any representations as to the accuracy or completeness of Content or assume any liability for any loss that may result from the reliance by any person upon any Content we provide. Any statements non-factual in nature constitute only current opinions, which are subject to change without notice.</p>
 
-<!-- Block 5 — Recognition. Three-up. Verify all three before paid reuse (about.md Note 4). -->
-<section class="recognition" id="recognition">
-  <div class="wrap reveal">
-    <span class="eyebrow">Recognition — selected awards</span>
-    <div class="rec-grid">
-      <div class="rec"><b>CEO of the Year</b><span>BC Business, 2022</span></div>
-      <div class="rec"><b>Two Silver ADDYs</b><span><em>The Summit</em> &middot; <em>Four Dreams</em>, 2026</span></div>
-      <div class="rec"><b>Best UX for Product</b><span>Vancouver UX Awards — Delta Controls</span></div>
-    </div>
-  </div>
-</section>
+    <h2>Services</h2>
+    <p>Through the Websites, you may be able to review Content (as defined herein), upload and download files, register for membership, purchase products, make donations, sign up for events, pay for goods and services, communicate and establish relationships with other users, and post information, opinions and comments (collectively, the "Services"). POWER SHIFTER reserves the right to change, suspend and discontinue any aspect of the Services at any time including, but not limited to, the nature of the Services offered, databases, hours of availability, and software needed for access or use. Notwithstanding anything herein to the contrary, POWER SHIFTER reserves the right to permit or restrict access to Services and Websites to any user in its sole and absolute discretion.</p>
 
-<!-- Block 6 — Work-from-anywhere. (Land acknowledgement stays in the footer per _shared.md; this on-page block now carries the distributed-talent story.) -->
-<section class="engine anywhere" id="anywhere">
-  <div class="wrap engine-grid reveal">
-    <div>
-      <h2 class="rise">The best experts don’t live where you’d <em class="voice mag">assume.</em></h2>
-      <span class="rule"></span>
-    </div>
-    <div>
-      <p class="anywhere-body">POWER SHIFTER is a work-from-anywhere agency. Our experts are spread across Canada — coast to coast and every point between, from city cores to the suburbs to small towns. We hire for the work, not the postal code, because the best people rarely cluster where you’d expect them to. And that “same room” we keep mentioning? It’s a discipline, not an address — we just bring it with us.</p>
-    </div>
-  </div>
-</section>
+    <h2>Profiles, Blogs &amp; Boards</h2>
+    <p>POWER SHIFTER offers original and third party information on the Websites. You may be invited to provide custom screen names, icons and other profile information (collectively, "Profile Information"), and you may be permitted to comment on, post, transmit or submit messages, ideas, concepts, techniques, know-how and other information and materials, which may include uploading files, inputting data, providing personal information, submitting opinions or engaging in any form of communication that you submit, post and display on the Websites or through the Services (collectively, and together with Profile Information, "User Generated Content") to other Website users, blogs, bulletin boards and public areas (collectively "Forums") within or in connection with the Sites or in connection with the Services. In submitting User Generated Content to Forums, you agree to strictly limit yourself to discussions about the subject matter for which the Forums are intended.</p>
 
-<!-- Contact closer — standard page ending (#contact anchor used by nav + footer).
-     Careers teaser (about.md Block 7) dropped until /careers ships. -->
+    <h2>User Generated Content</h2>
+    <p>POWER SHIFTER does not endorse or have any control over User Generated Content submitted by you or others and accepts no responsibility whatsoever in connection with or arising therefrom. User Generated Content submitted through the Sites is not necessarily reviewed by the Company prior to posting and does not necessarily reflect the opinions or policies of the Company. If at any time the Company chooses, in its sole discretion, to monitor the Forums, the Company nonetheless assumes no responsibility for User Generated Content, no obligation to modify or remove any inappropriate or inaccurate User Generated Content, and no responsibility for the conduct of the user submitting any User Generated Content.</p>
+    <p>The Company makes no warranties, express or implied, as to the suitability, accuracy or reliability of any files, data, ideas, information, opinions, designs, communications, messages, posts, transmissions or other content and materials, including User Generated Content, accessible on or through the Websites or the Services (collectively, "Content"). Nonetheless, the Company reserves the right to prevent you from submitting User Generated Content and to edit, restrict or remove any User Generated Content for any reason at any time. You agree that POWER SHIFTER shall accept no liability if we prevent, in our sole discretion, your User Generated Content from being submitted, or we edit, restrict or remove it. You also agree to permit any other user of the Sites and any third-party website on which your User Generated Content may be included, to access, view, store and reproduce the material for such user's personal use.</p>
+    <p>Certain portions of the Websites may offer you the ability to send (by e-mail or otherwise) messages directly to the Company or another user. The Company shall have no liability for any delay, loss or damage that may result from your use of e-mail tools or from interception or unauthorized use by third parties of any information you send through our systems. You are solely responsible for your interactions with other users on and through the Websites. POWER SHIFTER reserves the right, but has no obligation, to monitor disputes between you and other users.</p>
+    <p>In the event a dispute arises between you and POWER SHIFTER or any third party, please e-mail the Company at <a href="mailto:info@powershifter.com">info@powershifter.com</a> and we will work quickly towards a resolution. We encourage you to report all user-to-user disputes to your local law enforcement, postmaster general, or a certified mediation or arbitration entity.</p>
+
+    <h2>Ownership and Use of Content</h2>
+    <p>As between you and POWER SHIFTER, all Content is owned by POWER SHIFTER and is protected by worldwide copyright laws and treaty provisions, unless otherwise indicated. You may make and use printouts of the Content for your personal, non-commercial use only, provided that the printouts retain all copyright, trademark and other proprietary notices. Use of the Content on any other website or in a networked computer environment for any purpose, or any other republication or redistribution of the Content, including, without limitation, framing the Content within another website, is expressly prohibited without the prior written permission of POWER SHIFTER. Please contact us at <a href="mailto:info@powershifter.com">info@powershifter.com</a> with any licensing inquiries.</p>
+    <p>POWER SHIFTER shall not (a) be subject to any obligations of confidentiality regarding any User Generated Content except as specified in POWER SHIFTER' Privacy Policy, as set forth in any additional terms and conditions relating to specific products or services, or as otherwise specifically agreed to by us in writing or required by law; (b) be obligated to pay you or any third party any compensation for any User Generated Content; or (c) be required to respond to any of your submissions of User Generated Content.</p>
+    <p>By posting any Content on the Website, you hereby grant the Company a perpetual, world-wide, irrevocable, unrestricted, non-exclusive, royalty-free license to use, copy, license, sublicense, adapt, distribute, display, publicly perform, reproduce, transmit, modify, and edit any such Content which you may provide. You hereby waive all rights to any claim against the Company for any alleged or actual infringements of any intellectual property rights, proprietary rights, rights of privacy and publicity, moral rights, and rights of attribution in connection with such Content. By submitting Content, you represent to the Company that such content is original, you are its rightful owner or that you have first obtained permission from the rightful owner to submit it, and that you have the authority to assign and license to the Company all rights, title and interest as set forth herein in and to such Content. You acknowledge that the Company has detrimentally relied upon this representation. Accordingly, you further agree to defend, hold harmless and indemnify the Company from and against any and all claims of alleged or actual infringements of any intellectual property rights, proprietary rights, rights of privacy and publicity, moral rights, and rights of attribution raised by third parties against the Company in connection with such Content.</p>
+    <p>You agree to release Company, its parents, partners, contractors and affiliates together with their respective employees, agents, officers, directors and shareholders, from any and all liability and obligations whatsoever in connection with, or arising from, your use of the Forums or the Services. If at any time you are not happy with the Websites or the Services or object to any Content, your sole remedy is to cease using them.</p>
+
+    <h2>Advertisements and Third Party Content</h2>
+    <p>From time to time, we may incorporate advertising, information, features and services provided by other users or third parties ("Third Party Content"). Third Party Content, whether provided by us or not, does not imply any endorsement, approval, or verification by us of such Third Party Content or the policies, products or services of any third party. We do not always review Third Party Content and we are not responsible or liable for its quality, availability or completeness, or its compliance with any law, rule or regulation. By providing access to Third Party Content, POWER SHIFTER is not recommending the products or services of any third party. Subject to the terms of applicable service or other agreements, we may remove any Third Party Content from the Websites or Services upon written request by its owner or licensor. Please consult any and all Terms and Conditions and Privacy Policy applicable to Third party Content prior to using it.</p>
+
+    <h2>Limitation of Use</h2>
+    <p>You agree that you will neither post on the Websites nor submit to Forums any User Generated Content that:</p>
+    <ul>
+      <li>is unlawful, threatening, obscene, vulgar, pornographic, profane or indecent, including any communication that constitutes (or encourages conduct that would constitute) a criminal offense, gives rise to civil liability or otherwise violates any local, state, national or international law;</li>
+      <li>violates the copyright, trademark or other intellectual property rights of any other person or POWER SHIFTER;</li>
+      <li>is false, inaccurate or misleading or improperly assumes or claims the identity, characteristics or qualifications of another person;</li>
+      <li>imposes an unreasonable or disproportionately large load on the Websites' infrastructure;</li>
+      <li>is for the purpose of spamming or aggressively promoting goods or services without our prior authorization;</li>
+      <li>is fraudulent or involves the distribution or sale of illegal, counterfeit, or stolen items;</li>
+      <li>contains any virus, Trojan horse, worm, time bomb, cancelbot, Easter eggs or other computer programming routines that may damage, detrimentally interfere with, surreptitiously intercept or expropriate any system, data or personal information, or other harmful component; or is libelous or invasive of privacy or publicity rights or any other third party rights;</li>
+    </ul>
+    <p>Furthermore, you acknowledge and agree that you will not: (i) collect or store personal data about other users of the Websites, including collecting usernames or email addresses of users by electronic or other means for the purpose of sending unsolicited email, (ii) upload, e-mail or otherwise transmit any material or User Generated Content that contains viruses or any other computer code, files or programs that might interrupt, limit or interfere with the functionality of any computer software, hardware, database or file that is owned, leased or used by POWER SHIFTER, the Websites, or their users; or (iii) submit unwanted messages by e-mail or otherwise or post User Generated Content that disparages or insults any user.</p>
+
+    <h2>Trademarks</h2>
+    <p>POWER SHIFTER and third party trademarks and service marks may or may not be designated as such from time to time on the Sites through use of the SM, TM or ® symbols. Except when included in any authorized printouts of the Content, you are not authorized to make any use of any names, logos or taglines posted on the Sites, whether or not designated by such symbols, including, but not limited to, as metatags or in any other fashion without the express prior written permission of the Company.</p>
+
+    <h2>Registration and Security</h2>
+    <p>In connection with your use of the Website, you may establish or otherwise receive from POWER SHIFTER user IDs, passwords and other security codes ("User Codes") that you may need in order to access and use certain portions of the Website.</p>
+    <p>You agree to provide true, accurate, current and complete information about yourself as prompted by the registration form ("Registration Info") and maintain and promptly update the Registration Info to keep it true, accurate, current and complete. You hereby authorize POWER SHIFTER, directly or through third parties, to make any inquiries we consider necessary to validate your Registration Info. POWER SHIFTER reserves all rights to vigorously pursue legal action against all persons who misrepresent personal information or are otherwise untruthful about their identity, and to suspend or cancel Accounts registered with inaccurate or incomplete information. Notwithstanding the foregoing, you acknowledge that POWER SHIFTER cannot guarantee the accuracy of any information submitted by any user, nor any identity information about any user.</p>
+    <p>You are responsible for maintaining the confidentiality of your User Codes. You agree that you will be fully responsible for all activities that occur utilizing your User Codes, and that POWER SHIFTER is not under any duty to inquire as to the authority or propriety of any instructions provided via your User Codes, or to otherwise verify the identity of anyone using your User Codes. You agree that POWER SHIFTER shall not be responsible for damages or losses resulting from any breach of security caused by your failure to maintain the confidentiality of your User Codes. If you permit access to your User Codes by third parties, then you agree to defend, indemnify and hold POWER SHIFTER harmless against any liability, losses, damages or costs and expenses (including attorneys' fees) arising out of, or resulting from, such access and related use of the Websites. POWER SHIFTER reserves the right to block access to the Websites for any reason. You also agree to immediately notify POWER SHIFTER if you become aware of any loss or theft of your User Codes or any unauthorized use of your User Codes.</p>
+    <p>For your protection, POWER SHIFTER may require the use of encryption technologies for certain types of communications conducted through the Websites. While we may provide those technologies and might use other reasonable precautions to protect confidential information and provide suitable security, we do not guarantee or warrant that information transmitted through the Internet is secure, or that such transmissions will be free from delay, interruption, interception or error.</p>
+
+    <h2>Minors</h2>
+    <p>POWER SHIFTER does not knowingly gather or solicit data from anyone under the age of 13 through the Websites for marketing purposes. Please see our Privacy Policy for additional information.</p>
+
+    <h2>Availability</h2>
+    <p>Not all of the products and Services offered through the Websites are available in all geographic areas, and we reserve the right to restrict any user from purchasing any product or receiving any Service made available through the Websites at any time, without notice. The information provided on the Websites is not directed at, or intended for distribution to, or use by, any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation, or any non-United States jurisdiction or country that would subject POWER SHIFTER or its affiliates to any registration requirement within such jurisdiction or country.</p>
+
+    <h2>No Warranty</h2>
+    <p>THE SERVICES, CONTENT AND WEBSITES ARE PROVIDED "AS IS" AND WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT, WHICH ARE HEREBY EXPRESSLY DISCLAIMED TO THE FULLEST EXTENT PERMISSIBLE PURSUANT TO APPLICABLE LAW. THE COMPANY SHALL NOT BE RESPONSIBLE OR LIABLE TO ANY USER FOR ANY ACTS OF FRAUD, THEFT, MISAPPROPRIATION, TAMPERING, HACKING, INTERCEPTION, PIRACY, MISUSE, MISREPRESENTATION, DISSEMINATION, OR OTHER ILLEGAL OR UNAUTHORIZED ACTIVITIES OF THIRD PARTIES. YOU UNDERSTAND AND EXPRESSLY AGREE THAT THE USE OF THE SERVICES, THE WEBSITES AND THE CONTENT IS AT YOUR SOLE RISK, THAT ANY AND ALL CONTENT, MATERIAL AND DATA UPLOADED, DOWNLOADED OR OTHERWISE OBTAINED THROUGH THE USE OF THE WEBSITES OR THE SERVICES IS AT YOUR OWN DISCRETION AND RISK AND THAT YOU WILL BE SOLELY RESPONSIBLE FOR ANY DAMAGE TO YOU, YOUR PROPERTY OR ANY THIRD PARTY OR THIRD PARTY'S PROPERTY THAT RESULTS FROM THE USE OF THE WEBSITES OR SERVICES.</p>
+    <p>TO THE EXTENT THAT THE LAW DOES NOT PERMIT THE DISCLAIMER OF WARRANTIES, ALL CONTENT AND SERVICES ACCESSIBLE ON THE WEBSITES, OR ANY OTHER WEBSITE TO WHICH IT IS LINKED, AND ALL OPERATIONS OF THE WEBSITE AND THE SERVICES ARE WARRANTED ONLY TO THE MINIMUM AMOUNT LEGALLY REQUIRED.</p>
+
+    <h2>No Liability</h2>
+    <p>IN USING THE WEBSITES AND THE SERVICES, YOU SPECIFICALLY AGREE THAT YOU WILL NOT HOLD POWER SHIFTER OR ITS OFFICERS, DIRECTORS, EMPLOYEES, CONTRACTORS, AGENTS AND SUPPLIERS LIABLE TO YOU OR ANY PARTY FOR ANY DAMAGES OR INJURY OR LOSS, INCLUDING ANY DIRECT, SPECIAL, INCIDENTAL, CONSEQUENTIAL OR PUNITIVE DAMAGES, OR LOST PROFITS, THAT MAY RESULT FROM THE USE OF, OR THE INABILITY TO USE, THE WEBSITES, CONTENT AND SERVICES (OR ANY OTHER DATA OR LINKED WEBSITE) OR OTHERWISE RELATING TO OR ARISING OUT OF THE WEBSITES, FORUMS, THE SERVICES, THE CONTENT OR YOUR USE THEREOF, WHETHER IN AN ACTION FOR BREACH OF CONTRACT, NEGLIGENCE OR OTHER ACTION. POWER SHIFTER SHALL NOT BE LIABLE EVEN IF POWER SHIFTER OR AN AUTHORIZED REPRESENTATIVE OF POWER SHIFTER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. NOTWITHSTANDING ANYTHING HEREIN TO THE CONTRARY, THE MAXIMUM LIABILITY OF POWER SHIFTER, ITS OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, CONTRACTORS AND SUPPLIERS FOR ANY CLAIM OR ACTION RELATING TO THE SITES OR THE SERVICES SHALL BE LIMITED TO THE GREATER OF (A) THE AMOUNT OF FEES PAID BY YOU TO POWER SHIFTER IN THE TWELVE MONTHS IMMEDIATELY PRECEDING THE DATE OF THE ACTION GIVING RISE TO LIABILITY, AND (B) $100.</p>
+
+    <h2>Indemnification</h2>
+    <p>You agree to indemnify, defend and hold harmless POWER SHIFTER, its officers, directors, employees, consultants, agents and representatives from any and all third party claims, liability, damages, and costs (including, but not limited to, attorneys' fees, costs and expenses) that result from, arise out of or are in anyway connected with your use of the Services or Websites, your breach of the terms of this Agreement, or your infringement, or infringement by any other person using your account, of any intellectual property or other right of POWER SHIFTER or any other person or entity. The terms of this Agreement will inure to the benefit of POWER SHIFTER' successors, assigns, licensors and licensees. The Services, the Websites and all related products are designed for personal and legal uses only. It is your responsibility to comply with all federal, state and local laws, rules and ordinances when using the Services, the Websites and any related products. You shall indemnify and hold harmless POWER SHIFTER, officers, directors, employees, consultants, agents and representatives for any and all claims, actual or threatened, actions, damages, liabilities, costs and expenses (including reasonable attorneys' fees, costs and expenses) that result from, arise out of or are in any way connected with your use of the Services, the Websites, the Content and any related products and services. You covenant to cooperate fully in the defense of any claim.</p>
+
+    <h2>Term &amp; Termination</h2>
+    <p>The term of this Agreement shall commence when you first visit the Websites, view the Content or use the Services and shall apply to all of your subsequent visits and uses, provided that nothing herein shall prohibit us from refusing or otherwise restricting access to any user for any reason at any time, in our sole discretion. POWER SHIFTER may, with or without cause, immediately terminate this Agreement without notice, and deny you access to the Websites and the Services in its sole discretion. Without limiting the foregoing, POWER SHIFTER has the right to immediately terminate any passwords or accounts created by you in the event that you breach this Agreement or engage in conduct that POWER SHIFTER, in its sole discretion, considers unacceptable. If this Agreement is terminated, you will no longer be authorized to access any areas of the Websites or use the Services. Without limiting any other rights POWER SHIFTER has, you understand and acknowledge that POWER SHIFTER, in its sole discretion, may pursue legal and equitable relief against you if you breach or threaten to breach this Agreement.</p>
+
+    <h2>Changes</h2>
+    <p>The Content, the Services, the Websites and this Agreement are subject to change and updating by POWER SHIFTER and our affiliates, partners, contractors, agents and representatives at any time without prior notice. The changes may include superseding terms and conditions. YOU SHOULD REVIEW THIS AGREEMENT FROM TIME TO TIME TO BE AWARE OF ANY CHANGES THAT ARE MADE. Your continuing use of the Websites constitutes your acceptance of any change or update, all of which shall become controlling when posted.</p>
+
+    <h2>Applicable Law; Jurisdiction</h2>
+    <p>Persons who access the Websites do so at their own initiative, and are responsible for compliance with applicable local laws and regulations. The laws of the Province of British Columbia will govern this Agreement, without regard to conflicts of law principles. The United Nations Convention on Contracts for the Sale of Goods does not apply to this Agreement. Any and all claims and controversies arising out of and related to the Privacy Policy and this Agreement shall be settled in the courts of competent jurisdiction in British Columbia. Any such claim or controversy shall be adjudicated on an individual basis and shall not be consolidated with a claim of any other party. The foregoing shall not preclude the Company from seeking any injunctive relief in courts of competent jurisdiction located in other countries for protection of the Company's intellectual property rights.</p>
+
+    <h2>General</h2>
+    <p>This Agreement set forth the entire understanding and agreement between you and us with respect to the subject matter hereof. If any provision or provisions hereof shall be held to be invalid, illegal, or unenforceable, the validity, legality, and enforceability of the remaining provisions shall not be in any way affected thereby. Except as described herein, you may not assign this Agreement without our explicit consent. You are responsible for fees associated with gaining access to the Websites, including the fees associated with the equipment necessary to access the Internet and the fees charged by your internet service provider. The Website is maintained by POWER SHIFTER, located at 180 Walkers Hook Rd., Salt Spring Island, BC V8K 1P5, Canada.</p>
+  </div>
+</article>
+
+<!-- Global page closer — same scale as homepage, page-specific copy -->
 <section class="page-closer" id="contact">
   <div class="wrap">
-    <h2 class="rise">Two doors: software and cinema. <em class="voice mag">Same room.</em></h2>
-    <p>Bring us the problem. You'll work with the people who solve it.</p>
+    <h2 class="rise">Read enough? <em class="voice mag">Let's build.</em></h2>
+    <p>Cinema in days. Software in weeks. You'll work directly with the people who make it — no account layer, no brief telephone.</p>
     <div class="pc-row">
-      <a class="btn solid cascade" href="#contact">Start a project →</a>
+      <a class="btn solid cascade" href="#">Start a project →</a>
       <a class="tel" href="tel:+16042279952">+1 (604) 227-9952</a>
     </div>
   </div>
 </section>
+
 
 
 <footer>
@@ -1116,7 +865,7 @@
         <li><a href="digital.html">Digital</a></li>
         <li><a href="studios.html">Studios</a></li>
         <li><a href="insights.html">Insights</a></li>
-        <li><a href="about.html" aria-current="page">About</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="#">Careers</a></li>
       </ul>
       <div class="news">
@@ -1238,66 +987,13 @@
   })();
 
 
-  // Hover video loops: lazy-load on first hover, never on touch or reduced motion
-  if (window.matchMedia('(hover: hover)').matches &&
-      !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    document.querySelectorAll('.wframe[data-video]').forEach(frame=>{
-      const card = frame.closest('.wcard') || frame;
-      let vid = null, resetTimer = null;
-      card.addEventListener('mouseenter', ()=>{
-        clearTimeout(resetTimer);
-        if(!vid){
-          vid = document.createElement('video');
-          vid.muted = true; vid.loop = true; vid.playsInline = true;
-          vid.className = 'hover-video';
-          const base = frame.dataset.video.replace(/\.mp4$/, '');
-          [['webm','video/webm'],['mp4','video/mp4']].forEach(([ext,type])=>{
-            const s = document.createElement('source');
-            s.src = base + '.' + ext; s.type = type;
-            vid.appendChild(s);
-          });
-          frame.appendChild(vid);
-        }
-        vid.play().then(()=>vid.classList.add('playing')).catch(()=>{});
-      });
-      card.addEventListener('mouseleave', ()=>{
-        if(!vid) return;
-        vid.pause();                       // freeze on the current frame
-        vid.classList.remove('playing');   // fade the frozen frame out
-        resetTimer = setTimeout(()=>{ vid.currentTime = 0; }, 420); // rewind only once hidden
-      });
-    });
-
-    // Credit-card bio videos: same lazy-on-first-hover pattern, but for
-    // Cloudflare Stream iframes (the credit cards use Stream UIDs rather
-    // than local MP4/WebM, so we layer an iframe over the still portrait
-    // and let Stream handle decode + loop). Page load fires zero iframe
-    // requests; on first mouseenter we set the src, the Stream player
-    // autoplays muted+looped, and a 'load' event toggles .loaded so the
-    // CSS opacity transition only fires after the video is actually
-    // ready (no blank-iframe flash). Subsequent hovers are instant
-    // (browser caches the iframe). See studios.md Notes 19.
-    document.querySelectorAll('.credit-card[data-video-uid]').forEach(card=>{
-      const iframe = card.querySelector('.credit-video');
-      if(!iframe) return;
-      const uid = card.dataset.videoUid;
-      const url = 'https://customer-xv1aafyshr3tbknu.cloudflarestream.com/' + uid +
-                  '/iframe?muted=true&autoplay=true&loop=true&controls=false&preload=auto';
-      let loaded = false;
-      card.addEventListener('mouseenter', ()=>{
-        if(loaded) return;
-        iframe.addEventListener('load', ()=>iframe.classList.add('loaded'), {once:true});
-        iframe.src = url;
-        loaded = true;
-      });
-    });
-  }
-
-  // Case cells rise on scroll entry, staggered by column
-  document.querySelectorAll('.work-grid .wcard').forEach((c,i)=>{
-    c.classList.add('reveal');
-    c.style.setProperty('--d', String(i%3));
-    ro.observe(c);
+  // Related index rows rise on scroll entry, staggered top-to-bottom
+  const relHead = document.querySelector('.rel-head');
+  if (relHead) { relHead.classList.add('reveal'); ro.observe(relHead); }
+  document.querySelectorAll('.rel-row').forEach((r,i)=>{
+    r.classList.add('reveal');
+    r.style.setProperty('--d', String(i));
+    ro.observe(r);
   });
 
   // Proof spine: only runs if proofRow exists (homepage only)
@@ -1323,21 +1019,8 @@
 </script>
 
 
-<script>
-  // Filter
-  const ftabs = document.querySelectorAll('.ftab');
-  const wcards = document.querySelectorAll('[data-cat]');
-  ftabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      ftabs.forEach(t => t.classList.remove('on'));
-      tab.classList.add('on');
-      const cat = tab.dataset.cat;
-      wcards.forEach(c => {
-        c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
-      });
-    });
-  });
 
+<script>
 // ---------- Button system ----------
 // Primary: letter cascade
 document.querySelectorAll('.cascade').forEach(function(btn){
@@ -1398,7 +1081,7 @@ document.querySelectorAll('.swipe').forEach(function(el){
 </script>
 
 
-<script src="image-slot.js"></script>
+
 <!-- PS Craft Layer -->
 <script src="ps-spice.js"></script>
 <!-- PS Concierge -->

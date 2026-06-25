@@ -2,34 +2,39 @@ name = "ps-concierge"
 main = "src/index.js"
 compatibility_date = "2024-11-01"
 
-# Public, non-secret config. Edit these for your deployment.
+# Public, non-secret runtime config. Once the Worker auto-deploys from GitHub,
+# THIS FILE is the source of truth for plaintext vars — Cloudflare applies
+# exactly these [vars] on every deploy, so dashboard edits to plaintext vars get
+# overwritten on the next push. Change vars HERE from now on. API keys are
+# SECRETS (set in the dashboard) and are never touched by a deploy.
 [vars]
-# Anthropic model id. Match the prototype, or change as you like.
+
+# Anthropic model id.
 MODEL = "claude-haiku-4-5"
 
-# Public URL of the knowledge base markdown (served from your site).
-# The Worker fetches + caches this (5 min) and injects it into the prompt,
-# so the team edits ONE markdown file to update the bot.
-KB_URL = "https://powershifter.com/docs/concierge-knowledge.md"
+# Public URL of the knowledge base markdown (served from the live site). The
+# Worker fetches + caches it (5 min) and injects it into the prompt — edit that
+# one file to update the bot. Update this if the site moves to a custom domain.
+KB_URL = "https://ps-dot-com.vercel.app/docs/concierge-knowledge.md"
 
-# Lock the endpoint to your site origin (CORS + a basic abuse guard).
-# Use "*" only for local testing.
-ALLOWED_ORIGIN = "https://powershifter.com"
+# Lock requests to the site origin (CORS + abuse guard). Update on a custom
+# domain. Use "*" only for local testing.
+ALLOWED_ORIGIN = "https://ps-dot-com.vercel.app"
 
-# Optional soft abuse gate. If set, the page must send the SAME value as the
-# X-PS-Token header — set CONFIG.clientToken in ps-concierge.js to match.
-# It's client-visible, so it only deters scripted / no-Origin abuse; pair it
-# with a Cloudflare Rate Limiting rule (and/or Turnstile) for real protection.
-# Generate one with:  openssl rand -hex 16
-# CLIENT_TOKEN = "paste-a-random-hex-string"
+# Soft abuse gate: the page sends this as the X-PS-Token header (chat/contact)
+# and in the /log body, and it must match. Client-visible by design (it ships in
+# ps-concierge.js), so it's a speed-bump, not a secret — pair with Cloudflare
+# rate-limiting / Turnstile for real protection. Keep CONFIG.clientToken in
+# ps-concierge.js in sync with this value.
+CLIENT_TOKEN = "7d771b12790faeefb8eaac7af37e5892"
 
-# Contact form (POST /contact → email via Resend). Set these to turn the
-# concierge "Email us" form into a real form that emails the studio.
-#   CONTACT_TO   = "bd@powershifter.com"
-#   CONTACT_FROM = "POWER SHIFTER <concierge@powershifter.com>"   # must be a Resend-verified sender
-# CONTACT_TO = "bd@powershifter.com"
-# CONTACT_FROM = "POWER SHIFTER <concierge@powershifter.com>"
+# Contact form (POST /contact) + transcript emails (POST /log), both via Resend.
+# CONTACT_FROM must be a Resend-verified sender — mailupdates.powershifter.com is
+# verified; the bare powershifter.com is not. CONTACT_TO is the destination inbox.
+CONTACT_TO = "bd@powershifter.com"
+CONTACT_FROM = "POWER SHIFTER <concierge@mailupdates.powershifter.com>"
 
-# SECRETS — do NOT put keys here. Set them once with:
+# SECRETS — never in this file. Set once in the dashboard (Variables and secrets
+# → Secret), or via:
 #   wrangler secret put ANTHROPIC_API_KEY
-#   wrangler secret put RESEND_API_KEY        # only needed for the /contact route
+#   wrangler secret put RESEND_API_KEY

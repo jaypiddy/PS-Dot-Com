@@ -102,13 +102,13 @@ _The "why one room" argument. H2 pairs a grotesque statement with a Late Serif s
 
 **H2 (CAPS + SUB-VOICE pair):**
 - **CAPS:** One room.
-- **SUB-VOICE:** No fence.
+- **SUB-VOICE:** No wall.
 
 **BODY:** Digital products and a film studio. Not as strange as it sounds.
 
-**BODY:** Most brands hire one agency to build the product and another shop to tell its story, then pay both to argue across the fence.
+**BODY:** Most brands hire one agency to build the product and another shop to tell its story, then pay both to argue across the wall.
 
-**BODY (bold emphasis):** **We never built the fence.**
+**BODY (bold emphasis):** **We never built the wall.**
 
 **BODY:** From the beginning, we have refused to stay in our lane. Designers, strategists, engineers and filmmakers work in the same room, solving the same problem from different angles.
 

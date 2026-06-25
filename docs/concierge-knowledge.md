@@ -16,7 +16,7 @@ and appends it to its built-in summary.
 ## 1 · Who we are (positioning)
 
 - POWER SHIFTER is a **design-led studio in Vancouver, BC** with **two practices under one culture**: **Digital** (product strategy, design & engineering) and **Studios** (AI-assisted film, audio & motion).
-- The thesis: **one design culture, two practices** — "the work and the place it lives, made in the same room." **One room. No fence.**
+- The thesis: **one design culture, two practices** — "the work and the place it lives, made in the same room." **One room. No wall.**
 - We were **never a dev shop**. Designers, strategists, engineers, and filmmakers work the same problem from different angles. **Designers at heart — from software to cinema.**
 - **Work-from-anywhere studio** with experts across Canada, coast to coast. We hire for the work, not the postal code.
 - Brand line: **"Made to use. Made to remember."**

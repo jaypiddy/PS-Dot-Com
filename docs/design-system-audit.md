@@ -91,7 +91,7 @@ The CSS for these patterns currently lives **inline in each HTML page**. That's 
 ### 7. Engine band — `.engine` + `.engine-grid`
 
 - Two-column 5fr/7fr grid: H2.rise + magenta `.rule` (animated scaleX-in) on left, prose body on right
-- Used on homepage as the "one room / no fence" block — the seam between Digital and Studios
+- Used on homepage as the "one room / no wall" block — the seam between Digital and Studios
 
 **Reference:** `index.html:541-555`, CSS `index.html:141-146, 229-230, 304-305`
 

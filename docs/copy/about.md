@@ -49,7 +49,7 @@ _Six-person leadership roster. H2 + sub-line, then six cards in a roster grid. E
 
 **H2:** One team
 
-**BODY (sub):** Six leads, two practices, no fence between them. Experts, regardless of seniority — and you'll work with them directly.
+**BODY (sub):** Six leads, two practices, no wall between them. Experts, regardless of seniority — and you'll work with them directly.
 
 ### Person 01 — JP Holecka
 

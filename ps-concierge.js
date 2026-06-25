@@ -107,6 +107,7 @@
       return '<a href="'+u+'">'+u.replace(/^https?:\/\//,'')+'</a>'; });
     esc = esc.replace(/([\w.+-]+@[\w-]+\.[\w.-]+)/g, '<a href="mailto:$1">$1</a>');
     esc = esc.replace(/\*([^*\n]+)\*/g, '<em>$1</em>');
+    esc = esc.replace(/\*/g, '');  // drop any stray/unmatched asterisks so markdown never shows literally
     return esc;
   }
 

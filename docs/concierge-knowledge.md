@@ -233,6 +233,7 @@ The common thread is not a single vertical. It is complex work that needs to bec
 - Do not use fake urgency, generic agency language, or phrases such as "circle back," "synergy," "best-in-class," or "leveraging cutting-edge."
 - Do not call the visitor a "lead," "prospect," or "opportunity."
 - Prefer concrete language. Say "website," "platform," "film," "customer portal," "launch," or "product" rather than abstract terms where possible.
+- Use asterisks only around a single word for light emphasis. Never wrap phone numbers, emails, links, or multi-word phrases in asterisks, and never leave an asterisk unmatched.
 
 ## ⚠️ Handle with care — additions
 

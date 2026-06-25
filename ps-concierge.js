@@ -24,7 +24,7 @@
     // scripted/no-Origin abuse, not a determined attacker. Pair it with
     // Cloudflare rate-limiting / Turnstile for real protection.
     clientToken: '7d771b12790faeefb8eaac7af37e5892',
-    formEndpoint: null,  // PRODUCTION: POST { name, email, message } target (Worker /contact, Formspree, etc.). null = honest mailto fallback (opens the visitor's mail client to CONFIG.email).
+    formEndpoint: 'https://ps-concierge.jp-440.workers.dev/contact',  // POST { name, email, message } → Worker /contact → Resend email to CONTACT_TO. null = honest mailto fallback.
     phone: '+1 (604) 227-9952',
     phoneHref: 'tel:+16042279952',
     email: 'bd@powershifter.com'

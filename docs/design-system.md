@@ -32,11 +32,12 @@ These already exist as CSS custom properties on every page. Port them verbatim.
 ### Type families ("Two Voices")
 | Token | Stack | Voice |
 |---|---|---|
-| `--display` | `neue-haas-grotesk-display`, Helvetica Neue, … | The confident grotesque — headlines, big statements |
-| `--text` | `neue-haas-grotesk-text`, … | UI / body / eyebrows / labels |
-| `--serif` | `late-serif-variable`, Georgia, … | The **human/emotional** voice — italic, used as the counter-voice |
+| `--display` | `articulat-heavy-cf`, Helvetica Neue, … | The confident sans (heavy 900) — headlines, big statements |
+| `--text` | `articulat-cf`, … | UI / body / labels |
+| `--serif` | `lust`, Georgia, … | The **human/emotional** voice — italic, used as the counter-voice |
+| `--mono` | `config-mono-vf`, ui-monospace, … | Eyebrows + small index numerals (nav/related/ledger) |
 
-Fonts load via Adobe Typekit (`use.typekit.net/pkh7feu.css`). **Load it async**
+Fonts load via Adobe Typekit (`use.typekit.net/xkk7api.css`). **Load it async**
 (`media="print" onload="this.media='all'"` + `<noscript>` fallback) so a slow/blocked
 kit never blanks the page — see §7 "black-on-blank" lesson.
 
@@ -53,7 +54,7 @@ kit never blanks the page — see §7 "black-on-blank" lesson.
 
 - **Hero H1 (sub-hero):** `--display` 900, `clamp(52px,7vw,108px)`, line-height .96, letter-spacing -.02em
 - **Section H2 (.engine):** `--display` 500, `clamp(40px,4.6vw,72px)`, line-height 1.02
-- **Eyebrow:** `--text` 700, 12px, letter-spacing .14em, UPPERCASE, color `--magenta`
+- **Eyebrow:** `--mono` 700, 12px, letter-spacing .14em, UPPERCASE, color `--magenta`
 - **Body:** `--text`, `clamp(16px,1.5vw,21px)`, line-height 1.5–1.6
 - **Serif voice:** `--serif` italic 500 — used inline as `em.voice` (see §5 voice rule)
 

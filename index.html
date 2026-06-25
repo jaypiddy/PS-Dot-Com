@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>V2 Two Voices — POWER SHIFTER — Digital Products &amp; Generative Films | Vancouver</title>
 <meta name="description" content="Made to use. Made to remember. A product studio and a film studio with one design culture — the work and the place it lives, made in the same room. Software in weeks, cinema in days.">
-<link rel="stylesheet" href="https://use.typekit.net/pkh7feu.css">
+<link rel="stylesheet" href="https://use.typekit.net/xkk7api.css">
 <link rel="preload" as="image" href="images/scratches-v2.webp">
 <!-- PS Craft Layer (design-spice pass) -->
 <link rel="stylesheet" href="ps-spice.css">
@@ -20,8 +20,9 @@
     --line:rgba(18,19,21,.14);
     --line-light:rgba(250,250,247,.18);
     --magenta:#FD2E90;
-    --display:"neue-haas-grotesk-display","Neue Haas Grotesk Display Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
-    --text:"neue-haas-grotesk-text","Neue Haas Grotesk Text Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --display:"articulat-heavy-cf","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --text:"articulat-cf","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --mono:"config-mono-vf",ui-monospace,SFMono-Regular,Menlo,monospace;
     --gutter:clamp(20px,4vw,64px);
     --max:1440px;
   }
@@ -31,7 +32,7 @@
   a{color:inherit;text-decoration:none}
   img,video{display:block;max-width:100%}
   .wrap{max-width:var(--max);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
-  .eyebrow{font-family:var(--text);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+  .eyebrow{font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
   ::selection{background:var(--magenta);color:var(--paper)}
   :focus-visible{outline:2px solid var(--magenta);outline-offset:3px}
 
@@ -251,11 +252,11 @@
 <style id="two-voices">
   /* ============ VARIANT 2 — TWO VOICES ============
      Register contrast, not volume contrast.
-     Grotesque = the vessel (Digital). Serif = the film (Studios).
-     Serif: Late Serif Variable via Adobe Fonts — add to kit pkh7feu.
-     Falls back to Georgia until the kit is updated. */
+     Sans = the vessel (Digital). Serif = the film (Studios). Mono = labels & numerals.
+     Loaded via Adobe Fonts kit xkk7api:
+       --display articulat-heavy-cf · --text articulat-cf · --serif lust · --mono config-mono-vf */
   :root{
-    --serif:"late-serif-variable","late-serif",Georgia,"Times New Roman",serif;
+    --serif:"lust",Georgia,"Times New Roman",serif;
     --paper:#F6F3EC; /* warmed — Lando cream, not gallery white */
   }
   .voice, em.voice{

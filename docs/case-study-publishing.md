@@ -65,6 +65,39 @@ no fabricated metrics, 2–3 pull quotes, verbatim testimonials).
 - Decisions still open going in: confirm the slug/`NN-` order with JP; confirm hero/figure
   imagery (Cloudflare Images) or use plain `--ink` plates like TELUS until assets exist.
 
-### Build journal (append as we go)
-- _(empty — start logging during the Energizer publish: each slot that mapped cleanly, each
-  gap, each template tweak needed.)_
+### Build journal
+
+**#1 — Energizer (2026-06-25), `energizer.html` → `/energizer`. Outcome Tier 2.**
+The Notion entry was *complete*: DB-row metadata **and** a fully-authored five-section body
+with `> **pull:**` markers — no separate copy-deck page needed. Built by adapting
+`case-telus-koodo.html`. **Mapped cleanly:** hero (eyebrow/H1/sub-voice/byline), fact sheet,
+the five `the X.` sections, the solution sub-header (lowercased to `a full-featured prototype,
+fast.`), one pull.
+
+**Gaps / template-vs-content mismatches (the useful findings):**
+1. **Tier 2 → no odometer trio.** TELUS's dossier assumes *three* hard-metric odometers;
+   Energizer has none. Used a **single fact-of-record "30" stat** ("days from concept to a
+   validated go/no-go call"). → Template needs a **lean/variable dossier** (0–1 stats).
+2. **No imagery.** The linked assets are a *Google Slides deck*, not web images. Hero Image /
+   OG Image empty. → **Omitted the masthead + both figure plates.** Template must be
+   **image-optional** (masthead + figures should be droppable). `images/energizer.jpg` exists
+   (work-grid thumb) — a candidate hero/OG if we want one.
+3. **No in-the-wild video, before/after, credentials, testimonial** → omitted. These are TELUS
+   richness, not universal. The future skill/template should treat them as optional blocks.
+4. **Pulls:** authored 2, but the brief pull duplicated the excerpt thesis → **promoted it to
+   the hero voice line, dropped the dup**, kept the outcome pull. (TELUS ran 2–3.)
+5. **Sector + Platform are NOT DB fields** — derived from content ("Consumer products · Energy
+   storage", "Rapid prototype · iOS / Android"). **VERIFY with JP.**
+6. **Services** prop is a long 2-line semicolon list — condensed to a 5-item line for the
+   byline + fact sheet (full list stays in the DB).
+7. **Dead CSS:** the template's `<style>` still carries `.fig-tilt / .cs-shot / .cs-ba /
+   .cs-kiosk / .masthead` rules, now unused. Harmless, but a leaner base template (or the
+   skill) should prune them.
+8. Notion **Status stays "Draft"** — JP flips to Published in Notion when approved (no Notion
+   write made from here).
+
+**Takeaway for the `case-study-publisher` skill:** the renderer must build from a **section
+manifest** where masthead, figures, video, before/after, credentials, testimonial, and each
+stat are **optional** — present only when the source supplies them. TELUS is the dense maximum;
+Energizer is the lean minimum. One more hand-publish of a *Tier 1* (hard-metrics) case would
+confirm the odometer path before we automate.

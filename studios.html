@@ -235,23 +235,24 @@
      Register contrast, not volume contrast.
      Sans = the vessel (Digital). Serif = the film (Studios). Mono = labels & numerals.
      Loaded via Adobe Fonts kit xkk7api:
-       --display articulat-heavy-cf · --text articulat-cf · --serif cc-pixel-arcade-display · --mono config-mono-vf */
+       --display articulat-heavy-cf · --text articulat-cf · --serif fraunces-variable · --mono config-mono-vf */
   :root{
-    --serif:"cc-pixel-arcade-display",Georgia,"Times New Roman",serif;
+    --serif:"fraunces-variable",Georgia,"Times New Roman",serif;
+    --serif-vset:'opsz' 54, 'wght' 615, 'SOFT' 100, 'WONK' 1;
     --paper:#F6F3EC; /* warmed — Lando cream, not gallery white */
   }
   .voice, em.voice{
-    font-family:var(--serif); font-style:italic; font-weight:500;
+    font-family:var(--serif);font-variation-settings:var(--serif-vset); font-style:italic; font-weight:500;
     letter-spacing:-.02em; text-transform:none; font-size:1.04em; line-height:1;
   }
   /* Hero: caps grotesque vs serif italic — the tagline performs itself */
   .hero h1 .caps{font-weight:900;text-transform:uppercase;letter-spacing:-.02em}
   .hero h1 em.voice{font-style:italic;color:var(--magenta);font-weight:400}
   /* Studios door speaks serif */
-  .door.studios h2{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(38px,4vw,62px)}
+  .door.studios h2{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500;font-size:clamp(38px,4vw,62px)}
     .door.studios .lead em.voice{font-weight:400}
   /* Proof: serif numerals — data with a face */
-  .stat b{font-family:var(--serif);font-weight:500;font-size:clamp(52px,5.4vw,96px);letter-spacing:-.02em;line-height:1;display:flex;align-items:flex-start}
+  .stat b{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-weight:500;font-size:clamp(52px,5.4vw,96px);letter-spacing:-.02em;line-height:1;display:flex;align-items:flex-start}
   .stat b .sfx{font-size:.34em;font-style:italic;margin-left:.08em}
   /* Odometer: each digit is a 0-9 column that rolls to rest */
 .odo{--step:1.18em;display:inline-flex;overflow:hidden;height:var(--step);vertical-align:baseline;align-items:flex-start}
@@ -262,13 +263,13 @@
   .proof-row.go .odo .col{transform:translateY(calc((var(--d) + 10) * var(--step) * -1))}
   @media(prefers-reduced-motion:reduce){.odo .col{transition:none}}
   /* Featured work italics inherit the voice */
-  h3 i{font-family:var(--serif);font-weight:500}
+  h3 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-weight:500}
   /* Stitch marquee */
   .stitch{background:var(--ink);color:var(--paper);overflow:hidden;border-block:1px solid var(--line-light);padding:14px 0}
   .stitch-track{display:flex;gap:34px;width:max-content;white-space:nowrap;animation:stitch 38s linear infinite;align-items:baseline}
   .stitch:hover .stitch-track{animation-play-state:paused}
   .stitch .g{font-family:var(--display);font-weight:900;font-size:15px;letter-spacing:.08em;text-transform:uppercase}
-  .stitch .v{font-family:var(--serif);font-style:italic;font-weight:500;font-size:18px;letter-spacing:-.02em}
+  .stitch .v{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500;font-size:18px;letter-spacing:-.02em}
   .stitch .dot{color:var(--magenta);font-size:15px}
   .stitch span{margin-right:34px}
   @keyframes stitch{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -325,7 +326,7 @@
     animation:settle .6s ease-out .55s forwards;
   }
   .sub-hero .sub-voice em{
-    font-family:var(--serif);font-style:italic;font-weight:500;
+    font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500;
     font-size:clamp(26px,3.2vw,52px);letter-spacing:-.02em;
     color:var(--magenta);line-height:1.1;display:block;
     padding:0 .1em .16em 0;
@@ -453,7 +454,7 @@
     border:1px solid var(--line);border-radius:999px;
     transition:border-color .2s ease,color .2s ease}
   .ptier b{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.005em}
-  .ptier em{font-family:var(--serif);font-style:italic;font-weight:500;font-size:14px;color:var(--grey);transition:color .2s ease}
+  .ptier em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500;font-size:14px;color:var(--grey);transition:color .2s ease}
   .ptier:hover{border-color:var(--magenta);color:var(--magenta)}
   .ptier:hover em{color:var(--magenta)}
 
@@ -498,7 +499,7 @@
   /* Outcome-strip text stat — when a .stat carries text instead of an .odo numeral.
      Inherits .stat b's serif at the same 52-96px scale; <em> adds the italic
      read so it feels like a category value rather than a measurement. */
-  .stat b > em{font-style:italic;font-family:var(--serif);font-weight:500}
+  .stat b > em{font-style:italic;font-family:var(--serif);font-variation-settings:var(--serif-vset);font-weight:500}
 
   /* Filter bar */
   .work-filter{
@@ -518,7 +519,7 @@
   .ftab.on .fc{color:var(--magenta)}
   /* whole-button hover triggers the label cascade */
   .ftab:hover .cascade .lt span{transform:translateY(-100%)}
-  .pending{font-family:var(--serif);font-style:italic;font-weight:500;
+  .pending{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500;
     font-size:1.16em !important;letter-spacing:-.01em;color:var(--magenta) !important}
   .ftab.on .pending{color:var(--magenta) !important}
 
@@ -552,7 +553,7 @@
     font-family:var(--display);font-weight:700;
     font-size:clamp(22px,2.4vw,36px);letter-spacing:-.01em;margin:10px 0 8px;
   }
-  .wcard-overlay h2 i{font-family:var(--serif);font-style:italic;font-weight:500}
+  .wcard-overlay h2 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500}
   .wcard-overlay p{font-size:15px;color:rgba(250,250,247,.78);max-width:54ch;margin-bottom:12px}
   .wtag{
     font-family:var(--text);font-weight:700;font-size:11px;
@@ -563,7 +564,7 @@
     font-family:var(--display);font-weight:700;
     font-size:clamp(18px,1.8vw,26px);letter-spacing:-.008em;margin-bottom:8px;
   }
-  .wcard h3 i{font-family:var(--serif);font-style:italic;font-weight:500}
+  .wcard h3 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500}
   .wcard > p{font-size:14.5px;color:var(--grey);max-width:44ch;margin-bottom:10px}
   .wgo{font-weight:700;font-size:13.5px;letter-spacing:.04em;margin-top:auto}
   
@@ -625,7 +626,7 @@
 
   /* Secondary — highlight swipe on last word */
   .hl{position:relative;display:inline-block;z-index:0;
-    font-family:var(--serif);font-style:italic;font-weight:500;
+    font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500;
     font-size:1.18em;letter-spacing:-.01em;line-height:1;
     padding:.06em .2em .1em .14em;margin:-.06em -.14em -.1em -.1em}
   .hl::before{content:"";position:absolute;inset:0;background:var(--magenta);
@@ -686,7 +687,7 @@
     background-origin:content-box;
     -webkit-background-clip:text;background-clip:text}
   .tk-l:hover .tk-t em{color:transparent}
-  .tk-t em{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.06em;
+  .tk-t em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500;font-size:1.06em;
     letter-spacing:-.02em;padding-right:.08em}
   .tk-ar{font-size:clamp(20px,2.4vw,30px);opacity:0;transform:translateX(-14px);
     transition:opacity .3s ease,transform .3s ease;margin-left:auto;color:var(--paper)}
@@ -777,7 +778,7 @@
   .work .wtint{position:absolute;inset:0;background:linear-gradient(transparent 30%, rgba(18,19,21,.72) 100%);z-index:1;pointer-events:none}
   .work .wcard-overlay{position:absolute;bottom:0;left:0;right:0;padding:clamp(22px,3vw,38px);z-index:2;color:var(--paper)}
   .work .wcard-overlay h2{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.4vw,36px);letter-spacing:-.01em;margin:10px 0 8px;color:var(--paper)}
-  .work .wcard-overlay h2 i{font-family:var(--serif);font-style:italic;font-weight:500}
+  .work .wcard-overlay h2 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500}
   .work .wcard-overlay p{font-size:15px;color:rgba(250,250,247,.78);max-width:54ch;margin-bottom:12px}
   .work .wgo{font-weight:700;font-size:13.5px;letter-spacing:.04em;margin-top:auto;display:inline-block}
   .work .wcard-overlay .wgo{color:rgba(250,250,247,.9);font-size:14px}

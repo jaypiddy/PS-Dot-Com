@@ -34,7 +34,7 @@ These already exist as CSS custom properties on every page. Port them verbatim.
 |---|---|---|
 | `--display` | `articulat-heavy-cf`, Helvetica Neue, … | The confident sans (heavy 900) — headlines, big statements |
 | `--text` | `articulat-cf`, … | UI / body / labels |
-| `--serif` | `cc-pixel-arcade-display`, … | The "voice" / counter-voice — CC Pixel Arcade Display (400, display pixel face) |
+| `--serif` | `fraunces-variable` + `--serif-vset` | Variable serif voice — Fraunces at `opsz 54, wght 615, SOFT 100, WONK 1` (real italic). |
 | `--mono` | `config-mono-vf`, ui-monospace, … | Eyebrows + small index numerals (nav/related/ledger) |
 
 Fonts load via Adobe Typekit (`use.typekit.net/xkk7api.css`). **Load it async**
@@ -58,9 +58,10 @@ kit never blanks the page — see §7 "black-on-blank" lesson.
 - **Body:** `--text` 400, `clamp(16px,1.5vw,21px)`, line-height 1.5–1.6
 - **Serif voice:** `--serif` italic — used inline as `em.voice` (see §5 voice rule)
 
-> **Weight note:** `--display` (articulat-heavy-cf) ships a single **900** cut; `--serif`
-> (cc-pixel-arcade-display) ships a single **400 cut with NO italic** — so the voice rules'
-> `font-style:italic` produces a browser **faux-slant** unless the italic is removed. `--text`
+> **Weight note:** `--display` (articulat-heavy-cf) ships a single **900** cut. `--serif`
+> (fraunces-variable) is a **variable serif** (100–900, real italic); the look is fixed by
+> `--serif-vset` (`font-variation-settings: opsz 54, wght 615, SOFT 100, WONK 1`), applied on
+> every serif rule — `font-variation-settings:'wght'` overrides any `font-weight` there. `--text`
 > has 400 (body) + 700 (UI); `--mono` is variable 200–700.
 
 ---

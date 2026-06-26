@@ -27,7 +27,7 @@ The CSS for these patterns currently lives **inline in each HTML page**. That's 
 
 ### 1. Page chrome (every page)
 
-- `<head>` — Typekit kit `pkh7feu`; CSS variables `--ink`, `--ink-soft`, `--paper`, `--grey`, `--line`, `--magenta`; font stacks `--display` (Neue Haas Grotesk Display), `--text` (Neue Haas Grotesk Text)
+- `<head>` — Typekit kit `xkk7api`; CSS variables `--ink`, `--ink-soft`, `--paper`, `--grey`, `--line`, `--magenta`; font stacks `--display` (Articulat Heavy CF, 900), `--text` (Articulat CF), `--serif` (Fraunces, variable — see `--serif-vset`), `--mono` (Config Mono)
 - `<header>` — wordmark SVG + Menu button
 - `<div class="takeover">` — magenta full-screen menu; `.tk-links` has 6 indexed items (01 Work, 02 Digital, 03 Studios, 04 Insights, 05 About, 06 Contact); each link uses staggered `--td` transition delay for cascade-in
 - `<footer>` — mark, tagline ("Made to use. / Made to remember."), link list, "The signal" newsletter signup, land acknowledgement, legal row

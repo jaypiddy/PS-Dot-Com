@@ -339,7 +339,7 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
     Iframe query string: `?muted=true&autoplay=true&loop=true&controls=false&preload=auto`. Standard background-video parameter set. Browsers require `muted=true` for autoplay to succeed without user interaction.
 
 3. **Hero H1 voice treatment.**
-    Two-line H1: `Anyone can generate.` (display weight, paper color) over `Few can direct.` (late-serif italic via `em.voice`, magenta). The italic line is the differentiator — same pattern the homepage uses for the Studios door lede. Both lines render as `<span>` children inside `<h1>` with `display:block` for the line break; `<br>` would have worked too but `<span>` lets the CSS hook line-by-line if needed later (separate animation timing, asymmetric letter-spacing, etc.).
+    Two-line H1: `Anyone can generate.` (display weight, paper color) over `Few can direct.` (serif italic via `em.voice`, magenta). The italic line is the differentiator — same pattern the homepage uses for the Studios door lede. Both lines render as `<span>` children inside `<h1>` with `display:block` for the line break; `<br>` would have worked too but `<span>` lets the CSS hook line-by-line if needed later (separate animation timing, asymmetric letter-spacing, etc.).
 
 4. **Films index — "Watch" CTAs route to "#".**
     All six `Watch →` links in Block 3 route to `#` because none of the films have case-study pages yet. Same status as `/digital`'s Selected Work (3 of 4 cards still route to `#`, only Koodo links to a real case study). Pattern: when individual film case-studies build, swap the `href="#"` to the case-study URL via `str_replace` per film. Iron Mountain and Ernest are highest priority since they're the award winners and the featured rows.
@@ -360,7 +360,7 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
     Per the existing convention on `/digital` (where link 02 still points to `index.html#digital` rather than `digital.html`), the takeover menu on `/studios` ships unchanged. The full cross-page takeover rewire — pointing 02 → `digital.html` and 03 → `studios.html` on every page — is a single dedicated commit that will touch all built pages at once. Carried in the `/digital` Notes 12 parking lot.
 
 10. **Closer H2 voice line — `unshootable` in magenta italic.**
-    Block 8's H2 carries the late-serif italic + magenta treatment via `em.voice.mag` on the word `unshootable.` — same dual-class pattern as `/digital`'s closer (`em.voice.mag` on `Bring the idea.`). The body line below (`The budget used to be the ceiling. Now it's the idea.`) sits in plain prose. CTA copy: `Start a film →` (not `Start a project →` — Studios-specific). Phone number identical to `/digital` — one masterbrand, one phone.
+    Block 8's H2 carries the serif italic + magenta treatment via `em.voice.mag` on the word `unshootable.` — same dual-class pattern as `/digital`'s closer (`em.voice.mag` on `Bring the idea.`). The body line below (`The budget used to be the ceiling. Now it's the idea.`) sits in plain prose. CTA copy: `Start a film →` (not `Start a project →` — Studios-specific). Phone number identical to `/digital` — one masterbrand, one phone.
 
 11. **Orphan CSS riding along from `/digital` clone.**
     The full CSS block from `digital.html` was copied with the clone, which means `studios.html` carries definitions for patterns it doesn't use: `.sub-hero` (paper hero variant), `.sub-voice`, `.validator-band`, `.terminal`, `.offers-section`, `.partners-strip`, `.cards.four-up`, `.work` grid styles, and others. The rules don't render because no HTML elements reference them, but they add page weight. **Acceptable for now** — each page is intentionally self-contained, and the prototype phase prioritizes pattern propagation over byte-trimming. Clean up in a maintenance commit later, or once a shared `assets/css/site.css` is introduced.
@@ -458,7 +458,7 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
     .work                       ← dark ink band, padded
       .wrap
         .head                   ← H2 + "See all the work →" link, flex baseline
-          h2.rise               ← display weight, late-serif italic via .swipe
+          h2.rise               ← display weight, serif italic via .swipe
           a.all.swipe           ← "See all the work →" (work auto-italicized)
         .cards.four-up.reveal   ← 4-column grid, 1px line-light gaps
           a.card                ← each film (ink bg)
@@ -485,7 +485,7 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
 
     **CTA "Watch the film →"** uses `.go.swipe`. The .swipe JS at the bottom of studios.html (came along with the /digital clone) wraps the last word ("film") in `<span class="hl">` — italic-serif Late Serif at 1.18em, with the magenta box that swipes in on hover. Direct mirror of /digital's "Read the *case* →" treatment (where "case" is italic-serif).
 
-    **Italic film names in `<h3>`** via `<i>...</i>` — "Iron Mountain — `<i>`The Summit`</i>`", "Ernest Packaging — `<i>`Four Dreams`</i>`", "Rapid MVP — `<i>`Luma`</i>`". Same `<i>` treatment used on the homepage Iron Mountain card (precedent at `index.html:569`). The `.card h3 i` rule renders these in late-serif italic regardless of bg.
+    **Italic film names in `<h3>`** via `<i>...</i>` — "Iron Mountain — `<i>`The Summit`</i>`", "Ernest Packaging — `<i>`Four Dreams`</i>`", "Rapid MVP — `<i>`Luma`</i>`". Same `<i>` treatment used on the homepage Iron Mountain card (precedent at `index.html:569`). The `.card h3 i` rule renders these in serif italic regardless of bg.
 
     **All Watch links stub to `#`** until film case-study pages exist. Same status as /digital Selected Work — only TELUS Koodo links to a real case study; the other three /digital cards stub. Six film case-study pages remain on the parking lot — Iron Mountain and Ernest are the highest priority once their stills and offline cuts are exported.
 
@@ -512,7 +512,7 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
     - `.work .wtint` — gradient overlay (transparent → ink 72%, bottom-up)
     - `.work .wcard-overlay` — absolute-positioned bottom-anchored text container
     - `.work .wcard-overlay h2` — display weight + italic name via `<i>`
-    - `.work .wcard-overlay h2 i` — late-serif italic for film name
+    - `.work .wcard-overlay h2 i` — serif italic for film name
     - `.work .wcard-overlay p` — paper-78%-alpha body
     - `.work .wgo` — base CTA styling (font-weight 700, .04em tracking)
     - `.work .wcard-overlay .wgo` — color override for paper-on-tint

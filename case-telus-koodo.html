@@ -862,6 +862,11 @@
   .pull.invert .pull-in{max-width:980px;margin-inline:auto;padding-inline:var(--gutter);position:relative}
   .pull.invert .eyebrow{color:var(--magenta)}
   .pull.invert .pull-slash{top:0;right:var(--gutter);opacity:.3;stroke:var(--paper)}
+  /* Pull entrance — fade-up that PRESERVES the breakout/invert translateX(-50%) centering
+     (plain .reveal sets transform:none and would knock the block off-center). */
+  .pull.reveal{opacity:0;transform:translateX(-50%) translateY(18px);transition:opacity .55s cubic-bezier(.215,.61,.355,1),transform .55s cubic-bezier(.215,.61,.355,1)}
+  .pull.reveal.in{opacity:1;transform:translateX(-50%)}
+  @media(prefers-reduced-motion:reduce){.pull.reveal{opacity:1;transform:translateX(-50%);transition:none}}
 
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>

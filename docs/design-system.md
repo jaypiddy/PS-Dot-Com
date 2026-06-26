@@ -34,7 +34,7 @@ These already exist as CSS custom properties on every page. Port them verbatim.
 |---|---|---|
 | `--display` | `articulat-heavy-cf`, Helvetica Neue, … | The confident sans (heavy 900) — headlines, big statements |
 | `--text` | `articulat-cf`, … | UI / body / labels |
-| `--serif` | `joly-headline`, Georgia, … | The **human/emotional** voice — italic counter-voice (Joly Headline, 700) |
+| `--serif` | `cc-pixel-arcade-joystick`, … | The "voice" / counter-voice — CC Pixel Arcade Joystick (400, display pixel face) |
 | `--mono` | `config-mono-vf`, ui-monospace, … | Eyebrows + small index numerals (nav/related/ledger) |
 
 Fonts load via Adobe Typekit (`use.typekit.net/xkk7api.css`). **Load it async**
@@ -58,9 +58,10 @@ kit never blanks the page — see §7 "black-on-blank" lesson.
 - **Body:** `--text` 400, `clamp(16px,1.5vw,21px)`, line-height 1.5–1.6
 - **Serif voice:** `--serif` italic — used inline as `em.voice` (see §5 voice rule)
 
-> **Weight note:** `--display` (articulat-heavy-cf) ships a single **900** cut and `--serif`
-> (joly-headline) a single **700** italic cut, so the `font-weight` values in the headline/voice
-> CSS resolve to those. `--text` has 400 (body) + 700 (UI); `--mono` is variable 200–700.
+> **Weight note:** `--display` (articulat-heavy-cf) ships a single **900** cut; `--serif`
+> (cc-pixel-arcade-joystick) ships a single **400 cut with NO italic** — so the voice rules'
+> `font-style:italic` produces a browser **faux-slant** unless the italic is removed. `--text`
+> has 400 (body) + 700 (UI); `--mono` is variable 200–700.
 
 ---
 

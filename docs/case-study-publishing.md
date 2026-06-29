@@ -135,3 +135,27 @@ manifest** where masthead, figures, video, before/after, credentials, testimonia
 stat are **optional** — present only when the source supplies them. TELUS is the dense maximum;
 Energizer is the lean minimum. One more hand-publish of a *Tier 1* (hard-metrics) case would
 confirm the odometer path before we automate.
+
+**#2 — XYON Health (2026-06-25), `xyon.html` → `/xyon`. Outcome Tier 3 (fact of record).**
+Cloned from the lean `energizer.html` base (closer fit than dense TELUS). Complete Notion entry
+(metadata + five-section body + pulls + testimonial + `[OUTCOME PLACEHOLDER]`). **Mapped cleanly:**
+hero, fact sheet, the five sections, **three** solution sub-headers (`an elevated marketing site.`
+…), two pulls. Work-grid card wired (`work.html` XYON → `/xyon`).
+
+**New template feature built — testimonial block.** XYON has a verbatim client quote (Dr. Simon
+Pimstone) that TELUS/Energizer lacked. Added a `.cs-quote` block (figure > blockquote + stacked
+figcaption: name / role / company). **Gotcha:** the template's markdown `blockquote` style is
+Fraunces *italic* (built for short quotes); a 4-sentence testimonial in heavy italic read badly,
+so `.prose figure.cs-quote blockquote` is forced to **Articulat (`--text`) 400 upright** via a
+higher-specificity selector. → The future skill's testimonial block should set its own font,
+not inherit the markdown-blockquote style.
+
+**Tier 3 handling:** no stats — dossier is fact-sheet-only (proof-row removed). The Notion
+`[OUTCOME PLACEHOLDER]` (Needs Review = YES) is an internal marker — **kept as an HTML comment,
+NOT rendered**; the outcome stays qualitative + testimonial until JP supplies hard metrics.
+
+**Editorial calls to VERIFY with JP:** hero sub-voice condensed from the long Summary/Excerpt;
+Sector (`Men's health · DTC commerce`) + Platform (`Next.js · NestJS · Sanity · Stripe`) derived
+from content (not DB fields); pull eyebrows authored `Brief — the bar` / `Outcome — shipped`
+(Section — descriptor convention — note Energizer's `The payoff` pull eyebrow is the older bare
+"The X" style, a minor inconsistency to reconcile). Notion **Status** stays Draft.

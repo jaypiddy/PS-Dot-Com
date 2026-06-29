@@ -159,3 +159,33 @@ Sector (`Men's health · DTC commerce`) + Platform (`Next.js · NestJS · Sanity
 from content (not DB fields); pull eyebrows authored `Brief — the bar` / `Outcome — shipped`
 (Section — descriptor convention — note Energizer's `The payoff` pull eyebrow is the older bare
 "The X" style, a minor inconsistency to reconcile). Notion **Status** stays Draft.
+
+**#3 — Allia Health Group (2026-06-29), `allia-health-group.html` → `/allia-health-group`. Outcome
+Tier 1 (hard metrics).** The Tier-1 case the journal was waiting for — **validates the odometer
+dossier.** Cloned from `xyon.html` (kept its testimonial block) and **added the 3-odometer
+proof-row back** (96 · 100 · 5). Complete Notion entry: metadata + five-section body + 3 pulls +
+testimonial (Camilo Parra) + `[OUTCOME PLACEHOLDER]`. **Mapped cleanly:** hero, fact sheet, the
+five sections, three solution sub-headers, three pulls, testimonial. Verified live in preview:
+odometers animate on scroll (`proofRow.in`), testimonial upright Articulat, no console errors.
+
+**Findings:**
+1. **Odometer dossier works for Tier 1.** Generated 3 `.stat` odometers from agency-verifiable
+   build records — Lighthouse **96**/100 performance, **100** (a11y/best-practices/SEO), **5**-week
+   build. The `.odo .col` `--d=<digit>` pattern + the (already-present, guarded) proofRow JS
+   animate cleanly. → Confirms the template's odometer path; the future skill can emit 1–3 stats.
+2. **DB `SEO Title` + `Meta Description` were EMPTY** — derived both (title "…Investor-Ready
+   Rebrand | POWER SHIFTER"; meta from the summary). **JP: add these to the Notion entry (or
+   approve mine).**
+3. **No imagery** (Hero/OG empty; no work-grid thumbnail exists). Omitted masthead + figures, and
+   **deferred the `/work` grid card to the image pass** (an imageless card looks unfinished beside
+   the others). Page is reachable directly + via sibling next-case links until then.
+4. **`[OUTCOME PLACEHOLDER]`** here is a *class-6 business event* (did the liquidity event close?
+   investor-conference date?) — kept as an HTML comment, not rendered. The Lighthouse hard metrics
+   are shipped in the dossier + outcome; Needs Review stays YES for the business-event verify.
+5. Sector/Platform derived; hero sub-voice condensed; pull eyebrows authored (Section — descriptor).
+   Notion **Status** stays Draft.
+
+**Three hand-publishes done (Tier 2 / 3 / 1). The template now covers the full range** — lean
+fact-sheet-only through dense odometer dossier + testimonial. This is enough evidence to build the
+`case-study-publisher` skill from a section manifest. **Pending across all: the image/video pass**
+(hero/figure/OG via Cloudflare Images; work-grid thumbs; koodo video → Cloudflare Stream).

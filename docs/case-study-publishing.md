@@ -53,17 +53,51 @@ no fabricated metrics, 2–3 pull quotes, verbatim testimonials).
 6. **Keep a build journal** (below) of what mapped cleanly vs. what fought the template —
    that evidence is what the future `case-study-publisher` skill gets built from.
 
-## NEXT SESSION — hand-publish Energizer
+## Section manifest — every block is optional
 
-- **Energizer Notion page:** `38ab37ad-cd5b-81e4-8320-fc905ca8c0cc` ("Energizer, a global leader
-  in battery innovation, was sitting on a new and experimental…"). Pull this + its DB row + any
-  copy-deck entry.
-- Known angle (from concierge KB): **product-market fit validated in 30 days via a rapid POC** —
-  likely an Outcome Tier 2/3 (qualitative / fact-of-record), so expect to use the placeholder
-  convention rather than hard metrics.
-- Target file: `energizer.html` → clean route `/energizer`.
-- Decisions still open going in: confirm the slug/`NN-` order with JP; confirm hero/figure
-  imagery (Cloudflare Images) or use plain `--ink` plates like TELUS until assets exist.
+Include a block only when the source supplies it. **TELUS & Koodo = dense maximum; Energizer =
+lean minimum.** This is the rule the future `case-study-publisher` skill renders against.
+
+- **Masthead image** — only if a hero image exists; else omit (hero flows to the dossier).
+- **Dossier stats (odometers)** — Tier 1: up to 3 hard-metric odometers · Tier 2: 0–1 fact-of-record
+  stat · Tier 3: none. The fact sheet (Client / Sector / Services / Platform) always shows.
+- **Figures** — only with real images; else omit (no empty plates).
+- **In-the-wild video** — only with footage (Cloudflare Stream — see Media).
+- **Before/after**, **Credentials**, **Testimonial** — only if supplied; testimonials verbatim.
+- **Pull quotes** — 2–3, lifted from the body.
+
+### Outcome tiers (from `ps-case-study-writer`)
+- **Tier 1** — hard metrics; lead with them (odometers).
+- **Tier 2** — qualitative only; one fact-of-record stat if it exists (e.g. Energizer's "30 days").
+- **Tier 3** — none; build from inferred-improvement angles + `[OUTCOME PLACEHOLDER]`, set DB **Needs Review**.
+
+## Media
+
+- **Images → Cloudflare Images.** DB `Hero Image` / `OG Image` hold external Cloudflare URLs
+  (never Notion uploads). No image → omit the block.
+- **Video → Cloudflare Stream.** Upload to Stream, enable MP4 download, then keep the plain
+  `<video>` (preserves hover-to-play; the same UID can feed Work-grid thumbs):
+
+```html
+<video class="cs-kiosk-vid"
+  src="https://customer-<code>.cloudflarestream.com/<UID>/downloads/default.mp4"
+  poster="https://customer-<code>.cloudflarestream.com/<UID>/thumbnails/thumbnail.jpg?time=0s"
+  muted loop playsinline preload="metadata"></video>
+```
+
+Studios customer code: `xv1aafyshr3tbknu`. (TELUS koodo video is being migrated from a local
+mp4 to this pattern — pending its Stream UID.)
+
+## Status & queue
+
+- **#1 Energizer — PUBLISHED** (`energizer.html` → `/energizer`, Outcome Tier 2). See build journal.
+- **Next:** hand-publish one **Tier 1** (hard-metrics) case study to validate the odometer-dossier
+  path before building the `case-study-publisher` skill.
+- Case Studies DB: `77b9e6f8…` (collection `906abf9b…`). TELUS reference deck: `388b37ad-cd5b-81b2…`.
+
+**Notion mirror:** team-facing version at Notion → *powershifter.com CMS → Producing a case
+study — workflow* (`38eb37ad-cd5b-8113-8d06-ee4143e8fe04`). Keep the two in sync; this repo doc
+wins for build mechanics.
 
 ### Build journal
 

@@ -1368,7 +1368,9 @@
 <script>
   // Filter
   const ftabs = document.querySelectorAll('.ftab');
-  const wcards = document.querySelectorAll('[data-cat]');
+  // scope to grid cards only — [data-cat] alone also matches the .ftab tabs (which
+  // carry data-cat), so a broad selector hid the other tab buttons on click.
+  const wcards = document.querySelectorAll('.sheet .wcard');
   ftabs.forEach(tab => {
     tab.addEventListener('click', () => {
       ftabs.forEach(t => t.classList.remove('on'));

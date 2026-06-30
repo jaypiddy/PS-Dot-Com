@@ -17,7 +17,7 @@
      --------------------------------------------------------------- */
   var CONFIG = {
     endpoint: 'https://ps-concierge.jp-440.workers.dev',
-    knowledgeUrl: 'docs/concierge-knowledge.md',  // curated KB; injected into the system prompt
+    knowledgeUrl: '/docs/concierge-knowledge.md',  // curated KB; injected into the system prompt
     // Soft abuse gate for the Worker. Matches CLIENT_TOKEN set on the Worker;
     // the page sends it as the X-PS-Token header.
     // NOTE: this ships in client code (readable in page source), so it deters

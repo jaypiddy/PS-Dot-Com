@@ -10,7 +10,8 @@ Run from the repo root:
     python3 tools/blog-renderer/render_blog.py [posts.json]
 
 Defaults to the handoff posts.json if no path is given. Idempotent: overwrites
-<slug>.html for each Published post and rewrites the insights card grid.
+insights/<slug>.html for each Published post (served at /insights/<slug> via
+Vercel clean URLs) and rewrites the insights.html card grid.
 """
 import json, re, sys, html, pathlib
 from datetime import datetime
@@ -263,7 +264,7 @@ def sub_hero(post):
     media = (f'<div class="hero-media"><img id="heroImg" src="{attr(masthead)}" alt=""></div>'
              if masthead else '<div class="hero-media"></div>')
     cats = cats_of(post)
-    cat_html = " · ".join(f'<a href="insights">{esc(c)}</a>' for c in cats)
+    cat_html = " · ".join(f'<a href="/insights">{esc(c)}</a>' for c in cats)
     cat_block = (f'      <span class="sep vbar" id="catSep">|</span>\n'
                  f'      <span class="cats" id="cats">{cat_html}</span>\n') if cats else ''
     author = post.get('author') or 'Power Shifter'
@@ -272,11 +273,11 @@ def sub_hero(post):
   <div class="hero-tint"></div>
   {SLASH}
   <div class="sub-hero-inner wrap">
-    <a class="back swipe" href="insights">← Back to all Insights</a>
+    <a class="back swipe" href="/insights">← Back to all Insights</a>
     <h1 class="rise" id="title">{esc(post['title'])}</h1>
     <p class="sub-voice"><em class="voice mag" id="excerpt">{esc(post.get('meta_description',''))}</em></p>
     <div class="byline" id="byline">
-      <a href="insights" id="authorEl">By {esc(author)}</a>
+      <a href="/insights" id="authorEl">By {esc(author)}</a>
       <span class="sep" id="authorSep">·</span>
       <span class="date">{fmt_date(post.get('publish_date'))}</span>
 {cat_block}    </div>
@@ -298,7 +299,7 @@ def related_section(post, lookup):
         return ''   # collapse when zero relations
     rh = []
     for i, (title, stream, date, slug) in enumerate(rows, 1):
-        rh.append(f'''      <a class="rel-row" href="{slug}">
+        rh.append(f'''      <a class="rel-row" href="/insights/{slug}">
         <span class="rel-n">{i:02d}</span>
         <span class="rel-meta"><span class="stream">{esc(stream)}</span><span class="rel-title">{esc(title)}</span></span>
         <span class="rel-date">{esc(date)}</span>
@@ -308,7 +309,7 @@ def related_section(post, lookup):
   <div class="wrap">
     <div class="rel-head">
       <h2>Related <em class="voice mag">reading</em></h2>
-      <a class="swipe" href="insights">All insights →</a>
+      <a class="swipe" href="/insights">All insights →</a>
     </div>
     <div class="rel-rows">
 {chr(10).join(rh)}
@@ -326,7 +327,9 @@ def render_article(post, lookup):
             + body + "\n  </div>\n</article>\n\n"
             + related_section(post, lookup)
             + TAIL)
-    (REPO / f"{post['slug']}.html").write_text(page, encoding="utf-8")
+    out_dir = REPO / "insights"
+    out_dir.mkdir(exist_ok=True)
+    (out_dir / f"{post['slug']}.html").write_text(page, encoding="utf-8")
 
 # ---------------------------------------------------------------- insights grid
 def slugify(s):
@@ -352,7 +355,7 @@ def insights_card(post, n):
     else:
         frame = '<div class="wframe slot-frame light"><span class="slot-tag dark">No thumbnail</span></div>'
         below = f'\n    {h3}'
-    return f'''  <a class="wcard" data-cat="{dcat}" href="{post['slug']}">
+    return f'''  <a class="wcard" data-cat="{dcat}" href="/insights/{post['slug']}">
     <span class="cmeta"><span class="cn">{n:02d}</span><span class="wtag">{esc(tag)}</span><span class="idate">{fmt_date(post.get('publish_date'))}</span></span>
     {frame}{below}
     <p class="excerpt">{esc(post.get('meta_description',''))}</p>
@@ -363,7 +366,7 @@ def feature_card(post, n):
     cats = cats_of(post)
     tag = cats[0] if cats else 'Insights'
     img = post.get('masthead_url') or post.get('thumbnail_url') or ''
-    return f'''  <a class="wcard feature" data-cat="{cat_dcat(tag)}" href="{post['slug']}" id="featured">
+    return f'''  <a class="wcard feature" data-cat="{cat_dcat(tag)}" href="/insights/{post['slug']}" id="featured">
     <div class="wframe">
       <img src="{attr(img)}" alt="" style="width:100%;height:100%;object-fit:cover">
       <div class="wtint"></div>

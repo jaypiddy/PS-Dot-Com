@@ -4,6 +4,11 @@ How a case study goes from Notion → a static page on the site, using `case-tel
 as the canonical template. Status: **TELUS & Koodo is the only fully-built example.** We are
 validating the pipeline by hand-publishing a second one (Energizer) before automating it.
 
+> **2026-06-30 — route changed.** Case studies moved from the site root to **`work/<slug>.html`**,
+> served at **`/work/<slug>`** (matching the same nest-under-the-listing-page pattern the blog uses
+> at `/insights/<slug>` — see `docs/design-system.md` §11). `tools/case-study-builder/` writes here
+> now; see its README before re-running it on an already-published case.
+
 ## The system (3 layers)
 
 1. **Case Studies DB** — Notion database (`powershifter.com CMS`). The **index / metadata**.
@@ -90,8 +95,9 @@ mp4 to this pattern — pending its Stream UID.)
 
 ## Status & queue
 
-- **15 case studies PUBLISHED** at root (`/energizer`, `/xyon`, `/allia-health-group`, plus the
-  12-case batch — see journal #5). All still **Status: Draft in Notion** — JP flips to Published
+- **15 case studies PUBLISHED** at `/work/<slug>` (`/work/energizer`, `/work/xyon`,
+  `/work/allia-health-group`, plus the 12-case batch — see journal #5; moved here from the root
+  2026-06-30, journal #7). All still **Status: Draft in Notion** — JP flips to Published
   per-case when approved. `Needs Review: YES` open on 6 of them (parked as HTML comments, nothing
   fake rendered) — see journal #5 for the list.
 - **Tier-1 odometer dossier shipped** on the 6 hard-metric cases (journal #6) — the
@@ -248,3 +254,25 @@ the sub-voice, brief, outcome, and outcome pull. Same diff-and-patch approach as
 changed, body otherwise untouched. **Pattern to expect going forward:** Notion edits keep arriving
 after publish on a rolling basis — re-fetch and diff rather than assuming any published case is
 done, the same way #4 found Allia had moved.
+
+**#7 — Moved all 16 case studies from the root to `/work/<slug>` (2026-06-30).** JP: "the case
+studies should also be ~work/case-study-name?" — drawing the same parallel the blog had just
+made at `/insights/<slug>`. Scoped it first: 16 pages total (the 15 above + the original
+`case-telus-koodo`, live since before this doc existed), referenced from `work.html` (16 cards),
+`digital.html` (1 link to `case-telus-koodo`), and each other (32 next-case cross-links) — nowhere
+else. Same fix as the blog move: every case-study page's chrome (nav, footer, stylesheets/scripts,
+legal links, the "Back to all Work" link) used relative hrefs with no leading slash, which only
+worked flat at the root; rewrote them all to root-absolute, plus `case-telus-koodo`'s page-content
+local assets (`images/koodo_*.png`, `videos/koodo_loop.mp4`). Updated `tools/case-study-builder/`
+(`build_cases.py`'s write path, base-template read path, back-link, and next-card href; `wire_cards.py`
+and `add_odometers.py`'s target paths) so future cases generate correctly in `work/` without a
+second manual pass. **Did not re-run `build_cases.py`** on the 12 builder-managed cases to apply
+the fix — that would have overwritten the Delta Controls Notion sync (#6's trailing note) and the
+Tier-1 odometer proof-rows, neither of which `cases_data.py` knows about (see the builder's
+README). Fixed all 16 files directly instead, with a script applying the identical string
+replacements a regeneration would have made to the chrome, leaving body content untouched.
+Verified in a browser from the nested path on both a hand-built case (`case-telus-koodo` — its
+local image/video assets, stylesheets, back-link) and a builder-generated one (`xyon` — its real
+next-case cross-links); confirmed `work.html`'s 16 cards and `digital.html`'s 1 link resolve; zero
+leftover relative chrome references across all 16 files. **No redirects** added from the old root
+URLs — same call as the blog move (dev preview domain, not yet the production domain).

@@ -3,7 +3,7 @@
 case pages. Reuses the Allia odometer pattern (digit cols + .ch separators +
 .sfx units). The trigger JS + CSS already ship in the cloned chrome."""
 import pathlib
-REPO = pathlib.Path("/Users/jpholecka2025/PS-Dot-Com")
+REPO = pathlib.Path("/Users/jpholecka2025/PS-Dot-Com") / "work"
 
 SEQ = "".join(f"<span>{d}</span>" for d in "01234567890123456789")
 def col(d):  return f'<span class="col" style="--d:{d}">{SEQ}</span>'

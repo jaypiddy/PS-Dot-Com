@@ -5,7 +5,8 @@ Run from the repo root. Reads cases from cases_data.py."""
 import re, sys, pathlib
 
 REPO = pathlib.Path("/Users/jpholecka2025/PS-Dot-Com")
-BASE = (REPO / "xyon.html").read_text(encoding="utf-8")
+OUT_DIR = REPO / "work"
+BASE = (OUT_DIR / "xyon.html").read_text(encoding="utf-8")
 
 # --- extract shared chrome + constant SVGs from the base -----------------
 SUBHERO_ANCHOR = '<section class="sub-hero casestudy">'
@@ -43,20 +44,20 @@ def quote(text, name, role, co):
             f'<span class="cs-quote-co">{co}</span></figcaption>\n'
             '    </figure>')
 def nextcard(href, eyebrow, title):
-    return (f'      <a class="post" href="{href}"><span class="stream">{eyebrow}</span>'
+    return (f'      <a class="post" href="/work/{href}"><span class="stream">{eyebrow}</span>'
             f'<h3>{esc(title)}</h3><span>2026</span></a>')
 
 BODY_TMPL = """<section class="sub-hero casestudy">
   {slash}
   <div class="sub-hero-inner wrap">
-    <a class="back swipe" href="work">← Back to all Work</a>
+    <a class="back swipe" href="/work">← Back to all Work</a>
     <span class="eyebrow">{eyebrow}</span>
     <h1 class="rise" id="title">{h1}</h1>
     <p class="sub-voice"><em class="voice mag" id="excerpt">{subvoice}</em></p>
     <div class="byline cs-meta" id="byline">
       <span class="role">Role</span><span>{role}</span>
       <span class="sep vbar">|</span>
-      <span class="cats"><a href="work">{cat}</a></span>
+      <span class="cats"><a href="/work">{cat}</a></span>
     </div>
   </div>
 </section>
@@ -120,7 +121,7 @@ def build(case):
         client=case['client'], sector=case['sector'], services=case['services'],
         platform=case['platform'], body=body, nextcards=nextcards)
     out = head + region + FOOTER
-    (REPO / f"{case['slug']}.html").write_text(out, encoding="utf-8")
+    (OUT_DIR / f"{case['slug']}.html").write_text(out, encoding="utf-8")
     # leftover check
     stray = [w for w in ('XYON', 'xyon', 'Pimstone', "Men's") if w in region]
     return case['slug'], len(out.splitlines()), stray

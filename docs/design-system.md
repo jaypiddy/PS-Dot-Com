@@ -221,13 +221,15 @@ onto `.sub-body`; the voice-color and eyebrow conventions are applied site-wide.
 ## 10 · File map
 
 - Pages (served **extensionless** via Vercel `cleanUrls`; old `.html` 308-redirects):
-  `/` (index), `/work`, `/digital`, `/studios`, `/insights`, `/article`, `/case-telus-koodo`,
-  `/about`. Legal pages built from the article template: `/terms-and-conditions`, `/privacy-policy`.
-- **Case studies** (hand-published from Notion, many — `/xyon`, `/allia-health-group`, etc.):
-  see `docs/case-study-publishing.md` + generator `tools/case-study-builder/`.
+  `/` (index), `/work`, `/digital`, `/studios`, `/insights`, `/article`, `/about`. Legal pages
+  built from the article template: `/terms-and-conditions`, `/privacy-policy`.
+- **Case studies** (hand-published from Notion, many — `/work/xyon`, `/work/allia-health-group`,
+  `/work/case-telus-koodo`, etc.; moved here from the root 2026-06-30): see
+  `docs/case-study-publishing.md` + generator `tools/case-study-builder/`.
 - **Blog posts** (63 Published, rendered from a Notion export — `/insights/<slug>`; listing at
-  `/insights`): see generator `tools/blog-renderer/` (has its own README) — *the first page
-  set in this repo nested one directory down, see §11 below for why that mattered.*
+  `/insights`): see generator `tools/blog-renderer/` (has its own README).
+- Case studies and blog posts are the two page sets in this repo nested one directory down
+  (under `/work` and `/insights` respectively) — see §11 below for why that mattered for both.
 - Fonts: Adobe Typekit kit `xkk7api` (see §1). Menu hover loop: `images/scratches-v2.webp`
   (animated WebP, filled into nav words via `background-clip:text`) — swap per `docs/menu-hover-loop.md`.
 - Shared chrome copy: `docs/copy/_shared.md` · per-page copy: `docs/copy/*.md`
@@ -241,9 +243,11 @@ onto `.sub-body`; the voice-color and eyebrow conventions are applied site-wide.
   `/insights/<slug>`) breaks every one of those references, because the browser
   resolves a relative href against the *current URL's directory*, not the domain root.
   **Any new page added in a subdirectory must use root-absolute hrefs/srcs**
-  (`href="/work"`) for everything it shares with the rest of the site. Worked example
-  of the fix (and what it touched, including a silently-broken `fetch()` inside
-  `ps-concierge.js`): commit `0728b95`.
+  (`href="/work"`) for everything it shares with the rest of the site. Worked twice
+  the same day: blog posts into `/insights/<slug>` (commit `0728b95` — including a
+  silently-broken `fetch()` inside `ps-concierge.js`), then case studies into
+  `/work/<slug>` (same fix, all 16 pages — see `docs/case-study-publishing.md`
+  journal #7).
 - **Clean URLs are Vercel-only.** `vercel.json`'s `cleanUrls:true` strips `.html` in
   production; a local static server doesn't — test nested/extensionless routes against
   the Vercel deploy, or append `.html` for local checks.

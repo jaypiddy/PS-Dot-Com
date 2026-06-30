@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hall Constructors Case Study — Digital Ticketing App | POWER SHIFTER</title>
-<meta name="description" content="How POWER SHIFTER built Hall Constructors a rugged digital truck-ticketing system foremen actually adopted — where an earlier attempt had failed on the job site.">
+<title>Energizer Case Study — 30-Day Product Validation Sprint — POWER SHIFTER</title>
+<meta name="description" content="How POWER SHIFTER validated an experimental Energizer energy-storage concept in 30 days — a data-backed go/no-go call made before full R&amp;D investment.">
 <link rel="stylesheet" href="https://use.typekit.net/xkk7api.css">
 <!-- PS Craft Layer (design-spice pass) -->
-<link rel="stylesheet" href="ps-spice.css">
+<link rel="stylesheet" href="/ps-spice.css">
 <!-- PS Concierge (corner AI concierge) -->
-<link rel="stylesheet" href="ps-concierge.css">
+<link rel="stylesheet" href="/ps-concierge.css">
 <style>
   :root{
     --ink:#121315;
@@ -234,13 +234,6 @@
     .doors:has(.door:hover) .door,.doors .door:hover{flex:1}
     html{scroll-behavior:auto}
   }
-  /* Client testimonial — verbatim, attribution stacked (optional block). */
-  .cs-quote{margin:3.4em 0 0;padding-top:34px;border-top:2px solid var(--ink)}
-  .prose figure.cs-quote blockquote{font-family:var(--text);font-variation-settings:normal;font-style:normal;font-weight:400;font-size:clamp(20px,2.2vw,28px);line-height:1.45;letter-spacing:-.005em;margin:0;color:var(--ink)}
-  .cs-quote figcaption{margin-top:24px;display:flex;flex-direction:column;gap:3px}
-  .cs-quote .cs-quote-name{font-family:var(--text);font-weight:700;font-size:15px;color:var(--ink)}
-  .cs-quote .cs-quote-role,.cs-quote .cs-quote-co{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey)}
-  .cs-quote .cs-quote-co{color:var(--magenta)}
 </style>
 <style id="two-voices">
   /* ============ VARIANT 2 — TWO VOICES ============
@@ -925,11 +918,11 @@
     <button class="tk-close" id="menuClose">Close <span class="x">×</span></button>
   </div>
   <div class="tk-links">
-    <a class="tk-l is-current" aria-current="page" style="--td:0.08s" href="work"><span class="tk-n">01</span><span class="tk-t">Work</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.13s" href="digital"><span class="tk-n">02</span><span class="tk-t">Digital</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.18s" href="studios"><span class="tk-n">03</span><span class="tk-t">Studios</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.23s" href="insights"><span class="tk-n">04</span><span class="tk-t">Insights</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.28s" href="about"><span class="tk-n">05</span><span class="tk-t">About</span><span class="tk-ar">→</span></a>
+    <a class="tk-l is-current" aria-current="page" style="--td:0.08s" href="/work"><span class="tk-n">01</span><span class="tk-t">Work</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.13s" href="/digital"><span class="tk-n">02</span><span class="tk-t">Digital</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.18s" href="/studios"><span class="tk-n">03</span><span class="tk-t">Studios</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.23s" href="/insights"><span class="tk-n">04</span><span class="tk-t">Insights</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.28s" href="/about"><span class="tk-n">05</span><span class="tk-t">About</span><span class="tk-ar">→</span></a>
   </div>
   <div class="tk-foot">
     <a href="tel:+16042279952">+1 (604) 227-9952</a>
@@ -943,77 +936,69 @@
 <section class="sub-hero casestudy">
   <svg class="slash-field" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="pair" transform="translate(1060 230) scale(2.2)" style="--dur:15.6s;--dly:0s;--sh:10.4px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(780 460) scale(1.3)" style="--dur:20.4s;--dly:-9s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1260 520) scale(1.7)" style="--dur:13.2s;--dly:-15s;--sh:9.2px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(640 260) scale(1.0)" style="--dur:18s;--dly:-4s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(940 560) scale(1.1)" style="--dur:22.8s;--dly:-21s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1380 360) scale(1.2)" style="--dur:18.6s;--dly:-6s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g></svg>
   <div class="sub-hero-inner wrap">
-    <a class="back swipe" href="work">← Back to all Work</a>
-    <span class="eyebrow">Digital · Hall Constructors</span>
-    <h1 class="rise" id="title">A digital ticketing system foremen actually use, where the last one failed</h1>
-    <p class="sub-voice"><em class="voice mag" id="excerpt">A paper ticket they'd already failed to replace once — rebuilt to survive dust, glare, rain, and the foremen's skepticism.</em></p>
+    <a class="back swipe" href="/work">← Back to all Work</a>
+    <span class="eyebrow">Digital · Energizer</span>
+    <h1 class="rise" id="title">Validating a new product in 30 days, so the expensive mistakes never got made</h1>
+    <p class="sub-voice"><em class="voice mag" id="excerpt">The cheapest way to find out a product won't work is before you've built it.</em></p>
     <div class="byline cs-meta" id="byline">
-      <span class="role">Role</span><span>Product management · UX research &amp; design · UI design · Web development</span>
+      <span class="role">Role</span><span>Product strategy · UX research · UI · Engineering · QA</span>
       <span class="sep vbar">|</span>
-      <span class="cats"><a href="work">Digital</a></span>
+      <span class="cats"><a href="/work">Digital</a></span>
     </div>
   </div>
 </section>
 
-<!-- Dossier: fact sheet (Tier 2/3 — no topline odometer stats) -->
+<!-- Dossier: fact sheet + topline results, one composed spec block -->
 <section class="cs-dossier wrap">
   <dl class="cs-facts reveal">
-    <div class="cs-fact"><dt>Client</dt><dd>Hall Constructors</dd></div>
-    <div class="cs-fact"><dt>Sector</dt><dd>Construction · Field operations</dd></div>
-    <div class="cs-fact"><dt>Services</dt><dd>Product management · UX research &amp; design · UI design · Web development · PM · QA</dd></div>
-    <div class="cs-fact"><dt>Platform</dt><dd>iPad-first web app</dd></div>
+    <div class="cs-fact"><dt>Client</dt><dd>Energizer</dd></div>
+    <div class="cs-fact"><dt>Sector</dt><dd>Consumer products · Energy storage</dd></div>
+    <div class="cs-fact"><dt>Services</dt><dd>Product strategy · UX research · UI · Engineering · QA</dd></div>
+    <div class="cs-fact"><dt>Platform</dt><dd>Rapid prototype · iOS / Android</dd></div>
   </dl>
+  <span class="eyebrow cs-rec-eyebrow">The receipts</span>
+  <div class="proof-row" id="proofRow">
+    <div class="stat"><b><span class="odo"><span class="col" style="--d:3"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span></b><span>days from concept to a validated go / no-go call</span></div>
+  </div>
 </section>
 
 <!-- Body — five-section authored structure -->
 <article class="article-body wrap">
   <div class="prose">
     <h2>the brief.</h2>
-
-    <p>Hall Constructors ran truck load management on paper — forms that got lost, smudged, and miscounted, turning into billing errors and invoicing delays. They needed a rugged, genuinely easy digital system foremen would adopt in real construction conditions, one that accounted for outdoor glare, weather, and short training windows.</p>
-
-    <p>And it had to overcome something harder than any of that: the memory of a previous digitization attempt that had failed on usability.</p>
-
-    <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Brief — the memory</span><p>Hall had already tried to kill the paper ticket once — <span class="mag">it didn't take</span>.</p></aside>
+    <p>Energizer, a global leader in battery innovation, was sitting on a new and experimental energy-storage concept in an unfamiliar product category. Before pouring money into full development, they needed to validate desirability and usability, accelerate the traditional innovation cycle with lean methods, and determine whether the prototype would resonate with real consumers.</p>
 
     <h2>the challenge.</h2>
-
-    <p>Adoption was the whole game. Foremen working in dust, rain, and bright sun had already been handed a digital tool and rejected it — so the bar wasn't "build an app," it was "build the one they won't abandon." That meant designing for the worksite first and the screen second: high-contrast displays readable in direct sun, controls usable with work gloves, and workflows fast enough to beat reaching for a pen.</p>
+    <p>Traditional product development would have spent months and a significant budget before anyone outside the building touched the concept. The challenge was to invert that — get a realistic prototype in front of real users quickly enough to make a confident go/no-go call, in a category where consumer expectations were unknown and the cost of guessing wrong was measured in R&amp;D millions.</p>
 
     <h2>the process.</h2>
-
-    <p>We started with the people, despite limited early access to foremen — interviewing stakeholders to pull out the functional must-haves, then building Figma prototypes around high-contrast screens, large touch targets, and stripped-down workflows. Critically, we tested those prototypes hands-on with foremen on iPads, in bright sunlight and rough conditions, and ran the feedback straight back into the design. Later phases put working versions on real job sites for final adjustments before launch, and we built a UI/UX design system so the app could grow without fragmenting.</p>
+    <p>We ran a lean, iterative design sprint: rapid UX prototyping to simulate the product's interface and features, followed by real-world user testing to collect actionable feedback within a 30-day window. No internal politics, no committee — just a fast loop from concept to validated signal.</p>
 
     <h2>the solution.</h2>
-
-    <h3>a field-ready ticketing system.</h3>
-
-    <p>We built a rugged, intuitive digital ticketing system for truck load management — high-contrast and easy to navigate on iPads, designed for the conditions it actually lives in. Data is captured digitally at the source, enabling near real-time reconciliation and faster invoicing, and a scalable design system keeps future features consistent.</p>
+    <h3>a full-featured prototype, fast.</h3>
+    <p>Rather than mockups, we produced a prototype real enough to test as if it were the product, then put it in front of target users. That fidelity is what made the feedback trustworthy: people reacted to something that behaved like the real thing, so the insights were the kind you can bet a roadmap on.</p>
 
     <h2>the outcome.</h2>
+    <p>In 30 days, Energizer had data-backed direction on an unfamiliar product category — the ideal customer experience defined, and the go-to-market risk cut by validating product direction before full investment. The validation saved millions in R&amp;D that the concept would otherwise have consumed on the way to the same answer.</p>
 
-    <p>The system is in use by the foremen who rejected the last one — adoption after a prior failed attempt being the metric that matters most here.</p>
+    <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">The payoff</span><p>30 days to a data-backed call — <span class="mag">saving millions</span> the slow path would have burned.</p></aside>
 
-    <p>By capturing data digitally at the point of work, an entire class of errors structurally disappears: lost paper tickets and illegible handwriting can't corrupt invoicing when the count is recorded at source — which is what closes the gap between work done and work billed.</p>
-
-    <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Outcome — adoption</span><p>Lost tickets and illegible handwriting can't corrupt invoicing — <span class="mag">when the count is captured at the source</span>.</p></aside>
-
-    <!-- [OUTCOME PLACEHOLDER — Notion Needs Review=YES. Tier 2 (qualitative). Ongoing-development relationship — strong candidate for a client data ask: tickets/month, days-to-invoice before vs. after, error-rate delta. Class 1/2/7. Internal marker — not rendered.] -->
+    <p class="end">Sometimes the most valuable result is a fast, early "no."</p>
   </div>
 </article>
 
-<!-- Next case -->
+<!-- Next case — the homepage insights .post component, numbers dropped -->
 <section class="insights" id="next-case">
   <div class="wrap reveal">
     <h2 class="rise">Next <em class="voice mag">case</em></h2>
     <div class="posts">
-      <a class="post" href="ncis-maritime"><span class="stream">Digital · NCIS</span><h3>Maritime intelligence pulled out of legacy silos and into one fast investigative view</h3><span>2026</span></a>
-      <a class="post" href="delta-controls"><span class="stream">Digital · Delta Controls</span><h3>Sensor setup that took 5 minutes now takes 90 seconds</h3><span>2026</span></a>
+      <a class="post" href="/work/case-telus-koodo"><span class="stream">Digital · TELUS &amp; Koodo</span><h3>One platform that ended USB-stick ordering for a national dealer network</h3><span>2026</span></a>
+      <a class="post" href="#"><span class="stream">Studios · Iron Mountain</span><h3>“The Summit” — a generative brand film in days, not months</h3><span>2026</span></a>
     </div>
   </div>
 </section>
 
-<!-- Global page closer -->
+<!-- Global page closer — same scale as homepage, page-specific copy -->
 <section class="page-closer" id="contact">
   <div class="wrap">
     <h2 class="rise">Read enough? <em class="voice mag">Let's build.</em></h2>
@@ -1026,6 +1011,7 @@
 </section>
 
 
+
 <footer>
   <div class="wrap foot">
     <div class="foot-top">
@@ -1034,11 +1020,11 @@
         <p class="tagline">Made to use.<br><em class="voice">Made to remember.</em></p>
       </div>
       <ul>
-        <li><a href="work" aria-current="page">Work</a></li>
-        <li><a href="digital">Digital</a></li>
-        <li><a href="studios">Studios</a></li>
-        <li><a href="insights">Insights</a></li>
-        <li><a href="about">About</a></li>
+        <li><a href="/work" aria-current="page">Work</a></li>
+        <li><a href="/digital">Digital</a></li>
+        <li><a href="/studios">Studios</a></li>
+        <li><a href="/insights">Insights</a></li>
+        <li><a href="/about">About</a></li>
         <li><a href="#">Careers</a></li>
       </ul>
       <div class="news">
@@ -1053,7 +1039,7 @@
     <p class="ack">We acknowledge that we live and work uninvited on the unceded territories of the xwməθkwəy̓əm (Musqueam), Sḵwx̱wú7mesh (Squamish), Sel̓íl̓witulh (Tsleil-Waututh), Syilx tmixw (Okanagan), Nłeʔkepmx Tmíxw (Nlaka'pamux), Niitsítpiis-stahkoii (Blackfoot / Niitsítapi), Mi'kma'ki, the Mississaugas of the Credit, Anishnabeg, Chippewa, Haudenosaunee, and Wendat peoples. We are grateful for the opportunity to build our agency and communities on land that is cared for by these Nations.</p>
     <div class="legal">
       <span>© <span id="yr"></span> Power Shifter Digital Inc. All rights reserved.</span>
-      <span><a href="terms-and-conditions">Terms &amp; Conditions</a><a href="privacy-policy">Privacy Policy</a><a href="privacy-policy">Cookies</a></span>
+      <span><a href="/terms-and-conditions">Terms &amp; Conditions</a><a href="/privacy-policy">Privacy Policy</a><a href="/privacy-policy">Cookies</a></span>
     </div>
   </div>
 </footer>
@@ -1289,8 +1275,8 @@ document.querySelectorAll('.swipe').forEach(function(el){
 })();
 </script>
 <!-- PS Craft Layer -->
-<script src="ps-spice.js"></script>
+<script src="/ps-spice.js"></script>
 <!-- PS Concierge -->
-<script src="ps-concierge.js"></script>
+<script src="/ps-concierge.js"></script>
 </body>
 </html>

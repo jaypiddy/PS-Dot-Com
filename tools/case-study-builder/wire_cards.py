@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-"""Repoint existing /work cards (href="#" -> slug) by matching their <h3>,
-fix two card titles, and insert a TELUS Support placeholder card."""
+"""Repoint existing /work cards (href="#" -> /work/<slug>) by matching their <h3>,
+fix two card titles, and insert a TELUS Support placeholder card. Already run once
+(2026-06-29) — kept for reference/reuse on a future repoint pass; not idempotent
+against current work.html (the href="#" targets it looks for are already gone)."""
 import pathlib
 W = pathlib.Path("/Users/jpholecka2025/PS-Dot-Com/work.html")
 lines = W.read_text(encoding="utf-8").splitlines(keepends=True)
@@ -25,7 +27,7 @@ for sub, slug, rename in MAP:
     hi = next(i for i,l in enumerate(lines) if "<h3>" in l and sub in l)
     # walk back to nearest href="#"
     j = next(k for k in range(hi, -1, -1) if 'href="#"' in lines[k])
-    lines[j] = lines[j].replace('href="#"', f'href="{slug}"', 1)
+    lines[j] = lines[j].replace('href="#"', f'href="/work/{slug}"', 1)
     if rename:
         import re
         lines[hi] = re.sub(r'<h3>.*?</h3>', f'<h3>{rename}</h3>', lines[hi], count=1)
@@ -34,7 +36,7 @@ for sub, slug, rename in MAP:
 text = "".join(lines)
 
 # Insert a TELUS Support placeholder card before the lululemon card
-TS_CARD = '''  <a class="wcard" data-cat="digital" href="telus-support">
+TS_CARD = '''  <a class="wcard" data-cat="digital" href="/work/telus-support">
     <div class="wframe slot-frame">
       <span class="slot-tag">TELUS Support — image pending</span>
     </div>

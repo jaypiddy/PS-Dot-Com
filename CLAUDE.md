@@ -19,18 +19,23 @@ directory, not the site root.
 **Before adding any page in a subdirectory:** make sure every internal
 `href`/`src` it carries (in its own markup and in any chrome it shares) is
 root-absolute (`href="/work"`, not `href="work"`). This bit us for real on
-2026-06-30 moving blog articles into `/insights/<slug>` — see the fix in
-`article.html` and `tools/blog-renderer/render_blog.py` (commit `0728b95`) for
-the worked example, and `docs/design-system.md` §11 for the durable rule.
+2026-06-30 moving blog articles into `/insights/<slug>` (commit `0728b95`) and
+case studies into `/work/<slug>` (same day, same fix applied to all 16) — see
+`docs/design-system.md` §11 for the durable rule.
 
-Pages that stay flat at the root (case studies, `/work`, `/digital`, etc.) are
-unaffected — this only matters when a page is nested.
+Pages that stay flat at the root (`/work`, `/digital`, `/studios`, `/insights`,
+`/about`) are unaffected — this only matters when a page is nested. Both
+case studies and blog posts now ARE nested (one directory under their listing
+page), so any new one is automatically in scope for this rule.
 
 ## Where things live
 
-- **Case studies** — hand-published from Notion, one `.html` per case at root
-  (`/xyon`, `/allia-health-group`, …). SOP + build journal: `docs/case-study-publishing.md`.
-  Generator tooling: `tools/case-study-builder/` (see its README).
+- **Case studies** — hand-published from Notion, one `.html` per case at
+  `work/<slug>.html`, served at `/work/<slug>` (`/xyon`, `/allia-health-group`, …
+  moved here from the root 2026-06-30). SOP + build journal:
+  `docs/case-study-publishing.md`. Generator tooling: `tools/case-study-builder/`
+  (see its README — **don't re-run `build_cases.py` on a case that's had a
+  hand-fix since**, it'll regress it).
 - **Blog / Insights** — 63 Published posts rendered from Notion export data onto
   the `article.html` template, served at `/insights/<slug>`; the listing grid is
   `/insights` (`insights.html`). Generator: `tools/blog-renderer/` (see its README) —

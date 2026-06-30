@@ -123,15 +123,9 @@ def parse_blocks(md):
             while i < n and re.match(r'\s*\d+\.\s+', lines[i]):
                 items.append(re.sub(r'^\s*\d+\.\s+', '', lines[i]).strip()); i += 1
             blocks.append(('ol', items)); continue
-        para = [s]; i += 1
-        while i < n:
-            nxt = lines[i].strip()
-            if not nxt or re.match(r'(#{1,3}\s|[-*]\s+|\d+\.\s+|>)', nxt) or nxt.startswith('!['):
-                break
-            if detect_embed(nxt):
-                break
-            para.append(nxt); i += 1
-        blocks.append(('p', ' '.join(para)))
+        # Notion exports one block per line (single-\n separated, no hard wrapping),
+        # so each non-block line is its own paragraph — do NOT gather consecutive lines.
+        blocks.append(('p', s)); i += 1
     return blocks
 
 def li_bold_lead(txt):
@@ -159,18 +153,20 @@ def render_ul(items):
     return '    <ul class="changes">\n' + "\n".join(out) + '\n    </ul>'
 
 def render_quote(text):
-    parts = re.split(r'\s+[—–-]\s+', text.strip())
-    if len(parts) >= 2 and len(parts[-1]) < 60 and not parts[-1].endswith('.'):
-        name = parts[-1].strip()
-        quote = ' — '.join(parts[:-1]).strip().strip('"“”')
-        return f'    <p><em class="voice mag">“{inline(quote)}”</em> — {esc(name)}</p>'
-    q = text.strip().strip('"“”')
-    return f'    <p><em class="voice mag">“{inline(q)}”</em></p>'
+    """Blockquote treatment — .prose blockquote (serif italic, magenta left rule,
+    readable line-height). Source quotes carry their own quotation marks/attribution."""
+    body = ' '.join(s for s in text.split('\n') if s.strip()).strip()
+    return f'    <blockquote>{inline(body)}</blockquote>'
 
 def convert_body(md):
     blocks = parse_blocks(md)
     p_positions = [k for k, b in enumerate(blocks) if b[0] == 'p']
-    first_p = p_positions[0] if p_positions else -1
+    def _substantive(txt):
+        letters = re.sub(r'[^A-Za-z]', '', txt)
+        return len(txt) >= 60 and not (letters and letters == letters.upper())
+    # lede = first SUBSTANTIVE paragraph (skip short all-caps boilerplate like "FOR IMMEDIATE RELEASE")
+    first_p = next((k for k in p_positions if _substantive(blocks[k][1])),
+                   p_positions[0] if p_positions else -1)
     last_p = p_positions[-1] if p_positions else -1
     fig_n, out = 0, []
     for k, (typ, data) in enumerate(blocks):

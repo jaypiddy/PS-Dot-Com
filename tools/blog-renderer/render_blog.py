@@ -100,7 +100,7 @@ def parse_blocks(md):
             blocks.append(('h2', s[3:])); i += 1; continue
         if s.startswith('# '):
             blocks.append(('h2', s[2:])); i += 1; continue
-        m = re.fullmatch(r'!\[([^\]]*)\]\(([^)]+)\)', s)
+        m = re.fullmatch(r'!\[(.*)\]\(([^)]+)\)', s)  # alt may contain nested [..](..) links
         if m:
             blocks.append(('img', (m.group(1), m.group(2).strip()))); i += 1; continue
         emb = detect_embed(s)

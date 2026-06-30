@@ -603,8 +603,10 @@
      Light bottom scrim + a soft black glow keep the type legible over any image. */
   .sheet .wframe.has-overlay{margin-bottom:18px}
   .wframe.has-overlay .wtint{background:linear-gradient(transparent 42%, rgba(18,19,21,.55) 100%)}
+  /* z-index:8 sits above the Craft Layer's reveal scrim (body.sp-reveal .wtint = z6,
+     .wframe::after = z4) so the type is always the top layer over the thumbnail. */
   .sheet .wcard .wframe.has-overlay h3{
-    position:absolute;left:0;right:0;bottom:0;z-index:2;margin:0;
+    position:absolute;left:0;right:0;bottom:0;z-index:8;margin:0;
     padding:clamp(14px,1.7vw,22px);color:var(--paper);
     text-shadow:0 1px 2px rgba(0,0,0,.55), 0 2px 16px rgba(0,0,0,.6), 0 0 34px rgba(0,0,0,.45);
   }

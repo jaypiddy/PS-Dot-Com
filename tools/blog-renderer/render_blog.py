@@ -233,8 +233,10 @@ def merge_overrides(posts):
             if cats:
                 p['categories'] = cats
             p['featured'] = r.get('featured', '').lower() in ('yes', 'true', '1', '✓', 'checked', 'x')
-            if r.get('photo credit'):
-                p['photo_credit'] = r['photo credit']
+            # Photo Credit is a Notion relation → "Name (https://notion.so/...)"; keep the name.
+            pc = re.sub(r'\s*\(https?://[^)]*\)\s*$', '', r.get('photo credit', '')).strip()
+            if pc:
+                p['photo_credit'] = pc
             n += 1
     return n
 
@@ -327,10 +329,15 @@ def render_article(post, lookup):
 def slugify(s):
     return re.sub(r'[^a-z0-9]+', '-', (s or '').lower()).strip('-') or 'insights'
 
+# New-taxonomy names → the filter-tab data-cat slugs in insights.html
+CAT_SLUG = {"Build": "build", "Frames": "frames", "Founder's Focus": "ff"}
+def cat_dcat(tag):
+    return CAT_SLUG.get(tag, slugify(tag))
+
 def insights_card(post, n):
     cats = cats_of(post)
     tag = cats[0] if cats else 'Insights'
-    dcat = slugify(tag)
+    dcat = cat_dcat(tag)
     img = post.get('masthead_url') or post.get('thumbnail_url') or ''
     frame = (f'<div class="wframe"><img src="{attr(img)}" alt="" style="width:100%;height:100%;object-fit:cover"></div>'
              if img else '<div class="wframe slot-frame light"><span class="slot-tag dark">No thumbnail</span></div>')
@@ -346,7 +353,7 @@ def feature_card(post, n):
     cats = cats_of(post)
     tag = cats[0] if cats else 'Insights'
     img = post.get('masthead_url') or post.get('thumbnail_url') or ''
-    return f'''  <a class="wcard feature" data-cat="{slugify(tag)}" href="{post['slug']}" id="featured">
+    return f'''  <a class="wcard feature" data-cat="{cat_dcat(tag)}" href="{post['slug']}" id="featured">
     <div class="wframe">
       <img src="{attr(img)}" alt="" style="width:100%;height:100%;object-fit:cover">
       <div class="wtint"></div>
@@ -370,9 +377,17 @@ def regen_insights(posts):
         blocks.append(feature_card(p, i) if p is feat else insights_card(p, i))
     cards = "\n\n".join(blocks)
     ins = ins[:start] + "\n\n" + cards + "\n\n  " + ins[end:]
-    # update the "All" tab count to the published total
-    ins = re.sub(r'(data-cat="all"><span class="fl cascade">All</span> <span class="fc">)\d+(</span>)',
-                 lambda m: m.group(1) + str(len(posts)) + m.group(2), ins, count=1)
+    # update filter-tab counts to the published reality
+    from collections import Counter
+    cc = Counter()
+    for p in posts:
+        for c in cats_of(p):
+            cc[c] += 1
+    counts = {'all': len(posts), 'build': cc.get('Build', 0),
+              'frames': cc.get('Frames', 0), 'ff': cc.get("Founder's Focus", 0)}
+    for dc, val in counts.items():
+        ins = re.sub(rf'(data-cat="{dc}"><span class="fl cascade">[^<]*</span> <span class="fc">)\d+(</span>)',
+                     lambda m, v=val: m.group(1) + str(v) + m.group(2), ins, count=1)
     (REPO / "insights.html").write_text(ins, encoding="utf-8")
 
 # ---------------------------------------------------------------- main

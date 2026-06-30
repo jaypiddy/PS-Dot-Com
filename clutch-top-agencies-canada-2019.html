@@ -3,8 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thinking in Public — POWER SHIFTER Insights</title>
-<meta name="description" content="Build — how we make software with AI. Frames — how we make films with it. Founder's Focus — where it's all going, whether you agree or not.">
+<title>Power Shifter Named a 2019 Clutch Leader — POWER SHIFTER Insights</title>
+<meta name="description" content="Clutch.co has ranked Power Shifter a 2019 leader among Canadian product designers—based on verified client reviews on the B2B ratings platform.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Power Shifter Named a 2019 Clutch Leader">
+<meta property="og:description" content="Clutch.co has ranked Power Shifter a 2019 leader among Canadian product designers—based on verified client reviews on the B2B ratings platform.">
+<meta property="og:image" content="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/cdca63ed-73d9-408b-97b8-adeb3be4bc00/public">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="https://use.typekit.net/xkk7api.css">
 <link rel="preload" as="image" href="images/scratches-v2.webp">
 <!-- PS Craft Layer (design-spice pass) -->
@@ -154,6 +159,8 @@
   /* ---------- Block 6 — Insights ---------- */
   .insights{padding-top:clamp(80px,10vh,130px);padding-bottom:clamp(80px,10vh,130px);border-bottom:1px solid var(--line)}
   .insights h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,3.6vw,54px);letter-spacing:-.015em;margin-bottom:18px}
+  .insights .streams{font-size:17px;line-height:1.6;max-width:74ch;color:var(--grey);margin-bottom:46px}
+  .insights .streams b{color:var(--ink);font-weight:700}
   .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px)}
   .post{border-top:1px solid var(--ink);padding-top:18px}
   .post .stream{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--magenta);display:block;margin-bottom:10px}
@@ -327,121 +334,74 @@
     padding:0 .1em .16em 0;
   }
 
-  /* Filter bar */
-  .work-filter{
-    position:sticky;top:0;z-index:40;
-    background:var(--paper);border-bottom:1px solid var(--line);
-  }
-  .filter-row{display:flex;gap:6px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap;align-items:center}
-  .ftab{
-    font-family:var(--text);font-weight:700;font-size:15px;letter-spacing:.02em;
-    padding:14px 24px;border:1px solid var(--line);background:transparent;
-    color:var(--ink);cursor:pointer;display:flex;gap:10px;align-items:baseline;
-    transition:background-color .3s ease,color .3s ease,border-color .3s ease;
-  }
-  .ftab .fc{color:var(--grey);font-weight:400;font-size:13px;transition:color .3s ease,opacity .3s ease}
-  .ftab:hover{border-color:var(--ink)}
-  .ftab.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-  .ftab.on .fc{color:var(--magenta)}
-  /* whole-button hover triggers the label cascade */
-  .ftab:hover .cascade .lt span{transform:translateY(-100%)}
-  .pending{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500;
-    font-size:1.16em !important;letter-spacing:-.01em;color:var(--magenta) !important}
-  .ftab.on .pending{color:var(--magenta) !important}
+  /* ---------- Article page ---------- */
+  /* Sub-hero, article dialect: same component, smaller H1 so a 124-char title holds */
+  .sub-hero .back{display:inline-block;margin-bottom:28px;
+    font-family:var(--text);font-weight:700;font-size:13.5px;letter-spacing:.03em}
+  .byline .cats{color:rgba(250,250,247,.55);font-weight:400}
+  .byline .cats a:hover{color:var(--magenta)}
+  .byline .vbar{padding:0 2px}
+  .sub-hero.article h1{font-size:clamp(36px,4.4vw,72px);line-height:1.02;max-width:22ch;text-wrap:balance}
+  .sub-hero.article .eyebrow a:hover{border-bottom:1px solid currentColor}
+  .sub-hero.article .sub-voice em{font-size:clamp(20px,2.2vw,32px);line-height:1.25;display:block;max-width:38em}
+  .byline{display:flex;gap:12px;flex-wrap:wrap;align-items:baseline;margin-top:26px;
+    padding-top:18px;border-top:1px solid var(--line-light);
+    font-family:var(--text);font-weight:700;font-size:13.5px;letter-spacing:.02em;
+    opacity:0;animation:settle .6s ease-out .75s forwards}
+  .byline .date,.byline .sep{color:rgba(250,250,247,.55);font-weight:400}
+  .byline a:hover{color:var(--magenta)}
 
-  /* Work grid */
-  .work-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:clamp(24px,3vw,44px);
-    padding-top:clamp(48px,6vh,72px);
-    padding-bottom:clamp(64px,8vh,100px);
-  }
-  .wcard{display:flex;flex-direction:column;position:relative}
-  .wcard.feature{grid-column:1 / -1}
-  .wframe{
-    aspect-ratio:16/9;background:var(--ink-soft);position:relative;
-    overflow:hidden;margin-bottom:18px;
-  }
-  .wcard.feature .wframe{aspect-ratio:21/9}
-  .wframe img{transition:transform .6s cubic-bezier(.22,1,.36,1)}
-  .wcard:hover .wframe img{transform:scale(1.03)}
-  .slot-frame{background:var(--ink-soft)}
-  .slot-frame.light{background:#e9e9e4}
-  .wtint{
-    position:absolute;inset:0;
-    background:linear-gradient(transparent 30%, rgba(18,19,21,.72) 100%);
-    z-index:1;pointer-events:none;
-  }
-  .wcard-overlay{
-    position:absolute;bottom:0;left:0;right:0;padding:clamp(22px,3vw,38px);
-    z-index:2;color:var(--paper);
-  }
-  .wcard-overlay h2{
-    font-family:var(--display);font-weight:700;
-    font-size:clamp(22px,2.4vw,36px);letter-spacing:-.01em;margin:10px 0 8px;
-  }
-  .wcard-overlay h2 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500}
-  .wcard-overlay p{font-size:15px;color:rgba(250,250,247,.78);max-width:54ch;margin-bottom:12px}
-  .wtag{
-    font-family:var(--text);font-weight:700;font-size:11px;
-    letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);
-    display:block;margin-bottom:10px;
-  }
-  .wcard h3{
-    font-family:var(--display);font-weight:700;
-    font-size:clamp(18px,1.8vw,26px);letter-spacing:-.008em;margin-bottom:8px;
-  }
-  .wcard h3 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500}
-  .wcard > p{font-size:14.5px;color:var(--grey);max-width:44ch;margin-bottom:10px}
-  .wgo{font-weight:700;font-size:13.5px;letter-spacing:.04em;margin-top:auto}
-  
-  .wcard-overlay .wgo{color:rgba(250,250,247,.9);font-size:14px}
-  
-  .slot-tag.dark{color:rgba(18,19,21,.35);border-color:rgba(18,19,21,.25)}
+  /* Masthead plate — wframe/wtint pattern from the work cards */
+  .masthead{padding-top:clamp(28px,4vh,52px)}
+  .masthead .wframe{aspect-ratio:21/9;margin-bottom:0}
+  .masthead .wframe img{width:100%;height:100%;object-fit:cover}
+  .masthead .wtint{display:none}
+  .masthead .wframe.dark .wtint{display:block}
+  .photo-credit{position:absolute;right:16px;bottom:12px;z-index:2;
+    font-size:11px;letter-spacing:.06em;color:rgba(250,250,247,.85);
+    text-shadow:0 1px 10px rgba(18,19,21,.6)}
 
-  /* Hybrid pending state */
-  .hybrid-slot .wframe{outline:1px dashed var(--line);outline-offset:-8px}
-  .pending-tag{color:var(--grey) !important}
-  .pending-go{color:var(--grey);pointer-events:none}
+  /* Image hero — masthead promoted behind the headline; >=20% black tint on every post */
+  .sub-hero.article{min-height:66vh;padding-top:clamp(132px,20vh,220px)}
+  .sub-hero .hero-media{position:absolute;inset:0;z-index:0;overflow:hidden;background:var(--ink)}
+  .sub-hero .hero-media img{width:100%;height:100%;object-fit:cover;display:block}
+  .sub-hero .hero-tint{position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(180deg,rgba(18,19,21,.34) 0%,rgba(18,19,21,.20) 40%,rgba(18,19,21,.66) 100%)}
+  .sub-hero.dark-overlay .hero-tint{
+    background:linear-gradient(180deg,rgba(18,19,21,.52) 0%,rgba(18,19,21,.44) 40%,rgba(18,19,21,.80) 100%)}
+  .sub-hero.article .photo-credit{right:18px;bottom:14px;z-index:3}
 
-  /* ---------- Insights collection page ---------- */
-  /* H1 carries the homepage tease: magenta box on the serif word */
-  .sub-hero .boxed{
-    font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500;letter-spacing:-.02em;
-    background:var(--magenta);color:var(--paper);display:inline-block;
-    padding:.08em .18em .14em;border-radius:2px;transform:translateY(.04em);
-  }
-  .sub-hero .sub-body{
-    margin-top:22px;max-width:74ch;font-size:17px;line-height:1.6;
-    color:rgba(250,250,247,.72);
-    opacity:0;animation:settle .6s ease-out .55s forwards;
-  }
-  .sub-hero .sub-body b{color:var(--paper);font-weight:700}
-
-  /* Card additions on top of the wcard system */
-  .wcard .excerpt{
-    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
-  }
-  .idate{font-size:12.5px;color:var(--grey);display:block;margin-top:10px}
-  .wcard.feature .idate{color:rgba(250,250,247,.6)}
-
-  /* Founder's Focus dialect — pure typography on ink, no image */
-  .wcard.ff{background:var(--ink);color:var(--paper);padding:clamp(24px,2.6vw,38px);
-    display:flex;flex-direction:column;min-height:100%}
-  .wcard.ff h3{
-    font-family:var(--display);font-weight:900;letter-spacing:-.015em;
-    font-size:clamp(22px,2.2vw,30px);line-height:1.12;margin-bottom:14px;
-  }
-  .wcard.ff h3 em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500}
-  .wcard.ff > p{color:rgba(250,250,247,.7)}
-  .wcard.ff .idate{color:rgba(250,250,247,.55)}
-  .wcard.ff .wgo{color:rgba(250,250,247,.9)}
-
-  /* Load more */
-  .more-row{display:flex;justify-content:center;padding-bottom:clamp(72px,10vh,110px)}
-  .more-row .btn{border-color:var(--ink);color:var(--ink)}
-  .more-row .btn:hover{background:transparent;color:var(--ink)}
+  /* Body — reading column 700px, figures and embeds break to 980px */
+  .article-body{padding-top:clamp(48px,7vh,90px);padding-bottom:clamp(64px,9vh,110px)}
+  .prose{max-width:700px}
+  .prose>*+*{margin-top:1.35em}
+  .prose p{font-size:18px;line-height:1.65}
+  .prose a{color:var(--magenta);border-bottom:1px solid currentColor;transition:opacity .2s ease-out}
+  .prose a:hover{opacity:.7}
+  .prose h2{font-family:var(--display);font-weight:700;letter-spacing:-.015em;
+    font-size:clamp(26px,2.6vw,36px);line-height:1.12;margin-top:2.2em}
+  .prose h3{font-family:var(--display);font-weight:700;letter-spacing:-.01em;
+    font-size:clamp(20px,1.9vw,24px);line-height:1.2;margin-top:1.9em}
+  .prose ul,.prose ol{padding-left:1.4em}
+  .prose li{font-size:18px;line-height:1.65;margin-top:.5em}
+  .prose ul li::marker{color:var(--magenta)}
+  .prose ol li::marker{font-weight:700}
+  .prose ul ul,.prose ol ol{margin-top:.5em}
+  /* Quote — the body's serif voice moment */
+  .prose blockquote{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500;letter-spacing:-.02em;
+    font-size:clamp(22px,2.4vw,30px);line-height:1.3;
+    border-left:2px solid var(--magenta);padding-left:clamp(20px,2.5vw,34px);
+    margin-top:2em;margin-bottom:2em}
+  .prose figure{width:min(980px,100%);margin-top:2.2em;margin-bottom:2.2em}
+  .prose figure img{width:100%;background:var(--ink-soft)}
+  .prose figcaption{font-size:13px;color:var(--grey);padding-top:10px;
+    border-top:1px solid var(--line);max-width:700px}
+  .embed{width:min(980px,100%);margin-top:2.2em;margin-bottom:2.2em;background:var(--ink-soft)}
+  .embed.video{aspect-ratio:16/9}
+  .embed.podcast{height:150px;background:transparent}
+  .embed iframe{width:100%;height:100%;border:0;display:block}
+  /* Related uses the homepage insights .post pattern as-is */
+  .insights .posts .post{display:block}
 
   /* ---- Global page closer — token-driven, reuse across all key pages ----
      Matches homepage closer in scale. Swap h2 text + p + btn label per page.
@@ -462,8 +422,6 @@
   .page-closer .tel{font-family:var(--text);font-weight:700;font-size:15px;color:rgba(250,250,247,.78)}
   .page-closer .tel:hover{color:var(--magenta)}
 
-  @media(max-width:980px){.work-grid{grid-template-columns:1fr 1fr}.wcard.feature{grid-column:1/-1}}
-  @media(max-width:640px){.work-grid{grid-template-columns:1fr}}
 
   /* ---------- Button system ---------- */
   /* Primary — letter cascade */
@@ -562,74 +520,180 @@
   }
 </style>
 
-<style id="insights-v3">
-  /* ============ COLLECTION V3 — ruled sheet, indexed cards ============
-     Hero, filter, closer, footer untouched. The grid becomes the homepage
-     work-section's hairline-ruled sheet; every post is an indexed cell with
-     a mono meta row. Stream dialects: Build = grotesque, Frames = serif
-     accent, Founder's Focus = 900 on ink with magenta serif voice. */
-  .work-grid{display:block;padding-top:clamp(40px,5vh,64px);padding-bottom:clamp(28px,4vh,48px)}
-  .sheet{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-  .sheet .wcard{background:var(--paper);margin:0;padding:clamp(20px,2.4vw,32px);display:flex;flex-direction:column}
-  .sheet .wcard.feature{grid-column:1/-1;padding:0}
-  .sheet .wcard.ff{background:var(--ink);color:var(--paper)}
+<style id="article-v2">
+  /* ============ ARTICLE BODY V2 — editorial magazine × dense Swiss ============
+     Hero, nav, masthead, closer, footer untouched. Reading column 700px,
+     breakouts 980px, Signal band full-bleed. Sections are indexed; the serif
+     speaks in the pull quote and the ledger numerals — Two Voices, in body form. */
+  body{overflow-x:clip}
+  .article-body{padding-top:clamp(56px,8vh,104px);padding-bottom:clamp(72px,10vh,120px)}
+  .prose{max-width:700px;margin-inline:auto;counter-reset:sect}
+  .prose>*+*{margin-top:1.5em}
+  .prose p{font-size:18px;line-height:1.68}
 
-  /* Meta row — mono index · stream · date */
-  .cmeta{display:flex;gap:16px;align-items:baseline;margin-bottom:16px}
-  .cn{font-family:var(--mono,ui-monospace,Menlo,monospace);font-size:11px;letter-spacing:.12em;
-    color:var(--grey);transition:color .25s ease-out}
-  .wcard:hover .cn{color:var(--magenta)}
-  .cmeta .wtag{margin-bottom:0}
-  .cmeta .idate{margin-left:auto;margin-top:0}
-  .idate{font-family:var(--mono,ui-monospace,Menlo,monospace);font-size:11px;letter-spacing:.06em;
-    text-transform:uppercase;color:var(--grey)}
-  .wcard.ff .idate{color:rgba(250,250,247,.5)}
-  .wcard.ff .cn{color:rgba(250,250,247,.5)}
+  /* Breakout machinery — centered on the column */
+  .prose .breakout{width:min(980px,calc(100vw - 2*var(--gutter)));margin-left:50%;transform:translateX(-50%)}
 
-  /* Frame — thumbnail slot fills the plate */
-  .sheet .wframe{margin-bottom:0}
-  .sheet .wframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
-    transition:transform .6s cubic-bezier(.22,1,.36,1)}
-  .wcard:hover .wframe img{transform:scale(1.03)}
-
-  /* Type scale up */
-  .sheet .wcard h3{font-family:var(--display);font-weight:700;letter-spacing:-.012em;line-height:1.14;
-    font-size:clamp(21px,1.9vw,28px);margin:18px 0 10px;text-wrap:pretty}
-  .sheet .wcard h3 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500;letter-spacing:-.01em}
-  .sheet .wcard .excerpt{font-size:15px;line-height:1.55;color:var(--grey);margin-bottom:16px;max-width:46ch}
-  .sheet .wgo{margin-top:auto;padding-top:6px}
-
-  /* Featured — full-bleed overlay cell, statement type */
-  .sheet .feature .wcard-overlay{padding:clamp(26px,3.4vw,48px)}
-  .fmeta{display:flex;gap:16px;align-items:baseline}
-  .fmeta .cn{color:rgba(250,250,247,.6)}
-  .fmeta .idate{color:rgba(250,250,247,.6)}
-  .sheet .feature .wcard-overlay h2{font-weight:900;letter-spacing:-.02em;line-height:1;
-    font-size:clamp(30px,3.8vw,58px);max-width:18ch;margin:14px 0 14px}
-  .sheet .feature .wcard-overlay h2 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500}
-  .sheet .feature .excerpt{font-size:16px;line-height:1.5;max-width:60ch;color:rgba(250,250,247,.8)}
-  .sheet .feature .wgo{margin-top:16px;display:inline-block}
-
-  /* Founder's Focus dialect — opinion in 900, the voice in magenta serif */
-  .sheet .wcard.ff h3{font-weight:900;letter-spacing:-.018em;line-height:1.08;
-    font-size:clamp(24px,2.3vw,34px);margin-top:20px}
-  .sheet .wcard.ff h3 em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500;color:var(--magenta)}
-  .sheet .wcard.ff .excerpt{color:rgba(250,250,247,.65)}
-
-  /* Rise-in: cells use the site reveal motion, staggered by column */
-  .sheet .wcard.reveal{transition-delay:calc(var(--d,0)*70ms)}
-
-  @media(max-width:980px){.sheet{grid-template-columns:1fr 1fr}}
-  @media(max-width:640px){
-    .sheet{grid-template-columns:1fr}
-    .sheet .feature .wframe{aspect-ratio:auto}
-    .sheet .feature .wcard-overlay{position:relative;inset:auto;padding-top:58vw}
-    .sheet .feature .wtint{background:linear-gradient(180deg,rgba(18,19,21,.18) 0%,rgba(18,19,21,.62) 42%,rgba(18,19,21,.9) 72%)}
-    .sheet .feature .wcard-overlay h2{font-size:clamp(26px,7vw,34px)}
+  /* Lede — drop cap opener */
+  .prose .lede{font-size:21px;line-height:1.62}
+  .prose .lede::first-letter{
+    font-family:var(--serif);font-variation-settings:var(--serif-vset);font-weight:500;
+    float:left;font-size:4.6em;line-height:.8;
+    padding:.04em .16em 0 0;
   }
+
+  /* Numbered section heads — rule, index, title */
+  .prose h2{
+    font-family:var(--display);font-weight:700;letter-spacing:-.015em;
+    font-size:clamp(30px,3.4vw,44px);line-height:1.05;
+    margin-top:3em;padding-top:26px;border-top:2px solid var(--ink);
+  }
+  .prose h2::before{
+    counter-increment:sect;content:"0" counter(sect);
+    display:block;
+    font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
+    font-size:12px;letter-spacing:.16em;color:var(--magenta);
+    margin-bottom:16px;
+  }
+
+  /* Ledger — the three failure modes as indexed rows */
+  .ledger{margin-top:2em}
+  .ledger .lrow{
+    display:grid;grid-template-columns:84px 1fr;gap:0 26px;align-items:start;
+    padding:28px 0;border-top:1px solid var(--line);
+  }
+  .ledger .lrow:last-child{border-bottom:1px solid var(--line)}
+  .ledger .ln{
+    font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500;
+    font-size:clamp(44px,5vw,64px);line-height:.85;color:var(--magenta);
+  }
+  .ledger h3{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.01em;margin:0 0 8px}
+  .ledger p{font-size:16.5px;line-height:1.6;opacity:.85;max-width:54ch;margin:0}
+  @media(max-width:620px){.ledger .lrow{grid-template-columns:48px 1fr;gap:0 16px}}
+
+  /* Pull quote — the body's voice moment, breakout width */
+  .pull{margin-top:3.2em;margin-bottom:3.2em;padding:30px 0 38px;
+    border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
+  .pull .eyebrow{color:var(--magenta);display:block;margin-bottom:24px}
+  .pull p{
+    font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500;letter-spacing:-.02em;
+    font-size:clamp(28px,3.6vw,46px);line-height:1.22;max-width:30ch;
+  }
+
+  /* Spec list — what we changed */
+  .prose ul.changes{list-style:none;padding:0}
+  .prose ul.changes>li{
+    position:relative;padding:18px 0 18px 32px;margin:0;
+    border-top:1px solid var(--line);font-size:17.5px;line-height:1.6;
+  }
+  .prose ul.changes>li:last-child{border-bottom:1px solid var(--line)}
+  .prose ul.changes>li::before{
+    content:"";position:absolute;left:2px;top:28px;width:8px;height:8px;background:var(--magenta);
+  }
+  .prose ul.changes ul{list-style:none;padding:0;margin-top:.6em}
+  .prose ul.changes ul li{font-size:15.5px;color:var(--grey);padding-left:20px;position:relative;margin-top:.4em}
+  .prose ul.changes ul li::before{content:"—";position:absolute;left:0;color:var(--magenta)}
+
+  /* Sequence — indexed steps */
+  .prose ol.seq{list-style:none;padding:0;counter-reset:seq}
+  .prose ol.seq li{
+    counter-increment:seq;display:grid;grid-template-columns:56px 1fr;align-items:baseline;
+    padding:16px 0;margin:0;border-top:1px solid var(--line);
+    font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.01em;line-height:1.3;
+  }
+  .prose ol.seq li:last-child{border-bottom:1px solid var(--line)}
+  .prose ol.seq li::before{
+    content:"0" counter(seq);
+    font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
+    font-size:12px;letter-spacing:.16em;color:var(--magenta);
+  }
+
+  /* Figure — plate + spec caption */
+  .prose figure.breakout{margin-top:3em;margin-bottom:3em}
+  .fig-art{display:block;width:100%;height:auto;aspect-ratio:16/9;background:var(--ink-soft);object-fit:cover}
+  .prose figure.breakout figcaption{
+    display:flex;gap:16px;align-items:baseline;
+    font-size:13px;color:var(--grey);line-height:1.5;
+    padding-top:12px;margin-top:12px;border-top:1px solid var(--ink);max-width:none;
+  }
+  .prose figure.breakout figcaption b{
+    font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--magenta);white-space:nowrap;
+  }
+
+  /* Signal band — full-bleed mid-article capture */
+  .prose .signal{
+    width:100vw;margin-left:50%;transform:translateX(-50%);
+    background:var(--ink);color:var(--paper);
+    margin-top:3.4em;margin-bottom:3.4em;
+  }
+  .signal-in{
+    max-width:980px;margin-inline:auto;
+    padding:clamp(44px,7vh,72px) var(--gutter);
+    display:grid;grid-template-columns:1.5fr 1fr;gap:36px;align-items:center;
+  }
+  .sig-line{
+    font-family:var(--display);font-weight:500;letter-spacing:-.01em;
+    font-size:clamp(22px,2.4vw,30px) !important;line-height:1.25 !important;
+  }
+  .signal .field{display:flex;border:1px solid var(--line-light)}
+  .signal input{flex:1;min-width:0;background:transparent;border:0;color:var(--paper);font-family:var(--text);font-size:14px;padding:13px 14px}
+  .signal input:focus{outline:none}
+  .signal button{background:var(--paper);color:var(--ink);border:0;font-family:var(--text);font-weight:700;font-size:13px;padding:0 22px;cursor:pointer;transition:background .2s ease-out,color .2s ease-out}
+  .signal button:hover{background:var(--magenta);color:var(--paper)}
+  @media(max-width:760px){.signal-in{grid-template-columns:1fr;gap:24px}}
+
+  /* End mark */
+  .prose p.end::after{
+    content:"";display:inline-block;width:10px;height:10px;
+    background:var(--magenta);margin-left:10px;
+  }
+
+  /* Masthead slot */
+  .masthead .wframe{position:relative;overflow:hidden}
+  .masthead .wframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .masthead .wtint{position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(rgba(18,19,21,.38),rgba(18,19,21,.12) 45%,rgba(18,19,21,.52))}
+
+  /* Related — editorial index rows */
+  .related-v2{padding:clamp(72px,10vh,120px) 0;border-top:1px solid var(--line)}
+  .rel-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:36px}
+  .rel-head h2{font-family:var(--display);font-weight:500;font-size:clamp(32px,3.6vw,52px);letter-spacing:-.015em}
+  .rel-head .swipe{font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.03em}
+  .rel-rows{display:flex;flex-direction:column}
+  .rel-row{
+    display:grid;grid-template-columns:3ch 1fr auto 28px;
+    gap:clamp(14px,2.4vw,32px);align-items:baseline;
+    padding:24px 0;border-top:1px solid var(--ink);
+  }
+  .rel-row:last-child{border-bottom:1px solid var(--ink)}
+  .rel-n{font-family:var(--mono,ui-monospace,Menlo,monospace);font-size:12px;letter-spacing:.1em;color:var(--magenta)}
+  .rel-row .stream{
+    font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--grey);display:block;margin-bottom:7px;transition:color .2s ease-out;
+  }
+  .rel-row .rel-title{
+    display:block;
+    font-family:var(--display);font-weight:700;letter-spacing:-.01em;line-height:1.12;
+    font-size:clamp(21px,2.4vw,30px);transition:transform .3s cubic-bezier(.22,1,.36,1);
+  }
+  .rel-date{font-size:13px;color:var(--grey);white-space:nowrap}
+  .rel-ar{font-size:20px;color:var(--magenta);opacity:0;transform:translateX(-10px);
+    transition:opacity .25s ease-out,transform .25s ease-out}
+  .rel-row:hover .rel-title{transform:translateX(10px)}
+  .rel-row:hover .stream{color:var(--magenta)}
+  .rel-row:hover .rel-ar{opacity:1;transform:translateX(0)}
+  @media(max-width:640px){
+    .rel-row{grid-template-columns:3ch 1fr 22px}
+    .rel-date{display:none}
+  }
+
+  /* Rise-in: index rows use the site reveal motion, staggered by row */
+  .rel-row.reveal{transition-delay:calc(var(--d,0)*70ms)}
+
   @media(prefers-reduced-motion:reduce){
-    .sheet .wframe img{transition:none}
-    .wcard:hover .wframe img{transform:none}
+    .rel-row .rel-title,.rel-ar{transition:none}
   }
 </style>
 
@@ -694,546 +758,42 @@
 
 
 
-<!-- Sub-page hero: the homepage tease becomes the page H1 -->
-<section class="sub-hero">
+<!-- Sub-page hero: same DNA as homepage, ~50vh, clearly a sub-section -->
+<section class="sub-hero article dark-overlay">
+  <div class="hero-media"><img id="heroImg" src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/0378558a-d754-4bf2-4ef4-6a2f291db600/public" alt=""></div>
+  <div class="hero-tint"></div>
   <svg class="slash-field" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="pair" transform="translate(1060 230) scale(2.2)" style="--dur:15.6s;--dly:0s;--sh:10.4px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(780 460) scale(1.3)" style="--dur:20.4s;--dly:-9s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1260 520) scale(1.7)" style="--dur:13.2s;--dly:-15s;--sh:9.2px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(640 260) scale(1.0)" style="--dur:18s;--dly:-4s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(940 560) scale(1.1)" style="--dur:22.8s;--dly:-21s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1380 360) scale(1.2)" style="--dur:18.6s;--dly:-6s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g></svg>
   <div class="sub-hero-inner wrap">
-    <span class="eyebrow">Insights — build, frames &amp; founder&rsquo;s focus</span>
-    <h1 class="rise">Thinking in <span class="boxed">public</span></h1>
-    <p class="sub-body"><b>Build</b> — how to make products people love. <b>Frames</b> — how to make films that are remembered. <b>Founder's Focus</b> — where it's all going, whether you agree or not.</p>
+    <a class="back swipe" href="insights">← Back to all Insights</a>
+    <h1 class="rise" id="title">Ranked 2019 Leader in Product Designers by Clutch</h1>
+    <p class="sub-voice"><em class="voice mag" id="excerpt">Clutch.co has ranked Power Shifter a 2019 leader among Canadian product designers—based on verified client reviews on the B2B ratings platform.</em></p>
+    <div class="byline" id="byline">
+      <a href="insights" id="authorEl">By J.P. Holecka</a>
+      <span class="sep" id="authorSep">·</span>
+      <span class="date">February 6, 2019</span>
+      <span class="sep vbar" id="catSep">|</span>
+      <span class="cats" id="cats"><a href="insights">News</a></span>
+    </div>
   </div>
+  <span class="photo-credit" id="photoCredit">Power Shifter Studios</span>
 </section>
 
-<!-- Stream filter — F1 ink fill + cascade, counts read from Notion at build -->
-<div class="work-filter" id="workFilter">
-  <div class="wrap filter-row">
-    <button class="ftab on" data-cat="all"><span class="fl cascade">All</span> <span class="fc">63</span></button>
-    <button class="ftab" data-cat="build"><span class="fl cascade">Build</span> <span class="fc">58</span></button>
-    <button class="ftab" data-cat="frames"><span class="fl cascade">Frames</span> <span class="fc">22</span></button>
-    <button class="ftab" data-cat="ff"><span class="fl cascade">Founder's Focus</span> <span class="fc">14</span></button>
+<article class="article-body wrap">
+  <div class="prose">
+    <p class="lede"><strong>(Vancouver, BC)</strong>  -  Clutch.co, noted research, ratings, and reviews website released their annual list highlighting the leading 308 companies located in Canada as reviewed by their users. <a href="https://www.powershifter.com/">POWER SHIFTER</a>, one of Vancouver’s fastest growing digital agencies, was positioned as a 2019 leader in the <strong>creative and design category</strong> and featured as one of the <strong>top product designers</strong> in Clutch’s <strong>Leaders Matrix in Canada.</strong> JP Holecka, founder and CEO, POWER SHIFTER comments, “this is an incredibly important list for the POWER SHIFTER team to be included on. We know that over 100,000 buyers utilize Clutch to help find consultants and services, so to be so <a href="https://clutch.co/ca/agencies/product-design">highly ranked exemplifies</a> the strong feedback that our clients and partners have provided us on our work.”</p>
+
+    <figure class="breakout">
+      <img class="fig-art" src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/22a457ad-769a-414f-f8e5-0fbf2b1c6900/public" alt="">
+      <figcaption><b>Fig. 01</b></figcaption>
+    </figure>
+
+    <p class="end">Clutch reviews customer services and measures client feedback for their rankings.  With so many organizations seeking agencies and consultants online, Clutch is a trusted resource for their research and data-driven assessments. POWER SHIFTER has also been recognized amongst the top app developers in Vancouver by Clutch’s sister-site, The Manifest, which provides industry reports and other metrics to assist businesses with their searches for a solutions provider for their business needs.  POWER SHIFTER work portfolio is also displayed on Clutch’s second affiliate site, Visual Objects allowing the digital agency to build a reputation with being featured on multiple directories, amongst reputable firms. “Our team at POWER SHIFTER would like to thank our clients for their loyalty and Clutch for their support of our company and other B2B service providers,” says JP Holecka, POWER SHIFTER.  “At our core, we’re problem solvers and looking forward to tackling big challenges with all of our partners in 2019!” <strong>About Clutch:</strong> B2B research, ratings, and reviews firm in the heart of Washington, DC, Clutch connects small and medium businesses with the best-fit agencies, software, or consultants they need to tackle business challenges together and with confidence. Clutch's methodology compares business service providers and software in a specific market based on verified client reviews, services offered, work quality, and market presence. <strong>About POWER SHIFTER:</strong> POWER SHIFTER, a digital design agency with offices in Vancouver, has been working with clients like TELUS, Deloitte, Fitbit, and Energizer to simplify the way customers experience their brands since 2007.  The agency partners collaboratively with clients to create innovative digital products and services that deliver what matters most – measurable outcomes. From APPS to websites to platforms, the POWER SHIFTER team provides creative thinking, early-and-often, and direct-to-expert approaches, to produce higher performing, innovative digital products, and services.  The agency was recently acknowledged in the 28th position in Business in Vancouver’s Top 100 Fastest-Growing Companies in B.C. list for 2018. Follow us on Twitter @powershifter, Facebook facebook.com/powershifter, and Instagram instagram.com/powershifter_agency/ -30- Media Enquiries:Fawn MulcahyEmail: <a href="mailto:fawn@fawnzcreative.com">fawn@fawnzcreative.com</a>Mobile:  604.961.3314</p>
   </div>
-</div>
+</article>
 
-<!-- Post grid — ruled sheet, indexed cells -->
-<section class="work-grid wrap">
-  <div class="sheet">
-
-  <a class="wcard" data-cat="generative-ai" href="power-shifter-studios-takes-home-two-silver-addy-awards">
-    <span class="cmeta"><span class="cn">01</span><span class="wtag">Generative AI</span><span class="idate">May 31, 2026</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/58784108-25e2-4298-0640-e2885faf7f00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Power Shifter Studios Wins Two Silver ADDYs</h3>
-    <p class="excerpt">Two Silver ADDY Awards for our work with Iron Mountain and Ernest Packaging—proof that human creativity, amplified by AI, delivers commercial-grade results.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="news" href="power-shifter-launches-rapid-mvp-service-combining-product-expertise-with-generative-ai-to-bring-ideas-to-life----fast">
-    <span class="cmeta"><span class="cn">02</span><span class="wtag">News</span><span class="idate">August 1, 2025</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/88fcc99a-7f3b-4edb-5688-b7c337ad9b00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Power Shifter Launches Its Rapid MVP Service</h3>
-    <p class="excerpt">Validate product ideas in weeks, not months. Our new Rapid MVP service pairs an expert team with generative AI to build fully working prototypes—fast.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="artificial-intelligence" href="turning-priorities-into-prototypes-laying-the-groundwork-for-ai-driven-design">
-    <span class="cmeta"><span class="cn">03</span><span class="wtag">Artificial Intelligence</span><span class="idate">June 26, 2025</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Design Sprint Day Four: From Priorities to Prototypes</h3>
-    <p class="excerpt">Day Four of our AI sprint: we mapped every must-have to real user needs, then set the stage for AI tools like Figma Make and Miro to take over.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="artificial-intelligence" href="design-sprint-day-three-recap---prioritize-debate-and-drift-from-the-vibe">
-    <span class="cmeta"><span class="cn">04</span><span class="wtag">Artificial Intelligence</span><span class="idate">June 18, 2025</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Design Sprint Day Three: Prioritize, Debate, Drift</h3>
-    <p class="excerpt">Day Three of our AI sprint: the team prioritized features and debated trade-offs—and drifted from vibe design workflows. What that drift taught us.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="artificial-intelligence" href="design-sprint-day-two-recap-pt-2---sketch-share-and-stress-test">
-    <span class="cmeta"><span class="cn">05</span><span class="wtag">Artificial Intelligence</span><span class="idate">June 16, 2025</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Design Sprint Day Two, Pt 2: Sketch, Share, Stress-Test</h3>
-    <p class="excerpt">Day Two, part 2 of our AI sprint: the team put AI sketch tools—Miro, Claude, Stitch—to work generating and stress-testing early Farmstand user flows.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="artificial-intelligence" href="design-sprint-day-two-recap-pt-1---from-hunches-to-high-fidelity-directions">
-    <span class="cmeta"><span class="cn">06</span><span class="wtag">Artificial Intelligence</span><span class="idate">June 12, 2025</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Design Sprint Day Two, Pt 1: Hunches to Directions</h3>
-    <p class="excerpt">Day Two, part 1 of our AI sprint: turning rough hunches into high-fidelity directions for the Farmstand app, and choosing our AI-first toolset.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="artificial-intelligence" href="design-sprint-day-one-recap---planning-the-farmstand-app-experiment">
-    <span class="cmeta"><span class="cn">07</span><span class="wtag">Artificial Intelligence</span><span class="idate">June 11, 2025</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Design Sprint Day One: Planning the Farmstand App</h3>
-    <p class="excerpt">Day One of our two-week AI sprint: can tools for vibe design and coding help a small team build a real mobile app? We set the plan and the rules.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="artificial-intelligence" href="can-vibe-design-and-coding-ai-apps-build-a-real-product">
-    <span class="cmeta"><span class="cn">08</span><span class="wtag">Artificial Intelligence</span><span class="idate">June 10, 2025</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Can AI Vibe Tools Build a Real Product in Two Weeks?</h3>
-    <p class="excerpt">We're putting AI vibe design and coding tools—Figma Make, Claude Code, Bolt and more—to the test, building a real farm-stand app in just 14 days.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="artificial-intelligence" href="composable-development-ai-agents">
-    <span class="cmeta"><span class="cn">09</span><span class="wtag">Artificial Intelligence</span><span class="idate">March 22, 2025</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/a948eeac-e25e-4d9f-a5c9-7f5bb549c600/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Why Composable Development Powers Smarter AI Agents</h3>
-    <p class="excerpt">Composable systems aren't just flexible—they're the foundation AI agents need for real-time access to structured, modular content and live data.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="artificial-intelligence" href="everything-you-need-to-know-about-ai-agents-faqs-answered">
-    <span class="cmeta"><span class="cn">10</span><span class="wtag">Artificial Intelligence</span><span class="idate">February 21, 2025</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/11c47483-e98e-40c9-1546-52cfb1667f00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Everything You Need to Know About AI Agents: FAQs</h3>
-    <p class="excerpt">AI agents are reshaping business automation—but how do they actually work? Straight answers to the most common questions, pitfalls, and best practices.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="experience-design" href="designing-for-rage-how-platforms-profit-from-chaos">
-    <span class="cmeta"><span class="cn">11</span><span class="wtag">Experience Design</span><span class="idate">January 21, 2025</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/9b03fab6-3e15-473e-591b-65f6cdf8e300/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Designing for Rage: How Platforms Profit from Chaos</h3>
-    <p class="excerpt">The platforms we use daily are tuned for engagement at any cost. How rage-driven algorithms shape social media and elections—and what we can do about it.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="insights" href="integrating-product-design-and-brand-experience-insights-from-episode-2-with-katie-deloso">
-    <span class="cmeta"><span class="cn">12</span><span class="wtag">Insights</span><span class="idate">August 23, 2024</span></span>
-    <div class="wframe slot-frame light"><span class="slot-tag dark">No thumbnail</span></div>
-    <h3>Brand Meets Product: Insights from Katie Deloso</h3>
-    <p class="excerpt">Episode 2 of The Brand Experience: Nurture's Katie Deloso on the "yellable why," storytelling, onboarding, and weaving brand into every product detail.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="technology-development" href="understanding-the-basics-of-headless-cms-a-comprehensive-guide">
-    <span class="cmeta"><span class="cn">13</span><span class="wtag">Technology Development</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Headless CMS Basics: A Beginner's Guide</h3>
-    <p class="excerpt">Chapter 1 of our headless CMS guide: the basics of going headless with Contentful and Sanity, the common pitfalls, and where the approach is headed.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="technology-development" href="the-future-of-headless-cms-and-what-it-means-for-your-business">
-    <span class="cmeta"><span class="cn">14</span><span class="wtag">Technology Development</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>The Future of Headless CMS and Your Business</h3>
-    <p class="excerpt">Chapter 10: where headless CMS is heading, the trends worth watching, and what platforms like Contentful and Sanity mean for your content strategy.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="technology-development" href="common-pitfalls-in-migrating-to-headless-cms">
-    <span class="cmeta"><span class="cn">15</span><span class="wtag">Technology Development</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Common Pitfalls in Migrating to a Headless CMS</h3>
-    <p class="excerpt">Chapter 2: the most common mistakes teams make when migrating to a headless CMS like Contentful or Sanity—and how to avoid the costly ones.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="technology-development" href="optimizing-content-delivery-with-api-driven-architecture">
-    <span class="cmeta"><span class="cn">16</span><span class="wtag">Technology Development</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Optimizing Content Delivery with API-Driven Architecture</h3>
-    <p class="excerpt">Chapter 3: how API-driven architecture speeds content delivery in a headless CMS like Contentful or Sanity—for faster, more efficient performance.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="technology-development" href="structuring-your-content-for-maximum-flexibility">
-    <span class="cmeta"><span class="cn">17</span><span class="wtag">Technology Development</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Structuring Headless CMS Content for Flexibility</h3>
-    <p class="excerpt">Chapter 4: how to structure content in a headless CMS like Contentful or Sanity so it stays reusable and adaptable across every platform you publish to.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="technology-development" href="collaborating-effectively-in-a-headless-environment">
-    <span class="cmeta"><span class="cn">18</span><span class="wtag">Technology Development</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Collaborating Effectively in a Headless Environment</h3>
-    <p class="excerpt">Chapter 5: going headless changes how teams work. Strategies for keeping content, design, and development in sync with Contentful or Sanity.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="technology-development" href="enhancing-user-experience-with-headless-cms">
-    <span class="cmeta"><span class="cn">19</span><span class="wtag">Technology Development</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Enhancing User Experience with a Headless CMS</h3>
-    <p class="excerpt">Chapter 6: how headless platforms like Contentful and Sanity help you deliver consistent, personalized content that keeps users coming back.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="technology-development" href="scaling-your-content-strategy-with-headless-cms">
-    <span class="cmeta"><span class="cn">20</span><span class="wtag">Technology Development</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Scaling Your Content Strategy with a Headless CMS</h3>
-    <p class="excerpt">Chapter 7: how to scale content with a headless CMS like Contentful or Sanity—reaching new audiences without losing consistency as you grow.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="technology-development" href="integrating-third-party-tools-with-headless-cms">
-    <span class="cmeta"><span class="cn">21</span><span class="wtag">Technology Development</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Integrating Third-Party Tools with a Headless CMS</h3>
-    <p class="excerpt">Chapter 8: how to connect third-party tools to a headless CMS like Contentful or Sanity to extend functionality and streamline content management.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="technology-development" href="measuring-the-success-of-your-headless-cms-implementation">
-    <span class="cmeta"><span class="cn">22</span><span class="wtag">Technology Development</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Measuring the Success of Your Headless CMS</h3>
-    <p class="excerpt">Chapter 9: the metrics and KPIs that show whether your headless CMS—Contentful or Sanity—is actually delivering results worth the investment.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="technology-development" href="unlocking-the-power-of-headless-cms">
-    <span class="cmeta"><span class="cn">23</span><span class="wtag">Technology Development</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Unlocking Headless CMS with Contentful and Sanity</h3>
-    <p class="excerpt">Why agility and flexibility are now essential—and how headless platforms like Contentful and Sanity help you adapt, personalize, and scale content.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="experience-design" href="the-brand-experience-podcast">
-    <span class="cmeta"><span class="cn">24</span><span class="wtag">Experience Design</span><span class="idate">August 14, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/6f7d5c68-552a-4cda-eae8-e31b609f9c00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>The Brand Experience Podcast</h3>
-    <p class="excerpt">A podcast on what makes brands stick—where design, service, and purpose-driven storytelling meet. Conversations with the people shaping them.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="news" href="the-brand-experience-youtube-channel-and-podcast">
-    <span class="cmeta"><span class="cn">25</span><span class="wtag">News</span><span class="idate">August 14, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/63e0a037-1d94-41db-8c80-3713e3f42c00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Launching The Brand Experience YouTube &amp; Podcast</h3>
-    <p class="excerpt">Our new YouTube channel and podcast on how purpose-driven brands use digital experience to grow. Conversations with the CIOs and CTOs making the calls.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="artificial-intelligence" href="when-and-when-not-to-include-ai-in-digital-products-a-practical-guide">
-    <span class="cmeta"><span class="cn">26</span><span class="wtag">Artificial Intelligence</span><span class="idate">June 5, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/4cff3f0b-50b6-4c94-37d7-ed6277295800/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>When (and When Not) to Include AI in Products</h3>
-    <p class="excerpt">Knowing when to build AI into your product—and when to keep it simple—can make or break it. A practical guide to making that call with confidence.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="artificial-intelligence" href="one-year-on---the-evolving-role-of-chief-artificial-intelligence-officers">
-    <span class="cmeta"><span class="cn">27</span><span class="wtag">Artificial Intelligence</span><span class="idate">May 9, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/b9149a19-bb98-4169-3e70-f93ef7f50100/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>One Year On: The Evolving Role of the CAIO</h3>
-    <p class="excerpt">A year ago, the Chief AI Officer was speculation. Now it's real. How the CAIO role has matured—and what it signals about AI's place in strategy.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="artificial-intelligence" href="the-strategic-advantage-of-proprietary-large-language-models-for-brands">
-    <span class="cmeta"><span class="cn">28</span><span class="wtag">Artificial Intelligence</span><span class="idate">May 8, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/0a6aa63c-8136-49f9-b8b7-6a6533d6e700/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>The Strategic Advantage of Proprietary LLMs for Brands</h3>
-    <p class="excerpt">Some brands fear their agencies using AI. Why proprietary large language models can actually boost brand consistency, security, and control instead.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="artificial-intelligence" href="the-risks-of-trusting-llms-gpts-for-all-of-your-knowledge-needs">
-    <span class="cmeta"><span class="cn">29</span><span class="wtag">Artificial Intelligence</span><span class="idate">May 7, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/d09f4122-2dcf-410d-16d7-0cc4b59f0f00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>The Risks of Trusting LLMs and GPTs With Everything</h3>
-    <p class="excerpt">LLMs are powerful, but they shouldn't answer every question. The risks of over-trusting them—and why tools like RAG and governance matter for accuracy.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="artificial-intelligence" href="how-to-be-the-boss-of-the-bots----why-humanities-might-hold-the-key">
-    <span class="cmeta"><span class="cn">30</span><span class="wtag">Artificial Intelligence</span><span class="idate">May 6, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/bbfb65be-2339-4b19-5eb1-389ebccec600/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>How to Be the Boss of the Bots: Why Humanities Matter</h3>
-    <p class="excerpt">As AI reshapes work, creativity and empathy matter more, not less. Why pairing tech skills with the humanities is how you future-proof a career.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="experience-design" href="headless-cms-help-ebook">
-    <span class="cmeta"><span class="cn">31</span><span class="wtag">Experience Design</span><span class="idate">May 2, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/5026aefd-9107-44cf-57df-6d44dcb54800/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Top 10 Mistakes When Moving to a Headless CMS</h3>
-    <p class="excerpt">Our free eBook on the ten most common headless CMS mistakes—and how to avoid them. Drawn from 75+ headless projects and eight years of experience.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="technology-development" href="ready-to-switch-to-webflow-heres-where-to-start">
-    <span class="cmeta"><span class="cn">32</span><span class="wtag">Technology Development</span><span class="idate">August 15, 2023</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/39317a06-4079-4bf0-9c7b-c31801a9d000/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Ready to Switch to Webflow? Here's Where to Start</h3>
-    <p class="excerpt">We're long-time fans of low-code and no-code platforms like Webflow. A practical starting point for moving your site, web app, or product over.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="culture" href="designing-with-diversity-increasing-accessibility-in-the-insurance-industry">
-    <span class="cmeta"><span class="cn">33</span><span class="wtag">Culture</span><span class="idate">August 11, 2023</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/4d7939b5-a1ac-45b7-6875-1cd657f35000/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Designing With Diversity: Accessibility in Insurance</h3>
-    <p class="excerpt">"Differences are our greatest strengths." How we partnered with accessibility experts Wandke Consulting to make insurance more usable for everyone.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="experience-design" href="why-scoping-digital-product-and-software-development-projects-is-challenging-and-what-to-do-about-it">
-    <span class="cmeta"><span class="cn">34</span><span class="wtag">Experience Design</span><span class="idate">June 6, 2023</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/729b2b56-ae85-4f64-7e28-fe36a0981f00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Why Scoping Software Projects Is So Hard</h3>
-    <p class="excerpt">Scoping is one of the hardest parts of building software—an upfront guessing game. Why it's so difficult, and a more reliable way to approach it.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="news" href="power-shifter-ceo-jp-holecka-named-bcs-2022-ceo-of-the-year">
-    <span class="cmeta"><span class="cn">35</span><span class="wtag">News</span><span class="idate">January 23, 2023</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/4e754c57-4431-4590-b025-440564e4ac00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>JP Holecka Named BC's 2022 CEO of the Year</h3>
-    <p class="excerpt">Our CEO JP Holecka has been named BC's 2022 CEO of the Year—recognition of years of growth, award-winning work, and leading with empathy and simplicity.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="technology-development" href="everythings-gone-headless-is-your-organization-ready">
-    <span class="cmeta"><span class="cn">36</span><span class="wtag">Technology Development</span><span class="idate">October 28, 2022</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/b731a92a-1efd-4391-a21f-6e1e74606b00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Everything's Gone Headless—Is Your Org Ready?</h3>
-    <p class="excerpt">Headless has hit a tipping point, and the options are overwhelming. How to cut through the noise and decide whether headless is right for your business.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="culture" href="where-curling-entrepreneurship-and-neurodivergence-meet-why-power-shifter-is-a-proud-sponsor-of-team-ladouceur">
-    <span class="cmeta"><span class="cn">37</span><span class="wtag">Culture</span><span class="idate">September 23, 2022</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/96936be2-6d0e-40d9-06b0-e013b4c64100/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Why We Sponsor Team Ladouceur</h3>
-    <p class="excerpt">A digital agency and a women's curling team have more in common than you'd think—where curling, entrepreneurship, and neurodivergence meet.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="service-design" href="when-creating-digital-products-its-time-for-it-professionals-to-embrace-the-lean-startup-movement">
-    <span class="cmeta"><span class="cn">38</span><span class="wtag">Service Design</span><span class="idate">August 31, 2022</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/a9b036c1-2466-4f0e-04bc-bd8621fa3700/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Why IT Teams Should Embrace the Lean Startup Approach</h3>
-    <p class="excerpt">When you're not quite fluent, it's safer to keep it simple. Why IT teams that adopt a Lean Startup mindset help their clients, partners, and people win.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="culture" href="the-creator-middle-class-is-powered-by-third-party-tech-platforms">
-    <span class="cmeta"><span class="cn">39</span><span class="wtag">Culture</span><span class="idate">August 19, 2022</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/0b656b03-de4b-429c-89c7-bb0666f5e000/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>The "Creator Middle Class" Runs on Third-Party Tech</h3>
-    <p class="excerpt">First came the side hustle. Now a "creator middle class" is emerging—powered by the third-party platforms that digital transformation made possible.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="experience-design" href="apps-what-you-experience-is-only-the-tip-of-the-iceberg">
-    <span class="cmeta"><span class="cn">40</span><span class="wtag">Experience Design</span><span class="idate">August 24, 2021</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/37344aea-9545-48bf-a2e5-85d47e3fb700/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Apps: What You See Is Only the Tip of the Iceberg</h3>
-    <p class="excerpt">Cheap apps rarely succeed, and users expect more than ever. We go beneath the surface to reveal the true cost of building an app that adds real value.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="service-design" href="dev-shops-creative-agencies-business-consultants-and-digital-product-studios-who-should-you-partner-with">
-    <span class="cmeta"><span class="cn">41</span><span class="wtag">Service Design</span><span class="idate">June 29, 2021</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/732dd315-c560-4d98-64c8-88360e191600/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Who Should You Partner With on Your Next Product?</h3>
-    <p class="excerpt">Dev shop, creative agency, consultant, or product studio? Our white paper weighs the benefits and drawbacks of each so you can pick the right team.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="news" href="betting-on-ourselves-the-future-of-luxury-watch-shopping">
-    <span class="cmeta"><span class="cn">42</span><span class="wtag">News</span><span class="idate">April 22, 2021</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/b27b3360-5f7d-4ecf-f949-4ac26ea49200/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Betting on Ourselves: The Future of Luxury Watch Shopping</h3>
-    <p class="excerpt">We've built hundreds of products for clients. Now we're building one for ourselves—a new take on luxury watch shopping, with our own skin in the game.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="technology-development" href="unsplash-disrupting-the-stock-photo-industry">
-    <span class="cmeta"><span class="cn">43</span><span class="wtag">Technology Development</span><span class="idate">February 2, 2021</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/5e859542-5eba-4f38-06b2-ab2f00437100/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Unsplash: Disrupting the Stock Photo Industry</h3>
-    <p class="excerpt">How Unsplash turned a side-of-desk hustle into a multi-layered business model—and what product teams can learn from the way it found its profit.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="service-design" href="webinar-rethinking-cx-needs-during-covid-19-and-beyond">
-    <span class="cmeta"><span class="cn">44</span><span class="wtag">Service Design</span><span class="idate">January 6, 2021</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/6bd955db-f19e-46af-c638-18064762e200/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Webinar: Rethinking CX Needs in 2021</h3>
-    <p class="excerpt">More than 80% of leaders planned lasting changes to how they serve customers. Our webinar on applying Lean Service Design to your 2021 CX strategy.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="news" href="powershifter-ventures-announces-closed-beta-launch-applications-for-luxxee">
-    <span class="cmeta"><span class="cn">45</span><span class="wtag">News</span><span class="idate">December 9, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/e9e091ca-0cb0-4733-52cb-0023e5b61400/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>luxxee Closed Beta: Apply for Early Access</h3>
-    <p class="excerpt">After seven months building quietly in the luxury watch space, we're opening a two-month closed beta for luxxee. Apply to help shape what's next.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="news" href="powershifter-wins-ux-for-product-at-the-vancouver-user-experience-awards">
-    <span class="cmeta"><span class="cn">46</span><span class="wtag">News</span><span class="idate">December 2, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/4a7d56a7-ad5e-4252-d09c-eaf027f93600/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Power Shifter Wins UX for Product at the VanUX Awards</h3>
-    <p class="excerpt">Our work with Delta Controls won Best UX for Product at the Vancouver User Experience Awards—a win for our team and a standout client collaboration.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="experience-design" href="education-in-a-pandemic-crash-course-in-agile-product-design-from-leading-edtech-experts">
-    <span class="cmeta"><span class="cn">47</span><span class="wtag">Experience Design</span><span class="idate">November 16, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/f2019e5e-a453-461c-7dda-691933b07a00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>A Crash Course in Agile Product Design from EdTech</h3>
-    <p class="excerpt">COVID-19 stopped in-person learning cold and exposed how far behind EdTech had fallen. What agile product design can teach any industry under pressure.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="service-design" href="advent-of-lean-service-design-in-the-age-of-covid19">
-    <span class="cmeta"><span class="cn">48</span><span class="wtag">Service Design</span><span class="idate">October 14, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/5f17bd65-91a6-482d-02fb-ab4c3b517f00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>The Advent of Lean Service Design in the COVID-19 Age</h3>
-    <p class="excerpt">COVID-19 compressed roadmaps from years into weeks. Why service design is shifting from big engagements to smaller ones focused on business outcomes.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="news" href="jp-holecka-elected-to-ica-board-of-directors">
-    <span class="cmeta"><span class="cn">49</span><span class="wtag">News</span><span class="idate">September 1, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/06cdc753-6232-4712-bf96-0f6888e4be00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Power Shifter CEO Elected to the ICA Board</h3>
-    <p class="excerpt">CEO JP Holecka has been elected to the board of the Institute of Communication Agencies, which represents Canada's most influential agencies.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="service-design" href="4-tips-to-select-ai-project-that-is-not-set-to-fail-from-get-go">
-    <span class="cmeta"><span class="cn">50</span><span class="wtag">Service Design</span><span class="idate">August 28, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/0697c9a3-2208-429d-7960-f6d3e599f600/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>4 Tips to Choose an AI Project That Won't Fail</h3>
-    <p class="excerpt">Data science partner Hamid Omid shares four practical tips for picking an AI project that's set up to succeed—before you sink time and budget into it.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="service-design" href="new-way-to-write-rfps">
-    <span class="cmeta"><span class="cn">51</span><span class="wtag">Service Design</span><span class="idate">May 21, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/7502fc8b-48a9-4479-60c1-358d86505600/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>A New Way to Write RFPs</h3>
-    <p class="excerpt">Part 3 of 3 on the RFP problem: how to refine, refresh, and reimagine the process so you actually find the agency that's right for your project.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="service-design" href="think-an-rfp-is-your-only-option-for-hiring-an-agency">
-    <span class="cmeta"><span class="cn">52</span><span class="wtag">Service Design</span><span class="idate">May 14, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/ab1cf4a2-847e-43aa-120a-d196a7080400/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Think an RFP Is Your Only Option? Think Again.</h3>
-    <p class="excerpt">Part 2 of 3 on the RFP problem: five effective ways to find a qualified agency partner for your next project—without defaulting to a request for proposal.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="service-design" href="4-reasons-why-great-agencies-arent-responding-to-your-rfps">
-    <span class="cmeta"><span class="cn">53</span><span class="wtag">Service Design</span><span class="idate">May 6, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/a7ab6771-eb9d-468e-1d15-8b3adc873400/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>4 Reasons Great Agencies Aren't Answering Your RFPs</h3>
-    <p class="excerpt">Part 1 of 3 on the RFP problem: why the best agencies quietly pass on your request for proposal—and what that signals about the process itself.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="service-design" href="5-problems-with-relying-on-zoom-during-the-covid-19-pandemic">
-    <span class="cmeta"><span class="cn">54</span><span class="wtag">Service Design</span><span class="idate">April 22, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42ddc3cb-6dc7-49c2-dd93-092a8dcd6500/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>5 Problems With Relying on Zoom During the Pandemic</h3>
-    <p class="excerpt">Zoom became a lifeline for remote work overnight. But the rush exposed real drawbacks for users—five problems worth weighing before you depend on it.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="resources" href="product-design-insights-great-reads-for-april">
-    <span class="cmeta"><span class="cn">55</span><span class="wtag">Resources</span><span class="idate">April 20, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/e6c6f723-97ca-454e-82d1-fddbd1045200/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Product Design Insights: 7 Great Reads for April</h3>
-    <p class="excerpt">April's reads: a rising no-code software trend, the pandemic's lasting impact on product and design, and more. Seven curated picks from our team.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="culture" href="why-stand-the-f-back">
-    <span class="cmeta"><span class="cn">56</span><span class="wtag">Culture</span><span class="idate">April 8, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/a305b941-5265-4582-3889-b651b61d8700/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Why "Stand the F Back"? Our COVID-19 Campaign</h3>
-    <p class="excerpt">A look at why provocative swag became our way of helping change behaviour—and flatten the curve—during the early days of the COVID-19 pandemic.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="service-design" href="applying-service-design-principles-during-a-pandemic">
-    <span class="cmeta"><span class="cn">57</span><span class="wtag">Service Design</span><span class="idate">April 2, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/c3c80e1e-eb09-4e50-b81c-2c86f96ede00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Applying Service Design Principles During a Pandemic</h3>
-    <p class="excerpt">Grocery stores rewrote the rules of shopping overnight. A look at how service design principles played out in real time during COVID-19.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="news" href="jp-holecka-accepted-into-forbes-agency-council">
-    <span class="cmeta"><span class="cn">58</span><span class="wtag">News</span><span class="idate">March 2, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/aa901201-29f2-4f14-6c56-194562ac3100/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Power Shifter CEO Joins the Forbes Agency Council</h3>
-    <p class="excerpt">CEO JP Holecka has been accepted into the Forbes Agency Council, an invitation-only community for leaders of top PR, media, creative, and ad agencies.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="news" href="clutch-top-agency-in-canada">
-    <span class="cmeta"><span class="cn">59</span><span class="wtag">News</span><span class="idate">February 3, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/6d267ca4-c9f8-4635-ad01-b01f4ad97500/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Power Shifter Named a Top Agency in Canada by Clutch</h3>
-    <p class="excerpt">For the second year running, Clutch has named us a top Canadian digital product studio—based on real client feedback. A look back at the recognition.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="service-design" href="stop-designing-for-your-industry-start-designing-for-your-customers">
-    <span class="cmeta"><span class="cn">60</span><span class="wtag">Service Design</span><span class="idate">January 16, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/52a54b9b-35aa-43f0-9b8c-53dce2dbaf00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Stop Designing for Your Industry, Start With Customers</h3>
-    <p class="excerpt">Vertical specialists are overrated. Why the best user experiences come from studios that bring cross-industry thinking—not the same template every time.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="experience-design" href="outsourcing-digital-product-design">
-    <span class="cmeta"><span class="cn">61</span><span class="wtag">Experience Design</span><span class="idate">November 5, 2019</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/c74d49c2-6b52-4f13-8933-3180f8fac700/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Should You Keep Product Development In-House?</h3>
-    <p class="excerpt">Done right, digital products do a lot for your business. Why outsourcing product design—rather than forcing it in-house—often delivers a better result.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="service-design" href="how-empathy-in-ux-enhances-cx">
-    <span class="cmeta"><span class="cn">62</span><span class="wtag">Service Design</span><span class="idate">October 9, 2019</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/62968d5c-a503-4ee5-3008-276680dd7c00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>The Human Touch: How Empathy in UX Strengthens CX</h3>
-    <p class="excerpt">Design is more scientific than it looks—but empathy is what makes it work. How the human behind the process shapes UX, and the customer experience.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="news" href="clutch-top-agencies-canada-2019">
-    <span class="cmeta"><span class="cn">63</span><span class="wtag">News</span><span class="idate">February 6, 2019</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/0378558a-d754-4bf2-4ef4-6a2f291db600/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Power Shifter Named a 2019 Clutch Leader</h3>
-    <p class="excerpt">Clutch.co has ranked Power Shifter a 2019 leader among Canadian product designers—based on verified client reviews on the B2B ratings platform.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  </div>
-</section>
-
-<!-- Static rough-in: production paginates from Notion -->
-<div class="more-row wrap">
-  <a class="btn cascade" href="#">Load more →</a>
-</div>
-
-<!-- Global page closer — same scale as homepage, page-specific copy -->
 <section class="page-closer" id="contact">
   <div class="wrap">
-    <h2 class="rise">Enough reading. <em class="voice mag">Start something.</em></h2>
+    <h2 class="rise">Read enough? <em class="voice mag">Let's build.</em></h2>
     <p>Cinema in days. Software in weeks. You'll work directly with the people who make it — no account layer, no brief telephone.</p>
     <div class="pc-row">
       <a class="btn solid cascade" href="#">Start a project →</a>
@@ -1378,11 +938,13 @@
   })();
 
 
-  // Collection cells rise on scroll entry, staggered by column
-  document.querySelectorAll('.sheet .wcard').forEach((c,i)=>{
-    c.classList.add('reveal');
-    c.style.setProperty('--d', String(i%3));
-    ro.observe(c);
+  // Related index rows rise on scroll entry, staggered top-to-bottom
+  const relHead = document.querySelector('.rel-head');
+  if (relHead) { relHead.classList.add('reveal'); ro.observe(relHead); }
+  document.querySelectorAll('.rel-row').forEach((r,i)=>{
+    r.classList.add('reveal');
+    r.style.setProperty('--d', String(i));
+    ro.observe(r);
   });
 
   // Proof spine: only runs if proofRow exists (homepage only)
@@ -1410,20 +972,6 @@
 
 
 <script>
-  // Filter
-  const ftabs = document.querySelectorAll('.ftab');
-  const wcards = document.querySelectorAll('[data-cat]');
-  ftabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      ftabs.forEach(t => t.classList.remove('on'));
-      tab.classList.add('on');
-      const cat = tab.dataset.cat;
-      wcards.forEach(c => {
-        c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
-      });
-    });
-  });
-
 // ---------- Button system ----------
 // Primary: letter cascade
 document.querySelectorAll('.cascade').forEach(function(btn){

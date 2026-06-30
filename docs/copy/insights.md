@@ -6,6 +6,16 @@
 **Status:** LIVE
 **Notion mirror:** _will be added when this file's Notion page is created_
 
+> **2026-06-30 — the grid below is no longer the rough-in sample.** All 63 Published
+> posts are real, rendered by `tools/blog-renderer/` from a Notion export — see its
+> README. The chrome this file documents (hero, filter, closer) is still accurate;
+> the **post grid section below describes the rough-in sample state and is stale**
+> on card count/content (real grid: 63 cards, taxonomy Build 35 · Frames 4 ·
+> Founder's Focus 24, one Featured). Individual posts route at **`/insights/<slug>`**
+> — the listing itself stays at `/insights`. This is the one page set in the repo
+> that's nested a directory down; see `docs/design-system.md` §11 before adding
+> another.
+
 The shared chrome (header, takeover menu, footer) on this page is governed by `_shared.md`. This file covers the page-specific copy above the footer: sub-page hero, stream filter, post grid, "Load more" rough-in, page closer.
 
 This page is the static rough-in. Real-world pagination, counts, and post listing come from the Notion Blogs database at build time — the 9 cards in the grid are sample content demonstrating each card state (featured, standard, no-thumbnail, Founder's Focus type-only). When the Next.js layer ships, these get replaced by live data, but the page-level chrome (hero, filter, closer) is what the rest of the site depends on.

@@ -16,8 +16,8 @@ When copy on the live site disagrees with the Notion deck, the Notion deck wins.
 | `_shared.md` | Shared chrome (header, menu, footer) | n/a — every page | [open](https://app.notion.com/p/388b37adcd5b818398b5fdf56f64d450) | LIVE |
 | `home.md` | Homepage | `/` | [open](https://app.notion.com/p/388b37adcd5b81c29b6fcdfc35260f02) | LIVE |
 | `work.md` | Work grid | `/work` | [open](https://app.notion.com/p/388b37adcd5b81b89ec7fd7313a2d044) | LIVE |
-| `insights.md` | Insights collection | `/insights` | [open](https://app.notion.com/p/388b37adcd5b8182b84ed327c4f84c7d) | LIVE |
-| `article.md` | Article template | `/article` | [open](https://app.notion.com/p/388b37adcd5b81a09f4df45bce53fb25) | LIVE |
+| `insights.md` | Insights collection | `/insights` (posts at `/insights/<slug>` — see note in the file) | [open](https://app.notion.com/p/388b37adcd5b8182b84ed327c4f84c7d) | LIVE |
+| `article.md` | Article template | `/article` (rendered posts live at `/insights/<slug>`, not here — see note in the file) | [open](https://app.notion.com/p/388b37adcd5b81a09f4df45bce53fb25) | LIVE |
 | `case-telus-koodo.md` | Case study: TELUS & Koodo | `/case-telus-koodo` | [open](https://app.notion.com/p/388b37adcd5b81b29104d3f6a7c9eafc) | LIVE |
 | `digital.md` | Digital practice | `/digital` | [open](https://app.notion.com/p/388b37adcd5b810d8869e75c2367594f) | INTERIM |
 | `studios.md` | Studios practice | `/studios` | [open](https://app.notion.com/p/388b37adcd5b81ba9beafe136dfc6c58) | INTERIM |

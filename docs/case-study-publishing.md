@@ -90,9 +90,20 @@ mp4 to this pattern — pending its Stream UID.)
 
 ## Status & queue
 
-- **#1 Energizer — PUBLISHED** (`energizer.html` → `/energizer`, Outcome Tier 2). See build journal.
-- **Next:** hand-publish one **Tier 1** (hard-metrics) case study to validate the odometer-dossier
-  path before building the `case-study-publisher` skill.
+- **15 case studies PUBLISHED** at root (`/energizer`, `/xyon`, `/allia-health-group`, plus the
+  12-case batch — see journal #5). All still **Status: Draft in Notion** — JP flips to Published
+  per-case when approved. `Needs Review: YES` open on 6 of them (parked as HTML comments, nothing
+  fake rendered) — see journal #5 for the list.
+- **Tier-1 odometer dossier shipped** on the 6 hard-metric cases (journal #6) — the
+  hand-publish → tooling → odometer arc from this doc's earlier "Next" items is done.
+- **Build tooling exists:** `tools/case-study-builder/` (slices chrome from `xyon.html`, generates
+  bodies from structured data, wires `/work` cards, injects odometers) — see its README. Not wired
+  to Notion; copy is hand-transcribed into `cases_data.py`. This is the de facto first draft of the
+  `case-study-publisher` skill, ad hoc rather than formalized — formalizing it (Notion → page
+  directly, no hand-transcription step) is the actual remaining "Next."
+- **Still pending across the set:** the image/video pass (hero/figure/OG via Cloudflare Images;
+  `/work` thumbs for the imageless cards; koodo video → Cloudflare Stream, blocked on a Stream UID
+  from JP) — unchanged from earlier in this doc.
 - Case Studies DB: `77b9e6f8…` (collection `906abf9b…`). TELUS reference deck: `388b37ad-cd5b-81b2…`.
 
 **Notion mirror:** team-facing version at Notion → *powershifter.com CMS → Producing a case
@@ -189,3 +200,51 @@ odometers animate on scroll (`proofRow.in`), testimonial upright Articulat, no c
 fact-sheet-only through dense odometer dossier + testimonial. This is enough evidence to build the
 `case-study-publisher` skill from a section manifest. **Pending across all: the image/video pass**
 (hero/figure/OG via Cloudflare Images; work-grid thumbs; koodo video → Cloudflare Stream).
+
+**#4 — Allia Notion sync + `/work` card (2026-06-29), commits `7b3207e` + `4a409a0`.** Notion had
+moved since #3: the testimonial swapped (Camilo Parra → **Kendra Hogue, Senior Chief of Staff**,
+new quote) and the previously-empty SEO Title + Meta Description were filled. Re-fetched and
+diffed against the published HTML, applied just the three changed spots (title/meta tags +
+testimonial block) rather than re-publishing the whole page — body prose was unchanged. Also added
+the deferred `/work` grid card for Allia (top-left, placeholder `slot-frame` image — "image
+pending" — since no thumbnail exists yet). Energizer got a separate, smaller Notion sync in the
+same commit (word-level copy polish, no structural change). **Takeaway:** Notion content can keep
+moving after a page is published — re-fetch and diff before assuming a published page is final;
+don't re-derive editorial fields (SEO Title etc.) once JP has actually filled them in.
+
+**#5 — 12-case batch + `case-study-builder` tooling (2026-06-29), commits `94b238d` + `b904e19`.**
+Hand-editing one case at a time doesn't scale past 3 — built a small Python generator
+(`tools/case-study-builder/`) that slices the verified `xyon.html` chrome and regenerates only the
+body per case from structured render-specs (`h2`/`h3`/`p`/`ul`/`pull`/`quote`/`comment`), so every
+page stays byte-identical in chrome. Published 12 more cases through it: `hall-constructors`,
+`ncis-maritime`, `telus-support`, `luxxee`, `bc-parks-foundation`, `5x5`, `phinity`, `nva`, `bcw`,
+`delta-controls`, `angel-oak-home-loans`, `telus-rewards`. Repointed 11 existing `/work` cards
+(real images already on disk) to their new URLs, fixed two stale titles (`SxS Technologies` →
+`5x5 Technologies`, `Luxxee` → `luxxee`), added a placeholder card for `telus-support` (no image on
+disk). **6 of the 12 carry an open `[OUTCOME PLACEHOLDER]`** (hall, ncis, bc-parks, phinity, nva,
+telus-rewards) — parked as HTML comments per the established convention, Needs Review stays YES.
+**Editorial derivations flagged for JP** across the batch: Sector/Platform, hero sub-voice
+condensations, pull eyebrows — same convention as #1–#3. All Status stays Draft. **Takeaway:** the
+generator (not yet Notion-wired — copy is hand-transcribed into `cases_data.py`) is the practical
+first draft of the `case-study-publisher` skill; formalizing the Notion→page step is what's
+actually left to "build the skill," not starting from scratch.
+
+**#6 — Tier-1 odometer dossier upgrade (2026-06-29), commit `fde9044`.** Retrofitted the
+Allia-style animated `proof-row` ("The receipts") onto the 6 hard-metric (Tier 1) cases from the
+batch in #5, which had shipped their metrics in prose only: `telus-support` (30% / 600K / 70%),
+`luxxee` (170K+ / 18K / 33%), `bcw` (3,500 / 20 / 3), `delta-controls` (90 / 3× / 2020),
+`angel-oak-home-loans` (40% / 30, 2-up), `telus-rewards` (300K+ / 22% / 100%). Reused the chrome's
+existing odometer JS/CSS (digit columns + `.ch` separators for thousands-commas + `.sfx` unit
+suffixes for `%`/`K`/`K+`/`×`) — no new dependencies. A small generator script
+(`tools/case-study-builder/add_odometers.py`) injects the `proof-row` markup into each page's
+`cs-dossier` section. Verified rolling on scroll (`.in`/`.go` classes), no console errors.
+**Takeaway:** the figure/caption choice for each odometer (which 2–3 numbers lead, what the
+caption says) is an editorial call I made per case — worth a glance to confirm they're the numbers
+JP would lead with, not just the first ones mentioned in the Notion body.
+
+**Delta Controls got a follow-up Notion sync** (2026-06-30, commit `faf716e`) — late-breaking copy
+introduced a "ladder" motif (the engineer no longer climbs a ladder to configure a sensor hub) into
+the sub-voice, brief, outcome, and outcome pull. Same diff-and-patch approach as #4: four spots
+changed, body otherwise untouched. **Pattern to expect going forward:** Notion edits keep arriving
+after publish on a rolling basis — re-fetch and diff rather than assuming any published case is
+done, the same way #4 found Allia had moved.

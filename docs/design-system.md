@@ -223,9 +223,42 @@ onto `.sub-body`; the voice-color and eyebrow conventions are applied site-wide.
 - Pages (served **extensionless** via Vercel `cleanUrls`; old `.html` 308-redirects):
   `/` (index), `/work`, `/digital`, `/studios`, `/insights`, `/article`, `/case-telus-koodo`,
   `/about`. Legal pages built from the article template: `/terms-and-conditions`, `/privacy-policy`.
+- **Case studies** (hand-published from Notion, many — `/xyon`, `/allia-health-group`, etc.):
+  see `docs/case-study-publishing.md` + generator `tools/case-study-builder/`.
+- **Blog posts** (63 Published, rendered from a Notion export — `/insights/<slug>`; listing at
+  `/insights`): see generator `tools/blog-renderer/` (has its own README) — *the first page
+  set in this repo nested one directory down, see §11 below for why that mattered.*
 - Fonts: Adobe Typekit kit `xkk7api` (see §1). Menu hover loop: `images/scratches-v2.webp`
   (animated WebP, filled into nav words via `background-clip:text`) — swap per `docs/menu-hover-loop.md`.
 - Shared chrome copy: `docs/copy/_shared.md` · per-page copy: `docs/copy/*.md`
+
+## 11 · Engineering conventions (not visual canon, but load-bearing)
+
+- **Internal links must be root-absolute.** Every page's chrome (nav, footer,
+  stylesheet/script tags, the concierge widget) was written as relative paths with no
+  leading slash — `href="work"`, `src="ps-spice.css"` — which only resolves correctly
+  when the page sits at the site root. A page nested in a subdirectory (e.g.
+  `/insights/<slug>`) breaks every one of those references, because the browser
+  resolves a relative href against the *current URL's directory*, not the domain root.
+  **Any new page added in a subdirectory must use root-absolute hrefs/srcs**
+  (`href="/work"`) for everything it shares with the rest of the site. Worked example
+  of the fix (and what it touched, including a silently-broken `fetch()` inside
+  `ps-concierge.js`): commit `0728b95`.
+- **Clean URLs are Vercel-only.** `vercel.json`'s `cleanUrls:true` strips `.html` in
+  production; a local static server doesn't — test nested/extensionless routes against
+  the Vercel deploy, or append `.html` for local checks.
+- **Craft Layer reveal scrim sits above ordinary content** — `ps-spice.css` sets
+  `body.sp-reveal .wtint{z-index:6}` and `.wframe::after{z-index:4}` during the reveal
+  animation. Any text or control meant to sit visibly *on top of* a `.wframe`/`.wtint`
+  image plate (e.g. an overlaid card headline) needs `z-index` above 6, or the reveal
+  scrim will silently paint over it. (Found shipping the Insights card headline overlay
+  — fixed at `z-index:8`.)
+- **A broad `[data-attr]` selector can catch more than the cards.** The Insights filter
+  tabs and the cards they filter both carried `data-cat`; a `querySelectorAll('[data-cat]')`
+  scoped to "all elements with that attribute" silently hid the *other tab buttons* on
+  click, not just non-matching cards. Scope DOM queries to the actual container
+  (`.sheet .wcard`), not a bare attribute selector, when the same attribute is reused
+  for both the controls and the content they control.
 - Exhaustive pattern catalogue: `docs/design-system-audit.md`
 - Additive layers: `ps-spice.*`, `ps-concierge.*`, `worker/`; deploy config: `vercel.json`
 - `*-preview.html` files are review-only (Craft Layer toggle panel) — do not ship.

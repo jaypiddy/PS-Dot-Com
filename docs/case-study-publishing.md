@@ -58,6 +58,23 @@ no fabricated metrics, 2–3 pull quotes, verbatim testimonials).
 6. **Keep a build journal** (below) of what mapped cleanly vs. what fought the template —
    that evidence is what the future `case-study-publisher` skill gets built from.
 
+### Notion sync + publish (post-build)
+
+- **Notion is the source of truth, and edits keep arriving after a page is published.** Don't assume
+  a live page is final — **re-fetch the Notion entry and diff against the HTML** before treating it
+  as done. Real examples: the Allia testimonial swap + Canadian-spelling pass, the Delta Controls
+  "ladder" rewrite, the 8 outcome-placeholder removals — all landed *after* first publish. Patch only
+  the changed spots (title/meta tags, the specific paragraphs/pulls), don't re-render the whole page.
+  ⚠️ **Do NOT re-run `tools/case-study-builder/build_cases.py` to apply a sync** — it regenerates the
+  body from `cases_data.py`, which doesn't know about post-publish Notion edits *or* the odometer
+  injection, so it silently regresses them. Hand-patch the `.html` (or update `cases_data.py` first).
+- **`Status` + `Needs Review` can be written from here** via the connected Notion integration
+  (`notion-update-page` → `update_properties`, `{"Status":"Published","Needs Review":"__NO__"}`).
+  Convention: `Needs Review = YES` iff the body has an open `[OUTCOME PLACEHOLDER]`; when that's
+  resolved (a real metric added, or the callout removed because none exists), flip `Needs Review → NO`
+  and `Status → Published`. These writes appear in Notion page history under the **integration**, not
+  a person — mention that when reporting.
+
 ## Section manifest — every block is optional
 
 Include a block only when the source supplies it. **TELUS & Koodo = dense maximum; Energizer =
@@ -95,11 +112,17 @@ mp4 to this pattern — pending its Stream UID.)
 
 ## Status & queue
 
-- **15 case studies PUBLISHED** at `/work/<slug>` (`/work/energizer`, `/work/xyon`,
+- **15 case studies LIVE + Published** at `/work/<slug>` (`/work/energizer`, `/work/xyon`,
   `/work/allia-health-group`, plus the 12-case batch — see journal #5; moved here from the root
-  2026-06-30, journal #7). All still **Status: Draft in Notion** — JP flips to Published
-  per-case when approved. `Needs Review: YES` open on 6 of them (parked as HTML comments, nothing
-  fake rendered) — see journal #5 for the list.
+  2026-06-30, journal #7). As of 2026-06-30 **all 15 are `Status: Published` + `Needs Review: NO`
+  in Notion** (flipped via the connected Notion integration — see journal #8), **placeholder-free**,
+  and **editorially signed off** (Sector/Platform, hero sub-voice, and the odometer stat picks all
+  approved; Energizer's pull eyebrow conformed to the `Section — descriptor` convention so all 15
+  match).
+- **Outcome placeholders — all resolved.** The 8 cases that carried an open `[OUTCOME PLACEHOLDER]`
+  had it removed in Notion (no hard metric available → the outcomes stay qualitative); the
+  non-rendered HTML tracking comments were stripped from every page. **Zero `[OUTCOME PLACEHOLDER]`
+  remain in `work/*.html`.**
 - **Tier-1 odometer dossier shipped** on the 6 hard-metric cases (journal #6) — the
   hand-publish → tooling → odometer arc from this doc's earlier "Next" items is done.
 - **Build tooling exists:** `tools/case-study-builder/` (slices chrome from `xyon.html`, generates
@@ -276,3 +299,29 @@ local image/video assets, stylesheets, back-link) and a builder-generated one (`
 next-case cross-links); confirmed `work.html`'s 16 cards and `digital.html`'s 1 link resolve; zero
 leftover relative chrome references across all 16 files. **No redirects** added from the old root
 URLs — same call as the blog move (dev preview domain, not yet the production domain).
+
+**#8 — Status flips, placeholder resolution, editorial sign-off (2026-06-30).** The finishing pass.
+Three parts, all driven by JP review:
+1. **Notion `Status` flips, in two waves.** Confirmed scope with JP first (the `Status` field is the
+   sign-off gate, and there was a real split). Wave 1: the 7 review-clean cases (`Needs Review: NO`) →
+   Published. Wave 2: as JP resolved each `[OUTCOME PLACEHOLDER]`, the remaining 8 → Published. End
+   state: **all 15 `Status: Published` + `Needs Review: NO`.** Done via the connected Notion
+   integration (`notion-update-page`); writes show under the integration in page history, flagged to
+   JP. (First use of Notion *writes* this project — reads were all we'd done before.)
+2. **All 8 outcome placeholders resolved.** JP removed the 🚧 callouts in Notion (no measured metric
+   available → qualitative outcomes stand). For each, re-fetched + diffed Notion vs. the HTML, removed
+   the non-rendered tracking comment, and **synced the prose edits found in the diff** — Allia's
+   Canadian-spelling/wording pass (signalled, colour, scalable, "rather than", "would never satisfy")
+   and TELUS Rewards' projection-sentence tightening ("indicated that … would *nearly triple*", so it
+   clearly reads as a projection, not a result). Hand-patched (did **not** re-run the builder — see
+   the Notion-sync note above). Zero placeholders remain.
+3. **Editorial derivations approved.** JP reviewed the four classes of non-Notion-sourced copy —
+   Sector/Platform (inferred fact-sheet rows), condensed hero sub-voice, pull eyebrows, and the
+   Tier-1 odometer stat picks. **Approved as-is** except one: Energizer's lone pull eyebrow was the
+   old bare-`The payoff` style → changed to **`Outcome — the payoff`** so all 15 follow the
+   `Section — descriptor` convention. (Commits `0e830cb` placeholders/prose, `87590f5` final two,
+   `e8f8503` eyebrow.)
+
+**Case-study track is now fully closed** except the cross-set **image/OG/video pass** (heroes,
+figures, OG, the two `image pending` `/work` cards, koodo → Cloudflare Stream blocked on a UID) and
+the optional **formalize-the-builder-into-a-skill** work.

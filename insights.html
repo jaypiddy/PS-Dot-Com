@@ -570,6 +570,11 @@
      accent, Founder's Focus = 900 on ink with magenta serif voice. */
   .work-grid{display:block;padding-top:clamp(40px,5vh,64px);padding-bottom:clamp(28px,4vh,48px)}
   .sheet{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  /* Category cross-fade: ease-out fade-in (180ms), faster fade-out (120ms) while the
+     cards swap behind the transparent grid. Opacity-only — stays on the GPU. */
+  .sheet{transition:opacity 180ms cubic-bezier(.215,.61,.355,1)}
+  .sheet.switching{opacity:0;transition-duration:120ms}
+  @media(prefers-reduced-motion:reduce){.sheet{transition:none}}
   .sheet .wcard{background:var(--paper);margin:0;padding:clamp(20px,2.4vw,32px);display:flex;flex-direction:column}
   .sheet .wcard.feature{grid-column:1/-1;padding:0}
   .sheet .wcard.ff{background:var(--ink);color:var(--paper)}
@@ -1366,19 +1371,30 @@
 
 
 <script>
-  // Filter
+  // Filter — cross-fade the grid between category states.
   const ftabs = document.querySelectorAll('.ftab');
   // scope to grid cards only — [data-cat] alone also matches the .ftab tabs (which
   // carry data-cat), so a broad selector hid the other tab buttons on click.
   const wcards = document.querySelectorAll('.sheet .wcard');
+  const grid = document.querySelector('.sheet');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let fadePending;
+  function applyFilter(cat){
+    wcards.forEach(c => { c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none'; });
+  }
   ftabs.forEach(tab => {
     tab.addEventListener('click', () => {
       ftabs.forEach(t => t.classList.remove('on'));
       tab.classList.add('on');
       const cat = tab.dataset.cat;
-      wcards.forEach(c => {
-        c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
-      });
+      if (!grid || reduceMotion.matches) { applyFilter(cat); return; }
+      // dip the grid to transparent, swap the cards while invisible, fade back in
+      clearTimeout(fadePending);
+      grid.classList.add('switching');
+      fadePending = setTimeout(() => {
+        applyFilter(cat);
+        grid.classList.remove('switching');
+      }, 130);
     });
   });
 

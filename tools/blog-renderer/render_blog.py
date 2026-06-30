@@ -17,6 +17,11 @@ from datetime import datetime
 
 REPO = pathlib.Path("/Users/jpholecka2025/PS-Dot-Com")
 DEFAULT_POSTS = (REPO / "tools/blog-renderer/posts.json")
+# Optional export from the Notion Blogs DB to fill the NEW taxonomy + Featured +
+# Photo Credit (posts.json ships these empty). Notion view → CSV export. Columns
+# (case-insensitive): Slug, Categories ("Build,Frames"), Featured ("Yes"/checked),
+# Photo Credit. Merged by slug; absent file → falls back to old_categories.
+OVERRIDES_CSV = (REPO / "tools/blog-renderer/blog-meta.csv")
 TITLE_SUFFIX = " — POWER SHIFTER Insights"
 
 # ---------------------------------------------------------------- helpers
@@ -210,6 +215,29 @@ SLASH = re.search(r'(<svg class="slash-field".*?</svg>)', TPL, re.S).group(1)
 def cats_of(post):
     return post.get('categories') or post.get('old_categories') or []
 
+def merge_overrides(posts):
+    """Fill categories / featured / photo_credit from the Notion CSV export, by slug."""
+    import csv
+    if not OVERRIDES_CSV.exists():
+        return 0
+    by_slug = {p['slug']: p for p in posts}
+    n = 0
+    with OVERRIDES_CSV.open(encoding='utf-8-sig', newline='') as fh:
+        for row in csv.DictReader(fh):
+            r = {(k or '').strip().lower(): (v or '').strip() for k, v in row.items()}
+            slug = r.get('slug')
+            p = by_slug.get(slug)
+            if not p:
+                continue
+            cats = [c.strip() for c in re.split(r'[;,]', r.get('categories', '')) if c.strip()]
+            if cats:
+                p['categories'] = cats
+            p['featured'] = r.get('featured', '').lower() in ('yes', 'true', '1', '✓', 'checked', 'x')
+            if r.get('photo credit'):
+                p['photo_credit'] = r['photo credit']
+            n += 1
+    return n
+
 def patch_head(post):
     h = re.sub(r'<title>.*?</title>',
                f"<title>{esc(post['seo_title'])}{TITLE_SUFFIX}</title>", HEAD, count=1, flags=re.S)
@@ -248,7 +276,7 @@ def sub_hero(post):
       <span class="date">{fmt_date(post.get('publish_date'))}</span>
 {cat_block}    </div>
   </div>
-  <span class="photo-credit" id="photoCredit">Power Shifter Studios</span>
+  <span class="photo-credit" id="photoCredit">{esc(post.get('photo_credit') or 'Power Shifter Studios')}</span>
 </section>"""
 
 def related_section(post, lookup):
@@ -314,11 +342,33 @@ def insights_card(post, n):
     <span class="wgo swipe">Read the post →</span>
   </a>'''
 
+def feature_card(post, n):
+    cats = cats_of(post)
+    tag = cats[0] if cats else 'Insights'
+    img = post.get('masthead_url') or post.get('thumbnail_url') or ''
+    return f'''  <a class="wcard feature" data-cat="{slugify(tag)}" href="{post['slug']}" id="featured">
+    <div class="wframe">
+      <img src="{attr(img)}" alt="" style="width:100%;height:100%;object-fit:cover">
+      <div class="wtint"></div>
+      <div class="wcard-overlay">
+        <span class="fmeta"><span class="cn">{n:02d}</span><span class="wtag">{esc(tag)} · Featured</span><span class="idate">{fmt_date(post.get('publish_date'))}</span></span>
+        <h2>{esc(post['seo_title'])}</h2>
+        <p class="excerpt">{esc(post.get('meta_description',''))}</p>
+        <span class="wgo swipe">Read the post →</span>
+      </div>
+    </div>
+  </a>'''
+
 def regen_insights(posts):
     ins = (REPO / "insights.html").read_text(encoding="utf-8")
     start = ins.index('<div class="sheet">') + len('<div class="sheet">')
     end = ins.index('</div>\n</section>', start)
-    cards = "\n\n".join(insights_card(p, i) for i, p in enumerate(posts, 1))
+    feat = next((p for p in posts if p.get('featured')), None)
+    ordered = ([feat] + [p for p in posts if p is not feat]) if feat else posts
+    blocks = []
+    for i, p in enumerate(ordered, 1):
+        blocks.append(feature_card(p, i) if p is feat else insights_card(p, i))
+    cards = "\n\n".join(blocks)
     ins = ins[:start] + "\n\n" + cards + "\n\n  " + ins[end:]
     # update the "All" tab count to the published total
     ins = re.sub(r'(data-cat="all"><span class="fl cascade">All</span> <span class="fc">)\d+(</span>)',
@@ -329,8 +379,15 @@ def regen_insights(posts):
 def main():
     src = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_POSTS
     data = json.loads(src.read_text(encoding="utf-8"))
+    merged = merge_overrides(data)
     pub = [p for p in data if p.get('status') == 'Published' and p.get('slug') != 'test-blog']
     pub.sort(key=lambda p: (p.get('publish_date') or ''), reverse=True)  # newest first
+    if merged:
+        n_cat = sum(1 for p in pub if p.get('categories'))
+        n_feat = sum(1 for p in pub if p.get('featured'))
+        print(f"merged overrides for {merged} rows · {n_cat}/{len(pub)} have new Categories · {n_feat} Featured")
+    else:
+        print("no blog-meta.csv override found — using old_categories fallback, no Featured card")
     lookup = {p['slug']: {'title': p['title'],
                           'stream': (cats_of(p)[0] if cats_of(p) else 'Insights'),
                           'date': fmt_date(p.get('publish_date'))} for p in pub}

@@ -1,14 +1,1 @@
-.vercel
-
-# Design-tool exports / review-only artifacts — not shipped
-*-preview.html
-*v2.html
-*v3.html
-PS_*.html
-scraps/
-uploads/
-*.jsx
-.thumbnail
-assets/
-Button Explorations.html
-Case Study - TELUS Koodo (Standalone).html
+.DS_Store

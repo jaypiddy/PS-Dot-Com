@@ -45,6 +45,23 @@ page), so any new one is automatically in scope for this rule.
   read a hand-exported JSON/CSV snapshot. Re-export from Notion before rebuilding
   if the source content has changed.
 
+## Filter grids (work + insights)
+
+`/work` and `/insights` share a filter pattern: `.ftab[data-cat]` tabs over a grid
+of `.wcard[data-cat]` cards. Two things to know:
+
+- **Scope card queries to the grid, never a bare `[data-cat]`** — the filter tabs
+  *also* carry `data-cat`, so `querySelectorAll('[data-cat]')` sweeps them up and a
+  filter click hides the other tab buttons. Use `.work-grid .wcard` / `.sheet .wcard`.
+- **The `/work` tab counts are computed by JS from the cards on load** (not
+  hand-maintained — don't hand-edit the `<span class="fc">` numbers and expect them
+  to stick; the script overwrites them). A card opts out of the count with
+  `data-count="false"` (e.g. a "coming soon" placeholder). The static numbers in the
+  HTML are just the no-JS fallback — keep them roughly right but the JS is the truth.
+  The hero "N projects" line is separate static prose — update it by hand if the count
+  changes meaningfully. (`/insights` counts are set at build time by the renderer
+  instead, since it regenerates that page.)
+
 ## Local preview caveat
 
 Clean URLs (extensionless routing) are a **Vercel-only** feature (`vercel.json`

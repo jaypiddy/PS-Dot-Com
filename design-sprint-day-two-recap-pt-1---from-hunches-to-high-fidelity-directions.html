@@ -541,6 +541,8 @@
     float:left;font-size:4.6em;line-height:.8;
     padding:.04em .16em 0 0;
   }
+  /* lede opening on punctuation/a link (e.g. a bracketed series-nav aside) — no drop-cap */
+  .prose .lede.nodrop::first-letter{float:none;font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit;padding:0}
 
   /* Numbered section heads — rule, index, title */
   .prose h2{
@@ -782,7 +784,7 @@
   <div class="prose">
     <h2>What We Did Today</h2>
 
-    <p class="lede"><a href="https://www.powershifter.com/blog/can-vibe-design-and-coding-ai-apps-build-a-real-product">&#91;This is an ongoing blog series, start your journey here.&#93;</a> With the two-week clock ticking on our core hypothesis—<em>can we rely on vibe design / vibe coding–style tools to ship a viable Farm Stand MVP in just 10 working days?</em>—today’s session zeroed in on collecting outside inspiration fast enough to feed those AI tools tomorrow.</p>
+    <p class="lede nodrop"><a href="https://www.powershifter.com/blog/can-vibe-design-and-coding-ai-apps-build-a-real-product">&#91;This is an ongoing blog series, start your journey here.&#93;</a> With the two-week clock ticking on our core hypothesis—<em>can we rely on vibe design / vibe coding–style tools to ship a viable Farm Stand MVP in just 10 working days?</em>—today’s session zeroed in on collecting outside inspiration fast enough to feed those AI tools tomorrow.</p>
 
     <p>A newly-refined set of five How-might-we (HMW) questions framed everything we did (benefits, onboarding, farmer inventory, shopper discovery, community growth). Pairs had 15 minutes to scour their phones for best-in-class screenshots, drop them into Miro, and tag each image with <em>why it matters for a farm-stand app</em>. A 15-minute share-out followed, exposing patterns around trust, offline maps, and AI-assisted product listings. We wrapped by assigning each teammate a complete farmer-or-shopper flow to prototype this afternoon—feeding those references straight into Google Stitch, Figma Make, ChatGPT, or other AI tools. Monday we’ll smash them together and see if our AI stack is actually sprint-worthy.</p>
 

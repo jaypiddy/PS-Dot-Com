@@ -175,7 +175,14 @@ def convert_body(md):
         elif typ == 'h3':
             out.append(f'    <h3>{inline(data)}</h3>')
         elif typ == 'p':
-            cls = ' class="lede"' if k == first_p else (' class="end"' if k == last_p else '')
+            if k == first_p:
+                # suppress the drop-cap when the lede opens on punctuation/a link
+                # (e.g. a bracketed "[start your journey here]" series-nav aside)
+                cls = ' class="lede"' if re.match(r'\s*[A-Za-z0-9]', data) else ' class="lede nodrop"'
+            elif k == last_p:
+                cls = ' class="end"'
+            else:
+                cls = ''
             out.append(f'    <p{cls}>{inline(data)}</p>')
         elif typ == 'img':
             fig_n += 1

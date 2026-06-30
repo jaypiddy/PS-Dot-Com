@@ -541,6 +541,8 @@
     float:left;font-size:4.6em;line-height:.8;
     padding:.04em .16em 0 0;
   }
+  /* lede opening on punctuation/a link (e.g. a bracketed series-nav aside) — no drop-cap */
+  .prose .lede.nodrop::first-letter{float:none;font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit;padding:0}
 
   /* Numbered section heads — rule, index, title */
   .prose h2{
@@ -784,7 +786,7 @@
 
     <h2>Power Shifter Launches Rapid MVP Service, Combining Product Expertise with Generative AI to Bring Ideas to Life — Fast</h2>
 
-    <p class="lede"><strong>VANCOUVER, BC — August 1st, 2025</strong> — Power Shifter, a digital product agency known for simplifying complex ideas into user-first digital experiences, has officially launched <strong>Rapid MVP</strong>, a new service that helps startups and enterprises turn product ideas into fully functioning prototypes in a matter of weeks.</p>
+    <p class="lede nodrop"><strong>VANCOUVER, BC — August 1st, 2025</strong> — Power Shifter, a digital product agency known for simplifying complex ideas into user-first digital experiences, has officially launched <strong>Rapid MVP</strong>, a new service that helps startups and enterprises turn product ideas into fully functioning prototypes in a matter of weeks.</p>
 
     <p>The service blends Power Shifter’s seasoned product strategists, designers, and developers with the latest in generative AI design and coding tools — delivering accelerated, high-fidelity MVPs that are built to validate, test, and inspire stakeholder alignment.</p>
 

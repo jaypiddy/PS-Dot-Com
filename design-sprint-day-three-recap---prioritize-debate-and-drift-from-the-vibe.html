@@ -541,6 +541,8 @@
     float:left;font-size:4.6em;line-height:.8;
     padding:.04em .16em 0 0;
   }
+  /* lede opening on punctuation/a link (e.g. a bracketed series-nav aside) — no drop-cap */
+  .prose .lede.nodrop::first-letter{float:none;font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit;padding:0}
 
   /* Numbered section heads — rule, index, title */
   .prose h2{
@@ -782,7 +784,7 @@
   <div class="prose">
     <h2>What We Did Today</h2>
 
-    <p class="lede"><a href="https://www.powershifter.com/blog/can-vibe-design-and-coding-ai-apps-build-a-real-product">&#91;This is an ongoing blog series, start your journey here.&#93;</a> In this session, the team continued defining core MVP functionality, but more importantly, we observed how much of the workflow leaned on—or drifted away from—<strong>Vibe Design and Vibe Code methods</strong>.</p>
+    <p class="lede nodrop"><a href="https://www.powershifter.com/blog/can-vibe-design-and-coding-ai-apps-build-a-real-product">&#91;This is an ongoing blog series, start your journey here.&#93;</a> In this session, the team continued defining core MVP functionality, but more importantly, we observed how much of the workflow leaned on—or drifted away from—<strong>Vibe Design and Vibe Code methods</strong>.</p>
 
     <p>Rather than defaulting to LLM-driven prompts for interface structure or UX logic, most decisions were hashed out via real-time conversation and whiteboard thinking. There was minimal active use of conversational prompting to define new flows, screen layouts, or architectural scaffolds.</p>
 

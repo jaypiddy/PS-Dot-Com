@@ -541,6 +541,8 @@
     float:left;font-size:4.6em;line-height:.8;
     padding:.04em .16em 0 0;
   }
+  /* lede opening on punctuation/a link (e.g. a bracketed series-nav aside) — no drop-cap */
+  .prose .lede.nodrop::first-letter{float:none;font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit;padding:0}
 
   /* Numbered section heads — rule, index, title */
   .prose h2{
@@ -780,7 +782,7 @@
 
 <article class="article-body wrap">
   <div class="prose">
-    <p class="lede">"Differences are our greatest strengths" — it's something you'll hear over and over at POWER SHIFTER, a belief we stand by not only in our values but also in our processes.</p>
+    <p class="lede nodrop">"Differences are our greatest strengths" — it's something you'll hear over and over at POWER SHIFTER, a belief we stand by not only in our values but also in our processes.</p>
 
     <p>So you can imagine how thrilled we were to collaborate with Wandke Consulting, experts in accessibility and diversity, to review the website of a provincial insurance company and enable them to articulate the necessary changes needed to better design their digital assets for accessibility.</p>
 

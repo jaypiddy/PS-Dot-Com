@@ -541,6 +541,8 @@
     float:left;font-size:4.6em;line-height:.8;
     padding:.04em .16em 0 0;
   }
+  /* lede opening on punctuation/a link (e.g. a bracketed series-nav aside) — no drop-cap */
+  .prose .lede.nodrop::first-letter{float:none;font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit;padding:0}
 
   /* Numbered section heads — rule, index, title */
   .prose h2{
@@ -785,7 +787,7 @@
       <figcaption><b>Fig. 01</b></figcaption>
     </figure>
 
-    <p class="lede"><strong>Vancouver (March 02, 2020),</strong> — JP Holecka, CEO of POWERSHiFTER, a Vancouver based digital product design studio that adds customer value for brands through Service/UX/UI design, mobile, and web development, has been accepted into Forbes Agency Council, an invitation-only community for owners of and executives in successful public relations, media strategy, creative, and advertising agencies.</p>
+    <p class="lede nodrop"><strong>Vancouver (March 02, 2020),</strong> — JP Holecka, CEO of POWERSHiFTER, a Vancouver based digital product design studio that adds customer value for brands through Service/UX/UI design, mobile, and web development, has been accepted into Forbes Agency Council, an invitation-only community for owners of and executives in successful public relations, media strategy, creative, and advertising agencies.</p>
 
     <p>JP Holecka was vetted and selected by a review committee based on the depth and diversity of his experience. Criteria for acceptance includes a track record of successfully impacting business growth metrics, as well as personal and professional achievements and honors.</p>
 

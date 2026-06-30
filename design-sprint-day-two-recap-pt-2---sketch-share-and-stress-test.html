@@ -541,6 +541,8 @@
     float:left;font-size:4.6em;line-height:.8;
     padding:.04em .16em 0 0;
   }
+  /* lede opening on punctuation/a link (e.g. a bracketed series-nav aside) — no drop-cap */
+  .prose .lede.nodrop::first-letter{float:none;font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit;padding:0}
 
   /* Numbered section heads — rule, index, title */
   .prose h2{
@@ -782,7 +784,7 @@
   <div class="prose">
     <h2>What We Did Today</h2>
 
-    <p class="lede"><a href="https://www.powershifter.com/blog/can-vibe-design-and-coding-ai-apps-build-a-real-product">&#91;This is an ongoing blog series, start your journey here.&#93;</a> In the second half of Day One, the team shared and reviewed early concept sketches for the Farmstand app. Each participant used different AI-assisted tools to visualize both the shopper and farmer experiences. Tools like Miro AI, Claude, Figma Make, and Stitch were tested to rapidly generate interface mockups and explore user flows.</p>
+    <p class="lede nodrop"><a href="https://www.powershifter.com/blog/can-vibe-design-and-coding-ai-apps-build-a-real-product">&#91;This is an ongoing blog series, start your journey here.&#93;</a> In the second half of Day One, the team shared and reviewed early concept sketches for the Farmstand app. Each participant used different AI-assisted tools to visualize both the shopper and farmer experiences. Tools like Miro AI, Claude, Figma Make, and Stitch were tested to rapidly generate interface mockups and explore user flows.</p>
 
     <p>This session was not just a show-and-tell—it was a stress test of AI-assisted ideation. We saw firsthand how non-designers could generate usable UI, and how AI tools are starting to challenge traditional sprint structures by delivering volume and fidelity in record time.</p>
 

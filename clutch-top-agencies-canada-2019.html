@@ -541,6 +541,8 @@
     float:left;font-size:4.6em;line-height:.8;
     padding:.04em .16em 0 0;
   }
+  /* lede opening on punctuation/a link (e.g. a bracketed series-nav aside) — no drop-cap */
+  .prose .lede.nodrop::first-letter{float:none;font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit;padding:0}
 
   /* Numbered section heads — rule, index, title */
   .prose h2{
@@ -780,7 +782,7 @@
 
 <article class="article-body wrap">
   <div class="prose">
-    <p class="lede"><strong>(Vancouver, BC)</strong>  -  Clutch.co, noted research, ratings, and reviews website released their annual list highlighting the leading 308 companies located in Canada as reviewed by their users. <a href="https://www.powershifter.com/">POWER SHIFTER</a>, one of Vancouver’s fastest growing digital agencies, was positioned as a 2019 leader in the <strong>creative and design category</strong> and featured as one of the <strong>top product designers</strong> in Clutch’s <strong>Leaders Matrix in Canada.</strong></p>
+    <p class="lede nodrop"><strong>(Vancouver, BC)</strong>  -  Clutch.co, noted research, ratings, and reviews website released their annual list highlighting the leading 308 companies located in Canada as reviewed by their users. <a href="https://www.powershifter.com/">POWER SHIFTER</a>, one of Vancouver’s fastest growing digital agencies, was positioned as a 2019 leader in the <strong>creative and design category</strong> and featured as one of the <strong>top product designers</strong> in Clutch’s <strong>Leaders Matrix in Canada.</strong></p>
 
     <p>JP Holecka, founder and CEO, POWER SHIFTER comments, “this is an incredibly important list for the POWER SHIFTER team to be included on. We know that over 100,000 buyers utilize Clutch to help find consultants and services, so to be so <a href="https://clutch.co/ca/agencies/product-design">highly ranked exemplifies</a> the strong feedback that our clients and partners have provided us on our work.”</p>
 

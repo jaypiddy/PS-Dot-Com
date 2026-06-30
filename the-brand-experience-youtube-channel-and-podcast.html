@@ -541,6 +541,8 @@
     float:left;font-size:4.6em;line-height:.8;
     padding:.04em .16em 0 0;
   }
+  /* lede opening on punctuation/a link (e.g. a bracketed series-nav aside) — no drop-cap */
+  .prose .lede.nodrop::first-letter{float:none;font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit;padding:0}
 
   /* Numbered section heads — rule, index, title */
   .prose h2{
@@ -780,7 +782,7 @@
 
 <article class="article-body wrap">
   <div class="prose">
-    <p class="lede">“The Brand Experience,” a forward-thinking YouTube channel and soon-to-be podcast, officially launches today with the aim of reshaping how purpose-driven brands engage with their audiences through innovative digital experiences and strategies designed to thrive in “The Experience Economy.”</p>
+    <p class="lede nodrop">“The Brand Experience,” a forward-thinking YouTube channel and soon-to-be podcast, officially launches today with the aim of reshaping how purpose-driven brands engage with their audiences through innovative digital experiences and strategies designed to thrive in “The Experience Economy.”</p>
 
     <p>Hosted by JP Holecka, a 30-plus-year veteran in digital transformation, design, and communication, and Michael “Howie” Howatson, a 30 year veteran in design strategy, experience design, and brand,<strong> </strong>the platform caters to industry leaders and creative professionals passionate about pushing the boundaries of digital and service design. "The Brand Experience" offers a holistic view of creating compelling brand experiences that resonate across digital and physical platforms.</p>
 

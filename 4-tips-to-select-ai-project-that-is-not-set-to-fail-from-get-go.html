@@ -541,6 +541,8 @@
     float:left;font-size:4.6em;line-height:.8;
     padding:.04em .16em 0 0;
   }
+  /* lede opening on punctuation/a link (e.g. a bracketed series-nav aside) — no drop-cap */
+  .prose .lede.nodrop::first-letter{float:none;font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit;padding:0}
 
   /* Numbered section heads — rule, index, title */
   .prose h2{
@@ -780,7 +782,7 @@
 
 <article class="article-body wrap">
   <div class="prose">
-    <p class="lede"><em>Hamid Omid is our AI agency partner. With over a decade of data science and software engineering experience, he helps companies identify meaningful big data and machine learning use cases and corresponding solutions to stay competitive. As more organizations look to integrate AI into their digital products and services, Hamid shares his expertise to help early adopters' projects succeed.</em></p>
+    <p class="lede nodrop"><em>Hamid Omid is our AI agency partner. With over a decade of data science and software engineering experience, he helps companies identify meaningful big data and machine learning use cases and corresponding solutions to stay competitive. As more organizations look to integrate AI into their digital products and services, Hamid shares his expertise to help early adopters' projects succeed.</em></p>
 
     <p>Plagiarism detection, biometric facial recognition, and movie recommendations are some of the ways in which we are already interfacing with artificial intelligence (AI) and machine learning (ML). As AI and ML gain popularity, companies and individuals are bursting with excitement to dive into projects of their own.</p>
 

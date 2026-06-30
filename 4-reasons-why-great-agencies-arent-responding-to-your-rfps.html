@@ -541,6 +541,8 @@
     float:left;font-size:4.6em;line-height:.8;
     padding:.04em .16em 0 0;
   }
+  /* lede opening on punctuation/a link (e.g. a bracketed series-nav aside) — no drop-cap */
+  .prose .lede.nodrop::first-letter{float:none;font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit;padding:0}
 
   /* Numbered section heads — rule, index, title */
   .prose h2{
@@ -780,7 +782,7 @@
 
 <article class="article-body wrap">
   <div class="prose">
-    <p class="lede"><em>As a digital product studio, we’ve seen more than our fair share of RFPs. Not only do we understand how difficult it can be to respond to them — but we can imagine how frustrating it is to create them. In part 1 of this series, we’re going to identify some common problems with requests for proposals. In </em><a href="https://www.powershifter.com/blog/think-an-rfp-is-your-only-option-for-hiring-an-agency"><em>part 2</em></a><em>, we will suggest alternative ways to find a suitable partner agency. Finally, in </em><a href="https://www.powershifter.com/blog/new-way-to-write-rfps"><em>part 3</em></a><em>, we will provide guidance for structuring RFPs to ensure your project is seamless.</em></p>
+    <p class="lede nodrop"><em>As a digital product studio, we’ve seen more than our fair share of RFPs. Not only do we understand how difficult it can be to respond to them — but we can imagine how frustrating it is to create them. In part 1 of this series, we’re going to identify some common problems with requests for proposals. In </em><a href="https://www.powershifter.com/blog/think-an-rfp-is-your-only-option-for-hiring-an-agency"><em>part 2</em></a><em>, we will suggest alternative ways to find a suitable partner agency. Finally, in </em><a href="https://www.powershifter.com/blog/new-way-to-write-rfps"><em>part 3</em></a><em>, we will provide guidance for structuring RFPs to ensure your project is seamless.</em></p>
 
     <p>What should you do when your company needs to complete a specific project, but you don’t have the resources or technical capabilities to handle it internally? The de facto answer is to put out a request for proposals (RFP). But be careful — there’s really nothing simple about it.</p>
 

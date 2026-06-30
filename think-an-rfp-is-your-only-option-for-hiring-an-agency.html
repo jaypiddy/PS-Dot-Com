@@ -541,6 +541,8 @@
     float:left;font-size:4.6em;line-height:.8;
     padding:.04em .16em 0 0;
   }
+  /* lede opening on punctuation/a link (e.g. a bracketed series-nav aside) — no drop-cap */
+  .prose .lede.nodrop::first-letter{float:none;font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit;padding:0}
 
   /* Numbered section heads — rule, index, title */
   .prose h2{
@@ -780,7 +782,7 @@
 
 <article class="article-body wrap">
   <div class="prose">
-    <p class="lede"><em>As a digital product studio, we’ve seen more than our fair share of RFPs. Not only do we understand how difficult it can be to respond to them — but we can imagine how frustrating it is to create them. In </em><a href="https://www.powershifter.com/blog/4-reasons-why-great-agencies-arent-responding-to-your-rfps"><em>part 1</em></a><em> of this series, we identified some common problems with requests for proposals. In part 2, we suggest alternative ways to find a suitable partner agency. Finally, in </em><a href="https://www.powershifter.com/blog/new-way-to-write-rfps"><em>part 3</em></a><em>, we provide guidance for structuring RFPs to ensure your project is seamless.</em></p>
+    <p class="lede nodrop"><em>As a digital product studio, we’ve seen more than our fair share of RFPs. Not only do we understand how difficult it can be to respond to them — but we can imagine how frustrating it is to create them. In </em><a href="https://www.powershifter.com/blog/4-reasons-why-great-agencies-arent-responding-to-your-rfps"><em>part 1</em></a><em> of this series, we identified some common problems with requests for proposals. In part 2, we suggest alternative ways to find a suitable partner agency. Finally, in </em><a href="https://www.powershifter.com/blog/new-way-to-write-rfps"><em>part 3</em></a><em>, we provide guidance for structuring RFPs to ensure your project is seamless.</em></p>
 
     <p>There’s a lot to think about when outsourcing a project to an external agency, especially if you want to develop a digital product or service. Enterprise software systems can have thousands of requirements — and if you’re looking to a third party to help you build it, it’s probably because you recognize that your own team lacks the resources, knowledge, or experience.</p>
 

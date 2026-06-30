@@ -342,12 +342,19 @@ def insights_card(post, n):
     tag = cats[0] if cats else 'Insights'
     dcat = cat_dcat(tag)
     img = post.get('masthead_url') or post.get('thumbnail_url') or ''
-    frame = (f'<div class="wframe"><img src="{attr(img)}" alt="" style="width:100%;height:100%;object-fit:cover"></div>'
-             if img else '<div class="wframe slot-frame light"><span class="slot-tag dark">No thumbnail</span></div>')
+    h3 = f'<h3>{esc(post["seo_title"])}</h3>'
+    if img:
+        # headline overlaid on the thumbnail (saves vertical space; scrim + soft glow for contrast)
+        frame = (f'<div class="wframe has-overlay">'
+                 f'<img src="{attr(img)}" alt="" style="width:100%;height:100%;object-fit:cover">'
+                 f'<div class="wtint"></div>{h3}</div>')
+        below = ''
+    else:
+        frame = '<div class="wframe slot-frame light"><span class="slot-tag dark">No thumbnail</span></div>'
+        below = f'\n    {h3}'
     return f'''  <a class="wcard" data-cat="{dcat}" href="{post['slug']}">
     <span class="cmeta"><span class="cn">{n:02d}</span><span class="wtag">{esc(tag)}</span><span class="idate">{fmt_date(post.get('publish_date'))}</span></span>
-    {frame}
-    <h3>{esc(post['seo_title'])}</h3>
+    {frame}{below}
     <p class="excerpt">{esc(post.get('meta_description',''))}</p>
     <span class="wgo swipe">Read the post →</span>
   </a>'''

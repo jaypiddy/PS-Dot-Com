@@ -599,6 +599,16 @@
   .sheet .wcard .excerpt{font-size:15px;line-height:1.55;color:var(--grey);margin-bottom:16px;max-width:46ch}
   .sheet .wgo{margin-top:auto;padding-top:6px}
 
+  /* Headline overlaid on the thumbnail — saves the vertical space the H3 took below.
+     Light bottom scrim + a soft black glow keep the type legible over any image. */
+  .sheet .wframe.has-overlay{margin-bottom:18px}
+  .wframe.has-overlay .wtint{background:linear-gradient(transparent 42%, rgba(18,19,21,.55) 100%)}
+  .sheet .wcard .wframe.has-overlay h3{
+    position:absolute;left:0;right:0;bottom:0;z-index:2;margin:0;
+    padding:clamp(14px,1.7vw,22px);color:var(--paper);
+    text-shadow:0 1px 2px rgba(0,0,0,.55), 0 2px 16px rgba(0,0,0,.6), 0 0 34px rgba(0,0,0,.45);
+  }
+
   /* Featured — full-bleed overlay cell, statement type */
   .sheet .feature .wcard-overlay{padding:clamp(26px,3.4vw,48px)}
   .fmeta{display:flex;gap:16px;align-items:baseline}
@@ -733,80 +743,70 @@
 
   <a class="wcard" data-cat="build" href="power-shifter-launches-rapid-mvp-service-combining-product-expertise-with-generative-ai-to-bring-ideas-to-life----fast">
     <span class="cmeta"><span class="cn">02</span><span class="wtag">Build</span><span class="idate">August 1, 2025</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/88fcc99a-7f3b-4edb-5688-b7c337ad9b00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Power Shifter Launches Its Rapid MVP Service</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/88fcc99a-7f3b-4edb-5688-b7c337ad9b00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Power Shifter Launches Its Rapid MVP Service</h3></div>
     <p class="excerpt">Validate product ideas in weeks, not months. Our new Rapid MVP service pairs an expert team with generative AI to build fully working prototypes—fast.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="turning-priorities-into-prototypes-laying-the-groundwork-for-ai-driven-design">
     <span class="cmeta"><span class="cn">03</span><span class="wtag">Build</span><span class="idate">June 26, 2025</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Design Sprint Day Four: From Priorities to Prototypes</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Design Sprint Day Four: From Priorities to Prototypes</h3></div>
     <p class="excerpt">Day Four of our AI sprint: we mapped every must-have to real user needs, then set the stage for AI tools like Figma Make and Miro to take over.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="design-sprint-day-three-recap---prioritize-debate-and-drift-from-the-vibe">
     <span class="cmeta"><span class="cn">04</span><span class="wtag">Build</span><span class="idate">June 18, 2025</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Design Sprint Day Three: Prioritize, Debate, Drift</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Design Sprint Day Three: Prioritize, Debate, Drift</h3></div>
     <p class="excerpt">Day Three of our AI sprint: the team prioritized features and debated trade-offs—and drifted from vibe design workflows. What that drift taught us.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="design-sprint-day-two-recap-pt-2---sketch-share-and-stress-test">
     <span class="cmeta"><span class="cn">05</span><span class="wtag">Build</span><span class="idate">June 16, 2025</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Design Sprint Day Two, Pt 2: Sketch, Share, Stress-Test</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Design Sprint Day Two, Pt 2: Sketch, Share, Stress-Test</h3></div>
     <p class="excerpt">Day Two, part 2 of our AI sprint: the team put AI sketch tools—Miro, Claude, Stitch—to work generating and stress-testing early Farmstand user flows.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="design-sprint-day-two-recap-pt-1---from-hunches-to-high-fidelity-directions">
     <span class="cmeta"><span class="cn">06</span><span class="wtag">Build</span><span class="idate">June 12, 2025</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Design Sprint Day Two, Pt 1: Hunches to Directions</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Design Sprint Day Two, Pt 1: Hunches to Directions</h3></div>
     <p class="excerpt">Day Two, part 1 of our AI sprint: turning rough hunches into high-fidelity directions for the Farmstand app, and choosing our AI-first toolset.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="design-sprint-day-one-recap---planning-the-farmstand-app-experiment">
     <span class="cmeta"><span class="cn">07</span><span class="wtag">Build</span><span class="idate">June 11, 2025</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Design Sprint Day One: Planning the Farmstand App</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Design Sprint Day One: Planning the Farmstand App</h3></div>
     <p class="excerpt">Day One of our two-week AI sprint: can tools for vibe design and coding help a small team build a real mobile app? We set the plan and the rules.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="can-vibe-design-and-coding-ai-apps-build-a-real-product">
     <span class="cmeta"><span class="cn">08</span><span class="wtag">Build</span><span class="idate">June 10, 2025</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Can AI Vibe Tools Build a Real Product in Two Weeks?</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Can AI Vibe Tools Build a Real Product in Two Weeks?</h3></div>
     <p class="excerpt">We're putting AI vibe design and coding tools—Figma Make, Claude Code, Bolt and more—to the test, building a real farm-stand app in just 14 days.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="composable-development-ai-agents">
     <span class="cmeta"><span class="cn">09</span><span class="wtag">Build</span><span class="idate">March 22, 2025</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/a948eeac-e25e-4d9f-a5c9-7f5bb549c600/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Why Composable Development Powers Smarter AI Agents</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/a948eeac-e25e-4d9f-a5c9-7f5bb549c600/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Why Composable Development Powers Smarter AI Agents</h3></div>
     <p class="excerpt">Composable systems aren't just flexible—they're the foundation AI agents need for real-time access to structured, modular content and live data.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="everything-you-need-to-know-about-ai-agents-faqs-answered">
     <span class="cmeta"><span class="cn">10</span><span class="wtag">Build</span><span class="idate">February 21, 2025</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/11c47483-e98e-40c9-1546-52cfb1667f00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Everything You Need to Know About AI Agents: FAQs</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/11c47483-e98e-40c9-1546-52cfb1667f00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Everything You Need to Know About AI Agents: FAQs</h3></div>
     <p class="excerpt">AI agents are reshaping business automation—but how do they actually work? Straight answers to the most common questions, pitfalls, and best practices.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="designing-for-rage-how-platforms-profit-from-chaos">
     <span class="cmeta"><span class="cn">11</span><span class="wtag">Founder's Focus</span><span class="idate">January 21, 2025</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/9b03fab6-3e15-473e-591b-65f6cdf8e300/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Designing for Rage: How Platforms Profit from Chaos</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/9b03fab6-3e15-473e-591b-65f6cdf8e300/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Designing for Rage: How Platforms Profit from Chaos</h3></div>
     <p class="excerpt">The platforms we use daily are tuned for engagement at any cost. How rage-driven algorithms shape social media and elections—and what we can do about it.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
@@ -821,408 +821,357 @@
 
   <a class="wcard" data-cat="build" href="understanding-the-basics-of-headless-cms-a-comprehensive-guide">
     <span class="cmeta"><span class="cn">13</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Headless CMS Basics: A Beginner's Guide</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Headless CMS Basics: A Beginner's Guide</h3></div>
     <p class="excerpt">Chapter 1 of our headless CMS guide: the basics of going headless with Contentful and Sanity, the common pitfalls, and where the approach is headed.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="the-future-of-headless-cms-and-what-it-means-for-your-business">
     <span class="cmeta"><span class="cn">14</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>The Future of Headless CMS and Your Business</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>The Future of Headless CMS and Your Business</h3></div>
     <p class="excerpt">Chapter 10: where headless CMS is heading, the trends worth watching, and what platforms like Contentful and Sanity mean for your content strategy.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="common-pitfalls-in-migrating-to-headless-cms">
     <span class="cmeta"><span class="cn">15</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Common Pitfalls in Migrating to a Headless CMS</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Common Pitfalls in Migrating to a Headless CMS</h3></div>
     <p class="excerpt">Chapter 2: the most common mistakes teams make when migrating to a headless CMS like Contentful or Sanity—and how to avoid the costly ones.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="optimizing-content-delivery-with-api-driven-architecture">
     <span class="cmeta"><span class="cn">16</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Optimizing Content Delivery with API-Driven Architecture</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Optimizing Content Delivery with API-Driven Architecture</h3></div>
     <p class="excerpt">Chapter 3: how API-driven architecture speeds content delivery in a headless CMS like Contentful or Sanity—for faster, more efficient performance.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="structuring-your-content-for-maximum-flexibility">
     <span class="cmeta"><span class="cn">17</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Structuring Headless CMS Content for Flexibility</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Structuring Headless CMS Content for Flexibility</h3></div>
     <p class="excerpt">Chapter 4: how to structure content in a headless CMS like Contentful or Sanity so it stays reusable and adaptable across every platform you publish to.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="collaborating-effectively-in-a-headless-environment">
     <span class="cmeta"><span class="cn">18</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Collaborating Effectively in a Headless Environment</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Collaborating Effectively in a Headless Environment</h3></div>
     <p class="excerpt">Chapter 5: going headless changes how teams work. Strategies for keeping content, design, and development in sync with Contentful or Sanity.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="enhancing-user-experience-with-headless-cms">
     <span class="cmeta"><span class="cn">19</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Enhancing User Experience with a Headless CMS</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Enhancing User Experience with a Headless CMS</h3></div>
     <p class="excerpt">Chapter 6: how headless platforms like Contentful and Sanity help you deliver consistent, personalized content that keeps users coming back.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="scaling-your-content-strategy-with-headless-cms">
     <span class="cmeta"><span class="cn">20</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Scaling Your Content Strategy with a Headless CMS</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Scaling Your Content Strategy with a Headless CMS</h3></div>
     <p class="excerpt">Chapter 7: how to scale content with a headless CMS like Contentful or Sanity—reaching new audiences without losing consistency as you grow.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="integrating-third-party-tools-with-headless-cms">
     <span class="cmeta"><span class="cn">21</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Integrating Third-Party Tools with a Headless CMS</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Integrating Third-Party Tools with a Headless CMS</h3></div>
     <p class="excerpt">Chapter 8: how to connect third-party tools to a headless CMS like Contentful or Sanity to extend functionality and streamline content management.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="measuring-the-success-of-your-headless-cms-implementation">
     <span class="cmeta"><span class="cn">22</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Measuring the Success of Your Headless CMS</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Measuring the Success of Your Headless CMS</h3></div>
     <p class="excerpt">Chapter 9: the metrics and KPIs that show whether your headless CMS—Contentful or Sanity—is actually delivering results worth the investment.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="unlocking-the-power-of-headless-cms">
     <span class="cmeta"><span class="cn">23</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Unlocking Headless CMS with Contentful and Sanity</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Unlocking Headless CMS with Contentful and Sanity</h3></div>
     <p class="excerpt">Why agility and flexibility are now essential—and how headless platforms like Contentful and Sanity help you adapt, personalize, and scale content.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="frames" href="the-brand-experience-podcast">
     <span class="cmeta"><span class="cn">24</span><span class="wtag">Frames</span><span class="idate">August 14, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/6f7d5c68-552a-4cda-eae8-e31b609f9c00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>The Brand Experience Podcast</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/6f7d5c68-552a-4cda-eae8-e31b609f9c00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>The Brand Experience Podcast</h3></div>
     <p class="excerpt">A podcast on what makes brands stick—where design, service, and purpose-driven storytelling meet. Conversations with the people shaping them.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="frames" href="the-brand-experience-youtube-channel-and-podcast">
     <span class="cmeta"><span class="cn">25</span><span class="wtag">Frames</span><span class="idate">August 14, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/63e0a037-1d94-41db-8c80-3713e3f42c00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Launching The Brand Experience YouTube &amp; Podcast</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/63e0a037-1d94-41db-8c80-3713e3f42c00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Launching The Brand Experience YouTube &amp; Podcast</h3></div>
     <p class="excerpt">Our new YouTube channel and podcast on how purpose-driven brands use digital experience to grow. Conversations with the CIOs and CTOs making the calls.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="when-and-when-not-to-include-ai-in-digital-products-a-practical-guide">
     <span class="cmeta"><span class="cn">26</span><span class="wtag">Build</span><span class="idate">June 5, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/4cff3f0b-50b6-4c94-37d7-ed6277295800/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>When (and When Not) to Include AI in Products</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/4cff3f0b-50b6-4c94-37d7-ed6277295800/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>When (and When Not) to Include AI in Products</h3></div>
     <p class="excerpt">Knowing when to build AI into your product—and when to keep it simple—can make or break it. A practical guide to making that call with confidence.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="one-year-on---the-evolving-role-of-chief-artificial-intelligence-officers">
     <span class="cmeta"><span class="cn">27</span><span class="wtag">Founder's Focus</span><span class="idate">May 9, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/b9149a19-bb98-4169-3e70-f93ef7f50100/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>One Year On: The Evolving Role of the CAIO</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/b9149a19-bb98-4169-3e70-f93ef7f50100/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>One Year On: The Evolving Role of the CAIO</h3></div>
     <p class="excerpt">A year ago, the Chief AI Officer was speculation. Now it's real. How the CAIO role has matured—and what it signals about AI's place in strategy.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="the-strategic-advantage-of-proprietary-large-language-models-for-brands">
     <span class="cmeta"><span class="cn">28</span><span class="wtag">Founder's Focus</span><span class="idate">May 8, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/0a6aa63c-8136-49f9-b8b7-6a6533d6e700/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>The Strategic Advantage of Proprietary LLMs for Brands</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/0a6aa63c-8136-49f9-b8b7-6a6533d6e700/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>The Strategic Advantage of Proprietary LLMs for Brands</h3></div>
     <p class="excerpt">Some brands fear their agencies using AI. Why proprietary large language models can actually boost brand consistency, security, and control instead.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="the-risks-of-trusting-llms-gpts-for-all-of-your-knowledge-needs">
     <span class="cmeta"><span class="cn">29</span><span class="wtag">Founder's Focus</span><span class="idate">May 7, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/d09f4122-2dcf-410d-16d7-0cc4b59f0f00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>The Risks of Trusting LLMs and GPTs With Everything</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/d09f4122-2dcf-410d-16d7-0cc4b59f0f00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>The Risks of Trusting LLMs and GPTs With Everything</h3></div>
     <p class="excerpt">LLMs are powerful, but they shouldn't answer every question. The risks of over-trusting them—and why tools like RAG and governance matter for accuracy.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="how-to-be-the-boss-of-the-bots----why-humanities-might-hold-the-key">
     <span class="cmeta"><span class="cn">30</span><span class="wtag">Founder's Focus</span><span class="idate">May 6, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/bbfb65be-2339-4b19-5eb1-389ebccec600/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>How to Be the Boss of the Bots: Why Humanities Matter</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/bbfb65be-2339-4b19-5eb1-389ebccec600/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>How to Be the Boss of the Bots: Why Humanities Matter</h3></div>
     <p class="excerpt">As AI reshapes work, creativity and empathy matter more, not less. Why pairing tech skills with the humanities is how you future-proof a career.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="headless-cms-help-ebook">
     <span class="cmeta"><span class="cn">31</span><span class="wtag">Build</span><span class="idate">May 2, 2024</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/5026aefd-9107-44cf-57df-6d44dcb54800/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Top 10 Mistakes When Moving to a Headless CMS</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/5026aefd-9107-44cf-57df-6d44dcb54800/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Top 10 Mistakes When Moving to a Headless CMS</h3></div>
     <p class="excerpt">Our free eBook on the ten most common headless CMS mistakes—and how to avoid them. Drawn from 75+ headless projects and eight years of experience.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="ready-to-switch-to-webflow-heres-where-to-start">
     <span class="cmeta"><span class="cn">32</span><span class="wtag">Build</span><span class="idate">August 15, 2023</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/39317a06-4079-4bf0-9c7b-c31801a9d000/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Ready to Switch to Webflow? Here's Where to Start</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/39317a06-4079-4bf0-9c7b-c31801a9d000/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Ready to Switch to Webflow? Here's Where to Start</h3></div>
     <p class="excerpt">We're long-time fans of low-code and no-code platforms like Webflow. A practical starting point for moving your site, web app, or product over.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="designing-with-diversity-increasing-accessibility-in-the-insurance-industry">
     <span class="cmeta"><span class="cn">33</span><span class="wtag">Build</span><span class="idate">August 11, 2023</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/4d7939b5-a1ac-45b7-6875-1cd657f35000/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Designing With Diversity: Accessibility in Insurance</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/4d7939b5-a1ac-45b7-6875-1cd657f35000/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Designing With Diversity: Accessibility in Insurance</h3></div>
     <p class="excerpt">"Differences are our greatest strengths." How we partnered with accessibility experts Wandke Consulting to make insurance more usable for everyone.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="why-scoping-digital-product-and-software-development-projects-is-challenging-and-what-to-do-about-it">
     <span class="cmeta"><span class="cn">34</span><span class="wtag">Build</span><span class="idate">June 6, 2023</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/729b2b56-ae85-4f64-7e28-fe36a0981f00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Why Scoping Software Projects Is So Hard</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/729b2b56-ae85-4f64-7e28-fe36a0981f00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Why Scoping Software Projects Is So Hard</h3></div>
     <p class="excerpt">Scoping is one of the hardest parts of building software—an upfront guessing game. Why it's so difficult, and a more reliable way to approach it.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="power-shifter-ceo-jp-holecka-named-bcs-2022-ceo-of-the-year">
     <span class="cmeta"><span class="cn">35</span><span class="wtag">Founder's Focus</span><span class="idate">January 23, 2023</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/4e754c57-4431-4590-b025-440564e4ac00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>JP Holecka Named BC's 2022 CEO of the Year</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/4e754c57-4431-4590-b025-440564e4ac00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>JP Holecka Named BC's 2022 CEO of the Year</h3></div>
     <p class="excerpt">Our CEO JP Holecka has been named BC's 2022 CEO of the Year—recognition of years of growth, award-winning work, and leading with empathy and simplicity.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="everythings-gone-headless-is-your-organization-ready">
     <span class="cmeta"><span class="cn">36</span><span class="wtag">Founder's Focus</span><span class="idate">October 28, 2022</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/b731a92a-1efd-4391-a21f-6e1e74606b00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Everything's Gone Headless—Is Your Org Ready?</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/b731a92a-1efd-4391-a21f-6e1e74606b00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Everything's Gone Headless—Is Your Org Ready?</h3></div>
     <p class="excerpt">Headless has hit a tipping point, and the options are overwhelming. How to cut through the noise and decide whether headless is right for your business.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="where-curling-entrepreneurship-and-neurodivergence-meet-why-power-shifter-is-a-proud-sponsor-of-team-ladouceur">
     <span class="cmeta"><span class="cn">37</span><span class="wtag">Founder's Focus</span><span class="idate">September 23, 2022</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/96936be2-6d0e-40d9-06b0-e013b4c64100/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Why We Sponsor Team Ladouceur</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/96936be2-6d0e-40d9-06b0-e013b4c64100/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Why We Sponsor Team Ladouceur</h3></div>
     <p class="excerpt">A digital agency and a women's curling team have more in common than you'd think—where curling, entrepreneurship, and neurodivergence meet.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="when-creating-digital-products-its-time-for-it-professionals-to-embrace-the-lean-startup-movement">
     <span class="cmeta"><span class="cn">38</span><span class="wtag">Founder's Focus</span><span class="idate">August 31, 2022</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/a9b036c1-2466-4f0e-04bc-bd8621fa3700/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Why IT Teams Should Embrace the Lean Startup Approach</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/a9b036c1-2466-4f0e-04bc-bd8621fa3700/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Why IT Teams Should Embrace the Lean Startup Approach</h3></div>
     <p class="excerpt">When you're not quite fluent, it's safer to keep it simple. Why IT teams that adopt a Lean Startup mindset help their clients, partners, and people win.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="the-creator-middle-class-is-powered-by-third-party-tech-platforms">
     <span class="cmeta"><span class="cn">39</span><span class="wtag">Founder's Focus</span><span class="idate">August 19, 2022</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/0b656b03-de4b-429c-89c7-bb0666f5e000/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>The "Creator Middle Class" Runs on Third-Party Tech</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/0b656b03-de4b-429c-89c7-bb0666f5e000/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>The "Creator Middle Class" Runs on Third-Party Tech</h3></div>
     <p class="excerpt">First came the side hustle. Now a "creator middle class" is emerging—powered by the third-party platforms that digital transformation made possible.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="apps-what-you-experience-is-only-the-tip-of-the-iceberg">
     <span class="cmeta"><span class="cn">40</span><span class="wtag">Build</span><span class="idate">August 24, 2021</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/37344aea-9545-48bf-a2e5-85d47e3fb700/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Apps: What You See Is Only the Tip of the Iceberg</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/37344aea-9545-48bf-a2e5-85d47e3fb700/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Apps: What You See Is Only the Tip of the Iceberg</h3></div>
     <p class="excerpt">Cheap apps rarely succeed, and users expect more than ever. We go beneath the surface to reveal the true cost of building an app that adds real value.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="dev-shops-creative-agencies-business-consultants-and-digital-product-studios-who-should-you-partner-with">
     <span class="cmeta"><span class="cn">41</span><span class="wtag">Founder's Focus</span><span class="idate">June 29, 2021</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/732dd315-c560-4d98-64c8-88360e191600/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Who Should You Partner With on Your Next Product?</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/732dd315-c560-4d98-64c8-88360e191600/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Who Should You Partner With on Your Next Product?</h3></div>
     <p class="excerpt">Dev shop, creative agency, consultant, or product studio? Our white paper weighs the benefits and drawbacks of each so you can pick the right team.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="betting-on-ourselves-the-future-of-luxury-watch-shopping">
     <span class="cmeta"><span class="cn">42</span><span class="wtag">Founder's Focus</span><span class="idate">April 22, 2021</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/b27b3360-5f7d-4ecf-f949-4ac26ea49200/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Betting on Ourselves: The Future of Luxury Watch Shopping</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/b27b3360-5f7d-4ecf-f949-4ac26ea49200/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Betting on Ourselves: The Future of Luxury Watch Shopping</h3></div>
     <p class="excerpt">We've built hundreds of products for clients. Now we're building one for ourselves—a new take on luxury watch shopping, with our own skin in the game.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="unsplash-disrupting-the-stock-photo-industry">
     <span class="cmeta"><span class="cn">43</span><span class="wtag">Founder's Focus</span><span class="idate">February 2, 2021</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/5e859542-5eba-4f38-06b2-ab2f00437100/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Unsplash: Disrupting the Stock Photo Industry</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/5e859542-5eba-4f38-06b2-ab2f00437100/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Unsplash: Disrupting the Stock Photo Industry</h3></div>
     <p class="excerpt">How Unsplash turned a side-of-desk hustle into a multi-layered business model—and what product teams can learn from the way it found its profit.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="webinar-rethinking-cx-needs-during-covid-19-and-beyond">
     <span class="cmeta"><span class="cn">44</span><span class="wtag">Build</span><span class="idate">January 6, 2021</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/6bd955db-f19e-46af-c638-18064762e200/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Webinar: Rethinking CX Needs in 2021</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/6bd955db-f19e-46af-c638-18064762e200/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Webinar: Rethinking CX Needs in 2021</h3></div>
     <p class="excerpt">More than 80% of leaders planned lasting changes to how they serve customers. Our webinar on applying Lean Service Design to your 2021 CX strategy.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="powershifter-ventures-announces-closed-beta-launch-applications-for-luxxee">
     <span class="cmeta"><span class="cn">45</span><span class="wtag">Build</span><span class="idate">December 9, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/e9e091ca-0cb0-4733-52cb-0023e5b61400/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>luxxee Closed Beta: Apply for Early Access</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/e9e091ca-0cb0-4733-52cb-0023e5b61400/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>luxxee Closed Beta: Apply for Early Access</h3></div>
     <p class="excerpt">After seven months building quietly in the luxury watch space, we're opening a two-month closed beta for luxxee. Apply to help shape what's next.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="powershifter-wins-ux-for-product-at-the-vancouver-user-experience-awards">
     <span class="cmeta"><span class="cn">46</span><span class="wtag">Build</span><span class="idate">December 2, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/4a7d56a7-ad5e-4252-d09c-eaf027f93600/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Power Shifter Wins UX for Product at the VanUX Awards</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/4a7d56a7-ad5e-4252-d09c-eaf027f93600/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Power Shifter Wins UX for Product at the VanUX Awards</h3></div>
     <p class="excerpt">Our work with Delta Controls won Best UX for Product at the Vancouver User Experience Awards—a win for our team and a standout client collaboration.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="education-in-a-pandemic-crash-course-in-agile-product-design-from-leading-edtech-experts">
     <span class="cmeta"><span class="cn">47</span><span class="wtag">Build</span><span class="idate">November 16, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/f2019e5e-a453-461c-7dda-691933b07a00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>A Crash Course in Agile Product Design from EdTech</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/f2019e5e-a453-461c-7dda-691933b07a00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>A Crash Course in Agile Product Design from EdTech</h3></div>
     <p class="excerpt">COVID-19 stopped in-person learning cold and exposed how far behind EdTech had fallen. What agile product design can teach any industry under pressure.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="advent-of-lean-service-design-in-the-age-of-covid19">
     <span class="cmeta"><span class="cn">48</span><span class="wtag">Build</span><span class="idate">October 14, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/5f17bd65-91a6-482d-02fb-ab4c3b517f00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>The Advent of Lean Service Design in the COVID-19 Age</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/5f17bd65-91a6-482d-02fb-ab4c3b517f00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>The Advent of Lean Service Design in the COVID-19 Age</h3></div>
     <p class="excerpt">COVID-19 compressed roadmaps from years into weeks. Why service design is shifting from big engagements to smaller ones focused on business outcomes.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="jp-holecka-elected-to-ica-board-of-directors">
     <span class="cmeta"><span class="cn">49</span><span class="wtag">Founder's Focus</span><span class="idate">September 1, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/06cdc753-6232-4712-bf96-0f6888e4be00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Power Shifter CEO Elected to the ICA Board</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/06cdc753-6232-4712-bf96-0f6888e4be00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Power Shifter CEO Elected to the ICA Board</h3></div>
     <p class="excerpt">CEO JP Holecka has been elected to the board of the Institute of Communication Agencies, which represents Canada's most influential agencies.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="4-tips-to-select-ai-project-that-is-not-set-to-fail-from-get-go">
     <span class="cmeta"><span class="cn">50</span><span class="wtag">Build</span><span class="idate">August 28, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/0697c9a3-2208-429d-7960-f6d3e599f600/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>4 Tips to Choose an AI Project That Won't Fail</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/0697c9a3-2208-429d-7960-f6d3e599f600/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>4 Tips to Choose an AI Project That Won't Fail</h3></div>
     <p class="excerpt">Data science partner Hamid Omid shares four practical tips for picking an AI project that's set up to succeed—before you sink time and budget into it.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="new-way-to-write-rfps">
     <span class="cmeta"><span class="cn">51</span><span class="wtag">Founder's Focus</span><span class="idate">May 21, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/7502fc8b-48a9-4479-60c1-358d86505600/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>A New Way to Write RFPs</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/7502fc8b-48a9-4479-60c1-358d86505600/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>A New Way to Write RFPs</h3></div>
     <p class="excerpt">Part 3 of 3 on the RFP problem: how to refine, refresh, and reimagine the process so you actually find the agency that's right for your project.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="think-an-rfp-is-your-only-option-for-hiring-an-agency">
     <span class="cmeta"><span class="cn">52</span><span class="wtag">Founder's Focus</span><span class="idate">May 14, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/ab1cf4a2-847e-43aa-120a-d196a7080400/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Think an RFP Is Your Only Option? Think Again.</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/ab1cf4a2-847e-43aa-120a-d196a7080400/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Think an RFP Is Your Only Option? Think Again.</h3></div>
     <p class="excerpt">Part 2 of 3 on the RFP problem: five effective ways to find a qualified agency partner for your next project—without defaulting to a request for proposal.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="4-reasons-why-great-agencies-arent-responding-to-your-rfps">
     <span class="cmeta"><span class="cn">53</span><span class="wtag">Founder's Focus</span><span class="idate">May 6, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/a7ab6771-eb9d-468e-1d15-8b3adc873400/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>4 Reasons Great Agencies Aren't Answering Your RFPs</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/a7ab6771-eb9d-468e-1d15-8b3adc873400/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>4 Reasons Great Agencies Aren't Answering Your RFPs</h3></div>
     <p class="excerpt">Part 1 of 3 on the RFP problem: why the best agencies quietly pass on your request for proposal—and what that signals about the process itself.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="5-problems-with-relying-on-zoom-during-the-covid-19-pandemic">
     <span class="cmeta"><span class="cn">54</span><span class="wtag">Founder's Focus</span><span class="idate">April 22, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42ddc3cb-6dc7-49c2-dd93-092a8dcd6500/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>5 Problems With Relying on Zoom During the Pandemic</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42ddc3cb-6dc7-49c2-dd93-092a8dcd6500/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>5 Problems With Relying on Zoom During the Pandemic</h3></div>
     <p class="excerpt">Zoom became a lifeline for remote work overnight. But the rush exposed real drawbacks for users—five problems worth weighing before you depend on it.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="product-design-insights-great-reads-for-april">
     <span class="cmeta"><span class="cn">55</span><span class="wtag">Build</span><span class="idate">April 20, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/e6c6f723-97ca-454e-82d1-fddbd1045200/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Product Design Insights: 7 Great Reads for April</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/e6c6f723-97ca-454e-82d1-fddbd1045200/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Product Design Insights: 7 Great Reads for April</h3></div>
     <p class="excerpt">April's reads: a rising no-code software trend, the pandemic's lasting impact on product and design, and more. Seven curated picks from our team.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="why-stand-the-f-back">
     <span class="cmeta"><span class="cn">56</span><span class="wtag">Founder's Focus</span><span class="idate">April 8, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/a305b941-5265-4582-3889-b651b61d8700/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Why "Stand the F Back"? Our COVID-19 Campaign</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/a305b941-5265-4582-3889-b651b61d8700/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Why "Stand the F Back"? Our COVID-19 Campaign</h3></div>
     <p class="excerpt">A look at why provocative swag became our way of helping change behaviour—and flatten the curve—during the early days of the COVID-19 pandemic.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="applying-service-design-principles-during-a-pandemic">
     <span class="cmeta"><span class="cn">57</span><span class="wtag">Build</span><span class="idate">April 2, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/c3c80e1e-eb09-4e50-b81c-2c86f96ede00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Applying Service Design Principles During a Pandemic</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/c3c80e1e-eb09-4e50-b81c-2c86f96ede00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Applying Service Design Principles During a Pandemic</h3></div>
     <p class="excerpt">Grocery stores rewrote the rules of shopping overnight. A look at how service design principles played out in real time during COVID-19.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="jp-holecka-accepted-into-forbes-agency-council">
     <span class="cmeta"><span class="cn">58</span><span class="wtag">Founder's Focus</span><span class="idate">March 2, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/aa901201-29f2-4f14-6c56-194562ac3100/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Power Shifter CEO Joins the Forbes Agency Council</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/aa901201-29f2-4f14-6c56-194562ac3100/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Power Shifter CEO Joins the Forbes Agency Council</h3></div>
     <p class="excerpt">CEO JP Holecka has been accepted into the Forbes Agency Council, an invitation-only community for leaders of top PR, media, creative, and ad agencies.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="clutch-top-agency-in-canada">
     <span class="cmeta"><span class="cn">59</span><span class="wtag">Founder's Focus</span><span class="idate">February 3, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/6d267ca4-c9f8-4635-ad01-b01f4ad97500/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Power Shifter Named a Top Agency in Canada by Clutch</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/6d267ca4-c9f8-4635-ad01-b01f4ad97500/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Power Shifter Named a Top Agency in Canada by Clutch</h3></div>
     <p class="excerpt">For the second year running, Clutch has named us a top Canadian digital product studio—based on real client feedback. A look back at the recognition.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="stop-designing-for-your-industry-start-designing-for-your-customers">
     <span class="cmeta"><span class="cn">60</span><span class="wtag">Founder's Focus</span><span class="idate">January 16, 2020</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/52a54b9b-35aa-43f0-9b8c-53dce2dbaf00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Stop Designing for Your Industry, Start With Customers</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/52a54b9b-35aa-43f0-9b8c-53dce2dbaf00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Stop Designing for Your Industry, Start With Customers</h3></div>
     <p class="excerpt">Vertical specialists are overrated. Why the best user experiences come from studios that bring cross-industry thinking—not the same template every time.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="outsourcing-digital-product-design">
     <span class="cmeta"><span class="cn">61</span><span class="wtag">Founder's Focus</span><span class="idate">November 5, 2019</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/c74d49c2-6b52-4f13-8933-3180f8fac700/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Should You Keep Product Development In-House?</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/c74d49c2-6b52-4f13-8933-3180f8fac700/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Should You Keep Product Development In-House?</h3></div>
     <p class="excerpt">Done right, digital products do a lot for your business. Why outsourcing product design—rather than forcing it in-house—often delivers a better result.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="build" href="how-empathy-in-ux-enhances-cx">
     <span class="cmeta"><span class="cn">62</span><span class="wtag">Build</span><span class="idate">October 9, 2019</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/62968d5c-a503-4ee5-3008-276680dd7c00/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>The Human Touch: How Empathy in UX Strengthens CX</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/62968d5c-a503-4ee5-3008-276680dd7c00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>The Human Touch: How Empathy in UX Strengthens CX</h3></div>
     <p class="excerpt">Design is more scientific than it looks—but empathy is what makes it work. How the human behind the process shapes UX, and the customer experience.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>
 
   <a class="wcard" data-cat="ff" href="clutch-top-agencies-canada-2019">
     <span class="cmeta"><span class="cn">63</span><span class="wtag">Founder's Focus</span><span class="idate">February 6, 2019</span></span>
-    <div class="wframe"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/0378558a-d754-4bf2-4ef4-6a2f291db600/public" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>Power Shifter Named a 2019 Clutch Leader</h3>
+    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/0378558a-d754-4bf2-4ef4-6a2f291db600/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Power Shifter Named a 2019 Clutch Leader</h3></div>
     <p class="excerpt">Clutch.co has ranked Power Shifter a 2019 leader among Canadian product designers—based on verified client reviews on the B2B ratings platform.</p>
     <span class="wgo swipe">Read the post →</span>
   </a>

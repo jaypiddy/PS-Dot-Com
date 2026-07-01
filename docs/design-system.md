@@ -21,13 +21,19 @@ These already exist as CSS custom properties on every page. Port them verbatim.
 | `--ink` | `#121315` | Primary dark — bg for dark sections, text on paper |
 | `--ink-soft` | `#1A1B1E` | Slightly lifted ink — media wells, placeholders |
 | `--paper` | `#F6F3EC` | Warmed cream ("Lando cream", **not** white). Light bg + text on ink |
-| `--grey` | `#6E7176` | Muted text — roles, captions, meta |
-| `--magenta` | `#FD2E90` | The single accent. **One per viewport** (see §4) |
+| `--grey` | `#6B6E73` | Muted text — roles, captions, meta. **Darkened from `#6E7176`** so secondary text clears AA on paper (4.62:1). |
+| `--magenta` | `#FD2E90` | The single accent. **One per viewport** (see §4). Ship on **ink/dark** (5.28:1) or as **large** text only — as *small* text on paper it is 3.17:1 and **fails AA**. Use `--magenta-ink` for small magenta text on light. |
+| `--magenta-ink` | `#CD2575` | **AA-safe magenta for small text on light surfaces** (4.60:1 on paper, 5.10:1 on white). Eyebrows, small labels (`.qb-role`), and links/error/hover text on paper or white. Same hue family as `--magenta`, just deep enough to pass. |
 | `--line` | `rgba(18,19,21,.14)` | Hairline **on paper** (ink-based) |
 | `--line-light` | `rgba(250,250,247,.18)` | Hairline **on ink** (paper-based) |
 
 > Note: an earlier `--paper:#FAFAF7` is overridden later to `#F6F3EC`. Ship the
 > warmed cream `#F6F3EC` as canonical.
+
+> **Contrast note (WCAG 2.1 AA):** `--grey` and `--magenta-ink` values were set to
+> clear 4.5:1 against paper `#F6F3EC`. Brand `--magenta` intentionally stays bright
+> for its role on ink and as large display type — do **not** repoint it to the ink
+> variant globally. Pick the token by surface + size (see §4).
 
 ### Type families ("Two Voices")
 | Token | Stack | Voice |
@@ -54,7 +60,7 @@ kit never blanks the page — see §7 "black-on-blank" lesson.
 
 - **Hero H1 (sub-hero):** `--display`, `clamp(52px,7vw,108px)`, line-height .96, letter-spacing -.02em
 - **Section H2 (.engine):** `--display`, `clamp(40px,4.6vw,72px)`, line-height 1.02
-- **Eyebrow:** `--mono` 700, 12px, letter-spacing .14em, UPPERCASE, color `--magenta`
+- **Eyebrow:** `--mono` 700, 12px, letter-spacing .14em, UPPERCASE. Color: `--magenta-ink` on light surfaces (12px fails AA in bright `--magenta`), `--magenta` only on ink/dark.
 - **Body:** `--text` 400, `clamp(16px,1.5vw,21px)`, line-height 1.5–1.6
 - **Serif voice:** `--serif` italic — used inline as `em.voice` (see §5 voice rule)
 
@@ -78,6 +84,19 @@ kit never blanks the page — see §7 "black-on-blank" lesson.
 `--magenta` is the only accent. **Budget: roughly one magenta moment per viewport.**
 It marks: eyebrows, the emotional serif "voice" line, key CTAs, the takeover, and
 draw-on rules. Don't let it become decorative or appear 3–4× in one screen.
+
+**Which magenta (contrast):** pick by surface **and** size.
+
+| Context | Token | Ratio |
+|---|---|---|
+| Small text (≤~18px) on paper/white — eyebrows, links, labels, form errors | `--magenta-ink` `#CD2575` | 4.60:1 ✅ |
+| Any magenta text on **ink/dark** | `--magenta` `#FD2E90` | 5.28:1 ✅ |
+| **Large** display magenta on paper (hero voice line, big quote marks ≥~24px) | `--magenta` `#FD2E90` | 3.17:1 ✅ (large-text 3:1) |
+| Magenta **fill** with light text on it (buttons) | fill `--magenta-ink`, text `--paper` | 4.60:1 ✅ |
+
+Small brand `--magenta` on paper is **3.17:1 — fails AA**; that's the trap the a11y
+pass fixed. Magenta as a **hairline/edge/underline** (`.rule`, `.sp-edge`, kinetic
+underline) is a non-text graphic → only needs 3:1, so brand `--magenta` is fine there.
 
 ---
 
@@ -132,7 +151,7 @@ Two-column section: H2 left (with a draw-on magenta `.rule`), prose right
 - **Solid — `.btn.solid`:** fills magenta on hover.
 
 ### Eyebrow
-`.eyebrow` — `--mono` 700, 12px, .14em, UPPERCASE, magenta. One formula site-wide (every
+`.eyebrow` — `--mono` 700, 12px, .14em, UPPERCASE, `--magenta-ink` on light / `--magenta` on ink (§1, §4). One formula site-wide (every
 eyebrow, page hero **and** section): hub/practice pages use "Section — descriptor"
 ("About — one culture, two practices", "Proof — the receipts"); detail pages use
 "Category · Client/Topic" ("Digital · TELUS & Koodo"). Bare section labels ("Insights",
@@ -207,6 +226,14 @@ The three open consistency decisions from the prior round — supporting-line tr
 voice-color rule, and eyebrow convention — were ratified June 2026 and are now locked in
 §7 as items 5, 6, and 7. The `.streams`/`.reel-body` supporting lines have been migrated
 onto `.sub-body`; the voice-color and eyebrow conventions are applied site-wide.
+
+**Accessibility contrast pass (July 2026, WCAG 2.1 AA).** Two token changes are now
+canon: `--grey` `#6E7176 → #6B6E73` (secondary text on paper 4.42 → 4.62:1), and a new
+`--magenta-ink` `#CD2575` for small magenta text on light (4.60:1), applied to eyebrows,
+`.qb-role`, and concierge link/error/footer/submit-hover. Brand `--magenta` `#FD2E90` is
+unchanged and still owns ink/dark and large-display magenta. Token-selection matrix in §4.
+Shipped on branch `a11y/wcag-aa-fixes` (PR #2) alongside the non-color a11y fixes
+(odometer SR value, `<main>`/skip link, form labels, focus ring).
 
 ## 9 · Parking lot (verify before paid/PR reuse)
 

@@ -74,7 +74,10 @@ kit never blanks the page — see §7 "black-on-blank" lesson.
 >
 > **Numerals are proportional** (`'0'` 0.727em vs `'1'` 0.392em) and the subset has **no
 > `tnum`** — so the odometer centers each digit (`.odo .col{align-items:center}` +
-> `text-align:center`) to keep narrow digits from floating in oversized boxes.
+> `text-align:center`) to keep narrow digits from floating in oversized boxes. La Mericana
+> also has **tall vertical metrics** (content box ~1.5em); the odometer roll-mask
+> `--step` was raised `1.18em → 1.35em` so `overflow:hidden` doesn't clip glyph bottoms
+> (the "2" was cut). `--step` is the roll unit, so the animation scales with it.
 
 ---
 

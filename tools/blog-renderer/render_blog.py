@@ -55,7 +55,7 @@ def inline(t):
     t = re.sub(r'\\([<>*_\[\]()`\\#.\-!+"])', lambda m: _ESC_MAP[m.group(1)], t or '')
     t = esc(t)
     t = re.sub(r'\[([^\]]+)\]\(([^)]+)\)',
-               lambda m: f'<a href="{m.group(2).strip()}">{m.group(1)}</a>', t)
+               lambda m: f'<a href="{m.group(2).strip().replace(chr(34), "&quot;")}">{m.group(1)}</a>', t)
     t = re.sub(r'\*\*([^*]+?)\*\*', r'<strong>\1</strong>', t)
     t = re.sub(r'(?<![\w*])\*([^*\n]+?)\*(?![\w*])', r'<em>\1</em>', t)
     t = re.sub(r'(?<![\w_])_([^_\n]+?)_(?![\w_])', r'<em>\1</em>', t)
@@ -68,7 +68,9 @@ def yt_id(url):
 # ---------------------------------------------------------------- body converter
 def detect_embed(s):
     """A standalone URL / bare link / raw <embed|iframe> line → (video|podcast)."""
-    raw = re.search(r'<(?:embed|iframe)\b[^>]*\bsrc=["\']([^"\']+)["\']', s)
+    # fullmatch: only a line that IS the embed tag becomes an embed — an inline
+    # <iframe> mention inside prose must not eat the surrounding paragraph.
+    raw = re.fullmatch(r'<(?:embed|iframe)\b[^>]*\bsrc=["\']([^"\']+)["\'][^>]*>\s*(?:</(?:embed|iframe)>)?', s)
     if raw:
         url = raw.group(1)
         if 'youtu' in url:
@@ -245,8 +247,9 @@ def merge_overrides(posts):
     return n
 
 def patch_head(post):
+    # lambda repl so a backslash / \g / \1 in the title isn't read as a re group ref
     h = re.sub(r'<title>.*?</title>',
-               f"<title>{esc(post['seo_title'])}{TITLE_SUFFIX}</title>", HEAD, count=1, flags=re.S)
+               lambda m: f"<title>{esc(post['seo_title'])}{TITLE_SUFFIX}</title>", HEAD, count=1, flags=re.S)
     meta = attr(post.get('meta_description', ''))
     h = re.sub(r'(<meta name="description" content=")[^"]*(">)',
                lambda m: m.group(1) + meta + m.group(2), h, count=1)
@@ -382,7 +385,7 @@ def feature_card(post, n):
 def regen_insights(posts):
     ins = (REPO / "insights.html").read_text(encoding="utf-8")
     start = ins.index('<div class="sheet">') + len('<div class="sheet">')
-    end = ins.index('</div>\n</section>', start)
+    end = ins.index('<!-- /grid -->', start)   # unique sentinel — the bare </div></section> isn't unique
     feat = next((p for p in posts if p.get('featured')), None)
     ordered = ([feat] + [p for p in posts if p is not feat]) if feat else posts
     blocks = []

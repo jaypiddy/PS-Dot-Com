@@ -1183,6 +1183,7 @@
     <span class="wgo swipe">Read the post →</span>
   </a>
 
+  <!-- /grid -->
   </div>
 </section>
 
@@ -1387,7 +1388,13 @@
       ftabs.forEach(t => t.classList.remove('on'));
       tab.classList.add('on');
       const cat = tab.dataset.cat;
-      if (!grid || reduceMotion.matches) { applyFilter(cat); return; }
+      if (!grid || reduceMotion.matches) {
+        // cancel any in-flight fade so a stale timeout can't re-apply an old category
+        clearTimeout(fadePending);
+        if (grid) grid.classList.remove('switching');
+        applyFilter(cat);
+        return;
+      }
       // dip the grid to transparent, swap the cards while invisible, fade back in
       clearTimeout(fadePending);
       grid.classList.add('switching');

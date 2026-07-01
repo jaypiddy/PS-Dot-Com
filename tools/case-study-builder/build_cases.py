@@ -109,7 +109,7 @@ def render_body(specs):
 
 def build(case):
     head = re.sub(r'<title>.*?</title>',
-                  f"<title>{case['title']}</title>", HEAD, count=1, flags=re.S)
+                  lambda m: f"<title>{case['title']}</title>", HEAD, count=1, flags=re.S)
     head = re.sub(r'(<meta name="description" content=")[^"]*(">)',
                   lambda mm: mm.group(1) + case['meta'] + mm.group(2), head, count=1)
     import cases_data

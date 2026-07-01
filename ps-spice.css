@@ -240,7 +240,7 @@ body.sp-rules .sp-band-rule:not(.sp-in) .sp-br-line{transform:scaleX(0)}
 .qb-name{font-family:var(--display);font-weight:700;font-size:clamp(16px,1.5vw,21px);
   letter-spacing:-.01em;color:var(--ink)}
 .qb-role{font-family:var(--text);font-weight:700;font-size:12px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--magenta)}
+  text-transform:uppercase;color:var(--magenta-ink)}
 @media (prefers-reduced-motion:reduce){
   .qb-mark,.quote-t .qw,.quote-by{opacity:1 !important;transform:none !important;transition:none}
 }

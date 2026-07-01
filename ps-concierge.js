@@ -209,9 +209,9 @@
       '<div class="cc-fv-head"><b>Send us a note</b>'+
         '<button type="button" class="cc-fv-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back to chat</button></div>'+
       '<form class="cc-fv-body" novalidate>'+
-        '<div class="cc-field"><label>Name</label><input name="name" type="text" autocomplete="name"></div>'+
-        '<div class="cc-field"><label>Email</label><input name="email" type="email" autocomplete="email"></div>'+
-        '<div class="cc-field"><label>What are you building?</label><textarea name="message" placeholder="A line or two is plenty."></textarea></div>'+
+        '<div class="cc-field"><label for="cc-f-name">Name</label><input id="cc-f-name" name="name" type="text" autocomplete="name"></div>'+
+        '<div class="cc-field"><label for="cc-f-email">Email</label><input id="cc-f-email" name="email" type="email" autocomplete="email"></div>'+
+        '<div class="cc-field"><label for="cc-f-message">What are you building?</label><textarea id="cc-f-message" name="message" placeholder="A line or two is plenty."></textarea></div>'+
         '<div class="cc-fv-err" aria-live="polite"></div>'+
         '<button type="submit" class="cc-fv-submit">Send to the studio</button>'+
         '<p class="cc-fv-note">Or call <a href="'+CONFIG.phoneHref+'">'+CONFIG.phone+'</a>. We reply in person — no autoresponders.</p>'+

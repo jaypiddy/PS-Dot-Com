@@ -9,7 +9,8 @@ SEQ = "".join(f"<span>{d}</span>" for d in "01234567890123456789")
 def col(d):  return f'<span class="col" style="--d:{d}">{SEQ}</span>'
 def odo(num):  # num may contain digits and ',' separators
     parts = "".join(col(int(c)) if c.isdigit() else f'<span class="ch">{c}</span>' for c in num)
-    return f'<span class="odo">{parts}</span>'
+    # a11y: hide the rolling 0-9 columns from AT and expose the real value (sr-only)
+    return f'<span class="sr-only">{num}</span><span class="odo" aria-hidden="true">{parts}</span>'
 def stat(num, sfx, cap):
     s = f'<span class="sfx">{sfx}</span>' if sfx else ""
     return f'    <div class="stat"><b>{odo(num)}{s}</b><span>{cap}</span></div>'

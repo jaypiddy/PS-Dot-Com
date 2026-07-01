@@ -16,10 +16,11 @@
     --ink:#121315;
     --ink-soft:#1A1B1E;
     --paper:#FAFAF7;
-    --grey:#6E7176;
+    --grey:#6B6E73;
     --line:rgba(18,19,21,.14);
     --line-light:rgba(250,250,247,.18);
     --magenta:#FD2E90;
+    --magenta-ink:#CD2575; /* dark magenta — small text on light, WCAG AA */
     --display:"articulat-heavy-cf","Helvetica Neue",Helvetica,Arial,sans-serif;
     --text:"articulat-cf","Helvetica Neue",Helvetica,Arial,sans-serif;
     --mono:"config-mono-vf",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -103,7 +104,7 @@
   /* ---------- Block 3 — Proof spine ---------- */
   .proof{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .proof-inner{padding-top:30px;padding-bottom:30px}
-  .proof .eyebrow{color:var(--magenta);margin-bottom:18px}
+  .proof .eyebrow{color:var(--magenta-ink);margin-bottom:18px}
   .proof-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
   .stat{padding:6px 28px 6px 0;border-right:1px solid var(--line);opacity:0;transform:translateY(14px);transition:opacity .5s ease-out,transform .5s ease-out}
   .proof-row.in .stat{opacity:1;transform:none}
@@ -206,7 +207,7 @@
   .news p{font-size:14px;color:rgba(250,250,247,.65);max-width:38ch;margin-bottom:16px}
   .news .field{display:flex;border:1px solid var(--line-light)}
   .news input{flex:1;background:transparent;border:0;color:var(--paper);font-family:var(--text);font-size:14px;padding:12px 14px}
-  .news input:focus{outline:none}
+  .news input:focus-visible{outline:2px solid var(--magenta-ink);outline-offset:2px}
   .news button{background:var(--paper);color:var(--ink);border:0;font-family:var(--text);font-weight:700;font-size:13px;padding:0 20px;cursor:pointer;transition:background .2s ease-out,color .2s ease-out}
   .news button:hover{background:var(--magenta);color:var(--paper)}
   .ack{padding:34px 0;font-size:12.5px;line-height:1.7;color:rgba(250,250,247,.5);max-width:110ch;border-bottom:1px solid var(--line-light)}
@@ -317,7 +318,7 @@
   .hero .reel-slot{transition:opacity .8s ease-out}
   .hero.reel-live .reel-slot{opacity:0}
   .reel-tint{position:absolute;inset:0;z-index:1;pointer-events:none;
-    background:linear-gradient(rgba(18,19,21,.60), rgba(18,19,21,.50) 40%, rgba(18,19,21,.75) 100%)}
+    background:linear-gradient(rgba(18,19,21,.60), rgba(18,19,21,.50) 40%, rgba(18,19,21,.82) 100%)}
   .hero-reel.live{opacity:1}
   header{z-index:50}
 
@@ -419,6 +420,8 @@
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
+
 
 <header>
   <div class="nav on-dark" id="nav">
@@ -443,6 +446,7 @@
     </nav>
   </div>
 </header>
+<main id="main" tabindex="-1">
 <div class="takeover" id="takeover" aria-hidden="true">
   <div class="tk-top">
     <a class="logo" tabindex="-1" href="/" aria-label="POWER SHIFTER home"><svg class="wordmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 25" fill="currentColor" aria-hidden="true" focusable="false">
@@ -517,7 +521,7 @@
 
 <!-- Stitch — two voices marquee -->
 <div class="stitch" aria-hidden="true">
-  <div class="stitch-track"><span class="g">Made to use</span><span class="dot">·</span><span class="v">Made to remember</span><span class="dot">·</span><span class="g">Software in weeks</span><span class="dot">·</span><span class="v">Cinema in days</span><span class="dot">·</span><span class="g">Made to use</span><span class="dot">·</span><span class="v">Made to remember</span><span class="dot">·</span><span class="g">Software in weeks</span><span class="dot">·</span><span class="v">Cinema in days</span><span class="dot">·</span><span class="g">Made to use</span><span class="dot">·</span><span class="v">Made to remember</span><span class="dot">·</span><span class="g">Software in weeks</span><span class="dot">·</span><span class="v">Cinema in days</span><span class="dot">·</span><span class="g">Made to use</span><span class="dot">·</span><span class="v">Made to remember</span><span class="dot">·</span><span class="g">Software in weeks</span><span class="dot">·</span><span class="v">Cinema in days</span><span class="dot">·</span></div>
+  <div class="stitch-track" aria-hidden="true"><span class="g">Made to use</span><span class="dot">·</span><span class="v">Made to remember</span><span class="dot">·</span><span class="g">Software in weeks</span><span class="dot">·</span><span class="v">Cinema in days</span><span class="dot">·</span><span class="g">Made to use</span><span class="dot">·</span><span class="v">Made to remember</span><span class="dot">·</span><span class="g">Software in weeks</span><span class="dot">·</span><span class="v">Cinema in days</span><span class="dot">·</span><span class="g">Made to use</span><span class="dot">·</span><span class="v">Made to remember</span><span class="dot">·</span><span class="g">Software in weeks</span><span class="dot">·</span><span class="v">Cinema in days</span><span class="dot">·</span><span class="g">Made to use</span><span class="dot">·</span><span class="v">Made to remember</span><span class="dot">·</span><span class="g">Software in weeks</span><span class="dot">·</span><span class="v">Cinema in days</span><span class="dot">·</span></div>
 </div>
 
 <!-- Block 3 — Proof spine -->
@@ -525,10 +529,10 @@
   <div class="wrap proof-inner reveal">
     <span class="eyebrow">Proof — the receipts</span>
     <div class="proof-row" id="proofRow">
-      <div class="stat"><b><span class="odo"><span class="col" style="--d:3"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="ch">,</span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx">+</span></b><span>enrollments in six months — TELUS Rewards</span></div>
-      <div class="stat"><b><span class="odo"><span class="col" style="--d:3"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx"> days</span></b><span>from idea to validated proof of concept — Energizer</span></div>
-      <div class="stat"><b><span class="odo"><span class="ch">+</span><span class="col" style="--d:4"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx">%</span></b><span>organic leads — Angel Oak</span></div>
-      <div class="stat"><b><span class="odo"><span class="col" style="--d:2"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx">× Silver ADDY</span></b><span>Power Shifter Studios, 2026</span></div>
+      <div class="stat"><b><span class="sr-only">300,000</span><span class="odo" aria-hidden="true"><span class="col" style="--d:3"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="ch">,</span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx">+</span></b><span>enrollments in six months — TELUS Rewards</span></div>
+      <div class="stat"><b><span class="sr-only">30</span><span class="odo" aria-hidden="true"><span class="col" style="--d:3"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx"> days</span></b><span>from idea to validated proof of concept — Energizer</span></div>
+      <div class="stat"><b><span class="sr-only">+40</span><span class="odo" aria-hidden="true"><span class="ch">+</span><span class="col" style="--d:4"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx">%</span></b><span>organic leads — Angel Oak</span></div>
+      <div class="stat"><b><span class="sr-only">2</span><span class="odo" aria-hidden="true"><span class="col" style="--d:2"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx">× Silver ADDY</span></b><span>Power Shifter Studios, 2026</span></div>
     </div>
     <div class="logos" aria-label="Selected clients">
       <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/telus.png'); width: 141px; height: 28px;" aria-label="Telus"></span></div>
@@ -624,6 +628,7 @@
   </div>
 </section>
 
+</main>
 <footer>
   <div class="wrap foot">
     <div class="foot-top">

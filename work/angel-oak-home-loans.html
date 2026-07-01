@@ -15,10 +15,11 @@
     --ink:#121315;
     --ink-soft:#1A1B1E;
     --paper:#FAFAF7;
-    --grey:#6E7176;
+    --grey:#6B6E73;
     --line:rgba(18,19,21,.14);
     --line-light:rgba(250,250,247,.18);
     --magenta:#FD2E90;
+    --magenta-ink:#CD2575; /* dark magenta — small text on light, WCAG AA */
     --display:"articulat-heavy-cf","Helvetica Neue",Helvetica,Arial,sans-serif;
     --text:"articulat-cf","Helvetica Neue",Helvetica,Arial,sans-serif;
     --mono:"config-mono-vf",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -105,7 +106,7 @@
   /* ---------- Block 3 — Proof spine ---------- */
   .proof{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .proof-inner{padding-top:30px;padding-bottom:30px}
-  .proof .eyebrow{color:var(--magenta);margin-bottom:18px}
+  .proof .eyebrow{color:var(--magenta-ink);margin-bottom:18px}
   .proof-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
   .stat{padding:6px 28px 6px 0;border-right:1px solid var(--line);opacity:0;transform:translateY(14px);transition:opacity .5s ease-out,transform .5s ease-out}
   .proof-row.in .stat{opacity:1;transform:none}
@@ -193,7 +194,7 @@
   .news p{font-size:14px;color:rgba(250,250,247,.65);max-width:38ch;margin-bottom:16px}
   .news .field{display:flex;border:1px solid var(--line-light)}
   .news input{flex:1;background:transparent;border:0;color:var(--paper);font-family:var(--text);font-size:14px;padding:12px 14px}
-  .news input:focus{outline:none}
+  .news input:focus-visible{outline:2px solid var(--magenta-ink);outline-offset:2px}
   .news button{background:var(--paper);color:var(--ink);border:0;font-family:var(--text);font-weight:700;font-size:13px;padding:0 20px;cursor:pointer;transition:background .2s ease-out,color .2s ease-out}
   .news button:hover{background:var(--magenta);color:var(--paper)}
   .ack{padding:34px 0;font-size:12.5px;line-height:1.7;color:rgba(250,250,247,.5);max-width:110ch;border-bottom:1px solid var(--line-light)}
@@ -327,7 +328,7 @@
     .slash-field .sa,.slash-field .sb{animation:none}
   }
   .sub-hero-inner{position:relative;z-index:2;width:100%}
-  .sub-hero .eyebrow{color:var(--magenta);display:block;margin-bottom:18px}
+  .sub-hero .eyebrow{color:var(--magenta-ink);display:block;margin-bottom:18px}
   .sub-hero h1{
     font-family:var(--display);font-weight:900;
     font-size:clamp(52px,7vw,108px);line-height:.96;letter-spacing:-.02em;
@@ -578,7 +579,7 @@
   /* Pull quote — the body's voice moment, breakout width */
   .pull{margin-top:3.2em;margin-bottom:3.2em;padding:30px 0 38px;
     border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
-  .pull .eyebrow{color:var(--magenta);display:block;margin-bottom:24px}
+  .pull .eyebrow{color:var(--magenta-ink);display:block;margin-bottom:24px}
   .pull p{
     font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;letter-spacing:-.02em;
     font-size:clamp(28px,3.6vw,46px);line-height:1.22;max-width:30ch;
@@ -844,12 +845,12 @@
   .cs-kiosk:hover .cs-kiosk-hint{opacity:0}
   .cs-kiosk-cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:clamp(24px,4vw,56px);
     background:linear-gradient(transparent,rgba(18,19,21,.8));color:var(--paper)}
-  .cs-kiosk-cap .eyebrow{color:var(--magenta);display:block;margin-bottom:12px}
+  .cs-kiosk-cap .eyebrow{color:var(--magenta-ink);display:block;margin-bottom:12px}
   .cs-kiosk-cap p{font-family:var(--display);font-weight:500;letter-spacing:-.01em;
     font-size:clamp(18px,2vw,28px);line-height:1.22;max-width:28ch;margin:0}
 
   /* ---- Homepage sync: receipts odometer, slash motif, black-block pull ---- */
-  .cs-dossier .cs-rec-eyebrow{display:block;color:var(--magenta);margin-bottom:clamp(20px,2.4vw,32px)}
+  .cs-dossier .cs-rec-eyebrow{display:block;color:var(--magenta-ink);margin-bottom:clamp(20px,2.4vw,32px)}
   .cs-dossier .proof-row{grid-template-columns:repeat(3,1fr)}
   @media(max-width:760px){.cs-dossier .proof-row{grid-template-columns:1fr}}
 
@@ -880,6 +881,8 @@
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
+
 
 <header>
   <div class="nav on-dark" id="nav">
@@ -904,6 +907,7 @@
     </nav>
   </div>
 </header>
+<main id="main" tabindex="-1">
 <div class="takeover" id="takeover" aria-hidden="true">
   <div class="tk-top">
     <a class="logo" tabindex="-1" href="/" aria-label="POWER SHIFTER home"><svg class="wordmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 25" fill="currentColor" aria-hidden="true" focusable="false">
@@ -965,8 +969,8 @@
   </dl>
   <span class="eyebrow cs-rec-eyebrow">The receipts</span>
   <div class="proof-row" id="proofRow" style="grid-template-columns:repeat(2,1fr)">
-    <div class="stat"><b><span class="odo"><span class="col" style="--d:4"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx">%</span></b><span>lift in organic leads after launch</span></div>
-    <div class="stat"><b><span class="odo"><span class="col" style="--d:3"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span></b><span>days: the window that 40% lift landed in</span></div>
+    <div class="stat"><b><span class="sr-only">40</span><span class="odo" aria-hidden="true"><span class="col" style="--d:4"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx">%</span></b><span>lift in organic leads after launch</span></div>
+    <div class="stat"><b><span class="sr-only">30</span><span class="odo" aria-hidden="true"><span class="col" style="--d:3"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span></b><span>days: the window that 40% lift landed in</span></div>
   </div>
 </section>
 
@@ -1036,6 +1040,7 @@
 </section>
 
 
+</main>
 <footer>
   <div class="wrap foot">
     <div class="foot-top">

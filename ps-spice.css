@@ -17,6 +17,13 @@
    cubic-bezier(.76,0,.24,1).
    ===================================================================== */
 
+/* Accessibility: visually-hidden but exposed to assistive tech (a11y/wcag-aa) */
+.skip-link{position:absolute;left:8px;top:-48px;z-index:100000;background:var(--ink);color:#fff;padding:10px 16px;font-family:var(--text);font-weight:700;font-size:13px;border-radius:0 0 6px 6px;transition:top .15s ease}
+.skip-link:focus{top:0}
+main#main:focus{outline:none}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+
 :root{
   --sp-ease:cubic-bezier(.76,0,.24,1);
 }
@@ -236,7 +243,7 @@ body.sp-rules .sp-band-rule:not(.sp-in) .sp-br-line{transform:scaleX(0)}
 .qb-name{font-family:var(--display);font-weight:700;font-size:clamp(16px,1.5vw,21px);
   letter-spacing:-.01em;color:var(--ink)}
 .qb-role{font-family:var(--text);font-weight:700;font-size:12px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--magenta)}
+  text-transform:uppercase;color:var(--magenta-ink)}
 @media (prefers-reduced-motion:reduce){
   .qb-mark,.quote-t .qw,.quote-by{opacity:1 !important;transform:none !important;transition:none}
 }

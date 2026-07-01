@@ -212,12 +212,12 @@ body.sp-rules .sp-band-rule:not(.sp-in) .sp-br-line{transform:scaleX(0)}
    ===================================================================== */
 .quote-banner{background:var(--paper);padding:clamp(34px,5.5vh,80px) 0 clamp(8px,2.4vh,30px)}
 .quote-banner .wrap{max-width:1080px;opacity:1 !important;transform:none !important}
-.qb-mark{display:block;font-family:var(--serif);font-style:italic;font-weight:500;
+.qb-mark{display:block;font-family:var(--serif);font-style:italic;font-weight:800;
   color:var(--magenta);font-size:clamp(58px,7vw,112px);line-height:.74;margin-bottom:.04em;
   user-select:none;opacity:0;transform:translateY(10px);
   transition:opacity .5s var(--sp-ease),transform .5s var(--sp-ease)}
 .quote-banner blockquote{margin:0}
-.quote-t{font-family:var(--serif);font-style:italic;font-weight:500;
+.quote-t{font-family:var(--serif);font-style:italic;font-weight:800;
   font-size:clamp(27px,3.7vw,52px);line-height:1.16;letter-spacing:-.015em;
   color:var(--ink);text-wrap:balance}
 /* word-by-word cascade — each word rises from the top-left in reading order */

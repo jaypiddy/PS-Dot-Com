@@ -57,7 +57,7 @@
 .cc-msg.bot .cc-bubble{background:#fff;border:1px solid var(--line);padding:11px 14px}
 .cc-msg.me{align-self:flex-end}
 .cc-msg.me .cc-bubble{background:var(--ink);color:var(--paper);padding:11px 14px}
-.cc-msg .cc-bubble em{font-family:var(--serif);font-style:italic}
+.cc-msg .cc-bubble em{font-family:var(--serif);font-style:italic;font-weight:800}
 .cc-msg .cc-bubble a{color:var(--magenta);text-decoration:underline}
 .cc-typing{align-self:flex-start;display:flex;gap:5px;padding:12px 14px;border:1px solid var(--line);background:#fff}
 .cc-typing span{width:6px;height:6px;border-radius:50%;background:var(--grey,#9a9a9a);animation:ccBlink 1.2s infinite}
@@ -128,4 +128,4 @@
   display:flex;align-items:center;justify-content:center;color:var(--magenta)}
 .cc-fv-success h4{font-family:var(--display);font-weight:500;font-size:24px;letter-spacing:-.01em}
 .cc-fv-success p{font-size:14px;line-height:1.55;color:var(--ink)}
-.cc-fv-success em{font-family:var(--serif);font-style:italic}
+.cc-fv-success em{font-family:var(--serif);font-style:italic;font-weight:800}

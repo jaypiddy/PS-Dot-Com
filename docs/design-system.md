@@ -40,7 +40,7 @@ These already exist as CSS custom properties on every page. Port them verbatim.
 |---|---|---|
 | `--display` | `articulat-heavy-cf`, Helvetica Neue, … | The confident sans (heavy 900) — headlines, big statements |
 | `--text` | `articulat-cf`, … | UI / body / labels |
-| `--serif` | `fraunces-variable` + `--serif-vset` | Variable serif voice — Fraunces at `opsz 54, wght 615, SOFT 100, WONK 1` (real italic). |
+| `--serif` | `la-mericana` (ExtraBold, `800`) | The serif "voice" — a display serif for the emotional/pivot line, pull quotes, big stat numerals. Ship at **weight 800** (`--magenta`/`--ink` per surface). |
 | `--mono` | `config-mono-vf`, ui-monospace, … | Eyebrows + small index numerals (nav/related/ledger) |
 
 Fonts load via Adobe Typekit (`use.typekit.net/xkk7api.css`). **Load it async**
@@ -65,10 +65,16 @@ kit never blanks the page — see §7 "black-on-blank" lesson.
 - **Serif voice:** `--serif` italic — used inline as `em.voice` (see §5 voice rule)
 
 > **Weight note:** `--display` (articulat-heavy-cf) ships a single **900** cut. `--serif`
-> (fraunces-variable) is a **variable serif** (100–900, real italic); the look is fixed by
-> `--serif-vset` (`font-variation-settings: opsz 54, wght 615, SOFT 100, WONK 1`), applied on
-> every serif rule — `font-variation-settings:'wght'` overrides any `font-weight` there. `--text`
-> has 400 (body) + 700 (UI); `--mono` is variable 200–700.
+> (`la-mericana`) is a **static display serif** — the kit subset carries `500 italic`, `700`,
+> and `800` (+ `800 italic`); ship the serif at **ExtraBold `800`** everywhere (hero voice
+> line, pull quotes, `.stat` numerals). It replaced `fraunces-variable` (July 2026): because
+> la-mericana is static, the legacy `--serif-vset` (`font-variation-settings`) is now **inert**
+> — weight is set by real `font-weight:800`, not an axis. `--text` has 400 (body) + 700 (UI);
+> `--mono` is variable 200–700.
+>
+> **Numerals are proportional** (`'0'` 0.727em vs `'1'` 0.392em) and the subset has **no
+> `tnum`** — so the odometer centers each digit (`.odo .col{align-items:center}` +
+> `text-align:center`) to keep narrow digits from floating in oversized boxes.
 
 ---
 
@@ -234,6 +240,11 @@ canon: `--grey` `#6E7176 → #6B6E73` (secondary text on paper 4.42 → 4.62:1),
 unchanged and still owns ink/dark and large-display magenta. Token-selection matrix in §4.
 Shipped on branch `a11y/wcag-aa-fixes` (PR #2) alongside the non-color a11y fixes
 (odometer SR value, `<main>`/skip link, form labels, focus ring).
+
+**Serif swap (July 2026).** `--serif` moved from `fraunces-variable` to `la-mericana`
+ExtraBold (`800`), sitewide. La Mericana is a static display serif, so the old
+`--serif-vset` axis settings are inert; weight is real `font-weight:800`. Its figures
+are proportional with no `tnum`, so odometer digits are centered (§1 weight note).
 
 ## 9 · Parking lot (verify before paid/PR reuse)
 

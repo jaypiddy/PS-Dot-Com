@@ -102,6 +102,13 @@ body.sp-kinetic .voice.mag.sp-in::after{transform:scaleX(1)}
    kinetic underline there so the two magenta marks don't stack. */
 body.sp-kinetic .engine em.voice::after,
 body.sp-kinetic .engine .voice.mag::after{content:none}
+/* Hero cleanup (2026-07): the sub-hero sub-voice underline stacked with the byline
+   divider as a "double line" — drop the kinetic underline in sub-heroes. Also hide the
+   redundant hero eyebrow on case studies + listing pages (kept on .article blog heroes,
+   where the eyebrow is the post's category). Homepage .hero underline is left as-is. */
+body.sp-kinetic .sub-hero em.voice::after,
+body.sp-kinetic .sub-hero .voice.mag::after{content:none}
+.sub-hero:not(.article) .eyebrow{display:none}
 /* give the word-mask rise a hair more travel + lead with magenta */
 body.sp-kinetic .rise .wi{transition:transform .8s var(--sp-ease),opacity .8s var(--sp-ease)}
 

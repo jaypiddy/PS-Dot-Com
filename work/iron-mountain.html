@@ -270,6 +270,7 @@
   .stat b .sfx.sfx-label{font-size:.26em;white-space:nowrap}
   /* Film case: hero film + still gallery */
   .cs-film{margin:clamp(28px,4vw,52px) auto 0;max-width:var(--max);padding:0 var(--gutter)}
+  .cs-film-vid{display:block;width:min(1040px,100%);margin-inline:auto;aspect-ratio:16/9;background:#000;border:0}
   .cs-gallery{max-width:var(--max);margin:clamp(28px,4vw,52px) auto 0;padding:0 var(--gutter);
     display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,20px)}
   .cs-gallery figure{margin:0}
@@ -985,7 +986,7 @@
 
 <!-- Hero film -->
 <section class="cs-film reveal">
-  <div class="embed video" style="margin-inline:auto"><iframe src="https://app.vidzflow.com/v/GdKwbZpu4Y" title="Iron Mountain — Finding Harmony in Data (hero film)" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+  <video class="cs-film-vid" controls playsinline preload="none" title="Iron Mountain — Finding Harmony in Data" poster="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/0cbeeb8df0440cf8364144dcd36a76b3/thumbnails/thumbnail.jpg?time=1s" src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/0cbeeb8df0440cf8364144dcd36a76b3/downloads/default.mp4"></video>
 </section>
 
 <!-- Body — five-section authored structure -->
@@ -1035,7 +1036,7 @@
   <figure><img src="https://cdn.prod.website-files.com/62a638e43312dd12f0196165/68d40775d26d133dd3bfad7a_Iron%20Mountain-4.jpg" alt="Still from Finding Harmony in Data" loading="lazy"></figure>
 </section>
 <section class="cs-film reveal">
-  <div class="embed video" style="margin-inline:auto"><iframe src="https://app.vidzflow.com/v/9vMAchyNJr" title="Iron Mountain — behind the frames (reel)" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+  <video class="cs-film-vid" controls playsinline preload="none" title="The film running in context on ironmountain.com" poster="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/32c6639f803894948b048a4f83048828/thumbnails/thumbnail.jpg?time=1s" src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/32c6639f803894948b048a4f83048828/downloads/default.mp4"></video>
 </section>
 
 <!-- Next case -->

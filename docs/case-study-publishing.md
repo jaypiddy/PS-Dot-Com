@@ -110,6 +110,21 @@ lean minimum.** This is the rule the future `case-study-publisher` skill renders
 Studios customer code: `xv1aafyshr3tbknu`. (TELUS koodo video is being migrated from a local
 mp4 to this pattern — pending its Stream UID.)
 
+- **Studios (film) case — video-first, Stream iframe player.** Film cases lead with the visuals:
+  order is hero-text → dossier/receipts → **hero film → stills gallery → context reel → written
+  case**. The plain-`<video>` pattern above needs **MP4 download enabled** on the UID; if it isn't
+  (the download URL 404s), use the **Stream iframe player** instead — it works off HLS with no
+  extra step and gives a real play/unmute/fullscreen UI:
+
+  ```html
+  <iframe class="cs-film-vid" allow="autoplay; encrypted-media; picture-in-picture;" allowfullscreen
+    src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/<UID>/iframe?autoplay=true&amp;muted=true&amp;loop=true"></iframe>
+  ```
+
+  `muted=true` is required for browser autoplay; keeping the controls bar lets viewers unmute (to
+  hear the anthem) and pause — which also satisfies the auto-play accessibility rule. `.cs-film-vid`
+  / `.cs-film` / `.cs-gallery` are the film-case layout classes (see `work/iron-mountain.html`).
+
 ## Status & queue
 
 - **15 case studies LIVE + Published** at `/work/<slug>` (`/work/energizer`, `/work/xyon`,
@@ -125,6 +140,10 @@ mp4 to this pattern — pending its Stream UID.)
   remain in `work/*.html`.**
 - **Tier-1 odometer dossier shipped** on the 6 hard-metric cases (journal #6) — the
   hand-publish → tooling → odometer arc from this doc's earlier "Next" items is done.
+- **First Studios (film) case LIVE:** `/work/iron-mountain` — Iron Mountain "Finding Harmony in
+  Data," the Silver ADDY-winning AI anthem (via Liquid Agency). First non-digital case; video-first
+  layout, Stream iframe players autoplaying muted on loop (journal #9). Wired on `/work` (feature
+  card), `/studios` (hero + grid film cards), and the homepage Selected-work card.
 - **Build tooling exists:** `tools/case-study-builder/` (slices chrome from `xyon.html`, generates
   bodies from structured data, wires `/work` cards, injects odometers) — see its README. Not wired
   to Notion; copy is hand-transcribed into `cases_data.py`. This is the de facto first draft of the
@@ -325,3 +344,27 @@ Three parts, all driven by JP review:
 **Case-study track is now fully closed** except the cross-set **image/OG/video pass** (heroes,
 figures, OG, the two `image pending` `/work` cards, koodo → Cloudflare Stream blocked on a UID) and
 the optional **formalize-the-builder-into-a-skill** work.
+
+**#9 — Iron Mountain, first Studios (film) case (2026-07-02), `work/iron-mountain.html` →
+`/work/iron-mountain`. Outcome Tier 3 (fact of record).** Built by hand from the Notion *Studio Case
+Studies* DB (page `391b37ad…`), copying `telus-rewards.html` for chrome and rewriting the body — the
+builder tooling is digital-only (odometer stats), so film cases are hand-built for now. What was new
+vs. the digital cases:
+1. **Film-first structure.** Per JP: it's a visual medium, so visitors get visuals fast — order is
+   hero-text → dossier/receipts → **hero film → 4-still gallery → context reel → written case**
+   (brief→challenge→process→solution→outcome + pull quotes). New layout classes `.cs-film` /
+   `.cs-film-vid` / `.cs-gallery`.
+2. **Receipts, adapted for film.** No odometer topline metric fits, so the 3-stat row is
+   `1 Silver ADDY` / `5 week sprint` / `1:15` (runtime) — all Tier-3 facts. Long text units use the
+   `.sfx-label` modifier (nowrap + smaller) so "Silver ADDY"/"week sprint" stay one line. (JP
+   corrected the runtime stat from the brief's "60 sec" to the delivered `1:15`.)
+3. **Video → Stream iframe player, not `<video>`.** MP4 download wasn't enabled on the two UIDs
+   (`downloads/default.mp4` 404s), so used the iframe player, **autoplaying muted on loop** (see
+   Media). Hero film UID `0cbeeb8d…`; context reel (the film running on ironmountain.com)
+   `32c6639f…`. Held off Vidzflow (its `/v/` share page iframes as a messy landing page).
+4. **Wiring:** re-pointed the homepage Iron Mountain card from the external legacy URL to the new
+   internal `/work/iron-mountain`; filled the placeholder `href="#"` on the `/work` feature card and
+   both `/studios` film cards.
+
+Notion **Status** is already `Published` / `Needs Review: NO` on the source page. Still pending: enable
+MP4 download on the two Stream UIDs (would let us switch to the house `<video>` pattern).

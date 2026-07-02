@@ -140,10 +140,11 @@ mp4 to this pattern — pending its Stream UID.)
   remain in `work/*.html`.**
 - **Tier-1 odometer dossier shipped** on the 6 hard-metric cases (journal #6) — the
   hand-publish → tooling → odometer arc from this doc's earlier "Next" items is done.
-- **First Studios (film) case LIVE:** `/work/iron-mountain` — Iron Mountain "Finding Harmony in
-  Data," the Silver ADDY-winning AI anthem (via Liquid Agency). First non-digital case; video-first
-  layout, Stream iframe players autoplaying muted on loop (journal #9). Wired on `/work` (feature
-  card), `/studios` (hero + grid film cards), and the homepage Selected-work card.
+- **Three Studios (film) cases LIVE on the v2 design** (journal #9, #10): `/work/iron-mountain`
+  (Silver ADDY anthem), `/work/ernest-packaging` (the Dream Division pilot + 3 episodes, Silver
+  ADDY), `/work/celestial-ai` ("Yes, it's possible," AI-native anthem). All Published +
+  `Needs Review: NO` in Notion; all films on Cloudflare Stream with scrubbed poster frames. Wired
+  on `/work`, `/studios`, and the homepage Selected-work card (Iron Mountain).
 - **Build tooling exists:** `tools/case-study-builder/` (slices chrome from `xyon.html`, generates
   bodies from structured data, wires `/work` cards, injects odometers) — see its README. Not wired
   to Notion; copy is hand-transcribed into `cases_data.py`. This is the de facto first draft of the
@@ -374,3 +375,24 @@ vs. the digital cases:
 
 Notion **Status** is already `Published` / `Needs Review: NO` on the source page. Still pending: enable
 MP4 download on the two Stream UIDs (would let us switch to the house `<video>` pattern).
+
+**#10 — Studios v2 redesign + Celestial AI (2026-07-02/03), PR #3.** The design handoff
+("Screening Room" + episode bands) applied to Ernest, ported to Iron Mountain, and Celestial AI
+built directly on it (third film case, one film → no band). Notables:
+1. **New film-case components:** `.cs-screening` (ink band, serif marquee + mono Format/Pipeline/
+   Award strip, `#000` letterbox) with a two-column copy block under the player (numeral/H2/floor
+   line left, synopsis + specs right, stacking ≤860px); `.cs-ep` full-width episode bands
+   alternating paper/ink; generalized `darkBands()`.
+2. **Poster practice held:** every player got a scrubbed frame (episode title cards for Ernest;
+   the summit-orchestra lockup for Iron Mountain; the turquoise light-streams for Celestial).
+3. **Copy lessons (JP review):** film blurbs must carry meaning/production judgment, not
+   see-and-say ("they don't add value as written"); don't over-index one fact — Celestial's page
+   said "seven weeks" and "4 working weeks" in adjacent blocks (rebalanced: idea leads, speed
+   appears once, in the outcome). Runtimes on-page are **delivered** durations from the Stream
+   manifests, not the brief's spec ("one minute" → 3:14/2:31/2:59; "60-second" → 1:15) — Notion
+   synced to match (Ernest: anthem→pilot naming, one-minute dropped).
+4. **Celestial specifics:** no tool names (source forbids), so the dossier's Tools slot became
+   Delivered; outcome placeholder resolved as none-exists (JP); `Needs Review: NO` flipped from
+   here for both Ernest and Celestial via the integration.
+Handoff fixups worth remembering: the v2 file carried two undocumented markup artifacts (stray
+`</div>`, unclosed letterbox div) — always diff a handoff against production line-by-line.

@@ -156,7 +156,7 @@ mp4 to this pattern — pending its Stream UID.)
   players render a black frame at rest unless given a poster. Fix: `?poster=<url-encoded
   thumbnail URL>` on the iframe, picking a real frame (`thumbnails/thumbnail.jpg?time=<Ns>`) —
   scrub a few timestamps and prefer an episode/title card over a fade-in frame. **Done for
-  Ernest** (v2 redesign: EP.01@20s, EP.02@20s, EP.03@26s title cards; anthem@45s for pre-roll).
+  Ernest** (v2 redesign: EP.01@20s, EP.02@20s, EP.03@26s title cards; the pilot @41s, JP's pick).
   Still applies to any future click-to-play player.
 - Case Studies DB: `77b9e6f8…` (collection `906abf9b…`). TELUS reference deck: `388b37ad-cd5b-81b2…`.
 

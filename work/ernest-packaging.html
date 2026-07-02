@@ -268,22 +268,42 @@
   .stat b{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-weight:800;font-size:clamp(52px,5.4vw,96px);letter-spacing:-.02em;line-height:1;display:flex;align-items:flex-start}
   .stat b .sfx{font-size:.34em;font-style:italic;margin-left:.08em}
   .stat b .sfx.sfx-label{font-size:.26em;white-space:nowrap}
-  /* Film case: hero film + still gallery */
-  .cs-film{margin:clamp(28px,4vw,52px) auto 0;max-width:var(--max);padding:0 var(--gutter)}
-  .cs-film-vid{display:block;width:min(1040px,100%);margin-inline:auto;aspect-ratio:16/9;background:#000;border:0}
+  /* Screening room — the anthem, staged (Direction B) */
+  .cs-screening{background:var(--ink);color:var(--paper);margin-top:clamp(36px,5vw,64px);padding-top:clamp(48px,6vw,80px)}
+  .cs-meta-strip{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px 36px;border-bottom:1px solid var(--line-light);padding-bottom:18px;margin-bottom:clamp(24px,3vw,36px)}
+  .cs-meta-strip .m{font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(250,250,247,.55)}
+  .cs-meta-strip .m b{color:var(--paper);font-weight:700;margin-left:8px}
+  .cs-meta-strip .mt{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;font-size:clamp(19px,1.8vw,24px);letter-spacing:-.01em;color:var(--magenta);margin-right:auto}
+  .cs-letterbox{background:#000;padding:clamp(32px,4.5vw,56px) 0}
+  .cs-pilot-copy{padding:clamp(32px,4.5vw,56px) 0 clamp(48px,6vw,76px);display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,4.5vw,64px);align-items:end}
+  @media(max-width:860px){.cs-pilot-copy{grid-template-columns:1fr;align-items:start}}
+  .cs-screening .cs-ep-num,.cs-screening .cs-ep-floor{color:var(--magenta)}
+  .cs-screening .cs-ep-syn{color:rgba(250,250,247,.78)}
+  .cs-screening .cs-ep-rt{color:rgba(250,250,247,.5)}
+  .cs-film-vid{display:block;width:min(1180px,calc(100% - 2*var(--gutter)));margin-inline:auto;aspect-ratio:16/9;background:#000;border:0}
   .cs-gallery{max-width:var(--max);margin:clamp(28px,4vw,52px) auto 0;padding:0 var(--gutter);
     display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,20px)}
   .cs-gallery figure{margin:0}
   .cs-gallery img{display:block;width:100%;height:100%;aspect-ratio:16/10;object-fit:cover;background:var(--ink-soft)}
   @media(max-width:640px){.cs-gallery{grid-template-columns:1fr}}
-  /* Episode set — the three Dream Division floors */
-  .cs-films-more{margin-top:clamp(24px,3.5vw,44px)}
-  .cs-films-more .eyebrow{display:block;color:var(--magenta-ink);margin-bottom:18px}
-  .cs-ep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,22px)}
-  .cs-ep-grid figure{margin:0}
-  .cs-ep-grid iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#000}
-  .cs-ep-grid figcaption{margin-top:10px;font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey)}
-  @media(max-width:760px){.cs-ep-grid{grid-template-columns:1fr}}
+  /* Episode bands — one floor per band (Direction C treatment) */
+  .cs-ep{padding:clamp(56px,7vw,92px) 0}
+  .cs-ep.on-ink{background:var(--ink);color:var(--paper)}
+  .cs-ep-band{display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,4.5vw,64px);align-items:center}
+  .cs-ep.mirror .cs-ep-band{grid-template-columns:5fr 7fr}
+  .cs-ep.mirror .cs-ep-copy{order:-1}
+  .cs-ep-band figure{margin:0}
+  .cs-ep-band iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#000}
+  .cs-ep-num{font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--magenta-ink);display:block;margin-bottom:16px}
+  .cs-ep.on-ink .cs-ep-num{color:var(--magenta)}
+  .cs-ep-copy h2{font-family:var(--display);font-weight:900;font-size:clamp(38px,4vw,58px);line-height:1;letter-spacing:-.02em}
+  .cs-ep-floor{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;font-size:clamp(18px,1.7vw,22px);margin-top:12px;color:var(--magenta-ink)}
+  .cs-ep.on-ink .cs-ep-floor{color:var(--magenta)}
+  .cs-ep-syn{margin-top:18px;font-size:17px;line-height:1.6;max-width:40ch}
+  .cs-ep.on-ink .cs-ep-syn{color:rgba(250,250,247,.78)}
+  .cs-ep-rt{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);display:block;margin-top:22px}
+  .cs-ep.on-ink .cs-ep-rt{color:rgba(250,250,247,.5)}
+  @media(max-width:860px){.cs-ep-band,.cs-ep.mirror .cs-ep-band{grid-template-columns:1fr}.cs-ep.mirror .cs-ep-copy{order:0}}
   /* Odometer: each digit is a 0-9 column that rolls to rest */
 .odo{--step:1.35em;display:inline-flex;overflow:hidden;height:var(--step);vertical-align:baseline;align-items:flex-start}
   .odo .col span,.odo .ch,.odo .col{font-size:inherit;color:inherit;margin:0}
@@ -987,19 +1007,66 @@
   </div>
 </section>
 
-<!-- Hero film -->
-<section class="cs-film reveal">
-  <iframe class="cs-film-vid" src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/2b96917c422b12b28dea9abd5954387f/iframe?autoplay=true&amp;muted=true&amp;loop=true" title="Ernest Packaging — the Dream anthem" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen></iframe>
+<!-- Screening room — the anthem -->
+<section class="cs-screening reveal">
+  <div class="wrap">
+    <div class="cs-meta-strip">
+      <span class="mt">The Dream Division</span>
+      <span class="m">Format<b>16:9</b></span>
+      <span class="m">Pipeline<b>AI-hybrid</b></span>
+      <span class="m">Award<b>Silver ADDY ’26</b></span>
+    </div>
+  </div>
+  <div class="cs-letterbox">
+  <iframe class="cs-film-vid" src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/2b96917c422b12b28dea9abd5954387f/iframe?autoplay=true&amp;muted=true&amp;loop=true&amp;poster=https%3A%2F%2Fcustomer-xv1aafyshr3tbknu.cloudflarestream.com%2F2b96917c422b12b28dea9abd5954387f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D41s" title="Ernest Packaging — The Dream Division (pilot)" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen></iframe>
+  </div>
+  <div class="wrap cs-pilot-copy">
+    <div class="cs-ep-copy">
+      <span class="cs-ep-num">The Pilot</span>
+      <h2>The Dream Division</h2>
+      <p class="cs-ep-floor">Every pillar gets a floor.</p>
+    </div>
+    <div>
+      <p class="cs-ep-syn">Most culture platforms get recited; this one got a headquarters. The pilot opens the Dream Division like a series premiere — and it is one: the floors, the host, and the title sequence are all built to carry future episodes.</p>
+      <span class="cs-ep-rt">5:26 · An original score and a human voice cast</span>
+    </div>
+  </div>
 </section>
 
-<!-- The three episodes -->
-<section class="cs-films-more reveal">
-  <div class="wrap">
-    <span class="eyebrow">The episodes — one floor each</span>
-    <div class="cs-ep-grid">
-      <figure><iframe src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/cf3039bcf07e0a28051786e06623c07c/iframe" title="Dream Division — Values" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe><figcaption>Values</figcaption></figure>
-      <figure><iframe src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/3bd474048b500b45d6ccc2aef5d64e76/iframe" title="Dream Division — CURE" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe><figcaption>CURE</figcaption></figure>
-      <figure><iframe src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/d495e3e8836c13654532f650e59419e5/iframe" title="Dream Division — Connectology" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe><figcaption>Connectology</figcaption></figure>
+<!-- The episodes — one floor per band -->
+<section class="cs-ep reveal" data-screen-label="EP.01 Values">
+  <div class="wrap cs-ep-band">
+    <figure><iframe src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/cf3039bcf07e0a28051786e06623c07c/iframe?poster=https%3A%2F%2Fcustomer-xv1aafyshr3tbknu.cloudflarestream.com%2Fcf3039bcf07e0a28051786e06623c07c%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D20s" title="Dream Division — Values" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></figure>
+    <div class="cs-ep-copy">
+      <span class="cs-ep-num">EP.01</span>
+      <h2>Values</h2>
+      <p class="cs-ep-floor">The floor where Frankie reigns.</p>
+      <p class="cs-ep-syn">Five values that could have been a lobby poster get a floor and a monarch instead. The bit holds because Frankie was directed like an actor — performance notes ran down to a single regal entrance.</p>
+      <span class="cs-ep-rt">3:14 · Generative video + human voice</span>
+    </div>
+  </div>
+</section>
+<section class="cs-ep on-ink mirror reveal" data-screen-label="EP.02 CURE">
+  <div class="wrap cs-ep-band">
+    <figure><iframe src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/3bd474048b500b45d6ccc2aef5d64e76/iframe?poster=https%3A%2F%2Fcustomer-xv1aafyshr3tbknu.cloudflarestream.com%2F3bd474048b500b45d6ccc2aef5d64e76%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D20s" title="Dream Division — CURE" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></figure>
+    <div class="cs-ep-copy">
+      <span class="cs-ep-num">EP.02</span>
+      <h2>CURE</h2>
+      <p class="cs-ep-floor">Care and respect, given architecture.</p>
+      <p class="cs-ep-syn">The pillar carrying the founders’ legacy of care and respect — the one that could least afford to feel synthetic. Every character speaks with a human voice, resynced shot by shot until the read felt alive.</p>
+      <span class="cs-ep-rt">2:31 · Hedra voice sync, rebuilt shot by shot</span>
+    </div>
+  </div>
+</section>
+<section class="cs-ep reveal" data-screen-label="EP.03 Connectology">
+  <div class="wrap cs-ep-band">
+    <figure><iframe src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/d495e3e8836c13654532f650e59419e5/iframe?poster=https%3A%2F%2Fcustomer-xv1aafyshr3tbknu.cloudflarestream.com%2Fd495e3e8836c13654532f650e59419e5%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D26s" title="Dream Division — Connectology" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></figure>
+    <div class="cs-ep-copy">
+      <span class="cs-ep-num">EP.03</span>
+      <h2>Connectology</h2>
+      <p class="cs-ep-floor">The command centre.</p>
+      <p class="cs-ep-syn">Connection, rendered literally: a boardroom, a command centre, and the job of keeping a dozen franchise characters — robot host to jackalope — believable in one coherent world.</p>
+      <span class="cs-ep-rt">2:59 · After Effects, 17–36 GB project files</span>
     </div>
   </div>
 </section>
@@ -1108,17 +1175,13 @@
   // simpler: flip nav based on scroll position bands
   const darkBands = () => {
     const y = window.scrollY + 40;
-    const hero   = document.querySelector('.hero, .sub-hero');
-    const workEl = document.getElementById('work');
+    let inDark = false;
+    document.querySelectorAll('.hero, .sub-hero, .cs-screening, .cs-ep.on-ink').forEach(el => {
+      const t = el.offsetTop, b = t + el.offsetHeight;
+      if (y > t && y < b) inDark = true;
+    });
     const closer = document.getElementById('contact');
-    const heroH  = hero   ? hero.offsetTop + hero.offsetHeight   : 0;
-    const workT  = workEl ? workEl.offsetTop                     : Infinity;
-    const workB  = workEl ? workEl.offsetTop + workEl.offsetHeight: Infinity;
-    const closerT= closer ? closer.offsetTop                     : Infinity;
-    const inDark =
-      (heroH  > 0 && y < heroH)  ||
-      (workEl && y > workT && y < workB) ||
-      (closer && y > closerT);
+    if (closer && y > closer.offsetTop) inDark = true;
     nav.style.color = inDark ? 'var(--paper)' : 'var(--ink)';
     document.querySelector('header').classList.toggle('on-light', !inDark);
   };

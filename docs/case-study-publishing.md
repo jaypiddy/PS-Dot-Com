@@ -152,12 +152,12 @@ mp4 to this pattern — pending its Stream UID.)
 - **Still pending across the set:** the image/video pass (hero/figure/OG via Cloudflare Images;
   `/work` thumbs for the imageless cards; koodo video → Cloudflare Stream, blocked on a Stream UID
   from JP) — unchanged from earlier in this doc.
-- **TODO — poster stills for non-autoplaying videos.** Click-to-play case-study players (e.g. the
-  three Ernest episode players — Values / CURE / Connectology) render a **black frame at rest**
-  instead of a still. Give each a proper poster: either set a good frame on the Stream iframe
-  (`?poster=<url-encoded thumbnail>` / `thumbnails/thumbnail.jpg?time=<Ns>`) or a chosen still, so
-  every idle player shows an image rather than black. (Autoplaying hero films are less affected but
-  a poster still helps pre-roll and reduced-motion.)
+- **Poster stills for non-autoplaying videos — practice, partially done.** Click-to-play Stream
+  players render a black frame at rest unless given a poster. Fix: `?poster=<url-encoded
+  thumbnail URL>` on the iframe, picking a real frame (`thumbnails/thumbnail.jpg?time=<Ns>`) —
+  scrub a few timestamps and prefer an episode/title card over a fade-in frame. **Done for
+  Ernest** (v2 redesign: EP.01@20s, EP.02@20s, EP.03@26s title cards; the pilot @41s, JP's pick).
+  Still applies to any future click-to-play player.
 - Case Studies DB: `77b9e6f8…` (collection `906abf9b…`). TELUS reference deck: `388b37ad-cd5b-81b2…`.
 
 **Notion mirror:** team-facing version at Notion → *powershifter.com CMS → Producing a case

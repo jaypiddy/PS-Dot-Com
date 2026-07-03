@@ -865,9 +865,9 @@
   .team-sub{font-size:clamp(18px,1.6vw,22px);line-height:1.45;color:var(--ink);max-width:54ch}
   .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(30px,3vw,56px) clamp(24px,2.4vw,40px);counter-reset:lead}
   .lead-card{display:flex;flex-direction:column;counter-increment:lead}
-  .lead-portrait{position:relative;margin-bottom:0;background:var(--ink-soft);overflow:hidden}
-  .lead-portrait image-slot{display:block;width:100%;aspect-ratio:4/5;transition:transform .7s cubic-bezier(.22,1,.36,1)}
-  .lead-card:hover .lead-portrait image-slot{transform:scale(1.035)}
+  .lead-portrait{position:relative;margin-bottom:0;background:var(--ink-soft);overflow:hidden;border:1px solid var(--magenta-ink)}
+  .lead-portrait image-slot,.lead-portrait img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .7s cubic-bezier(.22,1,.36,1)}
+  .lead-card:hover .lead-portrait image-slot,.lead-card:hover .lead-portrait img{transform:scale(1.035)}
   .lead-card h3{position:relative;font-family:var(--display);font-weight:600;font-size:clamp(22px,1.9vw,28px);letter-spacing:-.01em;margin:22px 0 6px;padding-top:20px;border-top:1px solid var(--line)}
   .lead-card h3::before{content:counter(lead,decimal-leading-zero);display:block;font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;font-size:17px;line-height:1;color:var(--magenta);margin-bottom:12px}
   .lead-card h3::after{content:"";position:absolute;top:-1px;left:0;width:44px;height:2px;background:var(--magenta);transform:scaleX(0);transform-origin:left center;transition:transform .8s cubic-bezier(.22,1,.36,1) .12s}
@@ -1018,37 +1018,37 @@
     </div>
     <div class="team-grid">
       <article class="lead-card reveal">
-        <div class="lead-portrait"><image-slot id="about-jp" shape="rect" fit="cover" placeholder="JP Holecka — portrait"></image-slot></div>
+        <div class="lead-portrait"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/8774b12d-ed8a-4101-4647-1312956ef800/public" alt="JP Holecka, Founder &amp; CEO · Director, Studios" loading="lazy"></div>
         <h3>JP Holecka</h3>
         <p class="lead-role">Founder &amp; CEO · Director, Studios</p>
         <p class="lead-bio">Thirty years across film, television, and design. Production credits include <em>Little Women</em> and <em>21 Jump Street</em>; commercial work alongside Ridley Scott's Black Dog Films, ILM's commercial division, and agency partners including Wieden+Kennedy and Goodby, Silverstein. Founded POWER SHIFTER to bring production discipline to digital product — then, two decades later, brought digital product discipline back to production. CEO of the Year, BC, 2022.</p>
       </article>
       <article class="lead-card reveal">
-        <div class="lead-portrait"><image-slot id="about-gina" shape="rect" fit="cover" placeholder="Gina Asuncion Bernier — portrait"></image-slot></div>
+        <div class="lead-portrait"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/cbd974fd-ac4a-4678-af3d-e81c72e0fb00/public" alt="Gina Asuncion Bernier, Chief of Staff" loading="lazy"></div>
         <h3>Gina Asuncion Bernier</h3>
         <p class="lead-role">Chief of Staff</p>
         <p class="lead-bio">Fifteen-plus years running the operational layer for C-suites, founders, and boards — including a first tour at POWER SHIFTER. Back to keep the place steady while it moves fast.</p>
       </article>
       <article class="lead-card reveal">
-        <div class="lead-portrait"><image-slot id="about-ted" shape="rect" fit="cover" placeholder="Ted Morgan — portrait"></image-slot></div>
+        <div class="lead-portrait"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/20d979e7-0900-42b2-4b74-b10e93e4aa00/public" alt="Ted Morgan, Partner / Client Delivery" loading="lazy"></div>
         <h3>Ted Morgan</h3>
         <p class="lead-role">Partner / Client Delivery</p>
         <p class="lead-bio">Fifteen-plus years leading delivery for Coca-Cola, Microsoft, Starwood, and A&amp;W. Owns the promise that what we say on day one is what ships.</p>
       </article>
       <article class="lead-card reveal">
-        <div class="lead-portrait"><image-slot id="about-cary" shape="rect" fit="cover" placeholder="Cary Newfeldt — portrait"></image-slot></div>
+        <div class="lead-portrait"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/a17d61d2-4f03-4c01-47ac-ad4c73644800/public" alt="Cary Newfeldt, Partner / Technology" loading="lazy"></div>
         <h3>Cary Newfeldt</h3>
         <p class="lead-role">Partner / Technology</p>
         <p class="lead-bio">Two decades leading engineering teams at Nike, Starbucks, Microsoft, and Nintendo. A technologist who hires designers' brains into developers' chairs — the reason "never a dev shop" is true at the code level.</p>
       </article>
       <article class="lead-card reveal">
-        <div class="lead-portrait"><image-slot id="about-johnny" shape="rect" fit="cover" placeholder="Johnny Darrell — portrait"></image-slot></div>
+        <div class="lead-portrait"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/6e359c0f-840e-4c2e-8ce7-c44bf6216300/public" alt="Johnny Darrell, Director / Editor" loading="lazy"></div>
         <h3>Johnny Darrell</h3>
         <p class="lead-role">Director / Editor</p>
         <p class="lead-bio">Twenty-five years in CGI animation and storytelling. Directed on <em>Sausage Party: Foodtopia</em> (Amazon) and Lord Miller's <em>Cloudy with a Chance of Meatballs</em> (Sony). Was directing synthetic performances before the machines made it easy.</p>
       </article>
       <article class="lead-card reveal">
-        <div class="lead-portrait"><image-slot id="about-russ" shape="rect" fit="cover" placeholder="Russ Jarman Price — portrait"></image-slot></div>
+        <div class="lead-portrait"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/34c9a2f0-a9ac-4df1-e60d-deefcb749100/public" alt="Russ Jarman Price, Chairman" loading="lazy"></div>
         <h3>Russ Jarman Price</h3>
         <p class="lead-role">Chairman</p>
         <p class="lead-bio">Former Creative Partner, Ogilvy London, and Chairman, Ogilvy Caribbean. Global rebrands and award-winning campaigns. The editorial standard the studio answers to.</p>

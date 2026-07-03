@@ -4,3 +4,6 @@
 # Python bytecode
 __pycache__/
 *.pyc
+
+# Generated OG images (uploaded to Cloudflare Images, not served from the repo)
+og-export/

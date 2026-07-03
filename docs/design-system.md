@@ -304,6 +304,13 @@ are proportional with no `tnum`, so odometer digits are centered (§1 weight not
   click, not just non-matching cards. Scope DOM queries to the actual container
   (`.sheet .wcard`), not a bare attribute selector, when the same attribute is reused
   for both the controls and the content they control.
+- **Never put a `padding` shorthand on the same element as `.wrap`.** `.wrap` supplies
+  the side gutters via `padding-left/right: var(--gutter)`; a co-located class that
+  declares the shorthand (`padding: X 0 Y`) silently zeroes them — invisible on wide
+  desktop (the centered `max-width` fakes a margin) but text runs flush to the viewport
+  edge on mobile. Use `padding-top`/`padding-bottom` longhands (or `padding-block`) on
+  any class that shares an element with `.wrap`. Found on mobile 2026-07-02 in the
+  Studios-case `.cs-pilot-copy` (all three v2 cases) and the `/studios` `.reel-inner`.
 - Exhaustive pattern catalogue: `docs/design-system-audit.md`
 - Additive layers: `ps-spice.*`, `ps-concierge.*`, `worker/`; deploy config: `vercel.json`
 - `*-preview.html` files are review-only (Craft Layer toggle panel) — do not ship.

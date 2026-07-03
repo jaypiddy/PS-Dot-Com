@@ -716,7 +716,8 @@
   .reel-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
   .reel-video{position:absolute;top:50%;left:50%;width:max(100%,177.78vh);height:max(56.25vw,100%);transform:translate(-50%,-50%);border:0;pointer-events:none}
   .reel-vignette{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(18,19,21,.55) 0%,rgba(18,19,21,0) 28%,rgba(18,19,21,0) 52%,rgba(18,19,21,.88) 100%);pointer-events:none}
-  .reel-inner{position:relative;z-index:2;padding:96px 0 64px;width:100%}
+  /* padding-block only — the shorthand's side-0 was overriding .wrap's gutter (same element) */
+  .reel-inner{position:relative;z-index:2;padding-top:96px;padding-bottom:64px;width:100%}
   .reel-hero h1{font-family:var(--display);font-weight:600;font-size:clamp(48px,7.2vw,116px);line-height:.94;letter-spacing:-0.02em;margin-bottom:28px;opacity:0;transform:translateY(14px);animation:settle .8s ease-out .2s forwards}
   .reel-hero h1 span{display:block}
   /* la-mericana via the Adobe kit (was a stale "late-serif" name that fell back to Georgia) */

@@ -796,26 +796,15 @@
   .credits-heading{font-family:var(--display);font-size:clamp(36px,4vw,60px);font-weight:600;line-height:1.05;letter-spacing:-.015em;margin-bottom:64px;max-width:960px}
   .credits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-bottom:48px}
   .credit-card{display:flex;flex-direction:column}
-  .credit-portrait{display:block;width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--paper);position:relative}
-  .credit-portrait img{width:100%;height:100%;object-fit:cover;display:block}
-  /* Bio-video rollover (June 24 2026). Each credit card has a Cloudflare
-     Stream iframe layered over the still portrait, lazy-loaded on first
-     hover. Iframe is sized 177.78% wide (16:9 ratio over 1:1 container)
-     so the 16:9 source fills the square portrait vertically and crops
-     horizontally. opacity:0 hides until both .loaded class is applied
-     (iframe load event has fired) AND the card is hovered. pointer-
-     events:none keeps the iframe transparent to clicks; aria-hidden +
-     tabindex=-1 keep it out of the accessibility tree. See studios.md
-     Notes 19. */
-  .credit-portrait .credit-video{
-    position:absolute;top:50%;left:50%;
-    width:177.78%;height:100%;
-    transform:translate(-50%,-50%);
-    border:0;opacity:0;
-    transition:opacity .4s ease;
-    pointer-events:none;z-index:1
-  }
-  .credit-card:hover .credit-portrait .credit-video.loaded{opacity:1}
+  /* Portraits restyled to match the /about lead-card treatment (2026-07):
+     a 4/5 sketch portrait in a 1px --magenta-ink hairline box, static, with a
+     gentle hover-scale. The June-2026 hover bio-video overlay was dropped here
+     so the three shared leads (JP, Johnny, Russ) read identically on /studios
+     and /about. */
+  .credit-portrait{display:block;width:100%;overflow:hidden;background:var(--ink-soft);position:relative;border:1px solid var(--magenta-ink)}
+  .credit-portrait img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .7s cubic-bezier(.22,1,.36,1)}
+  .credit-card:hover .credit-portrait img{transform:scale(1.035)}
+  @media(prefers-reduced-motion:reduce){.credit-portrait img{transition:none}}
   .credit-name{font-family:var(--display);font-size:clamp(22px,1.8vw,28px);font-weight:600;letter-spacing:-.01em;margin-bottom:8px;border-top:1px solid var(--ink);padding-top:24px}
   .credit-role{font-family:var(--text);font-size:13px;color:var(--magenta);font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:20px}
   .credit-line{font-size:15px;line-height:1.55;color:var(--grey)}
@@ -1077,46 +1066,40 @@
 <!-- Block 4 — Provenance / credits. Pattern J in design-system-audit.md.
      Originally specified as "no portraits, no bios" — that brief was
      overridden June 24 2026 (see studios.md Notes 14). Each card leads
-     with a square portrait above the name/role/credit-line; the
-     portrait is the first frame of the bio video, served via Cloudflare
-     Stream's thumbnail API (see studios.md Notes 20). On hover, the
-     full bio video lazy-loads in an iframe layered over the still (see
-     Notes 19). Full bios still live on /about. Three credits: JP,
-     Johnny Darrell, Russ Jarman Price. Block footer CTA routes to
-     /about (currently stubbed to "#" — /about not built yet).
+     with a 4/5 portrait above the name/role/credit-line. Full bios still
+     live on /about. Three credits: JP, Johnny Darrell, Russ Jarman Price.
+     Block footer CTA routes to /about.
 
-     NOTE: No local portrait files needed. Stream thumbnail URL is
-     constructed from the same UID used for the bio-video iframe —
-     the still updates automatically when the underlying video is
-     re-uploaded or replaced. To preview a different frame, change
-     the time=0s param in the img src (e.g., time=2s for 2 seconds
-     in). Crop is centered 800x800 via fit=crop&width=800&height=800. -->
+     2026-07: portraits switched from the Cloudflare Stream bio-video
+     thumbnails (with a hover-play iframe overlay) to the commissioned
+     sketch portraits on Cloudflare Images, in a 1px --magenta-ink hairline
+     box — matching the /about lead-card treatment so the three shared leads
+     read identically across both pages. The hover bio-video was dropped
+     here in the process. IDs (imagedelivery.net So76NP_fFT3s9jNLvxCRFw,
+     public variant): JP 8774b12d, Johnny 6e359c0f, Russ 34c9a2f0. -->
 <section class="credits" id="credits">
   <div class="wrap reveal">
     <h2 class="credits-heading rise">Directed by people who earned the title</h2>
     <div class="credits-grid">
-      <article class="credit-card" data-video-uid="5b2c36cd3793f90eafb8e5ae4538c405">
+      <article class="credit-card">
         <div class="credit-portrait">
-          <img src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/5b2c36cd3793f90eafb8e5ae4538c405/thumbnails/thumbnail.jpg?time=0s&width=800&height=800&fit=crop" alt="JP Holecka, Director and Head of Gen AI" loading="lazy">
-          <iframe class="credit-video" aria-hidden="true" tabindex="-1" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+          <img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/8774b12d-ed8a-4101-4647-1312956ef800/public" alt="JP Holecka, Director and Head of Gen AI" loading="lazy">
         </div>
         <h3 class="credit-name">JP Holecka</h3>
         <p class="credit-role">Director // Head of Gen AI</p>
         <p class="credit-line">Little Women &middot; 21 Jump Street &middot; Black Dog Films (Ridley Scott) &middot; ILM, commercial division</p>
       </article>
-      <article class="credit-card" data-video-uid="04d16613add2e8e7f984b9fed118c723">
+      <article class="credit-card">
         <div class="credit-portrait">
-          <img src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/04d16613add2e8e7f984b9fed118c723/thumbnails/thumbnail.jpg?time=0s&width=800&height=800&fit=crop" alt="Johnny Darrell, Director and Editor" loading="lazy">
-          <iframe class="credit-video" aria-hidden="true" tabindex="-1" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+          <img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/6e359c0f-840e-4c2e-8ce7-c44bf6216300/public" alt="Johnny Darrell, Director and Editor" loading="lazy">
         </div>
         <h3 class="credit-name">Johnny Darrell</h3>
         <p class="credit-role">Director // Editor</p>
         <p class="credit-line">Sausage Party: Foodtopia (Amazon) &middot; Cloudy with a Chance of Meatballs (Sony / Lord Miller) &middot; 25 years in CGI and story</p>
       </article>
-      <article class="credit-card" data-video-uid="77ed0d921519c6f587a1821691e583c8">
+      <article class="credit-card">
         <div class="credit-portrait">
-          <img src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/77ed0d921519c6f587a1821691e583c8/thumbnails/thumbnail.jpg?time=0s&width=800&height=800&fit=crop" alt="Russ Jarman Price, Chairman" loading="lazy">
-          <iframe class="credit-video" aria-hidden="true" tabindex="-1" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+          <img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/34c9a2f0-a9ac-4df1-e60d-deefcb749100/public" alt="Russ Jarman Price, Chairman" loading="lazy">
         </div>
         <h3 class="credit-name">Russ Jarman Price</h3>
         <p class="credit-role">Chairman</p>
@@ -1416,29 +1399,6 @@
       });
     });
 
-    // Credit-card bio videos: same lazy-on-first-hover pattern, but for
-    // Cloudflare Stream iframes (the credit cards use Stream UIDs rather
-    // than local MP4/WebM, so we layer an iframe over the still portrait
-    // and let Stream handle decode + loop). Page load fires zero iframe
-    // requests; on first mouseenter we set the src, the Stream player
-    // autoplays muted+looped, and a 'load' event toggles .loaded so the
-    // CSS opacity transition only fires after the video is actually
-    // ready (no blank-iframe flash). Subsequent hovers are instant
-    // (browser caches the iframe). See studios.md Notes 19.
-    document.querySelectorAll('.credit-card[data-video-uid]').forEach(card=>{
-      const iframe = card.querySelector('.credit-video');
-      if(!iframe) return;
-      const uid = card.dataset.videoUid;
-      const url = 'https://customer-xv1aafyshr3tbknu.cloudflarestream.com/' + uid +
-                  '/iframe?muted=true&autoplay=true&loop=true&controls=false&preload=auto';
-      let loaded = false;
-      card.addEventListener('mouseenter', ()=>{
-        if(loaded) return;
-        iframe.addEventListener('load', ()=>iframe.classList.add('loaded'), {once:true});
-        iframe.src = url;
-        loaded = true;
-      });
-    });
   }
 
   // Case cells rise on scroll entry, staggered by column

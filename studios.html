@@ -719,7 +719,8 @@
   .reel-inner{position:relative;z-index:2;padding:96px 0 64px;width:100%}
   .reel-hero h1{font-family:var(--display);font-weight:600;font-size:clamp(48px,7.2vw,116px);line-height:.94;letter-spacing:-0.02em;margin-bottom:28px;opacity:0;transform:translateY(14px);animation:settle .8s ease-out .2s forwards}
   .reel-hero h1 span{display:block}
-  .reel-hero h1 .voice{font-family:"late-serif",Georgia,serif;font-style:italic;font-weight:400;color:var(--magenta);letter-spacing:-0.01em}
+  /* la-mericana via the Adobe kit (was a stale "late-serif" name that fell back to Georgia) */
+  .reel-hero h1 .voice{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;color:var(--magenta);letter-spacing:-0.01em}
   .reel-hero .sub-body{font-size:clamp(16px,1.4vw,21px);max-width:780px;color:rgba(250,250,247,.88);margin-bottom:36px;line-height:1.5;opacity:0;transform:translateY(12px);animation:settle .8s ease-out .45s forwards}
   /* Reel-hero scroll-prompt button uses the canonical .btn .cascade
      vocabulary (matches the homepage Digital/Studios pair and the page

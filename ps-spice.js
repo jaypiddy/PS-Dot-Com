@@ -84,7 +84,7 @@
         if(e.isIntersecting){ e.target.classList.add('sp-in'); io.unobserve(e.target); }
       });
     },{threshold:0.16, rootMargin:'0px 0px -8% 0px'});
-    var sel = '.sp-host, .frame, .wframe, .rule, em.voice, .voice.mag, .sp-band-rule';
+    var sel = '.sp-host, .frame, .wframe, .rule, em.voice, .voice.mag, .sp-band-rule, .quote-banner';
     document.querySelectorAll(sel).forEach(function(el){ io.observe(el); });
   }
 
@@ -202,7 +202,7 @@
      ================================================================ */
   function revealSafety(){
     var inEls  = [].slice.call(document.querySelectorAll('.rise, .reveal, .proof-row'));
-    var spEls  = [].slice.call(document.querySelectorAll('.sp-host, .frame, .wframe, em.voice, .voice.mag, .rule, .sp-band-rule'));
+    var spEls  = [].slice.call(document.querySelectorAll('.sp-host, .frame, .wframe, em.voice, .voice.mag, .rule, .sp-band-rule, .quote-banner'));
     function check(){
       var vh = window.innerHeight || 800;
       inEls = inEls.filter(function(el){

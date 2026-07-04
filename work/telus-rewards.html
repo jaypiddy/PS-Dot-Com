@@ -879,6 +879,108 @@
 
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
+<style id="tr-blocks">
+  /* TELUS Rewards case-study visual blocks (design handoff 2026-07) — same .ab system as the
+     Allia / TELUS-Koodo sets. Six blocks across the launch → empower → evolve phases. Built at
+     the 1920-master proportions via container-query units (cqw) with px floors + mobile restacks.
+     Serif voice uses the site --serif (la-mericana) + --serif-vset axes (handoff spec'd Fraunces).
+     24px eyebrow/footer gaps. Magenta only in the proof-block pivots. */
+  .ab{container-type:inline-size;aspect-ratio:16/9;width:100%;box-sizing:border-box;
+    padding:5cqw;display:flex;flex-direction:column;position:relative;overflow:hidden;color:var(--ink)}
+  .ab .eye{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    font-size:max(10px,1.354cqw);line-height:1;color:var(--grey);flex:none}
+  .ab.on-dark{color:var(--paper)}
+  .ab.on-dark .eye{color:rgba(250,250,247,.65)}
+  .ab-field{flex:1;min-height:0;display:flex;margin-top:1.25cqw;margin-bottom:1.25cqw}
+  .ab-foot{flex:none;display:flex;justify-content:space-between;align-items:baseline;gap:2cqw}
+  .ab-cap{font-size:max(12px,1.5625cqw);line-height:1.25;color:var(--ink)}
+  .ab.on-dark .ab-cap{color:rgba(250,250,247,.85)}
+  .ab-count{font-family:var(--mono);font-weight:700;letter-spacing:.14em;font-size:max(10px,1.354cqw);color:var(--grey);white-space:nowrap}
+  .ab.on-dark .ab-count{color:rgba(250,250,247,.45)}
+  .ab img{background:transparent}
+  .prose .ab img{background:transparent}
+  /* 01 catalogue — full-bleed image + protection gradient */
+  .ab.tr01{background:var(--ink-soft);padding:0}
+  .ab.tr01 .full{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+  .ab.tr01 .prot{position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:linear-gradient(180deg,rgba(18,19,21,.35) 0%,transparent 30%,transparent 60%,rgba(18,19,21,.55) 100%)}
+  .ab.tr01 .chrome{position:absolute;inset:0;z-index:3;padding:5cqw;display:flex;flex-direction:column;pointer-events:none}
+  .ab.tr01 .ab-field{margin:0}
+  /* 02 experience — two cream/white panels */
+  .ab.tr02{background:var(--paper)}
+  .ab.tr02 .ab-field{gap:1px;background:var(--line);border:1px solid var(--line)}
+  .tr-panel{flex:1;min-width:0;background:#fff;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .tr-panel.contain{padding:2.5cqw}
+  .tr-panel.contain img{max-width:100%;max-height:100%;object-fit:contain}
+  .tr-panel .cropimg{position:absolute;width:290%;left:50%;top:50%;transform:translate(-50%,-46%);max-width:none}
+  /* 03 / 05 proof */
+  .ab.proof{background:var(--ink)}
+  .ab.proof .ab-field{align-items:center;justify-content:center;gap:3.333cqw}
+  .ab-proof-num{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;
+    line-height:.9;letter-spacing:-.02em;color:var(--paper)}
+  .ab.tr03 .ab-proof-num{font-size:22.917cqw}
+  .ab.tr05 .ab-proof-num{font-size:27.083cqw}
+  .ab-proof-r{display:flex;flex-direction:column}
+  .ab-proof-to{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;
+    font-size:5cqw;line-height:1;color:var(--magenta)}
+  .ab.tr05 .ab-proof-to{max-width:11.7em}
+  .ab-proof-div{width:10.417cqw;height:2px;background:rgba(250,250,247,.25);margin:1.56cqw 0}
+  .ab-proof-lbl{font-family:var(--mono);font-weight:700;letter-spacing:.14em;font-size:max(10px,1.25cqw);line-height:1.6;
+    color:rgba(250,250,247,.85);max-width:24em}
+  /* 04 agent portal — photo + text column with reserved slot */
+  .ab.tr04{background:var(--ink-soft)}
+  .ab.tr04 .ab-field{gap:1px;background:var(--line-light);border:1px solid var(--line-light)}
+  .tr04-photo{flex:1;min-width:0;background:var(--ink-soft);position:relative;overflow:hidden}
+  .tr04-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .tr04-text{flex:1;min-width:0;background:var(--ink-soft);display:flex;flex-direction:column;justify-content:space-between;padding:3.75cqw}
+  .tr04-hd{font-family:var(--display);font-weight:900;font-size:max(24px,4.583cqw);line-height:1.02;letter-spacing:-.015em;color:var(--paper)}
+  .tr04-hd em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800}
+  .tr04-body{margin:0;font-size:max(14px,1.5625cqw);line-height:1.5;color:rgba(250,250,247,.85);max-width:26ch}
+  .tr04-slot{width:100%;height:12.5cqw;border:1px dashed rgba(250,250,247,.35);border-radius:2px;
+    display:flex;align-items:center;justify-content:center;text-align:center}
+  .tr04-slot span{font-family:var(--mono);font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    font-size:max(9px,1.04cqw);color:rgba(250,250,247,.45);padding:0 2cqw}
+  /* 06 blueprint — journey map + text column (chrome inside the column) */
+  .ab.tr06{background:#F4F4F7}
+  .ab.tr06 .ab-field{gap:3.333cqw;margin:0;align-items:stretch}
+  .tr06-map{flex:1.15;min-width:0;background:#fff;border:1px solid rgba(18,19,21,.2);position:relative;overflow:hidden}
+  .tr06-map img{width:100%;height:auto;display:block}
+  .tr06-map::after{content:"";position:absolute;left:0;right:0;bottom:0;height:8.333cqw;pointer-events:none;
+    background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.95))}
+  .tr06-col{flex:.85;min-width:0;display:flex;flex-direction:column;justify-content:space-between}
+  .tr06-col .eye{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:max(10px,1.354cqw);color:var(--grey)}
+  .tr06-mid{display:flex;flex-direction:column;gap:1.667cqw}
+  .tr06-hd{font-family:var(--display);font-weight:900;font-size:max(24px,4.583cqw);line-height:1.02;letter-spacing:-.015em;color:var(--ink)}
+  .tr06-hd em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800}
+  .tr06-body{margin:0;font-size:max(14px,1.667cqw);line-height:1.5;color:#3a3c40;max-width:24ch}
+  .tr06-foot{display:flex;justify-content:space-between;align-items:baseline;gap:2cqw}
+  .tr06-foot .ab-cap{font-size:max(12px,1.5625cqw);color:var(--ink)}
+  /* rise-in (all six are .prose .breakout — keep the translateX(-50%) centering, like .pull.reveal) */
+  .ab.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .ab.reveal.in{opacity:1;transform:none}
+  .ab.breakout.reveal{transform:translateX(-50%) translateY(22px)}
+  .ab.breakout.reveal.in{transform:translateX(-50%)}
+  @media(prefers-reduced-motion:reduce){
+    .ab.reveal{opacity:1;transform:none;transition:none}
+    .ab.breakout.reveal{transform:translateX(-50%)}
+  }
+  @media(max-width:640px){
+    .ab{aspect-ratio:auto;padding:24px 20px}
+    .ab.tr01{padding:0;aspect-ratio:16/10}.ab.tr01 .full{position:relative}
+    .ab .eye{font-size:11px}.ab-cap{font-size:14px}.ab-count{font-size:11px}
+    .ab-field{margin-top:16px;margin-bottom:16px}
+    .ab.tr02 .ab-field,.ab.tr04 .ab-field,.ab.tr06 .ab-field{flex-direction:column}
+    .tr-panel{min-height:220px}.tr-panel .cropimg{width:200%}
+    .tr04-photo{min-height:220px}.tr04-text{padding:26px 22px;gap:20px}
+    .tr04-hd{font-size:30px}.tr04-body{font-size:16px}.tr04-slot{height:150px}.tr04-slot span{font-size:11px}
+    .ab.proof .ab-field{flex-direction:column;gap:6px;text-align:center}
+    .ab.tr03 .ab-proof-num{font-size:130px}.ab.tr05 .ab-proof-num{font-size:150px}
+    .ab-proof-to{font-size:40px!important;max-width:none!important}.ab-proof-r{align-items:center}
+    .ab-proof-div{width:120px;margin:14px auto}.ab-proof-lbl{font-size:12px;text-align:center}
+    .tr06-map{aspect-ratio:4/3}.tr06-col{gap:22px}
+    .tr06-hd{font-size:30px}.tr06-body{font-size:16px}.tr06-col .eye{font-size:11px}
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -980,6 +1082,16 @@
   <div class="prose">
     <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">The blueprint</span><p>Building loyalty takes more than points — <span class="mag">it takes a blueprint</span>.</p></aside>
 
+    <figure class="ab tr01 breakout reveal on-dark">
+      <img class="full" src="/images/telus-rewards/catalogue.jpg" alt="The TELUS Rewards catalogue shown on a laptop">
+      <div class="prot"></div>
+      <div class="chrome">
+        <span class="eye">TELUS Rewards — the catalogue · 01</span>
+        <div class="ab-field"></div>
+        <div class="ab-foot"><span class="ab-cap">Points on the monthly bill, rewards in the catalogue — loyalty customers can actually use.</span><span class="ab-count">01 / 06</span></div>
+      </div>
+    </figure>
+
     <h2>the brief.</h2>
 
     <p>A telecom rewards program competes for attention against every other loyalty card in a customer's wallet. To matter, TELUS Rewards had to do three things at once: differentiate in a crowded market, feel intuitive for both members and the admins running it, and launch on an aggressive, deadline-driven timeline against TELUS's new digital standards.</p>
@@ -1016,15 +1128,77 @@
 
     <p>We designed and developed the customer-facing Rewards site to make three disconnected systems feel like one. Member identity flowed from the TELUS Account API, points and redemption came live from Aimia, and every piece of content was managed in Contentful — chosen because it let TELUS's own team ship and evolve content without engineering involvement. The build was responsive, mobile-first, and WCAG 2.0 AA–compliant, hosted on TELUS's own AWS environment for the security and scalability an enterprise loyalty program demands. It launched on time and on budget.</p>
 
+    <figure class="ab tr02 breakout reveal">
+      <span class="eye">TELUS Rewards — the experience · 02</span>
+      <div class="ab-field">
+        <div class="tr-panel"><img class="cropimg" src="/images/telus-rewards/mobile-activity.png" alt="The Rewards mobile activity view"></div>
+        <div class="tr-panel contain"><img src="/images/telus-rewards/how-it-works.png" alt="The Rewards how-it-works desktop screen"></div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">Account, loyalty engine and CMS — three systems behind one seamless surface.</span><span class="ab-count">02 / 06</span></div>
+    </figure>
+
+    <figure class="ab proof tr03 breakout reveal on-dark">
+      <span class="eye">TELUS Rewards — the proof · 03</span>
+      <div class="ab-field">
+        <span class="ab-proof-num">300K+</span>
+        <div class="ab-proof-r">
+          <span class="ab-proof-to">in 6 months</span>
+          <span class="ab-proof-div"></span>
+          <span class="ab-proof-lbl">Enrollments — 22% ahead of forecast · on time · on budget</span>
+        </div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">Members reported higher likelihood-to-recommend scores.</span><span class="ab-count">03 / 06</span></div>
+    </figure>
+
     <h3>a secure agent portal.</h3>
 
     <p>Then we turned to the people supporting members. We built a dedicated portal with SAML single sign-on for authorized agent access, giving CSRs a 360° member view — account search, history, and validated, permission-based points adjustments — in place of the fragmented workflows they'd been stitching together. The judgment here was simple: faster, more accurate support is a member experience too, just one the member never sees.</p>
 
     <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Process — the unseen half</span><p>Faster, more accurate agent support is a member experience too — <span class="mag">just one the member never sees</span>.</p></aside>
 
+    <figure class="ab tr04 breakout reveal on-dark">
+      <span class="eye">TELUS Rewards — the agent portal · 04</span>
+      <div class="ab-field">
+        <div class="tr04-photo"><img src="/images/telus-rewards/csr-team.jpg" alt="Customer service representatives supporting members"></div>
+        <div class="tr04-text">
+          <div class="tr04-hd">A 360° view of <em>every member.</em></div>
+          <p class="tr04-body">Account search, transaction history and validated points adjustments — behind SAML SSO.</p>
+          <div class="tr04-slot"><span>Agent portal — screen to come</span></div>
+        </div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">The portal that ended fragmented legacy workflows.</span><span class="ab-count">04 / 06</span></div>
+    </figure>
+
+    <figure class="ab proof tr05 breakout reveal on-dark">
+      <span class="eye">TELUS Rewards — the proof · 05</span>
+      <div class="ab-field">
+        <span class="ab-proof-num">100%</span>
+        <div class="ab-proof-r">
+          <span class="ab-proof-to">chose the new portal</span>
+          <span class="ab-proof-div"></span>
+          <span class="ab-proof-lbl">CSR preference vs. legacy tools — simpler workflows, faster support</span>
+        </div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">Every agent who tried it stayed on it.</span><span class="ab-count">05 / 06</span></div>
+    </figure>
+
     <h3>optimizing the program end to end.</h3>
 
     <p>With the foundation in place, we mapped member journeys to locate friction, then rebuilt the weak points: a clearer activation flow with proper onboarding and triggered emails, a redemption experience improved with wishlists, tiers, and a refined catalogue, and an upgraded architecture with stronger reporting and tighter Aimia integration — engineered to carry the program's next stage of growth.</p>
+
+    <figure class="ab tr06 breakout reveal">
+      <div class="ab-field">
+        <div class="tr06-map"><img src="/images/telus-rewards/journey-map.png" alt="The TELUS Rewards customer journey map"></div>
+        <div class="tr06-col">
+          <span class="eye">TELUS Rewards — the blueprint · 06</span>
+          <div class="tr06-mid">
+            <div class="tr06-hd">Every touchpoint, <em>mapped.</em></div>
+            <p class="tr06-body">The journey map that found the friction — activation, redemption, re-engagement — and set the optimization agenda.</p>
+          </div>
+          <div class="tr06-foot"><span class="ab-cap">Projected to nearly triple activations.</span><span class="ab-count">06 / 06</span></div>
+        </div>
+      </div>
+    </figure>
 
     <h2>the outcome.</h2>
 

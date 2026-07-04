@@ -932,14 +932,10 @@
   .ab.tr04 .ab-field{gap:1px;background:var(--line-light);border:1px solid var(--line-light)}
   .tr04-photo{flex:1;min-width:0;background:var(--ink-soft);position:relative;overflow:hidden}
   .tr04-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .tr04-text{flex:1;min-width:0;background:var(--ink-soft);display:flex;flex-direction:column;justify-content:space-between;padding:3.75cqw}
+  .tr04-text{flex:1;min-width:0;background:var(--ink-soft);display:flex;flex-direction:column;justify-content:center;gap:2.5cqw;padding:3.75cqw}
   .tr04-hd{font-family:var(--display);font-weight:900;font-size:max(24px,4.583cqw);line-height:1.02;letter-spacing:-.015em;color:var(--paper)}
   .tr04-hd em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800}
   .tr04-body{margin:0;font-size:max(14px,1.5625cqw);line-height:1.5;color:rgba(250,250,247,.85);max-width:26ch}
-  .tr04-slot{width:100%;height:12.5cqw;border:1px dashed rgba(250,250,247,.35);border-radius:2px;
-    display:flex;align-items:center;justify-content:center;text-align:center}
-  .tr04-slot span{font-family:var(--mono);font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-    font-size:max(9px,1.04cqw);color:rgba(250,250,247,.45);padding:0 2cqw}
   /* 06 blueprint — journey map + text column (chrome inside the column) */
   .ab.tr06{background:#F4F4F7}
   .ab.tr06 .ab-field{gap:3.333cqw;margin:0;align-items:stretch}
@@ -972,7 +968,7 @@
     .ab.tr02 .ab-field,.ab.tr04 .ab-field,.ab.tr06 .ab-field{flex-direction:column}
     .tr-panel{min-height:220px}.tr-panel .cropimg{width:200%}
     .tr04-photo{min-height:220px}.tr04-text{padding:26px 22px;gap:20px}
-    .tr04-hd{font-size:30px}.tr04-body{font-size:16px}.tr04-slot{height:150px}.tr04-slot span{font-size:11px}
+    .tr04-hd{font-size:30px}.tr04-body{font-size:16px}
     .ab.proof .ab-field{flex-direction:column;gap:6px;text-align:center}
     .ab.tr03 .ab-proof-num{font-size:130px}.ab.tr05 .ab-proof-num{font-size:150px}
     .ab-proof-to{font-size:40px!important;max-width:none!important}.ab-proof-r{align-items:center}
@@ -1163,7 +1159,6 @@
         <div class="tr04-text">
           <div class="tr04-hd">A 360° view of <em>every member.</em></div>
           <p class="tr04-body">Account search, transaction history and validated points adjustments — behind SAML SSO.</p>
-          <div class="tr04-slot"><span>Agent portal — screen to come</span></div>
         </div>
       </div>
       <div class="ab-foot"><span class="ab-cap">The portal that ended fragmented legacy workflows.</span><span class="ab-count">04 / 06</span></div>

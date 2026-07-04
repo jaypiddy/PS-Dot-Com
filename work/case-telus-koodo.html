@@ -872,6 +872,56 @@
 
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
+<style id="tk-blocks">
+  /* TELUS & Koodo case-study visual blocks (design handoff 2026-07) — same .ab system as the
+     Allia set, two "screens" blocks. 24px eyebrow/footer gaps (tighter than Allia's — the
+     device shots need the height). No brand fonts, no magenta; the client imagery carries color. */
+  .ab{container-type:inline-size;aspect-ratio:16/9;width:100%;box-sizing:border-box;
+    padding:5cqw;display:flex;flex-direction:column;position:relative;overflow:hidden;color:var(--ink)}
+  .ab .eye{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    font-size:max(10px,1.35cqw);line-height:1;color:var(--grey);flex:none}
+  .ab.on-dark{color:var(--paper)}
+  .ab.on-dark .eye{color:rgba(250,250,247,.65)}
+  .ab-field{flex:1;min-height:0;display:flex;margin-top:1.25cqw;margin-bottom:1.25cqw}
+  .ab-foot{flex:none;display:flex;justify-content:space-between;align-items:baseline;gap:2cqw}
+  .ab-cap{font-size:max(12px,1.56cqw);line-height:1.25;color:var(--ink)}
+  .ab.on-dark .ab-cap{color:rgba(250,250,247,.85)}
+  .ab-count{font-family:var(--mono);font-weight:700;letter-spacing:.14em;font-size:max(10px,1.35cqw);color:var(--grey);white-space:nowrap}
+  .ab.on-dark .ab-count{color:rgba(250,250,247,.45)}
+  .ab img{background:transparent}
+  .prose .ab img{background:transparent}
+  /* 01 — the platform: two cream panels, hairline seam, device shot contain + corner label */
+  .ab.tk01{background:var(--paper)}
+  .ab.tk01 .ab-field{gap:1px;background:var(--line);border:1px solid var(--line)}
+  .tk-panel{flex:1;min-width:0;background:var(--paper);position:relative;display:flex;
+    align-items:center;justify-content:center;padding:2.083cqw}
+  .tk-panel img{max-width:100%;max-height:100%;object-fit:contain}
+  .tk-panel .lb{position:absolute;top:1.25cqw;left:1.67cqw;font-family:var(--mono);font-weight:700;
+    letter-spacing:.14em;font-size:max(9px,1.04cqw);color:var(--grey)}
+  /* 02 — the filter: single shot on soft-ink field */
+  .ab.tk02{background:var(--ink-soft)}
+  .ab.tk02 .ab-field{align-items:center;justify-content:center}
+  .ab.tk02 img{max-width:88%;max-height:100%;object-fit:contain}
+  /* rise-in. Block 01 lives in a .wrap (plain translateY); Block 02 is a .prose .breakout,
+     so it must keep the translateX(-50%) centering (same trap as .pull.reveal). */
+  .ab.reveal{opacity:0;transform:translateY(22px);
+    transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .ab.reveal.in{opacity:1;transform:none}
+  .ab.breakout.reveal{transform:translateX(-50%) translateY(22px)}
+  .ab.breakout.reveal.in{transform:translateX(-50%)}
+  @media(prefers-reduced-motion:reduce){
+    .ab.reveal{opacity:1;transform:none;transition:none}
+    .ab.breakout.reveal{transform:translateX(-50%)}
+  }
+  @media(max-width:640px){
+    .ab{aspect-ratio:auto;padding:24px 20px}
+    .ab .eye{font-size:11px}.ab-cap{font-size:14px}.ab-count{font-size:11px}
+    .ab-field{margin-top:16px;margin-bottom:16px}
+    .ab.tk01 .ab-field{flex-direction:column}
+    .tk-panel{padding:28px 20px;min-height:200px}.tk-panel .lb{font-size:10px}
+    .ab.tk02 img{max-width:100%}
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -952,14 +1002,6 @@
   </div>
 </section>
 
-<!-- Masthead plate — wframe pattern with dark scrim -->
-<section class="masthead wrap" id="masthead">
-  <div class="wframe dark" id="plate">
-    <img class="cs-shot" src="/images/telus_catalogue.png" alt="The TELUS accessories catalogue, responsive across MacBook and iPhone">
-    <div class="wtint"></div>
-  </div>
-</section>
-
 <!-- Dossier: fact sheet + topline results, one composed spec block -->
 <section class="cs-dossier wrap">
   <dl class="cs-facts reveal">
@@ -974,6 +1016,18 @@
     <div class="stat"><b><span class="sr-only">3</span><span class="odo" aria-hidden="true"><span class="col" style="--d:3"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span></b><span>dealer audiences — corporate, independent, Koodo — on a single instance</span></div>
     <div class="stat"><b><span class="sr-only">2,832</span><span class="odo" aria-hidden="true"><span class="col" style="--d:2"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="ch">,</span><span class="col" style="--d:8"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:3"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:2"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span></b><span>peak weekly visits · 253 unique, against a few-hundred-location network</span></div>
   </div>
+</section>
+
+<!-- Block 01 — the platform (replaces the old masthead plate; sits below the metrics) -->
+<section class="wrap">
+  <figure class="ab tk01 reveal">
+    <span class="eye">TELUS &amp; Koodo — the platform · 01</span>
+    <div class="ab-field">
+      <div class="tk-panel"><img src="/images/telus_catalogue.png" alt="The TELUS-branded accessories catalogue on laptop and phone"><span class="lb">TELUS</span></div>
+      <div class="tk-panel"><img src="/images/koodo_welcome.png" alt="The Koodo-branded accessories catalogue shown on a laptop"><span class="lb">KOODO</span></div>
+    </div>
+    <div class="ab-foot"><span class="ab-cap">One platform, two faces — TELUS and Koodo instances, walled off by audience.</span><span class="ab-count">01 / 02</span></div>
+  </figure>
 </section>
 
 <!-- Body — five-section authored structure -->
@@ -1007,12 +1061,10 @@
     <p>WordPress was chosen for one specific reason: its user management framework gave our technical team the foundation to serve three strictly separated experiences — distinct pricing, inventory, news, and branding per audience — from a single instance, within budget. The data model parsed every SKU, banner, and bulletin to the right audience, and the admin experience was built so one administrator could publish to all three without ever leaking sensitive pricing across the wall.</p>
     <p>The catalogue UX took three weeks of hypothesis and testing on the filtering problem alone. The result let a dealer narrow 700+ SKUs to the right accessory in seconds, on a phone, a tablet, or the desktop at the back of the store. The shared wish-list system — built jointly by UX, front-end, and back-end — let multiple buyers per location research, build, and share lists that fed TELUS's fulfilment workflow, with no training and no FAQ required.</p>
 
-    <figure class="breakout fig-tilt">
-      <div class="fig-plate reveal">
-        
-        <img class="cs-shot" src="/images/koodo_filters.png" alt="The responsive filtering experience shown on desktop and phone">
-      </div>
-      <figcaption><b>Fig. 02</b><span>The filtering experience: 700+ SKUs narrowed to the right accessory in seconds — phone, tablet, or the desktop at the back of the store.</span></figcaption>
+    <figure class="ab tk02 breakout reveal on-dark">
+      <span class="eye">TELUS &amp; Koodo — the filter · 02</span>
+      <div class="ab-field"><img src="/images/koodo_filters.png" alt="The responsive filtering experience shown on desktop and phone"></div>
+      <div class="ab-foot"><span class="ab-cap">700+ SKUs narrowed to the right accessory in seconds — phone, tablet, or the desktop at the back of the store.</span><span class="ab-count">02 / 02</span></div>
     </figure>
 
     <h2>the outcome.</h2>

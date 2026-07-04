@@ -892,6 +892,9 @@
   @font-face{font-family:"PP Neue Montreal";src:url("/fonts/PPNeueMontreal-Variable.ttf") format("truetype");font-weight:100 900;font-display:swap}
   .ab{container-type:inline-size;aspect-ratio:16/9;width:100%;box-sizing:border-box;
     padding:5cqw;display:flex;flex-direction:column;position:relative;overflow:hidden;color:var(--ink)}
+  /* the page paints figure images on --ink-soft (dark plates); our blocks manage their own
+     backgrounds, and the transparent logo PNGs must NOT get that navy fill. Beats .prose figure img. */
+  .prose .ab img{background:transparent}
   .ab .eye{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
     font-size:max(10px,1.35cqw);line-height:1;color:var(--grey);flex:none}
   .ab.on-dark{color:var(--paper)}

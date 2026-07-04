@@ -879,6 +879,150 @@
 
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
+<style id="allia-blocks">
+  /* alias the handoff's token names onto this page's tokens (+ Allia's mist, not a site token) */
+  :root{--soft-ink:var(--ink-soft);--mist:#F4F8FA;--hair-l:var(--line);--hair-d:var(--line-light)}
+  /* Allia case-study visual blocks (design handoff 2026-07). Eight full-width 16:9
+     masters interleaved into the narrative. Built at the 1920-master proportions via
+     container-query units (cqw) so they scale at any width, with px floors (max())
+     and mobile restacks so they stay legible on phones. Brand faces PP Museum + PP
+     Neue Montreal are self-hosted (not in the Adobe kit); everything else uses the
+     site tokens. --serif is la-mericana (the site's serif; the handoff spec'd Fraunces). */
+  @font-face{font-family:"PP Museum";src:url("/fonts/PPMuseum-Variable.ttf") format("truetype");font-weight:100 900;font-display:swap}
+  @font-face{font-family:"PP Neue Montreal";src:url("/fonts/PPNeueMontreal-Variable.ttf") format("truetype");font-weight:100 900;font-display:swap}
+  .ab{container-type:inline-size;aspect-ratio:16/9;width:100%;box-sizing:border-box;
+    padding:5cqw;display:flex;flex-direction:column;position:relative;overflow:hidden;color:var(--ink)}
+  .ab .eye{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    font-size:max(10px,1.35cqw);line-height:1;color:var(--grey);flex:none}
+  .ab.on-dark{color:var(--paper)}
+  .ab.on-dark .eye{color:rgba(250,250,247,.65)}
+  .ab-field{flex:1;min-height:0;display:flex;margin-top:2.5cqw;margin-bottom:2.5cqw}
+  .ab-foot{flex:none;display:flex;justify-content:space-between;align-items:baseline;gap:2cqw}
+  .ab-cap{font-size:max(12px,1.56cqw);line-height:1.25;color:var(--ink)}
+  .ab.on-dark .ab-cap{color:rgba(250,250,247,.85)}
+  .ab-count{font-family:var(--mono);font-weight:700;letter-spacing:.14em;font-size:max(10px,1.35cqw);color:var(--grey);white-space:nowrap}
+  .ab.on-dark .ab-count{color:rgba(250,250,247,.45)}
+  .ab.b01{background:var(--ink)}
+  .ab.b01 .ab-field{gap:1px;background:var(--hair-d)}
+  .ab-ba{position:relative;flex:1;min-width:0;overflow:hidden}
+  .ab-ba img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+  .ab-ba .tag{position:absolute;top:1.67cqw;left:1.67cqw;font-family:var(--mono);font-weight:700;
+    letter-spacing:.14em;font-size:max(11px,1.25cqw);padding:.52cqw 1.04cqw;line-height:1}
+  .ab-ba .tag.before{color:var(--ink);background:var(--paper)}
+  .ab-ba .tag.after{color:var(--paper);background:var(--magenta)}
+  .ab.b02{background:var(--paper)}
+  .ab.b02 .ab-field{flex-direction:column;gap:1px;background:var(--hair-l);border:1px solid var(--hair-l)}
+  .ab-sw-row{display:flex;gap:1px;background:var(--hair-l)}
+  .ab-sw-row.primary{flex:2.4}.ab-sw-row.secondary{flex:1}
+  .ab-sw{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:1.875cqw;min-width:0}
+  .ab-sw.sec{justify-content:flex-end;padding:1.25cqw 1.875cqw}
+  .ab-sw .nm{font-family:"PP Neue Montreal",var(--text);font-weight:700;font-size:max(12px,1.56cqw);line-height:1.1}
+  .ab-sw .hx{font-family:var(--mono);font-weight:700;font-size:max(10px,1.35cqw);margin-top:.42cqw}
+  .ab-sw.sec .hx{font-size:max(10px,1.25cqw);margin-top:0}
+  .ab.b03{background:var(--mist)}
+  .ab.b03 .ab-field{gap:1px;background:var(--hair-l);border:1px solid var(--hair-l)}
+  .ab-mark-l{flex:1.5;background:#fff;display:flex;align-items:center;justify-content:center;min-width:0;overflow:hidden}
+  .ab-mark-l img{width:70%;height:auto;object-fit:contain}
+  .ab-mark-r{flex:1;display:flex;flex-direction:column;gap:1px;background:var(--hair-l);min-width:0}
+  .ab-mark-cell{flex:1;background:#fff;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;min-height:0}
+  .ab-mark-cell img{max-width:70%;max-height:60%;object-fit:contain}
+  .ab-mark-cell .lb{position:absolute;left:1.25cqw;bottom:1.25cqw;font-family:var(--mono);font-weight:700;
+    letter-spacing:.14em;font-size:max(9px,1.04cqw);color:var(--grey)}
+  .ab.b04{background:var(--soft-ink);padding:0}
+  .ab.b04 .chrome{position:absolute;inset:0;padding:5cqw;display:flex;flex-direction:column;z-index:2;pointer-events:none}
+  .ab-art{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:3.75cqw;z-index:1}
+  .ab-art img{height:34.375cqw;width:auto;object-fit:contain;display:block}
+  .ab.b04 .prot{position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(180deg,rgba(18,19,21,.35) 0%,transparent 30%,transparent 60%,rgba(18,19,21,.55) 100%)}
+  .ab.b04 .ab-field{margin:0}
+  .ab.b05{background:var(--soft-ink)}
+  .ab.b05 .ab-field{gap:2.29cqw;align-items:stretch}
+  .ab-card{flex:1;min-width:0;border-radius:3.02cqw;overflow:hidden;box-shadow:0 .42cqw 2.08cqw rgba(0,0,0,.25);
+    display:flex;flex-direction:column;position:relative;background:#fff}
+  .ab-pill{display:inline-flex;align-items:center;font-family:"PP Neue Montreal",var(--text);font-weight:700;
+    font-size:max(9px,.94cqw);padding:.26cqw .83cqw;border-radius:999px;line-height:1.3;width:max-content}
+  .ab-c-title{font-family:"PP Museum",var(--serif);font-weight:400;font-size:max(13px,1.927cqw);line-height:1.1;margin:.6cqw 0}
+  .ab-c-body{font-family:"PP Neue Montreal",var(--text);font-weight:375;font-size:max(11px,1.302cqw);line-height:1.3}
+  .ab-card.overlay{background:#0f2537}
+  .ab-card.overlay img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ab-card.overlay .grad{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.8),rgba(0,0,0,.2) 50%,transparent)}
+  .ab-card.overlay .in{position:relative;margin-top:auto;padding:2.29cqw;color:#fff;z-index:2}
+  .ab-card.overlay .meta{display:flex;align-items:center;gap:1cqw;margin-bottom:.8cqw}
+  .ab-card.overlay .ago{font-size:max(10px,1.094cqw);color:rgba(255,255,255,.8);font-family:"PP Neue Montreal",var(--text)}
+  .ab-card.edit .ph{height:38%;background:#cbd7dd center/cover}
+  .ab-card.edit .in{padding:1.56cqw 1.77cqw;display:flex;flex-direction:column;gap:.83cqw}
+  .ab-card.edit .ab-c-title{color:#101828}
+  .ab-card.edit .ab-c-body{color:#6a7282}
+  .ab-card.edit .more{font-family:"PP Neue Montreal",var(--text);font-weight:700;font-size:max(11px,1.302cqw);color:#0f2537;margin-top:auto}
+  .ab-card.plan{padding:2.29cqw;display:flex;flex-direction:column;gap:1cqw}
+  .ab-card.plan.dark{background:#0f2537;color:#fff}
+  .ab-card.plan .ab-c-body{margin-bottom:auto}
+  .ab-btn{text-align:center;font-family:"PP Neue Montreal",var(--text);font-weight:700;font-size:max(11px,1.302cqw);
+    padding:1.04cqw 0;border-radius:999px;line-height:1}
+  .ab-card.plan.dark .ab-btn{background:linear-gradient(180deg,#cdef63,#e8f5d6);color:#0f2537}
+  .ab-card.plan.dark .ab-c-title{color:#fff}
+  .ab-card.plan.light .ab-c-title{color:#0f2537}
+  .ab-card.plan.light .ab-c-body{color:#6a7282}
+  .ab-card.plan.light .ab-btn{background:#ff9f29;color:#0f2537}
+  .ab.b06{background:var(--mist)}
+  .ab.b06 .ab-field{gap:2.29cqw;align-items:stretch}
+  .ab-grad{border-radius:3.02cqw;box-shadow:0 .42cqw 2.08cqw rgba(0,0,0,.08);padding:1.875cqw;min-width:0;display:flex}
+  .ab-grad.g1{flex:2;background:linear-gradient(135deg,rgb(33,230,193),rgb(205,239,99))}
+  .ab-grad.g2{flex:1.2;background:linear-gradient(148.7deg,rgb(220,243,145),rgb(250,253,239))}
+  .ab-grad.g3{flex:.7;background:linear-gradient(161.3deg,rgb(255,187,105),rgb(255,245,233))}
+  .ab-grad .lb{align-self:flex-start;background:rgba(255,255,255,.2);color:#0f2537;font-family:"PP Neue Montreal",var(--text);
+    font-weight:700;letter-spacing:.05em;text-transform:uppercase;font-size:max(9px,1.146cqw);padding:.42cqw 1.146cqw;border-radius:999px}
+  .ab.b07{background:var(--mist)}
+  .ab.b07 .ab-field{gap:0;border-top:1px solid var(--hair-l);border-bottom:1px solid var(--hair-l)}
+  .ab-type-l{flex:1;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--hair-l);min-width:0}
+  .ab-type-l .aa{font-family:"PP Museum",var(--serif);font-weight:250;font-size:19.79cqw;line-height:1.05;letter-spacing:-.02em;color:#0F2537}
+  .ab-type-r{flex:1.3;padding:4.167cqw;display:flex;flex-direction:column;justify-content:center;gap:2.917cqw;min-width:0}
+  .ab-type-r .hd{font-family:"PP Museum",var(--serif);font-weight:250;font-size:max(20px,3.33cqw);line-height:1.05;letter-spacing:-.02em;color:#0F2537}
+  .ab-type-r .bd{font-family:"PP Neue Montreal",var(--text);font-weight:375;font-size:max(15px,1.875cqw);line-height:1.32;color:#1e2939;max-width:24ch}
+  .ab-anno{font-family:var(--mono);font-weight:700;letter-spacing:.06em;font-size:max(9px,1.146cqw);color:var(--grey);margin-top:.8cqw;display:block}
+  .ab.b08{background:var(--ink)}
+  .ab.b08 .ab-field{align-items:center;justify-content:center;gap:3.33cqw}
+  .ab-proof-num{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;
+    font-size:27.08cqw;line-height:.9;letter-spacing:-.02em;color:var(--paper)}
+  .ab-proof-r{display:flex;flex-direction:column}
+  .ab-proof-to{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;
+    font-size:6.25cqw;line-height:1;color:var(--magenta)}
+  .ab-proof-div{width:10.4cqw;height:2px;background:rgba(250,250,247,.25);margin:1.56cqw 0}
+  .ab-proof-lbl{font-family:var(--mono);font-weight:700;letter-spacing:.14em;font-size:max(10px,1.25cqw);line-height:1.6;
+    color:rgba(250,250,247,.85);max-width:24em}
+  /* rise-in that preserves the .breakout translateX(-50%) centering (like .pull.reveal) */
+  .ab.reveal{opacity:0;transform:translateX(-50%) translateY(22px);
+    transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .ab.reveal.in{opacity:1;transform:translateX(-50%)}
+  @media(prefers-reduced-motion:reduce){.ab.reveal{opacity:1;transform:translateX(-50%);transition:none}}
+  @media(max-width:640px){
+    .ab{aspect-ratio:auto;padding:24px 20px}
+    .ab .eye{font-size:11px}.ab-cap{font-size:14px}.ab-count{font-size:11px}
+    .ab-field{margin-top:18px;margin-bottom:18px}
+    .ab.b01 .ab-field{flex-direction:column}.ab-ba{aspect-ratio:4/3}
+    .ab-ba .tag{font-size:11px;padding:6px 12px;top:12px;left:12px}
+    .ab-sw-row.primary,.ab-sw-row.secondary{flex-wrap:wrap}
+    .ab-sw{flex:1 1 50%;min-height:76px;padding:14px}.ab-sw .nm{font-size:15px}.ab-sw .hx{font-size:12px}
+    .ab-sw.sec{min-height:52px}
+    .ab.b03 .ab-field,.ab.b07 .ab-field{flex-direction:column}
+    .ab-mark-l{aspect-ratio:16/9}.ab-mark-r{flex-direction:row}.ab-mark-cell{aspect-ratio:1}
+    .ab-mark-cell .lb{font-size:10px}
+    .ab.b04{padding:0}.ab.b04 .chrome{padding:20px}.ab-art{position:relative;flex-direction:column;gap:20px;padding:64px 20px 40px}
+    .ab-art img{height:auto;width:70%;max-height:260px}
+    .ab.b05 .ab-field,.ab.b06 .ab-field{flex-direction:column}
+    .ab-card{min-height:300px}.ab-card.overlay{aspect-ratio:4/5}
+    .ab-pill{font-size:11px;padding:4px 12px}.ab-c-title{font-size:19px}.ab-c-body{font-size:14px}
+    .ab-btn{font-size:14px;padding:12px 0}.ab-card.plan,.ab-card.overlay .in,.ab-card.edit .in{gap:10px}
+    .ab-card.plan{padding:22px}
+    .ab-grad{padding:22px;min-height:120px}.ab-grad .lb{font-size:11px;padding:6px 14px}
+    .ab-type-l{border-right:0;border-bottom:1px solid var(--hair-l);padding:24px 0}
+    .ab-type-l .aa{font-size:180px}.ab-type-r{padding:28px 4px}.ab-type-r .hd{font-size:30px}.ab-type-r .bd{font-size:17px}
+    .ab-anno{font-size:11px}
+    .ab.b08 .ab-field{flex-direction:column;gap:4px;text-align:center}
+    .ab-proof-num{font-size:150px}.ab-proof-to{font-size:44px}.ab-proof-r{align-items:center}
+    .ab-proof-div{width:120px;margin:16px auto}.ab-proof-lbl{font-size:12px;text-align:center}
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -984,15 +1128,68 @@
 
     <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Brief — the stakes</span><p>If your digital presence reads as a startup, <span class="mag">investors will value you as one</span>.</p></aside>
 
+    <figure class="ab b01 breakout reveal on-dark">
+      <span class="eye">Allia — the gap · 01</span>
+      <div class="ab-field">
+        <div class="ab-ba"><img src="/images/allia/allia-before.jpg" alt="Allia's legacy website — the placeholder brand it had outgrown"><span class="tag before">BEFORE</span></div>
+        <div class="ab-ba"><img src="/images/allia/allia-after.jpg" alt="The new Allia Health Group homepage"><span class="tag after">AFTER</span></div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">A placeholder brand — and the platform it was hiding.</span><span class="ab-count">01 / 08</span></div>
+    </figure>
+
     <h2>the challenge.</h2>
     <p>The portfolio was fragmented by design history. Sub-brands like Brello, HelloWellness, and Southend Pharmacy had been built in silos, each with its own visual language, and nothing tied them to a parent. The first brand explorations leaned into a high-voltage, neon "startup" palette — electric teal, lime, bright orange — that signalled consumer hype rather than clinical authority.</p>
     <p>And the deadline didn't move. The parent identity and a ten-page, component-led site had to be designed, built, and live before the investor window in January. A traditional multi-month corporate rebrand was a luxury the calendar ruled out — we had to run the brand work and the build at the same time.</p>
+
+    <figure class="ab b02 breakout reveal">
+      <span class="eye">Allia — palette · 02</span>
+      <div class="ab-field">
+        <div class="ab-sw-row primary">
+          <div class="ab-sw" style="background:#0F2537"><span class="nm" style="color:#fff">Deep Scrub Navy</span><span class="hx" style="color:rgba(255,255,255,.7)">#0F2537</span></div>
+          <div class="ab-sw" style="background:#21E6C1"><span class="nm" style="color:#0F2537">Laser Scalpel Teal</span><span class="hx" style="color:rgba(15,37,55,.7)">#21E6C1</span></div>
+          <div class="ab-sw" style="background:#F4F8FA"><span class="nm" style="color:#1e2939">Oxygenated Mist</span><span class="hx" style="color:rgba(30,41,57,.7)">#F4F8FA</span></div>
+          <div class="ab-sw" style="background:#D0F5F0"><span class="nm" style="color:#1e2939">Saline Solution</span><span class="hx" style="color:rgba(30,41,57,.7)">#D0F5F0</span></div>
+        </div>
+        <div class="ab-sw-row secondary">
+          <div class="ab-sw sec" style="background:#FF9F29"><span class="hx" style="color:#422016">#FF9F29</span></div>
+          <div class="ab-sw sec" style="background:#FFE8D1"><span class="hx" style="color:#1e2939">#FFE8D1</span></div>
+          <div class="ab-sw sec" style="background:#CDEF63"><span class="hx" style="color:#132a26">#CDEF63</span></div>
+          <div class="ab-sw sec" style="background:#E8F5D6"><span class="hx" style="color:#1e2939">#E8F5D6</span></div>
+        </div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">The neon retired — navy, teal and mist hold the room.</span><span class="ab-count">02 / 08</span></div>
+    </figure>
 
     <h2>the process.</h2>
     <p>Enter POWER SHIFTER. We opened with a single high-collaboration briefing that put the decision-makers in one room on day one, then worked alongside Allia's communications partner, Wheelhouse, and its copy lead, so approvals happened in conversation rather than in queues.</p>
     <p>We split the work into two concurrent tracks: the Webflow build, and a two-week wordmark and brand-mark sprint. When the full stacked wordmark proved too wide for navigation and other small placements, we added an AHG monogram as a compact companion mark — one system, two registers. Early colour directions had skinned the brand in neon; guided by the client's reference points, we pivoted to a softer, clinically credible palette and held it across every screen. For imagery, we used generative AI to prototype and produce hero characters, lifestyle before-and-afters, and branded product shots — high-resolution art tuned to an institutional audience, without the cost or the calendar of a physical shoot. The work moved through weekly design gates: style tiles, wires, then production-ready Figma in days, not weeks.</p>
 
     <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Process — one room</span><p>We replaced sign-off queues with <span class="mag">one room and decisions made beside the experts</span>.</p></aside>
+
+    <figure class="ab b03 breakout reveal">
+      <span class="eye">Allia — the mark · 03</span>
+      <div class="ab-field">
+        <div class="ab-mark-l"><img src="/images/allia/logo-full.png" alt="Allia Health Group full-colour wordmark"></div>
+        <div class="ab-mark-r">
+          <div class="ab-mark-cell"><img src="/images/allia/logo-monogram.png" alt="AHG monogram"><span class="lb">Monogram</span></div>
+          <div class="ab-mark-cell"><img src="/images/allia/logo-unity.png" alt="Allia unity symbol"><span class="lb">Unity symbol</span></div>
+        </div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">One system, two registers — pitch deck to mobile nav.</span><span class="ab-count">03 / 08</span></div>
+    </figure>
+
+    <figure class="ab b04 breakout reveal on-dark">
+      <div class="ab-art">
+        <img src="/images/allia/art-portrait.jpg" alt="Generative brand imagery — portrait character study">
+        <img src="/images/allia/art-landscape.jpg" alt="Generative brand imagery — landscape lifestyle study">
+      </div>
+      <div class="prot"></div>
+      <div class="chrome">
+        <span class="eye">Allia — art direction · 04</span>
+        <div class="ab-field"></div>
+        <div class="ab-foot"><span class="ab-cap">Generative imagery, tuned to an institutional audience — no shoot, no calendar.</span><span class="ab-count">04 / 08</span></div>
+      </div>
+    </figure>
 
     <h2>the solution.</h2>
     <p>A static site or a soft consumer layout would never satisfy institutional investors. We set a "humanized clinical" standard — clinical credibility with enough warmth to stay human — and built the parent brand to anchor everything beneath it. We built on Webflow because it let us prototype layouts at speed and keep high-fidelity UI and stable code in one environment — essential against the timeline. To add polish without dragging performance, we built lightweight micro-interactions natively in Webflow, so scroll reveals and state transitions stayed smooth without the overhead of bespoke JavaScript libraries.</p>
@@ -1003,11 +1200,73 @@
     <h3>a dual identity system.</h3>
     <p>A formal stacked wordmark for corporate and investor contexts, plus the AHG monogram for navigation, favicons, and app headers — legible from a pitch deck down to a mobile nav bar, retiring the neon for an institutional palette of clinical blues and neutrals.</p>
 
+    <figure class="ab b05 breakout reveal on-dark">
+      <span class="eye">Allia — the site · 05</span>
+      <div class="ab-field">
+        <div class="ab-card overlay">
+          <img src="/images/allia/art-portrait.jpg" alt=""><div class="grad"></div>
+          <div class="in"><div class="meta"><span class="ab-pill" style="background:#21e6c1;color:#0f2537">NEW</span><span class="ago">5 mins ago</span></div><div class="ab-c-title">Your workforce health snapshot</div><div class="ab-c-body">This week's movement, screenings and plan activity in one view.</div></div>
+        </div>
+        <div class="ab-card edit">
+          <div class="ph" style="background-image:url(/images/allia/art-landscape.jpg)"></div>
+          <div class="in"><span class="ab-pill" style="background:#0f2537;color:#ff9f29">GUIDE</span><div class="ab-c-title">Understanding GLP-1 support</div><div class="ab-c-body">What the coverage includes and how members get started.</div><span class="more">Read More →</span></div>
+        </div>
+        <div class="ab-card plan dark">
+          <span class="ab-pill" style="background:transparent;border:2px solid #cdef63;color:#cdef63">CLINICAL</span>
+          <div class="ab-c-title">Managed care plan</div>
+          <div class="ab-c-body" style="color:#d1d5dc">Pharmacy, telehealth and lifestyle support in one membership.</div>
+          <span class="ab-btn">Choose plan</span>
+        </div>
+        <div class="ab-card plan light">
+          <span class="ab-pill" style="background:transparent;border:2px solid #ff9f29;color:#ff9f29">STARTER</span>
+          <div class="ab-c-title">Essentials plan</div>
+          <div class="ab-c-body">Core screenings and pharmacy access for smaller teams.</div>
+          <span class="ab-btn">Choose plan</span>
+        </div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">One card system — image, editorial and plan variants, built to scale.</span><span class="ab-count">05 / 08</span></div>
+    </figure>
+
+    <figure class="ab b06 breakout reveal">
+      <span class="eye">Allia — the system · 06</span>
+      <div class="ab-field">
+        <div class="ab-grad g1"><span class="lb">Primary</span></div>
+        <div class="ab-grad g2"><span class="lb">Secondary</span></div>
+        <div class="ab-grad g3"><span class="lb">Tertiary</span></div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">The gradient system — warmth layered over clinical calm.</span><span class="ab-count">06 / 08</span></div>
+    </figure>
+
+    <figure class="ab b07 breakout reveal">
+      <span class="eye">Allia — the type · 07</span>
+      <div class="ab-field">
+        <div class="ab-type-l"><span class="aa">Aa</span></div>
+        <div class="ab-type-r">
+          <div><div class="hd">A healthier workforce, one solution at a time.</div><span class="ab-anno">PP Museum — headings · 250 light</span></div>
+          <div><div class="bd">Clinical credibility with enough warmth to stay human.</div><span class="ab-anno">PP Neue Montreal — body · 375 book</span></div>
+        </div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">The humanized clinical register.</span><span class="ab-count">07 / 08</span></div>
+    </figure>
+
     <h2>the outcome.</h2>
     <p>We shipped the full rebrand and Webflow site inside the window, with the parent site live ahead of the January investor presentations — the fixed date the whole engagement was built around.</p>
     <p>On launch, the site scored 96/100 for performance and 100/100 for accessibility, best practices, and SEO on Google's Lighthouse audit — fast, accessible, and technically sound from day one. We handed over a brand system and a style guide hosted for the team in perpetuity, and a Webflow CMS structured with custom collections and plain-language fields so the internal team can publish and update sub-brand content without coming back to us. Where there were silos, one extensible visual language now carries the parent and its portfolio.</p>
 
     <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Outcome — shipped &amp; scored</span><p>Live for the investor window, and <span class="mag">scoring 96 to 100</span> across Google's core quality audits.</p></aside>
+
+    <figure class="ab b08 breakout reveal on-dark">
+      <span class="eye">Allia — the proof · 08</span>
+      <div class="ab-field">
+        <span class="ab-proof-num">96</span>
+        <div class="ab-proof-r">
+          <span class="ab-proof-to">to 100</span>
+          <span class="ab-proof-div"></span>
+          <span class="ab-proof-lbl">Google Lighthouse — performance · accessibility · best practices · SEO</span>
+        </div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">Live for the investor window.</span><span class="ab-count">08 / 08</span></div>
+    </figure>
 
     <figure class="cs-quote reveal">
       <blockquote>I cannot tell you enough how great it has been working with you and your team!</blockquote>

@@ -879,6 +879,56 @@
 
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
+<style id="hl-blocks">
+  /* Hall Constructors case-study visual blocks (design handoff 2026-07) — same .ab system as
+     the other sets. Two blocks: 01 the platform (contained 3-iPad composition on dark), 02 the
+     system (HTML component collage — five PNGs absolutely positioned in a white panel at the
+     handoff's 1920-master coordinates, expressed in cqw so the collage scales with the block).
+     NN / 02. Collage assets in images/hall-app/. */
+  .ab{container-type:inline-size;aspect-ratio:16/9;width:100%;box-sizing:border-box;
+    padding:5cqw;display:flex;flex-direction:column;position:relative;overflow:hidden;color:var(--ink)}
+  .ab .eye{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    font-size:max(10px,1.354cqw);line-height:1;color:var(--grey);flex:none}
+  .ab.on-dark{color:var(--paper)}
+  .ab.on-dark .eye{color:rgba(250,250,247,.65)}
+  .ab-field{flex:1;min-height:0;display:flex;margin-top:1.25cqw;margin-bottom:1.25cqw}
+  .ab-foot{flex:none;display:flex;justify-content:space-between;align-items:baseline;gap:2cqw}
+  .ab-cap{font-size:max(12px,1.5625cqw);line-height:1.25;color:var(--ink)}
+  .ab.on-dark .ab-cap{color:rgba(250,250,247,.85)}
+  .ab-count{font-family:var(--mono);font-weight:700;letter-spacing:.14em;font-size:max(10px,1.354cqw);color:var(--grey);white-space:nowrap}
+  .ab.on-dark .ab-count{color:rgba(250,250,247,.45)}
+  .ab img{background:transparent}
+  .prose .ab img{background:transparent}
+  /* 01 — contained composition on dark */
+  .ab.hl01{background:var(--ink-soft)}
+  .ab.hl01 .ab-field{align-items:center;justify-content:center}
+  .ab.hl01 .ab-field img{max-width:100%;max-height:100%;object-fit:contain}
+  /* 02 — component collage: white hairline panel on bone; children at master coords (px/19.2 = cqw) */
+  .ab.hl02{background:var(--paper)}
+  .ab.hl02 .panel{flex:1;min-height:0;position:relative;background:#fff;border:1px solid var(--line);overflow:hidden}
+  .ab.hl02 .panel img{position:absolute;display:block;height:auto}
+  .ab.hl02 .c-ticket{left:1.875cqw;top:2.656cqw;width:44.79cqw;border:1px solid var(--line);
+    box-shadow:0 1.25cqw 3.33cqw rgba(18,19,21,.14)}
+  .ab.hl02 .c-filter{left:41.98cqw;top:4.375cqw;width:27.08cqw;box-shadow:0 1.25cqw 3.33cqw rgba(18,19,21,.16)}
+  .ab.hl02 .c-drop{left:71.77cqw;top:2.5cqw;width:9.48cqw}
+  .ab.hl02 .c-caps{left:82.92cqw;top:5cqw;width:6.146cqw}
+  .ab.hl02 .c-card{left:43.02cqw;top:26.67cqw;width:41.67cqw}
+  /* rise-in (both are .prose .breakout — keep translateX(-50%) centering, like .pull.reveal) */
+  .ab.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .ab.reveal.in{opacity:1;transform:none}
+  .ab.breakout.reveal{transform:translateX(-50%) translateY(22px)}
+  .ab.breakout.reveal.in{transform:translateX(-50%)}
+  @media(prefers-reduced-motion:reduce){
+    .ab.reveal{opacity:1;transform:none;transition:none}
+    .ab.breakout.reveal{transform:translateX(-50%)}
+  }
+  @media(max-width:640px){
+    .ab{padding:24px 20px}
+    .ab .eye{font-size:11px}.ab-cap{font-size:14px}.ab-count{font-size:11px}
+    .ab-field{margin-top:16px;margin-bottom:16px}
+    /* the collage keeps its composition — everything is in cqw, so it scales uniformly */
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -972,6 +1022,12 @@
 <!-- Body — five-section authored structure -->
 <article class="article-body wrap">
   <div class="prose">
+    <figure class="ab hl01 breakout reveal on-dark">
+      <span class="eye">Hall — the platform · 01</span>
+      <div class="ab-field"><img src="/images/hall-app/platform.png" alt="The Hall ticketing system across three iPads — login, tickets, and overview"></div>
+      <div class="ab-foot"><span class="ab-cap">One iPad-first system for truck load management — login to logged ticket in seconds.</span><span class="ab-count">01 / 02</span></div>
+    </figure>
+
     <h2>the brief.</h2>
 
     <p>Hall Constructors ran truck load management on paper — forms that got lost, smudged, and miscounted, turning into billing errors and invoicing delays. They needed a rugged, genuinely easy digital system foremen would adopt in real construction conditions, one that accounted for outdoor glare, weather, and short training windows.</p>
@@ -988,6 +1044,18 @@
 
     <p>We started with the people, despite limited early access to foremen — interviewing stakeholders to pull out the functional must-haves, then building Figma prototypes around high-contrast screens, large touch targets, and stripped-down workflows. Critically, we tested those prototypes hands-on with foremen on iPads, in bright sunlight and rough conditions, and ran the feedback straight back into the design. Later phases put working versions on real job sites for final adjustments before launch, and we built a UI/UX design system so the app could grow without fragmenting.</p>
 
+    <figure class="ab hl02 breakout reveal">
+      <span class="eye">Hall — the system · 02</span>
+      <div class="panel">
+        <img class="c-ticket" src="/images/hall-app/ticket-details.png" alt="Ticket details — cost code entry on the iPad app">
+        <img class="c-filter" src="/images/hall-app/filter-modal.png" alt="The multi-select filter modal">
+        <img class="c-drop" src="/images/hall-app/account-dropdown.png" alt="Account dropdown component states">
+        <img class="c-caps" src="/images/hall-app/capsules.png" alt="Ticket status capsules">
+        <img class="c-card" src="/images/hall-app/job-card.png" alt="A job card component">
+      </div>
+      <div class="ab-foot"><span class="ab-cap">High-contrast components, glove-sized targets — a design system that grows without fragmenting.</span><span class="ab-count">02 / 02</span></div>
+    </figure>
+
     <h2>the solution.</h2>
 
     <h3>a field-ready ticketing system.</h3>
@@ -1001,6 +1069,11 @@
     <p>By capturing data digitally at the point of work, an entire class of errors structurally disappears: lost paper tickets and illegible handwriting can't corrupt invoicing when the count is recorded at source — which is what closes the gap between work done and work billed.</p>
 
     <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Outcome — adoption</span><p>Lost tickets and illegible handwriting can't corrupt invoicing — <span class="mag">when the count is captured at the source</span>.</p></aside>
+
+    <div class="cs-kiosk" id="cs-kiosk">
+      <video class="cs-kiosk-vid" src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/70689bf6ef664341705a5bb2f6cd5c4a/downloads/default.mp4" poster="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/70689bf6ef664341705a5bb2f6cd5c4a/thumbnails/thumbnail.jpg?time=2s" muted loop playsinline preload="metadata"></video>
+      <div class="cs-kiosk-cap"><span class="eyebrow">Outcome — in the wild</span><p>The ticket in the truck — dust, glare, gloves, and the count captured at the source.</p><span class="cs-kiosk-hint">Hover to play</span></div>
+    </div>
   </div>
 </article>
 

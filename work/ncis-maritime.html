@@ -879,6 +879,67 @@
 
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
+<style id="nc-blocks">
+  /* NCIS · HAVA case-study visual blocks (design handoff 2026-07) — same .ab system as the
+     Allia / TELUS / Chinatown sets. Four blocks, dark → light → dark → light: 01 the platform
+     (full-bleed dark), 02 filtering complexity (cream, white panels; right shot ×1.25 per
+     handoff), 03 the dashboard (dark centerpiece), 04 in operation (full-bleed LIGHT — ink
+     text over a subtle scrim). Imagery from the live Webflow CDN, in images/ncis/. NN / 04. */
+  .ab{container-type:inline-size;aspect-ratio:16/9;width:100%;box-sizing:border-box;
+    padding:5cqw;display:flex;flex-direction:column;position:relative;overflow:hidden;color:var(--ink)}
+  .ab .eye{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    font-size:max(10px,1.354cqw);line-height:1;color:var(--grey);flex:none}
+  .ab.on-dark{color:var(--paper)}
+  .ab.on-dark .eye{color:rgba(250,250,247,.65)}
+  .ab-field{flex:1;min-height:0;display:flex;margin-top:1.25cqw;margin-bottom:1.25cqw}
+  .ab-foot{flex:none;display:flex;justify-content:space-between;align-items:baseline;gap:2cqw}
+  .ab-cap{font-size:max(12px,1.5625cqw);line-height:1.25;color:var(--ink)}
+  .ab.on-dark .ab-cap{color:rgba(250,250,247,.85)}
+  .ab-count{font-family:var(--mono);font-weight:700;letter-spacing:.14em;font-size:max(10px,1.354cqw);color:var(--grey);white-space:nowrap}
+  .ab.on-dark .ab-count{color:rgba(250,250,247,.45)}
+  .ab img{background:transparent}
+  .prose .ab img{background:transparent}
+  /* full-bleed cover blocks (01 dark, 04 light) */
+  .ab.nc-full{padding:0}
+  .ab.nc-full .full{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+  .ab.nc-full .prot{position:absolute;inset:0;z-index:2;pointer-events:none}
+  .ab.nc-full .chrome{position:absolute;inset:0;z-index:3;padding:5cqw;display:flex;flex-direction:column;pointer-events:none}
+  .ab.nc-full .ab-field{margin:0}
+  .ab.nc01{background:var(--ink-soft)}
+  .ab.nc01 .prot{background:linear-gradient(180deg,rgba(18,19,21,.45) 0%,rgba(18,19,21,0) 28%,rgba(18,19,21,0) 58%,rgba(18,19,21,.6) 100%)}
+  .ab.nc04{background:var(--paper)}
+  .ab.nc04 .prot{background:linear-gradient(180deg,rgba(18,19,21,.06) 0%,rgba(18,19,21,0) 30%,rgba(18,19,21,0) 62%,rgba(18,19,21,.24) 100%)}
+  .ab.nc04 .ab-count{color:rgba(18,19,21,.55)}
+  /* 02 paired screens — cream field, white cells; right shot ×1.25 */
+  .ab.nc02{background:var(--paper)}
+  .ab.nc02 .ab-field{gap:1px;background:var(--line);border:1px solid var(--line)}
+  .ab.nc02 .cell{flex:1;min-width:0;background:#fff;display:flex;align-items:center;justify-content:center;padding:2.5cqw;overflow:hidden}
+  .ab.nc02 .cell img{max-width:92%;max-height:100%;object-fit:contain}
+  .ab.nc02 .cell img.x125{transform:scale(1.25)}
+  /* 03 dark centerpiece */
+  .ab.nc03{background:var(--ink-soft)}
+  .ab.nc03 .ab-field{align-items:center;justify-content:center}
+  .ab.nc03 .ab-field img{max-width:73%;max-height:100%;object-fit:contain}
+  /* rise-in (all four are .prose .breakout — keep translateX(-50%) centering, like .pull.reveal) */
+  .ab.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .ab.reveal.in{opacity:1;transform:none}
+  .ab.breakout.reveal{transform:translateX(-50%) translateY(22px)}
+  .ab.breakout.reveal.in{transform:translateX(-50%)}
+  @media(prefers-reduced-motion:reduce){
+    .ab.reveal{opacity:1;transform:none;transition:none}
+    .ab.breakout.reveal{transform:translateX(-50%)}
+  }
+  @media(max-width:640px){
+    .ab{aspect-ratio:auto;padding:24px 20px}
+    .ab.nc-full{padding:0;aspect-ratio:16/11}.ab.nc-full .full{position:relative}
+    .ab .eye{font-size:11px}.ab-cap{font-size:14px}.ab-count{font-size:11px}
+    .ab-field{margin-top:16px;margin-bottom:16px}
+    .ab.nc02 .ab-field{flex-direction:column}
+    .ab.nc02 .cell{min-height:220px;padding:22px}
+    .ab.nc02 .cell img{max-width:82%}.ab.nc02 .cell img.x125{transform:scale(1.1)}
+    .ab.nc03 .ab-field img{max-width:92%}
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -972,11 +1033,30 @@
 <!-- Body — five-section authored structure -->
 <article class="article-body wrap">
   <div class="prose">
+    <figure class="ab nc-full nc01 breakout reveal on-dark">
+      <img class="full" src="/images/ncis/hero.avif" alt="The HAVA maritime intelligence platform — welcome screen on a laptop">
+      <div class="prot"></div>
+      <div class="chrome">
+        <span class="eye">NCIS — the platform · 01</span>
+        <div class="ab-field"></div>
+        <div class="ab-foot"><span class="ab-cap">HAVA — one login into ownership networks, financial flows, and crime intelligence.</span><span class="ab-count">01 / 04</span></div>
+      </div>
+    </figure>
+
     <h2>the brief.</h2>
 
     <p>National Crime Investigative Services builds technology for threat detection and intelligence, and faced an evolving global threat landscape that demanded real-time maritime situational awareness. The existing tooling was the obstacle: legacy systems to modernize, investigative workflows to streamline, and complex data from many sources that needed to come together into one platform — so international security teams could respond faster and act on clearer insight.</p>
 
     <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Brief — the friction</span><p>Maritime threat investigation moves at <span class="mag">the speed of the slowest screen</span>.</p></aside>
+
+    <figure class="ab nc02 breakout reveal">
+      <span class="eye">NCIS — filtering complexity · 02</span>
+      <div class="ab-field">
+        <div class="cell"><img src="/images/ncis/brief-1.avif" alt="HAVA's filtering screens — crime categories, vessel records, and the live map"></div>
+        <div class="cell"><img class="x125" src="/images/ncis/brief-2.avif" alt="The filter panel over the threat map, on desktop"></div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">Complex data from many sources, narrowed to the one thing an analyst needs to see.</span><span class="ab-count">02 / 04</span></div>
+    </figure>
 
     <h2>the challenge.</h2>
 
@@ -992,11 +1072,32 @@
 
     <p>We brought disparate data sources into a single, centralized dashboard, with advanced visualizations, mapping tools, and real-time threat alerting to make intelligence immediately actionable. The platform was engineered for speed at scale — fast-loading interfaces even with large datasets — and built responsive and mobile-friendly so investigations can happen in the field, not just at a desk.</p>
 
+    <figure class="ab nc03 breakout reveal on-dark">
+      <span class="eye">NCIS — the dashboard · 03</span>
+      <div class="ab-field"><img src="/images/ncis/dashboard.avif" alt="The HAVA threat-map dashboard on a studio display"></div>
+      <div class="ab-foot"><span class="ab-cap">Disparate sources unified into one live map — threats clustered, ranked, and actionable.</span><span class="ab-count">03 / 04</span></div>
+    </figure>
+
     <h2>the outcome.</h2>
 
     <p>The platform is in production, consolidating previously siloed sources into one real-time view and accelerating investigative workflows and reporting across global maritime security operations — the interface no longer standing between an analyst and the answer.</p>
 
     <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Outcome — one view</span><p>Disparate sources, one real-time view — <span class="mag">built to make the next decision faster</span>.</p></aside>
+
+    <figure class="ab nc-full nc04 breakout reveal">
+      <img class="full" src="/images/ncis/cover.webp" alt="HAVA in production — the platform running across two laptops">
+      <div class="prot"></div>
+      <div class="chrome">
+        <span class="eye">NCIS — in operation · 04</span>
+        <div class="ab-field"></div>
+        <div class="ab-foot"><span class="ab-cap">In production across global maritime security operations — from the desk to the field.</span><span class="ab-count">04 / 04</span></div>
+      </div>
+    </figure>
+
+    <div class="cs-kiosk" id="cs-kiosk">
+      <video class="cs-kiosk-vid" src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/fa095eab4cca874fe0b18c415320d758/downloads/default.mp4" poster="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/fa095eab4cca874fe0b18c415320d758/thumbnails/thumbnail.jpg?time=2s" muted loop playsinline preload="metadata"></video>
+      <div class="cs-kiosk-cap"><span class="eyebrow">Outcome — in the wild</span><p>The threat map on watch — live on the bridge, where the decisions get made.</p><span class="cs-kiosk-hint">Hover to play</span></div>
+    </div>
   </div>
 </article>
 

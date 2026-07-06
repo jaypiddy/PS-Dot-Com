@@ -871,6 +871,62 @@
 
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
+<style id="en-blocks">
+  /* Energizer case-study visual blocks (design handoff 2026-07) — same .ab system as the other
+     sets. Four blocks: 01-03 single product render on a white cell over cream, 04 the "30 days"
+     proof stat on ink. Classes namespaced .en-* (NOT .stat/.cell/.num — those collide with the
+     proof-row odometer + other blocks). Local renders in images/energizer/. NN / 04. */
+  .ab{container-type:inline-size;aspect-ratio:16/9;width:100%;box-sizing:border-box;
+    padding:5cqw;display:flex;flex-direction:column;position:relative;overflow:hidden;color:var(--ink)}
+  .ab .eye{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    font-size:max(10px,1.354cqw);line-height:1;color:var(--grey);flex:none}
+  .ab.on-dark{color:var(--paper)}
+  .ab.on-dark .eye{color:rgba(250,250,247,.65)}
+  .ab-field{flex:1;min-height:0;display:flex;margin-top:1.25cqw;margin-bottom:1.25cqw}
+  .ab-foot{flex:none;display:flex;justify-content:space-between;align-items:baseline;gap:2cqw}
+  .ab-cap{font-size:max(12px,1.5625cqw);line-height:1.25;color:var(--ink)}
+  .ab.on-dark .ab-cap{color:rgba(250,250,247,.85)}
+  .ab-count{font-family:var(--mono);font-weight:700;letter-spacing:.14em;font-size:max(10px,1.354cqw);color:var(--grey);white-space:nowrap}
+  .ab.on-dark .ab-count{color:rgba(250,250,247,.45)}
+  .ab img{background:transparent}
+  .prose .ab img{background:transparent}
+  /* 01-03 single product render — cream field, ruled white cell */
+  .ab.en-img{background:var(--paper)}
+  .ab.en-img .en-cell{flex:1;min-width:0;background:#fff;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;padding:2.5cqw;overflow:hidden}
+  .ab.en-img .en-cell img{max-height:100%;object-fit:contain}
+  .ab.en01 .en-cell img{max-width:88%}
+  .ab.en02 .en-cell img{max-width:94%}
+  .ab.en03 .en-cell img{max-width:85%}
+  /* 04 the outcome — 30 days proof stat on ink */
+  .ab.en04{background:var(--ink)}
+  .ab.en04 .ab-field{align-items:center;justify-content:center;gap:4.5cqw}
+  .en-num{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;
+    font-size:25cqw;line-height:.82;letter-spacing:-.02em;color:var(--magenta);display:flex;align-items:baseline;gap:1.2cqw}
+  .en-unit{font-size:6.25cqw;color:rgba(250,250,247,.85)}
+  .en-seam{flex:none;width:1px;align-self:center;height:15cqw;background:var(--line-light)}
+  .en-lbl{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    font-size:max(11px,1.35cqw);line-height:1.6;color:rgba(250,250,247,.85);max-width:16em}
+  /* rise-in (all four are .prose .breakout — keep translateX(-50%) centering, like .pull.reveal) */
+  .ab.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .ab.reveal.in{opacity:1;transform:none}
+  .ab.breakout.reveal{transform:translateX(-50%) translateY(22px)}
+  .ab.breakout.reveal.in{transform:translateX(-50%)}
+  @media(prefers-reduced-motion:reduce){
+    .ab.reveal{opacity:1;transform:none;transition:none}
+    .ab.breakout.reveal{transform:translateX(-50%)}
+  }
+  @media(max-width:640px){
+    .ab{aspect-ratio:auto;padding:24px 20px}
+    .ab .eye{font-size:11px}.ab-cap{font-size:14px}.ab-count{font-size:11px}
+    .ab-field{margin-top:16px;margin-bottom:16px}
+    .ab.en-img .en-cell{min-height:240px;padding:22px}
+    .ab.en-img .en-cell img{max-width:88%}
+    .ab.en04 .ab-field{flex-direction:column;gap:18px;text-align:center}
+    .en-num{font-size:150px;gap:10px}.en-unit{font-size:40px}
+    .en-seam{width:120px;height:1px;align-self:center}.en-lbl{font-size:12px;max-width:26ch;text-align:center}
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -974,12 +1030,30 @@
     <h2>the challenge.</h2>
     <p>Traditional product development would have spent months and a significant budget before anyone outside the building touched the concept. The challenge was to invert that — get a realistic prototype in front of real users quickly enough to make a confident go/no-go call, in a category where consumer expectations were unknown and the cost of guessing wrong was measured in R&amp;D millions.</p>
 
+    <figure class="ab en-img en01 breakout reveal">
+      <span class="eye">Energizer — the concept · 01</span>
+      <div class="ab-field"><div class="en-cell"><img src="/images/energizer/energy-pod.jpg" alt="The Energizer Energy Pod module and dock, exploded"></div></div>
+      <div class="ab-foot"><span class="ab-cap">An unfamiliar product category, made tangible before a dollar of R&amp;D.</span><span class="ab-count">01 / 04</span></div>
+    </figure>
+
     <h2>the process.</h2>
     <p>We ran a lean, iterative design sprint: rapid UX prototyping to simulate the product's interface and features, followed by real-world user testing to collect actionable feedback within a 30-day window. No internal politics, no committee — just a fast loop from concept to validated signal.</p>
+
+    <figure class="ab en-img en02 breakout reveal">
+      <span class="eye">Energizer — the experience · 02</span>
+      <div class="ab-field"><div class="en-cell"><img src="/images/energizer/app-screens.jpg" alt="The POD companion app — Connected, Battery Status, and Charging screens"></div></div>
+      <div class="ab-foot"><span class="ab-cap">The companion app that made the concept testable with real users.</span><span class="ab-count">02 / 04</span></div>
+    </figure>
 
     <h2>the solution.</h2>
     <h3>a full-featured prototype, fast.</h3>
     <p>Rather than mockups, we produced a prototype real enough to test as if it were the product, then put it in front of target users. That fidelity is what made the feedback trustworthy: people reacted to something that behaved like the real thing, so the insights were the kind you can bet a roadmap on.</p>
+
+    <figure class="ab en-img en03 breakout reveal">
+      <span class="eye">Energizer — in use · 03</span>
+      <div class="ab-field"><div class="en-cell"><img src="/images/energizer/powerbank.jpg" alt="The Energizer power bank charging an iPhone to 100% over an orange braided cable"></div></div>
+      <div class="ab-foot"><span class="ab-cap">One power bank, one cable — the promise, proven in the hand.</span><span class="ab-count">03 / 04</span></div>
+    </figure>
 
     <h2>the outcome.</h2>
     <p>In 30 days, Energizer had data-backed direction on an unfamiliar product category — the ideal customer experience defined, and the go-to-market risk cut by validating product direction before full investment. The validation saved millions in R&amp;D that the concept would otherwise have consumed on the way to the same answer.</p>
@@ -987,6 +1061,21 @@
     <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Outcome — the payoff</span><p>30 days to a data-backed call — <span class="mag">saving millions</span> the slow path would have burned.</p></aside>
 
     <p class="end">Sometimes the most valuable result is a fast, early "no."</p>
+
+    <figure class="ab en04 breakout reveal on-dark">
+      <span class="eye">Energizer — the outcome · 04</span>
+      <div class="ab-field">
+        <span class="en-num">30<span class="en-unit">days</span></span>
+        <span class="en-seam"></span>
+        <span class="en-lbl">From concept to validated proof of concept</span>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">A go / no-go call made before the expensive mistakes got made.</span><span class="ab-count">04 / 04</span></div>
+    </figure>
+
+    <div class="cs-reel" id="cs-reel">
+      <video class="cs-reel-vid" src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/13b3c4ffad635214521fa0802561ba47/downloads/default.mp4" poster="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/13b3c4ffad635214521fa0802561ba47/thumbnails/thumbnail.jpg?time=1s" muted loop playsinline preload="metadata"></video>
+      <div class="cs-reel-cap"><span class="eyebrow">Outcome — in the wild</span><p>The concept in motion — a category made tangible in 30 days.</p><span class="cs-reel-hint">Hover to play</span></div>
+    </div>
   </div>
 </article>
 

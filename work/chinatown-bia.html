@@ -792,12 +792,11 @@
     font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);margin-bottom:12px}
   .cs-fact dd{font-family:var(--display);font-weight:500;margin:0;
     font-size:clamp(15px,1.2vw,18px);line-height:1.32;letter-spacing:-.005em;color:var(--ink)}
-  @media(max-width:720px){
+  @media(max-width:860px){
     .cs-facts{grid-template-columns:1fr 1fr}
-    .cs-fact{border-right:0;border-bottom:1px solid var(--line);padding:16px 0!important}
-    .cs-fact:nth-child(odd){padding-right:18px;border-right:1px solid var(--line)}
-    .cs-fact:nth-child(even){padding-left:18px}
-    .cs-fact+.cs-fact{padding-left:0}
+    .cs-fact{border-right:0;border-bottom:1px solid var(--line);padding-top:16px;padding-bottom:16px}
+    .cs-fact:nth-child(odd){border-right:1px solid var(--line);padding-left:0;padding-right:18px}
+    .cs-fact:nth-child(even){padding-left:18px;padding-right:0}
   }
   .cs-dossier .cs-stats{margin:0}
   .cs-i{display:block;margin:0 0 14px;opacity:1;

@@ -911,6 +911,11 @@
   .ab.ct02 .ab-field{gap:1px;background:var(--line);border:1px solid var(--line)}
   .ab.ct02 .cell{flex:1;min-width:0;background:#fff;display:flex;align-items:center;justify-content:center;padding:2.5cqw;overflow:hidden}
   .ab.ct02 .cell img{max-width:88%;max-height:100%;object-fit:contain}
+  /* 04 the character — single contained shot on dark (ending.webp is portrait, so
+     cover would crop the phone group brutally; contain shows the whole composition) */
+  .ab.ct04{background:var(--ink-soft)}
+  .ab.ct04 .ab-field{align-items:center;justify-content:center}
+  .ab.ct04 .ab-field img{max-width:100%;max-height:100%;object-fit:contain}
   /* 03 paired screens — dark field, dark panels */
   .ab.ct03{background:var(--ink-soft)}
   .ab.ct03 .ab-field{gap:1px;background:var(--line-light);border:1px solid var(--line-light)}
@@ -933,6 +938,7 @@
     .ab.ct02 .ab-field,.ab.ct03 .ab-field{flex-direction:column}
     .ab.ct02 .cell,.ab.ct03 .cell{min-height:240px;padding:22px}
     .ab.ct02 .cell img,.ab.ct03 .cell img{max-width:78%}
+    .ab.ct04 .ab-field img{max-height:66vh}
   }
 </style>
 </head>
@@ -1090,14 +1096,10 @@
 
     <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Outcome — still running</span><p>Nearly four years on, the BIA's team has expanded the site well past what we built — <span class="mag">without us</span>.</p></aside>
   </div>
-    <figure class="ab ct-full breakout reveal on-dark">
-      <img class="full" src="/images/chinatown-bia/ending.webp" alt="Chinatown's character carried through the app — street-signage cues and real neighbourhood photography">
-      <div class="prot"></div>
-      <div class="chrome">
-        <span class="eye">Vancouver Chinatown BIA — the character · 04</span>
-        <div class="ab-field"></div>
-        <div class="ab-foot"><span class="ab-cap">Chinatown as it actually is — street-signage wayfinding and real neighbourhood photography, not stock chinoiserie.</span><span class="ab-count">04 / 04</span></div>
-      </div>
+    <figure class="ab ct04 breakout reveal on-dark">
+      <span class="eye">Vancouver Chinatown BIA — the character · 04</span>
+      <div class="ab-field"><img src="/images/chinatown-bia/ending.webp" alt="Chinatown's character carried through the app — street-signage cues and real neighbourhood photography"></div>
+      <div class="ab-foot"><span class="ab-cap">Chinatown as it actually is — street-signage wayfinding and real neighbourhood photography, not stock chinoiserie.</span><span class="ab-count">04 / 04</span></div>
     </figure>
 </article>
 

@@ -850,7 +850,9 @@
 
   /* ---- Homepage sync: receipts odometer, slash motif, black-block pull ---- */
   .cs-dossier .cs-rec-eyebrow{display:block;color:var(--magenta-ink);margin-bottom:clamp(20px,2.4vw,32px)}
-  .cs-dossier .proof-row{grid-template-columns:repeat(3,1fr)}
+  /* Angel Oak has two receipts, not three — size the columns to content so the
+     pair sits as a snug left-aligned unit instead of stranding a stat mid-row. */
+  .cs-dossier .proof-row{grid-template-columns:max-content max-content;justify-content:start}
   @media(max-width:760px){.cs-dossier .proof-row{grid-template-columns:1fr}}
 
   /* // shear motif on pull quotes — the hero slash-field SVG, scaled down */
@@ -908,12 +910,12 @@
   .ab.ao02 .ab-field img{max-height:100%;max-width:78%;object-fit:contain}
   /* 03 statement — ink, headline+body / Pixelbook */
   .ab.ao03{background:var(--ink)}
-  .ab.ao03 .ab-field{display:grid;grid-template-columns:1.05fr .95fr;gap:3.333cqw;align-items:center}
+  .ab.ao03 .ab-field{display:grid;grid-template-columns:1fr 1.1fr;gap:3.333cqw;align-items:center}
   .ao-hd{font-family:var(--display);font-weight:900;line-height:1.05;letter-spacing:-.015em;font-size:max(24px,3.75cqw);color:var(--paper)}
   .ao-hd em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;color:var(--magenta)}
   .ao-body{margin:1.6cqw 0 0;line-height:1.5;font-size:max(14px,1.302cqw);color:rgba(250,250,247,.7);max-width:46ch}
   .ao-col-img{display:flex;align-items:center;justify-content:center;min-width:0;min-height:0}
-  .ao-col-img img{max-height:23.96cqw;max-width:100%;width:auto;object-fit:contain}
+  .ao-col-img img{max-height:35cqw;max-width:100%;width:auto;object-fit:contain}
   /* 04 advisor iPhone on cream */
   .ab.ao04{background:var(--paper)}
   .ab.ao04 .ab-field{align-items:center;justify-content:center}
@@ -1039,7 +1041,7 @@
     <div class="cs-fact"><dt>Platform</dt><dd>Webflow · SEO</dd></div>
   </dl>
   <span class="eyebrow cs-rec-eyebrow">The receipts</span>
-  <div class="proof-row" id="proofRow" style="grid-template-columns:repeat(2,1fr)">
+  <div class="proof-row" id="proofRow">
     <div class="stat"><b><span class="sr-only">40</span><span class="odo" aria-hidden="true"><span class="col" style="--d:4"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx">%</span></b><span>lift in organic leads after launch</span></div>
     <div class="stat"><b><span class="sr-only">30</span><span class="odo" aria-hidden="true"><span class="col" style="--d:3"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span></b><span>days: the window that 40% lift landed in</span></div>
   </div>

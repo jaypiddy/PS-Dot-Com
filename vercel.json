@@ -396,6 +396,496 @@
       "source": "/why-stand-the-f-back",
       "destination": "/insights/why-stand-the-f-back",
       "permanent": true
+    },
+    {
+      "source": "/our-work/5x5",
+      "destination": "/work/5x5",
+      "permanent": true
+    },
+    {
+      "source": "/our-work/bcw",
+      "destination": "/work/bcw",
+      "permanent": true
+    },
+    {
+      "source": "/our-work/delta-controls",
+      "destination": "/work/delta-controls",
+      "permanent": true
+    },
+    {
+      "source": "/our-work/luxxee",
+      "destination": "/work/luxxee",
+      "permanent": true
+    },
+    {
+      "source": "/our-work/phinity",
+      "destination": "/work/phinity",
+      "permanent": true
+    },
+    {
+      "source": "/our-work/xyon",
+      "destination": "/work/xyon",
+      "permanent": true
+    },
+    {
+      "source": "/our-work/chinatown-bia",
+      "destination": "/work/chinatown-bia",
+      "permanent": true
+    },
+    {
+      "source": "/our-work/telus-rewards-loyalty-platform-redesign",
+      "destination": "/work/telus-rewards",
+      "permanent": true
+    },
+    {
+      "source": "/our-work/telus-support",
+      "destination": "/work/telus-support",
+      "permanent": true
+    },
+    {
+      "source": "/our-work/angel-oak-home-loans-seo-website-redesign",
+      "destination": "/work/angel-oak-home-loans",
+      "permanent": true
+    },
+    {
+      "source": "/our-work/energizer",
+      "destination": "/work/energizer",
+      "permanent": true
+    },
+    {
+      "source": "/our-work/bringing-brand-unity-to-a-global-veterinary-network",
+      "destination": "/work/nva",
+      "permanent": true
+    },
+    {
+      "source": "/our-work/telus-koodo-dealer-accessories-platform-design",
+      "destination": "/work/case-telus-koodo",
+      "permanent": true
+    },
+    {
+      "source": "/our-work/hall-constructors-digital-ticketing-transformation",
+      "destination": "/work/hall-constructors",
+      "permanent": true
+    },
+    {
+      "source": "/our-work/bc-parks-foundation",
+      "destination": "/work/bc-parks-foundation",
+      "permanent": true
+    },
+    {
+      "source": "/our-work/nva-global-website-redesign",
+      "destination": "/work/nva",
+      "permanent": true
+    },
+    {
+      "source": "/studio/iron-mountain-case-study",
+      "destination": "/work/iron-mountain",
+      "permanent": true
+    },
+    {
+      "source": "/studio/celestial-ai-studiocase-study",
+      "destination": "/work/celestial-ai",
+      "permanent": true
+    },
+    {
+      "source": "/studio/ernest-packaging-studio-case-study",
+      "destination": "/work/ernest-packaging",
+      "permanent": true
+    },
+    {
+      "source": "/studio/the-algorithm-trap-power-shifter-studio-case-study",
+      "destination": "/work/algorithm-trap",
+      "permanent": true
+    },
+    {
+      "source": "/studio/rapid-mvp-launch-video-power-shifter-studio-case-study",
+      "destination": "/work/rapid-mvp-launch",
+      "permanent": true
+    },
+    {
+      "source": "/maple-health-power-shifter-studio-case-study",
+      "destination": "/work/maple-health",
+      "permanent": true
+    },
+    {
+      "source": "/studio/power-shifter-studio-case-study-template",
+      "destination": "/studios",
+      "permanent": true
+    },
+    {
+      "source": "/casestudies/energizer",
+      "destination": "/work/energizer",
+      "permanent": true
+    },
+    {
+      "source": "/casestudies/lululemon",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/casestudies/tangram",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/files/lululemontakebackproposal",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/our-work",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/studio",
+      "destination": "/studios",
+      "permanent": true
+    },
+    {
+      "source": "/join-us",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/why-us",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/rapid-mvp-development",
+      "destination": "/digital",
+      "permanent": true
+    },
+    {
+      "source": "/blog/4-reasons-why-great-agencies-arent-responding-to-your-rfps",
+      "destination": "/insights/4-reasons-why-great-agencies-arent-responding-to-your-rfps",
+      "permanent": true
+    },
+    {
+      "source": "/blog/4-tips-to-select-ai-project-that-is-not-set-to-fail-from-get-go",
+      "destination": "/insights/4-tips-to-select-ai-project-that-is-not-set-to-fail-from-get-go",
+      "permanent": true
+    },
+    {
+      "source": "/blog/5-problems-with-relying-on-zoom-during-the-covid-19-pandemic",
+      "destination": "/insights/5-problems-with-relying-on-zoom-during-the-covid-19-pandemic",
+      "permanent": true
+    },
+    {
+      "source": "/blog/advent-of-lean-service-design-in-the-age-of-covid19",
+      "destination": "/insights/advent-of-lean-service-design-in-the-age-of-covid19",
+      "permanent": true
+    },
+    {
+      "source": "/blog/applying-service-design-principles-during-a-pandemic",
+      "destination": "/insights/applying-service-design-principles-during-a-pandemic",
+      "permanent": true
+    },
+    {
+      "source": "/blog/apps-what-you-experience-is-only-the-tip-of-the-iceberg",
+      "destination": "/insights/apps-what-you-experience-is-only-the-tip-of-the-iceberg",
+      "permanent": true
+    },
+    {
+      "source": "/blog/betting-on-ourselves-the-future-of-luxury-watch-shopping",
+      "destination": "/insights/betting-on-ourselves-the-future-of-luxury-watch-shopping",
+      "permanent": true
+    },
+    {
+      "source": "/blog/can-vibe-design-and-coding-ai-apps-build-a-real-product",
+      "destination": "/insights/can-vibe-design-and-coding-ai-apps-build-a-real-product",
+      "permanent": true
+    },
+    {
+      "source": "/blog/clutch-top-agencies-canada-2019",
+      "destination": "/insights/clutch-top-agencies-canada-2019",
+      "permanent": true
+    },
+    {
+      "source": "/blog/clutch-top-agency-in-canada",
+      "destination": "/insights/clutch-top-agency-in-canada",
+      "permanent": true
+    },
+    {
+      "source": "/blog/collaborating-effectively-in-a-headless-environment",
+      "destination": "/insights/collaborating-effectively-in-a-headless-environment",
+      "permanent": true
+    },
+    {
+      "source": "/blog/common-pitfalls-in-migrating-to-headless-cms",
+      "destination": "/insights/common-pitfalls-in-migrating-to-headless-cms",
+      "permanent": true
+    },
+    {
+      "source": "/blog/composable-development-ai-agents",
+      "destination": "/insights/composable-development-ai-agents",
+      "permanent": true
+    },
+    {
+      "source": "/blog/design-sprint-day-one-recap---planning-the-farmstand-app-experiment",
+      "destination": "/insights/design-sprint-day-one-recap---planning-the-farmstand-app-experiment",
+      "permanent": true
+    },
+    {
+      "source": "/blog/design-sprint-day-three-recap---prioritize-debate-and-drift-from-the-vibe",
+      "destination": "/insights/design-sprint-day-three-recap---prioritize-debate-and-drift-from-the-vibe",
+      "permanent": true
+    },
+    {
+      "source": "/blog/design-sprint-day-two-recap-pt-1---from-hunches-to-high-fidelity-directions",
+      "destination": "/insights/design-sprint-day-two-recap-pt-1---from-hunches-to-high-fidelity-directions",
+      "permanent": true
+    },
+    {
+      "source": "/blog/design-sprint-day-two-recap-pt-2---sketch-share-and-stress-test",
+      "destination": "/insights/design-sprint-day-two-recap-pt-2---sketch-share-and-stress-test",
+      "permanent": true
+    },
+    {
+      "source": "/blog/designing-for-rage-how-platforms-profit-from-chaos",
+      "destination": "/insights/designing-for-rage-how-platforms-profit-from-chaos",
+      "permanent": true
+    },
+    {
+      "source": "/blog/designing-with-diversity-increasing-accessibility-in-the-insurance-industry",
+      "destination": "/insights/designing-with-diversity-increasing-accessibility-in-the-insurance-industry",
+      "permanent": true
+    },
+    {
+      "source": "/blog/dev-shops-creative-agencies-business-consultants-and-digital-product-studios-who-should-you-partner-with",
+      "destination": "/insights/dev-shops-creative-agencies-business-consultants-and-digital-product-studios-who-should-you-partner-with",
+      "permanent": true
+    },
+    {
+      "source": "/blog/education-in-a-pandemic-crash-course-in-agile-product-design-from-leading-edtech-experts",
+      "destination": "/insights/education-in-a-pandemic-crash-course-in-agile-product-design-from-leading-edtech-experts",
+      "permanent": true
+    },
+    {
+      "source": "/blog/enhancing-user-experience-with-headless-cms",
+      "destination": "/insights/enhancing-user-experience-with-headless-cms",
+      "permanent": true
+    },
+    {
+      "source": "/blog/everything-you-need-to-know-about-ai-agents-faqs-answered",
+      "destination": "/insights/everything-you-need-to-know-about-ai-agents-faqs-answered",
+      "permanent": true
+    },
+    {
+      "source": "/blog/everythings-gone-headless-is-your-organization-ready",
+      "destination": "/insights/everythings-gone-headless-is-your-organization-ready",
+      "permanent": true
+    },
+    {
+      "source": "/blog/headless-cms-help-ebook",
+      "destination": "/insights/headless-cms-help-ebook",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-empathy-in-ux-enhances-cx",
+      "destination": "/insights/how-empathy-in-ux-enhances-cx",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-be-the-boss-of-the-bots----why-humanities-might-hold-the-key",
+      "destination": "/insights/how-to-be-the-boss-of-the-bots----why-humanities-might-hold-the-key",
+      "permanent": true
+    },
+    {
+      "source": "/blog/integrating-product-design-and-brand-experience-insights-from-episode-2-with-katie-deloso",
+      "destination": "/insights/integrating-product-design-and-brand-experience-insights-from-episode-2-with-katie-deloso",
+      "permanent": true
+    },
+    {
+      "source": "/blog/integrating-third-party-tools-with-headless-cms",
+      "destination": "/insights/integrating-third-party-tools-with-headless-cms",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jp-holecka-accepted-into-forbes-agency-council",
+      "destination": "/insights/jp-holecka-accepted-into-forbes-agency-council",
+      "permanent": true
+    },
+    {
+      "source": "/blog/jp-holecka-elected-to-ica-board-of-directors",
+      "destination": "/insights/jp-holecka-elected-to-ica-board-of-directors",
+      "permanent": true
+    },
+    {
+      "source": "/blog/measuring-the-success-of-your-headless-cms-implementation",
+      "destination": "/insights/measuring-the-success-of-your-headless-cms-implementation",
+      "permanent": true
+    },
+    {
+      "source": "/blog/new-way-to-write-rfps",
+      "destination": "/insights/new-way-to-write-rfps",
+      "permanent": true
+    },
+    {
+      "source": "/blog/one-year-on---the-evolving-role-of-chief-artificial-intelligence-officers",
+      "destination": "/insights/one-year-on---the-evolving-role-of-chief-artificial-intelligence-officers",
+      "permanent": true
+    },
+    {
+      "source": "/blog/optimizing-content-delivery-with-api-driven-architecture",
+      "destination": "/insights/optimizing-content-delivery-with-api-driven-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/blog/outsourcing-digital-product-design",
+      "destination": "/insights/outsourcing-digital-product-design",
+      "permanent": true
+    },
+    {
+      "source": "/blog/power-shifter-ceo-jp-holecka-named-bcs-2022-ceo-of-the-year",
+      "destination": "/insights/power-shifter-ceo-jp-holecka-named-bcs-2022-ceo-of-the-year",
+      "permanent": true
+    },
+    {
+      "source": "/blog/power-shifter-launches-rapid-mvp-service-combining-product-expertise-with-generative-ai-to-bring-ideas-to-life----fast",
+      "destination": "/insights/power-shifter-launches-rapid-mvp-service-combining-product-expertise-with-generative-ai-to-bring-ideas-to-life----fast",
+      "permanent": true
+    },
+    {
+      "source": "/blog/power-shifter-studios-takes-home-two-silver-addy-awards",
+      "destination": "/insights/power-shifter-studios-takes-home-two-silver-addy-awards",
+      "permanent": true
+    },
+    {
+      "source": "/blog/powershifter-ventures-announces-closed-beta-launch-applications-for-luxxee",
+      "destination": "/insights/powershifter-ventures-announces-closed-beta-launch-applications-for-luxxee",
+      "permanent": true
+    },
+    {
+      "source": "/blog/powershifter-wins-ux-for-product-at-the-vancouver-user-experience-awards",
+      "destination": "/insights/powershifter-wins-ux-for-product-at-the-vancouver-user-experience-awards",
+      "permanent": true
+    },
+    {
+      "source": "/blog/product-design-insights-great-reads-for-april",
+      "destination": "/insights/product-design-insights-great-reads-for-april",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ready-to-switch-to-webflow-heres-where-to-start",
+      "destination": "/insights/ready-to-switch-to-webflow-heres-where-to-start",
+      "permanent": true
+    },
+    {
+      "source": "/blog/scaling-your-content-strategy-with-headless-cms",
+      "destination": "/insights/scaling-your-content-strategy-with-headless-cms",
+      "permanent": true
+    },
+    {
+      "source": "/blog/stop-designing-for-your-industry-start-designing-for-your-customers",
+      "destination": "/insights/stop-designing-for-your-industry-start-designing-for-your-customers",
+      "permanent": true
+    },
+    {
+      "source": "/blog/structuring-your-content-for-maximum-flexibility",
+      "destination": "/insights/structuring-your-content-for-maximum-flexibility",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-brand-experience-podcast",
+      "destination": "/insights/the-brand-experience-podcast",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-brand-experience-youtube-channel-and-podcast",
+      "destination": "/insights/the-brand-experience-youtube-channel-and-podcast",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-creator-middle-class-is-powered-by-third-party-tech-platforms",
+      "destination": "/insights/the-creator-middle-class-is-powered-by-third-party-tech-platforms",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-future-of-headless-cms-and-what-it-means-for-your-business",
+      "destination": "/insights/the-future-of-headless-cms-and-what-it-means-for-your-business",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-risks-of-trusting-llms-gpts-for-all-of-your-knowledge-needs",
+      "destination": "/insights/the-risks-of-trusting-llms-gpts-for-all-of-your-knowledge-needs",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-strategic-advantage-of-proprietary-large-language-models-for-brands",
+      "destination": "/insights/the-strategic-advantage-of-proprietary-large-language-models-for-brands",
+      "permanent": true
+    },
+    {
+      "source": "/blog/think-an-rfp-is-your-only-option-for-hiring-an-agency",
+      "destination": "/insights/think-an-rfp-is-your-only-option-for-hiring-an-agency",
+      "permanent": true
+    },
+    {
+      "source": "/blog/turning-priorities-into-prototypes-laying-the-groundwork-for-ai-driven-design",
+      "destination": "/insights/turning-priorities-into-prototypes-laying-the-groundwork-for-ai-driven-design",
+      "permanent": true
+    },
+    {
+      "source": "/blog/understanding-the-basics-of-headless-cms-a-comprehensive-guide",
+      "destination": "/insights/understanding-the-basics-of-headless-cms-a-comprehensive-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/unlocking-the-power-of-headless-cms",
+      "destination": "/insights/unlocking-the-power-of-headless-cms",
+      "permanent": true
+    },
+    {
+      "source": "/blog/unsplash-disrupting-the-stock-photo-industry",
+      "destination": "/insights/unsplash-disrupting-the-stock-photo-industry",
+      "permanent": true
+    },
+    {
+      "source": "/blog/webinar-rethinking-cx-needs-during-covid-19-and-beyond",
+      "destination": "/insights/webinar-rethinking-cx-needs-during-covid-19-and-beyond",
+      "permanent": true
+    },
+    {
+      "source": "/blog/when-and-when-not-to-include-ai-in-digital-products-a-practical-guide",
+      "destination": "/insights/when-and-when-not-to-include-ai-in-digital-products-a-practical-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blog/when-creating-digital-products-its-time-for-it-professionals-to-embrace-the-lean-startup-movement",
+      "destination": "/insights/when-creating-digital-products-its-time-for-it-professionals-to-embrace-the-lean-startup-movement",
+      "permanent": true
+    },
+    {
+      "source": "/blog/where-curling-entrepreneurship-and-neurodivergence-meet-why-power-shifter-is-a-proud-sponsor-of-team-ladouceur",
+      "destination": "/insights/where-curling-entrepreneurship-and-neurodivergence-meet-why-power-shifter-is-a-proud-sponsor-of-team-ladouceur",
+      "permanent": true
+    },
+    {
+      "source": "/blog/why-scoping-digital-product-and-software-development-projects-is-challenging-and-what-to-do-about-it",
+      "destination": "/insights/why-scoping-digital-product-and-software-development-projects-is-challenging-and-what-to-do-about-it",
+      "permanent": true
+    },
+    {
+      "source": "/blog/why-stand-the-f-back",
+      "destination": "/insights/why-stand-the-f-back",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:path*",
+      "destination": "/insights",
+      "permanent": true
+    },
+    {
+      "source": "/fastlane/:path*",
+      "destination": "/digital",
+      "permanent": true
+    },
+    {
+      "source": "/marketing/:path*",
+      "destination": "/digital",
+      "permanent": true
     }
   ]
 }

@@ -878,6 +878,82 @@
 
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
+<style id="lx-blocks">
+  /* luxxee case-study visual blocks (design handoff 2026-07) — same .ab system. Three blocks:
+     01 the brief (dark statement — "We co-founded it." headline+body / MacBook), 02 the search
+     experience (light three-part — phone / overlapping iPads lifted above the flanks / iPad filter,
+     with callout labels), 03 the magazine (light statement — three iPhones / "...compound." headline).
+     Footer rows carry a 30px statement (reuses .ab-cap). Classes .lx-*. Local renders in images/luxxee/. */
+  .ab{container-type:inline-size;aspect-ratio:16/9;width:100%;box-sizing:border-box;
+    padding:5cqw;display:flex;flex-direction:column;position:relative;overflow:hidden;color:var(--ink)}
+  .ab .eye{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    font-size:max(10px,1.354cqw);line-height:1;color:var(--grey);flex:none}
+  .ab.on-dark{color:var(--paper)}
+  .ab.on-dark .eye{color:rgba(250,250,247,.85)}
+  .ab-field{flex:1;min-height:0;display:flex;margin-top:1.25cqw;margin-bottom:1.25cqw}
+  .ab-foot{flex:none;display:flex;justify-content:space-between;align-items:baseline;gap:2cqw}
+  .ab-cap{font-size:max(12px,1.5625cqw);line-height:1.25;color:var(--ink);max-width:60ch}
+  .ab.on-dark .ab-cap{color:rgba(250,250,247,.85)}
+  .ab-count{font-family:var(--mono);font-weight:700;letter-spacing:.14em;font-size:max(10px,1.354cqw);color:var(--grey);white-space:nowrap}
+  .ab.on-dark .ab-count{color:rgba(250,250,247,.45)}
+  .ab img{background:transparent}
+  .prose .ab img{background:transparent}
+  .lx-hd{font-family:var(--display);font-weight:900;line-height:1.05;letter-spacing:-.015em}
+  .lx-hd em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;color:var(--magenta)}
+  .lx-body{line-height:1.6;margin:0}
+  /* 01 dark statement + MacBook */
+  .ab.lx01{background:var(--ink)}
+  .ab.lx01 .ab-field{gap:3.75cqw;align-items:center}
+  .lx-brief-txt{width:46.875cqw;flex-shrink:0;display:flex;flex-direction:column;gap:1.67cqw}
+  .ab.lx01 .lx-hd{font-size:max(24px,3.54cqw);color:var(--paper)}
+  .ab.lx01 .lx-body{font-size:max(14px,1.354cqw);color:rgba(250,250,247,.72);max-width:46ch}
+  .lx-brief-img{flex:1;min-width:0;display:flex;align-items:center;justify-content:center}
+  .lx-brief-img img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 3.3cqw 6.6cqw rgba(0,0,0,.5))}
+  /* 02 light three-part search flow */
+  .ab.lx02{background:var(--paper)}
+  .ab.lx02 .ab-field{gap:2.5cqw;align-items:center}
+  .lx-col{width:18.75cqw;flex-shrink:0;display:flex;flex-direction:column;gap:1cqw}
+  .lx-col.left{align-items:flex-start}
+  .lx-col.right{align-items:flex-end;text-align:right}
+  .lx-col img{object-fit:contain;filter:drop-shadow(1.46cqw 2.08cqw 2.7cqw rgba(18,19,21,.2))}
+  .lx-col.left img{width:100%}
+  .lx-col.right img{width:16.67cqw}
+  .lx-center{flex:1;min-width:0;display:flex;align-items:center;justify-content:center}
+  .lx-center img{position:relative;z-index:2;max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(2.5cqw 2.92cqw 3.54cqw rgba(18,19,21,.28))}
+  .lx-lbl{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:max(10px,.9375cqw);color:var(--magenta)}
+  .lx-cap{font-size:max(11px,1.094cqw);line-height:1.45;color:var(--grey)}
+  /* 03 light statement + Magazine phones */
+  .ab.lx03{background:var(--paper)}
+  .ab.lx03 .ab-field{gap:3.75cqw;align-items:center}
+  .lx-mag-img{flex:1;min-width:0;display:flex;align-items:center;justify-content:center}
+  .lx-mag-img img{max-height:37.5cqw;max-width:100%;width:auto;object-fit:contain}
+  .lx-mag-txt{width:32.29cqw;flex-shrink:0;display:flex;flex-direction:column;gap:1.46cqw}
+  .ab.lx03 .lx-hd{font-size:max(24px,3.125cqw);color:var(--ink)}
+  .ab.lx03 .lx-body{font-size:max(14px,1.406cqw);color:var(--grey);max-width:40ch}
+  /* rise-in (all .prose .breakout — keep translateX(-50%) centering, like .pull.reveal) */
+  .ab.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .ab.reveal.in{opacity:1;transform:none}
+  .ab.breakout.reveal{transform:translateX(-50%) translateY(22px)}
+  .ab.breakout.reveal.in{transform:translateX(-50%)}
+  @media(prefers-reduced-motion:reduce){
+    .ab.reveal{opacity:1;transform:none;transition:none}
+    .ab.breakout.reveal{transform:translateX(-50%)}
+  }
+  @media(max-width:640px){
+    .ab{aspect-ratio:auto;padding:24px 20px}
+    .ab .eye{font-size:11px}.ab-cap{font-size:14px}.ab-count{font-size:11px}
+    .ab-field{margin-top:16px;margin-bottom:16px}
+    .ab.lx01 .ab-field,.ab.lx03 .ab-field{flex-direction:column;gap:24px}
+    .lx-brief-txt,.lx-mag-txt{width:100%}
+    .ab.lx01 .lx-hd{font-size:32px}.ab.lx03 .lx-hd{font-size:30px}.lx-body{font-size:16px}
+    .lx-brief-img img{max-height:44vh}.lx-mag-img img{max-height:56vh}
+    .ab.lx02 .ab-field{flex-direction:column;gap:26px}
+    .lx-col{width:100%;align-items:center;text-align:center}
+    .lx-col.left img{width:auto;max-width:64%}.lx-col.right img{width:52%}
+    .lx-center img{max-width:92%}
+    .lx-lbl{font-size:11px}.lx-cap{font-size:13px;max-width:34ch}
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -977,6 +1053,18 @@
 <!-- Body — five-section authored structure -->
 <article class="article-body wrap">
   <div class="prose">
+    <figure class="ab lx01 breakout reveal on-dark">
+      <span class="eye">luxxee — the brief · 01</span>
+      <div class="ab-field">
+        <div class="lx-brief-txt">
+          <div class="lx-hd">We didn't just build the product.<br>We <em>co-founded</em> it.</div>
+          <p class="lx-body">A gap in the luxury-watch market we believed in enough to co-found — equity, risk, and all — not a client brief we were handed.</p>
+        </div>
+        <div class="lx-brief-img"><img src="/images/luxxee/macbook.webp" alt="The luxxee homepage on a MacBook"></div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">Digital strategy, UX/UI, brand and React engineering — as one-third equity partners on the hook for the outcome.</span><span class="ab-count">01 / 03</span></div>
+    </figure>
+
     <h2>the brief.</h2>
 
     <p>When we identified a gap in the luxury watch market, we did something most agencies never do: we took on the risk ourselves. POWER SHIFTER's CEO, JP Holecka, partnered with industry leaders to bring luxxee — an investor-backed luxury e-commerce product — to life, building an intelligent platform that lets consumers make informed purchases in a space designed to keep them in the dark.</p>
@@ -997,11 +1085,41 @@
 
     <p>luxxee is a powerful search engine bringing together the best luxury watches from across the web — Rolex, Omega, Tudor, Breitling and other renowned names — so consumers can compare and buy with full information. The catalogue runs to over 170,000 items, with an average resale value between $3,000 and $150,000.</p>
 
+    <figure class="ab lx02 breakout reveal">
+      <span class="eye">luxxee — the search experience · 02</span>
+      <div class="ab-field">
+        <div class="lx-col left">
+          <img src="/images/luxxee/phone-search.webp" alt="The luxxee search-and-compare flow on mobile">
+          <span class="lx-lbl">Mobile</span>
+          <span class="lx-cap">The full search-and-compare flow, sized for the phone.</span>
+        </div>
+        <div class="lx-center"><img src="/images/luxxee/ipads.png" alt="Two overlapping iPads — a Rolex brand page and the results grid"></div>
+        <div class="lx-col right">
+          <img src="/images/luxxee/ipad-filter.webp" alt="luxxee results with filters on iPad">
+          <span class="lx-lbl">Filter &amp; compare</span>
+          <span class="lx-cap">Case, movement, materials, dial — narrowed to the exact piece.</span>
+        </div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">One e-commerce-grade search experience — brand, browse, filter and compare — carried across every screen.</span><span class="ab-count">02 / 03</span></div>
+    </figure>
+
     <h3>a content strategy that drives affiliate sales.</h3>
 
     <p>Alongside the platform, we built luxxee Magazine — a luxury e-commerce publication organized around the idea of "time" — to engage consumers across the funnel and establish luxxee as the category's go-to expert, directing readers to listings and driving affiliate sales. We ran it on an SEO strategy from our search and content partners at Status Bureau, and executed it to the letter — the discipline of following a search strategy precisely is what lets it actually compound.</p>
 
     <p>Being on the hook for luxxee's success — not only as agency of record but as one-third equity investment partners — gave us the experience to expedite development and move faster than our competitors. We've felt firsthand what a startup faces building a product from the inside out, which is exactly why we can do it for clients now.</p>
+
+    <figure class="ab lx03 breakout reveal">
+      <span class="eye">luxxee — the magazine · 03</span>
+      <div class="ab-field">
+        <div class="lx-mag-img"><img src="/images/luxxee/magazine.webp" alt="Three iPhones showing luxxee Magazine articles"></div>
+        <div class="lx-mag-txt">
+          <div class="lx-hd">A publication built to <em>compound.</em></div>
+          <p class="lx-body">luxxee Magazine — a luxury e-commerce publication organized around "time" — engages readers across the funnel, directs them to listings, and drives affiliate sales on a disciplined SEO strategy.</p>
+        </div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">Following the search strategy precisely is what let the Magazine start outranking terms as competitive as "Rolex."</span><span class="ab-count">03 / 03</span></div>
+    </figure>
 
     <h2>the outcome.</h2>
 
@@ -1019,6 +1137,11 @@
       <blockquote>You can't make the claim to really know the challenges of a startup until you've been a start up. We've been a startup — we understand your needs at a deeper level.</blockquote>
       <figcaption><span class="cs-quote-name">JP Holecka</span><span class="cs-quote-role">CEO</span><span class="cs-quote-co">POWER SHIFTER</span></figcaption>
     </figure>
+
+    <div class="cs-reel" id="cs-reel">
+      <video class="cs-reel-vid" src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/e90c745299c812c9c664bcadcfaeb532/downloads/default.mp4" poster="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/e90c745299c812c9c664bcadcfaeb532/thumbnails/thumbnail.jpg?time=4s" muted loop playsinline preload="metadata"></video>
+      <div class="cs-reel-cap"><span class="eyebrow">Outcome — in the wild</span><p>Your search is over — 170,000+ watches, one experience.</p><span class="cs-reel-hint">Hover to play</span></div>
+    </div>
   </div>
 </article>
 

@@ -878,6 +878,65 @@
 
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
+<style id="nv-blocks">
+  /* NVA case-study visual blocks (design handoff 2026-07) — same .ab system. Four blocks
+     (ink -> two cream -> ink): 01 the platform (transparent phones on ink), 02 people-first +
+     03 local-first (marketing comps in ruled white cards on cream), 04 the scale (1,000+ proof
+     stat on ink). Classes namespaced .nv-* (NOT .stat/.cell/.num — those collide). Block 01 +
+     Webflow-CDN comps in images/nva/. NN / 04. */
+  .ab{container-type:inline-size;aspect-ratio:16/9;width:100%;box-sizing:border-box;
+    padding:5cqw;display:flex;flex-direction:column;position:relative;overflow:hidden;color:var(--ink)}
+  .ab .eye{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    font-size:max(10px,1.354cqw);line-height:1;color:var(--grey);flex:none}
+  .ab.on-dark{color:var(--paper)}
+  .ab.on-dark .eye{color:rgba(250,250,247,.65)}
+  .ab-field{flex:1;min-height:0;display:flex;margin-top:1.25cqw;margin-bottom:1.25cqw}
+  .ab-foot{flex:none;display:flex;justify-content:space-between;align-items:baseline;gap:2cqw}
+  .ab-cap{font-size:max(12px,1.5625cqw);line-height:1.25;color:var(--ink)}
+  .ab.on-dark .ab-cap{color:rgba(250,250,247,.85)}
+  .ab-count{font-family:var(--mono);font-weight:700;letter-spacing:.14em;font-size:max(10px,1.354cqw);color:var(--grey);white-space:nowrap}
+  .ab.on-dark .ab-count{color:rgba(250,250,247,.45)}
+  .ab img{background:transparent}
+  .prose .ab img{background:transparent}
+  /* 01 the platform — transparent phones on ink, no card */
+  .ab.nv01{background:var(--ink-soft)}
+  .ab.nv01 .ab-field{align-items:center;justify-content:center}
+  .ab.nv01 .ab-field img{max-width:100%;max-height:100%;object-fit:contain}
+  /* 02-03 marketing comp — cream field, ruled white card */
+  .ab.nv-card{background:var(--paper)}
+  .ab.nv-card .nv-cell{flex:1;min-width:0;background:#fff;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;padding:2cqw;overflow:hidden}
+  .ab.nv-card .nv-cell img{max-width:100%;max-height:100%;object-fit:contain}
+  /* 04 the scale — 1,000+ proof stat on ink */
+  .ab.nv04{background:var(--ink)}
+  .ab.nv04 .ab-field{align-items:center;justify-content:center;gap:4.5cqw}
+  .nv-num{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;
+    line-height:.82;letter-spacing:-.02em;color:var(--magenta);display:flex;align-items:baseline}
+  .nv-num .big{font-size:17.7cqw}
+  .nv-num .plus{font-size:9.9cqw}
+  .nv-seam{flex:none;width:1px;align-self:center;height:14cqw;background:var(--line-light)}
+  .nv-lbl{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    font-size:max(11px,1.35cqw);line-height:1.6;color:rgba(250,250,247,.85);max-width:14em}
+  /* rise-in (all .prose .breakout — keep translateX(-50%) centering, like .pull.reveal) */
+  .ab.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .ab.reveal.in{opacity:1;transform:none}
+  .ab.breakout.reveal{transform:translateX(-50%) translateY(22px)}
+  .ab.breakout.reveal.in{transform:translateX(-50%)}
+  @media(prefers-reduced-motion:reduce){
+    .ab.reveal{opacity:1;transform:none;transition:none}
+    .ab.breakout.reveal{transform:translateX(-50%)}
+  }
+  @media(max-width:640px){
+    .ab{aspect-ratio:auto;padding:24px 20px}
+    .ab .eye{font-size:11px}.ab-cap{font-size:14px}.ab-count{font-size:11px}
+    .ab-field{margin-top:16px;margin-bottom:16px}
+    .ab.nv01 .ab-field img{max-height:56vh}
+    .ab.nv-card .nv-cell{min-height:220px;padding:18px}
+    .ab.nv04 .ab-field{flex-direction:column;gap:16px;text-align:center}
+    .nv-num .big{font-size:130px}.nv-num .plus{font-size:72px}
+    .nv-seam{width:120px;height:1px;align-self:center}.nv-lbl{font-size:12px;max-width:24ch;text-align:center}
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -977,6 +1036,12 @@
 
     <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Brief — the balance</span><p>Unify 1,000+ independently run hospitals under one brand — <span class="mag">without flattening any of them</span>.</p></aside>
 
+    <figure class="ab nv01 breakout reveal on-dark">
+      <span class="eye">NVA — the platform · 01</span>
+      <div class="ab-field"><img src="/images/nva/hero-phones.png" alt="The NVA careers site and Committed to Excellence page on two phones"></div>
+      <div class="ab-foot"><span class="ab-cap">One platform for job seekers, partners, and the vet community.</span><span class="ab-count">01 / 04</span></div>
+    </figure>
+
     <h2>the challenge.</h2>
 
     <p>A decentralized network is a brand problem and an architecture problem at once. The organically grown web ecosystem was diluting the brand and confusing users; the journeys for each audience were tangled together; and the people-first, local identity that defines NVA couldn't be sacrificed to corporate uniformity. On top of that, the build would happen in-house — so the deliverables had to be rigorous enough that an internal team could execute them without us in the room.</p>
@@ -985,17 +1050,44 @@
 
     <p>We ran strategic alignment sessions with NVA's marketing and IT teams to set business goals, prioritize audiences, and map the content architecture, then designed around three primary personas — job seekers, potential veterinary partners, and existing community members — each with its own clear, empathetic pathway. We accounted for the real integrations the platform depends on (Averture for applicant tracking, Yext for location services, Weglot for French-language support), carved out region-specific content zones to differentiate NVA Canada, and produced annotated, developer-ready files so the internal team could build from them directly.</p>
 
+    <figure class="ab nv-card nv02 breakout reveal">
+      <span class="eye">NVA — people-first · 02</span>
+      <div class="ab-field"><div class="nv-cell"><img src="/images/nva/section1.png" alt="NVA people-first composition — founder card, community, and a golden retriever"></div></div>
+      <div class="ab-foot"><span class="ab-cap">Corporate consistency and local warmth, held in one system.</span><span class="ab-count">02 / 04</span></div>
+    </figure>
+
     <h2>the solution.</h2>
 
     <h3>a modular system built for global scale.</h3>
 
     <p>We delivered a full UX and UI redesign as a modular, persona-driven design system — flexible content publishing, regional customization to balance global and local messaging, and a foundation built to grow and localize. The handoff files were optimized for NVA's internal dev workflows, so the design could become a live site in their hands, not ours.</p>
 
+    <figure class="ab nv-card nv03 breakout reveal">
+      <span class="eye">NVA — local-first · 03</span>
+      <div class="ab-field"><div class="nv-cell"><img src="/images/nva/section3.png" alt="NVA local-first composition — the Our Locations finder and a cockatiel"></div></div>
+      <div class="ab-foot"><span class="ab-cap">Persona-driven pathways, down to the neighbourhood hospital.</span><span class="ab-count">03 / 04</span></div>
+    </figure>
+
     <h2>the outcome.</h2>
 
     <p>NVA's brand story now reads consistently across the U.S., Canada, and international markets, with content discoverability and audience journeys clarified, and an internal team able to publish and manage on its own. The fragmented ecosystem was consolidated into one cohesive platform — a countable reduction — and the system was built so NVA's people-first, decentralized philosophy survives inside a unified frame.</p>
 
     <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Outcome — built to hand off</span><p>Built so NVA's internal team could ship it from our handoff files — <span class="mag">and own it after</span>.</p></aside>
+
+    <figure class="ab nv04 breakout reveal on-dark">
+      <span class="eye">NVA — the scale · 04</span>
+      <div class="ab-field">
+        <span class="nv-num"><span class="big">1,000</span><span class="plus">+</span></span>
+        <span class="nv-seam"></span>
+        <span class="nv-lbl">Independently operated hospitals</span>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">One brand story across a thousand independently run hospitals.</span><span class="ab-count">04 / 04</span></div>
+    </figure>
+
+    <div class="cs-reel" id="cs-reel">
+      <video class="cs-reel-vid" src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/e113876e9a49129641a7b23c3f636dce/downloads/default.mp4" poster="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/e113876e9a49129641a7b23c3f636dce/thumbnails/thumbnail.jpg?time=5s" muted loop playsinline preload="metadata"></video>
+      <div class="cs-reel-cap"><span class="eyebrow">Outcome — in the wild</span><p>The careers platform in motion — one story, a thousand hospitals.</p><span class="cs-reel-hint">Hover to play</span></div>
+    </div>
   </div>
 </article>
 

@@ -24,6 +24,8 @@ DEFAULT_POSTS = (REPO / "tools/blog-renderer/posts.json")
 # Photo Credit. Merged by slug; absent file → falls back to old_categories.
 OVERRIDES_CSV = (REPO / "tools/blog-renderer/blog-meta.csv")
 TITLE_SUFFIX = " — POWER SHIFTER Insights"
+BASE = "https://ps-dot-com.vercel.app"   # canonical host; flip to powershifter.com at domain cutover
+ORG = {"@type": "Organization", "name": "POWER SHIFTER", "url": BASE + "/"}
 
 # ---------------------------------------------------------------- helpers
 def esc(t):
@@ -253,11 +255,24 @@ def patch_head(post):
     meta = attr(post.get('meta_description', ''))
     h = re.sub(r'(<meta name="description" content=")[^"]*(">)',
                lambda m: m.group(1) + meta + m.group(2), h, count=1)
+    url = f"{BASE}/insights/{post['slug']}"
     og = (f'<meta property="og:type" content="article">\n'
           f'<meta property="og:title" content="{attr(post["seo_title"])}">\n'
           f'<meta property="og:description" content="{meta}">\n'
           f'<meta property="og:image" content="{attr(post.get("og_url",""))}">\n'
-          f'<meta name="twitter:card" content="summary_large_image">\n')
+          f'<meta name="twitter:card" content="summary_large_image">\n'
+          f'<link rel="canonical" href="{attr(url)}">\n')
+    # BlogPosting structured data (canonical host; flip BASE at cutover)
+    ld = {"@context": "https://schema.org", "@type": "BlogPosting",
+          "headline": post['seo_title'],
+          "description": post.get('meta_description', ''),
+          "image": post.get('og_url', ''),
+          "url": url, "author": ORG, "publisher": ORG}
+    if post.get('publish_date'):
+        ld["datePublished"] = post['publish_date']
+    og += ('<script type="application/ld+json">\n'
+           + json.dumps(ld, ensure_ascii=False, indent=2).replace("<", "\\u003c")
+           + '\n</script>\n')
     h = re.sub(r'(<meta name="description"[^>]*>\n)', lambda m: m.group(1) + og, h, count=1)
     return h
 

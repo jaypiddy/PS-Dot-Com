@@ -1,16 +1,33 @@
 # OG composer
 
-Generates 1200×630 Open Graph images for every blog card on `/insights`:
-the card's Cloudflare image with the headline composited on top, in the
-site's card-overlay style (bottom tint gradient, Articulat Heavy headline,
-`POWER//SHIFTER — Insights` mono eyebrow, magenta `//`).
+Generates 1200×630 Open Graph images by compositing a headline onto a
+keyframe still, in the site's card-overlay style (bottom tint gradient,
+Articulat Heavy headline, `POWER//SHIFTER — …` mono eyebrow, magenta `//`).
+
+Two generators, same technique:
+
+- **`generate_og.py`** — every blog card on `/insights`. Keyframe = the
+  card's Cloudflare image; headline = the card `<h2>`/`<h3>`; eyebrow
+  `POWER//SHIFTER — Insights`.
+- **`generate_og_work.py`** — every `/work` case study. Keyframe = the
+  case's card image on `work.html` (a curated still for the films, an
+  in-the-wild video frame for the digital cases); headline = the case
+  `<h1 id="title">`; eyebrow `POWER//SHIFTER — <CLIENT>` (client pulled
+  from the case sub-hero eyebrow). Cards that are still "image pending"
+  slot-frame placeholders take a keyframe from the `OVERRIDE` map at the
+  top of the script (e.g. Allia → `images/allia/allia-after.jpg`).
 
 ## Run
 
 ```bash
-python3 tools/og-composer/generate_og.py        # all cards
-python3 tools/og-composer/generate_og.py 3      # first 3 (spot-check)
+python3 tools/og-composer/generate_og.py             # all blog cards
+python3 tools/og-composer/generate_og.py 3           # first 3 (spot-check)
+python3 tools/og-composer/generate_og_work.py        # all case studies
+python3 tools/og-composer/generate_og_work.py 3      # first 3 (spot-check)
 ```
+
+Work output lands in `og-export/work-<slug>.jpg` + `manifest-work.csv`
+(`slug,file,client,headline,status`).
 
 Requires Google Chrome (used headless as the compositor — it loads the
 real Adobe Fonts kit `xkk7api`, so the type matches the site exactly).

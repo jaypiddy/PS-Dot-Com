@@ -878,6 +878,78 @@
 
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
+<style id="fx-blocks">
+  /* 5x5 Technologies case-study visual blocks (design handoff 2026-07) — same .ab system. Five
+     blocks: 01 the relaunch (iPad on ink, overfill), 02 dimensionality in motion (ink statement:
+     headline+body / wireframe monopole), 03 the digital twin (cream MacBook), 04 the workflow
+     (ink two-panel iPad+iPhone), 05 built for growth (cream statement: headline+body / phones,
+     count only). Serif pivots via --serif-vset. Classes .fx-*. Local renders in images/5x5/. NN / 05. */
+  .ab{container-type:inline-size;aspect-ratio:16/9;width:100%;box-sizing:border-box;
+    padding:5cqw;display:flex;flex-direction:column;position:relative;overflow:hidden;color:var(--ink)}
+  .ab .eye{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    font-size:max(10px,1.354cqw);line-height:1;color:var(--grey);flex:none}
+  .ab.on-dark{color:var(--paper)}
+  .ab.on-dark .eye{color:rgba(250,250,247,.85)}
+  .ab-field{flex:1;min-height:0;display:flex;margin-top:1.25cqw;margin-bottom:1.25cqw}
+  .ab-foot{flex:none;display:flex;justify-content:space-between;align-items:baseline;gap:2cqw}
+  .ab-cap{font-size:max(12px,1.5625cqw);line-height:1.25;color:var(--ink)}
+  .ab.on-dark .ab-cap{color:rgba(250,250,247,.85)}
+  .ab-count{font-family:var(--mono);font-weight:700;letter-spacing:.14em;font-size:max(10px,1.354cqw);color:var(--grey);white-space:nowrap}
+  .ab.on-dark .ab-count{color:rgba(250,250,247,.45)}
+  .ab img{background:transparent}
+  .prose .ab img{background:transparent}
+  /* 01 iPad on ink, slight overfill (block clips) */
+  .ab.fx01{background:var(--ink)}
+  .ab.fx01 .ab-field{align-items:center;justify-content:center;overflow:hidden}
+  .ab.fx01 .ab-field img{height:112%;width:auto;max-width:none;object-fit:contain}
+  /* 02 statement — ink, headline+body / wireframe monopole */
+  .ab.fx02{background:var(--ink)}
+  .ab.fx02 .ab-field{display:grid;grid-template-columns:1.4fr .6fr;gap:3.333cqw;align-items:center}
+  .fx-hd{font-family:var(--display);font-weight:900;line-height:1.05;letter-spacing:-.015em}
+  .fx-hd em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;color:var(--magenta)}
+  .fx-body{margin:1.6cqw 0 0;line-height:1.5}
+  .ab.fx02 .fx-hd{font-size:max(24px,3.75cqw);color:var(--paper)}
+  .ab.fx02 .fx-body{font-size:max(14px,1.302cqw);color:rgba(250,250,247,.7);max-width:46ch}
+  .fx-col-img{display:flex;align-items:center;justify-content:center;min-width:0;min-height:0}
+  .ab.fx02 .fx-col-img img{max-height:37.5cqw;max-width:100%;width:auto;object-fit:contain;opacity:.92}
+  /* 03 cream, MacBook */
+  .ab.fx03{background:var(--paper)}
+  .ab.fx03 .ab-field{align-items:center;justify-content:center}
+  .ab.fx03 .ab-field img{width:100%;max-height:100%;object-fit:contain}
+  /* 04 ink, two-panel iPad + iPhone */
+  .ab.fx04{background:var(--ink)}
+  .ab.fx04 .ab-field{gap:1px;background:var(--line-light);border:1px solid var(--line-light)}
+  .ab.fx04 .fx-cell{flex:1;min-width:0;background:var(--ink-soft);display:flex;align-items:center;justify-content:center;padding:2cqw;overflow:hidden}
+  .ab.fx04 .fx-cell.right{padding:2cqw 2.08cqw}
+  .ab.fx04 .fx-cell img{max-width:100%;max-height:100%;object-fit:contain}
+  /* 05 statement — cream, headline+body / phones, count only */
+  .ab.fx05{background:var(--paper)}
+  .ab.fx05 .ab-field{display:grid;grid-template-columns:.92fr 1.08fr;gap:3.75cqw;align-items:center}
+  .ab.fx05 .fx-hd{font-size:max(28px,5cqw);color:var(--ink)}
+  .ab.fx05 .fx-body{font-size:max(15px,1.667cqw);color:#3a3c40;max-width:30ch}
+  .ab.fx05 .fx-col-img img{max-height:37.5cqw;max-width:100%;width:auto;object-fit:contain}
+  .ab.fx05 .ab-foot{justify-content:flex-end}
+  /* rise-in (all .prose .breakout — keep translateX(-50%) centering, like .pull.reveal) */
+  .ab.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .ab.reveal.in{opacity:1;transform:none}
+  .ab.breakout.reveal{transform:translateX(-50%) translateY(22px)}
+  .ab.breakout.reveal.in{transform:translateX(-50%)}
+  @media(prefers-reduced-motion:reduce){
+    .ab.reveal{opacity:1;transform:none;transition:none}
+    .ab.breakout.reveal{transform:translateX(-50%)}
+  }
+  @media(max-width:640px){
+    .ab{aspect-ratio:auto;padding:24px 20px}
+    .ab .eye{font-size:11px}.ab-cap{font-size:14px}.ab-count{font-size:11px}
+    .ab-field{margin-top:16px;margin-bottom:16px}
+    .ab.fx01 .ab-field img{height:auto;max-height:56vh}
+    .ab.fx02 .ab-field,.ab.fx05 .ab-field{grid-template-columns:1fr;gap:24px}
+    .ab.fx02 .fx-hd{font-size:30px}.ab.fx02 .fx-body{font-size:16px}
+    .ab.fx05 .fx-hd{font-size:34px}.ab.fx05 .fx-body{font-size:17px}
+    .fx-col-img img{max-height:52vh!important}
+    .ab.fx04 .ab-field{flex-direction:column}.ab.fx04 .fx-cell{min-height:240px}
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -971,6 +1043,12 @@
 <!-- Body — five-section authored structure -->
 <article class="article-body wrap">
   <div class="prose">
+    <figure class="ab fx01 breakout reveal on-dark">
+      <span class="eye">5x5 Technologies — the relaunch · 01</span>
+      <div class="ab-field"><img src="/images/5x5/hero.webp" alt="The new 5x5.ai homepage on an iPad — Infrastructure. Optimized. with a 3D wireframe tower"></div>
+      <div class="ab-foot"><span class="ab-cap">Infrastructure, optimized — the launch-ready first impression.</span><span class="ab-count">01 / 05</span></div>
+    </figure>
+
     <h2>the brief.</h2>
 
     <p>5x5 Technologies is an InfraTech company providing AI-powered analytics for industrial structures in the built world — drones collecting data, precise 3D digital twins you can inspect from every angle. The technology is dimensional and in motion. A flat, text-heavy website couldn't represent it.</p>
@@ -978,6 +1056,18 @@
     <p>Like many startups, 5x5 had poured its early energy into building the technology and validating product-market fit, developing a restructured brand identity on a parallel track. They came to us to launch it. The site had to do more than tell investors and B2B customers the company's story — it had to show them.</p>
 
     <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Brief — in motion</span><p>The technology is dimensional and in motion — <span class="mag">a flat website couldn't represent it</span>.</p></aside>
+
+    <figure class="ab fx02 breakout reveal on-dark">
+      <span class="eye">5x5 Technologies — dimensionality in motion · 02</span>
+      <div class="ab-field">
+        <div>
+          <div class="fx-hd">Not a static site. <em>Something you move through.</em></div>
+          <p class="fx-body">5x5 turns drone-captured data into precise 3D digital twins. The new site had to do the same — 3D graphics and Lottie-driven motion in place of text and static imagery.</p>
+        </div>
+        <div class="fx-col-img"><img src="/images/5x5/monopole.webp" alt="A white wireframe monopole tower"></div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">The concept that drove the entire build.</span><span class="ab-count">02 / 05</span></div>
+    </figure>
 
     <h2>the challenge.</h2>
 
@@ -995,11 +1085,38 @@
 
     <p>Above all, we made the end product clearly articulated — through both text and design — to position 5x5 as a leading force in the infrastructure analytics market, with value props and differentiators a prospective customer or investor could grasp from the first screen.</p>
 
+    <figure class="ab fx03 breakout reveal">
+      <span class="eye">5x5 Technologies — the digital twin · 03</span>
+      <div class="ab-field"><img src="/images/5x5/solution-2.webp" alt="The 5x5 Intelligent Digital Twin on a MacBook — industrial structures scanned and the end-to-end workflow"></div>
+      <div class="ab-foot"><span class="ab-cap">Industrial structures, rebuilt as an intelligent digital twin.</span><span class="ab-count">03 / 05</span></div>
+    </figure>
+
+    <figure class="ab fx04 breakout reveal on-dark">
+      <span class="eye">5x5 Technologies — the workflow · 04</span>
+      <div class="ab-field">
+        <div class="fx-cell"><img src="/images/5x5/solution-1.webp" alt="The end-to-end workflow on iPad — Plan, Collect, Reconstruct, Augment, Integrate around a tower"></div>
+        <div class="fx-cell right"><img src="/images/5x5/solution-3.webp" alt="The same workflow steps on iPhone"></div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">Plan, collect, reconstruct — the workflow on every screen.</span><span class="ab-count">04 / 05</span></div>
+    </figure>
+
     <h2>the outcome.</h2>
 
     <p>The site shipped on the urgent timeline it was built for — ready ahead of the fundraising window. And the round it was built for closed: 5x5 got what they needed. The team was left with a CMS structured to manage content and growth without coming back to us.</p>
 
     <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Outcome — the raise</span><p>The site was built for the fundraise. <span class="mag">The fundraise closed.</span></p></aside>
+
+    <figure class="ab fx05 breakout reveal">
+      <span class="eye">5x5 Technologies — built for growth · 05</span>
+      <div class="ab-field">
+        <div>
+          <div class="fx-hd">One CMS. <em>Built for growth.</em></div>
+          <p class="fx-body">Home, careers, about — every page runs on one Webflow CMS the 5x5 team can restructure and extend themselves, ahead of fundraising and beyond.</p>
+        </div>
+        <div class="fx-col-img"><img src="/images/5x5/brief.webp" alt="Three angled phones — This is 5x5, Careers, and About us"></div>
+      </div>
+      <div class="ab-foot"><span class="ab-count">05 / 05</span></div>
+    </figure>
 
     <figure class="cs-quote reveal">
       <blockquote>I challenged Power Shifter to create a website backed by a powerful CMS, built for growth, structured for easy content changes, and with a design ethos unlike anything else seen in our industry. They certainly delivered.</blockquote>

@@ -878,6 +878,69 @@
 
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
+<style id="xy-blocks">
+  /* XYON Health case-study visual blocks (design handoff 2026-07) — same .ab system. Four blocks:
+     01 the brief (dark centered statement), 02 the marketing site (cream laptop), 03 the
+     consultation (cream three-element flow — intake / eligible / upsell with callout labels,
+     drop-shadows on the transparent renders), 04 the purchase experience (cream phones). No
+     testimonial/proof block per the handoff. Classes .xy-*. Local renders in images/xyon-blocks/. */
+  .ab{container-type:inline-size;aspect-ratio:16/9;width:100%;box-sizing:border-box;
+    padding:5cqw;display:flex;flex-direction:column;position:relative;overflow:hidden;color:var(--ink)}
+  .ab .eye{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    font-size:max(10px,1.354cqw);line-height:1;color:var(--grey);flex:none}
+  .ab.on-dark{color:var(--paper)}
+  .ab.on-dark .eye{color:rgba(250,250,247,.85)}
+  .ab-field{flex:1;min-height:0;display:flex;margin-top:1.25cqw;margin-bottom:1.25cqw}
+  .ab-foot{flex:none;display:flex;justify-content:space-between;align-items:baseline;gap:2cqw}
+  .ab-cap{font-size:max(12px,1.5625cqw);line-height:1.25;color:var(--ink)}
+  .ab.on-dark .ab-cap{color:rgba(250,250,247,.85)}
+  .ab-count{font-family:var(--mono);font-weight:700;letter-spacing:.14em;font-size:max(10px,1.354cqw);color:var(--grey);white-space:nowrap}
+  .ab.on-dark .ab-count{color:rgba(250,250,247,.45)}
+  .ab img{background:transparent}
+  .prose .ab img{background:transparent}
+  /* 01 dark centered statement */
+  .ab.xy01{background:var(--ink)}
+  .ab.xy01 .ab-field{align-items:center;justify-content:center;text-align:center}
+  .xy-stmt{font-family:var(--display);font-weight:900;font-size:max(28px,4.06cqw);line-height:1.06;letter-spacing:-.015em;color:var(--paper);max-width:18ch}
+  .xy-stmt em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;color:var(--magenta)}
+  /* 02 / 04 cream image */
+  .ab.xy-img{background:var(--paper)}
+  .ab.xy-img .ab-field{align-items:center;justify-content:center}
+  .ab.xy-img .ab-field img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 3cqw 5cqw rgba(18,19,21,.15))}
+  /* 03 cream three-element consultation flow */
+  .ab.xy03{background:var(--paper)}
+  .ab.xy03 .ab-field{gap:2.5cqw;align-items:center}
+  .xy-flow-l,.xy-flow-r{width:19.79cqw;flex-shrink:0;display:flex;flex-direction:column;gap:.9cqw}
+  .xy-flow-l{align-items:flex-start}
+  .xy-flow-r{align-items:flex-end;text-align:right}
+  .xy-flow-c{flex:1;min-width:0;display:flex;align-items:center;justify-content:center}
+  .xy-flow-l img{width:100%;object-fit:contain;filter:drop-shadow(0 2cqw 3.6cqw rgba(18,19,21,.2))}
+  .xy-flow-r img{width:15.625cqw;object-fit:contain;filter:drop-shadow(0 2cqw 3.6cqw rgba(18,19,21,.2))}
+  .xy-flow-c img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 3.3cqw 6.6cqw rgba(18,19,21,.22))}
+  .xy-lbl{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:max(10px,1.15cqw);color:var(--magenta);white-space:nowrap}
+  .xy-sub{font-size:max(11px,1.094cqw);line-height:1.35;color:var(--grey)}
+  /* rise-in (all .prose .breakout — keep translateX(-50%) centering, like .pull.reveal) */
+  .ab.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .ab.reveal.in{opacity:1;transform:none}
+  .ab.breakout.reveal{transform:translateX(-50%) translateY(22px)}
+  .ab.breakout.reveal.in{transform:translateX(-50%)}
+  @media(prefers-reduced-motion:reduce){
+    .ab.reveal{opacity:1;transform:none;transition:none}
+    .ab.breakout.reveal{transform:translateX(-50%)}
+  }
+  @media(max-width:640px){
+    .ab{aspect-ratio:auto;padding:24px 20px}
+    .ab .eye{font-size:11px}.ab-cap{font-size:14px}.ab-count{font-size:11px}
+    .ab-field{margin-top:16px;margin-bottom:16px}
+    .xy-stmt{font-size:34px}
+    .ab.xy-img .ab-field img{max-height:56vh;filter:drop-shadow(0 14px 30px rgba(18,19,21,.15))}
+    .ab.xy03 .ab-field{flex-direction:column;gap:26px}
+    .xy-flow-l,.xy-flow-r{width:100%;align-items:center;text-align:center}
+    .xy-flow-l img,.xy-flow-c img{width:auto;max-width:78%;max-height:44vh}
+    .xy-flow-r img{width:55%}
+    .xy-lbl{font-size:11px}.xy-sub{font-size:13px;max-width:34ch}
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -971,6 +1034,12 @@
 <!-- Body — five-section authored structure -->
 <article class="article-body wrap">
   <div class="prose">
+    <figure class="ab xy01 breakout reveal on-dark">
+      <span class="eye">XYON — the brief · 01</span>
+      <div class="ab-field"><span class="xy-stmt">A clinical product. An effortless <em>journey.</em></span></div>
+      <div class="ab-foot"><span class="ab-cap">Technical lead, project management and delivery — one sprint team against the date.</span><span class="ab-count">01 / 04</span></div>
+    </figure>
+
     <h2>the brief.</h2>
     <p>XYON's proprietary technology is designed to maximize hair growth for men — a clinical offering in a category crowded with noise and thin promises. The product could stand apart in terms of substance. The experience of selling it had to do the same.</p>
     <p>To put it in consumers' hands, XYON needed more than a marketing site. They needed a single journey that moved a prospect from first impression through a medical consultation to a fulfilled prescription and a repeat purchase — all of it feeling effortless. And they needed it live on a date that wasn't moving.</p>
@@ -987,10 +1056,40 @@
     <p>The solution was threefold, and the connective tissue between the three was the whole point.</p>
     <h3>an elevated marketing site.</h3>
     <p>Drawing on the brand strategy and design from XYON's partner Dossier, we built a marketing site that simplified rather than decorated — letting prospective customers find the answers they actually need without wading through claims.</p>
+    <figure class="ab xy-img xy02 breakout reveal">
+      <span class="eye">XYON — the marketing site · 02</span>
+      <div class="ab-field"><img src="/images/xyon-blocks/marketing.webp" alt="The XYON Health marketing homepage on a laptop"></div>
+      <div class="ab-foot"><span class="ab-cap">A site that simplifies rather than decorates — the first door into the journey.</span><span class="ab-count">02 / 04</span></div>
+    </figure>
+
     <h3>a seamless consultation.</h3>
     <p>We built a virtual consultation that makes it simple to connect with a doctor and receive a recommendation tailored to the individual. Through a multiple-document interface (MDI) integration, the resulting prescription flows straight to the customer so they can fulfill their order on the spot — no gap between approval and purchase.</p>
+    <figure class="ab xy03 breakout reveal">
+      <span class="eye">XYON — the consultation · 03</span>
+      <div class="ab-field">
+        <div class="xy-flow-l">
+          <img src="/images/xyon-blocks/intake.webp" alt="XYON guided intake — a three-step questionnaire, step 1 of 3">
+          <span class="xy-lbl">Guided intake</span>
+          <span class="xy-sub">A three-step questionnaire captures history before a plan is built.</span>
+        </div>
+        <div class="xy-flow-c"><img src="/images/xyon-blocks/eligible.webp" alt="XYON Choose Plan step — your eligible products, Finasteride gel and oral"></div>
+        <div class="xy-flow-r">
+          <img src="/images/xyon-blocks/upsell.webp" alt="XYON post-plan upsell — an exclusive-offer cross-sell card">
+          <span class="xy-lbl">Post-plan upsell</span>
+          <span class="xy-sub">A one-tap cross-sell surfaces companions right after a plan is chosen.</span>
+        </div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">A guided intake routes each prospect to a licensed dermatologist — then to eligible, prescribed products.</span><span class="ab-count">03 / 04</span></div>
+    </figure>
+
     <h3>a secure purchase experience.</h3>
     <p>Using Next.js and NestJS for the application, Stripe for payments, and Sanity.io for content, we built account management and checkout that are easy and secure — each piece of the stack chosen to keep the consultation-to-purchase path fast and uninterrupted.</p>
+
+    <figure class="ab xy-img xy04 breakout reveal">
+      <span class="eye">XYON — the purchase experience · 04</span>
+      <div class="ab-field"><img src="/images/xyon-blocks/phones.webp" alt="The XYON prescription and product pages on three phones"></div>
+      <div class="ab-foot"><span class="ab-cap">A prescribed, subscription commerce flow — substance the design didn't have to dress up.</span><span class="ab-count">04 / 04</span></div>
+    </figure>
 
     <h2>the outcome.</h2>
     <p>The platform launched on its immovable date, with the full marketing-to-consultation-to-purchase funnel live — the structurally hard part delivered, not deferred to phase two.</p>
@@ -1001,6 +1100,11 @@
       <blockquote>What I have appreciated about POWER SHIFTER, is not simply their technical excellence, but their deep commitment to partnership. This is often an under-appreciated, but critical element of program success. They have been a sincere pleasure to work with and have enabled the launch of XYON's complex and beautiful commerce site, which we expect will be the foundation of a successful brand.</blockquote>
       <figcaption><span class="cs-quote-name">Dr. Simon Pimstone</span><span class="cs-quote-role">Founder &amp; CEO</span><span class="cs-quote-co">XYON</span></figcaption>
     </figure>
+
+    <div class="cs-reel" id="cs-reel">
+      <video class="cs-reel-vid" src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/922d49b0ac17af83ae2c662873cb0c44/downloads/default.mp4" poster="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/922d49b0ac17af83ae2c662873cb0c44/thumbnails/thumbnail.jpg?time=0s" muted loop playsinline preload="metadata"></video>
+      <div class="cs-reel-cap"><span class="eyebrow">Outcome — in the wild</span><p>The consultation-to-purchase journey, where men actually start it.</p><span class="cs-reel-hint">Hover to play</span></div>
+    </div>
   </div>
 </article>
 

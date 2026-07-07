@@ -898,11 +898,12 @@
   .ab.on-dark .ab-count{color:rgba(250,250,247,.45)}
   .ab img{background:transparent}
   .prose .ab img{background:transparent}
-  /* 01 dark centered statement */
+  /* 01 dark statement — left-aligned, vertically centered: headline + body */
   .ab.xy01{background:var(--ink)}
-  .ab.xy01 .ab-field{align-items:center;justify-content:center;text-align:center}
-  .xy-stmt{font-family:var(--display);font-weight:900;font-size:max(28px,4.06cqw);line-height:1.06;letter-spacing:-.015em;color:var(--paper);max-width:18ch}
+  .ab.xy01 .ab-field{flex-direction:column;align-items:flex-start;justify-content:center}
+  .xy-stmt{display:block;font-family:var(--display);font-weight:900;font-size:max(28px,4.06cqw);line-height:1.06;letter-spacing:-.015em;color:var(--paper)}
   .xy-stmt em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;color:var(--magenta)}
+  .xy-body{margin:1.6cqw 0 0;font-size:max(14px,1.406cqw);line-height:1.5;color:rgba(250,250,247,.72);max-width:52ch}
   /* 02 / 04 cream image */
   .ab.xy-img{background:var(--paper)}
   .ab.xy-img .ab-field{align-items:center;justify-content:center}
@@ -932,7 +933,7 @@
     .ab{aspect-ratio:auto;padding:24px 20px}
     .ab .eye{font-size:11px}.ab-cap{font-size:14px}.ab-count{font-size:11px}
     .ab-field{margin-top:16px;margin-bottom:16px}
-    .xy-stmt{font-size:34px}
+    .xy-stmt{font-size:34px}.xy-body{font-size:16px}
     .ab.xy-img .ab-field img{max-height:56vh;filter:drop-shadow(0 14px 30px rgba(18,19,21,.15))}
     .ab.xy03 .ab-field{flex-direction:column;gap:26px}
     .xy-flow-l,.xy-flow-r{width:100%;align-items:center;text-align:center}
@@ -1036,7 +1037,12 @@
   <div class="prose">
     <figure class="ab xy01 breakout reveal on-dark">
       <span class="eye">XYON — the brief · 01</span>
-      <div class="ab-field"><span class="xy-stmt">A clinical product. An effortless <em>journey.</em></span></div>
+      <div class="ab-field">
+        <div>
+          <span class="xy-stmt">A clinical product.<br>An effortless <em>journey.</em></span>
+          <p class="xy-body">XYON needed one journey — from first impression through medical consultation to a fulfilled prescription and repeat purchase — live on a date that wasn't moving.</p>
+        </div>
+      </div>
       <div class="ab-foot"><span class="ab-cap">Technical lead, project management and delivery — one sprint team against the date.</span><span class="ab-count">01 / 04</span></div>
     </figure>
 

@@ -878,6 +878,103 @@
 
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
+<style id="ts-blocks">
+  /* TELUS Support case-study visual blocks (design handoff 2026-07) — the .ab system.
+     Six blocks: 01 hero (dual iMac, cream), 02 the redesign home (text + desktop/mobile,
+     ink), 03 proof $600K+ (ink), 04 across touchpoints (multidevice, ink), 05 browse by
+     device (browser + tablet, cream), 06 proof 70% (ink). Serif via --serif-vset. Classes
+     .ts-*. Local renders in images/telus-support/. NN / 06. cqw = px/19.2 off 1920 master. */
+  .ab{container-type:inline-size;aspect-ratio:16/9;width:100%;box-sizing:border-box;
+    padding:5cqw;display:flex;flex-direction:column;position:relative;overflow:hidden;color:var(--ink)}
+  .ab .eye{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    font-size:max(10px,1.354cqw);line-height:1;color:var(--grey);flex:none}
+  .ab.on-dark{color:var(--paper)}
+  .ab.on-dark .eye{color:rgba(250,250,247,.65)}
+  .ab-field{flex:1;min-height:0;display:flex;margin-top:1.25cqw;margin-bottom:1.25cqw}
+  .ab-foot{flex:none;display:flex;justify-content:space-between;align-items:baseline;gap:2cqw}
+  .ab-cap{font-size:max(12px,1.5625cqw);line-height:1.3;color:var(--ink)}
+  .ab.on-dark .ab-cap{color:rgba(250,250,247,.82)}
+  .ab-count{font-family:var(--mono);font-weight:700;letter-spacing:.14em;font-size:max(10px,1.354cqw);color:var(--grey);white-space:nowrap}
+  .ab.on-dark .ab-count{color:rgba(250,250,247,.4)}
+  .prose .ab img{background:transparent;width:auto;height:auto;max-width:100%}
+  /* 01 hero — cream, dual iMac */
+  .ab.ts01{background:#EFEBE1}
+  .ab.ts01 .ab-field{align-items:center;justify-content:center}
+  .ab.ts01 .ab-field img{max-height:100%;max-width:100%;object-fit:contain}
+  /* 02 the redesign home — ink, text column + desktop/mobile */
+  .ab.ts02{background:var(--ink-soft)}
+  .ab.ts02 .ab-field{gap:3.75cqw;align-items:stretch}
+  .ts02-l{flex:.9;display:flex;flex-direction:column;justify-content:space-between;min-width:0;padding-bottom:.4cqw}
+  .ts02-mid{margin:auto 0}
+  .ts02-hd{font-family:var(--display);font-weight:900;line-height:1;letter-spacing:-.015em;font-size:max(26px,4.792cqw);color:var(--paper)}
+  .ts02-hd em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:600;color:var(--paper)}
+  .ts02-sup{font-size:max(15px,1.667cqw);line-height:1.4;color:rgba(250,250,247,.82);max-width:22ch;margin:1.4cqw 0 0}
+  .ts02-monofoot{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:max(11px,1.25cqw);color:rgba(250,250,247,.45)}
+  .ts02-r{flex:1.35;display:flex;gap:2.083cqw;min-width:0}
+  .ab.ts02 .ts02-desk{flex:1.7;border:1px solid rgba(250,250,247,.18);background:#fff;overflow:hidden;display:flex}
+  .ab.ts02 .ts02-desk img{width:100%;height:100%;object-fit:contain;object-position:top center}
+  .ts02-mob{flex:1;display:flex;align-items:flex-end;justify-content:center;min-width:0}
+  .ab.ts02 .ts02-mob img{max-width:100%;max-height:100%;object-fit:contain}
+  .ts02-count{position:absolute;right:5cqw;bottom:5cqw}
+  /* 03 & 06 proof — ink */
+  .ab.ts03,.ab.ts06{background:var(--ink)}
+  .ab.ts03 .ab-field,.ab.ts06 .ab-field{align-items:center;justify-content:center;gap:3.75cqw}
+  .ts-num{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:600;
+    line-height:.9;letter-spacing:-.02em;color:var(--paper);white-space:nowrap}
+  .ab.ts03 .ts-num{font-size:15.625cqw}
+  .ab.ts06 .ts-num{font-size:23.958cqw}
+  .ts-proof-r{display:flex;flex-direction:column}
+  .ts-proof-to{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:600;
+    line-height:1;letter-spacing:-.02em;color:var(--magenta)}
+  .ab.ts03 .ts-proof-to{font-size:4.792cqw}
+  .ab.ts06 .ts-proof-to{font-size:4.583cqw}
+  .ts-proof-div{width:10.42cqw;height:2px;background:rgba(250,250,247,.25);margin:1.6cqw 0}
+  .ts-proof-lbl{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    font-size:max(11px,1.25cqw);line-height:1.5;color:rgba(250,250,247,.65)}
+  /* 04 across touchpoints — ink, single image */
+  .ab.ts04{background:var(--ink-soft)}
+  .ab.ts04 .ab-field{align-items:center;justify-content:center;padding:1.25cqw 0}
+  .ab.ts04 .ab-field img{max-height:100%;max-width:100%;object-fit:contain}
+  /* 05 browse by device — cream, headline + two devices */
+  .ab.ts05{background:#F4F2EB}
+  .ts05-top{flex:none;display:flex;justify-content:space-between;align-items:baseline;gap:2cqw}
+  .ts05-hd{font-family:var(--display);font-weight:900;letter-spacing:-.015em;font-size:max(24px,2.917cqw);color:var(--ink);line-height:1}
+  .ts05-hd em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:600}
+  .ab.ts05 .ab-field{gap:3.75cqw;align-items:center;justify-content:center}
+  .ts05-col{flex:1;display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;height:100%}
+  .ab.ts05 .ts05-col img{max-width:100%;max-height:100%;object-fit:contain}
+  /* rise-in (preserve .breakout translateX(-50%) centering, like .pull.reveal) */
+  .ab.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .ab.reveal.in{opacity:1;transform:none}
+  .ab.breakout.reveal{transform:translateX(-50%) translateY(22px)}
+  .ab.breakout.reveal.in{transform:translateX(-50%)}
+  @media(prefers-reduced-motion:reduce){
+    .ab.reveal{opacity:1;transform:none;transition:none}
+    .ab.breakout.reveal{transform:translateX(-50%)}
+  }
+  @media(max-width:640px){
+    .ab{aspect-ratio:auto;padding:24px 20px}
+    .ab .eye{font-size:11px}.ab-cap{font-size:14px}.ab-count{font-size:11px}
+    .ab-field{margin-top:16px;margin-bottom:16px}
+    .ab.ts01 .ab-field img,.ab.ts04 .ab-field img{max-width:100%;max-height:52vh}
+    /* 02 stack: text over devices */
+    .ab.ts02 .ab-field{flex-direction:column;gap:22px}
+    .ts02-l{padding-bottom:0}.ts02-mid{margin:14px 0}
+    .ts02-hd{font-size:32px}.ts02-sup{font-size:16px;max-width:none}
+    .ts02-monofoot{font-size:12px;margin-top:14px}
+    .ts02-r{gap:16px}.ab.ts02 .ts02-desk{min-height:200px}
+    .ts02-count{position:static;display:block;text-align:right;margin-top:14px}
+    /* 03/06 proof stack */
+    .ab.ts03 .ab-field,.ab.ts06 .ab-field{flex-direction:column;gap:14px;text-align:center}
+    .ab.ts03 .ts-num{font-size:120px}.ab.ts06 .ts-num{font-size:150px}
+    .ab.ts03 .ts-proof-to{font-size:40px}.ab.ts06 .ts-proof-to{font-size:40px}
+    .ts-proof-r{align-items:center}.ts-proof-div{width:120px;margin:14px auto}.ts-proof-lbl{font-size:12px;text-align:center}
+    /* 05 stack */
+    .ts05-top{flex-direction:column;gap:8px}.ts05-hd{font-size:30px}
+    .ab.ts05 .ab-field{flex-direction:column;gap:22px}.ts05-col{height:auto}
+    .ab.ts05 .ts05-col img{max-height:46vh}
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -977,13 +1074,30 @@
 <!-- Body — five-section authored structure -->
 <article class="article-body wrap">
   <div class="prose">
+    <figure class="ab ts01 breakout reveal">
+      <span class="eye">TELUS Support — self-serve · 01</span>
+      <div class="ab-field"><img src="/images/telus-support/hero-howto-imacs.webp" alt="The redesigned TELUS Support self-serve experience on two iMacs"></div>
+      <div class="ab-foot"><span class="ab-cap">Self-serve, rebuilt — support that's findable across every touchpoint.</span><span class="ab-count">01 / 06</span></div>
+    </figure>
+
     <h2>the brief.</h2>
 
     <p>With an average cost of $10–15 per customer service call, it is not surprising to see organizations invest in comprehensive online self-serve experiences. When TELUS Digital needed to optimize their online Support experience, we ran a design and technology overhaul that produced a 30% drop in call centre volume and over $600,000 in savings in the first year.</p>
 
     <p>Three years on, a company-wide design system change — and a growing pile of support articles with no governance over how they were written or categorized — made content hard for customers to find. Call volumes started climbing again. We stepped back in to streamline the experience a second time.</p>
 
-    <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Brief — the economics</span><p>At $10–15 a call, <span class="mag">every problem solved online is money that stays in the business</span>.</p></aside>
+    <figure class="ab ts03 breakout reveal on-dark">
+      <span class="eye">TELUS Support — the economics · 03</span>
+      <div class="ab-field">
+        <span class="ts-num">$600K+</span>
+        <div class="ts-proof-r">
+          <span class="ts-proof-to">saved in year one</span>
+          <span class="ts-proof-div"></span>
+          <span class="ts-proof-lbl">30% drop in call centre volume · first year</span>
+        </div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">At $10–15 a call, every problem solved online is money that stays in the business.</span><span class="ab-count">03 / 06</span></div>
+    </figure>
 
     <h2>the challenge.</h2>
 
@@ -999,6 +1113,42 @@
 
     <p>We designed a new experience that made it easier to find support content across touchpoints — including from pages outside TELUS Support — with clearer guidance through the Support journey, updated categorization, and more readable articles.</p>
 
+    <figure class="ab ts02 breakout reveal on-dark">
+      <div class="ab-field">
+        <div class="ts02-l">
+          <span class="eye">The redesign · 02</span>
+          <div class="ts02-mid">
+            <div class="ts02-hd">Search first. <em>Answer fast.</em></div>
+            <p class="ts02-sup">A guided path to the right article — the same experience, phone to desktop.</p>
+          </div>
+          <span class="ts02-monofoot">Desktop + mobile — one journey</span>
+        </div>
+        <div class="ts02-r">
+          <div class="ts02-desk"><img src="/images/telus-support/home-get-answers-fast.webp" alt="The redesigned TELUS Support home page on desktop"></div>
+          <div class="ts02-mob"><img src="/images/telus-support/mobile-welcome.webp" alt="The redesigned Support welcome screen on mobile"></div>
+        </div>
+      </div>
+      <span class="ab-count ts02-count">02 / 06</span>
+    </figure>
+
+    <figure class="ab ts04 breakout reveal on-dark">
+      <span class="eye">Across touchpoints · 04</span>
+      <div class="ab-field"><img src="/images/telus-support/multidevice.webp" alt="The same Support answers on a laptop and two phones"></div>
+      <div class="ab-foot"><span class="ab-cap">The same answer, wherever the question starts — and from pages well outside Support.</span><span class="ab-count">04 / 06</span></div>
+    </figure>
+
+    <figure class="ab ts05 breakout reveal">
+      <div class="ts05-top">
+        <span class="eye">Updated categorization · 05</span>
+        <span class="ts05-hd">Browse by <em>device.</em></span>
+      </div>
+      <div class="ab-field">
+        <div class="ts05-col"><img src="/images/telus-support/mobility-browser.webp" alt="The Mobility support page in a desktop browser"></div>
+        <div class="ts05-col"><img src="/images/telus-support/mobility-tablet.webp" alt="The same Mobility support page on a tablet"></div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">A straight path to the right device — and a content model built to hold as it scales.</span><span class="ab-count">05 / 06</span></div>
+    </figure>
+
     <h3>behind the build.</h3>
 
     <p>A strong customer experience needed an equally strong foundation for the content stakeholders behind it. Contentful checked every box and simplified the otherwise painful job of migrating thousands of articles off the legacy CMS — chosen because the content team's flexibility was as much the product as the customer-facing pages.</p>
@@ -1009,7 +1159,18 @@
 
     <p>The optimization built on those numbers: a 9% reduction in overall support costs, 9% fewer Support visitors landing on 'Contact Us,' and a 17% lift in article traffic. A simpler experience, a governed content strategy, and a robust platform — saving customers a call for help for years to come.</p>
 
-    <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Outcome — solved online</span><p>Seven in ten customers who reached the 'Contact Us' page <span class="mag">never came back — they'd already solved it</span>.</p></aside>
+    <figure class="ab ts06 breakout reveal on-dark">
+      <span class="eye">TELUS Support — solved online · 06</span>
+      <div class="ab-field">
+        <span class="ts-num">70%</span>
+        <div class="ts-proof-r">
+          <span class="ts-proof-to">never came back</span>
+          <span class="ts-proof-div"></span>
+          <span class="ts-proof-lbl">Visitors who reached 'Contact Us' — resolved online instead</span>
+        </div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">30% more customers solved their issue on the site — then a 17% lift in article traffic.</span><span class="ab-count">06 / 06</span></div>
+    </figure>
 
     <figure class="cs-quote reveal">
       <blockquote>The calibre of talent at Power Shifter is truly impressive. Having them as part of my team lets me handle communications and stakeholder management on the project with the peace of mind that my Scrum Master, Developers, Designers, and Data Analysts (Power Shifter team) have the rest of the project details and deliverables under control and operating at the highest quality. I couldn't ask for a better, higher performing team.</blockquote>

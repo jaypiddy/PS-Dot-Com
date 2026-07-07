@@ -878,6 +878,56 @@
 
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
+<style id="bcpf-blocks">
+  /* BC Parks Foundation case-study visual blocks (design handoff 2026-07) — same .ab system.
+     Four blocks: 01 the relaunch + 02 the platform (device renders overfilling an ink field,
+     with chrome), 03 the persona + 04 the moodboard (full-bleed reference sheets, NO chrome —
+     each asset is a complete self-titled composition). Classes namespaced .bcpf-*. Local
+     renders in images/bcpf/. NN / 04. */
+  .ab{container-type:inline-size;aspect-ratio:16/9;width:100%;box-sizing:border-box;
+    padding:5cqw;display:flex;flex-direction:column;position:relative;overflow:hidden;color:var(--ink)}
+  .ab .eye{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    font-size:max(10px,1.354cqw);line-height:1;color:var(--grey);flex:none}
+  .ab.on-dark{color:var(--paper)}
+  .ab.on-dark .eye{color:rgba(250,250,247,.85)}
+  .ab-field{flex:1;min-height:0;display:flex;margin-top:1.25cqw;margin-bottom:1.25cqw}
+  .ab-foot{flex:none;display:flex;justify-content:space-between;align-items:baseline;gap:2cqw}
+  .ab-cap{font-size:max(12px,1.5625cqw);line-height:1.25;color:var(--ink)}
+  .ab.on-dark .ab-cap{color:rgba(250,250,247,.85)}
+  .ab-count{font-family:var(--mono);font-weight:700;letter-spacing:.14em;font-size:max(10px,1.354cqw);color:var(--grey);white-space:nowrap}
+  .ab.on-dark .ab-count{color:rgba(250,250,247,.45)}
+  .ab img{background:transparent}
+  .prose .ab img{background:transparent}
+  /* 01-02 device render on ink, slight overfill (block clips) */
+  .ab.bcpf-dev{background:var(--ink)}
+  .ab.bcpf-dev .ab-field{align-items:center;justify-content:center;overflow:hidden}
+  .ab.bcpf-dev .ab-field img{width:auto;max-width:none;object-fit:contain}
+  .ab.bcpf01 .ab-field img{height:112%}
+  .ab.bcpf02 .ab-field img{height:118%}
+  /* 03-04 full-bleed reference sheet, no chrome */
+  .ab.bcpf-full{padding:0}
+  .ab.bcpf-full img{position:absolute;inset:0;width:100%;height:100%}
+  .ab.bcpf03 img{object-fit:cover}
+  .ab.bcpf04{background:#fff}
+  .ab.bcpf04 img{object-fit:contain}
+  /* rise-in (all .prose .breakout — keep translateX(-50%) centering, like .pull.reveal) */
+  .ab.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .ab.reveal.in{opacity:1;transform:none}
+  .ab.breakout.reveal{transform:translateX(-50%) translateY(22px)}
+  .ab.breakout.reveal.in{transform:translateX(-50%)}
+  @media(prefers-reduced-motion:reduce){
+    .ab.reveal{opacity:1;transform:none;transition:none}
+    .ab.breakout.reveal{transform:translateX(-50%)}
+  }
+  @media(max-width:640px){
+    .ab{aspect-ratio:auto;padding:24px 20px}
+    .ab .eye{font-size:11px}.ab-cap{font-size:14px}.ab-count{font-size:11px}
+    .ab-field{margin-top:16px;margin-bottom:16px}
+    .ab.bcpf-dev .ab-field img{height:auto;max-height:60vh}
+    .ab.bcpf-full{aspect-ratio:16/10}.ab.bcpf-full img{position:relative}
+    .ab.bcpf03{aspect-ratio:4/3}
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -977,6 +1027,12 @@
 
     <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Brief — the real ask</span><p>The brief wasn't only to build the platform. It was to <span class="mag">rebuild the trust the first attempt broke</span>.</p></aside>
 
+    <figure class="ab bcpf-dev bcpf01 breakout reveal on-dark">
+      <span class="eye">BC Parks Foundation — the relaunch · 01</span>
+      <div class="ab-field"><img src="/images/bcpf/macbook.png" alt="The new Discover Parks homepage on a MacBook — Find Your Next BC Parks Adventure"></div>
+      <div class="ab-foot"><span class="ab-cap">Go outside — the platform's second first impression.</span><span class="ab-count">01 / 04</span></div>
+    </figure>
+
     <h2>the challenge.</h2>
 
     <p>The starting point was a broken system and a skeptical client. The existing platform was confusing for users and admins alike, rigid and overcomplicated, and failing at core jobs like event booking and self-guided activities. Stakeholders were frustrated by money already spent — so the work had to prove, early and visibly, that this time would be different.</p>
@@ -985,17 +1041,31 @@
 
     <p>We led with discovery and transparency. Deep interviews and workshops re-established alignment, and we rebuilt confidence — the only way it can be rebuilt — through agile delivery and incremental wins that stakeholders could see. Technical audits and user research with both seasoned parkgoers and first-time explorers told us where the old system actually failed; prototype testing validated the navigation, booking, and self-guided journeys before we committed to them. The governing principle: usability over technical constraint, every time the two collided.</p>
 
+    <figure class="ab bcpf-dev bcpf02 breakout reveal on-dark">
+      <span class="eye">BC Parks Foundation — the platform · 02</span>
+      <div class="ab-field"><img src="/images/bcpf/phone.png" alt="The Discover Parks mobile home — Go outside with Discover Parks, search chips and curated activities"></div>
+      <div class="ab-foot"><span class="ab-cap">The same search, in your pocket on the trail.</span><span class="ab-count">02 / 04</span></div>
+    </figure>
+
     <h2>the solution.</h2>
 
     <h3>a scalable, user-first platform.</h3>
 
     <p>We rebuilt DiscoverParks.ca on a flexible, scalable foundation, replacing the rigid legacy system. Event booking and navigation were streamlined to cut the friction that had stalled the original; an intuitive CMS put content control back in the foundation's hands, and the brand's digital identity was strengthened to reinforce credibility with parkgoers. We took an MVP-first approach — launching, learning from real-world feedback, and improving — rather than betting everything on a single big release.</p>
 
+    <figure class="ab bcpf-full bcpf03 breakout reveal" aria-label="Persona sheet — Saige, BC Parks Advocate">
+      <img src="/images/bcpf/persona.jpg" alt="Persona sheet: Saige, a BC Parks Advocate — an outdoorsy social-media coordinator, with her quote, goals and activities, gains and pains for the Discover Parks platform">
+    </figure>
+
     <h2>the outcome.</h2>
 
     <p>The headline here is recovery: a failed vendor investment turned into a working, trusted platform — a cost-avoidance outcome before it's anything else. Simplified booking flows increased engagement and participation; an intuitive CMS freed the foundation's team to manage the platform independently; and stakeholders regained confidence in a product that finally aligned with their mission. The foundation is left with a future-ready foundation built to adapt as needs grow.</p>
 
     <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Outcome — recovery</span><p>A failed vendor investment, turned into <span class="mag">a platform people trust</span> — recovery is the result.</p></aside>
+
+    <figure class="ab bcpf-full bcpf04 breakout reveal" aria-label="Moodboard — the visual references behind the redesign">
+      <img src="/images/bcpf/moodboard.jpg" alt="Redesign moodboard: an AirBnB circle (booking and reservation UI patterns, amenities, map) and a Form &amp; Shape circle (editorial layouts, a curator quote, a ticket card, organic shapes)">
+    </figure>
   </div>
 </article>
 

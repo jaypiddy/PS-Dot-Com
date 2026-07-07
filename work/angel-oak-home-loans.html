@@ -878,6 +878,78 @@
 
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
+<style id="ao-blocks">
+  /* Angel Oak Home Loans case-study visual blocks (design handoff 2026-07) — same .ab system.
+     Five blocks: 01 the redesign (Galaxy on ink), 02 before/after (iPads on cream), 03 the landing-
+     page engine (ink statement — headline+serif pivot / Pixelbook), 04 find an advisor (iPhone on
+     cream), 05 the proof (40% more organic leads, ink). Serif via --serif-vset. Classes .ao-*.
+     Local renders in images/angel-oak/. NN / 05. */
+  .ab{container-type:inline-size;aspect-ratio:16/9;width:100%;box-sizing:border-box;
+    padding:5cqw;display:flex;flex-direction:column;position:relative;overflow:hidden;color:var(--ink)}
+  .ab .eye{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    font-size:max(10px,1.354cqw);line-height:1;color:var(--grey);flex:none}
+  .ab.on-dark{color:var(--paper)}
+  .ab.on-dark .eye{color:rgba(250,250,247,.85)}
+  .ab-field{flex:1;min-height:0;display:flex;margin-top:1.25cqw;margin-bottom:1.25cqw}
+  .ab-foot{flex:none;display:flex;justify-content:space-between;align-items:baseline;gap:2cqw}
+  .ab-cap{font-size:max(12px,1.5625cqw);line-height:1.25;color:var(--ink)}
+  .ab.on-dark .ab-cap{color:rgba(250,250,247,.85)}
+  .ab-count{font-family:var(--mono);font-weight:700;letter-spacing:.14em;font-size:max(10px,1.354cqw);color:var(--grey);white-space:nowrap}
+  .ab.on-dark .ab-count{color:rgba(250,250,247,.45)}
+  .ab img{background:transparent}
+  .prose .ab img{background:transparent}
+  /* 01 Galaxy on ink */
+  .ab.ao01{background:var(--ink)}
+  .ab.ao01 .ab-field{align-items:center;justify-content:center}
+  .ab.ao01 .ab-field img{max-height:100%;max-width:62%;object-fit:contain}
+  /* 02 before/after iPads on cream */
+  .ab.ao02{background:var(--paper)}
+  .ab.ao02 .ab-field{align-items:center;justify-content:center}
+  .ab.ao02 .ab-field img{max-height:100%;max-width:78%;object-fit:contain}
+  /* 03 statement — ink, headline+body / Pixelbook */
+  .ab.ao03{background:var(--ink)}
+  .ab.ao03 .ab-field{display:grid;grid-template-columns:1.05fr .95fr;gap:3.333cqw;align-items:center}
+  .ao-hd{font-family:var(--display);font-weight:900;line-height:1.05;letter-spacing:-.015em;font-size:max(24px,3.75cqw);color:var(--paper)}
+  .ao-hd em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;color:var(--magenta)}
+  .ao-body{margin:1.6cqw 0 0;line-height:1.5;font-size:max(14px,1.302cqw);color:rgba(250,250,247,.7);max-width:46ch}
+  .ao-col-img{display:flex;align-items:center;justify-content:center;min-width:0;min-height:0}
+  .ao-col-img img{max-height:23.96cqw;max-width:100%;width:auto;object-fit:contain}
+  /* 04 advisor iPhone on cream */
+  .ab.ao04{background:var(--paper)}
+  .ab.ao04 .ab-field{align-items:center;justify-content:center}
+  .ab.ao04 .ab-field img{max-height:92%;max-width:60%;object-fit:contain}
+  /* 05 proof — 40% more organic leads, ink */
+  .ab.ao05{background:var(--ink)}
+  .ab.ao05 .ab-field{align-items:center;justify-content:center;gap:4.583cqw}
+  .ao-num{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;
+    font-size:18.75cqw;line-height:.86;letter-spacing:-.02em;color:var(--magenta)}
+  .ao-proof-r{display:flex;flex-direction:column;max-width:12em}
+  .ao-proof-to{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;
+    font-size:4.583cqw;line-height:1;color:var(--magenta)}
+  .ao-proof-div{width:11.46cqw;height:2px;background:rgba(250,250,247,.25);margin:1.6cqw 0}
+  .ao-proof-lbl{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    font-size:max(11px,1.302cqw);line-height:1.6;color:rgba(250,250,247,.72)}
+  /* rise-in (all .prose .breakout — keep translateX(-50%) centering, like .pull.reveal) */
+  .ab.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .ab.reveal.in{opacity:1;transform:none}
+  .ab.breakout.reveal{transform:translateX(-50%) translateY(22px)}
+  .ab.breakout.reveal.in{transform:translateX(-50%)}
+  @media(prefers-reduced-motion:reduce){
+    .ab.reveal{opacity:1;transform:none;transition:none}
+    .ab.breakout.reveal{transform:translateX(-50%)}
+  }
+  @media(max-width:640px){
+    .ab{aspect-ratio:auto;padding:24px 20px}
+    .ab .eye{font-size:11px}.ab-cap{font-size:14px}.ab-count{font-size:11px}
+    .ab-field{margin-top:16px;margin-bottom:16px}
+    .ab.ao01 .ab-field img,.ab.ao02 .ab-field img,.ab.ao04 .ab-field img{max-width:82%;max-height:56vh}
+    .ab.ao03 .ab-field{grid-template-columns:1fr;gap:22px}
+    .ao-hd{font-size:30px}.ao-body{font-size:16px}.ao-col-img img{max-height:46vh}
+    .ab.ao05 .ab-field{flex-direction:column;gap:16px;text-align:center}
+    .ao-num{font-size:150px}.ao-proof-to{font-size:44px}.ao-proof-r{align-items:center;max-width:none}
+    .ao-proof-div{width:120px;margin:14px auto}.ao-proof-lbl{font-size:12px;text-align:center}
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -976,6 +1048,12 @@
 <!-- Body — five-section authored structure -->
 <article class="article-body wrap">
   <div class="prose">
+    <figure class="ab ao01 breakout reveal on-dark">
+      <span class="eye">Angel Oak — the redesign · 01</span>
+      <div class="ab-field"><img src="/images/angel-oak/galaxy.webp" alt="The redesigned Angel Oak homepage and Resources page on Galaxy S21 Ultra"></div>
+      <div class="ab-foot"><span class="ab-cap">A mobile-first homepage built to serve both traditional and non-traditional borrowers.</span><span class="ab-count">01 / 05</span></div>
+    </figure>
+
     <h2>the brief.</h2>
 
     <p>Angel Oak Home Loans serves borrowers most lenders' websites ignore — self-employed applicants, investors, foreign nationals — through a portfolio of non-QM mortgage products. The opportunity was real; the digital front door wasn't built to capture it.</p>
@@ -987,6 +1065,12 @@
     <h2>the challenge.</h2>
 
     <p>The hard part wasn't a redesign — it was making one site serve two very different borrowers without confusing either, while fixing a technical foundation that search engines couldn't read and marketing couldn't use. The site had to rank, convert, and keep up with campaigns the team would launch on their own.</p>
+
+    <figure class="ab ao02 breakout reveal">
+      <span class="eye">Angel Oak — before &amp; after · 02</span>
+      <div class="ab-field"><img src="/images/angel-oak/ipads.webp" alt="A before-and-after comparison of the Angel Oak site on two iPads"></div>
+      <div class="ab-foot"><span class="ab-cap">Out with the dated template — in with a branded, structured experience.</span><span class="ab-count">02 / 05</span></div>
+    </figure>
 
     <h2>the process.</h2>
 
@@ -1002,11 +1086,42 @@
 
     <p>We built a no-code landing page generator so the team can launch paid social and Facebook campaigns instantly, with every page aligned to the same SEO standards as the core site — turning the website from a static asset into a campaign platform.</p>
 
+    <figure class="ab ao03 breakout reveal on-dark">
+      <span class="eye">Angel Oak — the landing page engine · 03</span>
+      <div class="ab-field">
+        <div>
+          <div class="ao-hd">A no-code engine. <em>Built for campaigns.</em></div>
+          <p class="ao-body">A landing page generator lets Angel Oak launch Facebook and paid social campaigns instantly — each page aligned to SEO landing-page standards, without waiting on a developer.</p>
+        </div>
+        <div class="ao-col-img"><img src="/images/angel-oak/pixelbook.webp" alt="A Bank Statement Home Loan campaign landing page on a Pixelbook Go"></div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">One template, endless campaigns — each one on-brand and SEO-ready.</span><span class="ab-count">03 / 05</span></div>
+    </figure>
+
+    <figure class="ab ao04 breakout reveal">
+      <span class="eye">Angel Oak — find an advisor · 04</span>
+      <div class="ab-field"><img src="/images/angel-oak/advisor.webp" alt="The branch locator on an iPhone — find a local mortgage advisor by state"></div>
+      <div class="ab-foot"><span class="ab-cap">A custom branch locator connects borrowers to a licensed advisor by area code.</span><span class="ab-count">04 / 05</span></div>
+    </figure>
+
     <h2>the outcome.</h2>
 
     <p>The redesign was built to convert, and it did: a 40% increase in organic leads within the first 30 days of launch.</p>
 
     <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Outcome — leads to match</span><p>A <span class="mag">40% lift in organic leads</span> inside the first 30 days.</p></aside>
+
+    <figure class="ab ao05 breakout reveal on-dark">
+      <span class="eye">Angel Oak — the proof · 05</span>
+      <div class="ab-field">
+        <span class="ao-num">40%</span>
+        <div class="ao-proof-r">
+          <span class="ao-proof-to">more organic leads.</span>
+          <span class="ao-proof-div"></span>
+          <span class="ao-proof-lbl">Within 30 days of launch.</span>
+        </div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">A user-first, SEO-optimized redesign that moved the growth needle fast.</span><span class="ab-count">05 / 05</span></div>
+    </figure>
 
     <figure class="cs-quote reveal">
       <blockquote>I don't know if I could be happier with how this turned out. I am so thankful that Webflow and the Power Shifter team were able to help us modernize our website. [...] The Power Shifter team are absolute professionals and Webflow will be doing any company a huge favour if they continue referring them.</blockquote>

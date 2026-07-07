@@ -878,6 +878,74 @@
 
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
+<style id="dc-blocks">
+  /* Delta Controls case-study visual blocks (design handoff 2026-07) — same .ab system. Four
+     blocks (the handoff's block 05 quote box was dropped per JP; the existing testimonial stands):
+     01 the product (device on ink), 02 the web app (cream MacBook), 03 the mobile app (ink
+     statement — headline+serif pivot / phones), 04 the proof (3x faster stat on ink). Serif via
+     --serif-vset. Classes .dc-*. Local renders in images/delta/. NN / 04. */
+  .ab{container-type:inline-size;aspect-ratio:16/9;width:100%;box-sizing:border-box;
+    padding:5cqw;display:flex;flex-direction:column;position:relative;overflow:hidden;color:var(--ink)}
+  .ab .eye{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    font-size:max(10px,1.354cqw);line-height:1;color:var(--grey);flex:none}
+  .ab.on-dark{color:var(--paper)}
+  .ab.on-dark .eye{color:rgba(250,250,247,.85)}
+  .ab-field{flex:1;min-height:0;display:flex;margin-top:1.25cqw;margin-bottom:1.25cqw}
+  .ab-foot{flex:none;display:flex;justify-content:space-between;align-items:baseline;gap:2cqw}
+  .ab-cap{font-size:max(12px,1.5625cqw);line-height:1.25;color:var(--ink)}
+  .ab.on-dark .ab-cap{color:rgba(250,250,247,.85)}
+  .ab-count{font-family:var(--mono);font-weight:700;letter-spacing:.14em;font-size:max(10px,1.354cqw);color:var(--grey);white-space:nowrap}
+  .ab.on-dark .ab-count{color:rgba(250,250,247,.45)}
+  .ab img{background:transparent}
+  .prose .ab img{background:transparent}
+  /* 01 device on ink */
+  .ab.dc01{background:var(--ink)}
+  .ab.dc01 .ab-field{align-items:center;justify-content:center}
+  .ab.dc01 .ab-field img{max-height:100%;max-width:92%;object-fit:contain}
+  /* 02 web app on cream */
+  .ab.dc02{background:var(--paper)}
+  .ab.dc02 .ab-field{align-items:center;justify-content:center}
+  .ab.dc02 .ab-field img{width:100%;max-height:100%;object-fit:contain}
+  /* 03 statement — ink, headline+body / phones */
+  .ab.dc03{background:var(--ink)}
+  .ab.dc03 .ab-field{display:grid;grid-template-columns:.92fr 1.08fr;gap:3.333cqw;align-items:center}
+  .dc-hd{font-family:var(--display);font-weight:900;line-height:1.05;letter-spacing:-.015em;font-size:max(24px,3.75cqw);color:var(--paper)}
+  .dc-hd em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;color:var(--magenta)}
+  .dc-body{margin:1.6cqw 0 0;line-height:1.5;font-size:max(14px,1.302cqw);color:rgba(250,250,247,.7);max-width:46ch}
+  .dc-col-img{display:flex;align-items:center;justify-content:center;min-width:0;min-height:0}
+  .dc-col-img img{max-height:39.5cqw;max-width:100%;width:auto;object-fit:contain}
+  /* 04 proof — 3x faster, ink */
+  .ab.dc04{background:var(--ink)}
+  .ab.dc04 .ab-field{align-items:center;justify-content:center;gap:4.583cqw}
+  .dc-num{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;
+    font-size:20.83cqw;line-height:.86;letter-spacing:-.02em;color:var(--paper)}
+  .dc-proof-r{display:flex;flex-direction:column;max-width:29em}
+  .dc-proof-to{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;
+    font-size:4.79cqw;line-height:1;color:var(--magenta)}
+  .dc-proof-div{width:11.46cqw;height:2px;background:rgba(250,250,247,.25);margin:1.6cqw 0}
+  .dc-proof-lbl{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    font-size:max(11px,1.302cqw);line-height:1.7;color:rgba(250,250,247,.72)}
+  /* rise-in (all .prose .breakout — keep translateX(-50%) centering, like .pull.reveal) */
+  .ab.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .ab.reveal.in{opacity:1;transform:none}
+  .ab.breakout.reveal{transform:translateX(-50%) translateY(22px)}
+  .ab.breakout.reveal.in{transform:translateX(-50%)}
+  @media(prefers-reduced-motion:reduce){
+    .ab.reveal{opacity:1;transform:none;transition:none}
+    .ab.breakout.reveal{transform:translateX(-50%)}
+  }
+  @media(max-width:640px){
+    .ab{aspect-ratio:auto;padding:24px 20px}
+    .ab .eye{font-size:11px}.ab-cap{font-size:14px}.ab-count{font-size:11px}
+    .ab-field{margin-top:16px;margin-bottom:16px}
+    .ab.dc01 .ab-field img,.ab.dc02 .ab-field img{max-height:56vh}
+    .ab.dc03 .ab-field{grid-template-columns:1fr;gap:22px}
+    .dc-hd{font-size:30px}.dc-body{font-size:16px}.dc-col-img img{max-height:50vh}
+    .ab.dc04 .ab-field{flex-direction:column;gap:16px;text-align:center}
+    .dc-num{font-size:150px}.dc-proof-to{font-size:44px}.dc-proof-r{align-items:center;max-width:none}
+    .dc-proof-div{width:120px;margin:14px auto}.dc-proof-lbl{font-size:12px;text-align:center}
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -977,6 +1045,12 @@
 <!-- Body — five-section authored structure -->
 <article class="article-body wrap">
   <div class="prose">
+    <figure class="ab dc01 breakout reveal on-dark">
+      <span class="eye">Delta Controls — the product · 01</span>
+      <div class="ab-field"><img src="/images/delta/product.webp" alt="The O3 Sensor Hub 2.0 device beside the O3 app's sign-in screen on iPhone"></div>
+      <div class="ab-foot"><span class="ab-cap">The O3 Sensor Hub 2.0 — and the software that sets it up.</span><span class="ab-count">01 / 04</span></div>
+    </figure>
+
     <h2>the brief.</h2>
 
     <p>Delta Controls is a leading control manufacturer helping industries manage surveillance, lighting, cameras, and occupancy sensing. Ahead of launching their O3 Sensor Hub 2.0, they asked us to build a planning and configuration experience that would cut the time installers spend on-site and make the system faster to learn.</p>
@@ -999,11 +1073,29 @@
 
     <p>The web app lets engineers plan and configure O3 sensor hubs online, setting up and managing devices remotely instead of on-site. Everything created in the app is stored in the cloud; once hubs are connected, the platform delivers remote, real-time data insights and reporting.</p>
 
+    <figure class="ab dc02 breakout reveal">
+      <span class="eye">Delta Controls — the web app · 02</span>
+      <div class="ab-field"><img src="/images/delta/webapp.webp" alt="The O3 web app on a MacBook — a job's sensor-hub attribute list: status, type, enabled or disabled"></div>
+      <div class="ab-foot"><span class="ab-cap">Plan and configure sensor hubs online — everything stored in the cloud.</span><span class="ab-count">02 / 04</span></div>
+    </figure>
+
     <h3>configuration that survives the field.</h3>
 
     <p>To handle on-site dead zones, the mobile app downloads everything it needs at login and lets the installer keep working offline, syncing to the cloud the moment data or WiFi returns. Installers can see which settings failed to sync and spot malfunctioning sensors through live, real-time readings from the device.</p>
 
     <p>By moving from hardware into cloud-based software, Delta laid the foundation for a new business model — one built to shift and grow as the technology does.</p>
+
+    <figure class="ab dc03 breakout reveal on-dark">
+      <span class="eye">Delta Controls — the mobile app · 03</span>
+      <div class="ab-field">
+        <div>
+          <div class="dc-hd">Built for the field. <em>Even off the grid.</em></div>
+          <p class="dc-body">For on-site dead zones, the app downloads everything on login and keeps working offline — syncing to the cloud on reconnect. Installers spot unsynced settings and failing sensors through live readings.</p>
+        </div>
+        <div class="dc-col-img"><img src="/images/delta/mobile.webp" alt="The sensor hub beside two Android phones — the job-site hub list and BLE/NFC diagnostics"></div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">Configure and troubleshoot hubs on-site — connection optional.</span><span class="ab-count">03 / 04</span></div>
+    </figure>
 
     <h2>the outcome.</h2>
 
@@ -1013,10 +1105,28 @@
 
     <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Outcome — 3x faster</span><p>Five minutes to ninety seconds — <span class="mag">and not a ladder in sight</span>.</p></aside>
 
+    <figure class="ab dc04 breakout reveal on-dark">
+      <span class="eye">Delta Controls — the proof · 04</span>
+      <div class="ab-field">
+        <span class="dc-num">3×</span>
+        <div class="dc-proof-r">
+          <span class="dc-proof-to">faster to configure.</span>
+          <span class="dc-proof-div"></span>
+          <span class="dc-proof-lbl">Setting up a hub — 5 minutes → 90 seconds with the new web software.</span>
+        </div>
+      </div>
+      <div class="ab-foot"><span class="ab-cap">Less time on-site — real cost savings for Delta and its customers.</span><span class="ab-count">04 / 04</span></div>
+    </figure>
+
     <figure class="cs-quote reveal">
       <blockquote>The launch of the projects and the design phase has been impressive. Power Shifter is very strong at that, which a lot of others aren't.</blockquote>
       <figcaption><span class="cs-quote-name">Kevin Batdorf</span><span class="cs-quote-role">Unitary Controls Line Manager / Senior Developer</span><span class="cs-quote-co">Delta Controls</span></figcaption>
     </figure>
+
+    <div class="cs-reel" id="cs-reel">
+      <video class="cs-reel-vid" src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/c3c4fad22e67aff6876a528a8d1d9739/downloads/default.mp4" poster="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/c3c4fad22e67aff6876a528a8d1d9739/thumbnails/thumbnail.jpg?time=0s" muted loop playsinline preload="metadata"></video>
+      <div class="cs-reel-cap"><span class="eyebrow">Outcome — in the wild</span><p>Set up from the workbench — the O3 hub, configured before the climb.</p><span class="cs-reel-hint">Hover to play</span></div>
+    </div>
   </div>
 </article>
 

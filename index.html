@@ -696,9 +696,9 @@
     const work = document.getElementById('work');
     const closer = document.getElementById('contact');
     const inDark =
-      (y < hero.offsetTop + hero.offsetHeight) ||
-      (y > work.offsetTop && y < work.offsetTop + work.offsetHeight) ||
-      (y > closer.offsetTop);
+      (hero && y < hero.offsetTop + hero.offsetHeight) ||
+      (work && y > work.offsetTop && y < work.offsetTop + work.offsetHeight) ||
+      (closer && y > closer.offsetTop);
     nav.style.color = inDark ? 'var(--paper)' : 'var(--ink)';
     document.querySelector('header').classList.toggle('on-light', !inDark);
   };

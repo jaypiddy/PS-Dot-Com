@@ -1281,7 +1281,7 @@
 <script>
   // Filter
   const ftabs = document.querySelectorAll('.ftab');
-  const wcards = document.querySelectorAll('[data-cat]');
+  const wcards = document.querySelectorAll('[data-cat]:not(.ftab)');
   ftabs.forEach(tab => {
     tab.addEventListener('click', () => {
       ftabs.forEach(t => t.classList.remove('on'));

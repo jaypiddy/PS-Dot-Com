@@ -206,7 +206,7 @@
     function check(){
       var vh = window.innerHeight || 800;
       inEls = inEls.filter(function(el){
-        if(el.getBoundingClientRect().top < vh*0.9){ el.classList.add('in'); return false; }
+        if(el.getBoundingClientRect().top < vh*0.9){ el.classList.add('in'); if(el.classList.contains('proof-row')) el.classList.add('go'); return false; }
         return true;
       });
       spEls = spEls.filter(function(el){

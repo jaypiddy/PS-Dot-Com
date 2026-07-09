@@ -329,6 +329,18 @@
     var rT = null;
     window.addEventListener('resize', function(){ clearTimeout(rT); rT = setTimeout(build, 150); });
     document.addEventListener('visibilitychange', function(){ if(!document.hidden) build(); });
+    // Belt-and-braces: IO callbacks ride on rendering frames, which Chrome
+    // suspends for occluded windows — and boot can run before first layout
+    // (zero rects → "no dark band" → wrong state that nothing corrects until
+    // a frame). A timestamp-throttled scroll fallback + a load re-check keep
+    // the header honest in every environment; apply() is ~5 rect reads.
+    var sLast = 0, sTrail = null;
+    window.addEventListener('scroll', function(){
+      var now = Date.now();
+      if(now - sLast > 120){ sLast = now; apply(); }
+      clearTimeout(sTrail); sTrail = setTimeout(apply, 160);
+    }, {passive:true});
+    window.addEventListener('load', apply);
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();

@@ -14,7 +14,9 @@
 
 /* ---------- Launcher (soft circular ink mark) ---------- */
 .cc-launch{position:relative;width:60px;height:60px;border-radius:50%;
-  background:var(--ink);color:var(--paper);border:0;cursor:pointer;
+  /* --ink at 80% alpha: softens over light sections ("not quite as black"),
+     still reads black over dark ones; the ring below keeps it visible either way. */
+  background:rgba(18,19,21,.8);color:var(--paper);border:0;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
   /* Drop shadow lifts it off LIGHT sections; the hairline light ring keeps the
      ink circle visible over BLACK/ink sections (where the fill would blend in). */

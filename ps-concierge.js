@@ -222,6 +222,22 @@
     function openForm(o){ fv.classList.toggle('on', o); if(o){ setTimeout(function(){ var n=fv.querySelector('input[name=name]'); if(n) n.focus(); },340); } }
     emailBtn.addEventListener('click', function(){ openForm(true); });
     fv.querySelector('.cc-fv-back').addEventListener('click', function(){ openForm(false); });
+    // "Start a project" CTAs (page closer + menu) open the concierge straight to the contact form
+    document.addEventListener('click', function(e){
+      var t = e.target.closest && e.target.closest('[data-cc-contact]');
+      if(!t) return;
+      e.preventDefault();
+      open(true); openForm(true);
+    });
+    // keyboard activation for non-native triggers (e.g. the menu span with role=button);
+    // native <a>/<button> already fire click on Enter, so skip them to avoid a double toggle
+    document.addEventListener('keydown', function(e){
+      if(e.key!=='Enter' && e.key!==' ') return;
+      var t = e.target.closest && e.target.closest('[data-cc-contact]');
+      if(!t || t.tagName==='A' || t.tagName==='BUTTON') return;
+      e.preventDefault();
+      open(true); openForm(true);
+    });
     fvForm.addEventListener('submit', async function(e){
       e.preventDefault();
       var data = {

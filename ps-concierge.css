@@ -9,7 +9,7 @@
 :root{ --cc-ease:cubic-bezier(.76,0,.24,1); }
 
 .cc-root,.cc-root *{box-sizing:border-box}
-.cc-root{position:fixed;left:24px;bottom:24px;z-index:9000;font-family:var(--text)}
+.cc-root{position:fixed;right:24px;bottom:24px;z-index:9000;font-family:var(--text);display:flex;justify-content:flex-end}
 @media(max-width:560px){.cc-root{left:14px;bottom:14px;right:14px}}
 
 /* ---------- Launcher (soft circular ink mark) ---------- */
@@ -30,11 +30,11 @@
 @media(max-width:560px){.cc-root.cc-open .cc-launch{display:none}}
 
 /* ---------- Panel ---------- */
-.cc-panel{position:absolute;left:0;bottom:0;width:372px;max-width:calc(100vw - 28px);
+.cc-panel{position:absolute;right:0;bottom:0;width:372px;max-width:calc(100vw - 28px);
   height:min(560px,calc(100vh - 48px));background:var(--paper);color:var(--ink);
   border:1px solid var(--line);box-shadow:0 30px 70px rgba(18,19,21,.34);
   display:flex;flex-direction:column;overflow:hidden;
-  opacity:0;transform:translateY(14px) scale(.98);transform-origin:left bottom;
+  opacity:0;transform:translateY(14px) scale(.98);transform-origin:right bottom;
   pointer-events:none;transition:opacity .32s var(--cc-ease),transform .32s var(--cc-ease)}
 .cc-root.cc-open .cc-panel{opacity:1;transform:none;pointer-events:auto}
 @media(max-width:560px){.cc-panel{width:100%;height:min(72vh,560px)}}

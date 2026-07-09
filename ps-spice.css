@@ -20,6 +20,15 @@
 main#main:focus{outline:none}
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
+/* --- Horizontal overflow guards (QA 2026-07) ------------------------
+   `clip` (not `hidden`): clips paint without creating a scroll container,
+   so position:sticky descendants keep working and no horizontal swipe /
+   scrollbar can exist anywhere. Guards below fix the two real offenders:
+   grid items default to min-width:auto, so unshrinkable content (odometer
+   digits, logo marks) forced columns wider than their track. */
+html{overflow-x:clip;overflow-y:auto}  /* explicit y: a lone overflow-x:clip computes y to clip too, freezing ALL scroll */
+.proof-row .stat,.proof-row .stat b,.logos .cell{min-width:0}
+
 
 :root{
   --sp-ease:cubic-bezier(.76,0,.24,1);

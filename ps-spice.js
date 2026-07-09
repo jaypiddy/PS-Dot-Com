@@ -291,28 +291,44 @@
     var nav = document.getElementById('nav');
     var header = document.querySelector('header');
     if(!nav || !header) return;
-    var darks = Array.prototype.slice.call(document.querySelectorAll(
-      '.hero, .sub-hero, #work, #contact, .cs-screening, .cs-ep.on-ink, footer'));
+    // Dark bands are DETECTED by computed background, not named: the same class
+    // is ink on one page and paper on another (.engine on /digital vs the
+    // homepage), which is exactly how the old hardcoded lists drifted.
+    function isDark(el){
+      var m = /rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/.exec(getComputedStyle(el).backgroundColor);
+      if(!m) return false;
+      if(m[4] !== undefined && parseFloat(m[4]) < 0.5) return false; // (semi)transparent → inherits paper
+      return (0.2126*m[1] + 0.7152*m[2] + 0.0722*m[3]) / 255 < 0.35;
+    }
+    var darks = Array.prototype.filter.call(
+      document.querySelectorAll('section, footer, .cs-screening, .cs-ep'), isDark);
     if(!darks.length) return;
     var io = null;
+    // The observer is only the TRIGGER; the truth is read from live geometry
+    // every time. (A stateful per-entry map went stale when the page loaded in
+    // a hidden tab — IO delivery is suspended there and entries coalesce.)
+    function headerH(){ return Math.max(1, Math.round(header.getBoundingClientRect().height)); }
+    function apply(){
+      var h = headerH(), inDark = false;
+      for(var i = 0; i < darks.length; i++){
+        var r = darks[i].getBoundingClientRect();
+        if(r.bottom > 0 && r.top < h){ inDark = true; break; }
+      }
+      nav.style.color = inDark ? 'var(--paper)' : 'var(--ink)';
+      header.classList.toggle('on-light', !inDark);
+    }
     function build(){
       if(io) io.disconnect();
-      var under = {};
-      var h = Math.max(1, Math.round(header.getBoundingClientRect().height));
-      // Shrink the observer's root box to the top `h` px of the viewport.
-      var bottomInset = -Math.max(1, window.innerHeight - h);
-      io = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){ under[darks.indexOf(e.target)] = e.isIntersecting; });
-        var inDark = false;
-        for(var i = 0; i < darks.length; i++){ if(under[i]){ inDark = true; break; } }
-        nav.style.color = inDark ? 'var(--paper)' : 'var(--ink)';
-        header.classList.toggle('on-light', !inDark);
-      }, { rootMargin: '0px 0px ' + bottomInset + 'px 0px' });
+      // Shrink the observer's root box to the top header-strip of the viewport.
+      var bottomInset = -Math.max(1, window.innerHeight - headerH());
+      io = new IntersectionObserver(apply, { rootMargin: '0px 0px ' + bottomInset + 'px 0px' });
       darks.forEach(function(el){ io.observe(el); });
+      apply();
     }
     build();
     var rT = null;
     window.addEventListener('resize', function(){ clearTimeout(rT); rT = setTimeout(build, 150); });
+    document.addEventListener('visibilitychange', function(){ if(!document.hidden) build(); });
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();

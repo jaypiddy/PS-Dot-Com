@@ -54,8 +54,15 @@ no fabricated metrics, 2–3 pull quotes, verbatim testimonials).
 3. Where the source has a gap (missing image, thin outcome, no testimonial), **log it** — don't
    invent. Use the skill's `[OUTCOME PLACEHOLDER]` convention; set DB **Needs Review** if open.
 4. Wire footer/next-case links; set the eyebrow convention; clean-URL route.
-5. Verify locally (`.html` for the file server; clean URL on Vercel), then commit + push.
-6. **Keep a build journal** (below) of what mapped cleanly vs. what fought the template —
+5. **Update the concierge's knowledge** (`docs/concierge-knowledge.md`) — add the new case as a
+   proof point under §2 (Digital) or §3 (Studios) so the bot can talk about it. One sayable line,
+   client name + a *public, approved* outcome. **No dollar figures / revenue** (KB rule) — use an
+   operational metric (e.g. "~30% fewer support calls") or a plain description if none is sayable.
+   The KB is not slug-keyed; it's prose the Worker injects into the model prompt, so a new case is
+   invisible to the concierge until it's added here.
+6. **Regenerate `sitemap.xml`** to include the new URL (it's static — see CLAUDE.md).
+7. Verify locally (`.html` for the file server; clean URL on Vercel), then commit + push.
+8. **Keep a build journal** (below) of what mapped cleanly vs. what fought the template —
    that evidence is what the future `case-study-publisher` skill gets built from.
 
 ### Notion sync + publish (post-build)

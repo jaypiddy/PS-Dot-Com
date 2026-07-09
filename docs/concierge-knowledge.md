@@ -5,7 +5,7 @@
 model's system prompt. In the prototype, `ps-concierge.js` fetches it (best-effort)
 and appends it to its built-in summary.
 **Maintained by:** PS team — add/correct freely. Keep facts true; keep the
-**NEVER SAY** list honest. Last reviewed: June 2026 · Status: INTERIM (review me).
+**NEVER SAY** list honest. Last reviewed: July 2026 · Status: INTERIM (review me).
 
 > Editing note: the concierge will treat everything here as confidently true and
 > sayable EXCEPT items explicitly fenced under "Handle with care" / "Never say."
@@ -32,7 +32,9 @@ and appends it to its built-in summary.
   - **TELUS & Koodo** — a dealer accessories catalogue that ended USB-stick ordering for a national network. *(Our one fully written case study: `case-telus-koodo.html`.)*
   - **Energizer** — product-market fit **validated in 30 days** with a rapid proof of concept.
   - **Delta Controls** — **Best UX for Product, Vancouver UX Awards.**
-  - Other shipped work: BC Women's Health Foundation, Vancouver Chinatown BIA, Hall Constructors (field ticketing), SxS Technologies, NVA (veterinary careers platform), BC Parks Foundation (Discover Parks), Phinity, XYON, Luxxee, NCIS (maritime claims).
+  - **TELUS Support** — a self-serve redesign that cut support-call volume by **~30%.**
+  - **Allia Health Group** — rebranded a multi-brand health portfolio and shipped an investor-ready Webflow platform, live ahead of the raise.
+  - Other shipped work: BC Women's Health Foundation, Vancouver Chinatown BIA, Hall Constructors (field ticketing), 5x5 Technologies, NVA (veterinary careers platform), BC Parks Foundation (Discover Parks), Phinity, XYON, Luxxee, NCIS (maritime claims).
 
 ## 3 · Studios practice
 

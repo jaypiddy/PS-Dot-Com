@@ -35,7 +35,9 @@ page), so any new one is automatically in scope for this rule.
   moved here from the root 2026-06-30). SOP + build journal:
   `docs/case-study-publishing.md`. Generator tooling: `tools/case-study-builder/`
   (see its README — **don't re-run `build_cases.py` on a case that's had a
-  hand-fix since**, it'll regress it).
+  hand-fix since**, it'll regress it). **When you publish a new case, also add it to the
+  concierge KB (`docs/concierge-knowledge.md`, §2/§3) and regenerate `sitemap.xml`** — the bot
+  can't mention a case that isn't in its KB. Full step list in `docs/case-study-publishing.md`.
 - **Blog / Insights** — 63 Published posts rendered from Notion export data onto
   the `article.html` template, served at `/insights/<slug>`; the listing grid is
   `/insights` (`insights.html`). Generator: `tools/blog-renderer/` (see its README) —

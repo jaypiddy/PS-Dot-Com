@@ -1,6 +1,9 @@
 name = "ps-concierge"
 main = "src/index.js"
-compatibility_date = "2024-11-01"
+# Match the date set in the Cloudflare dashboard so a deploy doesn't downgrade it.
+compatibility_date = "2026-06-25"
+# Keep remote settings as-is (dashboard had these) so `deploy` ships code only.
+preview_urls = false
 
 # Public, non-secret runtime config. Once the Worker auto-deploys from GitHub,
 # THIS FILE is the source of truth for plaintext vars — Cloudflare applies
@@ -38,3 +41,11 @@ CONTACT_FROM = "POWER SHIFTER <concierge@mailupdates.powershifter.com>"
 # → Secret), or via:
 #   wrangler secret put ANTHROPIC_API_KEY
 #   wrangler secret put RESEND_API_KEY
+
+# Observability — logging/metrics were enabled in the dashboard; declare them
+# here so a deploy preserves them instead of silently turning them off.
+[observability]
+enabled = true
+
+[observability.logs]
+enabled = true

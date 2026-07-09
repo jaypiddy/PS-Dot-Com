@@ -17,12 +17,9 @@ MODEL = "claude-haiku-4-5"
 # one file to update the bot. Update this if the site moves to a custom domain.
 KB_URL = "https://ps-dot-com.vercel.app/docs/concierge-knowledge.md"
 
-# Lock requests to the site origin(s) (CORS + abuse guard). Comma-separated
-# allow-list — every origin that embeds the concierge must be listed. Update on a
-# custom-domain cutover. Use "*" only for local testing.
-#   ps-dot-com.vercel.app     — the main marketing site (pre-powershifter.com cutover)
-#   rapidmvp.powershifter.com — the RapidMVP Validator app (Next.js on Cloud Run)
-ALLOWED_ORIGIN = "https://ps-dot-com.vercel.app,https://rapidmvp.powershifter.com"
+# Lock requests to the site origin (CORS + abuse guard). Update on a custom
+# domain. Use "*" only for local testing.
+ALLOWED_ORIGIN = "https://ps-dot-com.vercel.app"
 
 # Soft abuse gate: the page sends this as the X-PS-Token header (chat/contact)
 # and in the /log body, and it must match. Client-visible by design (it ships in

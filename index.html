@@ -162,6 +162,8 @@
     .logos .cell:last-child{grid-column:span 2}
   }
   @media(max-width:860px){.proof-row{grid-template-columns:1fr 1fr}.stat{border-right:0;border-bottom:1px solid var(--line);padding:14px 0}.stat + .stat{padding-left:0}}
+  /* Phones: give each receipt its own row — "300,000+" is wider than a half-width cell. */
+  @media(max-width:560px){.proof-row{grid-template-columns:1fr}}
 
   /* ---------- Block 4 — The seam ---------- */
   .engine{position:relative;overflow:hidden;padding-top:clamp(90px,12vh,160px);padding-bottom:clamp(90px,12vh,160px)}

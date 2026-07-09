@@ -28,6 +28,11 @@ main#main:focus{outline:none}
    digits, logo marks) forced columns wider than their track. */
 html{overflow-x:clip;overflow-y:auto}  /* explicit y: a lone overflow-x:clip computes y to clip too, freezing ALL scroll */
 .proof-row .stat,.proof-row .stat b,.logos .cell{min-width:0}
+/* The odometer is a flex child with overflow:hidden — per spec its auto
+   min-size collapses to 0, so once the min-width:0 above lets a cell tighten,
+   it shrinks below the digits and clips them horizontally. Pin it to content
+   width; the vertical digit-roll still clips via the fixed box height. */
+.odo{flex:none}
 
 
 :root{

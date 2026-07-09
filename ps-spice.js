@@ -17,7 +17,8 @@
     ['kinetic', 'Kinetic Two-Voices','The serif voice line grows and draws a magenta underline on entry.'],
     ['index',   'Editorial index',   'Outlined section numerals give the scroll a spine.'],
     ['rules',   'Drawn hairlines',   'House rules draw on; every paper→ink flip gets a magenta seam.'],
-    ['skew',    'Scroll inertia',    'Media drifts against scroll velocity for weight. (subtle)']
+    ['skew',    'Scroll inertia',    'Media drifts against scroll velocity for weight. (subtle)'],
+    ['depth',   'Depth parallax',    'Media offsets by scroll position — deterministic, no velocity wobble. (prototype)']
   ];
   var DEFAULT = {master:true,mods:{magnetic:true,reveal:true,kinetic:true,index:true,rules:true,skew:true}};
   var state;
@@ -30,12 +31,16 @@
   /* Review mode (body[data-spice-review]) renders the control panel and swaps
      Cloudflare Stream embeds for posters so the sandbox stays fast. Production
      pages omit the attribute: all modules ship ON, no panel, real <iframe>s. */
+  // Review mode is normally opted into via body[data-spice-review]; the URL
+  // param lets us open the panel on the deployed site without editing HTML.
+  if(/[?&]spice-review\b/.test(location.search)) document.body.setAttribute('data-spice-review','');
   var REVIEW = document.body.hasAttribute('data-spice-review');
   if(!REVIEW){
     state = {master:true, mods:{}}; MODS.forEach(function(m){ state.mods[m[0]] = true; });
     // QA 2026-07: the scroll-velocity media drift (±9px) reads as disorienting
     // once noticed — retired from production. Still togglable in review mode.
     state.mods.skew = false;
+    state.mods.depth = false; // prototype replacement — review-mode only until approved
   }
 
   function apply(){
@@ -147,6 +152,43 @@
       else { document.documentElement.style.setProperty('--sp-shift','0px'); raf=null; }
     }
     window.addEventListener('scroll', onScroll, {passive:true});
+  }
+
+  /* ================================================================
+     DEPTH PARALLAX  (sp-depth) — prototype replacing sp-skew.
+     Deterministic: each frame's offset is a pure function of scroll
+     position (its centre vs the viewport centre, ±AMP px at the
+     edges). No velocity term, no easing — the same scroll position
+     always renders identically, so nothing wobbles or lags. That
+     determinism is what the retired inertia version lacked.
+     ================================================================ */
+  function buildDepth(){
+    if(REDUCE) return;
+    var AMP = 10; // px offset at the viewport edges; total relative travel ≈ 2×AMP
+    var els = [], raf = null;
+    function collect(){
+      els = [].slice.call(document.querySelectorAll('.frame, .wframe, .video-frame, .sp-stream'));
+    }
+    function tick(){
+      raf = null;
+      var on = body.classList.contains('sp-depth');
+      var vh = window.innerHeight;
+      els.forEach(function(el){
+        if(!on){ el.style.removeProperty('--sp-depth'); return; }
+        var r = el.getBoundingClientRect();
+        if(r.bottom < -40 || r.top > vh + 40) return; // offscreen — skip
+        var cur = parseFloat(el.style.getPropertyValue('--sp-depth')) || 0;
+        // subtract the offset already applied so the rect read doesn't feed back
+        var off = (r.top - cur + r.height/2 - vh/2) / (vh/2);
+        // negative sign = frame travels ~2×AMP LESS than the page → reads heavy
+        el.style.setProperty('--sp-depth', (-AMP * Math.max(-1.2, Math.min(1.2, off))).toFixed(2) + 'px');
+      });
+    }
+    function req(){ if(!raf) raf = requestAnimationFrame(tick); }
+    collect(); tick();
+    window.addEventListener('scroll', req, {passive:true});
+    window.addEventListener('resize', function(){ collect(); req(); });
+    window.addEventListener('load', function(){ collect(); req(); });
   }
 
   /* ================================================================
@@ -273,6 +315,7 @@
     buildObserver();
     buildMagnetic();
     buildSkew();
+    buildDepth();
     if(REVIEW) buildPanel();
     revealSafety();
     apply();

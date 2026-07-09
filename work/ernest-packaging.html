@@ -1195,28 +1195,7 @@
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
 
-  // Nav color flips against light sections
-  const nav = document.getElementById('nav');
-  const lightSections = document.querySelectorAll('.proof, .engine, .insights, .door.digital');
-  const navObserver = new IntersectionObserver(entries=>{
-    let onLight = false;
-    entries.forEach(e=>{ if(e.isIntersecting && e.boundingClientRect.top < 80) onLight = true; });
-  },{rootMargin:'-0% 0px -92% 0px'});
-  // simpler: flip nav based on scroll position bands
-  const darkBands = () => {
-    const y = window.scrollY + 40;
-    let inDark = false;
-    document.querySelectorAll('.hero, .sub-hero, .cs-screening, .cs-ep.on-ink').forEach(el => {
-      const t = el.offsetTop, b = t + el.offsetHeight;
-      if (y > t && y < b) inDark = true;
-    });
-    const closer = document.getElementById('contact');
-    if (closer && y > closer.offsetTop) inDark = true;
-    nav.style.color = inDark ? 'var(--paper)' : 'var(--ink)';
-    document.querySelector('header').classList.toggle('on-light', !inDark);
-  };
-  darkBands();
-  window.addEventListener('scroll', darkBands, {passive:true});
+  // Nav color flip lives in ps-spice.js (shared IntersectionObserver) — QA 2026-07
 
   // Word-mask splitter for .rise headlines
   const reduceM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

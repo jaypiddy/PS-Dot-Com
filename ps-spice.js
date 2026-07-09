@@ -275,3 +275,45 @@
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
 })();
+
+/* =====================================================================
+   HEADER COLOR FLIP  (QA 2026-07)
+   One shared IntersectionObserver replaces the per-page scroll-band math
+   (offsetTop arithmetic + a magic +40px probe) that drifted across
+   breakpoints. The observer's intersection region is the header's own
+   strip: a dark section under the header → paper nav; otherwise ink.
+   Dark set = union of every page's old list; missing selectors are
+   simply not observed, so one implementation serves all 96 pages.
+   ===================================================================== */
+(function(){
+  'use strict';
+  function boot(){
+    var nav = document.getElementById('nav');
+    var header = document.querySelector('header');
+    if(!nav || !header) return;
+    var darks = Array.prototype.slice.call(document.querySelectorAll(
+      '.hero, .sub-hero, #work, #contact, .cs-screening, .cs-ep.on-ink, footer'));
+    if(!darks.length) return;
+    var io = null;
+    function build(){
+      if(io) io.disconnect();
+      var under = {};
+      var h = Math.max(1, Math.round(header.getBoundingClientRect().height));
+      // Shrink the observer's root box to the top `h` px of the viewport.
+      var bottomInset = -Math.max(1, window.innerHeight - h);
+      io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ under[darks.indexOf(e.target)] = e.isIntersecting; });
+        var inDark = false;
+        for(var i = 0; i < darks.length; i++){ if(under[i]){ inDark = true; break; } }
+        nav.style.color = inDark ? 'var(--paper)' : 'var(--ink)';
+        header.classList.toggle('on-light', !inDark);
+      }, { rootMargin: '0px 0px ' + bottomInset + 'px 0px' });
+      darks.forEach(function(el){ io.observe(el); });
+    }
+    build();
+    var rT = null;
+    window.addEventListener('resize', function(){ clearTimeout(rT); rT = setTimeout(build, 150); });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();

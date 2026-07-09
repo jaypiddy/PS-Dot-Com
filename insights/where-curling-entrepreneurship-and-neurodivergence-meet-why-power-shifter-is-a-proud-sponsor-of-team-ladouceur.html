@@ -397,6 +397,13 @@
     background:linear-gradient(180deg,rgba(18,19,21,.34) 0%,rgba(18,19,21,.20) 40%,rgba(18,19,21,.66) 100%)}
   .sub-hero.dark-overlay .hero-tint{
     background:linear-gradient(180deg,rgba(18,19,21,.52) 0%,rgba(18,19,21,.44) 40%,rgba(18,19,21,.80) 100%)}
+  /* Article dialect: the headline + magenta deck sit in the bottom third over
+     arbitrary post imagery — hold the ink band darker through that text zone
+     (QA: the deck was fighting midtone photos, mostly on mobile crops). */
+  .sub-hero.article.dark-overlay .hero-tint{
+    background:linear-gradient(180deg,rgba(18,19,21,.52) 0%,rgba(18,19,21,.46) 35%,rgba(18,19,21,.78) 65%,rgba(18,19,21,.88) 100%)}
+  .sub-hero.article .sub-voice em{
+    text-shadow:0 1px 2px rgba(18,19,21,.45),0 2px 18px rgba(18,19,21,.55)}
   .sub-hero.article .photo-credit{right:18px;bottom:14px;z-index:3}
 
   /* Body — reading column 700px, figures and embeds break to 980px */

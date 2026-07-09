@@ -65,9 +65,24 @@
 
   var STORE = 'psConciergeThread_v1';
   var OPEN_STORE = 'psConciergeOpen_v1';
+  var TS_STORE = 'psConciergeThreadTs_v1';
+  var IDLE_TTL = 2 * 60 * 60 * 1000;   // start a fresh conversation after 2h idle
   var history = [];           // [{role:'user'|'assistant', content}]
   try { history = JSON.parse(localStorage.getItem(STORE)) || []; } catch(e){ history = []; }
-  function save(){ try{ localStorage.setItem(STORE, JSON.stringify(history.slice(-30))); }catch(e){} }
+  // Stale-session reset: if it's been more than IDLE_TTL since the last message, start clean.
+  try { var lastTs = +localStorage.getItem(TS_STORE) || 0;
+        if(history.length && Date.now() - lastTs > IDLE_TTL){ history = []; localStorage.removeItem(STORE); } } catch(e){}
+  function save(){ try{ localStorage.setItem(STORE, JSON.stringify(history.slice(-30))); localStorage.setItem(TS_STORE, String(Date.now())); }catch(e){} }
+
+  // Manual reset — wipe the thread and start over from the greeting.
+  function resetChat(){
+    history.length = 0; loggedCount = 0;
+    try{ localStorage.removeItem(STORE); localStorage.removeItem(TS_STORE); }catch(e){}
+    if(thread){ thread.innerHTML = ''; addMsg('bot', GREETING, false); }
+    history.push({role:'assistant', content:GREETING}); save();
+    renderChips();
+    if(input) input.focus();
+  }
 
   // Curated knowledge base (best-effort fetch). Production injects this in the Worker.
   var knowledge = '';
@@ -179,9 +194,14 @@
 
     var head = el('div','cc-head',
       '<div class="cc-id"><span class="cc-pulse"></span><div><b>POWER SHIFTER</b><span class="cc-sub">Studio concierge</span></div></div>');
+    var reset = el('button','cc-reset'); reset.type='button';
+    reset.setAttribute('aria-label','Start a new chat'); reset.setAttribute('title','New chat');
+    reset.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v4h4"/></svg>';
+    reset.addEventListener('click', resetChat);
     var x = el('button','cc-x','\u2715'); x.setAttribute('aria-label','Close');
     x.addEventListener('click', function(){ open(false); });
-    head.appendChild(x);
+    var ctl = el('div','cc-ctl'); ctl.appendChild(reset); ctl.appendChild(x);
+    head.appendChild(ctl);
 
     thread = el('div','cc-thread');
     chipsWrap = el('div','cc-chips');

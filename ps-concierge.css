@@ -48,6 +48,9 @@
 .cc-head .cc-sub{display:block;font-size:11px;letter-spacing:.04em;color:rgba(250,250,247,.55);margin-top:1px}
 .cc-x{background:none;border:0;color:rgba(250,250,247,.6);font-size:19px;line-height:1;cursor:pointer;padding:2px 4px}
 .cc-x:hover{color:var(--paper)}
+.cc-ctl{display:flex;align-items:center;gap:2px}
+.cc-reset{background:none;border:0;color:rgba(250,250,247,.6);cursor:pointer;padding:3px 4px;display:flex;align-items:center;line-height:0}
+.cc-reset:hover{color:var(--paper)}
 
 /* Thread */
 .cc-thread{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:14px;

@@ -1,7 +1,23 @@
-# Video pipeline — saved plan (not yet built)
+# Video pipeline
 
-Status: POC live on two work-page cards (BC Women's Health Foundation, Vancouver
-Chinatown BIA). Decision deferred until the Notion → site publishing layer is built.
+Status (2026-07): **LIVE.** Two production patterns are in use, both on Cloudflare Stream
+(customer `xv1aafyshr3tbknu`):
+1. **Work-card hover-loops** — `data-video="<stream>/downloads/default.mp4"` on a card's
+   `.wframe`; JS lazy-builds a muted/looping `<video>` on first hover. Wired on the digital
+   card set + the Studios film cards (Iron Mountain, Celestial, Ernest, Rapid MVP, Algorithm
+   Trap, Maple). Each Stream video needs **MP4 downloads enabled** (the `/downloads/default.mp4`
+   URL 302s once ready, 404s until then) for the card to play.
+2. **Case-page film embed** — `<iframe class="cs-film-vid" …/iframe?autoplay&muted&loop&poster=…>`
+   (HLS, works the moment the video is uploaded, no download needed) in the screening room, and
+   the closing full-bleed hover-to-play **`.cs-reel`** component.
+
+**GOTCHA (fixed 2026-07-07):** the hover-loop JS builds `<source>`s by swapping the extension;
+it must offer `.webm` **only for local files**, never for Stream URLs — Stream serves only
+`default.mp4`, so a `.webm` request 404s and stalls the rollover. The JS gates on
+`/cloudflarestream\.com/`. Posters: Studios film pages use the video's own Stream thumbnail
+(`/thumbnails/thumbnail.jpg?time=Ns`), not a separately-hosted image.
+
+## Original POC notes (below — historical)
 
 ## POC state (what's in the repo now)
 

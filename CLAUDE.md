@@ -76,3 +76,35 @@ inspect computed styles / DOM state, not just the generated source — before
 saying a fix works. Several real bugs here (the insights filter hiding tabs, the
 overlay headline sitting under the reveal scrim) were invisible in the markup and
 only showed up when actually clicked/rendered.
+
+## Images & media hosting
+
+**Default new images to local `/images/<page-or-case>/`** in the repo, optimized before
+commit (resize to display size — ~1600px max for full-bleed stills — then JPEG/webp). Local
+is the house convention: versioned with the code, deploys atomically, and can't be orphaned
+by an external CDN going away. Nested pages reference them root-absolute (`/images/…`).
+
+- **Cloudflare Images** (`imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/<id>/public`) already hosts
+  the 63-post blog imagery, the leadership portraits, and every OG image — leave those as-is;
+  only reach for it when you specifically want its auto-variants/format negotiation. New
+  uploads need a manual dashboard/API step (there's no MCP for it), which is the friction that
+  makes local the default.
+- **No Webflow CDN** (`cdn.prod.website-files.com`) — the old site is being decommissioned; its
+  assets were pulled local on 2026-07-07. Don't hotlink it (a grep for it should stay empty).
+- **Video** = Cloudflare Stream (customer `xv1aafyshr3tbknu`); see `docs/VIDEO_PIPELINE.md`.
+  Card hover-loops must NOT offer a `.webm` source for Stream URLs — Stream serves only
+  `default.mp4`, so a `.webm` 404s and stalls the rollover (the JS gates webm to local files).
+
+## SEO & deploy assets (keyed to the dev domain until cutover)
+
+`sitemap.xml`, `robots.txt`, every page's `rel="canonical"`, the JSON-LD `url` fields, and
+`BASE` in `tools/blog-renderer/render_blog.py` are all hardcoded to
+`https://ps-dot-com.vercel.app`. At the **powershifter.com cutover** they flip in one
+repo-wide find-and-replace (then re-render the blog). Canonical host = **apex** (non-www).
+
+- `vercel.json` `redirects` (177): the site's own flat→nested moves **plus** the full
+  173-URL old-Webflow→new 301 map. Exact sources are ordered before wildcards (first match wins).
+- **Structured data (JSON-LD):** Organization (home), Article (23 case studies), BlogPosting
+  (63 posts — injected by the blog renderer). Canonical + JSON-LD are on all 94 pages.
+- `sitemap.xml` is **static — regenerate it when you add a case study or post.**
+- Full current state + the incoming-SEO-specialist handoff live in **`docs/SEO-STATUS.md`**.

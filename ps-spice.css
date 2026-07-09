@@ -129,18 +129,6 @@ body.sp-skew .video-frame,
 body.sp-skew .sp-stream{transform:translateY(var(--sp-shift,0px));transition:transform .25s linear}
 
 /* =====================================================================
-   6b · DEPTH PARALLAX  (sp-depth) — prototype replacing sp-skew.
-   JS sets a per-frame --sp-depth from scroll POSITION (not velocity):
-   deterministic, so no wobble/lag. NO transition — easing would
-   reintroduce the lag feel the prototype exists to remove. Declared
-   after sp-skew so it wins if both are toggled in the review panel.
-   ===================================================================== */
-body.sp-depth .frame,
-body.sp-depth .wframe,
-body.sp-depth .video-frame,
-body.sp-depth .sp-stream{transform:translateY(var(--sp-depth,0px));transition:none}
-
-/* =====================================================================
    7 · DRAWN HAIRLINES + MAGENTA SEAM  (sp-rules)
    Every house hairline (.rule) draws on; each paper→ink flip gets a
    magenta edge that scales in from centre, punctuating the section

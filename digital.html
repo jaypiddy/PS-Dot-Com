@@ -1233,8 +1233,13 @@
           vid = document.createElement('video');
           vid.muted = true; vid.loop = true; vid.playsInline = true;
           vid.className = 'hover-video';
-          const base = frame.dataset.video.replace(/\.mp4$/, '');
-          [['webm','video/webm'],['mp4','video/mp4']].forEach(([ext,type])=>{
+          const src = frame.dataset.video, base = src.replace(/\.mp4$/, '');
+          // Cloudflare Stream serves only default.mp4 (no .webm); requesting .webm 404s and
+          // stalls the rollover — only offer .webm for local files that actually have one.
+          const exts = /cloudflarestream\.com/.test(src)
+            ? [['mp4','video/mp4']]
+            : [['webm','video/webm'],['mp4','video/mp4']];
+          exts.forEach(([ext,type])=>{
             const s = document.createElement('source');
             s.src = base + '.' + ext; s.type = type;
             vid.appendChild(s);

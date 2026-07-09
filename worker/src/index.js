@@ -64,9 +64,25 @@ async function getKnowledge(env) {
   return kbCache.text || FALLBACK_KB;
 }
 
-function corsHeaders(env) {
+// ALLOWED_ORIGIN may be a single origin or a comma-separated allow-list
+// (e.g. the main site + rapidmvp.powershifter.com). "*" allows any (local test).
+function allowedOrigins(env) {
+  return String(env.ALLOWED_ORIGIN || "*").split(",").map((s) => s.trim()).filter(Boolean);
+}
+
+function corsHeaders(env, request) {
+  const list = allowedOrigins(env);
+  let allow;
+  if (list.includes("*")) {
+    allow = "*";
+  } else {
+    // Reflect the caller's origin when it's on the list; otherwise echo the
+    // first allowed origin (the request itself is still 403'd by the gate below).
+    const origin = request && request.headers.get("Origin");
+    allow = origin && list.includes(origin) ? origin : list[0];
+  }
   return {
-    "Access-Control-Allow-Origin": env.ALLOWED_ORIGIN || "*",
+    "Access-Control-Allow-Origin": allow,
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type, X-PS-Token",
     "Vary": "Origin",
@@ -110,7 +126,7 @@ function sanitize(messages) {
 
 export default {
   async fetch(request, env) {
-    const cors = corsHeaders(env);
+    const cors = corsHeaders(env, request);
 
     if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: cors });
     if (request.method !== "POST")
@@ -121,9 +137,10 @@ export default {
     // ALLOWED_ORIGIN is a concrete origin. (Earlier this let a no-Origin
     // request — e.g. curl/scripts — slip through. CORS only constrains
     // browsers anyway; the shared-token gate below covers non-browser clients.)
-    if (env.ALLOWED_ORIGIN && env.ALLOWED_ORIGIN !== "*") {
+    const origins = allowedOrigins(env);
+    if (origins.length && !origins.includes("*")) {
       const origin = request.headers.get("Origin");
-      if (origin !== env.ALLOWED_ORIGIN)
+      if (!origin || !origins.includes(origin))
         return json({ error: "forbidden origin" }, 403, cors);
     }
 

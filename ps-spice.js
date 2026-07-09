@@ -31,7 +31,12 @@
      Cloudflare Stream embeds for posters so the sandbox stays fast. Production
      pages omit the attribute: all modules ship ON, no panel, real <iframe>s. */
   var REVIEW = document.body.hasAttribute('data-spice-review');
-  if(!REVIEW){ state = {master:true, mods:{}}; MODS.forEach(function(m){ state.mods[m[0]] = true; }); }
+  if(!REVIEW){
+    state = {master:true, mods:{}}; MODS.forEach(function(m){ state.mods[m[0]] = true; });
+    // QA 2026-07: the scroll-velocity media drift (±9px) reads as disorienting
+    // once noticed — retired from production. Still togglable in review mode.
+    state.mods.skew = false;
+  }
 
   function apply(){
     body.classList.toggle('spice-on', state.master);

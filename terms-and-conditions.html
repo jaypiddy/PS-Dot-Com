@@ -1079,16 +1079,24 @@ document.querySelectorAll('.swipe').forEach(function(el){
     btn.setAttribute('aria-expanded', open);
     ov.setAttribute('aria-hidden', !open);
   }
-  btn.addEventListener('click', function(){ setOpen(!ov.classList.contains('open')); });
-  // Hover opens on pointer devices (150ms intent delay); mouse out of the takeover closes
-  if(window.matchMedia('(hover: hover)').matches){
-    btn.addEventListener('mouseenter', function(){
-      if(Date.now() < suppressUntil) return;
-      hoverTimer = setTimeout(function(){ setOpen(true); }, 150);
-    });
-    btn.addEventListener('mouseleave', function(){ clearTimeout(hoverTimer); });
-    ov.addEventListener('mouseleave', function(){ setOpen(false); });
-  }
+  btn.addEventListener('click', function(){
+    clearTimeout(hoverTimer); // a tap's synthetic hover must not re-open right after this toggle
+    setOpen(!ov.classList.contains('open'));
+  });
+  // Hover-open is a MOUSE-only affordance. Gate on pointerType, not (hover:hover):
+  // that media query also matches hybrid/emulated devices, where a tap fires a
+  // synthetic mouseenter before click — the queued timer then re-opened a menu
+  // the tap had just closed (the intermittent "menu won't close/open" QA saw).
+  btn.addEventListener('pointerenter', function(e){
+    if(e.pointerType !== 'mouse') return;
+    if(Date.now() < suppressUntil) return;
+    hoverTimer = setTimeout(function(){
+      if(Date.now() < suppressUntil) return; // re-check at fire time, not just arm time
+      setOpen(true);
+    }, 150);
+  });
+  btn.addEventListener('pointerleave', function(e){ if(e.pointerType === 'mouse') clearTimeout(hoverTimer); });
+  ov.addEventListener('pointerleave', function(e){ if(e.pointerType === 'mouse') setOpen(false); });
   if(close) close.addEventListener('click', function(){ setOpen(false); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setOpen(false); });
   ov.querySelectorAll('.tk-l').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });

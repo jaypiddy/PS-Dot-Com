@@ -70,6 +70,17 @@ body.sp-reveal .wcard-overlay,
 body.sp-reveal .slot-tag,
 body.sp-reveal .film-play,
 body.sp-reveal .wtint{z-index:6}
+/* Mobile: drop the magenta-wipe reveal. On a phone every card wipes as it
+   scrolls in, which reads as distracting flashing rather than craft. Show the
+   images static (no wipe, no over-scale settle); desktop keeps the effect. */
+@media(max-width:640px){
+  body.sp-reveal .frame::after,
+  body.sp-reveal .wframe::after{display:none}
+  body.sp-reveal .frame > img,
+  body.sp-reveal .wframe > img,
+  body.sp-reveal .frame.sp-in > img,
+  body.sp-reveal .wframe.sp-in > img{transform:none;transition:none}
+}
 
 /* Thumbnail hairline normalization — the .cards grid only draws its 1px
    line-light seam BETWEEN cells, so the first/top-left card has no seam on

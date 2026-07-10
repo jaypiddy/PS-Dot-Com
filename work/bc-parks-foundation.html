@@ -932,12 +932,20 @@
   .ab.on-dark .ab-count{color:rgba(250,250,247,.45)}
   .ab img{background:transparent}
   .prose .ab img{background:transparent}
-  /* 01-02 device render on ink, slight overfill (block clips) */
+  /* 01 laptop render on ink, slight overfill (block clips) — safe: the PNG
+     carries generous transparent margin above/below the device, so the 12%
+     overfill only trims empty space, never the laptop itself. */
   .ab.bcpf-dev{background:var(--ink)}
   .ab.bcpf-dev .ab-field{align-items:center;justify-content:center;overflow:hidden}
   .ab.bcpf-dev .ab-field img{width:auto;max-width:none;object-fit:contain}
   .ab.bcpf01 .ab-field img{height:112%}
-  .ab.bcpf02 .ab-field img{height:118%}
+  /* 02 phone render: unlike 01, this PNG has almost no margin around the
+     device — the old 118% overfill cropped into the camera bump and the
+     bottom nav row (QA 2026-07-10). Fix: no overfill (height:100%, so
+     nothing clips) + a taller block just for bcpf02 so the phone still
+     renders at its FULL current size, not shrunk to fit the 16:9 frame. */
+  .ab.bcpf02{aspect-ratio:8/5}
+  .ab.bcpf02 .ab-field img{height:100%}
   /* 03-04 full-bleed reference sheets: dense compositions with content to
      every edge (verified against the actual renders — no corner is clean
      enough for an on-image overlay). Same eye/field/foot anatomy as 01-02,
@@ -957,6 +965,7 @@
   }
   @media(max-width:640px){
     .ab{aspect-ratio:auto;padding:24px 20px}
+    .ab.bcpf02{aspect-ratio:auto}
     .ab .eye{font-size:11px}.ab-cap{font-size:14px}.ab-count{font-size:11px}
     .ab-field{margin-top:16px;margin-bottom:16px}
     .ab.bcpf-dev .ab-field img{height:auto;max-height:60vh}

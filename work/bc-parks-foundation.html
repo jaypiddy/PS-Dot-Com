@@ -913,9 +913,12 @@
 <style id="bcpf-blocks">
   /* BC Parks Foundation case-study visual blocks (design handoff 2026-07) — same .ab system.
      Four blocks: 01 the relaunch + 02 the platform (device renders overfilling an ink field,
-     with chrome), 03 the persona + 04 the moodboard (full-bleed reference sheets, NO chrome —
-     each asset is a complete self-titled composition). Classes namespaced .bcpf-*. Local
-     renders in images/bcpf/. NN / 04. */
+     with chrome), 03 the persona + 04 the moodboard (full-bleed reference sheets — each asset
+     is already a complete, self-titled composition, so 03-04 get a minimal top-right label +
+     counter instead of the bottom scrim/caption 01-02 use — a bottom overlay would collide
+     with content the sheets already carry: the persona's callout/quote, the moodboard's cards).
+     Classes namespaced .bcpf-*. Local renders in images/bcpf/. QA 2026-07-10: added the missing
+     03/04 counter (Ted) — see .bcpf-full .chrome below. */
   .ab{container-type:inline-size;aspect-ratio:16/9;width:100%;box-sizing:border-box;
     padding:5cqw;display:flex;flex-direction:column;position:relative;overflow:hidden;color:var(--ink)}
   .ab .eye{font-family:var(--mono);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
@@ -936,12 +939,19 @@
   .ab.bcpf-dev .ab-field img{width:auto;max-width:none;object-fit:contain}
   .ab.bcpf01 .ab-field img{height:112%}
   .ab.bcpf02 .ab-field img{height:118%}
-  /* 03-04 full-bleed reference sheet, no chrome */
+  /* 03-04 full-bleed reference sheet, no bottom chrome (own baked-in text) */
   .ab.bcpf-full{padding:0}
   .ab.bcpf-full img{position:absolute;inset:0;width:100%;height:100%}
   .ab.bcpf03 img{object-fit:cover}
   .ab.bcpf04{background:#fff}
   .ab.bcpf04 img{object-fit:contain}
+  /* Label + counter, tucked top-right — the one corner each sheet leaves
+     clean (persona: plain gradient past the title block; moodboard: the
+     white margin above both circles). Column stack keeps the footprint
+     small so it never reaches into the sheets' own content. */
+  .ab.bcpf-full .chrome{position:absolute;top:5cqw;right:5cqw;z-index:2;
+    display:flex;flex-direction:column;align-items:flex-end;gap:.4em;pointer-events:none}
+  .ab.bcpf03 .chrome .eye,.ab.bcpf03 .chrome .ab-count{color:rgba(250,250,247,.85)}
   /* rise-in (all .prose .breakout — keep translateX(-50%) centering, like .pull.reveal) */
   .ab.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
   .ab.reveal.in{opacity:1;transform:none}
@@ -1087,6 +1097,7 @@
 
     <figure class="ab bcpf-full bcpf03 breakout reveal" aria-label="Persona sheet — Saige, BC Parks Advocate">
       <img src="/images/bcpf/persona.jpg" alt="Persona sheet: Saige, a BC Parks Advocate — an outdoorsy social-media coordinator, with her quote, goals and activities, gains and pains for the Discover Parks platform">
+      <div class="chrome"><span class="eye">BC Parks Foundation — the persona · 03</span><span class="ab-count">03 / 04</span></div>
     </figure>
 
     <h2>the outcome.</h2>
@@ -1097,6 +1108,7 @@
 
     <figure class="ab bcpf-full bcpf04 breakout reveal" aria-label="Moodboard — the visual references behind the redesign">
       <img src="/images/bcpf/moodboard.jpg" alt="Redesign moodboard: an AirBnB circle (booking and reservation UI patterns, amenities, map) and a Form &amp; Shape circle (editorial layouts, a curator quote, a ticket card, organic shapes)">
+      <div class="chrome"><span class="eye">BC Parks Foundation — the moodboard · 04</span><span class="ab-count">04 / 04</span></div>
     </figure>
 
     <div class="cs-reel" id="cs-reel">

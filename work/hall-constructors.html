@@ -498,8 +498,8 @@
   .menu-btn{font-family:var(--text);font-weight:700;font-size:12px;letter-spacing:.1em;
     text-transform:uppercase;display:inline-flex;align-items:center;gap:9px;cursor:pointer;
     background:none;border:0;color:inherit;padding:6px 0}
-  .menu-btn .plus{font-weight:400;font-size:16px;line-height:1;display:inline-block;
-    transition:transform .35s cubic-bezier(.76,0,.24,1);color:var(--magenta)}
+  .menu-btn .plus{display:inline-block;color:var(--magenta);
+    transition:transform .35s cubic-bezier(.76,0,.24,1)}
   .menu-btn:hover .plus{transform:rotate(90deg)}
 
   .takeover{position:fixed;inset:0;z-index:90;background:var(--magenta);color:var(--ink);
@@ -518,7 +518,7 @@
   .tk-close{font-family:var(--text);font-weight:700;font-size:12px;letter-spacing:.1em;
     text-transform:uppercase;display:inline-flex;align-items:center;gap:9px;cursor:pointer;
     background:none;border:0;color:var(--ink);padding:6px 0}
-  .tk-close .x{font-weight:400;font-size:16px;line-height:1;display:inline-block;
+  .tk-close .x{display:inline-block;
     transition:transform .35s cubic-bezier(.76,0,.24,1)}
   .tk-close:hover .x{transform:rotate(90deg)}
 
@@ -983,7 +983,7 @@
 <path d="M139.924 18.4306L137.006 12.8909C137.538 12.757 138.035 12.5078 138.461 12.1609C138.918 11.7888 139.29 11.3235 139.552 10.796C139.82 10.2581 139.958 9.66476 139.955 9.06372C139.961 8.36637 139.774 7.681 139.414 7.08371C139.06 6.49643 138.568 6.00433 137.98 5.64996C137.377 5.28845 136.685 5.10107 135.982 5.10862H131.256C131.105 5.11115 130.961 5.17228 130.854 5.2791C130.747 5.38592 130.686 5.53008 130.684 5.68113V18.703C130.683 18.7774 130.698 18.8511 130.728 18.9193C130.758 18.9874 130.802 19.0484 130.857 19.0983C130.964 19.203 131.107 19.2619 131.256 19.2623C131.332 19.2644 131.408 19.2509 131.479 19.2227C131.55 19.1945 131.614 19.1522 131.668 19.0983C131.72 19.0474 131.762 18.9865 131.79 18.9191C131.818 18.8517 131.833 18.7793 131.832 18.7062V6.25528H135.986C136.485 6.25024 136.977 6.38184 137.408 6.63587C137.829 6.88379 138.181 7.23281 138.433 7.6513C138.688 8.07857 138.82 8.56794 138.814 9.06536C138.818 9.56521 138.687 10.0569 138.433 10.4876C138.183 10.9099 137.83 11.2621 137.408 11.5113C136.977 11.7653 136.485 11.8969 135.986 11.8918H133.175C133.026 11.893 132.884 11.9518 132.777 12.0559C132.722 12.1091 132.678 12.1728 132.648 12.2433C132.618 12.3137 132.603 12.3895 132.603 12.466C132.603 12.5425 132.618 12.6182 132.648 12.6887C132.678 12.7591 132.722 12.8229 132.777 12.8761C132.829 12.9288 132.892 12.9705 132.96 12.9986C133.029 13.0268 133.103 13.0409 133.177 13.0401H135.802L138.945 18.9835C139.014 19.1144 139.132 19.2128 139.273 19.2574C139.326 19.2744 139.381 19.2832 139.437 19.2837C139.537 19.2817 139.634 19.2565 139.722 19.2098C139.844 19.1351 139.933 19.0183 139.973 18.8818C139.996 18.8072 140.004 18.7287 139.995 18.6511C139.987 18.5736 139.963 18.4985 139.924 18.4306Z"></path>
 </svg></a>
     <nav aria-label="Primary">
-      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="takeover">Menu <span class="plus">+</span></button>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="takeover">Menu <svg class="plus" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M8 2v12M2 8h12"/></svg></button>
     </nav>
   </div>
 </header>
@@ -1006,7 +1006,7 @@
 <path d="M128.391 18.0501H122.219V12.6366H127.334C127.485 12.6337 127.629 12.5723 127.735 12.4656C127.842 12.3588 127.903 12.2149 127.905 12.0641C127.909 11.9877 127.896 11.9114 127.868 11.8404C127.839 11.7694 127.796 11.7053 127.741 11.6523C127.635 11.5472 127.492 11.4883 127.342 11.4883H122.219V6.25529H128.391C128.468 6.25753 128.545 6.24316 128.616 6.21317C128.687 6.18317 128.752 6.13824 128.804 6.0814C128.906 5.9738 128.963 5.83112 128.963 5.68278C128.963 5.53443 128.906 5.39174 128.804 5.28414C128.751 5.22764 128.687 5.18294 128.616 5.15297C128.545 5.123 128.468 5.10844 128.391 5.11026H121.647C121.496 5.1136 121.352 5.175 121.246 5.28165C121.139 5.3883 121.078 5.53199 121.074 5.68278V18.6226C121.077 18.7736 121.138 18.9178 121.245 19.0246C121.352 19.1314 121.496 19.1926 121.647 19.1951H128.391C128.468 19.1969 128.545 19.1824 128.616 19.1524C128.687 19.1224 128.751 19.0777 128.804 19.0212C128.909 18.915 128.968 18.7718 128.968 18.6226C128.971 18.5467 128.958 18.471 128.93 18.4003C128.902 18.3296 128.86 18.2653 128.807 18.2116C128.753 18.1579 128.689 18.1158 128.618 18.088C128.547 18.0602 128.471 18.0473 128.396 18.0501H128.391Z"></path>
 <path d="M139.924 18.4306L137.006 12.8909C137.538 12.757 138.035 12.5078 138.461 12.1609C138.918 11.7888 139.29 11.3235 139.552 10.796C139.82 10.2581 139.958 9.66476 139.955 9.06372C139.961 8.36637 139.774 7.681 139.414 7.08371C139.06 6.49643 138.568 6.00433 137.98 5.64996C137.377 5.28845 136.685 5.10107 135.982 5.10862H131.256C131.105 5.11115 130.961 5.17228 130.854 5.2791C130.747 5.38592 130.686 5.53008 130.684 5.68113V18.703C130.683 18.7774 130.698 18.8511 130.728 18.9193C130.758 18.9874 130.802 19.0484 130.857 19.0983C130.964 19.203 131.107 19.2619 131.256 19.2623C131.332 19.2644 131.408 19.2509 131.479 19.2227C131.55 19.1945 131.614 19.1522 131.668 19.0983C131.72 19.0474 131.762 18.9865 131.79 18.9191C131.818 18.8517 131.833 18.7793 131.832 18.7062V6.25528H135.986C136.485 6.25024 136.977 6.38184 137.408 6.63587C137.829 6.88379 138.181 7.23281 138.433 7.6513C138.688 8.07857 138.82 8.56794 138.814 9.06536C138.818 9.56521 138.687 10.0569 138.433 10.4876C138.183 10.9099 137.83 11.2621 137.408 11.5113C136.977 11.7653 136.485 11.8969 135.986 11.8918H133.175C133.026 11.893 132.884 11.9518 132.777 12.0559C132.722 12.1091 132.678 12.1728 132.648 12.2433C132.618 12.3137 132.603 12.3895 132.603 12.466C132.603 12.5425 132.618 12.6182 132.648 12.6887C132.678 12.7591 132.722 12.8229 132.777 12.8761C132.829 12.9288 132.892 12.9705 132.96 12.9986C133.029 13.0268 133.103 13.0409 133.177 13.0401H135.802L138.945 18.9835C139.014 19.1144 139.132 19.2128 139.273 19.2574C139.326 19.2744 139.381 19.2832 139.437 19.2837C139.537 19.2817 139.634 19.2565 139.722 19.2098C139.844 19.1351 139.933 19.0183 139.973 18.8818C139.996 18.8072 140.004 18.7287 139.995 18.6511C139.987 18.5736 139.963 18.4985 139.924 18.4306Z"></path>
 </svg></a>
-    <button class="tk-close" id="menuClose">Close <span class="x">×</span></button>
+    <button class="tk-close" id="menuClose">Close <svg class="x" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
   </div>
   <div class="tk-links">
     <a class="tk-l is-current" aria-current="page" style="--td:0.08s" href="/work"><span class="tk-n">01</span><span class="tk-t">Work</span><span class="tk-ar">→</span></a>
@@ -1311,13 +1311,31 @@ document.querySelectorAll('.swipe').forEach(function(el){
   var ov = document.getElementById('takeover');
   var close = document.getElementById('menuClose');
   if(!btn || !ov) return;
-  var hoverTimer = null, suppressUntil = 0;
+  var hoverTimer = null, suppressUntil = 0, lockedScrollY = 0;
   function setOpen(open){
     if(!open) suppressUntil = Date.now() + 500; // grace: closing parks the cursor on the button
     ov.classList.toggle('open', open);
     document.body.classList.toggle('menu-open', open);
     btn.setAttribute('aria-expanded', open);
     ov.setAttribute('aria-hidden', !open);
+    // Scroll lock: overflow:hidden alone doesn't reliably stop touch-scroll on
+    // mobile (QA 2026-07-10 — the browser's own toolbar was visibly collapsing
+    // and re-expanding while the takeover was open, meaning the page was
+    // genuinely scrolling behind it). Take body out of the scroll flow
+    // entirely instead, and restore the exact position on close.
+    if(open){
+      lockedScrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = (-lockedScrollY) + 'px';
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+    } else {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      window.scrollTo(0, lockedScrollY);
+    }
   }
   btn.addEventListener('click', function(){
     clearTimeout(hoverTimer); // a tap's synthetic hover must not re-open right after this toggle

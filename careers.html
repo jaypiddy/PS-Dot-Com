@@ -6,43 +6,23 @@
 <!-- Google tag (gtag.js) — GA4 (POWERSHiFTER - GA4 - Webflow 2022) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EP8HNWVMHS"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EP8HNWVMHS');</script>
-<title>Why Scoping Software Projects Is So Hard — POWER SHIFTER Insights</title>
-<meta name="description" content="Scoping is one of the hardest parts of building software—an upfront guessing game. Why it's so difficult, and a more reliable way to approach it.">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Why Scoping Software Projects Is So Hard">
-<meta property="og:description" content="Scoping is one of the hardest parts of building software—an upfront guessing game. Why it's so difficult, and a more reliable way to approach it.">
-<meta property="og:image" content="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/729b2b56-ae85-4f64-7e28-fe36a0981f00/public">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://ps-dot-com.vercel.app/insights/why-scoping-digital-product-and-software-development-projects-is-challenging-and-what-to-do-about-it">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Why Scoping Software Projects Is So Hard",
-  "description": "Scoping is one of the hardest parts of building software—an upfront guessing game. Why it's so difficult, and a more reliable way to approach it.",
-  "image": "https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/729b2b56-ae85-4f64-7e28-fe36a0981f00/public",
-  "url": "https://ps-dot-com.vercel.app/insights/why-scoping-digital-product-and-software-development-projects-is-challenging-and-what-to-do-about-it",
-  "author": {
-    "@type": "Organization",
-    "name": "POWER SHIFTER",
-    "url": "https://ps-dot-com.vercel.app/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "POWER SHIFTER",
-    "url": "https://ps-dot-com.vercel.app/"
-  },
-  "datePublished": "2023-06-06T00:00:00.000Z"
-}
-</script>
+<title>Careers — POWER SHIFTER</title>
+<meta name="description" content="Careers at POWER SHIFTER — a work-from-anywhere agency. We hire for the work, not the postal code. Software and cinema, one design culture. See our values, benefits, and how to apply.">
+<link rel="canonical" href="https://ps-dot-com.vercel.app/careers">
+<meta property="og:title" content="Careers — POWER SHIFTER">
+<meta property="og:description" content="A work-from-anywhere agency. We hire for the work, not the postal code — software and cinema, one design culture. Come make the real thing.">
+<meta property="og:type" content="website">
+<!-- Typekit loaded async so the page paints immediately even when the kit
+     is unreachable (e.g. this review sandbox). -->
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="preconnect" href="https://p.typekit.net" crossorigin>
-<link rel="stylesheet" href="https://use.typekit.net/xkk7api.css">
-<link rel="preload" as="image" href="/images/scratches-v2.webp">
+<link rel="stylesheet" href="https://use.typekit.net/xkk7api.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://use.typekit.net/xkk7api.css"></noscript>
+<link rel="preload" as="image" href="images/scratches-v2.webp">
 <!-- PS Craft Layer (design-spice pass) -->
-<link rel="stylesheet" href="/ps-spice.css">
+<link rel="stylesheet" href="ps-spice.css">
 <!-- PS Concierge (corner AI concierge) -->
-<link rel="stylesheet" href="/ps-concierge.css">
+<link rel="stylesheet" href="ps-concierge.css">
 <style>
   :root{
     --ink:#121315;
@@ -147,12 +127,12 @@
   .stat + .stat{padding-left:28px}
   .stat b{font-family:var(--display);font-weight:700;font-size:clamp(26px,2.6vw,40px);letter-spacing:-.015em;display:block;line-height:1.1}
   .stat > span{font-size:13.5px;color:var(--grey);display:block;margin-top:6px;line-height:1.4}
-  .logos{display:flex;flex-wrap:wrap;align-items:baseline;gap:18px 40px;margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
-  .logos span{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.06em;color:var(--grey);opacity:.75;transition:color .2s ease-out,opacity .2s ease-out;cursor:default}
-  .logos span.lc{text-transform:lowercase;letter-spacing:.01em}
-  .logos span.mc{letter-spacing:.01em}
-  .logos span:not(.lc):not(.mc){text-transform:uppercase;font-size:13.5px;letter-spacing:.1em}
-  .logos span:hover{color:var(--ink);opacity:1}
+  /* The vestigial `.logos` flex-wrap wordmark strip (used `<span>` children
+     with .lc/.mc modifiers) was removed June 23 2026 — see digital.md Notes 17.
+     The live `.logos` pattern is the 3x3 image-mask grid defined ~line 479
+     (Pattern F in docs/design-system-audit.md). Mixing the two created a
+     leaked `padding-top:26px` on the grid which rendered as a grey bar
+     above the first row of cells. */
   @media(max-width:860px){.proof-row{grid-template-columns:1fr 1fr}.stat{border-right:0;border-bottom:1px solid var(--line);padding:14px 0}.stat + .stat{padding-left:0}}
 
   /* ---------- Block 4 — The seam ---------- */
@@ -362,81 +342,250 @@
     padding:0 .1em .16em 0;
   }
 
-  /* ---------- Article page ---------- */
-  /* Sub-hero, article dialect: same component, smaller H1 so a 124-char title holds */
-  .sub-hero .back{display:inline-block;margin-bottom:28px;
-    font-family:var(--text);font-weight:700;font-size:13.5px;letter-spacing:.03em}
-  .byline .cats{color:rgba(250,250,247,.55);font-weight:400}
-  .byline .cats a:hover{color:var(--magenta)}
-  .byline .vbar{padding:0 2px}
-  .sub-hero.article h1{font-size:clamp(36px,4.4vw,72px);line-height:1.02;max-width:22ch;text-wrap:balance}
-  .sub-hero.article .eyebrow a:hover{border-bottom:1px solid currentColor}
-  .sub-hero.article .sub-voice em{font-size:clamp(20px,2.2vw,32px);line-height:1.25;display:block;max-width:38em}
-  .byline{display:flex;gap:12px;flex-wrap:wrap;align-items:baseline;margin-top:26px;
-    padding-top:18px;border-top:1px solid var(--line-light);
-    font-family:var(--text);font-weight:700;font-size:13.5px;letter-spacing:.02em;
-    opacity:0;animation:settle .6s ease-out .75s forwards}
-  .byline .date,.byline .sep{color:rgba(250,250,247,.55);font-weight:400}
-  .byline a:hover{color:var(--magenta)}
+  /* The .sub-hero-ctas pattern (Pattern A in docs/design-system-audit.md) was
+     removed June 23 2026 — see digital.md Notes 18. JP's call: the pills and
+     letter spacing read off from the rest of the page's square `.btn.solid`
+     vocabulary, AND the Validator/MVP section sits one section below the
+     hero — pre-driving to it from the hero CTA row was redundant. "Start a
+     project" persists in the page closer (line ~1054) and the takeover menu,
+     so no path-to-conversion was lost. Pattern A is decommissioned from
+     /digital and stays catalogued in the audit doc only if a future hub
+     page (Studios, About) genuinely needs hero-level CTAs in a non-pill
+     treatment — not as the current pill design. */
 
-  /* Masthead plate — wframe/wtint pattern from the work cards */
-  .masthead{padding-top:clamp(28px,4vh,52px)}
-  .masthead .wframe{aspect-ratio:21/9;margin-bottom:0}
-  .masthead .wframe img{width:100%;height:100%;object-fit:cover}
-  .masthead .wtint{display:none}
-  .masthead .wframe.dark .wtint{display:block}
-  .photo-credit{position:absolute;right:16px;bottom:12px;z-index:2;
-    font-size:11px;letter-spacing:.06em;color:rgba(250,250,247,.85);
-    text-shadow:0 1px 10px rgba(18,19,21,.6)}
+  /* Sub-hero body paragraph — alternative to .sub-voice when the page wants
+     regular prose with bold mid-sections instead of the italic-magenta voice line.
+     Sibling of .streams (defined inside .sub-hero on insights.html). */
+  .sub-hero .sub-body{
+    margin-top:18px;font-size:clamp(16px,1.3vw,19px);line-height:1.5;
+    color:var(--ink);opacity:.85;max-width:62ch;
+    opacity:0;transform:translateY(12px);
+    animation:settle .6s ease-out .55s forwards;
+  }
+  .sub-hero .sub-body strong{font-weight:700;color:var(--ink);opacity:1}
 
-  /* Image hero — masthead promoted behind the headline; >=20% black tint on every post */
-  .sub-hero.article{min-height:66vh;padding-top:clamp(132px,20vh,220px)}
-  .sub-hero .hero-media{position:absolute;inset:0;z-index:0;overflow:hidden;background:var(--ink)}
-  .sub-hero .hero-media img{width:100%;height:100%;object-fit:cover;display:block}
-  .sub-hero .hero-tint{position:absolute;inset:0;z-index:1;pointer-events:none;
-    background:linear-gradient(180deg,rgba(18,19,21,.34) 0%,rgba(18,19,21,.20) 40%,rgba(18,19,21,.66) 100%)}
-  .sub-hero.dark-overlay .hero-tint{
-    background:linear-gradient(180deg,rgba(18,19,21,.52) 0%,rgba(18,19,21,.44) 40%,rgba(18,19,21,.80) 100%)}
-  /* Article dialect: the headline + magenta deck sit in the bottom third over
-     arbitrary post imagery — hold the ink band darker through that text zone
-     (QA: the deck was fighting midtone photos, mostly on mobile crops). */
-  .sub-hero.article.dark-overlay .hero-tint{
-    background:linear-gradient(180deg,rgba(18,19,21,.52) 0%,rgba(18,19,21,.46) 35%,rgba(18,19,21,.78) 65%,rgba(18,19,21,.88) 100%)}
-  .sub-hero.article .sub-voice em{
-    text-shadow:0 1px 2px rgba(18,19,21,.45),0 2px 18px rgba(18,19,21,.55)}
-  .sub-hero.article .photo-credit{right:18px;bottom:14px;z-index:3}
+  /* Card grid 4-up variant — pattern 4b extension for /digital.
+     Pattern reference: docs/design-system-audit.md §2 (pattern 4b).
+     Adds a 4-column desktop layout to the existing .cards/.card system. The
+     :nth-child(n+2) rule widens the homepage's (2),(3) selector so every card
+     beyond the first picks up the inner-gutter padding-left, which keeps the
+     left edge of each card's meta block flush with its frame. */
+  .cards.four-up{grid-template-columns:repeat(4,1fr)}
+  .cards.four-up .card:nth-child(n+2) .meta{padding-left:26px}
+  @media(max-width:1100px){.cards.four-up{grid-template-columns:repeat(2,1fr)}.cards.four-up .card:nth-child(2n+1) .meta{padding-left:0}.cards.four-up .card:nth-child(2n) .meta{padding-left:26px}}
+  @media(max-width:680px){.cards.four-up{grid-template-columns:1fr}.cards.four-up .card .meta{padding-left:0}}
+  /* Hover lift on cards — make the .go arrow light up magenta as the visited cue */
+  .card:hover h3{color:var(--magenta)}
+  .card:hover .go{color:var(--magenta)}
+  .work .all:hover{color:var(--magenta);border-color:var(--magenta)}
 
-  /* Body — reading column 700px, figures and embeds break to 980px */
-  .article-body{padding-top:clamp(48px,7vh,90px);padding-bottom:clamp(64px,9vh,110px)}
-  .prose{max-width:700px}
-  .prose>*+*{margin-top:1.35em}
-  .prose p{font-size:18px;line-height:1.65}
-  .prose a{color:var(--magenta);border-bottom:1px solid currentColor;transition:opacity .2s ease-out}
-  .prose a:hover{opacity:.7}
-  .prose h2{font-family:var(--display);font-weight:700;letter-spacing:-.015em;
-    font-size:clamp(26px,2.6vw,36px);line-height:1.12;margin-top:2.2em}
-  .prose h3{font-family:var(--display);font-weight:700;letter-spacing:-.01em;
-    font-size:clamp(20px,1.9vw,24px);line-height:1.2;margin-top:1.9em}
-  .prose ul,.prose ol{padding-left:1.4em}
-  .prose li{font-size:18px;line-height:1.65;margin-top:.5em}
-  .prose ul li::marker{color:var(--magenta)}
-  .prose ol li::marker{font-weight:700}
-  .prose ul ul,.prose ol ol{margin-top:.5em}
-  /* Quote — the body's serif voice moment */
-  .prose blockquote{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;letter-spacing:-.02em;
-    font-size:clamp(22px,2.4vw,30px);line-height:1.3;
-    border-left:2px solid var(--magenta);padding-left:clamp(20px,2.5vw,34px);
-    margin-top:2em;margin-bottom:2em}
-  .prose figure{width:min(980px,100%);margin-top:2.2em;margin-bottom:2.2em}
-  .prose figure img{width:100%;background:var(--ink-soft)}
-  .prose figcaption{font-size:13px;color:var(--grey);padding-top:10px;
-    border-top:1px solid var(--line);max-width:700px}
-  .embed{width:min(980px,100%);margin-top:2.2em;margin-bottom:2.2em;background:var(--ink-soft)}
-  .embed.video{aspect-ratio:16/9}
-  .embed.podcast{height:150px;background:transparent}
-  .embed iframe{width:100%;height:100%;border:0;display:block}
-  /* Related uses the homepage insights .post pattern as-is */
-  .insights .posts .post{display:block}
+  /* Offers section — wraps a .doors block on a sub-page.
+     The homepage doors block IS the section (no separate H2); on /digital the
+     offers section needs an introductory "Two ways in" H2 above the doors. */
+  .offers-section{padding-top:clamp(70px,10vh,120px);background:var(--paper)}
+  .offers-section .wrap{padding-bottom:24px}
+  .offers-h{font-family:var(--display);font-weight:500;font-size:clamp(34px,4vw,60px);letter-spacing:-.015em}
+
+  /* Doors compact variant — sub-page scale.
+     The homepage .doors uses min-height:84vh because doors IS the page block.
+     On a sub-page, that's too tall. .doors.compact removes the min-height
+     constraint and dials the per-door min-height down from 54-84vh to ~48vh. */
+  .doors.compact{min-height:auto}
+  .doors.compact .door{min-height:48vh}
+  @media(max-width:860px){.doors.compact .door{min-height:38vh}}
+
+  /* Validator-band — engine variant, INK background.
+     Pattern reference: docs/design-system-audit.md §"New patterns".
+     Three departures from the canonical .engine band:
+     (1) INK background (var(--ink)) with paper text — flips the section from
+         paper-on-paper to ink-on-paper, creating a paper/ink/paper sandwich
+         between offers above and how-we-work below. Makes the Validator read
+         as the page's strongest call-to-action rather than blending into the
+         surrounding sections. (June 23 2026 edit — see digital.md Notes 14.)
+     (2) 1fr/1fr grid instead of 5fr/7fr — the left column needs room for
+         H2 + body + CTA, and the right column carries the explainer video
+         at 16:9 (which needs roughly half-page width to land at viewable size).
+     (3) H2 dialed from clamp(40px,4.6vw,72px) to clamp(32px,3.6vw,54px) so
+         the headline doesn't overflow the half-width column. */
+  .validator-band{background:var(--ink);color:var(--paper)}
+  .validator-band .engine-grid{grid-template-columns:1fr 1fr;align-items:center;gap:clamp(32px,4vw,72px)}
+  .validator-band h2{font-size:clamp(32px,3.6vw,54px);color:var(--paper)}
+  .validator-band h2 em.voice{color:var(--magenta)}
+  .validator-band p{font-size:clamp(16px,1.3vw,19px);margin-top:18px;max-width:48ch;color:rgba(250,250,247,.86)}
+  .validator-band p strong{color:var(--paper)}
+  .validator-band .vbtn{margin-top:24px;display:inline-block}
+  @media(max-width:860px){.validator-band .engine-grid{grid-template-columns:1fr;gap:36px}}
+
+  /* NEW pattern — .engine.mirror — alternating layout variant for the one-two punch.
+     Pairs with the canonical .engine pattern to create JP's "alternating one-two
+     punch" rhythm on services pages: Module 1 runs canonical 5fr/7fr (H2 left,
+     body right), Module 2 runs mirrored 7fr/5fr (body left, H2 right). The two
+     modules read as a zigzag at desktop scale. On mobile (≤860px) both stack
+     identically — H2 over body — because the "mirror" rhythm doesn't read at
+     narrow widths and stacking H2-first preserves source order + cognitive flow.
+     Source order in HTML stays H2-first → body-second for every module
+     regardless of layout, for accessibility and progressive enhancement. */
+  .engine.mirror .engine-grid{grid-template-columns:7fr 5fr}
+  .engine.mirror .engine-grid > div:first-child{order:2}
+  .engine.mirror .engine-grid > div:nth-child(2){order:1}
+  @media(max-width:860px){
+    .engine.mirror .engine-grid{grid-template-columns:1fr}
+    .engine.mirror .engine-grid > div:first-child{order:0}
+    .engine.mirror .engine-grid > div:nth-child(2){order:0}
+  }
+
+  /* NEW pattern — .video-frame.
+     Pattern reference: docs/design-system-audit.md §"New patterns" C
+     (to be catalogued on next audit-doc pass — see digital.md Notes 14).
+     Generic 16:9 video container for section-column embeds. Distinct from
+     the article-body .embed.video pattern (which is .article-body .prose-scoped
+     and supports .breakout for full-bleed). The .video-frame is the
+     section-column variant — used here on /digital for the Cloudflare Stream
+     explainer; reusable wherever a marketing/explainer video lives inside
+     a section grid column. Dark placeholder bg holds the box while the
+     Stream iframe loads its own poster. Soft radius matches the terminal
+     pattern's previous treatment, preserving the section's visual silhouette. */
+  .video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#0a0b0c;
+    border-radius:8px;overflow:hidden;box-shadow:0 18px 44px rgba(0,0,0,.32)}
+  .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+
+  /* NEW pattern C — .partners + .partners-strip.
+     Pattern reference: docs/design-system-audit.md §"New patterns" C.
+     Lede sentence + horizontal flex row of partner-tier chips. Each chip pairs
+     a display-weight name with a serif-italic tier descriptor (echoes the .voice
+     italic-on-serif treatment used everywhere else on the site). Magenta surfaces
+     only on hover — single-magenta budget per viewport already committed elsewhere
+     in this section's neighbours, this just provides the interaction cue. */
+  .partners{padding-top:clamp(60px,8vh,100px);padding-bottom:clamp(60px,8vh,100px);
+    background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .partners-lede{font-size:clamp(16px,1.3vw,19px);line-height:1.5;color:var(--grey);max-width:62ch;margin-bottom:30px}
+  .partners-strip{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .ptier{display:inline-flex;gap:10px;align-items:baseline;padding:12px 20px;
+    border:1px solid var(--line);border-radius:999px;
+    transition:border-color .2s ease,color .2s ease}
+  .ptier b{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.005em}
+  .ptier em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;font-size:14px;color:var(--grey);transition:color .2s ease}
+  .ptier:hover{border-color:var(--magenta);color:var(--magenta)}
+  .ptier:hover em{color:var(--magenta)}
+
+  /* NEW pattern — .proof-spine + .logos (mirrored from homepage Block 3).
+     Pattern reference: docs/design-system-audit.md §"New patterns" F
+     (catalogued in audit doc on this commit). Direct reuse of the homepage's
+     proof-spine .logos pattern — 3-col grid with 1px gap exposing the line
+     bg, checkerboard alternation (odd cells ink/paper, even cells paper/ink),
+     magenta hover state on every cell. The .logo-mask technique renders each
+     logo as a CSS mask-image so the logo inherits currentColor — allowing
+     the same PNG to render paper-on-ink or ink-on-paper without separate
+     asset variants. Position on /digital: between Selected Work and Partners.
+     Functions as the visible-clients trust signal at section scope,
+     complementing the per-project named outcome strip above and the
+     platform-certification Partners strip below. See digital.md Notes 15. */
+  .logo-mask{display:inline-block;background-color:currentColor;
+    -webkit-mask-image:var(--mask-image);-webkit-mask-size:contain;
+    -webkit-mask-repeat:no-repeat;-webkit-mask-position:center;vertical-align:middle}
+  .proof-spine{padding:clamp(80px,11vh,140px) 0;background:var(--paper)}
+  .proof-spine .eyebrow{display:block;font-family:var(--text);font-weight:700;
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--magenta);margin-bottom:24px}
+  .logos{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line)}
+  .logos .cell{display:flex;align-items:center;justify-content:center;
+    padding:clamp(24px,3vw,38px) 16px;
+    transition:background-color .45s cubic-bezier(.4,0,.2,1),
+               color .45s cubic-bezier(.4,0,.2,1)}
+  .logos .cell .logo-mask{opacity:.88;max-width:72%;
+    transition:opacity .45s cubic-bezier(.4,0,.2,1),
+               background-color .45s cubic-bezier(.4,0,.2,1)}
+  .logos .cell:hover .logo-mask{opacity:1}
+  .logos .cell:nth-child(odd){background:var(--ink);color:var(--paper)}
+  .logos .cell:nth-child(odd):hover{color:var(--magenta)}
+  .logos .cell:nth-child(even){background:var(--paper);color:var(--ink)}
+  .logos .cell:nth-child(even):hover{background:var(--magenta);color:var(--paper)}
+  @media(max-width:640px){
+    .logos{grid-template-columns:repeat(2,1fr)}
+    .logos .cell:last-child{grid-column:span 2}
+  }
+
+  /* Outcome-strip text stat — when a .stat carries text instead of an .odo numeral.
+     Inherits .stat b's serif at the same 52-96px scale; <em> adds the italic
+     read so it feels like a category value rather than a measurement. */
+  .stat b > em{font-style:italic;font-family:var(--serif);font-variation-settings:var(--serif-vset);font-weight:800}
+
+  /* Filter bar */
+  .work-filter{
+    position:sticky;top:62px;z-index:40; /* below the fixed 63px ink header (QA: tabs were sliding underneath it) */
+    background:var(--paper);border-bottom:1px solid var(--line);
+  }
+  .filter-row{display:flex;gap:6px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap;align-items:center}
+  .ftab{
+    font-family:var(--text);font-weight:700;font-size:15px;letter-spacing:.02em;
+    padding:14px 24px;border:1px solid var(--line);background:transparent;
+    color:var(--ink);cursor:pointer;display:flex;gap:10px;align-items:baseline;
+    transition:background-color .3s ease,color .3s ease,border-color .3s ease;
+  }
+  .ftab .fc{color:var(--grey);font-weight:400;font-size:13px;transition:color .3s ease,opacity .3s ease}
+  .ftab:hover{border-color:var(--ink)}
+  .ftab.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .ftab.on .fc{color:var(--magenta)}
+  /* whole-button hover triggers the label cascade */
+  .ftab:hover .cascade .lt span{transform:translateY(-100%)}
+  .pending{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;
+    font-size:1.16em !important;letter-spacing:-.01em;color:var(--magenta) !important}
+  .ftab.on .pending{color:var(--magenta) !important}
+
+  /* Work grid */
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:clamp(24px,3vw,44px);
+    padding-top:clamp(48px,6vh,72px);
+    padding-bottom:clamp(64px,8vh,100px);
+  }
+  .wcard{display:flex;flex-direction:column;position:relative}
+  .wcard.feature{grid-column:1 / -1}
+  .wframe{
+    aspect-ratio:16/9;background:var(--ink-soft);position:relative;
+    overflow:hidden;margin-bottom:18px;
+  }
+  .wcard.feature .wframe{aspect-ratio:21/9}
+  .slot-frame{background:var(--ink-soft)}
+  .slot-frame.light{background:#e9e9e4}
+  .wtint{
+    position:absolute;inset:0;
+    background:linear-gradient(transparent 30%, rgba(18,19,21,.72) 100%);
+    z-index:1;pointer-events:none;
+  }
+  .wcard-overlay{
+    position:absolute;bottom:0;left:0;right:0;padding:clamp(22px,3vw,38px);
+    z-index:2;color:var(--paper);
+  }
+  .wcard-overlay h2{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(22px,2.4vw,36px);letter-spacing:-.01em;margin:10px 0 8px;
+  }
+  .wcard-overlay h2 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800}
+  .wcard-overlay p{font-size:15px;color:rgba(250,250,247,.78);max-width:54ch;margin-bottom:12px}
+  .wtag{
+    font-family:var(--text);font-weight:700;font-size:11px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);
+    display:block;margin-bottom:10px;
+  }
+  .wcard h3{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(18px,1.8vw,26px);letter-spacing:-.008em;margin-bottom:8px;
+  }
+  .wcard h3 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800}
+  .wcard > p{font-size:14.5px;color:var(--grey);max-width:44ch;margin-bottom:10px}
+  .wgo{font-weight:700;font-size:13.5px;letter-spacing:.04em;margin-top:auto}
+  
+  .wcard-overlay .wgo{color:rgba(250,250,247,.9);font-size:14px}
+  
+  .slot-tag.dark{color:rgba(18,19,21,.35);border-color:rgba(18,19,21,.25)}
+
+  /* Hybrid pending state */
+  .hybrid-slot .wframe{outline:1px dashed var(--line);outline-offset:-8px}
+  .pending-tag{color:var(--grey) !important}
+  .pending-go{color:var(--grey);pointer-events:none}
 
   /* ---- Global page closer — token-driven, reuse across all key pages ----
      Matches homepage closer in scale. Swap h2 text + p + btn label per page.
@@ -457,6 +606,16 @@
   .page-closer .tel{font-family:var(--text);font-weight:700;font-size:15px;color:rgba(250,250,247,.78)}
   .page-closer .tel:hover{color:var(--magenta)}
 
+  @media(max-width:980px){.work-grid{grid-template-columns:1fr 1fr}.wcard.feature{grid-column:1/-1}}
+  @media(max-width:640px){.work-grid{grid-template-columns:1fr}}
+
+  /* Hover video loop — sits above the still, fades in when playing */
+  .wframe .hover-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    opacity:0;transition:opacity .35s ease;pointer-events:none;z-index:1}
+  .wframe .hover-video.playing{opacity:1}
+
+  /* Rise-in: case cells use the site reveal motion, staggered by column */
+  .work-grid .wcard.reveal{transition-delay:calc(var(--d,0)*70ms)}
 
   /* ---------- Button system ---------- */
   /* Primary — letter cascade */
@@ -534,7 +693,7 @@
      widen the background box so the texture covers the full glyph extent. */
   .tk-t{padding:.18em .12em}
   .tk-l:hover .tk-t{transform:translateX(12px);color:transparent;
-    background:url('/images/scratches-v2.webp') center/cover var(--paper);
+    background:url('images/scratches-v2.webp') center/cover var(--paper);
     background-origin:content-box;
     -webkit-background-clip:text;background-clip:text}
   .tk-l:hover .tk-t em{color:transparent}
@@ -543,197 +702,220 @@
   .tk-ar{font-size:clamp(20px,2.4vw,30px);opacity:0;transform:translateX(-14px);
     transition:opacity .3s ease,transform .3s ease;margin-left:auto;color:var(--paper)}
   .tk-l:hover .tk-ar{opacity:1;transform:translateX(0)}
+  /* Active / current page — persistent arrow + solid numeral so you always
+     know where you are in the menu. */
+  .tk-l.is-current .tk-n{color:var(--ink)}
+  .tk-l.is-current .tk-ar{opacity:1;transform:translateX(0)}
+  .tk-l.is-current .tk-t{transform:translateX(12px)}
   .tk-foot{padding:18px 0 26px;max-width:var(--max);margin:0 auto;width:100%;
     display:flex;justify-content:space-between;align-items:center;
     font-family:var(--text);font-weight:700;font-size:13px;color:rgba(18,19,21,.65)}
   .tk-foot a:hover{color:var(--paper)}
   body.menu-open{overflow:hidden}
 
+  /* Small-screen takeover — fit six links + foot, drop hover-only flourishes. */
+  @media (max-width:560px){
+    .takeover{overflow-y:auto}
+    .tk-links{justify-content:center;gap:2px;padding:72px 0 8px}
+    .tk-t{font-size:clamp(34px,10vw,54px);padding:.12em .1em}
+    .tk-l{padding:10px 0;gap:12px}
+    .tk-foot{flex-direction:column;align-items:flex-start;gap:6px;padding:14px 0 22px}
+  }
+
   @media (prefers-reduced-motion: reduce){
     .takeover,.tk-l,.tk-t,.tk-ar,.menu-btn .plus,.tk-close .x,.tk-top .logo{transition:none}
     .tk-top .logo{opacity:1}
   }
-</style>
 
-<style id="article-v2">
-  /* ============ ARTICLE BODY V2 — editorial magazine × dense Swiss ============
-     Hero, nav, masthead, closer, footer untouched. Reading column 700px,
-     breakouts 980px, Signal band full-bleed. Sections are indexed; the serif
-     speaks in the pull quote and the ledger numerals — Two Voices, in body form. */
-  body{overflow-x:clip}
-  .article-body{padding-top:clamp(56px,8vh,104px);padding-bottom:clamp(72px,10vh,120px)}
-  .prose{max-width:700px;margin-inline:auto;counter-reset:sect}
-  .prose>*+*{margin-top:1.5em}
-  .prose p{font-size:18px;line-height:1.68}
+  /* ======================================================================
+     STUDIOS-SPECIFIC PATTERNS (Patterns G, H, I, J in design-system-audit.md)
+     Shipped June 23 2026 with the initial /studios build.
+     ====================================================================== */
 
-  /* Breakout machinery — centered on the column */
-  .prose .breakout{width:min(980px,calc(100vw - 2*var(--gutter)));margin-left:50%;transform:translateX(-50%)}
+  /* Pattern G — Reel hero. Full-bleed Cloudflare Stream video bg with overlay
+     content. Studios Block 1. Ink underlay, video plays muted+loop+autoplay,
+     text sits on a darkened bottom-band via .reel-vignette for legibility. */
+  .reel-hero{position:relative;min-height:88vh;background:var(--ink);color:var(--paper);overflow:hidden;display:flex;align-items:flex-end}
+  .reel-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+  .reel-video{position:absolute;top:50%;left:50%;width:max(100%,177.78vh);height:max(56.25vw,100%);transform:translate(-50%,-50%);border:0;pointer-events:none}
+  .reel-vignette{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(18,19,21,.55) 0%,rgba(18,19,21,0) 28%,rgba(18,19,21,0) 52%,rgba(18,19,21,.88) 100%);pointer-events:none}
+  .reel-inner{position:relative;z-index:2;padding:96px 0 64px;width:100%}
+  .reel-hero h1{font-family:var(--display);font-weight:600;font-size:clamp(48px,7.2vw,116px);line-height:.94;letter-spacing:-0.02em;margin-bottom:28px;opacity:0;transform:translateY(14px);animation:settle .8s ease-out .2s forwards}
+  .reel-hero h1 span{display:block}
+  .reel-hero h1 .voice{font-family:"late-serif",Georgia,serif;font-style:italic;font-weight:400;color:var(--magenta);letter-spacing:-0.01em}
+  .reel-hero .reel-body{font-size:clamp(16px,1.4vw,21px);max-width:780px;color:rgba(250,250,247,.88);margin-bottom:36px;line-height:1.5;opacity:0;transform:translateY(12px);animation:settle .8s ease-out .45s forwards}
+  /* Reel-hero scroll-prompt button uses the canonical .btn .cascade
+     vocabulary (matches the homepage Digital/Studios pair and the page
+     closer "Start a film"). The .reel-scroll custom class was removed
+     June 24 2026 — see studios.md Notes 15. The settle-in animation
+     timing (.7s delay so the button lands after H1 + body) is
+     preserved here. The .btn rule globally defines border:1px solid
+     var(--paper) which works against the dark video background. */
+  .reel-hero .btn{opacity:0;transform:translateY(10px);animation:settle .8s ease-out .7s forwards}
 
-  /* Lede — drop cap opener */
-  .prose .lede{font-size:21px;line-height:1.62}
-  .prose .lede::first-letter{
-    font-family:var(--serif);font-variation-settings:var(--serif-vset);font-weight:800;
-    float:left;font-size:4.6em;line-height:.8;
-    padding:.04em .16em 0 0;
-  }
-  /* lede opening on punctuation/a link (e.g. a bracketed series-nav aside) — no drop-cap */
-  .prose .lede.nodrop::first-letter{float:none;font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit;padding:0}
+  /* Pattern H — Proof bar. Single high-contrast declarative trophy line.
+     Studios Block 2. Ink background, paper text. No section header. */
+  .proof-bar{background:var(--ink);color:var(--paper);padding:36px 0;border-top:1px solid rgba(250,250,247,.12);border-bottom:1px solid rgba(250,250,247,.12)}
+  .proof-bar-stat{font-family:var(--display);font-size:clamp(18px,1.9vw,24px);font-weight:500;letter-spacing:-.01em;line-height:1.45}
+  .proof-bar-stat strong{font-weight:700}
+  .proof-bar-body{color:rgba(250,250,247,.72);font-weight:400}
+  .proof-bar-body em{font-style:italic;color:var(--paper);font-weight:500}
 
-  /* Numbered section heads — rule, index, title */
-  .prose h2{
-    font-family:var(--display);font-weight:700;letter-spacing:-.015em;
-    font-size:clamp(30px,3.4vw,44px);line-height:1.05;
-    margin-top:3em;padding-top:26px;border-top:2px solid var(--ink);
-  }
-  .prose h2::before{
-    counter-increment:sect;content:"0" counter(sect);
-    display:block;
-    font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
-    font-size:12px;letter-spacing:.16em;color:var(--magenta);
-    margin-bottom:16px;
-  }
+  /* Pattern I — DECOMMISSIONED June 24 2026. The Studios films index
+     originally shipped with a custom featured+grid pattern (7fr/5fr
+     featured rows for award winners + 4-up grid for the rest). JP's
+     brief on review: "The design pattern for the film case studies
+     should be the same pattern/component as on the digital page."
+     Swapped for the canonical .work + .cards.four-up + .card pattern
+     used on /digital "Digital, selected" and the homepage "Selected
+     work" — same dark ink band, same eyebrow .tag taxonomy, same
+     .go.swipe italic-last-word CTA. All the CSS for that pattern
+     (lines 129-145 + 354-361 of this file, came along with the
+     digital.html clone) is reused as-is. No new CSS for Block 3 —
+     just the markup swap. See studios.md Notes 16 + audit doc
+     §Pattern I (now marked DECOMMISSIONED).
 
-  /* Ledger — the three failure modes as indexed rows */
-  .ledger{margin-top:2em}
-  .ledger .lrow{
-    display:grid;grid-template-columns:84px 1fr;gap:0 26px;align-items:start;
-    padding:28px 0;border-top:1px solid var(--line);
-  }
-  .ledger .lrow:last-child{border-bottom:1px solid var(--line)}
-  .ledger .ln{
-    font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;
-    font-size:clamp(44px,5vw,64px);line-height:.85;color:var(--magenta);
-  }
-  .ledger h3{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.01em;margin:0 0 8px}
-  .ledger p{font-size:16.5px;line-height:1.6;opacity:.85;max-width:54ch;margin:0}
-  @media(max-width:620px){.ledger .lrow{grid-template-columns:48px 1fr;gap:0 16px}}
+     ONE SMALL ADDITION: 6 films in a 4-up grid means row 2 has 2
+     real cards + 2 empty cells. Without intervention, those empties
+     show the .cards parent's line-light background. A placeholder
+     card (.card.placeholder) fills cells 7-8 with the .card ink
+     background so the empties read as blank dark cards and the 1px
+     gap-line rhythm stays consistent with /digital's 4-card layout.
+     pointer-events:none keeps them un-clickable. aria-hidden="true"
+     keeps them out of the accessibility tree. */
+  .work .card.placeholder{pointer-events:none;padding:0}
 
-  /* Pull quote — the body's voice moment, breakout width */
-  .pull{margin-top:3.2em;margin-bottom:3.2em;padding:30px 0 38px;
-    border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
-  .pull .eyebrow{color:var(--magenta-ink);display:block;margin-bottom:24px}
-  .pull p{
-    font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;letter-spacing:-.02em;
-    font-size:clamp(28px,3.6vw,46px);line-height:1.22;max-width:30ch;
-  }
+  /* .wcard.feature — ported verbatim from /work.html (CSS at work.html
+     lines 356-393). JP brief June 24 2026: "Lets add this exact
+     component from the work.html page below the title WORK and above
+     the rows of films on the studios page." Hero/featured treatment
+     for the strongest piece (Iron Mountain — The Summit, the ADDY
+     winner) — cinematic 21:9 frame with a paper-text-on-tint
+     overlay carrying h2 + body + Watch CTA. The .w-namespaced
+     classes don't collide with the .card / .work rules already on
+     studios (those came from the digital.html clone). Lives between
+     the .head (H2 "The films") and the .cards.four-up grid below.
+     See studios.md Notes 17. */
+  .work .wcard{display:flex;flex-direction:column;position:relative;margin-bottom:clamp(40px,5vh,72px)}
+  .work .wframe{aspect-ratio:16/9;background:var(--ink-soft);position:relative;overflow:hidden;margin-bottom:18px}
+  .work .wcard.feature .wframe{aspect-ratio:21/9;margin-bottom:0}
+  .work .wtint{position:absolute;inset:0;background:linear-gradient(transparent 30%, rgba(18,19,21,.72) 100%);z-index:1;pointer-events:none}
+  .work .wcard-overlay{position:absolute;bottom:0;left:0;right:0;padding:clamp(22px,3vw,38px);z-index:2;color:var(--paper)}
+  .work .wcard-overlay h2{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.4vw,36px);letter-spacing:-.01em;margin:10px 0 8px;color:var(--paper)}
+  .work .wcard-overlay h2 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800}
+  .work .wcard-overlay p{font-size:15px;color:rgba(250,250,247,.78);max-width:54ch;margin-bottom:12px}
+  .work .wgo{font-weight:700;font-size:13.5px;letter-spacing:.04em;margin-top:auto;display:inline-block}
+  .work .wcard-overlay .wgo{color:rgba(250,250,247,.9);font-size:14px}
 
-  /* Spec list — what we changed */
-  .prose ul.changes{list-style:none;padding:0}
-  .prose ul.changes>li{
-    position:relative;padding:18px 0 18px 32px;margin:0;
-    border-top:1px solid var(--line);font-size:17.5px;line-height:1.6;
+  /* Pattern J — Credits one-sheet. Three credits in a 3-up grid; each is
+     portrait + name + role + credit line. Portraits added June 24 2026
+     overriding the original "no portraits, no bios" brief — see
+     studios.md Notes 14. The 1px ink rule moved from .credit-card's
+     border-top onto .credit-name's border-top so the one-sheet credit-
+     block visual is preserved (portrait → ink rule → name) instead of
+     stranding the rule above the photo. Bios still live on /about.
+     Studios Block 4. Block footer carries a CTA routing to /about. */
+  .credits{padding:96px 0;background:var(--paper);border-top:1px solid var(--line)}
+  .credits-heading{font-family:var(--display);font-size:clamp(36px,4vw,60px);font-weight:600;line-height:1.05;letter-spacing:-.015em;margin-bottom:64px;max-width:960px}
+  .credits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-bottom:48px}
+  .credit-card{display:flex;flex-direction:column}
+  .credit-portrait{display:block;width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--paper);position:relative}
+  .credit-portrait img{width:100%;height:100%;object-fit:cover;display:block}
+  /* Bio-video rollover (June 24 2026). Each credit card has a Cloudflare
+     Stream iframe layered over the still portrait, lazy-loaded on first
+     hover. Iframe is sized 177.78% wide (16:9 ratio over 1:1 container)
+     so the 16:9 source fills the square portrait vertically and crops
+     horizontally. opacity:0 hides until both .loaded class is applied
+     (iframe load event has fired) AND the card is hovered. pointer-
+     events:none keeps the iframe transparent to clicks; aria-hidden +
+     tabindex=-1 keep it out of the accessibility tree. See studios.md
+     Notes 19. */
+  .credit-portrait .credit-video{
+    position:absolute;top:50%;left:50%;
+    width:177.78%;height:100%;
+    transform:translate(-50%,-50%);
+    border:0;opacity:0;
+    transition:opacity .4s ease;
+    pointer-events:none;z-index:1
   }
-  .prose ul.changes>li:last-child{border-bottom:1px solid var(--line)}
-  .prose ul.changes>li::before{
-    content:"";position:absolute;left:2px;top:28px;width:8px;height:8px;background:var(--magenta);
-  }
-  .prose ul.changes ul{list-style:none;padding:0;margin-top:.6em}
-  .prose ul.changes ul li{font-size:15.5px;color:var(--grey);padding-left:20px;position:relative;margin-top:.4em}
-  .prose ul.changes ul li::before{content:"—";position:absolute;left:0;color:var(--magenta)}
-
-  /* Sequence — indexed steps */
-  .prose ol.seq{list-style:none;padding:0;counter-reset:seq}
-  .prose ol.seq li{
-    counter-increment:seq;display:grid;grid-template-columns:56px 1fr;align-items:baseline;
-    padding:16px 0;margin:0;border-top:1px solid var(--line);
-    font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.01em;line-height:1.3;
-  }
-  .prose ol.seq li:last-child{border-bottom:1px solid var(--line)}
-  .prose ol.seq li::before{
-    content:"0" counter(seq);
-    font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
-    font-size:12px;letter-spacing:.16em;color:var(--magenta);
-  }
-
-  /* Figure — plate + spec caption */
-  .prose figure.breakout{margin-top:3em;margin-bottom:3em}
-  .fig-art{display:block;width:100%;height:auto;aspect-ratio:16/9;background:var(--ink-soft);object-fit:cover}
-  .prose figure.breakout figcaption{
-    display:flex;gap:16px;align-items:baseline;
-    font-size:13px;color:var(--grey);line-height:1.5;
-    padding-top:12px;margin-top:12px;border-top:1px solid var(--ink);max-width:none;
-  }
-  .prose figure.breakout figcaption b{
-    font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
-    font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--magenta);white-space:nowrap;
-  }
-
-  /* Signal band — full-bleed mid-article capture */
-  .prose .signal{
-    width:100vw;margin-left:50%;transform:translateX(-50%);
-    background:var(--ink);color:var(--paper);
-    margin-top:3.4em;margin-bottom:3.4em;
-  }
-  .signal-in{
-    max-width:980px;margin-inline:auto;
-    padding:clamp(44px,7vh,72px) var(--gutter);
-    display:grid;grid-template-columns:1.5fr 1fr;gap:36px;align-items:center;
-  }
-  .sig-line{
-    font-family:var(--display);font-weight:500;letter-spacing:-.01em;
-    font-size:clamp(22px,2.4vw,30px) !important;line-height:1.25 !important;
-  }
-  .signal .field{display:flex;border:1px solid var(--line-light)}
-  .signal input{flex:1;min-width:0;background:transparent;border:0;color:var(--paper);font-family:var(--text);font-size:14px;padding:13px 14px}
-  .signal input:focus{outline:none}
-  .signal button{background:var(--paper);color:var(--ink);border:0;font-family:var(--text);font-weight:700;font-size:13px;padding:0 22px;cursor:pointer;transition:background .2s ease-out,color .2s ease-out}
-  .signal button:hover{background:var(--magenta);color:var(--paper)}
-  @media(max-width:760px){.signal-in{grid-template-columns:1fr;gap:24px}}
-
-  /* End mark */
-  .prose p.end::after{
-    content:"";display:inline-block;width:10px;height:10px;
-    background:var(--magenta);margin-left:10px;
-  }
-
-  /* Masthead slot */
-  .masthead .wframe{position:relative;overflow:hidden}
-  .masthead .wframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-  .masthead .wtint{position:absolute;inset:0;z-index:1;pointer-events:none;
-    background:linear-gradient(rgba(18,19,21,.38),rgba(18,19,21,.12) 45%,rgba(18,19,21,.52))}
-
-  /* Related — editorial index rows */
-  .related-v2{padding:clamp(72px,10vh,120px) 0;border-top:1px solid var(--line)}
-  .rel-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:36px}
-  .rel-head h2{font-family:var(--display);font-weight:500;font-size:clamp(32px,3.6vw,52px);letter-spacing:-.015em}
-  .rel-head .swipe{font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.03em}
-  .rel-rows{display:flex;flex-direction:column}
-  .rel-row{
-    display:grid;grid-template-columns:3ch 1fr auto 28px;
-    gap:clamp(14px,2.4vw,32px);align-items:baseline;
-    padding:24px 0;border-top:1px solid var(--ink);
-  }
-  .rel-row:last-child{border-bottom:1px solid var(--ink)}
-  .rel-n{font-family:var(--mono,ui-monospace,Menlo,monospace);font-size:12px;letter-spacing:.1em;color:var(--magenta)}
-  .rel-row .stream{
-    font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--grey);display:block;margin-bottom:7px;transition:color .2s ease-out;
-  }
-  .rel-row .rel-title{
-    display:block;
-    font-family:var(--display);font-weight:700;letter-spacing:-.01em;line-height:1.12;
-    font-size:clamp(21px,2.4vw,30px);transition:transform .3s cubic-bezier(.22,1,.36,1);
-  }
-  .rel-date{font-size:13px;color:var(--grey);white-space:nowrap}
-  .rel-ar{font-size:20px;color:var(--magenta);opacity:0;transform:translateX(-10px);
-    transition:opacity .25s ease-out,transform .25s ease-out}
-  .rel-row:hover .rel-title{transform:translateX(10px)}
-  .rel-row:hover .stream{color:var(--magenta)}
-  .rel-row:hover .rel-ar{opacity:1;transform:translateX(0)}
-  @media(max-width:640px){
-    .rel-row{grid-template-columns:3ch 1fr 22px}
-    .rel-date{display:none}
-  }
-
-  /* Rise-in: index rows use the site reveal motion, staggered by row */
-  .rel-row.reveal{transition-delay:calc(var(--d,0)*70ms)}
-
-  @media(prefers-reduced-motion:reduce){
-    .rel-row .rel-title,.rel-ar{transition:none}
+  .credit-card:hover .credit-portrait .credit-video.loaded{opacity:1}
+  .credit-name{font-family:var(--display);font-size:clamp(22px,1.8vw,28px);font-weight:600;letter-spacing:-.01em;margin-bottom:8px;border-top:1px solid var(--ink);padding-top:24px}
+  .credit-role{font-family:var(--text);font-size:13px;color:var(--magenta);font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:20px}
+  .credit-line{font-size:15px;line-height:1.55;color:var(--grey)}
+  .credits-cta{font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.04em;display:inline-block}
+  @media (max-width:880px){
+    .credits-grid{grid-template-columns:1fr;gap:40px}
+    .credit-portrait{max-width:360px}
   }
 </style>
 
+<style id="careers-page">
+  /* Careers — built on the /about chrome. Values are baked (JP): simplicity,
+     transparency, empathy, curiosity — framing rewritten to the current voice.
+     Reuses the .engine + two-voices system; adds the values grid, an ink
+     benefits band, and the friend-vetted proof block. */
+
+  /* Culture intro sits tight above the values grid */
+  .engine.culture{padding-bottom:clamp(30px,4vh,56px)}
+
+  /* Values — paper grid; borrows the /about lead-card numeral + draw-on rule */
+  .values{background:var(--paper);padding-bottom:clamp(80px,11vh,150px)}
+  .values-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,4vw,64px) clamp(34px,5vw,96px);counter-reset:val}
+  .value-card{counter-increment:val;position:relative}
+  .value-card h3{position:relative;font-family:var(--display);font-weight:600;font-size:clamp(26px,2.6vw,40px);letter-spacing:-.015em;padding-top:24px;border-top:1px solid var(--line);margin-bottom:16px}
+  .value-card h3::before{content:counter(val,decimal-leading-zero);display:block;font-family:var(--serif);font-style:italic;font-weight:500;font-size:17px;line-height:1;color:var(--magenta);margin-bottom:16px}
+  .value-card h3::after{content:"";position:absolute;top:-1px;left:0;width:48px;height:2px;background:var(--magenta);transform:scaleX(0);transform-origin:left center;transition:transform .8s cubic-bezier(.22,1,.36,1) .12s}
+  .value-card.in h3::after{transform:scaleX(1)}
+  .value-card p{font-size:clamp(16px,1.4vw,19px);line-height:1.55;color:var(--ink);opacity:.82;max-width:46ch}
+  @media(prefers-reduced-motion:reduce){.value-card h3::after{transform:scaleX(1)}}
+  @media(max-width:680px){.values-grid{grid-template-columns:1fr}}
+
+  /* Benefits — ink band, 4-up */
+  .benefits{background:var(--ink);color:var(--paper);padding-top:clamp(90px,12vh,160px);padding-bottom:clamp(90px,12vh,160px)}
+  .benefits .eyebrow{color:var(--magenta);display:block;margin-bottom:18px}
+  .benefits h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,4vw,60px);line-height:1.04;letter-spacing:-.015em;max-width:22ch}
+  .benefits-lede{margin-top:20px;font-size:clamp(16px,1.4vw,20px);line-height:1.55;color:rgba(250,250,247,.78);max-width:62ch}
+  .benefits-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-light);margin-top:clamp(44px,6vw,72px);border:1px solid var(--line-light)}
+  .benefit{background:var(--ink);padding:clamp(24px,2vw,34px) clamp(20px,1.6vw,28px) clamp(30px,3vw,42px)}
+  .benefit h3{font-family:var(--display);font-weight:700;font-size:clamp(18px,1.6vw,22px);letter-spacing:-.005em;padding-bottom:18px;margin-bottom:20px;border-bottom:1px solid var(--line-light)}
+  .benefit ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+  .benefit li{font-size:14.5px;line-height:1.5;color:rgba(250,250,247,.74);padding-left:20px;position:relative}
+  .benefit li::before{content:"";position:absolute;left:0;top:.6em;width:9px;height:1px;background:var(--magenta)}
+  @media(max-width:900px){.benefits-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.benefits-grid{grid-template-columns:1fr}}
+
+  /* Friend-vetted — paper proof block */
+  .vetted{background:var(--paper);padding-top:clamp(80px,11vh,140px);padding-bottom:clamp(80px,11vh,140px);border-top:1px solid var(--line)}
+  .vetted .eyebrow{color:#CD2575;display:block;margin-bottom:30px}
+  .vetted-stat{font-family:var(--display);font-weight:500;font-size:clamp(28px,3.6vw,54px);line-height:1.1;letter-spacing:-.015em;max-width:20ch;margin-bottom:clamp(46px,7vw,84px)}
+  .vetted-stat b{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--magenta)}
+  .vetted-quote{max-width:62ch;border-top:1px solid var(--line);padding-top:34px}
+  .vetted-quote p{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(22px,2.4vw,36px);line-height:1.3;letter-spacing:-.01em;margin-bottom:22px;color:var(--ink)}
+  .vetted-quote cite{font-style:normal;font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.02em;color:var(--ink)}
+  .vetted-quote cite span{color:var(--grey);font-weight:400}
+  .vetted-score{margin-top:clamp(46px,7vw,80px);display:flex;align-items:baseline;gap:16px 18px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:30px}
+  .gd-name{font-family:var(--display);font-weight:700;font-size:clamp(20px,2vw,28px);letter-spacing:-.01em}
+  .gd-rating{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(28px,3vw,44px);color:var(--magenta);line-height:1}
+  .gd-stars{font-size:clamp(18px,1.8vw,24px);letter-spacing:.14em;color:var(--ink)}
+  .gd-meta{font-family:var(--text);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey)}
+  .gd-link{margin-left:auto;font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.02em;color:#CD2575;border-bottom:1px solid transparent;transition:border-color .2s ease,opacity .2s ease}
+  .gd-link:hover{border-color:#CD2575}
+  @media(max-width:640px){.gd-link{margin-left:0;flex-basis:100%}}
+
+  /* Review carousel — arrow-controlled, crossfade, auto-advancing */
+  .vetted-carousel{position:relative}
+  .vc-controls{display:flex;gap:14px;margin-bottom:32px}
+  .vc-arrow{width:52px;height:52px;flex:none;border-radius:50%;border:1.5px solid var(--magenta);background:transparent;color:var(--magenta);font-size:20px;line-height:1;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background .25s ease,color .25s ease,transform .2s ease}
+  .vc-arrow:hover{background:var(--magenta);color:var(--paper)}
+  .vc-arrow:active{transform:scale(.94)}
+  .vc-viewport{position:relative;border-top:1px solid var(--line);padding-top:34px;min-height:clamp(200px,24vw,280px)}
+  .vc-slide{position:absolute;top:34px;left:0;right:0;max-width:62ch;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease,visibility 0s linear .5s;pointer-events:none}
+  .vc-slide.is-active{position:relative;opacity:1;visibility:visible;transform:none;transition:opacity .5s ease,transform .5s ease;pointer-events:auto}
+  .vc-slide p{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(22px,2.4vw,36px);line-height:1.3;letter-spacing:-.01em;margin-bottom:22px;color:var(--ink)}
+  .vc-slide cite{font-style:normal;font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.02em;color:var(--ink)}
+  .vc-slide cite span{color:var(--grey);font-weight:400}
+  @media(prefers-reduced-motion:reduce){.vc-slide{transition:opacity .3s ease}.vc-slide.is-active{transition:opacity .3s ease}}
+</style>
 </head>
 <body>
 
@@ -783,12 +965,12 @@
     <button class="tk-close" id="menuClose">Close <span class="x">×</span></button>
   </div>
   <div class="tk-links">
-    <a class="tk-l" style="--td:0.08s" href="/work"><span class="tk-n">01</span><span class="tk-t">Work</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.13s" href="/digital"><span class="tk-n">02</span><span class="tk-t">Digital</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.18s" href="/studios"><span class="tk-n">03</span><span class="tk-t">Studios</span><span class="tk-ar">→</span></a>
-    <a class="tk-l is-current" aria-current="page" style="--td:0.23s" href="/insights"><span class="tk-n">04</span><span class="tk-t">Insights</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.28s" href="/about"><span class="tk-n">05</span><span class="tk-t">About</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.33s" href="/careers"><span class="tk-n">06</span><span class="tk-t">Careers</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.08s" href="work"><span class="tk-n">01</span><span class="tk-t">Work</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.13s" href="digital"><span class="tk-n">02</span><span class="tk-t">Digital</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.18s" href="studios"><span class="tk-n">03</span><span class="tk-t">Studios</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.23s" href="insights"><span class="tk-n">04</span><span class="tk-t">Insights</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.28s" href="about"><span class="tk-n">05</span><span class="tk-t">About</span><span class="tk-ar">→</span></a>
+    <a class="tk-l is-current" aria-current="page" style="--td:0.33s" href="careers"><span class="tk-n">06</span><span class="tk-t">Careers</span><span class="tk-ar">→</span></a>
   </div>
   <div class="tk-foot">
     <a href="tel:+16042279952">+1 (604) 227-9952</a>
@@ -797,104 +979,156 @@
 </div>
 
 
+<!-- ====================================================================
+     ABOUT PAGE BODY
+     Built June 24 2026. Reference: docs/copy/about.md (status: INTERIM).
+     Leadership-only roster by design (JP's call): six leads, no full-team
+     wall. Block 2 adversity alternate omitted; Block 7 Careers teaser
+     dropped until /careers exists. Shared chrome per _shared.md. Craft
+     Layer (ps-spice.css/js) applied in production mode, consistent with
+     /digital and /studios.
+     PORTRAITS use <image-slot> placeholders for the design phase — human
+     photography, never generated (about.md Note 5). In the static build,
+     replace each <image-slot> with a real <img src="images/…">. ========= -->
 
-<!-- Sub-page hero: same DNA as homepage, ~50vh, clearly a sub-section -->
-<section class="sub-hero article">
-  <div class="hero-media"><img id="heroImg" src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/729b2b56-ae85-4f64-7e28-fe36a0981f00/public" alt=""></div>
-  <div class="hero-tint"></div>
+<!-- Block 1 — Identity hero. Quiet .sub-hero statement (JP's call: let the
+     H1 claim carry it). H1 = page thesis; .sub-body bolds the trick. -->
+<section class="sub-hero" data-screen-label="Careers">
   <svg class="slash-field" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="pair" transform="translate(1060 230) scale(2.2)" style="--dur:15.6s;--dly:0s;--sh:10.4px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(780 460) scale(1.3)" style="--dur:20.4s;--dly:-9s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1260 520) scale(1.7)" style="--dur:13.2s;--dly:-15s;--sh:9.2px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(640 260) scale(1.0)" style="--dur:18s;--dly:-4s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(940 560) scale(1.1)" style="--dur:22.8s;--dly:-21s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1380 360) scale(1.2)" style="--dur:18.6s;--dly:-6s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g></svg>
   <div class="sub-hero-inner wrap">
-    <a class="back swipe" href="/insights">← Back to all Insights</a>
-    <h1 class="rise" id="title">Why Scoping Digital Product and Software Development Projects Is So Challenging — And What to Do About It</h1>
-    <p class="sub-voice"><em class="voice mag" id="excerpt">Scoping is one of the hardest parts of building software—an upfront guessing game. Why it's so difficult, and a more reliable way to approach it.</em></p>
-    <div class="byline" id="byline">
-      <a href="/insights" id="authorEl">By J.P. Holecka</a>
-      <span class="sep" id="authorSep">·</span>
-      <span class="date">June 6, 2023</span>
-      <span class="sep vbar" id="catSep">|</span>
-      <span class="cats" id="cats"><a href="/insights">Build</a></span>
-    </div>
+    <span class="eyebrow">Careers — work from anywhere, make the real thing</span>
+    <h1 class="rise">Shift your career. <em class="voice mag">From&nbsp;anywhere.</em></h1>
+    <p class="sub-body">POWER SHIFTER is a <strong>work-from-anywhere agency.</strong> We hire for the work, not the postal code — the best experts rarely cluster where you'd expect. Two practices, software and cinema. One design culture.</p>
   </div>
-  <span class="photo-credit" id="photoCredit">Power Shifter Studios</span>
 </section>
 
-<article class="article-body wrap">
-  <div class="prose">
-    <p class="lede">If you've ever built software or digital products, you know that one of the most difficult parts is actually* scoping *the project. Figuring out how much time and effort will be required upfront can feel like a guessing game, especially when you're unsure of how long your process may take to code a specific feature, fix a bug that pops up during testing, or take things in a different direction if iterative testing yields unexpected results. Nevermind that new technologies and platforms to take your products across the line are always emerging, so what worked six or twelve months ago might not work anymore today.</p>
-
-    <p>If you've been frustrated or confused trying to know the unknowable, don't worry, you're not alone. Ask any software engineer, and they'll tell you that scoping is one of the trickiest things to get right.</p>
-
-    <p>At POWER SHIFTER, we have endless software and digital product projects under our belt. Along the way we've developed some tips and tricks to nail the scoping phase.</p>
-
-    <h2>Don't go chasing waterfalls</h2>
-
-    <p>In a traditional 'waterfall' model — where software is built sequentially, each step following the previous one — scoping a digital product project requires gathering detailed requirements from customers and stakeholders upfront. This phase is, inevitably, time consuming: it can take months (or even years) to have the requirements in place. The worst part is that the effort required in no way guarantees the quality of the output. The results are often buggy or inflexible.</p>
-
-    <p>Even after a large requirements gathering phase is conducted, costly delays can send a project over budget. Often, this is because requirements change during development, affecting the timeline.</p>
-
-    <p>At POWER SHIFTER, we take issue with this model, namely because it doesn't allow for the feedback and iteration that produces high-quality products.</p>
-
-    <p>(Following the wisdom of Martin Fowler, who was "suspicious of using metaphors from other professions to reason about software development", we believe it's dangerous to try to anticipate how a product build will go in advance. Software development is too abstract. As Martin Fowler explains, if it has to be compared to anything, a puzzle is more apt, since programmers spend ample time writing unique code to stitch together different solutions into a functional whole).</p>
-
-    <h2>Beware of creep(s)</h2>
-
-    <p>The main culprit when it comes to accurate scoping projects is scope creep. Any good project manager knows that a clear and concise project scope is essential to both the client and agency teams. But with changing requirements, and new information is uncovered, a software development project can completely shift course.</p>
-
-    <p>Let's say, for example, that a software / digital product development team identifies that their application needs additional features to meet distinct user needs uncovered in user testing. If there's no buffer in the original scope and timeline, chances are this will throw off the scope, leading to increased costs and schedule delays. Without proper planning or clear objectives, likely changes and additions can be detrimental to the wellbeing and timeline of the project.</p>
-
-    <h2>How to improve at scoping software and digital product projects</h2>
-
-    <h3>Know who and what you're dealing with</h3>
-
-    <p>The main factors that affect software development effort/pricing are: the type of project, the size of the project, and the size of the development team.</p>
-
-    <p><strong>1. Type of Software Project -</strong> From a high level, typical software development engagements tend to break down into the following types:</p>
-
-    <ul class="changes">
-      <li><strong>New Software Development</strong> – New software involving custom development.</li>
-      <li><strong>Software Modification</strong> – Enhancement of existing software.</li>
-      <li><strong>Software Integration</strong> – Integrating software packages such as Salesforce or SAP and other third party integration that extend the functionality of the software that the service is being integrated to.</li>
-      <li><strong>Web Development</strong> <strong>–</strong> Custom web-based software development.</li>
-    </ul>
-
-    <p><strong>2. Size of Software Project: </strong></p>
-
-    <ul class="changes">
-      <li><strong>Small</strong> – <strong> </strong>Minor adjustments like interface tweaks or bug fixes, requiring limited client interaction. They're typically quick to complete. Client interaction is usually minimal since the modifications are clear-cut and often driven by technical needs.</li>
-      <li><strong>Medium</strong> – More complex than small projects, these involve creating standalone solutions or integrations, often with a single data source. Examples include simpler mobile apps or web interfaces. These projects will likely involve regular client interaction for meetings, design reviews, and sprint planning, leading to a longer completion time than small projects.</li>
-      <li><strong>Large</strong> – These are large-scale projects requiring multiple system integrations and security features. They consider future growth and maintenance, needing consistent client interactions like extended design sessions and regular milestone meetings.</li>
-      <li><strong>Enterprise</strong> –Enterprise projects are typically mission-critical systems built on a comprehensive framework with strict security, logging, and error handling measures. These demand thorough integration of IT and client teams and may involve cross-functional collaboration with various stakeholders. Time demands may include lengthy design sessions, reaching consensus on milestones with various teams, and regular check-ins. In addition, there's the need for standing meetings with key stakeholders.</li>
-    </ul>
-
-    <p><strong>3. Development Team Size:</strong></p>
-
-    <p>The resources and roles allocated to a project may determine how fast you're able to bring the project to fruition. Depending on the team members and the hours they can allocate to the build, the project team may be able to work more efficiently. Being clear upfront on the resources and the hours they will dedicate to the project will allow you to more accurately forecast the timing needed to bring the project to completion.</p>
-
-    <p>Once you're clear on these factors, you should be able to more accurately scope the project.</p>
-
-    <h3>When developing software, embrace an Agile methodology</h3>
-
-    <p>You've probably heard the word "agile" thrown around. In software, an agile methodology approach involves rapidly prototyping and testing features in shorter, iterative phases to ensure a feature works. If the feature doesn't work, this allows the team to fix it, pivot, and find a new approach.This process creates a constant feedback loop from users and to make changes that iteratively improve their service or product. With an agile approach, software development has room for experimentation — and bugs or issues are found immediately, rather than at a distant launch date.</p>
-
-    <p>An <a href="https://www.leadingagile.com/2008/07/refactor-your-pmp-agile-scope-management/#:~:text=An%20Agile%20Scope%20Management%20Plan,with%20changes%20to%20the%20backlog."><strong>agile scope management plan</strong></a> should still document the anticipated scope, but in smaller stages called releases. These releases are split into smaller time-boxes, known as iterations, or sprints. To ensure that the backlog remains relevant and prioritized, a practice known as backlog grooming (or backlog refinement) is used. This is a regular session where the product owner and development team review items on the backlog to ensure the backlog contains the appropriate items, that they are prioritized, and that the items at the top of the backlog are ready for delivery. In other words, it's a necessary measure to keep everything on track. This will allow you to plan for the features and tests the team anticipates running, while leaving a buffer for potential redirections.</p>
-
-    <p>Software projects can feel impossible to scope — but with an agile methodology, you'll be able to account for shifts from the get-go, setting your teams up for success.</p>
-
-    <p class="end"><em>The way we create software has modernized — the way we scope projects needs to be, too. If you have questions on how to start following an agile methodology for your software projects, get in touch.</em></p>
+<!-- Culture + the four values. Paper. Values are baked (JP): simplicity,
+     transparency, empathy, curiosity — framing rewritten to the current voice. -->
+<section class="engine culture" id="culture">
+  <div class="wrap engine-grid reveal">
+    <div>
+      <h2 class="rise">Culture can't be copied.</h2>
+    </div>
+    <div class="story-body">
+      <p>Our values are so important to us that without them, we couldn't do the work. They aren't a poster on a wall — they're how decisions get made at the edges, how we hire, and why people stay. Four of them. They haven't changed.</p>
+    </div>
   </div>
-</article>
+</section>
 
+<!-- The four baked values. Reuses the /about numeral + draw-on rule language. -->
+<section class="values" id="values">
+  <div class="wrap">
+    <div class="values-grid">
+      <article class="value-card reveal">
+        <h3>Simplicity</h3>
+        <p>We simplify complexity — removing barriers and amplifying impact, enriching the experience for everyone it touches.</p>
+      </article>
+      <article class="value-card reveal">
+        <h3>Transparency</h3>
+        <p>We work in intentional openness, where the collective outshines the individual. Trial, error, and continuous refining are how we harness our shared expertise.</p>
+      </article>
+      <article class="value-card reveal">
+        <h3>Empathy</h3>
+        <p>We meet people on their own terms and hold space for a diversity of experiences — building on their passions to create capability, not reliance.</p>
+      </article>
+      <article class="value-card reveal">
+        <h3>Curiosity</h3>
+        <p>Faced with a new challenge, we lead with humility and questions — learning our way forward, drawing on inspiration from unexpected places.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Life at PS. Ink band. Benefits reworked around work-from-anywhere. -->
+<section class="benefits" id="benefits">
+  <div class="wrap">
+    <span class="eyebrow">Life at POWER SHIFTER</span>
+    <h2 class="rise">A different way to work — one that puts people first.</h2>
+    <p class="benefits-lede">Work-from-anywhere isn't a perk we bolted on; it's how we're built. Here's what you can expect when you join.</p>
+    <div class="benefits-grid reveal">
+      <div class="benefit">
+        <h3>Health</h3>
+        <ul>
+          <li>Competitive salary and a health &amp; benefits program from day one</li>
+          <li>Your own hardware and software setup, configured your way</li>
+          <li>The room to log off — we measure the work, not the hours</li>
+        </ul>
+      </div>
+      <div class="benefit">
+        <h3>Balance</h3>
+        <ul>
+          <li>Work from anywhere in Canada — city core, suburb, or small town</li>
+          <li>Flexible hours built around focus, not a clock</li>
+          <li>The office closes over the December holidays; parental leave that counts</li>
+        </ul>
+      </div>
+      <div class="benefit">
+        <h3>Diversity</h3>
+        <ul>
+          <li>We hire for culture contributions, not culture fit</li>
+          <li>Experts regardless of seniority — you'll work with them directly</li>
+          <li>We hire for the work, not the postal code</li>
+        </ul>
+      </div>
+      <div class="benefit">
+        <h3>Share</h3>
+        <ul>
+          <li>A transparent profit-sharing program open to the whole team</li>
+          <li>Recognition when the work lands — we celebrate it together</li>
+          <li>What we learn, we share — internally and out loud</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Friend-vetted. Paper. Glassdoor now 5.0 (per JP, up from 4.7). -->
+<section class="vetted" id="vetted">
+  <div class="wrap reveal">
+    <span class="eyebrow">Friend-vetted</span>
+    <p class="vetted-stat"><b>100%</b> of our team would recommend us to a friend.</p>
+    <div class="vetted-carousel" data-vc>
+      <div class="vc-controls">
+        <button class="vc-arrow" type="button" data-vc-prev aria-label="Previous review">←</button>
+        <button class="vc-arrow" type="button" data-vc-next aria-label="Next review">→</button>
+      </div>
+      <div class="vc-viewport" aria-live="polite">
+        <blockquote class="vc-slide is-active">
+          <p>"Great place to work with a lot of heart. Caring leadership, organized direction, and a real track record of continuous improvement."</p>
+          <cite>Senior Web Developer <span>— Glassdoor review</span></cite>
+        </blockquote>
+        <blockquote class="vc-slide">
+          <p>"The people, agency and culture is amazing. Every employee understands it's a team as a whole…incredibly supportive."</p>
+          <cite>Senior UI Designer <span>— Glassdoor review</span></cite>
+        </blockquote>
+        <blockquote class="vc-slide">
+          <p>"The leadership team truly cares about developing their team members. Through hands-on training…there are always new projects and challenges to tackle."</p>
+          <cite>Anonymous Employee <span>— Glassdoor review</span></cite>
+        </blockquote>
+      </div>
+    </div>
+    <div class="vetted-score">
+      <span class="gd-name">Glassdoor</span>
+      <span class="gd-rating">5.0</span>
+      <span class="gd-stars" aria-hidden="true">★★★★★</span>
+      <span class="gd-meta">Overall rating</span>
+      <a class="gd-link" href="https://www.glassdoor.ca/Reviews/POWERSHiFTER-Reviews-E1320131.htm" target="_blank" rel="noopener">Read all reviews on Glassdoor →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Closer — general application. No live roles listed; postings run through
+     the third-party careers platform when open. Swap href="#" for the platform URL. -->
 <section class="page-closer" id="contact">
   <div class="wrap">
-    <h2 class="rise">Read enough? <em class="voice mag">Let's build.</em></h2>
-    <p>Cinema in days. Software in weeks. You'll work directly with the people who make it — no account layer, no brief telephone.</p>
+    <h2 class="rise">Don't see your role? <em class="voice mag">Introduce yourself anyway.</em></h2>
+    <p>We're always talking to people we'd want in the room. When roles open, applications run through our careers platform — but a strong general application never goes to waste.</p>
     <div class="pc-row">
-      <a class="btn solid cascade" href="#contact" data-cc-contact>Start a project →</a>
+      <a class="btn solid cascade" href="https://powershifter.applytojobs.ca/job-board/1986" target="_blank" rel="noopener">Send a general application →</a>
       <a class="tel" href="tel:+16042279952">+1 (604) 227-9952</a>
     </div>
   </div>
 </section>
-
 
 
 </main>
@@ -906,12 +1140,12 @@
         <p class="tagline">Made to use.<br><em class="voice">Made to remember.</em></p>
       </div>
       <ul>
-        <li><a href="/work">Work</a></li>
-        <li><a href="/digital">Digital</a></li>
-        <li><a href="/studios">Studios</a></li>
-        <li><a href="/insights" aria-current="page">Insights</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/careers">Careers</a></li>
+        <li><a href="work">Work</a></li>
+        <li><a href="digital">Digital</a></li>
+        <li><a href="studios">Studios</a></li>
+        <li><a href="insights">Insights</a></li>
+        <li><a href="about">About</a></li>
+        <li><a href="careers" aria-current="page">Careers</a></li>
       </ul>
       <div class="news">
         <h4>The signal</h4>
@@ -925,7 +1159,7 @@
     <p class="ack">We acknowledge that we live and work uninvited on the unceded territories of the Coast Salish peoples — the Lekwungen (Songhees and Esquimalt) and W̱SÁNEĆ around Victoria, the Quw'utsun (Cowichan) at Cowichan Bay, the many Hul'q'umi'num- and SENĆOŦEN-speaking Nations of Salt Spring Island, and the Sḵwx̱wú7mesh Úxwumixw (Squamish) at Gibsons. As a team working coast to coast, we extend that respect to all the Indigenous lands and treaty territories our people call home. We are grateful to share this land cared for by these Nations.</p>
     <div class="legal">
       <span>© <span id="yr"></span> Power Shifter Digital Inc. All rights reserved.</span>
-      <span><a href="/terms-and-conditions">Terms &amp; Conditions</a><a href="/privacy-policy">Privacy Policy</a><a href="/privacy-policy">Cookies</a></span>
+      <span><a href="terms-and-conditions">Terms &amp; Conditions</a><a href="privacy-policy">Privacy Policy</a><a href="privacy-policy">Cookies</a></span>
     </div>
   </div>
 </footer>
@@ -1007,13 +1241,66 @@
   })();
 
 
-  // Related index rows rise on scroll entry, staggered top-to-bottom
-  const relHead = document.querySelector('.rel-head');
-  if (relHead) { relHead.classList.add('reveal'); ro.observe(relHead); }
-  document.querySelectorAll('.rel-row').forEach((r,i)=>{
-    r.classList.add('reveal');
-    r.style.setProperty('--d', String(i));
-    ro.observe(r);
+  // Hover video loops: lazy-load on first hover, never on touch or reduced motion
+  if (window.matchMedia('(hover: hover)').matches &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.wframe[data-video]').forEach(frame=>{
+      const card = frame.closest('.wcard') || frame;
+      let vid = null, resetTimer = null;
+      card.addEventListener('mouseenter', ()=>{
+        clearTimeout(resetTimer);
+        if(!vid){
+          vid = document.createElement('video');
+          vid.muted = true; vid.loop = true; vid.playsInline = true;
+          vid.className = 'hover-video';
+          const base = frame.dataset.video.replace(/\.mp4$/, '');
+          [['webm','video/webm'],['mp4','video/mp4']].forEach(([ext,type])=>{
+            const s = document.createElement('source');
+            s.src = base + '.' + ext; s.type = type;
+            vid.appendChild(s);
+          });
+          frame.appendChild(vid);
+        }
+        vid.play().then(()=>vid.classList.add('playing')).catch(()=>{});
+      });
+      card.addEventListener('mouseleave', ()=>{
+        if(!vid) return;
+        vid.pause();                       // freeze on the current frame
+        vid.classList.remove('playing');   // fade the frozen frame out
+        resetTimer = setTimeout(()=>{ vid.currentTime = 0; }, 420); // rewind only once hidden
+      });
+    });
+
+    // Credit-card bio videos: same lazy-on-first-hover pattern, but for
+    // Cloudflare Stream iframes (the credit cards use Stream UIDs rather
+    // than local MP4/WebM, so we layer an iframe over the still portrait
+    // and let Stream handle decode + loop). Page load fires zero iframe
+    // requests; on first mouseenter we set the src, the Stream player
+    // autoplays muted+looped, and a 'load' event toggles .loaded so the
+    // CSS opacity transition only fires after the video is actually
+    // ready (no blank-iframe flash). Subsequent hovers are instant
+    // (browser caches the iframe). See studios.md Notes 19.
+    document.querySelectorAll('.credit-card[data-video-uid]').forEach(card=>{
+      const iframe = card.querySelector('.credit-video');
+      if(!iframe) return;
+      const uid = card.dataset.videoUid;
+      const url = 'https://customer-xv1aafyshr3tbknu.cloudflarestream.com/' + uid +
+                  '/iframe?muted=true&autoplay=true&loop=true&controls=false&preload=auto';
+      let loaded = false;
+      card.addEventListener('mouseenter', ()=>{
+        if(loaded) return;
+        iframe.addEventListener('load', ()=>iframe.classList.add('loaded'), {once:true});
+        iframe.src = url;
+        loaded = true;
+      });
+    });
+  }
+
+  // Case cells rise on scroll entry, staggered by column
+  document.querySelectorAll('.work-grid .wcard').forEach((c,i)=>{
+    c.classList.add('reveal');
+    c.style.setProperty('--d', String(i%3));
+    ro.observe(c);
   });
 
   // Proof spine: only runs if proofRow exists (homepage only)
@@ -1039,8 +1326,21 @@
 </script>
 
 
-
 <script>
+  // Filter
+  const ftabs = document.querySelectorAll('.ftab');
+  const wcards = document.querySelectorAll('[data-cat]:not(.ftab)');
+  ftabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      ftabs.forEach(t => t.classList.remove('on'));
+      tab.classList.add('on');
+      const cat = tab.dataset.cat;
+      wcards.forEach(c => {
+        c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  });
+
 // ---------- Button system ----------
 // Primary: letter cascade
 document.querySelectorAll('.cascade').forEach(function(btn){
@@ -1109,10 +1409,32 @@ document.querySelectorAll('.swipe').forEach(function(el){
 </script>
 
 
-
+<script>
+  // Review carousel — arrows + auto-advance, paused on hover, off for reduced-motion
+  (function(){
+    var root = document.querySelector('[data-vc]');
+    if(!root) return;
+    var slides = [].slice.call(root.querySelectorAll('.vc-slide'));
+    if(slides.length < 2) return;
+    var i = 0, timer = null;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function show(n){
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function(s, idx){ s.classList.toggle('is-active', idx === i); });
+    }
+    function start(){ if(!reduce){ timer = setInterval(function(){ show(i + 1); }, 7000); } }
+    function reset(){ clearInterval(timer); timer = null; start(); }
+    root.querySelector('[data-vc-prev]').addEventListener('click', function(){ show(i - 1); reset(); });
+    root.querySelector('[data-vc-next]').addEventListener('click', function(){ show(i + 1); reset(); });
+    root.addEventListener('mouseenter', function(){ clearInterval(timer); timer = null; });
+    root.addEventListener('mouseleave', function(){ if(!timer) start(); });
+    show(0); start();
+  })();
+</script>
+<script src="image-slot.js"></script>
 <!-- PS Craft Layer -->
-<script src="/ps-spice.js"></script>
+<script src="ps-spice.js"></script>
 <!-- PS Concierge -->
-<script src="/ps-concierge.js"></script>
+<script src="ps-concierge.js"></script>
 </body>
 </html>

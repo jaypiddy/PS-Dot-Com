@@ -1478,7 +1478,7 @@ document.querySelectorAll('.swipe').forEach(function(el){
       document.body.style.top = '';
       document.body.style.left = '';
       document.body.style.right = '';
-      void document.body.offsetHeight; // force reflow — scrollTo below would
+      void document.documentElement.offsetHeight; // force reflow — scrollTo below would
       // otherwise race the browser's layout and land back on the stale
       // (fixed, zero-height) box, clamping the restore to 0 (verified live).
       window.scrollTo(0, lockedScrollY);

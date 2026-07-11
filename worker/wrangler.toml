@@ -49,3 +49,21 @@ enabled = true
 
 [observability.logs]
 enabled = true
+
+# Per-IP rate limiting (Workers ratelimit binding, GA 2025-09). This is the
+# "pair with Cloudflare rate-limiting" the CLIENT_TOKEN comment anticipates:
+# the token ships in client code, so a scraper can replay it — these bindings
+# cap how fast any single IP can burn Anthropic tokens (chat) or flood the
+# BD inbox via Resend (/contact + /log). Limits are enforced per Cloudflare
+# location (not global) and the Worker FAILS OPEN if a binding is missing,
+# so deploying this config before/after the code is safe in either order.
+# period must be 10 or 60 (seconds).
+[[ratelimits]]
+name = "CHAT_LIMITER"
+namespace_id = "1001"
+simple = { limit = 10, period = 60 }   # 10 chat messages / min / IP
+
+[[ratelimits]]
+name = "FORM_LIMITER"
+namespace_id = "1002"
+simple = { limit = 3, period = 60 }    # 3 contact/log submissions / min / IP

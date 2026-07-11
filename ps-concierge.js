@@ -167,7 +167,12 @@
       addMsg('bot', reply, true);
     }catch(err){
       typing.remove();
-      addMsg('bot', "I'm having trouble connecting right now. Reach the team directly: "+CONFIG.phone+" or "+CONFIG.email+".", false);
+      if(String(err && err.message).indexOf('429') !== -1){
+        // Per-IP rate limit (Worker) — a human pace never trips this.
+        addMsg('bot', "One at a time — give me a few seconds and ask again.", false);
+      } else {
+        addMsg('bot', "I'm having trouble connecting right now. Reach the team directly: "+CONFIG.phone+" or "+CONFIG.email+".", false);
+      }
     }
     busy=false; sendBtn.disabled=false; input.focus();
   }
@@ -232,6 +237,9 @@
         '<div class="cc-field"><label for="cc-f-name">Name</label><input id="cc-f-name" name="name" type="text" autocomplete="name"></div>'+
         '<div class="cc-field"><label for="cc-f-email">Email</label><input id="cc-f-email" name="email" type="email" autocomplete="email"></div>'+
         '<div class="cc-field"><label for="cc-f-message">What are you building?</label><textarea id="cc-f-message" name="message" placeholder="A line or two is plenty."></textarea></div>'+
+        // Honeypot — visually hidden, never focusable; humans never see or fill
+        // it, form bots auto-complete it. Server silently drops when non-empty.
+        '<div class="cc-field cc-hp" aria-hidden="true"><label for="cc-f-company">Company</label><input id="cc-f-company" name="company" type="text" tabindex="-1" autocomplete="off"></div>'+
         '<div class="cc-fv-err" aria-live="polite"></div>'+
         '<button type="submit" class="cc-fv-submit">Send to the studio</button>'+
         '<p class="cc-fv-note">Or call <a href="'+CONFIG.phoneHref+'">'+CONFIG.phone+'</a>. We reply in person — no autoresponders.</p>'+
@@ -263,7 +271,8 @@
       var data = {
         name: fvForm.name.value.trim(),
         email: fvForm.email.value.trim(),
-        message: fvForm.message.value.trim()
+        message: fvForm.message.value.trim(),
+        company: fvForm.company ? fvForm.company.value : '' // honeypot — humans never fill this
       };
       if(!data.email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)){ fvErr.textContent='A valid email, please — it’s how we reply.'; return; }
       if(!data.message){ fvErr.textContent='Tell us a line about what you’re building.'; return; }
@@ -281,6 +290,7 @@
         };
         if(CONFIG.formEndpoint){
           var rr = await fetch(CONFIG.formEndpoint, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+          if(rr.status === 429){ fvErr.textContent='Easy does it — one note a minute. Try again shortly.'; fvSubmit.disabled=false; fvSubmit.textContent='Send to the studio'; return; }
           if(!rr.ok) throw new Error('form '+rr.status);
           // Keep a local backup only when the note was actually delivered.
           try{ var leads=JSON.parse(localStorage.getItem('psConciergeLeads')||'[]'); leads.push(Object.assign({at:Date.now()},data)); localStorage.setItem('psConciergeLeads',JSON.stringify(leads)); }catch(_){}

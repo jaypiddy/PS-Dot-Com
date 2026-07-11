@@ -115,6 +115,8 @@
 .cc-fv-back svg{width:15px;height:15px}
 .cc-fv-body{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:14px}
 .cc-field{display:flex;flex-direction:column;gap:6px}
+/* Honeypot — offscreen (not display:none, which some form bots skip) */
+.cc-field.cc-hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none}
 .cc-field label{font-family:var(--text);font-weight:700;font-size:11px;letter-spacing:.1em;
   text-transform:uppercase;color:var(--grey,#6f6f6f)}
 .cc-field input,.cc-field textarea{font-family:var(--text);font-size:14px;line-height:1.4;

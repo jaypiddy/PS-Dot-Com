@@ -81,6 +81,20 @@ const MAX_MSG_CHARS = 4000;
 const MAX_TOTAL_CHARS = 16000;
 const MAX_TURNS = 24;
 
+// Per-IP rate limiting via the Workers ratelimit binding (wrangler.toml
+// [[ratelimits]]). Fails OPEN: if the binding isn't deployed yet or the
+// limiter itself errors, the request proceeds — the limiter must never be
+// the thing that breaks the concierge.
+async function allowed(binding, key) {
+  if (!binding) return true;
+  try {
+    const { success } = await binding.limit({ key });
+    return success;
+  } catch (_) {
+    return true;
+  }
+}
+
 // Anthropic requires the first message to be role:"user" and roles to
 // alternate. The page seeds an assistant greeting, so drop leading
 // assistant turns and collapse any accidental repeats.
@@ -128,11 +142,16 @@ export default {
     }
 
     const path = new URL(request.url).pathname.replace(/\/+$/, "");
+    const ip = request.headers.get("CF-Connecting-IP") || "unknown";
 
     // /log is fired by the page via a keepalive request on unload, which can't
     // set custom headers — so it carries its token in the BODY and is routed
     // before the header-based token gate. (Origin is still enforced above.)
-    if (path.endsWith("/log")) return handleLog(request, env, cors);
+    if (path.endsWith("/log")) {
+      if (!(await allowed(env.FORM_LIMITER, ip + ":log")))
+        return json({ error: "rate_limited" }, 429, cors);
+      return handleLog(request, env, cors);
+    }
 
     // Soft shared-token gate (optional). If CLIENT_TOKEN is set, the page must
     // send the same value as X-PS-Token (CONFIG.clientToken). Stops scripted /
@@ -143,8 +162,15 @@ export default {
       return json({ error: "forbidden" }, 403, cors);
 
     // Route: POST /contact → contact-form email (Resend); anything else → chat.
-    if (path.endsWith("/contact"))
+    if (path.endsWith("/contact")) {
+      if (!(await allowed(env.FORM_LIMITER, ip + ":contact")))
+        return json({ error: "rate_limited" }, 429, cors);
       return handleContact(request, env, cors);
+    }
+
+    // Chat is the paid path (Anthropic tokens) — cap per-IP message rate.
+    if (!(await allowed(env.CHAT_LIMITER, ip)))
+      return json({ error: "rate_limited" }, 429, cors);
 
     let body;
     try { body = await request.json(); } catch { return json({ error: "bad json" }, 400, cors); }
@@ -207,6 +233,11 @@ function json(obj, status, cors) {
 async function handleContact(request, env, cors) {
   let body;
   try { body = await request.json(); } catch { return json({ error: "bad json" }, 400, cors); }
+
+  // Honeypot: the page renders a visually-hidden "company" field humans never
+  // see. Anything filling it is a form bot — pretend success (don't tip it
+  // off, don't send the email, don't burn Resend quota).
+  if (body.company) return json({ ok: true }, 200, cors);
 
   const clean = (s, n) => String(s == null ? "" : s).trim().slice(0, n);
   const name = clean(body.name, 200).replace(/[\r\n]+/g, " ");

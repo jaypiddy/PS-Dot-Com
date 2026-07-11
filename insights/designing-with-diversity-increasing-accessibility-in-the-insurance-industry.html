@@ -1094,7 +1094,13 @@ document.querySelectorAll('.swipe').forEach(function(el){
       void document.documentElement.offsetHeight; // force reflow — scrollTo below would
       // otherwise race the browser's layout and land back on the stale
       // (fixed, zero-height) box, clamping the restore to 0 (verified live).
-      window.scrollTo(0, lockedScrollY);
+      // Explicit instant — the legacy 2-arg form is governed by CSS
+      // scroll-behavior (this site sets html{scroll-behavior:smooth}
+      // globally for anchor nav), so it was animating toward
+      // lockedScrollY instead of jumping, and losing the race against
+      // the surrounding layout changes (verified live — root cause of
+      // the QA 2026-07-10 restore-lands-on-0 bug).
+      window.scrollTo({top: lockedScrollY, left: 0, behavior: 'instant'});
     }
   }
   btn.addEventListener('click', function(){

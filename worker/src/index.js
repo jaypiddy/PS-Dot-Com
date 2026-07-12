@@ -216,7 +216,10 @@ export default {
 
       return json({ text }, 200, cors);
     } catch (err) {
-      return json({ error: "exception", detail: String(err) }, 500, cors);
+      // Log the detail server-side; return a generic error so internal
+      // strings never reach the client (matches the upstream-error path).
+      console.error("chat exception", String(err));
+      return json({ error: "exception" }, 500, cors);
     }
   },
 };
@@ -270,7 +273,8 @@ async function handleContact(request, env, cors) {
     }
     return json({ ok: true }, 200, cors);
   } catch (err) {
-    return json({ error: "exception", detail: String(err) }, 500, cors);
+    console.error("contact exception", String(err));
+    return json({ error: "exception" }, 500, cors);
   }
 }
 
@@ -316,6 +320,7 @@ async function handleLog(request, env, cors) {
     }
     return json({ ok: true }, 200, cors);
   } catch (err) {
-    return json({ error: "exception", detail: String(err) }, 500, cors);
+    console.error("log exception", String(err));
+    return json({ error: "exception" }, 500, cors);
   }
 }

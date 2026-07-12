@@ -81,8 +81,14 @@ its success state; with `formEndpoint` unset it falls back to an honest `mailto:
 ```json
 { "text": "the assistant reply" }
 ```
-Errors return `{ "error": "...", "detail": "..." }` with a 4xx/5xx status;
-the page shows a graceful "reach us by phone/email" fallback.
+Errors return `{ "error": "<code>" }` with a 4xx/5xx status (no internal
+detail is echoed to the client — exceptions are logged server-side only). The
+page shows a graceful "reach us by phone/email" fallback. A `429` means the
+per-IP rate limit tripped; the widget shows a friendly "one at a time" message.
+
+Routes: `POST /` (chat), `POST /contact` (form → email), `POST /log`
+(transcript → email on session end; token travels in the body since the
+keepalive unload request can't set headers).
 
 ## How the knowledge base flows
 
@@ -91,21 +97,46 @@ for 5 minutes, and injects it into the system prompt. **To update the bot,
 edit that one markdown file and redeploy the site** — no Worker redeploy
 needed (just wait out the 5-minute cache, or bump `KB_TTL_MS`).
 
-## Notes / hardening
-- **Rate limiting:** for production abuse protection, add a
-  [Cloudflare Rate Limiting rule](https://developers.cloudflare.com/waf/rate-limiting-rules/)
-  on the Worker route, or use KV / a Durable Object for per-IP limits.
-  The module-scope cache here is best-effort only.
-- **Origin lock:** `ALLOWED_ORIGIN` rejects cross-origin POSTs — and now also
-  rejects requests with **no** `Origin` header (curl/scripts) when set to a
-  concrete origin. Keep it set in production; use `"*"` only for local testing.
-- **Soft client token:** set `CLIENT_TOKEN` in `wrangler.toml` and the same
-  value as `CONFIG.clientToken` in `ps-concierge.js`. The page then sends it as
-  `X-PS-Token`; the Worker 403s anything without it. This stops scripted abuse
-  CORS can't — but the token ships in client code, so treat it as a speed-bump
-  and pair it with the rate-limiting rule above (and/or
-  [Turnstile](https://developers.cloudflare.com/turnstile/)).
-- **Model output cap:** `max_tokens` is 1024 (matches the prototype). Tune
-  in `src/index.js` if you want longer replies.
-- **Cost control:** Haiku-class models keep this cheap; the short-reply
-  instruction and token cap bound each call.
+## Security (layers, in order)
+
+This is a public, unauthenticated endpoint that spends Anthropic tokens and
+sends email — so protection is layered. A security review (2026-07-10)
+confirmed no XSS (the widget escapes before render), no open relay (`to`/`from`
+are hardcoded server-side — an attacker can only spam our own inbox), no email
+header injection (CRLF stripped from header-bound fields; bodies are
+`text/plain`), and no system-prompt override (`sanitize()` drops any non
+`user`/`assistant` role).
+
+1. **Origin lock** — `ALLOWED_ORIGIN` (comma-separated allow-list) rejects
+   cross-origin POSTs *and* no-`Origin` requests. Stops browsers; a script can
+   forge `Origin`, so this is only the first bar. Use `"*"` for local testing.
+2. **Soft client token** — `CLIENT_TOKEN` in `wrangler.toml` must match
+   `CONFIG.clientToken` in `ps-concierge.js` (sent as `X-PS-Token`; `/log`
+   carries it in the body). Ships in client code, so it's a speed-bump.
+3. **Per-IP rate limiting** — the real cost/abuse gate, via the GA Workers
+   `ratelimit` bindings in `wrangler.toml` (`[[ratelimits]]`):
+   - `CHAT_LIMITER` — 10 chat msgs / 60s / IP (bounds Anthropic spend)
+   - `FORM_LIMITER` — 3 submissions / 60s / IP, separate keys for `/contact`
+     vs `/log` (bounds Resend / inbox spam)
+   Keyed on `CF-Connecting-IP` (Cloudflare-set, unforgeable). **Fails OPEN**:
+   if a binding is missing the request proceeds, so code and config can deploy
+   in either order. Enforced *per Cloudflare colo* (not global) and eventually
+   consistent — a distributed botnet gets more headroom than one machine.
+   The namespaces are provisioned automatically by `wrangler deploy` (no manual
+   dashboard step). `period` must be `10` or `60`.
+4. **Honeypot** — `/contact` reads a `company` field the page renders
+   visually-hidden (offscreen, not `display:none`). Non-empty ⇒ form bot ⇒
+   pretend success, send nothing.
+
+**Token / cost caps:** per-message 4k chars, per-thread 16k, 24 turns
+(`sanitize()`), `max_tokens` 1024. Combined with rate limiting, per-call and
+per-IP cost are both bounded.
+
+**Accepted limitations** (inherent to a public concierge; the fix for all is
+[Turnstile](https://developers.cloudflare.com/turnstile/) if logs ever show
+determined abuse): forgeable `Origin`, prompt injection (bounded — no tools,
+text-only output, the KB is already public and holds no secrets), and the
+per-colo rate-limit scope above.
+
+**robots.txt** disallows `/docs/` so the public KB markdown stays out of
+search indexes.

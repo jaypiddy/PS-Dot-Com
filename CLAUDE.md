@@ -99,8 +99,9 @@ by an external CDN going away. Nested pages reference them root-absolute (`/imag
 
 ## SEO & deploy assets (keyed to the dev domain until cutover)
 
-`sitemap.xml`, `robots.txt`, every page's `rel="canonical"`, the JSON-LD `url` fields, and
-`BASE` in `tools/blog-renderer/render_blog.py` are all hardcoded to
+`sitemap.xml`, `robots.txt`, every page's `rel="canonical"`, the JSON-LD `url` fields, the
+7 core-page `og:image` URLs (`/images/og/og-<page>.png`), and `BASE` in
+`tools/blog-renderer/render_blog.py` are all hardcoded to
 `https://ps-dot-com.vercel.app`. At the **powershifter.com cutover** they flip in one
 repo-wide find-and-replace (then re-render the blog). Canonical host = **apex** (non-www).
 

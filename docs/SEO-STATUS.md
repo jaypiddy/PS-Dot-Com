@@ -21,8 +21,8 @@ Map** (shared separately), and `docs/design-system.md`.
 |---|---|
 | **Title tags** | 100% — all 94 pages have a unique `<title>`. |
 | **Meta descriptions** | 100% — all 94 pages. |
-| **Open Graph + Twitter** | **Case studies (23):** full — `og:image` + `og:title` + `og:description` + `twitter:card`. **Blog (63):** full. **All other pages:** OG copy present. |
-| **OG images** | 23 case studies + 63 posts have real share images (1200×630, headline burned onto a keyframe). Hosted on **Cloudflare Images**. Pipeline: `tools/og-composer/`. |
+| **Open Graph + Twitter** | **Case studies (23):** full — `og:image` + `og:title` + `og:description` + `twitter:card`. **Blog (63):** full. **Core pages (7):** full — Home, About, Digital, Studios, Work, Insights, Careers now have `og:image` + `twitter:card` (added 2026-07-13). Privacy/Terms intentionally have none. |
+| **OG images** | 23 case studies + 63 posts (1200×630, headline burned onto a keyframe) on **Cloudflare Images** (pipeline `tools/og-composer/`). **7 core-page brand tiles** (1200×630, brand headline on ink) stored **locally** at `/images/og/og-<page>.png` — local is the house default now; referenced by absolute URL keyed to the vercel.app base (flips at cutover). |
 | **XML sitemap** | `/sitemap.xml` — all 94 URLs, with `lastmod` + priority. ⚠️ Currently keyed to the **vercel.app** domain (see cutover tasks). |
 | **robots.txt** | `/robots.txt` — allows all, points to the sitemap. |
 | **301 redirects** | **All 173 legacy Webflow URLs** mapped to the new site in `vercel.json` (177 rules total). Old `/blog/*`, `/our-work/*`, `/studio/*`, `/casestudies/*`, retired sections — all covered. **Inert until the domain points here.** |
@@ -34,7 +34,7 @@ Map** (shared separately), and `docs/design-system.md`.
 ## Where to start — gaps, roughly in priority order 🎯
 
 1. **Analytics & Search Console — nothing is installed.** No GA4, GTM, or other tag was found in the markup. Stand up **GA4** (and GTM if you want tag flexibility), verify **Google Search Console** + **Bing Webmaster**, and **submit the sitemap** (after cutover, on the final domain). This is the biggest blind spot right now.
-2. **OG images for the core pages.** Home, Work, Digital, Studios, About have OG **copy** but no `og:image` yet (they don't fit the per-case keyframe formula — pick a signature image each). Privacy/Terms intentionally have none.
+2. ~~**OG images for the core pages.**~~ ✅ Done 2026-07-13 — 7 brand tiles at `/images/og/`, wired on all core pages.
 3. **Extend the structured data.** The basics are in place (see above). Worth adding next: `BreadcrumbList` on nested pages, and `logo` + `sameAs` (social profiles) on the `Organization` schema — the site currently has **no social links** in its markup, so those need sourcing first.
 4. **Ongoing / audit:** internal-link structure, `alt` text coverage, Core Web Vitals / page speed, keyword + content strategy, and heading-hierarchy review. Standard territory — the foundation above is solid to build on.
 
@@ -43,7 +43,7 @@ Map** (shared separately), and `docs/design-system.md`.
 Do these when the domain flips from the old Webflow site to this Vercel deployment:
 
 1. **Canonical host: apex `powershifter.com` (non-www).** The old site's sitemap already declares apex, so this preserves continuity. In Vercel, add both `powershifter.com` and `www.powershifter.com`, set apex as primary — Vercel auto-301s `www` → apex.
-2. **Flip the base domain** from `ps-dot-com.vercel.app` → `powershifter.com` everywhere it's hardcoded: `sitemap.xml`, `robots.txt`, the 94 `rel="canonical"` tags, the JSON-LD `url` fields, and `BASE` in `tools/blog-renderer/render_blog.py`. It's a single find-and-replace across the repo — ask the dev/Claude Code to run it, then re-render the blog.
+2. **Flip the base domain** from `ps-dot-com.vercel.app` → `powershifter.com` everywhere it's hardcoded: `sitemap.xml`, `robots.txt`, the 94 `rel="canonical"` tags, the JSON-LD `url` fields, the 7 core-page `og:image` URLs, and `BASE` in `tools/blog-renderer/render_blog.py`. It's a single find-and-replace across the repo — ask the dev/Claude Code to run it, then re-render the blog.
 3. **Verify the redirects live** — spot-test a handful of old URLs (e.g. `/blog/new-way-to-write-rfps`, `/studio/iron-mountain-case-study`, `/our-work/delta-controls`) resolve with a single 301 to the right new page.
 4. **Submit the new sitemap** in Search Console; watch Coverage + the redirect/404 reports for the first few weeks.
 

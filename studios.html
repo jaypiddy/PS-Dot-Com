@@ -12,6 +12,8 @@
 <meta property="og:title" content="Power Shifter Studios — Anyone can generate. Few can direct.">
 <meta property="og:description" content="Generative film with thirty years of set discipline behind it.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://ps-dot-com.vercel.app/images/og/og-studios.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="preconnect" href="https://p.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/xkk7api.css">
@@ -718,10 +720,18 @@
 
   /* Pattern G — Reel hero. Full-bleed Cloudflare Stream video bg with overlay
      content. Studios Block 1. Ink underlay, video plays muted+loop+autoplay,
-     text sits on a darkened bottom-band via .reel-vignette for legibility. */
-  .reel-hero{position:relative;min-height:88vh;background:var(--ink);color:var(--paper);overflow:hidden;display:flex;align-items:flex-end}
+     text sits on a darkened bottom-band via .reel-vignette for legibility.
+     svh not vh (QA 2026-07-13, Ted, iOS): every other .hero on the site
+     already uses svh — this one was built standalone and got missed. Plain
+     vh sizes against Safari's large/toolbar-hidden viewport, so align-items:
+     flex-end can park the CTA under the collapsing bottom toolbar, making it
+     hard to tap. */
+  .reel-hero{position:relative;min-height:88svh;background:var(--ink);color:var(--paper);overflow:hidden;display:flex;align-items:flex-end}
   .reel-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
-  .reel-video{position:absolute;top:50%;left:50%;width:max(100%,177.78vh);height:max(56.25vw,100%);transform:translate(-50%,-50%);border:0;pointer-events:none}
+  /* raw <video> (not an iframe) so object-fit:cover handles the crop directly;
+     fades in on first frame via .live, mirroring the homepage hero reel. */
+  .reel-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;pointer-events:none;opacity:0;transition:opacity 1.2s ease-out}
+  .reel-video.live{opacity:1}
   .reel-vignette{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(18,19,21,.55) 0%,rgba(18,19,21,0) 28%,rgba(18,19,21,0) 52%,rgba(18,19,21,.88) 100%);pointer-events:none}
   /* padding-block only — the shorthand's side-0 was overriding .wrap's gutter (same element) */
   .reel-inner{position:relative;z-index:2;padding-top:96px;padding-bottom:64px;width:100%}
@@ -904,20 +914,18 @@
      Ogilvy — without naming the specific people (credits live in Block 4).
      The scroll prompt routes to #films (Block 3).
 
-     Video UID: dcde8adcb14fb52708c8ce6cf631658f — same as the homepage hero
-     reel. The homepage reel IS the Studios reel (it's the masterbrand
-     showcase of Studios work), so reuse is intentional. If JP wants a
-     /studios-specific reel later, swap the UID via str_replace on the
-     iframe src below; everything else stays. Customer subdomain:
+     Video UID: 4616f42aaf97d1eac2b0d0d2ff867bc1 — same reel as the homepage
+     hero (kept in sync deliberately: the masterbrand showcase of Studios
+     work). Swapped 2026-07-13 off the old dcde8adc… UID AND off the Stream
+     iframe embed → the homepage's raw <video> + HLS approach, so there's no
+     Cloudflare player logo/watermark on the reel. To change the reel, swap
+     STREAM.video in the init script near the bottom of this file (and match
+     it on index.html to keep the pages identical). Customer subdomain:
      customer-xv1aafyshr3tbknu.cloudflarestream.com (per VIDEO_PIPELINE.md). -->
 <section class="reel-hero" id="reel-hero">
   <div class="reel-bg">
-    <iframe class="reel-video"
-            src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/dcde8adcb14fb52708c8ce6cf631658f/iframe?muted=true&autoplay=true&loop=true&controls=false&preload=auto"
-            loading="eager"
-            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-            allowfullscreen
-            title="Power Shifter Studios reel"></iframe>
+    <video id="reelVideo" class="reel-video" muted autoplay loop playsinline
+           poster="" aria-hidden="true"></video>
     <div class="reel-vignette"></div>
   </div>
   <div class="reel-inner wrap">
@@ -970,9 +978,10 @@
      Summit</i>", "Ernest Packaging — <i>Four Dreams</i>", "Rapid MVP
      — <i>Luma</i>").
 
-     Layout: 6 films in 4-up wraps to row 1 (4 cards) + row 2 (2 cards
-     + 2 placeholders). Placeholders fill cells 7-8 with .card ink bg
-     so the line-light gap rhythm stays consistent. -->
+     Layout: 5 films in 4-up (Iron Mountain lives in the featured card
+     above, not here — see Notes 17) wraps to row 1 (4 cards) + row 2
+     (1 card + 3 placeholders). Placeholders fill out row 2 with .card
+     ink bg so the line-light gap rhythm stays consistent. -->
 <section class="work" id="films">
   <div class="wrap">
     <div class="head reveal">
@@ -986,13 +995,16 @@
          on the studios page." Iron Mountain — The Summit gets the hero
          treatment with the ADDY-specific tagline copy from /work.html
          ("A generative film with a blockbuster look. Silver ADDY,
-         2026."). Iron Mountain ALSO stays as card #1 in the grid below
-         with its story-focused body line — deliberate editorial layering:
-         the featured card sells the trophy; the grid card sells the story.
-         The h2 element comes verbatim from /work.html (works.html uses
-         h2 in the overlay); studios' section H2 "The films" above is
-         visually larger so the hierarchy still reads correctly via the
-         responsive font-size rules. See studios.md Notes 17. -->
+         2026."). It's pulled OUT of the grid below (same as /work.html,
+         where the featured card's film doesn't repeat in the grid) — a
+         2026-06-24 brief originally kept it as card #1 too for editorial
+         layering, but QA 2026-07-13 (Ted) flagged the immediate repeat as
+         a confusing first impression, so it now matches /work.html's
+         convention instead. The h2 element comes verbatim from /work.html
+         (works.html uses h2 in the overlay); studios' section H2 "The
+         films" above is visually larger so the hierarchy still reads
+         correctly via the responsive font-size rules. See studios.md
+         Notes 17. -->
     <a class="wcard feature reveal" data-cat="studios" href="/work/iron-mountain">
       <div class="wframe" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/01e95325c9355d472aa16aa1e48946a7/downloads/default.mp4">
         <img src="images/iron_mountain.jpg" alt="Iron Mountain &mdash; The Summit" style="width:100%;height:100%;object-fit:cover">
@@ -1006,15 +1018,6 @@
     </a>
 
     <div class="cards four-up reveal">
-      <a class="card" href="/work/iron-mountain">
-        <div class="frame"><img src="images/iron_mountain.jpg" alt="Iron Mountain The Summit" style="width:100%;height:100%;object-fit:cover"></div>
-        <div class="meta">
-          <span class="tag">Branded &middot; Live-Action</span>
-          <h3>Iron Mountain &mdash; <i>The Summit</i></h3>
-          <p>Musicians climb to a summit and discover the power they carried all along: their data. Silver ADDY, 2026.</p>
-          <span class="go swipe">Watch the film &rarr;</span>
-        </div>
-      </a>
       <a class="card" href="/work/ernest-packaging">
         <div class="frame"><img src="images/ernest.jpg" alt="Ernest Packaging Four Dreams" style="width:100%;height:100%;object-fit:cover"></div>
         <div class="meta">
@@ -1062,6 +1065,7 @@
       </a>
       <div class="card placeholder" aria-hidden="true"></div>
       <div class="card placeholder" aria-hidden="true"></div>
+      <div class="card placeholder" aria-hidden="true"></div>
     </div>
   </div>
 </section>
@@ -1074,15 +1078,17 @@
      counter numerals, names, roles, and full bios. If a bio/role changes,
      change it on BOTH pages (about.html Block 3 is the source of truth).
      Three credits: JP, Johnny Darrell, Russ Jarman Price. Block footer CTA
-     routes to /about. Portrait IDs (imagedelivery.net
-     So76NP_fFT3s9jNLvxCRFw, public variant): JP 8774b12d,
-     Johnny 6e359c0f, Russ 34c9a2f0. -->
+     routes to /about. Portraits: JP is a local pen-and-ink illustration
+     (/images/leadership/jp-holecka.jpg, added 2026-07-13 — swapped off
+     Cloudflare on both pages); Johnny + Russ stay on Cloudflare Images
+     (imagedelivery.net So76NP_fFT3s9jNLvxCRFw, public variant): Johnny
+     6e359c0f, Russ 34c9a2f0. -->
 <section class="credits" id="credits">
   <div class="wrap reveal">
     <h2 class="credits-heading rise">Directed by people who earned the title</h2>
     <div class="team-grid">
       <article class="lead-card reveal">
-        <div class="lead-portrait"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/8774b12d-ed8a-4101-4647-1312956ef800/public" alt="JP Holecka, Founder &amp; CEO · Director, Studios" loading="lazy"></div>
+        <div class="lead-portrait"><img src="/images/leadership/jp-holecka.jpg" alt="JP Holecka, Founder &amp; CEO · Director, Studios" loading="lazy"></div>
         <h3>JP Holecka</h3>
         <p class="lead-role">Founder &amp; CEO · Director, Studios</p>
         <p class="lead-bio">Thirty years across film, television, and design. Production credits include <em>Little Women</em> and <em>21 Jump Street</em>; commercial work alongside Ridley Scott's Black Dog Films, ILM's commercial division, and agency partners including Wieden+Kennedy and Goodby, Silverstein. Founded POWER SHIFTER to bring production discipline to digital product — then, two decades later, brought digital product discipline back to production. CEO of the Year, BC, 2022.</p>
@@ -1516,6 +1522,33 @@ document.querySelectorAll('.swipe').forEach(function(el){
 
 
 <!-- PS Craft Layer -->
+<!-- Cloudflare Stream hero reel — raw <video> + HLS (no player logo).
+     Ported from index.html; keep STREAM.video in sync with the homepage. -->
+<script src="/js/hls.min.js"></script>
+<script>
+  const STREAM = {
+    video: '4616f42aaf97d1eac2b0d0d2ff867bc1',
+    customer: 'customer-xv1aafyshr3tbknu'
+  };
+  (function(){
+    if (STREAM.customer.includes('REPLACE')) return;
+    const v = document.getElementById('reelVideo');
+    if (!v) return;
+    const base = `https://${STREAM.customer}.cloudflarestream.com/${STREAM.video}`;
+    v.poster = `${base}/thumbnails/thumbnail.jpg?time=1s&height=1080`;
+    const src = `${base}/manifest/video.m3u8`;
+    const live = () => v.classList.add('live');
+    v.loop = true;
+    v.addEventListener('ended', () => { v.currentTime = 0; v.play(); });
+    if (v.canPlayType('application/vnd.apple.mpegurl')) {
+      v.src = src; v.addEventListener('loadeddata', live, {once:true});
+    } else if (window.Hls && Hls.isSupported()) {
+      const h = new Hls({capLevelToPlayerSize:true});
+      h.loadSource(src); h.attachMedia(v);
+      h.on(Hls.Events.FRAG_LOADED, live);
+    }
+  })();
+</script>
 <script src="ps-spice.js"></script>
 <!-- PS Concierge -->
 <script src="ps-concierge.js"></script>

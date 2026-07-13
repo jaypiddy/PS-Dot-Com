@@ -42,6 +42,7 @@ and appends it to its built-in summary.
 - **The differentiator:** we make **real client work on real budgets — not spec spots.** Most of the field is still cutting spec to show what's possible; we're shipping the real thing.
 - **Proof points (public, sayable):**
   - **Two Silver ADDYs, 2026** — *The Summit* (Iron Mountain) and *Four Dreams* (Ernest Packaging).
+  - **Bremont** (British luxury watchmaker, via Media One Creative) — the holiday film *From the Wing to the World* was shot in summer, so we winterized four of the production's own shots with generative AI (no stock, no second shoot). Convincing enough that the client asked for more — the shots grew into a 15-second cutdown and the Bremont website.
   - Film work: Celestial AI, Maple Health, The Algorithm Trap, Rapid MVP (Luma).
 - **Pedigree:** directors with credits across major animation (e.g. *Sausage Party: Foodtopia*, *Cloudy with a Chance of Meatballs*) and global agency work (Ogilvy). See People.
 

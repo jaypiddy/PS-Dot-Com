@@ -6,22 +6,41 @@
 <!-- Google tag (gtag.js) — GA4 (POWERSHiFTER - GA4 - Webflow 2022) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EP8HNWVMHS"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EP8HNWVMHS');</script>
-<title>Power Shifter Studios — Generative Film, Audio & Motion | Vancouver</title>
-<meta name="description" content="Anyone can generate. Few can direct. Cinematic film, audio, and motion on generative pipelines — from directors who came up through ILM, Ridley Scott, and Ogilvy. Two Silver ADDYs, 2026.">
-<link rel="canonical" href="https://ps-dot-com.vercel.app/studios">
-<meta property="og:title" content="Power Shifter Studios — Anyone can generate. Few can direct.">
-<meta property="og:description" content="Generative film with thirty years of set discipline behind it.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://ps-dot-com.vercel.app/images/og/og-studios.png">
+<title>Bremont — Generative AI Video Case Study | Power Shifter</title>
+<meta name="description" content="Power Shifter Studios winterized Bremont’s holiday campaign with generative AI — four bespoke shots that replaced stock and expanded to web and social.">
+<link rel="canonical" href="https://ps-dot-com.vercel.app/work/bremont-from-the-wing-to-the-world">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AI winter scenes so convincing the client asked for more of them",
+  "description": "Power Shifter Studios winterized Bremont’s holiday campaign with generative AI — four bespoke shots that replaced stock and expanded to web and social.",
+  "image": "https://ps-dot-com.vercel.app/images/og/bremont-from-the-wing-to-the-world.jpg",
+  "url": "https://ps-dot-com.vercel.app/work/bremont-from-the-wing-to-the-world",
+  "author": {
+    "@type": "Organization",
+    "name": "POWER SHIFTER",
+    "url": "https://ps-dot-com.vercel.app/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "POWER SHIFTER",
+    "url": "https://ps-dot-com.vercel.app/"
+  }
+}
+</script>
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI winter scenes so convincing the client asked for more of them">
+<meta property="og:description" content="Power Shifter Studios winterized Bremont’s holiday campaign with generative AI — four bespoke shots that replaced stock and expanded to web and social.">
+<meta property="og:image" content="https://ps-dot-com.vercel.app/images/og/bremont-from-the-wing-to-the-world.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="preconnect" href="https://p.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/xkk7api.css">
-<link rel="preload" as="image" href="images/scratches-v2.webp">
 <!-- PS Craft Layer (design-spice pass) -->
-<link rel="stylesheet" href="ps-spice.css">
+<link rel="stylesheet" href="/ps-spice.css">
 <!-- PS Concierge (corner AI concierge) -->
-<link rel="stylesheet" href="ps-concierge.css">
+<link rel="stylesheet" href="/ps-concierge.css">
 <style>
   :root{
     --ink:#121315;
@@ -88,7 +107,10 @@
   .hero-sub{margin-top:34px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px;border-top:1px solid var(--line-light);padding-top:26px}
   .hero-sub p{font-family:var(--text);font-size:18px;line-height:1.5;max-width:46ch;color:rgba(250,250,247,.78)}
   .hero-ctas{display:flex;gap:14px}
-  .btn{font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.03em;padding:14px 26px;border:1px solid var(--paper);transition:background .2s ease-out,color .2s ease-out,border-color .2s ease-out;display:inline-block}
+  .btn{font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.03em;padding:14px 26px;border:1px solid var(--paper);transition:background .2s ease-out,color .2s ease-out,border-color .2s ease-out,transform .12s ease-out;display:inline-block}
+  /* Press feedback — scale on :active (web-animation-design) */
+  .btn:active{transform:scale(.97)}
+  @media(prefers-reduced-motion:reduce){.btn:active{transform:none}}
   .btn:hover{background:var(--paper);color:var(--ink)}
   .btn.solid{background:var(--paper);color:var(--ink)}
   .btn.solid:hover{background:var(--magenta);border-color:var(--magenta);color:var(--paper)}
@@ -126,12 +148,12 @@
   .stat + .stat{padding-left:28px}
   .stat b{font-family:var(--display);font-weight:700;font-size:clamp(26px,2.6vw,40px);letter-spacing:-.015em;display:block;line-height:1.1}
   .stat > span{font-size:13.5px;color:var(--grey);display:block;margin-top:6px;line-height:1.4}
-  /* The vestigial `.logos` flex-wrap wordmark strip (used `<span>` children
-     with .lc/.mc modifiers) was removed June 23 2026 — see digital.md Notes 17.
-     The live `.logos` pattern is the 3x3 image-mask grid defined ~line 479
-     (Pattern F in docs/design-system-audit.md). Mixing the two created a
-     leaked `padding-top:26px` on the grid which rendered as a grey bar
-     above the first row of cells. */
+  .logos{display:flex;flex-wrap:wrap;align-items:baseline;gap:18px 40px;margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
+  .logos span{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.06em;color:var(--grey);opacity:.75;transition:color .2s ease-out,opacity .2s ease-out;cursor:default}
+  .logos span.lc{text-transform:lowercase;letter-spacing:.01em}
+  .logos span.mc{letter-spacing:.01em}
+  .logos span:not(.lc):not(.mc){text-transform:uppercase;font-size:13.5px;letter-spacing:.1em}
+  .logos span:hover{color:var(--ink);opacity:1}
   @media(max-width:860px){.proof-row{grid-template-columns:1fr 1fr}.stat{border-right:0;border-bottom:1px solid var(--line);padding:14px 0}.stat + .stat{padding-left:0}}
 
   /* ---------- Block 4 — The seam ---------- */
@@ -174,6 +196,12 @@
   .post h3{font-family:var(--display);font-weight:700;font-size:19px;line-height:1.25;margin-bottom:8px}
   .post span{font-size:13px;color:var(--grey)}
   .post:hover h3{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+  /* Next-case card lift on hover (web-animation-design) */
+  @media(hover:hover) and (pointer:fine){
+    .post{transition:transform .25s cubic-bezier(.215,.61,.355,1)}
+    .post:hover{transform:translateY(-5px)}
+  }
+  @media(prefers-reduced-motion:reduce){.post:hover{transform:none}}
   @media(max-width:860px){.posts{grid-template-columns:1fr}}
 
   /* ---------- Block 7 — Closer ---------- */
@@ -238,6 +266,13 @@
     .doors:has(.door:hover) .door,.doors .door:hover{flex:1}
     html{scroll-behavior:auto}
   }
+  /* Client testimonial — verbatim, attribution stacked (optional block). */
+  .cs-quote{margin:3.4em 0 0;padding-top:34px;border-top:2px solid var(--ink)}
+  .prose figure.cs-quote blockquote{font-family:var(--text);font-variation-settings:normal;font-style:normal;font-weight:400;font-size:clamp(20px,2.2vw,28px);line-height:1.45;letter-spacing:-.005em;margin:0;color:var(--ink)}
+  .cs-quote figcaption{margin-top:24px;display:flex;flex-direction:column;gap:3px}
+  .cs-quote .cs-quote-name{font-family:var(--text);font-weight:700;font-size:15px;color:var(--ink)}
+  .cs-quote .cs-quote-role,.cs-quote .cs-quote-co{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey)}
+  .cs-quote .cs-quote-co{color:var(--magenta)}
 </style>
 <style id="two-voices">
   /* ============ VARIANT 2 — TWO VOICES ============
@@ -264,6 +299,55 @@
   .proof-row .stat{container-type:inline-size}
   .stat b{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-weight:800;font-size:clamp(34px,18cqi,88px);letter-spacing:-.02em;line-height:1;display:flex;align-items:flex-start}
   .stat b .sfx{font-size:.34em;font-style:italic;margin-left:.08em}
+  .stat b .sfx.sfx-label{font-size:.26em;white-space:nowrap}
+  /* Screening room — the anthem, staged (Direction B) */
+  .cs-screening{background:var(--ink);color:var(--paper);margin-top:clamp(36px,5vw,64px);padding-top:clamp(48px,6vw,80px)}
+  .cs-meta-strip{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px 36px;border-bottom:1px solid var(--line-light);padding-bottom:18px;margin-bottom:clamp(24px,3vw,36px)}
+  .cs-meta-strip .m{font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(250,250,247,.55)}
+  .cs-meta-strip .m b{color:var(--paper);font-weight:700;margin-left:8px}
+  .cs-meta-strip .mt{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;font-size:clamp(19px,1.8vw,24px);letter-spacing:-.01em;color:var(--magenta);margin-right:auto}
+  .cs-letterbox{background:#000;padding:clamp(32px,4.5vw,56px) 0}
+  /* padding-block only — the shorthand's side-0 was overriding .wrap's gutter (same element) */
+  .cs-pilot-copy{padding-top:clamp(32px,4.5vw,56px);padding-bottom:clamp(48px,6vw,76px);display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,4.5vw,64px);align-items:end}
+  @media(max-width:860px){.cs-pilot-copy{grid-template-columns:1fr;align-items:start}}
+  .cs-screening .cs-ep-num,.cs-screening .cs-ep-floor{color:var(--magenta)}
+  .cs-screening .cs-ep-syn{color:rgba(250,250,247,.78)}
+  .cs-screening .cs-ep-rt{color:rgba(250,250,247,.5)}
+  .cs-film-vid{display:block;width:min(1180px,calc(100% - 2*var(--gutter)));margin-inline:auto;aspect-ratio:16/9;background:#000;border:0}
+  /* Episode bands — one floor per band (Direction C treatment) */
+  .cs-ep{padding:clamp(56px,7vw,92px) 0}
+  .cs-ep.on-ink{background:var(--ink);color:var(--paper)}
+  .cs-ep-band{display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,4.5vw,64px);align-items:center}
+  .cs-ep.mirror .cs-ep-band{grid-template-columns:5fr 7fr}
+  .cs-ep.mirror .cs-ep-copy{order:-1}
+  .cs-ep-band figure{margin:0}
+  .cs-ep-band iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#000}
+  .cs-ep-num{font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--magenta-ink);display:block;margin-bottom:16px}
+  .cs-ep.on-ink .cs-ep-num{color:var(--magenta)}
+  .cs-ep-copy h2{font-family:var(--display);font-weight:900;font-size:clamp(38px,4vw,58px);line-height:1;letter-spacing:-.02em}
+  .cs-ep-floor{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;font-size:clamp(18px,1.7vw,22px);margin-top:12px;color:var(--magenta-ink)}
+  .cs-ep.on-ink .cs-ep-floor{color:var(--magenta)}
+  .cs-ep-syn{margin-top:18px;font-size:17px;line-height:1.6;max-width:40ch}
+  .cs-ep.on-ink .cs-ep-syn{color:rgba(250,250,247,.78)}
+  .cs-ep-rt{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);display:block;margin-top:22px}
+  .cs-ep.on-ink .cs-ep-rt{color:rgba(250,250,247,.5)}
+  @media(max-width:860px){.cs-ep-band,.cs-ep.mirror .cs-ep-band{grid-template-columns:1fr}.cs-ep.mirror .cs-ep-copy{order:0}}
+  .cs-gallery{max-width:var(--max);margin:clamp(28px,4vw,52px) auto clamp(36px,5vw,64px);padding:0 var(--gutter);
+    display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,20px)}
+  .cs-gallery figure{margin:0}
+  .cs-gallery img{display:block;width:100%;height:100%;aspect-ratio:16/10;object-fit:cover;background:var(--ink-soft)}
+  @media(max-width:640px){.cs-gallery{grid-template-columns:1fr}}
+  /* Before / after — four winterized shots (summer plate → generative winter).
+     One pair per full-width row; each pair is a 2-up [before | after]. */
+  .cs-ba-shots{grid-template-columns:1fr;gap:clamp(16px,2.4vw,30px)}
+  .cs-ba-eyebrow{display:block;color:var(--magenta-ink);margin-bottom:2px}
+  .cs-ba-pair{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:clamp(6px,0.8vw,12px)}
+  .cs-ba-cell{position:relative;overflow:hidden;background:var(--ink-soft)}
+  .cs-ba-cell img{display:block;width:100%;height:100%;aspect-ratio:16/9;object-fit:cover}
+  .cs-ba-tag{position:absolute;top:12px;left:12px;font-family:var(--mono);font-weight:700;font-size:11px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--paper);background:rgba(18,19,21,.72);padding:6px 10px}
+  .cs-ba-tag.is-after{background:var(--magenta)}
+  @media(max-width:640px){.cs-ba-pair{grid-template-columns:1fr}}
   /* Odometer: each digit is a 0-9 column that rolls to rest */
 .odo{--step:1.35em;display:inline-flex;overflow:hidden;height:var(--step);vertical-align:baseline;align-items:flex-start}
   .odo .col span,.odo .ch,.odo .col{font-size:inherit;color:inherit;margin:0}
@@ -342,250 +426,68 @@
     padding:0 .1em .16em 0;
   }
 
-  /* The .sub-hero-ctas pattern (Pattern A in docs/design-system-audit.md) was
-     removed June 23 2026 — see digital.md Notes 18. JP's call: the pills and
-     letter spacing read off from the rest of the page's square `.btn.solid`
-     vocabulary, AND the Validator/MVP section sits one section below the
-     hero — pre-driving to it from the hero CTA row was redundant. "Start a
-     project" persists in the page closer (line ~1054) and the takeover menu,
-     so no path-to-conversion was lost. Pattern A is decommissioned from
-     /digital and stays catalogued in the audit doc only if a future hub
-     page (Studios, About) genuinely needs hero-level CTAs in a non-pill
-     treatment — not as the current pill design. */
+  /* Stack the device shot above the plate. */
+  #plate .cs-shot,
+  .fig-plate .cs-shot{z-index:3}
 
-  /* Sub-hero body paragraph — alternative to .sub-voice when the page wants
-     regular prose with bold mid-sections instead of the italic-magenta voice line.
-     Sibling of .streams (defined inside .sub-hero on insights.html). */
-  .sub-hero .sub-body{
-    margin-top:18px;font-size:clamp(16px,1.3vw,19px);line-height:1.5;
-    color:var(--paper);opacity:.85;max-width:62ch;
-    opacity:0;transform:translateY(12px);
-    animation:settle .6s ease-out .55s forwards;
-  }
-  .sub-hero .sub-body strong{font-weight:700;color:var(--paper);opacity:1}
+  /* ---------- Article page ---------- */
+  /* Sub-hero, article dialect: same component, smaller H1 so a 124-char title holds */
+  .sub-hero .back{display:inline-block;margin-bottom:28px;
+    font-family:var(--text);font-weight:700;font-size:13.5px;letter-spacing:.03em}
+  .byline .cats{color:rgba(250,250,247,.55);font-weight:400}
+  .byline .cats a:hover{color:var(--magenta)}
+  .byline .vbar{padding:0 2px}
+  .sub-hero.article h1{font-size:clamp(36px,4.4vw,72px);line-height:1.02;max-width:22ch;text-wrap:balance}
+  .sub-hero.article .eyebrow a:hover{border-bottom:1px solid currentColor}
+  .sub-hero.article .sub-voice em{font-size:clamp(20px,2.2vw,32px);line-height:1.25;display:block;max-width:38em}
+  .byline{display:flex;gap:12px;flex-wrap:wrap;align-items:baseline;margin-top:26px;
+    padding-top:18px;border-top:1px solid var(--line-light);
+    font-family:var(--text);font-weight:700;font-size:13.5px;letter-spacing:.02em;
+    opacity:0;animation:settle .6s ease-out .75s forwards}
+  .byline .date,.byline .sep{color:rgba(250,250,247,.55);font-weight:400}
+  .byline a:hover{color:var(--magenta)}
 
-  /* Card grid 4-up variant — pattern 4b extension for /digital.
-     Pattern reference: docs/design-system-audit.md §2 (pattern 4b).
-     Adds a 4-column desktop layout to the existing .cards/.card system. The
-     :nth-child(n+2) rule widens the homepage's (2),(3) selector so every card
-     beyond the first picks up the inner-gutter padding-left, which keeps the
-     left edge of each card's meta block flush with its frame. */
-  .cards.four-up{grid-template-columns:repeat(4,1fr)}
-  .cards.four-up .card:nth-child(n+2) .meta{padding-left:26px}
-  @media(max-width:1100px){.cards.four-up{grid-template-columns:repeat(2,1fr)}.cards.four-up .card:nth-child(2n+1) .meta{padding-left:0}.cards.four-up .card:nth-child(2n) .meta{padding-left:26px}}
-  @media(max-width:680px){.cards.four-up{grid-template-columns:1fr}.cards.four-up .card .meta{padding-left:0}}
-  /* Hover lift on cards — make the .go arrow light up magenta as the visited cue */
-  .card:hover h3{color:var(--magenta)}
-  .card:hover .go{color:var(--magenta)}
-  .work .all:hover{color:var(--magenta);border-color:var(--magenta)}
+  /* Masthead plate — wframe/wtint pattern from the work cards */
+  .masthead{padding-top:clamp(28px,4vh,52px)}
+  .masthead .wframe{aspect-ratio:21/9;margin-bottom:0}
+  .masthead .wframe img{width:100%;height:100%;object-fit:cover}
+  .masthead .wtint{display:none}
+  .masthead .wframe.dark .wtint{display:block}
+  .photo-credit{position:absolute;right:16px;bottom:12px;z-index:2;
+    font-size:11px;letter-spacing:.06em;color:rgba(250,250,247,.85);
+    text-shadow:0 1px 10px rgba(18,19,21,.6)}
 
-  /* Offers section — wraps a .doors block on a sub-page.
-     The homepage doors block IS the section (no separate H2); on /digital the
-     offers section needs an introductory "Two ways in" H2 above the doors. */
-  .offers-section{padding-top:clamp(70px,10vh,120px);background:var(--paper)}
-  .offers-section .wrap{padding-bottom:24px}
-  .offers-h{font-family:var(--display);font-weight:500;font-size:clamp(34px,4vw,60px);letter-spacing:-.015em}
-
-  /* Doors compact variant — sub-page scale.
-     The homepage .doors uses min-height:84vh because doors IS the page block.
-     On a sub-page, that's too tall. .doors.compact removes the min-height
-     constraint and dials the per-door min-height down from 54-84vh to ~48vh. */
-  .doors.compact{min-height:auto}
-  .doors.compact .door{min-height:48vh}
-  @media(max-width:860px){.doors.compact .door{min-height:38vh}}
-
-  /* Validator-band — engine variant, INK background.
-     Pattern reference: docs/design-system-audit.md §"New patterns".
-     Three departures from the canonical .engine band:
-     (1) INK background (var(--ink)) with paper text — flips the section from
-         paper-on-paper to ink-on-paper, creating a paper/ink/paper sandwich
-         between offers above and how-we-work below. Makes the Validator read
-         as the page's strongest call-to-action rather than blending into the
-         surrounding sections. (June 23 2026 edit — see digital.md Notes 14.)
-     (2) 1fr/1fr grid instead of 5fr/7fr — the left column needs room for
-         H2 + body + CTA, and the right column carries the explainer video
-         at 16:9 (which needs roughly half-page width to land at viewable size).
-     (3) H2 dialed from clamp(40px,4.6vw,72px) to clamp(32px,3.6vw,54px) so
-         the headline doesn't overflow the half-width column. */
-  .validator-band{background:var(--ink);color:var(--paper)}
-  .validator-band .engine-grid{grid-template-columns:1fr 1fr;align-items:center;gap:clamp(32px,4vw,72px)}
-  .validator-band h2{font-size:clamp(32px,3.6vw,54px);color:var(--paper)}
-  .validator-band h2 em.voice{color:var(--magenta)}
-  .validator-band p{font-size:clamp(16px,1.3vw,19px);margin-top:18px;max-width:48ch;color:rgba(250,250,247,.86)}
-  .validator-band p strong{color:var(--paper)}
-  .validator-band .vbtn{margin-top:24px;display:inline-block}
-  @media(max-width:860px){.validator-band .engine-grid{grid-template-columns:1fr;gap:36px}}
-
-  /* NEW pattern — .engine.mirror — alternating layout variant for the one-two punch.
-     Pairs with the canonical .engine pattern to create JP's "alternating one-two
-     punch" rhythm on services pages: Module 1 runs canonical 5fr/7fr (H2 left,
-     body right), Module 2 runs mirrored 7fr/5fr (body left, H2 right). The two
-     modules read as a zigzag at desktop scale. On mobile (≤860px) both stack
-     identically — H2 over body — because the "mirror" rhythm doesn't read at
-     narrow widths and stacking H2-first preserves source order + cognitive flow.
-     Source order in HTML stays H2-first → body-second for every module
-     regardless of layout, for accessibility and progressive enhancement. */
-  .engine.mirror .engine-grid{grid-template-columns:7fr 5fr}
-  .engine.mirror .engine-grid > div:first-child{order:2}
-  .engine.mirror .engine-grid > div:nth-child(2){order:1}
-  @media(max-width:860px){
-    .engine.mirror .engine-grid{grid-template-columns:1fr}
-    .engine.mirror .engine-grid > div:first-child{order:0}
-    .engine.mirror .engine-grid > div:nth-child(2){order:0}
-  }
-
-  /* NEW pattern — .video-frame.
-     Pattern reference: docs/design-system-audit.md §"New patterns" C
-     (to be catalogued on next audit-doc pass — see digital.md Notes 14).
-     Generic 16:9 video container for section-column embeds. Distinct from
-     the article-body .embed.video pattern (which is .article-body .prose-scoped
-     and supports .breakout for full-bleed). The .video-frame is the
-     section-column variant — used here on /digital for the Cloudflare Stream
-     explainer; reusable wherever a marketing/explainer video lives inside
-     a section grid column. Dark placeholder bg holds the box while the
-     Stream iframe loads its own poster. Soft radius matches the terminal
-     pattern's previous treatment, preserving the section's visual silhouette. */
-  .video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#0a0b0c;
-    border-radius:8px;overflow:hidden;box-shadow:0 18px 44px rgba(0,0,0,.32)}
-  .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
-
-  /* NEW pattern C — .partners + .partners-strip.
-     Pattern reference: docs/design-system-audit.md §"New patterns" C.
-     Lede sentence + horizontal flex row of partner-tier chips. Each chip pairs
-     a display-weight name with a serif-italic tier descriptor (echoes the .voice
-     italic-on-serif treatment used everywhere else on the site). Magenta surfaces
-     only on hover — single-magenta budget per viewport already committed elsewhere
-     in this section's neighbours, this just provides the interaction cue. */
-  .partners{padding-top:clamp(60px,8vh,100px);padding-bottom:clamp(60px,8vh,100px);
-    background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .partners-lede{font-size:clamp(16px,1.3vw,19px);line-height:1.5;color:var(--grey);max-width:62ch;margin-bottom:30px}
-  .partners-strip{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-  .ptier{display:inline-flex;gap:10px;align-items:baseline;padding:12px 20px;
-    border:1px solid var(--line);border-radius:999px;
-    transition:border-color .2s ease,color .2s ease}
-  .ptier b{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.005em}
-  .ptier em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;font-size:14px;color:var(--grey);transition:color .2s ease}
-  .ptier:hover{border-color:var(--magenta);color:var(--magenta)}
-  .ptier:hover em{color:var(--magenta)}
-
-  /* NEW pattern — .proof-spine + .logos (mirrored from homepage Block 3).
-     Pattern reference: docs/design-system-audit.md §"New patterns" F
-     (catalogued in audit doc on this commit). Direct reuse of the homepage's
-     proof-spine .logos pattern — 3-col grid with 1px gap exposing the line
-     bg, checkerboard alternation (odd cells ink/paper, even cells paper/ink),
-     magenta hover state on every cell. The .logo-mask technique renders each
-     logo as a CSS mask-image so the logo inherits currentColor — allowing
-     the same PNG to render paper-on-ink or ink-on-paper without separate
-     asset variants. Position on /digital: between Selected Work and Partners.
-     Functions as the visible-clients trust signal at section scope,
-     complementing the per-project named outcome strip above and the
-     platform-certification Partners strip below. See digital.md Notes 15. */
-  .logo-mask{display:inline-block;background-color:currentColor;
-    -webkit-mask-image:var(--mask-image);-webkit-mask-size:contain;
-    -webkit-mask-repeat:no-repeat;-webkit-mask-position:center;vertical-align:middle}
-  .proof-spine{padding:clamp(80px,11vh,140px) 0;background:var(--paper)}
-  .proof-spine .eyebrow{display:block;font-family:var(--text);font-weight:700;
-    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--magenta);margin-bottom:24px}
-  .logos{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-    background:var(--line);border:1px solid var(--line)}
-  .logos .cell{display:flex;align-items:center;justify-content:center;
-    padding:clamp(24px,3vw,38px) 16px;
-    transition:background-color .45s cubic-bezier(.4,0,.2,1),
-               color .45s cubic-bezier(.4,0,.2,1)}
-  .logos .cell .logo-mask{opacity:.88;max-width:72%;
-    transition:opacity .45s cubic-bezier(.4,0,.2,1),
-               background-color .45s cubic-bezier(.4,0,.2,1)}
-  .logos .cell:hover .logo-mask{opacity:1}
-  .logos .cell:nth-child(odd){background:var(--ink);color:var(--paper)}
-  .logos .cell:nth-child(odd):hover{color:var(--magenta)}
-  .logos .cell:nth-child(even){background:var(--paper);color:var(--ink)}
-  .logos .cell:nth-child(even):hover{background:var(--magenta);color:var(--paper)}
-  @media(max-width:640px){
-    .logos{grid-template-columns:repeat(2,1fr)}
-    .logos .cell:last-child{grid-column:span 2}
-  }
-
-  /* Outcome-strip text stat — when a .stat carries text instead of an .odo numeral.
-     Inherits .stat b's serif at the same 52-96px scale; <em> adds the italic
-     read so it feels like a category value rather than a measurement. */
-  .stat b > em{font-style:italic;font-family:var(--serif);font-variation-settings:var(--serif-vset);font-weight:800}
-
-  /* Filter bar */
-  .work-filter{
-    position:sticky;top:62px;z-index:40; /* below the fixed 63px ink header (QA: tabs were sliding underneath it) */
-    background:var(--paper);border-bottom:1px solid var(--line);
-  }
-  .filter-row{display:flex;gap:6px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap;align-items:center}
-  .ftab{
-    font-family:var(--text);font-weight:700;font-size:15px;letter-spacing:.02em;
-    padding:14px 24px;border:1px solid var(--line);background:transparent;
-    color:var(--ink);cursor:pointer;display:flex;gap:10px;align-items:baseline;
-    transition:background-color .3s ease,color .3s ease,border-color .3s ease;
-  }
-  .ftab .fc{color:var(--grey);font-weight:400;font-size:13px;transition:color .3s ease,opacity .3s ease}
-  .ftab:hover{border-color:var(--ink)}
-  .ftab.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-  .ftab.on .fc{color:var(--magenta)}
-  /* whole-button hover triggers the label cascade */
-  .ftab:hover .cascade .lt span{transform:translateY(-100%)}
-  .pending{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;
-    font-size:1.16em !important;letter-spacing:-.01em;color:var(--magenta) !important}
-  .ftab.on .pending{color:var(--magenta) !important}
-
-  /* Work grid */
-  .work-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:clamp(24px,3vw,44px);
-    padding-top:clamp(48px,6vh,72px);
-    padding-bottom:clamp(64px,8vh,100px);
-  }
-  .wcard{display:flex;flex-direction:column;position:relative}
-  .wcard.feature{grid-column:1 / -1}
-  .wframe{
-    aspect-ratio:16/9;background:var(--ink-soft);position:relative;
-    overflow:hidden;margin-bottom:18px;
-  }
-  .wcard.feature .wframe{aspect-ratio:21/9}
-  .slot-frame{background:var(--ink-soft)}
-  .slot-frame.light{background:#e9e9e4}
-  .wtint{
-    position:absolute;inset:0;
-    background:linear-gradient(transparent 30%, rgba(18,19,21,.72) 100%);
-    z-index:1;pointer-events:none;
-  }
-  .wcard-overlay{
-    position:absolute;bottom:0;left:0;right:0;padding:clamp(22px,3vw,38px);
-    z-index:2;color:var(--paper);
-  }
-  .wcard-overlay h2{
-    font-family:var(--display);font-weight:700;
-    font-size:clamp(22px,2.4vw,36px);letter-spacing:-.01em;margin:10px 0 8px;
-  }
-  .wcard-overlay h2 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800}
-  .wcard-overlay p{font-size:15px;color:rgba(250,250,247,.78);max-width:54ch;margin-bottom:12px}
-  .wtag{
-    font-family:var(--text);font-weight:700;font-size:11px;
-    letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);
-    display:block;margin-bottom:10px;
-  }
-  .wcard h3{
-    font-family:var(--display);font-weight:700;
-    font-size:clamp(18px,1.8vw,26px);letter-spacing:-.008em;margin-bottom:8px;
-  }
-  .wcard h3 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800}
-  .wcard > p{font-size:14.5px;color:var(--grey);max-width:44ch;margin-bottom:10px}
-  .wgo{font-weight:700;font-size:13.5px;letter-spacing:.04em;margin-top:auto}
-  
-  .wcard-overlay .wgo{color:rgba(250,250,247,.9);font-size:14px}
-  
-  .slot-tag.dark{color:rgba(18,19,21,.35);border-color:rgba(18,19,21,.25)}
-
-  /* Hybrid pending state */
-  .hybrid-slot .wframe{outline:1px dashed var(--line);outline-offset:-8px}
-  .pending-tag{color:var(--grey) !important}
-  .pending-go{color:var(--grey);pointer-events:none}
+  /* Body — reading column 700px, figures and embeds break to 980px */
+  .article-body{padding-top:clamp(48px,7vh,90px);padding-bottom:clamp(64px,9vh,110px)}
+  .prose{max-width:700px}
+  .prose>*+*{margin-top:1.35em}
+  .prose p{font-size:18px;line-height:1.65}
+  .prose a{color:var(--magenta);border-bottom:1px solid currentColor;transition:opacity .2s ease-out}
+  .prose a:hover{opacity:.7}
+  .prose h2{font-family:var(--display);font-weight:700;letter-spacing:-.015em;
+    font-size:clamp(26px,2.6vw,36px);line-height:1.12;margin-top:2.2em}
+  .prose h3{font-family:var(--display);font-weight:700;letter-spacing:-.01em;
+    font-size:clamp(20px,1.9vw,24px);line-height:1.2;margin-top:1.9em}
+  .prose ul,.prose ol{padding-left:1.4em}
+  .prose li{font-size:18px;line-height:1.65;margin-top:.5em}
+  .prose ul li::marker{color:var(--magenta)}
+  .prose ol li::marker{font-weight:700}
+  .prose ul ul,.prose ol ol{margin-top:.5em}
+  /* Quote — the body's serif voice moment */
+  .prose blockquote{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;letter-spacing:-.02em;
+    font-size:clamp(22px,2.4vw,30px);line-height:1.3;
+    border-left:2px solid var(--magenta);padding-left:clamp(20px,2.5vw,34px);
+    margin-top:2em;margin-bottom:2em}
+  .prose figure{width:min(980px,100%);margin-top:2.2em;margin-bottom:2.2em}
+  .prose figure img{width:100%;background:var(--ink-soft)}
+  .prose figcaption{font-size:13px;color:var(--grey);padding-top:10px;
+    border-top:1px solid var(--line);max-width:700px}
+  .embed{width:min(980px,100%);margin-top:2.2em;margin-bottom:2.2em;background:var(--ink-soft)}
+  .embed.video{aspect-ratio:16/9}
+  .embed.podcast{height:150px;background:transparent}
+  .embed iframe{width:100%;height:100%;border:0;display:block}
+  /* Related uses the homepage insights .post pattern as-is */
+  .insights .posts .post{display:block}
 
   /* ---- Global page closer — token-driven, reuse across all key pages ----
      Matches homepage closer in scale. Swap h2 text + p + btn label per page.
@@ -605,17 +507,6 @@
   .page-closer .btn:hover{background:var(--magenta);border-color:var(--magenta);color:var(--paper)}
   .page-closer .tel{font-family:var(--text);font-weight:700;font-size:15px;color:rgba(250,250,247,.78)}
   .page-closer .tel:hover{color:var(--magenta)}
-
-  @media(max-width:980px){.work-grid{grid-template-columns:1fr 1fr}.wcard.feature{grid-column:1/-1}}
-  @media(max-width:640px){.work-grid{grid-template-columns:1fr}}
-
-  /* Hover video loop — sits above the still, fades in when playing */
-  .wframe .hover-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-    opacity:0;transition:opacity .35s ease;pointer-events:none;z-index:1}
-  .wframe .hover-video.playing{opacity:1}
-
-  /* Rise-in: case cells use the site reveal motion, staggered by column */
-  .work-grid .wcard.reveal{transition-delay:calc(var(--d,0)*70ms)}
 
   /* ---------- Button system ---------- */
   /* Primary — letter cascade */
@@ -693,8 +584,7 @@
      widen the background box so the texture covers the full glyph extent. */
   .tk-t{padding:.18em .12em}
   .tk-l:hover .tk-t{transform:translateX(12px);color:transparent;
-    background:url('images/scratches-v2.webp') center/cover var(--paper);
-    background-origin:content-box;
+    background:var(--paper);
     -webkit-background-clip:text;background-clip:text}
   .tk-l:hover .tk-t em{color:transparent}
   .tk-t em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;font-size:1.06em;
@@ -712,126 +602,363 @@
     .takeover,.tk-l,.tk-t,.tk-ar,.menu-btn .plus,.tk-close .x,.tk-top .logo{transition:none}
     .tk-top .logo{opacity:1}
   }
-
-  /* ======================================================================
-     STUDIOS-SPECIFIC PATTERNS (Patterns G, H, I, J in design-system-audit.md)
-     Shipped June 23 2026 with the initial /studios build.
-     ====================================================================== */
-
-  /* Pattern G — Reel hero. Full-bleed Cloudflare Stream video bg with overlay
-     content. Studios Block 1. Ink underlay, video plays muted+loop+autoplay,
-     text sits on a darkened bottom-band via .reel-vignette for legibility.
-     svh not vh (QA 2026-07-13, Ted, iOS): every other .hero on the site
-     already uses svh — this one was built standalone and got missed. Plain
-     vh sizes against Safari's large/toolbar-hidden viewport, so align-items:
-     flex-end can park the CTA under the collapsing bottom toolbar, making it
-     hard to tap. */
-  .reel-hero{position:relative;min-height:88svh;background:var(--ink);color:var(--paper);overflow:hidden;display:flex;align-items:flex-end}
-  .reel-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
-  /* raw <video> (not an iframe) so object-fit:cover handles the crop directly;
-     fades in on first frame via .live, mirroring the homepage hero reel. */
-  .reel-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;pointer-events:none;opacity:0;transition:opacity 1.2s ease-out}
-  .reel-video.live{opacity:1}
-  .reel-vignette{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(18,19,21,.55) 0%,rgba(18,19,21,0) 28%,rgba(18,19,21,0) 52%,rgba(18,19,21,.88) 100%);pointer-events:none}
-  /* padding-block only — the shorthand's side-0 was overriding .wrap's gutter (same element) */
-  .reel-inner{position:relative;z-index:2;padding-top:96px;padding-bottom:64px;width:100%}
-  .reel-hero h1{font-family:var(--display);font-weight:600;font-size:clamp(48px,7.2vw,116px);line-height:.94;letter-spacing:-0.02em;margin-bottom:28px;opacity:0;transform:translateY(14px);animation:settle .8s ease-out .2s forwards}
-  .reel-hero h1 span{display:block}
-  /* la-mericana via the Adobe kit (was a stale "late-serif" name that fell back to Georgia) */
-  .reel-hero h1 .voice{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;color:var(--magenta);letter-spacing:-0.01em}
-  .reel-hero .sub-body{font-size:clamp(16px,1.4vw,21px);max-width:780px;color:rgba(250,250,247,.88);margin-bottom:36px;line-height:1.5;opacity:0;transform:translateY(12px);animation:settle .8s ease-out .45s forwards}
-  /* Reel-hero scroll-prompt button uses the canonical .btn .cascade
-     vocabulary (matches the homepage Digital/Studios pair and the page
-     closer "Start a film"). The .reel-scroll custom class was removed
-     June 24 2026 — see studios.md Notes 15. The settle-in animation
-     timing (.7s delay so the button lands after H1 + body) is
-     preserved here. The .btn rule globally defines border:1px solid
-     var(--paper) which works against the dark video background. */
-  .reel-hero .btn{opacity:0;transform:translateY(10px);animation:settle .8s ease-out .7s forwards}
-
-  /* Pattern H — Proof bar. Single high-contrast declarative trophy line.
-     Studios Block 2. Ink background, paper text. No section header. */
-  .proof-bar{background:var(--ink);color:var(--paper);padding:36px 0;border-top:1px solid rgba(250,250,247,.12);border-bottom:1px solid rgba(250,250,247,.12)}
-  .proof-bar-stat{font-family:var(--display);font-size:clamp(18px,1.9vw,24px);font-weight:500;letter-spacing:-.01em;line-height:1.45}
-  .proof-bar-stat strong{font-weight:700}
-  .proof-bar-body{color:rgba(250,250,247,.72);font-weight:400}
-  .proof-bar-body em{font-style:italic;color:var(--paper);font-weight:500}
-
-  /* Pattern I — DECOMMISSIONED June 24 2026. The Studios films index
-     originally shipped with a custom featured+grid pattern (7fr/5fr
-     featured rows for award winners + 4-up grid for the rest). JP's
-     brief on review: "The design pattern for the film case studies
-     should be the same pattern/component as on the digital page."
-     Swapped for the canonical .work + .cards.four-up + .card pattern
-     used on /digital "Digital, selected" and the homepage "Selected
-     work" — same dark ink band, same eyebrow .tag taxonomy, same
-     .go.swipe italic-last-word CTA. All the CSS for that pattern
-     (lines 129-145 + 354-361 of this file, came along with the
-     digital.html clone) is reused as-is. No new CSS for Block 3 —
-     just the markup swap. See studios.md Notes 16 + audit doc
-     §Pattern I (now marked DECOMMISSIONED).
-
-     ONE SMALL ADDITION: 6 films in a 4-up grid means row 2 has 2
-     real cards + 2 empty cells. Without intervention, those empties
-     show the .cards parent's line-light background. A placeholder
-     card (.card.placeholder) fills cells 7-8 with the .card ink
-     background so the empties read as blank dark cards and the 1px
-     gap-line rhythm stays consistent with /digital's 4-card layout.
-     pointer-events:none keeps them un-clickable. aria-hidden="true"
-     keeps them out of the accessibility tree. */
-  .work .card.placeholder{pointer-events:none;padding:0}
-
-  /* .wcard.feature — ported verbatim from /work.html (CSS at work.html
-     lines 356-393). JP brief June 24 2026: "Lets add this exact
-     component from the work.html page below the title WORK and above
-     the rows of films on the studios page." Hero/featured treatment
-     for the strongest piece (Iron Mountain — The Summit, the ADDY
-     winner) — cinematic 21:9 frame with a paper-text-on-tint
-     overlay carrying h2 + body + Watch CTA. The .w-namespaced
-     classes don't collide with the .card / .work rules already on
-     studios (those came from the digital.html clone). Lives between
-     the .head (H2 "The films") and the .cards.four-up grid below.
-     See studios.md Notes 17. */
-  .work .wcard{display:flex;flex-direction:column;position:relative;margin-bottom:clamp(40px,5vh,72px)}
-  .work .wframe{aspect-ratio:16/9;background:var(--ink-soft);position:relative;overflow:hidden;margin-bottom:18px}
-  .work .wcard.feature .wframe{aspect-ratio:21/9;margin-bottom:0}
-  .work .wtint{position:absolute;inset:0;background:linear-gradient(transparent 30%, rgba(18,19,21,.72) 100%);z-index:1;pointer-events:none}
-  .work .wcard-overlay{position:absolute;bottom:0;left:0;right:0;padding:clamp(22px,3vw,38px);z-index:2;color:var(--paper)}
-  .work .wcard-overlay h2{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.4vw,36px);letter-spacing:-.01em;margin:10px 0 8px;color:var(--paper)}
-  .work .wcard-overlay h2 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800}
-  .work .wcard-overlay p{font-size:15px;color:rgba(250,250,247,.78);max-width:54ch;margin-bottom:12px}
-  .work .wgo{font-weight:700;font-size:13.5px;letter-spacing:.04em;margin-top:auto;display:inline-block}
-  .work .wcard-overlay .wgo{color:rgba(250,250,247,.9);font-size:14px}
-
-  /* Pattern J — Credits one-sheet, Studios Block 4. Rebuilt 2026-07 as a
-     verbatim copy of the /about team lead-card pattern (portrait in a 1px
-     --magenta-ink hairline box, magenta counter numeral, name over an ink
-     rule with an animated magenta tick, role line, full bio) so the three
-     shared leads (JP, Johnny, Russ) read identically on both pages. CSS
-     below is lifted from about.html Block 3; only .credits/.credits-heading/
-     .credits-cta are studios-local. Block footer CTA routes to /about. */
-  .credits{padding:96px 0;background:var(--paper);border-top:1px solid var(--line)}
-  .credits-heading{font-family:var(--display);font-size:clamp(36px,4vw,60px);font-weight:600;line-height:1.05;letter-spacing:-.015em;margin-bottom:64px;max-width:960px}
-  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(30px,3vw,56px) clamp(24px,2.4vw,40px);counter-reset:lead;margin-bottom:48px}
-  .lead-card{display:flex;flex-direction:column;counter-increment:lead}
-  .lead-portrait{position:relative;margin-bottom:0;background:var(--ink-soft);overflow:hidden;border:1px solid var(--magenta-ink)}
-  .lead-portrait img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .7s cubic-bezier(.22,1,.36,1)}
-  .lead-card:hover .lead-portrait img{transform:scale(1.035)}
-  .lead-card h3{position:relative;font-family:var(--display);font-weight:600;font-size:clamp(22px,1.9vw,28px);letter-spacing:-.01em;margin:22px 0 6px;padding-top:20px;border-top:1px solid var(--line)}
-  .lead-card h3::before{content:counter(lead,decimal-leading-zero);display:block;font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;font-size:17px;line-height:1;color:var(--magenta);margin-bottom:12px}
-  .lead-card h3::after{content:"";position:absolute;top:-1px;left:0;width:44px;height:2px;background:var(--magenta);transform:scaleX(0);transform-origin:left center;transition:transform .8s cubic-bezier(.22,1,.36,1) .12s}
-  .lead-card.in h3::after{transform:scaleX(1)}
-  @media(prefers-reduced-motion:reduce){.lead-card h3::after{transform:scaleX(1)}.lead-portrait img{transition:none}}
-  .lead-role{font-family:var(--text);font-weight:700;font-size:13px;letter-spacing:.02em;color:var(--grey,#6f6f6f);margin-bottom:16px}
-  .lead-bio{font-size:15.5px;line-height:1.55;color:var(--ink);opacity:.82}
-  .credits-cta{font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.04em;display:inline-block}
-  @media(max-width:980px){.credits .team-grid{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:620px){.credits .team-grid{grid-template-columns:1fr;max-width:430px}}
 </style>
 
+<style id="article-v2">
+  /* ============ ARTICLE BODY V2 — editorial magazine × dense Swiss ============
+     Hero, nav, masthead, closer, footer untouched. Reading column 700px,
+     breakouts 980px, Signal band full-bleed. Sections are indexed; the serif
+     speaks in the pull quote and the ledger numerals — Two Voices, in body form. */
+  body{overflow-x:clip}
+  .article-body{padding-top:clamp(56px,8vh,104px);padding-bottom:clamp(72px,10vh,120px)}
+  .prose{max-width:700px;margin-inline:auto;counter-reset:sect}
+  .prose>*+*{margin-top:1.5em}
+  .prose p{font-size:18px;line-height:1.68}
+
+  /* Breakout machinery — centered on the column */
+  .prose .breakout{width:min(980px,calc(100vw - 2*var(--gutter)));margin-left:50%;transform:translateX(-50%)}
+
+  /* Lede — drop cap opener */
+  .prose .lede{font-size:21px;line-height:1.62}
+  .prose .lede::first-letter{
+    font-family:var(--serif);font-variation-settings:var(--serif-vset);font-weight:800;
+    float:left;font-size:4.6em;line-height:.8;
+    padding:.04em .16em 0 0;
+  }
+
+  /* Numbered section heads — rule, index, title */
+  .prose h2{
+    font-family:var(--display);font-weight:700;letter-spacing:-.015em;
+    font-size:clamp(30px,3.4vw,44px);line-height:1.05;
+    margin-top:3em;padding-top:26px;border-top:2px solid var(--ink);
+  }
+  .prose h2::before{
+    counter-increment:sect;content:"0" counter(sect);
+    display:block;
+    font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
+    font-size:12px;letter-spacing:.16em;color:var(--magenta);
+    margin-bottom:16px;
+  }
+
+  /* Ledger — the three failure modes as indexed rows */
+  .ledger{margin-top:2em}
+  .ledger .lrow{
+    display:grid;grid-template-columns:84px 1fr;gap:0 26px;align-items:start;
+    padding:28px 0;border-top:1px solid var(--line);
+  }
+  .ledger .lrow:last-child{border-bottom:1px solid var(--line)}
+  .ledger .ln{
+    font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;
+    font-size:clamp(44px,5vw,64px);line-height:.85;color:var(--magenta);
+  }
+  .ledger h3{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.01em;margin:0 0 8px}
+  .ledger p{font-size:16.5px;line-height:1.6;opacity:.85;max-width:54ch;margin:0}
+  @media(max-width:620px){.ledger .lrow{grid-template-columns:48px 1fr;gap:0 16px}}
+
+  /* Pull quote — the body's voice moment, breakout width */
+  .pull{margin-top:3.2em;margin-bottom:3.2em;padding:30px 0 38px;
+    border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
+  .pull .eyebrow{color:var(--magenta-ink);display:block;margin-bottom:24px}
+  .pull p{
+    font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;letter-spacing:-.02em;
+    font-size:clamp(28px,3.6vw,46px);line-height:1.22;max-width:30ch;
+  }
+
+  /* Spec list — what we changed */
+  .prose ul.changes{list-style:none;padding:0}
+  .prose ul.changes>li{
+    position:relative;padding:18px 0 18px 32px;margin:0;
+    border-top:1px solid var(--line);font-size:17.5px;line-height:1.6;
+  }
+  .prose ul.changes>li:last-child{border-bottom:1px solid var(--line)}
+  .prose ul.changes>li::before{
+    content:"";position:absolute;left:2px;top:28px;width:8px;height:8px;background:var(--magenta);
+  }
+  .prose ul.changes ul{list-style:none;padding:0;margin-top:.6em}
+  .prose ul.changes ul li{font-size:15.5px;color:var(--grey);padding-left:20px;position:relative;margin-top:.4em}
+  .prose ul.changes ul li::before{content:"—";position:absolute;left:0;color:var(--magenta)}
+
+  /* Sequence — indexed steps */
+  .prose ol.seq{list-style:none;padding:0;counter-reset:seq}
+  .prose ol.seq li{
+    counter-increment:seq;display:grid;grid-template-columns:56px 1fr;align-items:baseline;
+    padding:16px 0;margin:0;border-top:1px solid var(--line);
+    font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.01em;line-height:1.3;
+  }
+  .prose ol.seq li:last-child{border-bottom:1px solid var(--line)}
+  .prose ol.seq li::before{
+    content:"0" counter(seq);
+    font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
+    font-size:12px;letter-spacing:.16em;color:var(--magenta);
+  }
+
+  /* Figure — plate + spec caption */
+  .prose figure.breakout{margin-top:3em;margin-bottom:3em}
+  .fig-art{display:block;width:100%;height:auto;aspect-ratio:16/9;background:var(--ink-soft);object-fit:cover}
+  .prose figure.breakout figcaption{
+    display:flex;gap:16px;align-items:baseline;
+    font-size:13px;color:var(--grey);line-height:1.5;
+    padding-top:12px;margin-top:12px;border-top:1px solid var(--ink);max-width:none;
+  }
+  .prose figure.breakout figcaption b{
+    font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--magenta);white-space:nowrap;
+  }
+
+  /* Signal band — full-bleed mid-article capture */
+  .prose .signal{
+    width:100vw;margin-left:50%;transform:translateX(-50%);
+    background:var(--ink);color:var(--paper);
+    margin-top:3.4em;margin-bottom:3.4em;
+  }
+  .signal-in{
+    max-width:980px;margin-inline:auto;
+    padding:clamp(44px,7vh,72px) var(--gutter);
+    display:grid;grid-template-columns:1.5fr 1fr;gap:36px;align-items:center;
+  }
+  .sig-line{
+    font-family:var(--display);font-weight:500;letter-spacing:-.01em;
+    font-size:clamp(22px,2.4vw,30px) !important;line-height:1.25 !important;
+  }
+  .signal .field{display:flex;border:1px solid var(--line-light)}
+  .signal input{flex:1;min-width:0;background:transparent;border:0;color:var(--paper);font-family:var(--text);font-size:14px;padding:13px 14px}
+  .signal input:focus{outline:none}
+  .signal button{background:var(--paper);color:var(--ink);border:0;font-family:var(--text);font-weight:700;font-size:13px;padding:0 22px;cursor:pointer;transition:background .2s ease-out,color .2s ease-out}
+  .signal button:hover{background:var(--magenta);color:var(--paper)}
+  @media(max-width:760px){.signal-in{grid-template-columns:1fr;gap:24px}}
+
+  /* End mark */
+  .prose p.end::after{
+    content:"";display:inline-block;width:10px;height:10px;
+    background:var(--magenta);margin-left:10px;
+  }
+
+  /* Masthead slot */
+  .masthead .wframe{position:relative;overflow:hidden}
+  .masthead .wframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .masthead .wtint{position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(rgba(18,19,21,.38),rgba(18,19,21,.12) 45%,rgba(18,19,21,.52))}
+
+  /* Related — editorial index rows */
+  .related-v2{padding:clamp(72px,10vh,120px) 0;border-top:1px solid var(--line)}
+  .rel-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:36px}
+  .rel-head h2{font-family:var(--display);font-weight:500;font-size:clamp(32px,3.6vw,52px);letter-spacing:-.015em}
+  .rel-head .swipe{font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.03em}
+  .rel-rows{display:flex;flex-direction:column}
+  .rel-row{
+    display:grid;grid-template-columns:3ch 1fr auto 28px;
+    gap:clamp(14px,2.4vw,32px);align-items:baseline;
+    padding:24px 0;border-top:1px solid var(--ink);
+  }
+  .rel-row:last-child{border-bottom:1px solid var(--ink)}
+  .rel-n{font-family:var(--mono,ui-monospace,Menlo,monospace);font-size:12px;letter-spacing:.1em;color:var(--magenta)}
+  .rel-row .stream{
+    font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--grey);display:block;margin-bottom:7px;transition:color .2s ease-out;
+  }
+  .rel-row .rel-title{
+    display:block;
+    font-family:var(--display);font-weight:700;letter-spacing:-.01em;line-height:1.12;
+    font-size:clamp(21px,2.4vw,30px);transition:transform .3s cubic-bezier(.22,1,.36,1);
+  }
+  .rel-date{font-size:13px;color:var(--grey);white-space:nowrap}
+  .rel-ar{font-size:20px;color:var(--magenta);opacity:0;transform:translateX(-10px);
+    transition:opacity .25s ease-out,transform .25s ease-out}
+  .rel-row:hover .rel-title{transform:translateX(10px)}
+  .rel-row:hover .stream{color:var(--magenta)}
+  .rel-row:hover .rel-ar{opacity:1;transform:translateX(0)}
+  @media(max-width:640px){
+    .rel-row{grid-template-columns:3ch 1fr 22px}
+    .rel-date{display:none}
+  }
+
+  /* Rise-in: index rows use the site reveal motion, staggered by row */
+  .rel-row.reveal{transition-delay:calc(var(--d,0)*70ms)}
+
+  @media(prefers-reduced-motion:reduce){
+    .rel-row .rel-title,.rel-ar{transition:none}
+  }
+</style>
+
+<style id="case-study">
+  /* ============ CASE STUDY — graphic-asset layers on the article scaffold ============
+     Inherits sub-hero, masthead/wframe, prose, blockquote, page-closer, and all motion
+     from the article + work-page systems. Adds: stat band, before/after, badge chips.
+     All motion uses the site bezier and is gated by .reveal (scroll) + prefers-reduced-motion. */
+  .sub-hero .eyebrow{font-family:var(--display);font-weight:700;font-size:13px;
+    letter-spacing:.14em;text-transform:uppercase}
+  .cs-meta .role{font-family:var(--display);font-weight:700;letter-spacing:.1em;
+    text-transform:uppercase;font-size:11px;color:var(--magenta);margin-right:8px}
+
+  /* Stat band — serif numerals, the homepage proof voice */
+  .cs-stats-wrap{padding:clamp(28px,4vw,52px) var(--gutter) 0}
+  .cs-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,48px);
+    border-top:2px solid var(--ink);padding-top:clamp(24px,3vw,40px)}
+  .cs-stat b{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;
+    font-size:clamp(46px,5.4vw,88px);letter-spacing:-.02em;line-height:.95;display:block;color:var(--ink)}
+  .cs-stat span{display:block;margin-top:10px;font-family:var(--display);font-weight:500;
+    font-size:15px;line-height:1.35;color:var(--ink);opacity:.72;max-width:30ch}
+  @media(max-width:760px){.cs-stats{grid-template-columns:1fr;gap:26px}}
+
+  /* Graphic-asset block under the prose */
+  .cs-assets{margin-top:clamp(40px,5vw,72px)}
+  .cs-ba{position:relative;display:grid;grid-template-columns:1fr 1fr;
+    min-height:clamp(150px,21vh,210px);overflow:hidden;border:1px solid var(--line)}
+  .cs-ba-col{display:flex;flex-direction:column;justify-content:center;padding:clamp(24px,3vw,42px)}
+  .cs-ba-col.before{background:var(--paper)}
+  .cs-ba-col.after{background:var(--ink);color:var(--paper)}
+  .cs-ba-k{display:block;font-family:var(--display);font-weight:700;font-size:11px;
+    letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;color:var(--magenta)}
+  .cs-ba-col p{font-family:var(--display);font-weight:500;font-size:clamp(18px,1.9vw,24px);
+    line-height:1.2;letter-spacing:-.01em;margin:0;max-width:24ch}
+  .cs-ba-seam{position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--magenta);
+    transform:translateX(-50%);z-index:3}
+  .cs-ba-arrow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:4;
+    width:46px;height:46px;border-radius:50%;background:var(--magenta);color:var(--paper);
+    display:flex;align-items:center;justify-content:center;font-size:20px}
+  @media(max-width:680px){
+    .cs-ba{grid-template-columns:1fr}
+    .cs-ba-seam{left:0;right:0;top:50%;bottom:auto;width:auto;height:1px;transform:translateY(-50%)}
+    .cs-ba-arrow{transform:translate(-50%,-50%) rotate(90deg)}
+  }
+  @media(prefers-reduced-motion:no-preference) and (min-width:681px){
+    .cs-ba .after{clip-path:inset(0 0 0 100%);transition:clip-path 1s cubic-bezier(.76,0,.24,1) .18s}
+    .cs-ba.in .after{clip-path:inset(0 0 0 0)}
+    .cs-ba-seam{transform:translateX(-50%) scaleY(0);transform-origin:top;
+      transition:transform .7s cubic-bezier(.76,0,.24,1)}
+    .cs-ba.in .cs-ba-seam{transform:translateX(-50%) scaleY(1)}
+    .cs-ba-arrow{opacity:0;transform:translate(-50%,-50%) scale(.4);
+      transition:opacity .5s ease .95s,transform .6s cubic-bezier(.34,1.5,.5,1) .95s}
+    .cs-ba.in .cs-ba-arrow{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  }
+
+  /* Recognition — indexed Swiss credential rows, in the dossier voice */
+  .cs-creds{display:grid;grid-template-columns:1fr 1fr;gap:0;
+    margin-top:clamp(22px,2.6vw,34px);border-top:2px solid var(--ink)}
+  .cs-cred{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;
+    padding:clamp(22px,2.6vw,32px) 0}
+  .cs-cred:nth-child(odd){padding-right:clamp(20px,3vw,44px);border-right:1px solid var(--line)}
+  .cs-cred:nth-child(even){padding-left:clamp(20px,3vw,44px)}
+  .cs-cred .mk{width:9px;height:9px;background:var(--magenta);margin-top:.2em;flex:none;
+    transition:transform .3s cubic-bezier(.76,0,.24,1)}
+  .cs-cred:hover .mk{transform:rotate(45deg)}
+  .cs-cred .ek{display:block;font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);margin-bottom:10px}
+  .cs-cred p{font-family:var(--display);font-weight:700;letter-spacing:-.01em;line-height:1.18;
+    font-size:clamp(17px,1.7vw,22px);margin:0}
+  @media(max-width:680px){
+    .cs-creds{grid-template-columns:1fr}
+    .cs-cred{border-right:0!important;padding:18px 0!important;border-bottom:1px solid var(--line)}
+    .cs-cred:last-child{border-bottom:0}
+  }
+
+  /* Reveal-on-scroll: reuses the .reveal observer already in the page script */
+  .reveal{opacity:0;transform:translateY(22px);
+    transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .reveal.in{opacity:1;transform:none}
+  .cs-stat.reveal{transition-delay:calc(var(--d,0)*90ms)}
+
+  /* Dossier — fact sheet fused with topline results, one Swiss spec block */
+  .cs-dossier{padding-top:clamp(34px,4.5vw,62px)}
+  .cs-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border-top:2px solid var(--ink);padding-top:clamp(18px,2vw,24px);
+    margin:0 0 clamp(30px,3.8vw,48px)}
+  .cs-fact{padding-right:24px;border-right:1px solid var(--line)}
+  .cs-fact:last-child{border-right:0;padding-right:0}
+  .cs-fact+.cs-fact{padding-left:24px}
+  .cs-fact dt{font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);margin-bottom:12px}
+  .cs-fact dd{font-family:var(--display);font-weight:500;margin:0;
+    font-size:clamp(15px,1.2vw,18px);line-height:1.32;letter-spacing:-.005em;color:var(--ink)}
+  @media(max-width:860px){
+    .cs-facts{grid-template-columns:1fr 1fr}
+    .cs-fact{border-right:0;border-bottom:1px solid var(--line);padding-top:16px;padding-bottom:16px}
+    .cs-fact:nth-child(odd){border-right:1px solid var(--line);padding-left:0;padding-right:18px}
+    .cs-fact:nth-child(even){padding-left:18px;padding-right:0}
+  }
+  .cs-dossier .cs-stats{margin:0}
+  .cs-i{display:block;margin:0 0 14px;opacity:1;
+    font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
+    font-size:11px;letter-spacing:.16em;color:var(--magenta)}
+
+  /* Case-study sub-hero: title sized so a long headline holds */
+  .sub-hero.casestudy h1{font-size:clamp(34px,4.6vw,78px);line-height:1.0;max-width:20ch}
+
+  /* Masthead + body figures fill their frames as drop slots */
+
+  /* ---- Real device mockups + micro-interactions ---- */
+  .cs-shot{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
+  .masthead .wframe.dark{background:var(--ink)}
+  .masthead .wframe.dark .wtint{display:none}
+  .masthead .wframe.dark .cs-shot{padding:clamp(18px,3vw,56px) clamp(20px,6vw,120px)}
+  @media(prefers-reduced-motion:no-preference){
+    .masthead .wframe.dark .cs-shot{animation:cs-float 8s ease-in-out infinite}
+  }
+  @keyframes cs-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+  /* Body figure: device plate, contain, pointer-tracked 3D tilt */
+  .prose figure.breakout .fig-plate{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;
+    background:var(--ink)}
+  /* Figure entrance — scale-fade reveal on scroll (ease-out cubic, marketing) */
+  .prose figure.breakout .fig-plate.reveal{opacity:0;transform:scale(.96);transition:opacity .6s cubic-bezier(.215,.61,.355,1),transform .6s cubic-bezier(.215,.61,.355,1);will-change:transform,opacity}
+  .prose figure.breakout .fig-plate.reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.prose figure.breakout .fig-plate.reveal{opacity:1;transform:none;transition:none}}
+  .fig-plate .cs-shot{padding:clamp(16px,3vw,48px);transform-style:preserve-3d;
+    transition:transform .6s cubic-bezier(.22,1,.36,1)}
+  .fig-tilt{perspective:1200px}
+
+  /* Reel — full-bleed in-the-wild video, slow Ken-Burns reveal, caption overlay */
+  .prose .cs-reel{position:relative;width:100vw;margin-left:50%;transform:translateX(-50%);
+    margin-top:3.4em;margin-bottom:3.4em;aspect-ratio:16/8;overflow:hidden;background:var(--ink);cursor:pointer}
+  .cs-reel-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    transform:scale(1.03);filter:saturate(.82) brightness(.8);
+    transition:filter .6s ease,transform 1s cubic-bezier(.22,1,.36,1)}
+  .cs-reel:hover .cs-reel-vid{filter:none;transform:scale(1)}
+  .cs-reel-hint{display:inline-flex;align-items:center;gap:9px;margin-top:16px;
+    font-family:var(--text);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+    color:rgba(250,250,247,.72);transition:opacity .3s ease}
+  .cs-reel-hint::before{content:"";width:0;height:0;
+    border-left:9px solid var(--magenta);border-top:6px solid transparent;border-bottom:6px solid transparent}
+  .cs-reel:hover .cs-reel-hint{opacity:0}
+  .cs-reel-cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:clamp(24px,4vw,56px);
+    background:linear-gradient(transparent,rgba(18,19,21,.8));color:var(--paper)}
+  .cs-reel-cap .eyebrow{color:var(--magenta-ink);display:block;margin-bottom:12px}
+  .cs-reel-cap p{font-family:var(--display);font-weight:500;letter-spacing:-.01em;
+    font-size:clamp(18px,2vw,28px);line-height:1.22;max-width:28ch;margin:0}
+
+  /* ---- Homepage sync: receipts odometer, slash motif, black-block pull ---- */
+  .cs-dossier .cs-rec-eyebrow{display:block;color:var(--magenta-ink);margin-bottom:clamp(20px,2.4vw,32px)}
+  .cs-dossier .proof-row{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:760px){.cs-dossier .proof-row{grid-template-columns:1fr}}
+
+  /* // shear motif on pull quotes — the hero slash-field SVG, scaled down */
+  .pull{position:relative}
+  .pull-slash{position:absolute;top:10px;right:0;width:clamp(30px,3.4vw,46px);height:auto;
+    fill:none;stroke:var(--ink);stroke-width:1.5;opacity:.22;pointer-events:none;overflow:visible}
+  .pull-slash path{fill:none;stroke:inherit;vector-effect:non-scaling-stroke}
+  @media(prefers-reduced-motion:no-preference){
+    .pull-slash .sa{animation:shearUp var(--dur,5s) ease-in-out var(--dly,0s) infinite alternate}
+    .pull-slash .sb{animation:shearDn var(--dur,5s) ease-in-out var(--dly,0s) infinite alternate}
+  }
+
+  /* Black-block pull — full-bleed ink, the Studios-door contrast move */
+  .pull.invert{background:var(--ink);color:var(--paper);border:0;
+    width:100vw;margin-left:50%;transform:translateX(-50%);
+    margin-top:3.4em;margin-bottom:3.4em;padding:clamp(48px,7vw,90px) 0}
+  .pull.invert .pull-in{max-width:980px;margin-inline:auto;padding-inline:var(--gutter);position:relative}
+  .pull.invert .eyebrow{color:var(--magenta)}
+  .pull.invert .pull-slash{top:0;right:var(--gutter);opacity:.3;stroke:var(--paper)}
+  /* Pull entrance — fade-up that PRESERVES the breakout/invert translateX(-50%) centering
+     (plain .reveal sets transform:none and would knock the block off-center). */
+  .pull.reveal{opacity:0;transform:translateX(-50%) translateY(18px);transition:opacity .55s cubic-bezier(.215,.61,.355,1),transform .55s cubic-bezier(.215,.61,.355,1)}
+  .pull.reveal.in{opacity:1;transform:translateX(-50%)}
+  @media(prefers-reduced-motion:reduce){.pull.reveal{opacity:1;transform:translateX(-50%);transition:none}}
+
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
 </head>
 <body>
-
 
 <header>
   <div class="nav on-dark" id="nav">
@@ -878,12 +1005,12 @@
     <button class="tk-close" id="menuClose">Close <svg class="x" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
   </div>
   <div class="tk-links">
-    <a class="tk-l" style="--td:0.08s" href="work"><span class="tk-n">01</span><span class="tk-t">Work</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.13s" href="digital"><span class="tk-n">02</span><span class="tk-t">Digital</span><span class="tk-ar">→</span></a>
-    <a class="tk-l is-current" aria-current="page" style="--td:0.18s" href="studios"><span class="tk-n">03</span><span class="tk-t">Studios</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.23s" href="insights"><span class="tk-n">04</span><span class="tk-t">Insights</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.28s" href="about"><span class="tk-n">05</span><span class="tk-t">About</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.33s" href="careers"><span class="tk-n">06</span><span class="tk-t">Careers</span><span class="tk-ar">→</span></a>
+    <a class="tk-l is-current" aria-current="page" style="--td:0.08s" href="/work"><span class="tk-n">01</span><span class="tk-t">Work</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.13s" href="/digital"><span class="tk-n">02</span><span class="tk-t">Digital</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.18s" href="/studios"><span class="tk-n">03</span><span class="tk-t">Studios</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.23s" href="/insights"><span class="tk-n">04</span><span class="tk-t">Insights</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.28s" href="/about"><span class="tk-n">05</span><span class="tk-t">About</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.33s" href="/careers"><span class="tk-n">06</span><span class="tk-t">Careers</span><span class="tk-ar">→</span></a>
   </div>
   <div class="tk-foot">
     <a href="tel:+16042279952">+1 (604) 227-9952</a>
@@ -891,357 +1018,166 @@
   </div>
 </div>
 
-
-<!-- ====================================================================
-     STUDIOS PAGE BODY
-     Built June 23 2026. Reference: docs/copy/studios.md (status: LIVE after
-     this commit). Block order mirrors studios.md exactly. Patterns reused
-     from /digital are noted inline; new Studios patterns (G/H/I/J) are
-     documented in docs/design-system-audit.md.
-
-     Voice spec (governs every line on this page):
-       Shorter sentences than /digital, more attitude, zero process
-       vocabulary. Every flex is attached to a name, a credit, or a trophy.
-       Tool and vendor names never appear — craft stages do.
-     ==================================================================== -->
-
-
-<!-- Block 1 — Reel hero. Pattern G in design-system-audit.md.
-     Full-bleed Cloudflare Stream video as the hero background, .reel-vignette
-     darkens the bottom band for H1 legibility. H1 is two-line: setup +
-     differentiator (the differentiator carries the late-serif italic .voice
-     treatment in magenta). Body line names the provenance — ILM, Ridley Scott,
-     Ogilvy — without naming the specific people (credits live in Block 4).
-     The scroll prompt routes to #films (Block 3).
-
-     Video UID: 4616f42aaf97d1eac2b0d0d2ff867bc1 — same reel as the homepage
-     hero (kept in sync deliberately: the masterbrand showcase of Studios
-     work). Swapped 2026-07-13 off the old dcde8adc… UID AND off the Stream
-     iframe embed → the homepage's raw <video> + HLS approach, so there's no
-     Cloudflare player logo/watermark on the reel. To change the reel, swap
-     STREAM.video in the init script near the bottom of this file (and match
-     it on index.html to keep the pages identical). Customer subdomain:
-     customer-xv1aafyshr3tbknu.cloudflarestream.com (per VIDEO_PIPELINE.md). -->
-<section class="reel-hero" id="reel-hero">
-  <div class="reel-bg">
-    <video id="reelVideo" class="reel-video" muted autoplay loop playsinline
-           poster="" aria-hidden="true"></video>
-    <div class="reel-vignette"></div>
-  </div>
-  <div class="reel-inner wrap">
-    <h1 class="rise">
-      <span>Anyone can generate.</span>
-      <span><em class="voice">Few can direct.</em></span>
-    </h1>
-    <p class="sub-body">Power Shifter Studios. Film, audio, and motion on generative pipelines — run by people who came up through ILM, Ridley Scott, and Ogilvy, not a prompt library.</p>
-    <a class="btn cascade" href="#films">Watch the work →</a>
+<!-- Sub-page hero: case study — same DNA as homepage/article -->
+<section class="sub-hero casestudy">
+  <svg class="slash-field" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="pair" transform="translate(1060 230) scale(2.2)" style="--dur:15.6s;--dly:0s;--sh:10.4px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(780 460) scale(1.3)" style="--dur:20.4s;--dly:-9s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1260 520) scale(1.7)" style="--dur:13.2s;--dly:-15s;--sh:9.2px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(640 260) scale(1.0)" style="--dur:18s;--dly:-4s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(940 560) scale(1.1)" style="--dur:22.8s;--dly:-21s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1380 360) scale(1.2)" style="--dur:18.6s;--dly:-6s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g></svg>
+  <div class="sub-hero-inner wrap">
+    <a class="back swipe" href="/work">← Back to all Work</a>
+    <span class="eyebrow">Studios · Bremont</span>
+    <h1 class="rise" id="title">AI winter scenes so convincing the client asked for more of them</h1>
+    <p class="sub-voice"><em class="voice mag" id="excerpt">A luxury holiday film shot in summer needed a British winter — so we generated four snow-bound shots from the production’s own footage, no stock and no second shoot.</em></p>
+    <div class="byline cs-meta" id="byline">
+      <span class="role">Role</span><span>AI production — environment transformation, season-change VFX, shot design, edit-ready finishing</span>
+      <span class="sep vbar">|</span>
+      <span class="cats"><a href="/studios">Studios</a></span>
+    </div>
   </div>
 </section>
 
+<!-- Dossier: fact sheet (Tier 2/3 — no topline odometer stats) -->
+<section class="cs-dossier wrap">
+  <dl class="cs-facts reveal">
+    <div class="cs-fact"><dt>Client</dt><dd>Bremont Watch Company (via Media One Creative)</dd></div>
+    <div class="cs-fact"><dt>Sector</dt><dd>Luxury watchmaking · Brand film</dd></div>
+    <div class="cs-fact"><dt>Services</dt><dd>Generative AI video · Environment transformation · Season-change VFX · Shot design · Edit-ready finishing</dd></div>
+    <div class="cs-fact"><dt>Delivered</dt><dd>October 2025 — edit-ready</dd></div>
+  </dl>
+  <span class="eyebrow cs-rec-eyebrow">The receipts</span>
+  <div class="proof-row" id="proofRow">
+    <div class="stat"><b><span class="sr-only">4</span><span class="odo" aria-hidden="true"><span class="col" style="--d:4"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx sfx-label">shots</span></b><span>bespoke winter shots, generated from the production’s own summer footage</span></div>
+    <div class="stat"><b><span class="sr-only">0</span><span class="odo" aria-hidden="true"><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx sfx-label">artifacts</span></b><span>no warped railings, no melting snow — no AI-glitch story attached to the brand</span></div>
+    <div class="stat"><b><span class="sr-only">3</span><span class="odo" aria-hidden="true"><span class="col" style="--d:3"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx sfx-label">placements</span></b><span>uses the shots earned: the hero film, a 15-second cutdown, and the Bremont website</span></div>
+  </div>
+</section>
 
-<!-- Block 2 — Proof bar. Pattern H in design-system-audit.md.
-     High-contrast single-line trophy strip between hero and roster.
-     Distinct from .proof (the /digital outcome strip with stats) and from
-     .proof-spine (the logo grid below). This is one declarative line.
-
-     Open call (per studios.md): the "judged against everything, not just
-     the AI category" claim is unverified. If the ADDYs were entered in an
-     AI-specific category, drop the qualifying clause. Shipped now to hold
-     the slot; verify before any paid outbound or PR reuse. -->
-<section class="proof-bar" id="awards">
+<!-- Screening room — the anthem -->
+<section class="cs-screening reveal">
   <div class="wrap">
-    <p class="proof-bar-stat"><strong>Two Silver ADDYs, 2026.</strong> <span class="proof-bar-body"><em>The Summit</em> (Iron Mountain) &middot; <em>Four Dreams</em> (Ernest Packaging) — judged against everything, not just the AI category.</span></p>
-  </div>
-</section>
-
-
-<!-- Block 3 — Films index — "The films". Canonical .work + .cards.four-up
-     + .card pattern (reused from /digital "Digital, selected" and the
-     homepage "Selected work"). JP brief June 24 2026: "The design
-     pattern for the film case studies should be the same pattern/
-     component as on the digital page." Pattern I (custom featured+
-     grid) was decommissioned in this same commit.
-
-     Eyebrow .tag taxonomy: each film carries a short "Branded · X" or
-     "Original · X" label (mirrors /digital's "Platform" / "Rapid MVP"
-     / "Product · Best UX, VUX" / "Web · SEO" pattern — short, 1-3
-     words, optional middle-dot separator). The two ADDY winners
-     carry the trophy mention in the body line (matches the homepage's
-     Iron Mountain card precedent), not the eyebrow — the proof bar
-     above already calls out both awards by name.
-
-     CTA "Watch the film →" uses .go.swipe — the same .swipe JS that
-     wraps "case" italic-serif on /digital wraps "film" italic-serif
-     here, with the same magenta swipe-on-hover. All Watch links stub
-     to "#" until film case-study pages exist. Italic film names in
-     h3 titles via <i> (Studios canonical — "Iron Mountain — <i>The
-     Summit</i>", "Ernest Packaging — <i>Four Dreams</i>", "Rapid MVP
-     — <i>Luma</i>").
-
-     Layout: 6 films in 4-up (Iron Mountain lives in the featured card
-     above, not here — see Notes 17) wraps to row 1 (4 cards) + row 2
-     (2 cards + 2 placeholders). Placeholders fill out row 2 with .card
-     ink bg so the line-light gap rhythm stays consistent. -->
-<section class="work" id="films">
-  <div class="wrap">
-    <div class="head reveal">
-      <h2 class="rise">The films</h2>
-      <a class="all swipe" href="work">See all the work →</a>
+    <div class="cs-meta-strip">
+      <span class="mt">From the Wing to the World</span>
+      <span class="m">Format<b>16:9</b></span>
+      <span class="m">Pipeline<b>AI-hybrid</b></span>
+      <span class="m">Delivered<b>Oct 2025</b></span>
     </div>
-
-    <!-- Featured card — .wcard.feature ported verbatim from /work.html.
-         JP brief June 24 2026: "Lets add this exact component from the
-         work.html page below the title WORK and above the rows of films
-         on the studios page." Iron Mountain — The Summit gets the hero
-         treatment with the ADDY-specific tagline copy from /work.html
-         ("A generative film with a blockbuster look. Silver ADDY,
-         2026."). It's pulled OUT of the grid below (same as /work.html,
-         where the featured card's film doesn't repeat in the grid) — a
-         2026-06-24 brief originally kept it as card #1 too for editorial
-         layering, but QA 2026-07-13 (Ted) flagged the immediate repeat as
-         a confusing first impression, so it now matches /work.html's
-         convention instead. The h2 element comes verbatim from /work.html
-         (works.html uses h2 in the overlay); studios' section H2 "The
-         films" above is visually larger so the hierarchy still reads
-         correctly via the responsive font-size rules. See studios.md
-         Notes 17. -->
-    <a class="wcard feature reveal" data-cat="studios" href="/work/iron-mountain">
-      <div class="wframe" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/01e95325c9355d472aa16aa1e48946a7/downloads/default.mp4">
-        <img src="images/iron_mountain.jpg" alt="Iron Mountain &mdash; The Summit" style="width:100%;height:100%;object-fit:cover">
-        <div class="wtint"></div>
-        <div class="wcard-overlay">
-          <h2>Iron Mountain &mdash; <i>The Summit</i></h2>
-          <p>A generative film with a blockbuster look. Silver ADDY, 2026.</p>
-          <span class="wgo swipe">Watch the film &rarr;</span>
-        </div>
-      </div>
-    </a>
-
-    <div class="cards four-up reveal">
-      <a class="card" href="/work/ernest-packaging">
-        <div class="frame"><img src="images/ernest.jpg" alt="Ernest Packaging Four Dreams" style="width:100%;height:100%;object-fit:cover"></div>
-        <div class="meta">
-          <span class="tag">Branded &middot; Character</span>
-          <h3>Ernest Packaging &mdash; <i>Four Dreams</i></h3>
-          <p>Four surreal dreams brought to life &mdash; characters that speak, move, and feel as if they've always existed. Silver ADDY, 2026.</p>
-          <span class="go swipe">Watch the film &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/work/celestial-ai">
-        <div class="frame"><img src="images/celestial.jpg" alt="Celestial AI" style="width:100%;height:100%;object-fit:cover"></div>
-        <div class="meta">
-          <span class="tag">Branded &middot; AI</span>
-          <h3>Celestial AI</h3>
-          <p>A story told in light itself &mdash; photonic fabric as cinema.</p>
-          <span class="go swipe">Watch the film &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/work/algorithm-trap">
-        <div class="frame"><img src="images/algorithm_trap.jpg" alt="The Algorithm Trap" style="width:100%;height:100%;object-fit:cover"></div>
-        <div class="meta">
-          <span class="tag">Original &middot; Short</span>
-          <h3>The Algorithm Trap</h3>
-          <p>Fast, raw, restless &mdash; the endless scroll, mirrored back at itself.</p>
-          <span class="go swipe">Watch the film &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/work/maple-health">
-        <div class="frame"><img src="images/maple_health.jpg" alt="Maple Health" style="width:100%;height:100%;object-fit:cover"></div>
-        <div class="meta">
-          <span class="tag">Branded &middot; Animation</span>
-          <h3>Maple Health</h3>
-          <p>The quiet moments of empathy that define real healthcare, animated.</p>
-          <span class="go swipe">Watch the film &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/work/rapid-mvp-launch">
-        <div class="frame"><img src="images/rapid_mvp.jpg" alt="Rapid MVP &mdash; Luma" style="width:100%;height:100%;object-fit:cover"></div>
-        <div class="meta">
-          <span class="tag">Original &middot; IP</span>
-          <h3>Rapid MVP &mdash; <i>Luma</i></h3>
-          <p>A brilliant idea left waiting &mdash; until it didn't have to be.</p>
-          <span class="go swipe">Watch the film &rarr;</span>
-        </div>
-      </a>
-      <!-- Poster = Stream thumbnail (winterized Wing). Local still TBD (JP image pass). -->
-      <a class="card" href="/work/bremont-from-the-wing-to-the-world">
-        <div class="frame"><img src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/39e4451cac7d633ea257f58121a4c170/thumbnails/thumbnail.jpg?time=4s" alt="Bremont &mdash; From the Wing to the World" style="width:100%;height:100%;object-fit:cover"></div>
-        <div class="meta">
-          <span class="tag">Branded &middot; VFX</span>
-          <h3>Bremont &mdash; <i>From the Wing to the World</i></h3>
-          <p>A summer shoot winterized with generative AI &mdash; four bespoke shots the client asked to reuse.</p>
-          <span class="go swipe">Watch the film &rarr;</span>
-        </div>
-      </a>
-      <div class="card placeholder" aria-hidden="true"></div>
-      <div class="card placeholder" aria-hidden="true"></div>
+  </div>
+  <div class="cs-letterbox">
+  <iframe class="cs-film-vid" src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/39e4451cac7d633ea257f58121a4c170/iframe?autoplay=true&amp;muted=true&amp;loop=true&amp;poster=https%3A%2F%2Fcustomer-xv1aafyshr3tbknu.cloudflarestream.com%2F39e4451cac7d633ea257f58121a4c170%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D4s" title="Bremont — From the Wing to the World" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen></iframe>
+  </div>
+  <div class="wrap cs-pilot-copy">
+    <div class="cs-ep-copy">
+      <span class="cs-ep-num">The shots</span>
+      <h2>From the Wing to the World</h2>
+      <p class="cs-ep-floor">Summer footage, winter world.</p>
+    </div>
+    <div>
+      <p class="cs-ep-syn">The four winter shots we delivered for Bremont’s holiday film — snow on The Wing, a frosted English countryside, a fairy-lit entrance, and the final walk — each generated from the production’s own summer plates to cut seamlessly against the live action.</p>
+      <span class="cs-ep-rt">Our four generated shots · Built from the production’s own plates, not stock</span>
     </div>
   </div>
 </section>
 
+<!-- Before / after — the four winterized shots (summer plate → generative winter). -->
+<section class="cs-gallery cs-ba-shots reveal" aria-label="Before and after — winterizing the plates">
+  <span class="eyebrow cs-ba-eyebrow">Summer plate → generative winter</span>
+  <figure class="cs-ba-pair">
+    <div class="cs-ba-cell"><img src="/images/bremont/ba-1-before.jpg" alt="The Wing — summer plate" loading="lazy"><span class="cs-ba-tag">Before</span></div>
+    <div class="cs-ba-cell"><img src="/images/bremont/ba-1-after.jpg" alt="The Wing — winterized" loading="lazy"><span class="cs-ba-tag is-after">After</span></div>
+  </figure>
+  <figure class="cs-ba-pair">
+    <div class="cs-ba-cell"><img src="/images/bremont/ba-2-before.jpg" alt="The Wing from the road — summer plate" loading="lazy"><span class="cs-ba-tag">Before</span></div>
+    <div class="cs-ba-cell"><img src="/images/bremont/ba-2-after.jpg" alt="The Wing from the road — winterized" loading="lazy"><span class="cs-ba-tag is-after">After</span></div>
+  </figure>
+  <figure class="cs-ba-pair">
+    <div class="cs-ba-cell"><img src="/images/bremont/ba-3-before.jpg" alt="The English countryside — summer plate" loading="lazy"><span class="cs-ba-tag">Before</span></div>
+    <div class="cs-ba-cell"><img src="/images/bremont/ba-3-after.jpg" alt="The English countryside — winterized" loading="lazy"><span class="cs-ba-tag is-after">After</span></div>
+  </figure>
+  <figure class="cs-ba-pair">
+    <div class="cs-ba-cell"><img src="/images/bremont/ba-4-before.jpg" alt="The Wing overhead — summer plate" loading="lazy"><span class="cs-ba-tag">Before</span></div>
+    <div class="cs-ba-cell"><img src="/images/bremont/ba-4-after.jpg" alt="The Wing overhead — winterized" loading="lazy"><span class="cs-ba-tag is-after">After</span></div>
+  </figure>
+</section>
 
-<!-- Block 4 — Provenance / credits. Pattern J in design-system-audit.md.
-     Originally specified as "no portraits, no bios" — that brief was
-     overridden June 24 2026 (see studios.md Notes 14), then rebuilt 2026-07
-     as a verbatim copy of the /about team lead-cards per JP: same portraits,
-     counter numerals, names, roles, and full bios. If a bio/role changes,
-     change it on BOTH pages (about.html Block 3 is the source of truth).
-     Three credits: JP, Johnny Darrell, Russ Jarman Price. Block footer CTA
-     routes to /about. Portraits: JP is a local pen-and-ink illustration
-     (/images/leadership/jp-holecka.jpg, added 2026-07-13 — swapped off
-     Cloudflare on both pages); Johnny + Russ stay on Cloudflare Images
-     (imagedelivery.net So76NP_fFT3s9jNLvxCRFw, public variant): Johnny
-     6e359c0f, Russ 34c9a2f0. -->
-<section class="credits" id="credits">
+<!-- The finished spot — our shots in context (Ernest-style secondary band, click-to-play). -->
+<section class="cs-ep on-ink reveal" data-screen-label="The finished spot">
+  <div class="wrap cs-ep-band">
+    <figure><iframe src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/cddb42cc951921f5e3c4ecb2e261e119/iframe?poster=https%3A%2F%2Fcustomer-xv1aafyshr3tbknu.cloudflarestream.com%2Fcddb42cc951921f5e3c4ecb2e261e119%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D8s" title="Bremont — From the Wing to the World (finished spot)" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></figure>
+    <div class="cs-ep-copy">
+      <span class="cs-ep-num">In context</span>
+      <h2>The finished spot</h2>
+      <p class="cs-ep-floor">Where the four shots landed.</p>
+      <p class="cs-ep-syn">Media One Creative’s completed film. Our winterized shots cut seamlessly into the live action — the summer plates now reading as a full British winter, with no artifact story attached — before the work went on to a 15-second cutdown and the Bremont website.</p>
+      <span class="cs-ep-rt">The hero film · Media One Creative</span>
+    </div>
+  </div>
+</section>
+
+<!-- Body — five-section authored structure -->
+<article class="article-body wrap">
+  <div class="prose">
+    <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">The stakes</span><p>One warped railing becomes <span class="mag">the headline instead of the watches</span>.</p></aside>
+
+    <h2>the brief.</h2>
+    <p>Bremont is a British luxury watchmaker, and its manufacturing facility, The Wing, is the centre of the brand story. For the 2025 holiday season, Bremont wanted a gifting campaign built around it: “From the Wing to the World,” a hero film produced by Media One Creative. The script called for a winter world — snow on The Wing, a frosted English countryside, a festive entrance glowing with fairy lights. The plates were shot in summer, and the budget had no room for a second shoot.</p>
+    <p>The default answer is stock footage: generic winter aerials that match neither the geography nor the grade of a luxury film. We had seen what our generative pipeline could do, and pitched Media One a different route — winterize the campaign’s own footage with AI. Enter POWER SHIFTER.</p>
+
+    <h2>the challenge.</h2>
+    <p>Media One CEO Derek Rider was blunt about the risk. AI glitches in a pop megastar’s new music video had just spent a week getting picked apart online, and he wanted no version of that story attached to a luxury watch brand. One warped railing or a melting snowflake becomes the headline instead of the watches.</p>
+    <p>The shots also could not be blank-slate generations. Each one had to grow out of the production’s supplied stills and footage so it would cut seamlessly against live action shot by a real cinematographer. And the calendar was unforgiving: engaged mid-September, internal rough cuts due September 24, client presentation September 25, finals locked by late October as the edit came together.</p>
+
+    <h2>the process.</h2>
+    <p>We worked from the production’s own plates rather than generating environments from scratch, because matching the film’s geography, lighting, and lens character was the whole job. From there it was test-and-learn with Media One’s edit team, shot by shot.</p>
+    <p>The finding that mattered: atmosphere sells the illusion. Layering snowfall into the foreground gave every shot the depth cues a viewer’s eye expects, and Rider singled out the foreground snow as the thing that sold the realism of the environments.</p>
+    <p>One shot nearly blew the schedule. A drone move past a sign looked like a full day of rotoscoping. We found a generative workaround that produced the shot as designed with no manual roto, and the day came back.</p>
+
+    <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Process — the save</span><p>A generative workaround gave <span class="mag">a full day of rotoscoping</span> back to the schedule.</p></aside>
+
+    <h2>the solution.</h2>
+    <p>The pitch we made to Media One is the pitch we make to every production partner: more bang for your buck. Generative AI gives a production bespoke, brand-matched environmental shots without the cost of a second shoot or the compromise of stock. For Bremont, that meant four finished shots of five to six seconds each, built from the production’s own material and delivered edit-ready.</p>
+
+    <h3>the wing, winterized.</h3>
+    <p>The manufacturing facility’s summer plate transformed with snow cover and mist, keeping the architecture true to the real building.</p>
+
+    <h3>the english countryside.</h3>
+    <p>A snowy scene of spires and a river, matched to the film’s actual geography rather than pulled from a stock library.</p>
+
+    <h3>the entrance.</h3>
+    <p>The arrival shot upgraded with winter dressing and festive fairy lights.</p>
+
+    <h3>the final walk.</h3>
+    <p>The closing walking shot, winterized so the film lands in the same season it opened in.</p>
+
+    <h2>the outcome.</h2>
+    <p>All four shots survived the two tests that matter: the edit and the CEO’s scrutiny. They cut against the live-action footage in the finished hero film with no artifact story attached.</p>
+    <p>Then Bremont asked for more. Oliver Walton requested a 15-second cutdown focused on The Wing, built around more of the snowy shots, to drive interest in facility tours. Several of the shots were also separated out for extended use on the Bremont website. The work did not just pass review — it became campaign assets in its own right.</p>
+
+    <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Outcome — asked for more</span><p>The strongest review an AI shot can get is <span class="mag">a request for more</span>.</p></aside>
+    <!-- [OUTCOME PLACEHOLDER — Notion Needs Review: YES. Candidates: class-5 third-party validation, class-6 post-launch business events. Verify: campaign live date + placements, Wing-tour uptake after the 15s cutdown, whether the AI shots are still live on bremont.com. Collect Derek Rider testimonial (foreground-snow praise is on record in email). JP review. Not rendered. -->
+
+  </div>
+</article>
+
+<!-- Next case -->
+<section class="insights" id="next-case">
   <div class="wrap reveal">
-    <h2 class="credits-heading rise">Directed by people who earned the title</h2>
-    <div class="team-grid">
-      <article class="lead-card reveal">
-        <div class="lead-portrait"><img src="/images/leadership/jp-holecka.jpg" alt="JP Holecka, Founder &amp; CEO · Director, Studios" loading="lazy"></div>
-        <h3>JP Holecka</h3>
-        <p class="lead-role">Founder &amp; CEO · Director, Studios</p>
-        <p class="lead-bio">Thirty years across film, television, and design. Production credits include <em>Little Women</em> and <em>21 Jump Street</em>; commercial work alongside Ridley Scott's Black Dog Films, ILM's commercial division, and agency partners including Wieden+Kennedy and Goodby, Silverstein. Founded POWER SHIFTER to bring production discipline to digital product — then, two decades later, brought digital product discipline back to production. CEO of the Year, BC, 2022.</p>
-      </article>
-      <article class="lead-card reveal">
-        <div class="lead-portrait"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/6e359c0f-840e-4c2e-8ce7-c44bf6216300/public" alt="Johnny Darrell, Director / Editor" loading="lazy"></div>
-        <h3>Johnny Darrell</h3>
-        <p class="lead-role">Director / Editor</p>
-        <p class="lead-bio">Twenty-five years in CGI animation and storytelling. Directed on <em>Sausage Party: Foodtopia</em> (Amazon) and Lord Miller's <em>Cloudy with a Chance of Meatballs</em> (Sony). Was directing synthetic performances before the machines made it easy.</p>
-      </article>
-      <article class="lead-card reveal">
-        <div class="lead-portrait"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/34c9a2f0-a9ac-4df1-e60d-deefcb749100/public" alt="Russ Jarman Price, Chairman" loading="lazy"></div>
-        <h3>Russ Jarman Price</h3>
-        <p class="lead-role">Chairman</p>
-        <p class="lead-bio">Former Creative Partner, Ogilvy London, and Chairman, Ogilvy Caribbean. Global rebrands and award-winning campaigns. The editorial standard the studio answers to.</p>
-      </article>
-    </div>
-    <a class="credits-cta swipe" href="/about">Meet the whole team →</a>
-  </div>
-</section>
-
-
-<!-- Block 2b — The roster. Direct reuse of .proof-spine (Pattern F) from
-     /digital. Same 9 logos, same 3x3 checkerboard, same .logo-mask
-     currentColor technique. The Studios voice spec ("Every flex attached
-     to a name, a credit, or a trophy") fits the logo-roster cleanly —
-     each logo IS a name-attached flex. Position: between Block 4 credits
-     (named directors) and Block 5b one-two-punch (working principles).
-     Moved here from its original position (between Block 2 proof-bar
-     and Block 3 films) on June 24 2026 per JP — editorial sequence
-     now reads as work → people → who trusts those people → how we work.
-     See studios.md Notes 15. -->
-<!-- Client testimonial banner — above the roster. The logos say WHO trusts us;
-     this says what it FELT like. -->
-<section class="quote-banner">
-  <div class="wrap reveal">
-    <blockquote>
-      <span class="qb-mark" aria-hidden="true">&ldquo;</span>
-      <p class="quote-t">Power Shifter’s team brings decades of cell animation, CGI and live action together to produce generative AI like nothing you’ve ever seen.</p>
-      <p class="quote-by">
-        <span class="qb-name">Simon Hardy</span>
-        <span class="qb-role">Creative Director, Liquid Agency</span>
-      </p>
-    </blockquote>
-  </div>
-</section>
-
-<section class="proof-spine" id="proof-spine">
-  <div class="wrap reveal">
-    <span class="eyebrow">Studios — selected clients</span>
-    <div class="logos" aria-label="Selected clients">
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/telus.png'); width: 141px; height: 28px;" aria-label="Telus"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/energizer.png'); width: 110px; height: 28px;" aria-label="Energizer"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/lululemon.png'); width: 28px; height: 28px;" aria-label="Lululemon"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/deloitte.png'); width: 150px; height: 28px;" aria-label="Deloitte"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/kpmg.png'); width: 68px; height: 28px;" aria-label="KPMG"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/grammarly.png'); width: 131px; height: 28px;" aria-label="Grammarly"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/akamai.png'); width: 68px; height: 28px;" aria-label="Akamai"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/iron-mountain.png'); width: 98px; height: 28px;" aria-label="Iron Mountain"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/canucks.png'); width: 29px; height: 28px;" aria-label="Canucks"></span></div>
+    <h2 class="rise">Next <em class="voice mag">case</em></h2>
+    <div class="posts">
+      <a class="post" href="/work/iron-mountain"><span class="stream">Studios · Iron Mountain</span><h3>The AI-hybrid anthem that won a Silver ADDY</h3><span>2026</span></a>
+      <a class="post" href="/work/celestial-ai"><span class="stream">Studios · Celestial AI</span><h3>The AI-native anthem that made light visible</h3><span>2026</span></a>
     </div>
   </div>
 </section>
 
-
-<!-- Block 5 — How it's made — "The pipeline is new. The discipline isn't."
-     DEFERRED to a follow-up commit. Requires three generated stills
-     (Board / Generation / Final, same shot across all three states) that
-     don't yet exist. When the stills are ready, the block sits here,
-     between Block 4 (Credits) and Block 5b (One-two punch). See
-     studios.md Block 5 for the lede + state strip structure. -->
-
-
-<!-- Block 5b — One-two punch. Pattern E shapes (.engine + .engine.mirror)
-     reused from /digital; copy reworked for Studios voice — see studios.md
-     Block 5b note (updated June 23 2026). The two-module framework
-     (Early & Often + Direct-to-Expert) is shared canon across both
-     practices, but the body paragraphs translate the working principles
-     through film-discipline vocabulary: rough boards instead of
-     wireframes, cuts mid-grade instead of builds mid-sprint, picture lock
-     instead of week-eleven reveals, directors/editors/leads instead of
-     strategists/designers/engineers, notes via PM instead of the game
-     of telephone. H2s ("Early and often. Sometimes ugly." and
-     "Expertise compounds.") stay verbatim — they're the framework
-     anchors that read true for either practice. Anchors #how-we-work
-     and #direct-to-expert match /digital deliberately — same principles,
-     different room. -->
-<section class="engine how-band" id="how-we-work">
-  <div class="wrap engine-grid reveal">
-    <div>
-      <h2 class="rise">Early and often.<br><em class="voice">Sometimes ugly.</em></h2>
-      <span class="rule"></span>
-    </div>
-    <div>
-      <p>You'll see the work while it's still changing: rough boards, generative drafts mid-thought, cuts mid-grade.</p>
-      <p>That keeps us close to the cut and able to <strong>fix a shot before it becomes a reshoot.</strong></p>
-      <p>No ta-da reveals. No polished surprise at picture lock. Just visible progress, sharper notes, and a film that gets better because you saw it early enough to shape it.</p>
-    </div>
-  </div>
-</section>
-
-<section class="engine mirror how-band" id="direct-to-expert">
-  <div class="wrap engine-grid reveal">
-    <div>
-      <h2 class="rise"><em class="voice">Expertise compounds.</em></h2>
-      <span class="rule"></span>
-    </div>
-    <div>
-      <p>You are the experts in your brand. We are the experts in turning impossible boards into films that hold at broadcast scale.</p>
-      <p>Put the right people in the same room and progress compounds. You work directly with the directors, editors, and the leads shaping the look. <strong>No account-layer relay. No notes via PM.</strong></p>
-      <p>Your brand. Our craft. One team. The film gets there sooner.</p>
-    </div>
-  </div>
-</section>
-
-
-<!-- Block 6 — What we make. DEFERRED to a follow-up commit. Four-up text
-     service list (Branded film & storytelling / Generative audio & voice /
-     Visual & motion production / IP & character development). One sentence
-     each, no icons. Likely renders as a text variant of .cards.four-up. -->
-
-
-<!-- Block 7 — For agencies. DEFERRED to a follow-up commit. Single-paragraph
-     discreet positioning for agency-of-record work. Open call on the "Ask
-     Toronto" line (Leo Burnett referenceability) is the gating item — once
-     resolved (in or cut), this block ships. -->
-
-
-<!-- Block 8 — Closer. Reuse of .page-closer pattern from /digital, with
-     Studios-specific copy per studios.md Block 8. H2 reframes the budget
-     vs. idea constraint; body summarizes; CTA "Start a film →" replaces
-     the /digital "Start a project →" while keeping the same .pc-row layout.
-     Phone number identical (one masterbrand, one phone). -->
+<!-- Global page closer -->
 <section class="page-closer" id="contact">
   <div class="wrap">
-    <h2 class="rise">Bring the board you were told was <em class="voice mag">unshootable.</em></h2>
-    <p>The budget used to be the ceiling. Now it's the idea.</p>
+    <h2 class="rise">Read enough? <em class="voice mag">Let's build.</em></h2>
+    <p>Cinema in days. Software in weeks. You'll work directly with the people who make it — no account layer, no brief telephone.</p>
     <div class="pc-row">
-      <a class="btn solid cascade" href="#">Start a film →</a>
+      <a class="btn solid cascade" href="#contact" data-cc-contact>Start a project →</a>
       <a class="tel" href="tel:+16042279952">+1 (604) 227-9952</a>
     </div>
   </div>
 </section>
-
 
 </main>
 <footer>
@@ -1252,12 +1188,12 @@
         <p class="tagline">Made to use.<br><em class="voice">Made to remember.</em></p>
       </div>
       <ul>
-        <li><a href="work">Work</a></li>
-        <li><a href="digital">Digital</a></li>
-        <li><a href="studios" aria-current="page">Studios</a></li>
-        <li><a href="insights">Insights</a></li>
-        <li><a href="about">About</a></li>
-        <li><a href="careers">Careers</a></li>
+        <li><a href="/work" aria-current="page">Work</a></li>
+        <li><a href="/digital">Digital</a></li>
+        <li><a href="/studios">Studios</a></li>
+        <li><a href="/insights">Insights</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/careers">Careers</a></li>
       </ul>
       <div class="news">
         <h4>The signal</h4>
@@ -1271,7 +1207,7 @@
     <p class="ack">We acknowledge that we live and work uninvited on the unceded territories of the Coast Salish peoples — the Lekwungen (Songhees and Esquimalt) and W̱SÁNEĆ around Victoria, the Quw'utsun (Cowichan) at Cowichan Bay, the many Hul'q'umi'num- and SENĆOŦEN-speaking Nations of Salt Spring Island, and the Sḵwx̱wú7mesh Úxwumixw (Squamish) at Gibsons. As a team working coast to coast, we extend that respect to all the Indigenous lands and treaty territories our people call home. We are grateful to share this land cared for by these Nations.</p>
     <div class="legal">
       <span>© <span id="yr"></span> Power Shifter Digital Inc. All rights reserved.</span>
-      <span><a href="terms-and-conditions">Terms &amp; Conditions</a><a href="privacy-policy">Privacy Policy</a><a href="privacy-policy">Cookies</a></span>
+      <span><a href="/terms-and-conditions">Terms &amp; Conditions</a><a href="/privacy-policy">Privacy Policy</a><a href="/privacy-policy">Cookies</a></span>
     </div>
   </div>
 </footer>
@@ -1352,49 +1288,13 @@
     });
   })();
 
-
-  // Hover video loops: lazy-load on first hover, never on touch or reduced motion
-  if (window.matchMedia('(hover: hover)').matches &&
-      !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    document.querySelectorAll('.wframe[data-video]').forEach(frame=>{
-      const card = frame.closest('.wcard') || frame;
-      let vid = null, resetTimer = null;
-      card.addEventListener('mouseenter', ()=>{
-        clearTimeout(resetTimer);
-        if(!vid){
-          vid = document.createElement('video');
-          vid.muted = true; vid.loop = true; vid.playsInline = true;
-          vid.className = 'hover-video';
-          const src = frame.dataset.video, base = src.replace(/\.mp4$/, '');
-          // Cloudflare Stream serves only default.mp4 (no .webm); requesting .webm 404s and
-          // stalls the rollover — only offer .webm for local files that actually have one.
-          const exts = /cloudflarestream\.com/.test(src)
-            ? [['mp4','video/mp4']]
-            : [['webm','video/webm'],['mp4','video/mp4']];
-          exts.forEach(([ext,type])=>{
-            const s = document.createElement('source');
-            s.src = base + '.' + ext; s.type = type;
-            vid.appendChild(s);
-          });
-          frame.appendChild(vid);
-        }
-        vid.play().then(()=>vid.classList.add('playing')).catch(()=>{});
-      });
-      card.addEventListener('mouseleave', ()=>{
-        if(!vid) return;
-        vid.pause();                       // freeze on the current frame
-        vid.classList.remove('playing');   // fade the frozen frame out
-        resetTimer = setTimeout(()=>{ vid.currentTime = 0; }, 420); // rewind only once hidden
-      });
-    });
-
-  }
-
-  // Case cells rise on scroll entry, staggered by column
-  document.querySelectorAll('.work-grid .wcard').forEach((c,i)=>{
-    c.classList.add('reveal');
-    c.style.setProperty('--d', String(i%3));
-    ro.observe(c);
+  // Related index rows rise on scroll entry, staggered top-to-bottom
+  const relHead = document.querySelector('.rel-head');
+  if (relHead) { relHead.classList.add('reveal'); ro.observe(relHead); }
+  document.querySelectorAll('.rel-row').forEach((r,i)=>{
+    r.classList.add('reveal');
+    r.style.setProperty('--d', String(i));
+    ro.observe(r);
   });
 
   // Proof spine: only runs if proofRow exists (homepage only)
@@ -1419,22 +1319,7 @@
   }
 </script>
 
-
 <script>
-  // Filter
-  const ftabs = document.querySelectorAll('.ftab');
-  const wcards = document.querySelectorAll('[data-cat]:not(.ftab)');
-  ftabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      ftabs.forEach(t => t.classList.remove('on'));
-      tab.classList.add('on');
-      const cat = tab.dataset.cat;
-      wcards.forEach(c => {
-        c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
-      });
-    });
-  });
-
 // ---------- Button system ----------
 // Primary: letter cascade
 document.querySelectorAll('.cascade').forEach(function(btn){
@@ -1529,37 +1414,42 @@ document.querySelectorAll('.swipe').forEach(function(el){
 })();
 </script>
 
-
-<!-- PS Craft Layer -->
-<!-- Cloudflare Stream hero reel — raw <video> + HLS (no player logo).
-     Ported from index.html; keep STREAM.video in sync with the homepage. -->
-<script src="/js/hls.min.js"></script>
 <script>
-  const STREAM = {
-    video: '4616f42aaf97d1eac2b0d0d2ff867bc1',
-    customer: 'customer-xv1aafyshr3tbknu'
-  };
-  (function(){
-    if (STREAM.customer.includes('REPLACE')) return;
-    const v = document.getElementById('reelVideo');
-    if (!v) return;
-    const base = `https://${STREAM.customer}.cloudflarestream.com/${STREAM.video}`;
-    v.poster = `${base}/thumbnails/thumbnail.jpg?time=1s&height=1080`;
-    const src = `${base}/manifest/video.m3u8`;
-    const live = () => v.classList.add('live');
-    v.loop = true;
-    v.addEventListener('ended', () => { v.currentTime = 0; v.play(); });
-    if (v.canPlayType('application/vnd.apple.mpegurl')) {
-      v.src = src; v.addEventListener('loadeddata', live, {once:true});
-    } else if (window.Hls && Hls.isSupported()) {
-      const h = new Hls({capLevelToPlayerSize:true});
-      h.loadSource(src); h.attachMedia(v);
-      h.on(Hls.Events.FRAG_LOADED, live);
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // Pointer-tracked 3D tilt on device plates
+  document.querySelectorAll('.fig-tilt').forEach(function(el){
+    var img = el.querySelector('.cs-shot'); if(!img) return;
+    el.addEventListener('pointermove', function(e){
+      var r = el.getBoundingClientRect();
+      var px = (e.clientX - r.left)/r.width - 0.5;
+      var py = (e.clientY - r.top)/r.height - 0.5;
+      img.style.transform = 'rotateY('+(px*8).toFixed(2)+'deg) rotateX('+(-py*8).toFixed(2)+'deg) scale(1.025)';
+    });
+    el.addEventListener('pointerleave', function(){ img.style.transform=''; });
+  });
+  // Reel loop: play on hover, pause on leave
+  var k = document.querySelector('.cs-reel');
+  if(k){
+    var v = k.querySelector('video.cs-reel-vid');
+    if(v){
+      k.addEventListener('pointerenter', function(){ v.play().catch(function(){}); });
+      k.addEventListener('pointerleave', function(){ v.pause(); });
     }
-  })();
+  }
+  // Before/after strip: wipe the After panel in on scroll entry
+  var ba = document.getElementById('cs-ba');
+  if(ba){
+    var io2 = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io2.unobserve(e.target);} });
+    },{threshold:.35});
+    io2.observe(ba);
+  }
+})();
 </script>
-<script src="ps-spice.js"></script>
+<!-- PS Craft Layer -->
+<script src="/ps-spice.js"></script>
 <!-- PS Concierge -->
-<script src="ps-concierge.js"></script>
+<script src="/ps-concierge.js"></script>
 </body>
 </html>

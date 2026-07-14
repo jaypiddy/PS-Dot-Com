@@ -328,7 +328,10 @@
   .cs-webband-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.6vw,20px);
     width:min(1180px,calc(100% - 2*var(--gutter)));margin-inline:auto}
   .cs-webband-media{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#000;border:0}
-  .cs-webband.is-figma .cs-webband-media{object-fit:contain}
+  /* Figma-workflow band: full-width stacked (not 2-up) — the node graphs are
+     dense and unreadable at half column width; natural aspect, no 16:9 crop. */
+  .cs-webband.is-figma .cs-webband-row{grid-template-columns:1fr;gap:clamp(16px,2.4vw,30px)}
+  .cs-webband.is-figma .cs-webband-media{aspect-ratio:auto;height:auto;object-fit:contain}
   .cs-webband-cap{width:min(1180px,calc(100% - 2*var(--gutter)));margin:clamp(14px,1.8vw,20px) auto 0;
     font-family:var(--mono);font-size:12.5px;letter-spacing:.03em;line-height:1.5;color:rgba(250,250,247,.6);text-align:center}
   @media(max-width:640px){.cs-webband-row{grid-template-columns:1fr}}

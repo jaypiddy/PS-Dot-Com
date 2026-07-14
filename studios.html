@@ -722,36 +722,24 @@
      Shipped June 23 2026 with the initial /studios build.
      ====================================================================== */
 
-  /* Pattern G — Reel hero. Full-bleed Cloudflare Stream video bg with overlay
-     content. Studios Block 1. Ink underlay, video plays muted+loop+autoplay,
-     text sits on a darkened bottom-band via .reel-vignette for legibility.
-     svh not vh (QA 2026-07-13, Ted, iOS): every other .hero on the site
-     already uses svh — this one was built standalone and got missed. Plain
-     vh sizes against Safari's large/toolbar-hidden viewport, so align-items:
-     flex-end can park the CTA under the collapsing bottom toolbar, making it
-     hard to tap. */
-  .reel-hero{position:relative;min-height:88svh;background:var(--ink);color:var(--paper);overflow:hidden;display:flex;align-items:flex-end}
-  .reel-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
-  /* raw <video> (not an iframe) so object-fit:cover handles the crop directly;
-     fades in on first frame via .live, mirroring the homepage hero reel. */
-  .reel-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;pointer-events:none;opacity:0;transition:opacity 1.2s ease-out}
-  .reel-video.live{opacity:1}
-  .reel-vignette{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(18,19,21,.55) 0%,rgba(18,19,21,0) 28%,rgba(18,19,21,0) 52%,rgba(18,19,21,.88) 100%);pointer-events:none}
-  /* padding-block only — the shorthand's side-0 was overriding .wrap's gutter (same element) */
-  .reel-inner{position:relative;z-index:2;padding-top:96px;padding-bottom:64px;width:100%}
-  .reel-hero h1{font-family:var(--display);font-weight:600;font-size:clamp(48px,7.2vw,116px);line-height:.94;letter-spacing:-0.02em;margin-bottom:28px;opacity:0;transform:translateY(14px);animation:settle .8s ease-out .2s forwards}
-  .reel-hero h1 span{display:block}
-  /* la-mericana via the Adobe kit (was a stale "late-serif" name that fell back to Georgia) */
-  .reel-hero h1 .voice{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;color:var(--magenta);letter-spacing:-0.01em}
-  .reel-hero .sub-body{font-size:clamp(16px,1.4vw,21px);max-width:780px;color:rgba(250,250,247,.88);margin-bottom:36px;line-height:1.5;opacity:0;transform:translateY(12px);animation:settle .8s ease-out .45s forwards}
-  /* Reel-hero scroll-prompt button uses the canonical .btn .cascade
-     vocabulary (matches the homepage Digital/Studios pair and the page
-     closer "Start a film"). The .reel-scroll custom class was removed
-     June 24 2026 — see studios.md Notes 15. The settle-in animation
-     timing (.7s delay so the button lands after H1 + body) is
-     preserved here. The .btn rule globally defines border:1px solid
-     var(--paper) which works against the dark video background. */
-  .reel-hero .btn{opacity:0;transform:translateY(10px);animation:settle .8s ease-out .7s forwards}
+  /* Studios hero magenta voice — mirrors the .sub-hero treatment on /digital
+     but keeps the Studios late-serif italic accent in magenta (brand voice). */
+  .sub-hero h1 .voice{color:var(--magenta)}
+
+  /* Screening theater — the .cs-screening/.cs-letterbox component the film
+     case studies use (celestial-ai et al.), ported here to hold the Studios
+     showreel just below the hero. The reel is a raw <video> (#reelVideo, HLS
+     via the init script at the foot) — not the Stream iframe — so no
+     Cloudflare player logo sits on it. Was the hero background (Pattern G),
+     promoted to a watched theater 2026-07-14. */
+  .cs-screening{background:var(--ink);color:var(--paper);padding-top:clamp(48px,6vw,80px)}
+  .cs-meta-strip{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px 36px;border-bottom:1px solid var(--line-on-ink);padding-bottom:18px;margin-bottom:clamp(24px,3vw,36px)}
+  .cs-meta-strip .m{font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(250,250,247,.55)}
+  .cs-meta-strip .m b{color:var(--paper);font-weight:700;margin-left:8px}
+  .cs-meta-strip .mt{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;font-size:clamp(19px,1.8vw,24px);letter-spacing:-.01em;color:var(--magenta);margin-right:auto}
+  .cs-letterbox{background:#000;padding:clamp(32px,4.5vw,56px) 0}
+  .cs-film-vid{display:block;width:min(1180px,calc(100% - 2*var(--gutter)));margin-inline:auto;aspect-ratio:16/9;object-fit:cover;background:#000;border:0;opacity:0;transition:opacity 1.2s ease-out}
+  .cs-film-vid.live{opacity:1}
 
   /* Pattern H — Proof bar. Single high-contrast declarative trophy line.
      Studios Block 2. Ink background, paper text. No section header. */
@@ -910,35 +898,40 @@
      ==================================================================== -->
 
 
-<!-- Block 1 — Reel hero. Pattern G in design-system-audit.md.
-     Full-bleed Cloudflare Stream video as the hero background, .reel-vignette
-     darkens the bottom band for H1 legibility. H1 is two-line: setup +
-     differentiator (the differentiator carries the late-serif italic .voice
-     treatment in magenta). Body line names the provenance — ILM, Ridley Scott,
-     Ogilvy — without naming the specific people (credits live in Block 4).
-     The scroll prompt routes to #films (Block 3).
-
-     Video UID: 4616f42aaf97d1eac2b0d0d2ff867bc1 — same reel as the homepage
-     hero (kept in sync deliberately: the masterbrand showcase of Studios
-     work). Swapped 2026-07-13 off the old dcde8adc… UID AND off the Stream
-     iframe embed → the homepage's raw <video> + HLS approach, so there's no
-     Cloudflare player logo/watermark on the reel. To change the reel, swap
-     STREAM.video in the init script near the bottom of this file (and match
-     it on index.html to keep the pages identical). Customer subdomain:
-     customer-xv1aafyshr3tbknu.cloudflarestream.com (per VIDEO_PIPELINE.md). -->
-<section class="reel-hero" id="reel-hero">
-  <div class="reel-bg">
-    <video id="reelVideo" class="reel-video" muted autoplay loop playsinline
-           poster="" aria-hidden="true"></video>
-    <div class="reel-vignette"></div>
-  </div>
-  <div class="reel-inner wrap">
-    <h1 class="rise">
-      <span>Anyone can generate.</span>
-      <span><em class="voice">Few can direct.</em></span>
-    </h1>
+<!-- Block 1 — Hero. Section-header treatment mirroring /digital's .sub-hero:
+     slash-field weather instead of a full-bleed background video, an eyebrow,
+     the rise headline (the differentiator keeps the late-serif italic .voice
+     in magenta — Studios brand voice), and the provenance body line (ILM,
+     Ridley Scott, Ogilvy). The showreel moved OUT of the hero background into
+     the screening theater directly below (Block 1b) so it's watched, not
+     wallpaper. Reworked 2026-07-14 (was Pattern G reel-hero). -->
+<section class="sub-hero">
+  <svg class="slash-field" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="pair" transform="translate(1060 230) scale(2.2)" style="--dur:15.6s;--dly:0s;--sh:10.4px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(780 460) scale(1.3)" style="--dur:20.4s;--dly:-9s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1260 520) scale(1.7)" style="--dur:13.2s;--dly:-15s;--sh:9.2px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(640 260) scale(1.0)" style="--dur:18s;--dly:-4s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(940 560) scale(1.1)" style="--dur:22.8s;--dly:-21s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1380 360) scale(1.2)" style="--dur:18.6s;--dly:-6s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g></svg>
+  <div class="sub-hero-inner wrap">
+    <span class="eyebrow">Studios — generative film, audio &amp; motion</span>
+    <h1 class="rise">Anyone can generate. <em class="voice">Few can direct.</em></h1>
     <p class="sub-body">Power Shifter Studios. Film, audio, and motion on generative pipelines — run by people who came up through ILM, Ridley Scott, and Ogilvy, not a prompt library.</p>
-    <a class="btn cascade" href="#films">Watch the work →</a>
+  </div>
+</section>
+
+
+<!-- Block 1b — Showreel theater. The .cs-screening/.cs-letterbox component the
+     film case studies use (celestial-ai et al.), holding the Studios reel just
+     below the hero. Raw <video id="reelVideo"> + HLS (init script at the foot
+     of this file) — not the Stream iframe — so no Cloudflare player logo sits
+     on the reel. UID 4616f42aaf97d1eac2b0d0d2ff867bc1, kept in sync with the
+     homepage hero reel (swap STREAM.video in both files together). -->
+<section class="cs-screening reveal" id="reel">
+  <div class="wrap">
+    <div class="cs-meta-strip">
+      <span class="mt">The Studios reel</span>
+      <span class="m">Format<b>16:9</b></span>
+      <span class="m">Pipeline<b>Generative</b></span>
+      <span class="m">Sound<b>Muted loop</b></span>
+    </div>
+  </div>
+  <div class="cs-letterbox">
+    <video id="reelVideo" class="cs-film-vid" muted autoplay loop playsinline aria-label="Power Shifter Studios showreel"></video>
   </div>
 </section>
 

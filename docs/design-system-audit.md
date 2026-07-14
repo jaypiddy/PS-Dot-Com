@@ -334,6 +334,8 @@ The 9 logos: Telus, Energizer, Lululemon, Deloitte, KPMG, Grammarly, Akamai, Iro
 
 ### Pattern G — `.reel-hero` (full-bleed Cloudflare Stream video hero)
 
+**Status: DECOMMISSIONED on `/studios` 2026-07-14 (`d1ab51f`).** This was Studios Block 1. It was replaced by a canonical `.sub-hero` (Pattern 2) plus a `.cs-screening` **showreel theater** directly below the hero — the reel is now watched, not wallpaper, and runs as a raw `<video>` + HLS (no Cloudflare player logo). Pattern G is no longer used anywhere on the site; the `.reel-hero`/`.reel-bg`/`.reel-video`/`.reel-vignette`/`.reel-inner` CSS was removed from `studios.html`. The homepage keeps a reel as a hero background, but that is the homepage's own full-scale hero, not `reel-hero`. Documentation below preserved for history / possible future reuse.
+
 Studios Block 1. Full-bleed Cloudflare Stream video as hero background, with overlaid H1 + body + scroll-prompt button. Distinct from `.sub-hero` (paper background, no video) and from the homepage's hero (different scale + interaction). Ink underlay so the video fade-in doesn't flash white; `.reel-vignette` darkens the bottom band for text legibility against any video content.
 
 ```html

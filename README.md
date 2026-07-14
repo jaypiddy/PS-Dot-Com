@@ -6,14 +6,16 @@ One masterbrand, one domain, two doors: **Digital** (product strategy, design, e
 
 ## Status
 
+_The whole site is now **built and live on [powershifter.com](https://powershifter.com)** (Vercel; `main` push = deploy) — the domain cutover landed 2026-07-13. This table and the counts below are a historical Phase-2 snapshot; the live site + `docs/` + the memory journal are the current source of truth._
+
 | Page | File | State |
 |---|---|---|
-| Homepage | `index.html` | Built — v2.8 |
-| Work | `work.html` | Built — v1, 22 projects |
-| Digital | — | Not started |
-| Studios | — | Not started |
-| Insights | — | Not started |
-| About | — | Not started |
+| Homepage | `index.html` | Built — live |
+| Work | `work.html` | Built — live, 25 case studies |
+| Digital | `digital.html` | Built — live |
+| Studios | `studios.html` | Built — live (`.sub-hero` + showreel theater since 2026-07-14) |
+| Insights | `insights.html` | Built — live, 63 posts |
+| About | `about.html` | Built — live |
 
 ## Brand system
 
@@ -47,11 +49,11 @@ All motion uses `cubic-bezier(.76,0,.24,1)` and is disabled under `prefers-reduc
 
 ## Work page
 
-22 projects: 16 Digital, 6 Studios, plus a held slot for the first documented hybrid engagement.
+25 case studies: 17 Digital, 8 Studios/hybrid (incl. two Studios × Digital hybrids — Iron Mountain and Resurrection Campaign).
 
-**Studios:** Iron Mountain — *The Summit* (featured, Silver ADDY 2026), Ernest Packaging — *Four Dreams* (Silver ADDY 2026), Celestial AI, The Algorithm Trap, Maple Health, Rapid MVP.
+**Studios:** Iron Mountain — *The Summit* (featured, Silver ADDY 2026), Ernest Packaging — *Four Dreams* (Silver ADDY 2026), Celestial AI, The Algorithm Trap, Maple Health, Rapid MVP — *Luma*, Bremont — *From the Wing to the World*, Resurrection Campaign.
 
-**Digital:** TELUS Rewards, Energizer, Hall Constructors, NVA, SxS Technologies, Koodo, BC Parks Foundation (Discover Parks), BC Women's Health Foundation, Angel Oak, Vancouver Chinatown BIA, NCIS (Nautical Claims Investigative Service), Phinity, XYON, Luxxee, Delta Controls, lululemon.
+**Digital:** TELUS Rewards, Energizer, Hall Constructors, NVA, SxS Technologies, Koodo, BC Parks Foundation (Discover Parks), BC Women's Health Foundation, Angel Oak, Vancouver Chinatown BIA, NCIS (Nautical Claims Investigative Service), Phinity, XYON, Luxxee, Delta Controls, lululemon, Allia Health Group.
 
 Hero images live in `images/` and are referenced by relative path. Delta Controls and lululemon are placeholder frames pending imagery.
 

@@ -18,18 +18,22 @@ _Excerpted from the companion copy doc; preserved verbatim because it governs ev
 
 ---
 
-## Block 1 — Reel hero
+## Block 1 — Hero (+ Block 1b showreel theater)
 
-_Full-bleed autoplay reel as background. H1 carries the canonical statement; sub-paragraph names the provenance; canonical button at the foot scrolls down to the films index. Button uses the site's `.btn .cascade` vocabulary (matches the homepage Digital/Studios pair and the page-closer "Start a film") — see Notes 15._
+_**Reworked 2026-07-14 (commit `d1ab51f`).** Was a full-bleed autoplay reel background (`.reel-hero`, Pattern G). Now a section-header hero mirroring `/digital`'s `.sub-hero` — slash-field weather, eyebrow, `.rise` headline (the differentiator keeps the late-serif italic `.voice` in magenta via a scoped `.sub-hero h1 .voice` rule; `/digital`'s voice is cream). No hero CTA (matches `/digital`, and the reel now sits right below — see Notes 15/24). The showreel moved OUT of the hero background into a screening **theater** directly below (Block 1b): the `.cs-screening`/`.cs-letterbox` component the film case studies use, as a raw `<video id="reelVideo">` + HLS (not the Stream iframe) so no Cloudflare player logo. Homepage still uses the reel as a hero background — only `/studios` changed._
 
-**H1 (two-line):**
-- **H1 line 1:** Anyone can generate.
-- **H1 line 2:** Few can direct.
+**EYEBROW:** Studios — generative film, audio & motion
+
+**H1 (one line, `.voice` on the second sentence):** Anyone can generate. _Few can direct._
 
 **BODY:** Power Shifter Studios. Film, audio, and motion on generative pipelines — run by people who came up through ILM, Ridley Scott, and Ogilvy, not a prompt library.
 
-**CTA (outline `.btn`):** Watch the work →
-_Routes to `#films` (in-page scroll to the films index). Renders as outline-on-dark via the canonical `.btn` rule (`border:1px solid var(--paper)`) — the cascade letter-and-arrow hover animation comes along for free._
+### Block 1b — Showreel theater
+
+_`.cs-screening` → `.cs-meta-strip` (title + format chips) → `.cs-letterbox` (black band, 16:9 reel). Reel UID `4616f42aaf97d1eac2b0d0d2ff867bc1`, kept in sync with the homepage hero reel (swap `STREAM.video` in both files together)._
+
+**META TITLE (serif italic):** The Studios reel
+**META CHIPS:** Format 16:9 · Pipeline Generative · Sound Muted loop
 
 ---
 
@@ -327,13 +331,14 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
 1. **Initial /studios build — spine commit (June 23 2026).**
     Built into the static site at `studios.html` based on the chrome lifted verbatim from `digital.html` (head + header + takeover menu + footer + scripts). The base CSS, typography, color tokens, and reusable patterns (`.proof-spine`, `.engine` + `.engine.mirror`, `.page-closer`) come along with the clone — orphan CSS from `/digital`-specific patterns (`.sub-hero`, `.validator-band`, `.terminal`, `.offers-section`, etc.) currently rides along unused. Acceptable for the static prototype phase; clean up in a follow-up commit if size or maintainability becomes an issue.
 
-    **Blocks shipped:** 1 (Reel hero, Pattern G), 2 (Proof bar, Pattern H), 2b (The roster — reuse of Pattern F from `/digital`), 3 (Films index, Pattern I), 4 (Credits one-sheet, Pattern J), 5b (One-two punch — reuse of Pattern E from `/digital`), 8 (Closer — reuse of `.page-closer` with Studios copy).
+    **Blocks shipped:** 1 (Hero — `.sub-hero`, reworked 2026-07-14 `d1ab51f`; originally Reel hero / Pattern G), 1b (Showreel theater — `.cs-screening`/`.cs-letterbox`, added 2026-07-14), 2 (Proof bar, Pattern H), 2b (The roster — reuse of Pattern F from `/digital`), 3 (Films index, Pattern I), 4 (Credits one-sheet, Pattern J), 5b (One-two punch — reuse of Pattern E from `/digital`), 8 (Closer — reuse of `.page-closer` with Studios copy).
 
     **Blocks deferred:** 5 (How it's made — needs three generated stills for Board / Generation / Final states; the lede ships but the visual strip can't), 6 (What we make — services 4-up text grid), 7 (For agencies — pending the "Ask Toronto" / Leo Burnett referenceability resolution).
 
     HTML comments inside `studios.html` mark each deferred block's insertion point so the follow-up commits are surgical inserts, not restructures.
 
 2. **Reel hero video — using the homepage hero reel UID.**
+    **⚠️ SUPERSEDED 2026-07-14 (`d1ab51f`):** Block 1 is no longer a reel-hero. The hero is now a `.sub-hero` (no background video) and the reel plays in a `.cs-screening`/`.cs-letterbox` theater below it (Block 1b) as a raw `<video id="reelVideo">` + HLS — not an iframe — so there is no Cloudflare player logo. The reel UID is now `4616f42aaf97d1eac2b0d0d2ff867bc1` (swapped 2026-07-13 off `dcde8adc…`), still kept in sync with the homepage hero reel via `STREAM.video` in both files. The original note below is preserved for history.
     The reel-hero `<iframe>` (Block 1, Pattern G) points to Cloudflare Stream UID `dcde8adcb14fb52708c8ce6cf631658f` — the same UID that drives the homepage hero reel. This is intentional, not a placeholder: the homepage reel IS the Studios reel (it's the masterbrand showcase of Studios work). If a `/studios`-specific reel gets cut later, swap the UID via `str_replace` on the iframe `src`; everything else stays. Customer subdomain `customer-xv1aafyshr3tbknu.cloudflarestream.com` per `docs/VIDEO_PIPELINE.md`.
 
     Iframe query string: `?muted=true&autoplay=true&loop=true&controls=false&preload=auto`. Standard background-video parameter set. Browsers require `muted=true` for autoplay to succeed without user interaction.
@@ -367,7 +372,7 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
 
 12. **New patterns this build added to the system (audit doc).**
     Four new patterns documented in `docs/design-system-audit.md`:
-    - **Pattern G — `.reel-hero`:** full-bleed Cloudflare Stream video background with overlaid H1 + body + scroll prompt. Studios Block 1. Distinct from `.sub-hero` (paper bg, no video) and from the homepage's hero treatment.
+    - **Pattern G — `.reel-hero`:** full-bleed Cloudflare Stream video background with overlaid H1 + body + scroll prompt. ~~Studios Block 1.~~ **Retired on `/studios` 2026-07-14 (`d1ab51f`)** — the page now uses `.sub-hero` + a `.cs-screening` reel theater (Block 1/1b). Pattern G is no longer used anywhere on the site; the CSS was removed from `studios.html`. Kept in the catalog for history / possible future reuse.
     - **Pattern H — `.proof-bar`:** single declarative trophy line on ink background, between hero and roster. Studios Block 2. Distinct from `.proof` (multi-stat outcome strip) and from `.proof-spine` (logo grid).
     - **Pattern I — `.films` + `.film-featured` + `.film-card` + `.film-grid`:** featured-row + 4-up-grid film index. Studios Block 3. The featured rows use a 7fr/5fr media+meta split; the grid is the standard 4-up below a horizontal rule. Reusable for any future media-index page (case studies, podcast episodes, etc.).
     - **Pattern J — `.credits` + `.credit-card`:** name + role + credit-line one-sheet in a 3-up grid. Studios Block 4. Reusable on `/about` if that page wants a credits-style format for a particular team subset, but the canonical `/about` is a full bio grid (not this).
@@ -414,7 +419,7 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
 
 15. **Reel-hero button standardized + roster relocated (June 24 2026).**
 
-    **Button vocabulary.** The reel-hero scroll-prompt button was originally styled with a custom `.reel-scroll` class — uppercase, .14em letter-spacing, .28-alpha border. That diverged from the site's canonical button vocabulary (`.btn` + `.cascade` modifier) used on the homepage Digital/Studios pair and on every page-closer ("Start a project" on `/digital`, "Start a film" on `/studios`). JP's call on review: one button vocabulary, not two.
+    **Button vocabulary.** _(Moot since 2026-07-14 `d1ab51f`: the hero CTA was removed entirely in the `.sub-hero` rework — the reel now sits directly below the hero, so a "Watch the work →" pre-driver is redundant. History preserved.)_ The reel-hero scroll-prompt button was originally styled with a custom `.reel-scroll` class — uppercase, .14em letter-spacing, .28-alpha border. That diverged from the site's canonical button vocabulary (`.btn` + `.cascade` modifier) used on the homepage Digital/Studios pair and on every page-closer ("Start a project" on `/digital`, "Start a film" on `/studios`). JP's call on review: one button vocabulary, not two.
 
     Swapped to `<a class="btn cascade" href="#films">Watch the work →</a>`:
     - **Class**: `.btn cascade` (outline variant — paper border on dark video background, transparent fill)
@@ -587,7 +592,7 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
 
     **What was added.** A Cloudflare Stream iframe per credit card, layered over the still portrait, lazy-loaded on first hover. The still portraits stay in place — they double as video posters (visible until the iframe loads + on touch devices + when reduced-motion is set). The video fades in over the still on rollover; fades back out on rollout.
 
-    **Why iframes, not `<video>` tags.** /work.html's `.wframe[data-video]` pattern uses local MP4/WebM with the native `<video>` element. The credit videos are Cloudflare Stream-hosted (no local MP4 access). Stream iframes handle decode, loop, autoplay, and adaptive bitrate selection automatically — same pattern as the reel-hero on Block 1 and the Validator explainer on /digital.
+    **Why iframes, not `<video>` tags.** /work.html's `.wframe[data-video]` pattern uses local MP4/WebM with the native `<video>` element. The credit videos are Cloudflare Stream-hosted (no local MP4 access). Stream iframes handle decode, loop, autoplay, and adaptive bitrate selection automatically — same pattern as the Validator explainer on /digital. (The Block 1b showreel theater is the exception — it uses a raw `<video>` + HLS, not an iframe, to keep the Cloudflare player logo off the reel.)
 
     **Markup pattern per card.**
 
@@ -650,7 +655,7 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
 
     **Reduced-motion + touch device behavior.** The whole handler is gated behind both matchMedia checks — touch devices (no `(hover: hover)`) and reduced-motion users (`prefers-reduced-motion: reduce`) see ONLY the still portrait, never the video. Graceful degradation.
 
-    **Cloudflare Stream customer subdomain.** `customer-xv1aafyshr3tbknu.cloudflarestream.com` — same subdomain as the reel-hero (Block 1) and the Rapid MVP explainer on /digital. Single Cloudflare Stream account, all studios + product videos.
+    **Cloudflare Stream customer subdomain.** `customer-xv1aafyshr3tbknu.cloudflarestream.com` — same subdomain as the Block 1b showreel theater and the Rapid MVP explainer on /digital. Single Cloudflare Stream account, all studios + product videos.
 
     **Real headshots / portrait swap.** When real headshots are shot, drop them in at `images/portraits/{jp,johnny,russ}.jpg` (same paths). The still becomes the new poster; the bio-video stays the same. No code change needed.
 

@@ -141,11 +141,21 @@ eyebrow  →  H1 (.rise word-reveal)  →  supporting line
     explanatory sentence. Used on Digital, About. **Must be `--paper` on the ink hero.**
 - Detail pages (Article, Case study) add a `.back.swipe` link above the H1 — sanctioned variant.
 
-### Hero — `reel-hero` (Studios only — sanctioned cinematic exception)
-Full-bleed Cloudflare Stream background reel, **min-height 88vh**, bottom-aligned,
-`.reel-vignette` scrim for legibility, H1 + `.reel-body` + a CTA button. This is the
-**one** approved deviation from `sub-hero` — justified because Studios is the film
-practice. A small **"SHOWREEL"** caption is expected here (live background reel).
+### Hero — `reel-hero` (RETIRED 2026-07-14)
+Full-bleed Cloudflare Stream background reel (`min-height:88svh`, `.reel-vignette`
+scrim, H1 + body + CTA). **Was Studios' sanctioned cinematic exception; retired on
+`/studios` 2026-07-14 (`d1ab51f`).** Studios now uses the canonical `.sub-hero` like
+every other subpage, and the showreel plays in a `.cs-screening` **theater** directly
+below the hero (see below). Pattern G is no longer used anywhere; the homepage keeps a
+reel as a *hero background* but that's the homepage's own full-scale hero, not `reel-hero`.
+
+### Showreel / film theater — `cs-screening` / `cs-letterbox`
+The letterboxed film-player component: `.cs-screening` (ink section) → `.cs-meta-strip`
+(serif-italic title + `--mono` format chips) → `.cs-letterbox` (black band, 16:9 media
+centered at `min(1180px, …)`). Used on every **film case study** (celestial-ai et al.,
+via `.cs-film-vid` iframe) and now on **`/studios`** as the showreel theater below the
+hero — there as a raw `<video id="reelVideo">` + HLS (not the Stream iframe) so no
+Cloudflare player logo sits on the reel. Fades in on first frame via `.cs-film-vid.live`.
 
 ### Engine band (`.engine` / `.engine-grid`)
 Two-column section: H2 left (with a draw-on magenta `.rule`), prose right
@@ -209,15 +219,16 @@ ink/paper for rhythm. About, for example: ink hero → paper story → paper ros
 3. **Nav links wired** to standalone pages (Work/Digital/Studios/Insights/About), **extensionless**
    (Vercel clean URLs); **active state** via `.is-current` + `aria-current`. **Contact removed
    from the nav** (the `#contact` closer + concierge handle it).
-4. **Studios `reel-hero` is the one sanctioned hero exception**; all other subpages
-   use `sub-hero`.
+4. ~~**Studios `reel-hero` is the one sanctioned hero exception**~~ **Superseded 2026-07-14 (`d1ab51f`):** Studios now uses `sub-hero` like every other subpage; there is no
+   longer a sanctioned reel-hero exception. The Studios showreel moved into a `.cs-screening`
+   theater below the hero. `reel-hero`/Pattern G is retired.
 5. **Supporting line — two sanctioned variants.** The hero supporting line collapses to
    exactly two: the **voice line** (`.sub-voice > em.voice.mag`, serif italic magenta —
    declarative hub statements; Work, Insights, Article, Case) and the **body line**
    (`.sub-body`, prose, `--paper` on the ink hero — explanatory heroes; Digital, About).
    The legacy `.streams` (Insights) and `.reel-body` (Studios) *hero* variants are migrated
-   onto `.sub-body`; Studios keeps `--paper` over the reel scrim and `reel-hero` stays the
-   sanctioned exception (item 4). (The homepage keeps a separate `.streams` paragraph in its
+   onto `.sub-body`; Studios now uses `.sub-body` in a standard `.sub-hero` as well (the
+   `reel-hero` exception was retired 2026-07-14 — item 4). (The homepage keeps a separate `.streams` paragraph in its
    insights *teaser* — a content-section descriptor, not a hero supporting line.)
 6. **Voice-color rule (Two Voices).** `em.voice.mag` = magenta = the emotional/pivot line
    (hero voice line, page closers). Bare `em.voice` = cream = emphasis that is part of the

@@ -23,9 +23,9 @@ KB_URL = "https://powershifter.com/docs/concierge-knowledge.md"
 
 # Lock requests to the site origin (CORS + abuse guard). Comma-separated
 # allow-list. powershifter.com is the production domain (2026-07-13 cutover);
-# the vercel.app origin stays allowed while it still serves (drop it once
-# vercel.app redirects to the apex). Use "*" only for local testing.
-ALLOWED_ORIGIN = "https://powershifter.com,https://www.powershifter.com,https://ps-dot-com.vercel.app"
+# ps-dot-com.vercel.app was dropped once it became a 308 redirect to the apex
+# (no pages serve from that origin anymore). Use "*" only for local testing.
+ALLOWED_ORIGIN = "https://powershifter.com,https://www.powershifter.com"
 
 # Soft abuse gate: the page sends this as the X-PS-Token header (chat/contact)
 # and in the /log body, and it must match. Client-visible by design (it ships in

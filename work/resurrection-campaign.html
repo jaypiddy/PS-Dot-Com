@@ -325,9 +325,13 @@
   /* Website BG showcase — full-bleed black band inside the body (breaks the reading column). */
   .prose .cs-webband{position:relative;width:100vw;margin-left:50%;transform:translateX(-50%);
     margin-top:3.2em;margin-bottom:3.2em;background:#000;padding:clamp(28px,4vw,56px) 0}
-  .cs-webband-vid{display:block;width:min(1180px,calc(100% - 2*var(--gutter)));margin-inline:auto;aspect-ratio:16/9;object-fit:cover;background:#000;border:0}
+  .cs-webband-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.6vw,20px);
+    width:min(1180px,calc(100% - 2*var(--gutter)));margin-inline:auto}
+  .cs-webband-media{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#000;border:0}
+  .cs-webband.is-figma .cs-webband-media{object-fit:contain}
   .cs-webband-cap{width:min(1180px,calc(100% - 2*var(--gutter)));margin:clamp(14px,1.8vw,20px) auto 0;
     font-family:var(--mono);font-size:12.5px;letter-spacing:.03em;line-height:1.5;color:rgba(250,250,247,.6);text-align:center}
+  @media(max-width:640px){.cs-webband-row{grid-template-columns:1fr}}
   /* Episode bands — one floor per band (Direction C treatment) */
   .cs-ep{padding:clamp(56px,7vw,92px) 0}
   .cs-ep.on-ink{background:var(--ink);color:var(--paper)}
@@ -1109,6 +1113,16 @@
     <p>Roughly 75% of the timeline is a standardized master template: the stormy Toronto open, the muddy exhumation of a buried briefcase, the corridor travel through the server arrays, and the activation of the Imagination Engines. Build it once, build it right, and it carries every version. Personalization then happens inside two engineered swap zones, so no version needs a new shoot: the Act I tombstones, masked and swapped for a target agency’s own client logos and epitaphs, and the Act IV–V payoff, where the briefcase interior and final on-screen playback are regenerated through precise image-to-video passes tuned to one flagship client stunt.</p>
     <p>Underneath it runs the studio’s post-production discipline, not a prompt-and-ship shortcut. Our pipeline is fixed: generate, iterate, curate, enhance, composite, finalize. We run dozens or hundreds of generations to land the exact motion and framing, treating the latent space like a film set, then use After Effects, heavy compositing, and manual masking to remove artifacts and force visual consistency. It’s the studio’s Slop-Free Guarantee: we don’t ship raw AI output.</p>
 
+    <div class="cs-webband is-figma">
+      <div class="cs-webband-row">
+        <img class="cs-webband-media" src="/images/resurrection/weave-tombstone.jpg" loading="lazy"
+          alt="A node-based Figma Weave graph cloning the Act I tombstone shot across agency variants — each pass swapping in a different client logo and epitaph.">
+        <img class="cs-webband-media" src="/images/resurrection/weave-cloning.jpg" loading="lazy"
+          alt="A Figma Weave graph regenerating the Act IV–V payoff — the briefcase interior and final on-screen playback re-rendered per agency through image-to-video passes.">
+      </div>
+      <p class="cs-webband-cap">Our process for automating the swapping out of film assets in the key frames — one node graph, cloned per agency.</p>
+    </div>
+
     <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Process — the human in the loop</span><p>Generative AI is a powerful camera, but it still needs <span class="mag">a human editor</span>.</p></aside>
 
     <h2>the solution.</h2>
@@ -1121,9 +1135,13 @@
     <p>We built the front-end in vanilla HTML, CSS, and JavaScript rather than a framework, because on a cold outbound click the first load has to be instant. Video is offloaded to Cloudflare Stream and delivered as adaptive HLS, so a broadcast-grade film streams without buffering on any connection. The hero is an HTML5 canvas sequence of 240-plus frames scrubbed to the scroll, producing a 3D-like zoom into the crypt without the weight of WebGL, with GSAP driving the timeline animations and Lenis smoothing the scroll. Firebase handles hosting, the Firestore instance data, and the authenticated admin.</p>
 
     <div class="cs-webband">
-      <video class="cs-webband-vid" autoplay muted loop playsinline preload="metadata"
-        poster="/images/resurrection/website-bg.jpg"
-        src="/videos/resurrection-bg.mp4"></video>
+      <div class="cs-webband-row">
+        <img class="cs-webband-media" src="/images/resurrection/site.jpg" loading="lazy"
+          alt="A Resurrection Campaign microsite — one per-agency instance with its own resurrected film, served from its own slug.">
+        <video class="cs-webband-media" autoplay muted loop playsinline preload="metadata"
+          poster="/images/resurrection/website-bg.jpg"
+          src="/videos/resurrection-bg.mp4"></video>
+      </div>
       <p class="cs-webband-cap">Immersive Resurrection campaign video was first created in Midjourney, then animated in Kling 3.0.</p>
     </div>
 

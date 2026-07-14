@@ -289,7 +289,11 @@
           fv.querySelector('.cc-fv-back2').addEventListener('click', function(){ openForm(false); });
         };
         if(CONFIG.formEndpoint){
-          var rr = await fetch(CONFIG.formEndpoint, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+          // Must carry the shared token like the chat fetch — the Worker's
+          // CLIENT_TOKEN gate 403s any POST without a matching X-PS-Token.
+          var fh = { 'Content-Type':'application/json' };
+          if (CONFIG.clientToken) fh['X-PS-Token'] = CONFIG.clientToken;
+          var rr = await fetch(CONFIG.formEndpoint, {method:'POST',headers:fh,body:JSON.stringify(data)});
           if(rr.status === 429){ fvErr.textContent='Easy does it — one note a minute. Try again shortly.'; fvSubmit.disabled=false; fvSubmit.textContent='Send to the studio'; return; }
           if(!rr.ok) throw new Error('form '+rr.status);
           // Keep a local backup only when the note was actually delivered.

@@ -30,7 +30,7 @@ _**Reworked 2026-07-14 (commit `d1ab51f`).** Was a full-bleed autoplay reel back
 
 ### Block 1b — Showreel theater
 
-_`.cs-screening` → `.cs-meta-strip` (title + format chips) → `.cs-letterbox` (black band, 16:9 reel). Raw `<video>` + HLS (not the Stream iframe) so no Cloudflare logo; native `controls` for playback + volume (`controlslist="nodownload"`), still autoplays muted+loop so it moves on load. Reel UID `4616f42aaf97d1eac2b0d0d2ff867bc1`, kept in sync with the homepage hero reel (swap `STREAM.video` in both files together)._
+_`.cs-screening` → `.cs-meta-strip` (title + format chips) → `.cs-letterbox` (black band, 16:9 reel). Raw `<video>` + HLS (not the Stream iframe) so no Cloudflare logo; native `controls` for playback + volume (`controlslist="nodownload"`), still autoplays muted+loop so it moves on load. Reel UID `5442fab995851e59c1c965023f4f28bc` — a Studios-specific reel (decoupled from the homepage hero reel 2026-07-14; the homepage keeps its own `STREAM.video`, do not re-sync)._
 
 **META TITLE (serif italic):** The Studios reel
 **META CHIPS:** Format 16:9 · Pipeline Generative · Cut Summer 2026
@@ -338,7 +338,7 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
     HTML comments inside `studios.html` mark each deferred block's insertion point so the follow-up commits are surgical inserts, not restructures.
 
 2. **Reel hero video — using the homepage hero reel UID.**
-    **⚠️ SUPERSEDED 2026-07-14 (`d1ab51f`):** Block 1 is no longer a reel-hero. The hero is now a `.sub-hero` (no background video) and the reel plays in a `.cs-screening`/`.cs-letterbox` theater below it (Block 1b) as a raw `<video id="reelVideo">` + HLS — not an iframe — so there is no Cloudflare player logo. The reel UID is now `4616f42aaf97d1eac2b0d0d2ff867bc1` (swapped 2026-07-13 off `dcde8adc…`), still kept in sync with the homepage hero reel via `STREAM.video` in both files. The original note below is preserved for history.
+    **⚠️ SUPERSEDED 2026-07-14 (`d1ab51f`):** Block 1 is no longer a reel-hero. The hero is now a `.sub-hero` (no background video) and the reel plays in a `.cs-screening`/`.cs-letterbox` theater below it (Block 1b) as a raw `<video id="reelVideo">` + HLS — not an iframe — so there is no Cloudflare player logo. The reel UID is now `5442fab995851e59c1c965023f4f28bc` — a Studios-specific reel (was `4616f42a…`, itself swapped 2026-07-13 off `dcde8adc…`); **decoupled from the homepage hero reel 2026-07-14**, so the homepage and Studios reels no longer track each other. The original note below is preserved for history.
     The reel-hero `<iframe>` (Block 1, Pattern G) points to Cloudflare Stream UID `dcde8adcb14fb52708c8ce6cf631658f` — the same UID that drives the homepage hero reel. This is intentional, not a placeholder: the homepage reel IS the Studios reel (it's the masterbrand showcase of Studios work). If a `/studios`-specific reel gets cut later, swap the UID via `str_replace` on the iframe `src`; everything else stays. Customer subdomain `customer-xv1aafyshr3tbknu.cloudflarestream.com` per `docs/VIDEO_PIPELINE.md`.
 
     Iframe query string: `?muted=true&autoplay=true&loop=true&controls=false&preload=auto`. Standard background-video parameter set. Browsers require `muted=true` for autoplay to succeed without user interaction.

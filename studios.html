@@ -923,8 +923,8 @@
      screenings) via the `controls` attr; controlslist=nodownload keeps the
      download button off. Still autoplays muted+loop so it moves on load; the
      controls let a visitor unmute/scrub/fullscreen. UID
-     4616f42aaf97d1eac2b0d0d2ff867bc1, kept in sync with the homepage hero reel
-     (swap STREAM.video in both files together). -->
+     5442fab995851e59c1c965023f4f28bc — a Studios-specific reel (decoupled from
+     the homepage hero reel 2026-07-14; the homepage keeps its own UID). -->
 <section class="cs-screening reveal" id="reel">
   <div class="wrap">
     <div class="cs-meta-strip">
@@ -1541,12 +1541,13 @@ document.querySelectorAll('.swipe').forEach(function(el){
 
 
 <!-- PS Craft Layer -->
-<!-- Cloudflare Stream hero reel — raw <video> + HLS (no player logo).
-     Ported from index.html; keep STREAM.video in sync with the homepage. -->
+<!-- Cloudflare Stream Studios reel — raw <video> + HLS (no player logo).
+     Studios-specific UID (decoupled from the homepage hero reel 2026-07-14 —
+     the homepage keeps its own STREAM.video; do NOT re-sync them). -->
 <script src="/js/hls.min.js"></script>
 <script>
   const STREAM = {
-    video: '4616f42aaf97d1eac2b0d0d2ff867bc1',
+    video: '5442fab995851e59c1c965023f4f28bc',
     customer: 'customer-xv1aafyshr3tbknu'
   };
   (function(){

@@ -889,10 +889,6 @@
   .cs-dossier .proof-row{grid-template-columns:repeat(3,1fr)}
   @media(max-width:760px){.cs-dossier .proof-row{grid-template-columns:1fr}}
 
-  /* Masthead showcase video — the finished platform in the wild, after the dossier. */
-  .cs-masthead{padding-top:clamp(28px,4vw,52px)}
-  .cs-masthead-vid{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--ink-soft)}
-
   /* // shear motif on pull quotes — the hero slash-field SVG, scaled down */
   .pull{position:relative}
   .pull-slash{position:absolute;top:10px;right:0;width:clamp(30px,3.4vw,46px);height:auto;
@@ -1161,13 +1157,6 @@
   </div>
 </section>
 
-<!-- Showcase — the finished AHG platform in the wild (Cloudflare Stream f388b9eb, autoplay muted loop). -->
-<section class="cs-masthead wrap reveal">
-  <video class="cs-masthead-vid" autoplay muted loop playsinline preload="metadata"
-    poster="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/f388b9ebab5a8af89a707109094d7bdd/thumbnails/thumbnail.jpg?time=3s"
-    src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/f388b9ebab5a8af89a707109094d7bdd/downloads/default.mp4"></video>
-</section>
-
 <!-- Body — five-section authored structure -->
 <article class="article-body wrap">
   <div class="prose">
@@ -1301,6 +1290,11 @@
     <h2>the outcome.</h2>
     <p>We shipped the full rebrand and Webflow site inside the window, with the parent site live ahead of the January investor presentations, the fixed date the whole engagement was built around.</p>
     <p>On launch, the site scored 96/100 for performance and 100/100 for accessibility, best practices, and SEO on Google's Lighthouse audit: fast, accessible, and technically sound from day one. We handed over a brand system and a style guide hosted for the team in perpetuity, and a Webflow CMS structured with custom collections and plain-language fields so the internal team can publish and update sub-brand content without coming back to us. Where there were silos, one extensible visual language now carries the parent and its portfolio.</p>
+
+    <div class="cs-reel" id="cs-reel">
+      <video class="cs-reel-vid" src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/f388b9ebab5a8af89a707109094d7bdd/downloads/default.mp4" poster="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/f388b9ebab5a8af89a707109094d7bdd/thumbnails/thumbnail.jpg?time=3s" muted loop playsinline preload="metadata"></video>
+      <div class="cs-reel-cap"><span class="eyebrow">Launch — in the wild</span><p>The rebranded platform, live in the world it was built for.</p><span class="cs-reel-hint">Hover to play</span></div>
+    </div>
 
     <aside class="pull breakout reveal"><svg class="pull-slash" viewBox="0 0 93.93 148.41" style="--dur:5.6s;--dly:-1s;--sh:6px" aria-hidden="true"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></svg><span class="eyebrow">Outcome — shipped &amp; scored</span><p>Live for the investor window, and <span class="mag">scoring 96 to 100</span> across Google's core quality audits.</p></aside>
 

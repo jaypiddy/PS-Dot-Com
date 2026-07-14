@@ -2,11 +2,11 @@
 
 Rebuild of [powershifter.com](https://powershifter.com) for POWER SHIFTER Digital Inc., Vancouver.
 
-One masterbrand, one domain, two doors: **Digital** (product strategy, design, engineering) and **Studios** (generative AI film and content production). This repo holds the Phase 2 prototype — hand-built static HTML pages that establish design, motion, and content systems before the Phase 3 production build (Next.js).
+One masterbrand, one domain, two doors: **Digital** (product strategy, design, engineering) and **Studios** (generative AI film and content production). The site is hand-built static HTML (no build step), live on Vercel — `main` push = production deploy.
 
 ## Status
 
-_The whole site is now **built and live on [powershifter.com](https://powershifter.com)** (Vercel; `main` push = deploy) — the domain cutover landed 2026-07-13. This table and the counts below are a historical Phase-2 snapshot; the live site + `docs/` + the memory journal are the current source of truth._
+_The whole site is now **built and live on [powershifter.com](https://powershifter.com)** (Vercel; `main` push = deploy) — the domain cutover landed 2026-07-13. This table and the counts below are a point-in-time snapshot; the live site + `docs/` + the memory journal are the current source of truth._
 
 | Page | File | State |
 |---|---|---|

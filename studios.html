@@ -919,19 +919,23 @@
      film case studies use (celestial-ai et al.), holding the Studios reel just
      below the hero. Raw <video id="reelVideo"> + HLS (init script at the foot
      of this file) — not the Stream iframe — so no Cloudflare player logo sits
-     on the reel. UID 4616f42aaf97d1eac2b0d0d2ff867bc1, kept in sync with the
-     homepage hero reel (swap STREAM.video in both files together). -->
+     on the reel. Native controls (playback + volume, like the case-study
+     screenings) via the `controls` attr; controlslist=nodownload keeps the
+     download button off. Still autoplays muted+loop so it moves on load; the
+     controls let a visitor unmute/scrub/fullscreen. UID
+     4616f42aaf97d1eac2b0d0d2ff867bc1, kept in sync with the homepage hero reel
+     (swap STREAM.video in both files together). -->
 <section class="cs-screening reveal" id="reel">
   <div class="wrap">
     <div class="cs-meta-strip">
       <span class="mt">The Studios reel</span>
       <span class="m">Format<b>16:9</b></span>
       <span class="m">Pipeline<b>Generative</b></span>
-      <span class="m">Sound<b>Muted loop</b></span>
+      <span class="m">Cut<b>Summer 2026</b></span>
     </div>
   </div>
   <div class="cs-letterbox">
-    <video id="reelVideo" class="cs-film-vid" muted autoplay loop playsinline aria-label="Power Shifter Studios showreel"></video>
+    <video id="reelVideo" class="cs-film-vid" muted autoplay loop playsinline controls controlslist="nodownload" aria-label="Power Shifter Studios showreel"></video>
   </div>
 </section>
 

@@ -30,10 +30,10 @@ _**Reworked 2026-07-14 (commit `d1ab51f`).** Was a full-bleed autoplay reel back
 
 ### Block 1b — Showreel theater
 
-_`.cs-screening` → `.cs-meta-strip` (title + format chips) → `.cs-letterbox` (black band, 16:9 reel). Reel UID `4616f42aaf97d1eac2b0d0d2ff867bc1`, kept in sync with the homepage hero reel (swap `STREAM.video` in both files together)._
+_`.cs-screening` → `.cs-meta-strip` (title + format chips) → `.cs-letterbox` (black band, 16:9 reel). Raw `<video>` + HLS (not the Stream iframe) so no Cloudflare logo; native `controls` for playback + volume (`controlslist="nodownload"`), still autoplays muted+loop so it moves on load. Reel UID `4616f42aaf97d1eac2b0d0d2ff867bc1`, kept in sync with the homepage hero reel (swap `STREAM.video` in both files together)._
 
 **META TITLE (serif italic):** The Studios reel
-**META CHIPS:** Format 16:9 · Pipeline Generative · Sound Muted loop
+**META CHIPS:** Format 16:9 · Pipeline Generative · Cut Summer 2026
 
 ---
 

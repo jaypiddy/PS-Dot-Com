@@ -155,7 +155,9 @@ The letterboxed film-player component: `.cs-screening` (ink section) → `.cs-me
 centered at `min(1180px, …)`). Used on every **film case study** (celestial-ai et al.,
 via `.cs-film-vid` iframe) and now on **`/studios`** as the showreel theater below the
 hero — there as a raw `<video id="reelVideo">` + HLS (not the Stream iframe) so no
-Cloudflare player logo sits on the reel. Fades in on first frame via `.cs-film-vid.live`.
+Cloudflare player logo sits on the reel, with native `controls` (playback + volume,
+`controlslist="nodownload"`) matching the case-study screenings. Fades in on first
+frame via `.cs-film-vid.live`.
 
 ### Engine band (`.engine` / `.engine-grid`)
 Two-column section: H2 left (with a draw-on magenta `.rule`), prose right

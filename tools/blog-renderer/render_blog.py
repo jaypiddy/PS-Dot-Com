@@ -24,7 +24,7 @@ DEFAULT_POSTS = (REPO / "tools/blog-renderer/posts.json")
 # Photo Credit. Merged by slug; absent file → falls back to old_categories.
 OVERRIDES_CSV = (REPO / "tools/blog-renderer/blog-meta.csv")
 TITLE_SUFFIX = " — POWER SHIFTER Insights"
-BASE = "https://ps-dot-com.vercel.app"   # canonical host; flip to powershifter.com at domain cutover
+BASE = "https://powershifter.com"   # canonical host (apex) — flipped at the 2026-07-13 cutover
 ORG = {"@type": "Organization", "name": "POWER SHIFTER", "url": BASE + "/"}
 
 # ---------------------------------------------------------------- helpers

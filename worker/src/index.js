@@ -64,9 +64,23 @@ async function getKnowledge(env) {
   return kbCache.text || FALLBACK_KB;
 }
 
-function corsHeaders(env) {
+// ALLOWED_ORIGIN may be a comma-separated allow-list (added at the 2026-07-13
+// powershifter.com cutover, when two origins serve the site). ACAO must be a
+// single origin, so echo the request's origin when it's on the list; fall back
+// to the first entry so error responses still carry a valid header.
+function allowedOrigins(env) {
+  return (env.ALLOWED_ORIGIN || "*").split(",").map((s) => s.trim()).filter(Boolean);
+}
+
+function corsHeaders(env, request) {
+  const list = allowedOrigins(env);
+  const origin = request && request.headers.get("Origin");
+  const allow =
+    list.includes("*") ? "*" :
+    (origin && list.includes(origin)) ? origin :
+    list[0] || "*";
   return {
-    "Access-Control-Allow-Origin": env.ALLOWED_ORIGIN || "*",
+    "Access-Control-Allow-Origin": allow,
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type, X-PS-Token",
     "Vary": "Origin",
@@ -124,7 +138,7 @@ function sanitize(messages) {
 
 export default {
   async fetch(request, env) {
-    const cors = corsHeaders(env);
+    const cors = corsHeaders(env, request);
 
     if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: cors });
     if (request.method !== "POST")
@@ -132,13 +146,17 @@ export default {
 
     // Origin allow-list. The widget is cross-origin to the Worker, so a real
     // browser always sends Origin — reject BOTH missing and mismatched when
-    // ALLOWED_ORIGIN is a concrete origin. (Earlier this let a no-Origin
-    // request — e.g. curl/scripts — slip through. CORS only constrains
-    // browsers anyway; the shared-token gate below covers non-browser clients.)
-    if (env.ALLOWED_ORIGIN && env.ALLOWED_ORIGIN !== "*") {
-      const origin = request.headers.get("Origin");
-      if (origin !== env.ALLOWED_ORIGIN)
-        return json({ error: "forbidden origin" }, 403, cors);
+    // ALLOWED_ORIGIN is concrete. (Earlier this let a no-Origin request —
+    // e.g. curl/scripts — slip through. CORS only constrains browsers anyway;
+    // the shared-token gate below covers non-browser clients.) Membership
+    // check, not equality — ALLOWED_ORIGIN can be a comma-separated list.
+    {
+      const list = allowedOrigins(env);
+      if (list.length && !list.includes("*")) {
+        const origin = request.headers.get("Origin");
+        if (!origin || !list.includes(origin))
+          return json({ error: "forbidden origin" }, 403, cors);
+      }
     }
 
     const path = new URL(request.url).pathname.replace(/\/+$/, "");

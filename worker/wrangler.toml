@@ -17,12 +17,15 @@ MODEL = "claude-haiku-4-5"
 
 # Public URL of the knowledge base markdown (served from the live site). The
 # Worker fetches + caches it (5 min) and injects it into the prompt — edit that
-# one file to update the bot. Update this if the site moves to a custom domain.
-KB_URL = "https://ps-dot-com.vercel.app/docs/concierge-knowledge.md"
+# one file to update the bot. Flipped to the production domain at the
+# 2026-07-13 cutover.
+KB_URL = "https://powershifter.com/docs/concierge-knowledge.md"
 
-# Lock requests to the site origin (CORS + abuse guard). Update on a custom
-# domain. Use "*" only for local testing.
-ALLOWED_ORIGIN = "https://ps-dot-com.vercel.app"
+# Lock requests to the site origin (CORS + abuse guard). Comma-separated
+# allow-list. powershifter.com is the production domain (2026-07-13 cutover);
+# the vercel.app origin stays allowed while it still serves (drop it once
+# vercel.app redirects to the apex). Use "*" only for local testing.
+ALLOWED_ORIGIN = "https://powershifter.com,https://www.powershifter.com,https://ps-dot-com.vercel.app"
 
 # Soft abuse gate: the page sends this as the X-PS-Token header (chat/contact)
 # and in the /log body, and it must match. Client-visible by design (it ships in

@@ -97,13 +97,15 @@ by an external CDN going away. Nested pages reference them root-absolute (`/imag
   Card hover-loops must NOT offer a `.webm` source for Stream URLs — Stream serves only
   `default.mp4`, so a `.webm` 404s and stalls the rollover (the JS gates webm to local files).
 
-## SEO & deploy assets (keyed to the dev domain until cutover)
+## SEO & deploy assets (keyed to powershifter.com since the 2026-07-13 cutover)
 
 `sitemap.xml`, `robots.txt`, every page's `rel="canonical"`, the JSON-LD `url` fields, the
-7 core-page `og:image` URLs (`/images/og/og-<page>.png`), and `BASE` in
-`tools/blog-renderer/render_blog.py` are all hardcoded to
-`https://ps-dot-com.vercel.app`. At the **powershifter.com cutover** they flip in one
-repo-wide find-and-replace (then re-render the blog). Canonical host = **apex** (non-www).
+core-page `og:image` URLs (`/images/og/og-<page>.png`), and `BASE` in
+`tools/blog-renderer/render_blog.py` are all hardcoded to **`https://powershifter.com`**
+(flipped repo-wide + blog re-rendered at the 2026-07-13 domain cutover). Canonical host =
+**apex** (non-www). `ps-dot-com.vercel.app` still serves the same deployment — canonicals
+point at the apex, so it's SEO-inert; don't reintroduce it in new pages. The concierge
+Worker's `ALLOWED_ORIGIN` allow-lists both origins during the transition (worker/wrangler.toml).
 
 - `vercel.json` `redirects` (177): the site's own flat→nested moves **plus** the full
   173-URL old-Webflow→new 301 map. Exact sources are ordered before wildcards (first match wins).

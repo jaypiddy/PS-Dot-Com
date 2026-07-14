@@ -8,7 +8,7 @@ dev URL below and will move to `powershifter.com` later — a few things are *in
 keyed to the dev domain until then (see **Known/expected states**).
 
 ## Test environment
-- **URL:** `https://ps-dot-com.vercel.app`
+- **URL:** `https://powershifter.com`
 - **Clean URLs:** routes have no `.html` (e.g. `/work/xyon`, not `/work/xyon.html`).
 - **Browsers to cover:** Chrome, Safari, Firefox, Edge (desktop) + iOS Safari & Android Chrome.
 - **Breakpoints:** phone **375**, tablet **768**, desktop **1280** (min).
@@ -96,7 +96,7 @@ a **173-URL redirect map**, and **canonical + structured data** site-wide.
 ---
 
 ## Known / expected states — DO NOT log these as bugs
-- **Canonical, sitemap, and robots point to `ps-dot-com.vercel.app`.** Correct for now; they flip to `powershifter.com` at cutover.
+- **Canonical, sitemap, and robots point to `powershifter.com`.** Correct for now; they flip to `powershifter.com` at cutover.
 - **Core pages (home, work, digital, studios, about) have no `og:image` yet** — copy is in, images are a pending pass.
 - **Footer "Careers"** and the **"Start a project" CTA** are `#` placeholders (not wired yet).
 - **No "skip to content" link** — intentionally removed.

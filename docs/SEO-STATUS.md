@@ -10,7 +10,7 @@ Map** (shared separately), and `docs/design-system.md`.
 
 ## The 60-second picture
 
-- **Live now:** `https://ps-dot-com.vercel.app` — repo `github.com/jaypiddy/PS-Dot-Com`.
+- **Live now:** `https://powershifter.com` (apex, canonical — cut over 2026-07-13; `ps-dot-com.vercel.app` still serves the same deployment as a secondary origin) — repo `github.com/jaypiddy/PS-Dot-Com`.
 - **Pre-cutover:** the site will move to **`powershifter.com`** (apex, non-www — see below). The old Webflow site is still live at that domain today.
 - **Scale:** 94 indexable URLs — 8 core/section pages, **23** case studies (`/work/<slug>`), **63** blog posts (`/insights/<slug>`). Clean URLs (no `.html`).
 - **Content source:** case studies are hand-published HTML; blog posts are generated from a Notion export. Don't hand-edit generated blog files.
@@ -38,14 +38,12 @@ Map** (shared separately), and `docs/design-system.md`.
 3. **Extend the structured data.** The basics are in place (see above). Worth adding next: `BreadcrumbList` on nested pages, and `logo` + `sameAs` (social profiles) on the `Organization` schema — the site currently has **no social links** in its markup, so those need sourcing first.
 4. **Ongoing / audit:** internal-link structure, `alt` text coverage, Core Web Vitals / page speed, keyword + content strategy, and heading-hierarchy review. Standard territory — the foundation above is solid to build on.
 
-## Domain cutover checklist (powershifter.com)
+## Domain cutover checklist (powershifter.com) — ran 2026-07-13
 
-Do these when the domain flips from the old Webflow site to this Vercel deployment:
-
-1. **Canonical host: apex `powershifter.com` (non-www).** The old site's sitemap already declares apex, so this preserves continuity. In Vercel, add both `powershifter.com` and `www.powershifter.com`, set apex as primary — Vercel auto-301s `www` → apex.
-2. **Flip the base domain** from `ps-dot-com.vercel.app` → `powershifter.com` everywhere it's hardcoded: `sitemap.xml`, `robots.txt`, the 94 `rel="canonical"` tags, the JSON-LD `url` fields, the 7 core-page `og:image` URLs, and `BASE` in `tools/blog-renderer/render_blog.py`. It's a single find-and-replace across the repo — ask the dev/Claude Code to run it, then re-render the blog.
-3. **Verify the redirects live** — spot-test a handful of old URLs (e.g. `/blog/new-way-to-write-rfps`, `/studio/iron-mountain-case-study`, `/our-work/delta-controls`) resolve with a single 301 to the right new page.
-4. **Submit the new sitemap** in Search Console; watch Coverage + the redirect/404 reports for the first few weeks.
+1. ✅ **Apex live on Vercel.** `powershifter.com` A-record → Vercel (`216.150.1.1`), Valid Configuration, cert issued, serving. ⚠️ **`www.powershifter.com` still has NO DNS record** — add `CNAME www → cname.vercel-dns.com` in Route 53 and add the `www` domain in Vercel (apex primary → auto-301 www → apex).
+2. ✅ **Base domain flipped** repo-wide (`sitemap.xml`, `robots.txt`, all `rel="canonical"`, JSON-LD `url`s, og:image URLs, `BASE` in `render_blog.py`) + blog re-rendered. Concierge Worker `ALLOWED_ORIGIN`/`KB_URL` updated + redeployed (both origins allowed during transition).
+3. ✅ **Redirects verified live** (see below — spot-checked 2026-07-13).
+4. ⬜ **Submit the sitemap** (`https://powershifter.com/sitemap.xml`) in Search Console; watch Coverage + redirect/404 reports for the first few weeks. (GSC still not set up — see gap #1.)
 
 ## Redirect judgment calls to review
 
@@ -59,7 +57,7 @@ The old→new map is complete, but a few legacy URLs had no clean equivalent and
 
 | | |
 |---|---|
-| Production | `ps-dot-com.vercel.app` → `powershifter.com` (pending) |
+| Production | `powershifter.com` (live 2026-07-13; `ps-dot-com.vercel.app` = secondary origin, canonicals point at apex) |
 | Repo | `github.com/jaypiddy/PS-Dot-Com` |
 | Redirects | `vercel.json` → `redirects` array (177 rules, 301s) |
 | Sitemap / robots | `/sitemap.xml`, `/robots.txt` (static — **regenerate when a case or post is added**) |

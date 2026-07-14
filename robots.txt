@@ -4,4 +4,4 @@ Allow: /
 # not a page — keep it out of search indexes.
 Disallow: /docs/
 
-Sitemap: https://ps-dot-com.vercel.app/sitemap.xml
+Sitemap: https://powershifter.com/sitemap.xml

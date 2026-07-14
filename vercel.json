@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/article",
+      "destination": "/insights",
+      "permanent": true
+    },
+    {
       "source": "/5x5",
       "destination": "/work/5x5",
       "permanent": true

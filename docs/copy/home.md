@@ -17,7 +17,7 @@ _Full-bleed hero with looping reel as background. The H1 sets the two-voices pai
 - **CAPS:** Made to use.
 - **SUB-VOICE:** Made to remember.
 
-**BODY:** A product studio and a film studio with one design culture — the work and the place it lives, made in the same room.
+**BODY:** A product studio and a film studio with one design culture. Software in weeks, cinema in days — made in the same room.
 
 **CTA (solid):** Digital →
 **CTA (outline):** Studios →

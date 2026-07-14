@@ -1,6 +1,6 @@
 # QA brief — POWER SHIFTER site (pre-launch)
 
-_Last updated: 2026-07-08_
+_Last updated: 2026-07-14_
 
 Context + test cases for a full pre-launch QA pass. The site is a **static multi-page
 HTML** site on **Vercel** (no CMS, no build step). It's **pre-cutover**: it lives at the
@@ -94,6 +94,14 @@ a **173-URL redirect map**, and **canonical + structured data** site-wide.
 | I3 | OS "reduce motion" on | Reveal/hover animations are suppressed, page still usable |
 
 ---
+
+## Outstanding — tracked, not yet actioned
+- **TELUS Rewards card has no video yet** (`/work` and `/digital`). The video hasn't been
+  rendered. At rest both show the static poster (`images/telus.jpg`); on `/digital` the card's
+  hover-loop currently reuses `videos/koodo_loop.mp4` as a placeholder (wrong clip), and on
+  `/work` the card is static (no hover-loop). **Leave as-is for now.** Once the TELUS Rewards
+  loop is rendered, wire it to both cards (add/point `data-video` to the real clip, matching the
+  other hover-video cards). — added 2026-07-14
 
 ## Known / expected states — DO NOT log these as bugs
 - **Canonical, sitemap, and robots point to `powershifter.com`.** Correct for now; they flip to `powershifter.com` at cutover.

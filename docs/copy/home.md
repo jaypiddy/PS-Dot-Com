@@ -216,3 +216,15 @@ These canonical lines appear on this page and should be edited via global find-a
 - Made to use. / Made to remember. (hero H1; tagline in `_shared.md` footer)
 - Anyone can generate. / Few can direct. (Studios door lede)
 - Working software in weeks, not months. (Digital door lede — wording recently changed from "not quarters")
+
+---
+
+## Page metadata (SEO / Open Graph)
+
+_Canonical `<head>` copy for `index.html`. The homepage is the top share target (the bare domain) — keep these deliberate, not an afterthought. The OG title/description were rewritten 2026-07-14 (proof-led) from a weaker tagline-led version._
+
+- **Title tag:** POWER SHIFTER — Digital Products & Generative Films | Vancouver
+- **Meta description:** Made to use. Made to remember. A product studio and a film studio with one design culture — the work and the place it lives, made in the same room. Software in weeks, cinema in days.
+- **OG title:** POWER SHIFTER — Software in weeks. Cinema in days.
+- **OG description:** Two studios, one design culture: digital products and generative film, made in the same room. Made to use. Made to remember.
+- **OG image:** `/images/og/og-home.png` (twitter:card = summary_large_image; twitter title/desc/image fall back to the OG tags, matching the other core pages).

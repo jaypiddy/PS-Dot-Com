@@ -380,6 +380,8 @@
   .cards.four-up .card:nth-child(n+2) .meta{padding-left:26px}
   @media(max-width:1100px){.cards.four-up{grid-template-columns:repeat(2,1fr)}.cards.four-up .card:nth-child(2n+1) .meta{padding-left:0}.cards.four-up .card:nth-child(2n) .meta{padding-left:26px}}
   @media(max-width:680px){.cards.four-up{grid-template-columns:1fr}.cards.four-up .card .meta{padding-left:0}}
+  /* Empty ink cell filling the 4-up remainder (same pattern as /studios). */
+  .work .card.placeholder{pointer-events:none;padding:0}
   /* Hover lift on cards — make the .go arrow light up magenta as the visited cue */
   .card:hover h3{color:var(--magenta)}
   .card:hover .go{color:var(--magenta)}
@@ -616,9 +618,9 @@
   @media(max-width:640px){.work-grid{grid-template-columns:1fr}}
 
   /* Hover video loop — sits above the still, fades in when playing */
-  .wframe .hover-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  .wframe .hover-video,.frame .hover-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
     opacity:0;transition:opacity .35s ease;pointer-events:none;z-index:1}
-  .wframe .hover-video.playing{opacity:1}
+  .wframe .hover-video.playing,.frame .hover-video.playing{opacity:1}
 
   /* Rise-in: case cells use the site reveal motion, staggered by column */
   .work-grid .wcard.reveal{transition-delay:calc(var(--d,0)*70ms)}
@@ -959,8 +961,18 @@
       <a class="all swipe" href="work">All work →</a>
     </div>
     <div class="cards four-up reveal">
+      <!-- Poster = Stream thumbnail (graveyard open). The Digital half of a hybrid case. -->
+      <a class="card" href="/work/resurrection-campaign">
+        <div class="frame" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/48adbb2a39c6d77078fbe63d7015a16b/downloads/default.mp4"><img src="/images/resurrection/card.jpg" alt="Resurrection Campaign &mdash; a lone crow over a fog-shrouded CN Tower" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="meta">
+          <span class="tag">Studios &times; Digital</span>
+          <h3>Resurrection Campaign</h3>
+          <p>One master film, remixed per agency on a self-serve, multi-tenant microsite.</p>
+          <span class="go swipe">Read the case &rarr;</span>
+        </div>
+      </a>
       <a class="card" href="/work/case-telus-koodo">
-        <div class="frame"><img src="images/telus.jpg" alt="TELUS Rewards" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="frame" data-video="videos/koodo_loop.mp4"><img src="images/telus.jpg" alt="TELUS Rewards" style="width:100%;height:100%;object-fit:cover"></div>
         <div class="meta">
           <span class="tag">Platform</span>
           <h3>TELUS Rewards</h3>
@@ -969,7 +981,7 @@
         </div>
       </a>
       <a class="card" href="#">
-        <div class="frame"><img src="images/energizer.jpg" alt="Energizer" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="frame" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/13b3c4ffad635214521fa0802561ba47/downloads/default.mp4"><img src="images/energizer.jpg" alt="Energizer" style="width:100%;height:100%;object-fit:cover"></div>
         <div class="meta">
           <span class="tag">Rapid MVP</span>
           <h3>Energizer</h3>
@@ -978,7 +990,7 @@
         </div>
       </a>
       <a class="card" href="#">
-        <div class="frame"><img src="images/delta_controls.jpg" alt="Delta Controls" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="frame" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/c3c4fad22e67aff6876a528a8d1d9739/downloads/default.mp4"><img src="images/delta_controls.jpg" alt="Delta Controls" style="width:100%;height:100%;object-fit:cover"></div>
         <div class="meta">
           <span class="tag">Product · Best UX, VUX</span>
           <h3>Delta Controls</h3>
@@ -987,7 +999,7 @@
         </div>
       </a>
       <a class="card" href="#">
-        <div class="frame"><img src="images/angel_oak.jpg" alt="Angel Oak" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="frame" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/f1f321f6bf50f85044d39cff482d298b/downloads/default.mp4"><img src="images/angel_oak.jpg" alt="Angel Oak" style="width:100%;height:100%;object-fit:cover"></div>
         <div class="meta">
           <span class="tag">Web · SEO</span>
           <h3>Angel Oak</h3>
@@ -995,6 +1007,9 @@
           <span class="go swipe">Read the case →</span>
         </div>
       </a>
+      <div class="card placeholder" aria-hidden="true"></div>
+      <div class="card placeholder" aria-hidden="true"></div>
+      <div class="card placeholder" aria-hidden="true"></div>
     </div>
   </div>
 </section>
@@ -1209,8 +1224,8 @@
   // Hover video loops: lazy-load on first hover, never on touch or reduced motion
   if (window.matchMedia('(hover: hover)').matches &&
       !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    document.querySelectorAll('.wframe[data-video]').forEach(frame=>{
-      const card = frame.closest('.wcard') || frame;
+    document.querySelectorAll('.wframe[data-video], .frame[data-video]').forEach(frame=>{
+      const card = frame.closest('.wcard, .card') || frame;
       let vid = null, resetTimer = null;
       card.addEventListener('mouseenter', ()=>{
         clearTimeout(resetTimer);

@@ -189,6 +189,9 @@
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-light)}
   .card{background:var(--ink);padding:0 0 30px 0;display:flex;flex-direction:column}
   .frame{aspect-ratio:16/10;background:var(--ink-soft);position:relative;margin-bottom:24px;overflow:hidden}
+  /* Hover-to-play video loop over the card poster (same fx as /work). */
+  .frame .hover-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s ease;pointer-events:none;z-index:1}
+  .frame .hover-video.playing{opacity:1}
   .frame .slot-tag{font-size:10px;padding:10px 16px}
   .card .meta{padding:0 26px 0 0}
   .card:nth-child(2) .meta,.card:nth-child(3) .meta{padding-left:26px}
@@ -605,8 +608,17 @@
       <a class="all swipe" href="work">All work →</a>
     </div>
     <div class="cards reveal">
+      <a class="card" href="work/resurrection-campaign">
+        <div class="frame" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/48adbb2a39c6d77078fbe63d7015a16b/downloads/default.mp4"><img src="/images/resurrection/card.jpg" alt="Resurrection Campaign — a lone crow over a fog-shrouded CN Tower" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div class="meta">
+          <span class="tag">Studios × Digital</span>
+          <h3>Resurrection Campaign</h3>
+          <p>Dead pitch concepts, dug up and rebuilt as broadcast-grade film — remixed per agency.</p>
+          <span class="go swipe">Watch the film →</span>
+        </div>
+      </a>
       <a class="card" href="work/iron-mountain">
-        <div class="frame"><img src="images/iron_mountain.jpg" alt="Iron Mountain The Summit" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div class="frame" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/01e95325c9355d472aa16aa1e48946a7/downloads/default.mp4"><img src="images/iron_mountain.jpg" alt="Iron Mountain The Summit" style="width: 100%; height: 100%; object-fit: cover;"></div>
         <div class="meta">
           <span class="tag">Studios</span>
           <h3>Iron Mountain — <i>The Summit</i></h3>
@@ -614,21 +626,12 @@
           <span class="go swipe">Watch the film →</span>
         </div>
       </a>
-      <a class="card" href="work/telus-rewards">
-        <div class="frame"><img src="images/telus.jpg" alt="TELUS Rewards" style="width: 100%; height: 100%; object-fit: cover;"></div>
+      <a class="card" href="work/allia-health-group">
+        <div class="frame" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/f388b9ebab5a8af89a707109094d7bdd/downloads/default.mp4"><img src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/f388b9ebab5a8af89a707109094d7bdd/thumbnails/thumbnail.jpg?time=3s" alt="Allia Health Group — the AHG platform in the wild" style="width: 100%; height: 100%; object-fit: cover;"></div>
         <div class="meta">
-          <span class="tag">Digital</span>
-          <h3>TELUS Rewards</h3>
-          <p>A loyalty platform 300,000 people enrolled in within six months.</p>
-          <span class="go swipe">Read the case →</span>
-        </div>
-      </a>
-      <a class="card" href="work/energizer">
-        <div class="frame"><img src="images/energizer.jpg" alt="Energizer POC" style="width: 100%; height: 100%; object-fit: cover;"></div>
-        <div class="meta">
-          <span class="tag">Digital · Rapid MVP</span>
-          <h3>Energizer</h3>
-          <p>Product-market fit validated in 30 days with a rapid proof of concept.</p>
+          <span class="tag">Digital × Studios</span>
+          <h3>Allia Health Group</h3>
+          <p>A multi-brand health portfolio rebranded and rebuilt as one investor-ready platform.</p>
           <span class="go swipe">Read the case →</span>
         </div>
       </a>
@@ -910,6 +913,43 @@ document.querySelectorAll('.swipe').forEach(function(el){
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setOpen(false); });
   ov.querySelectorAll('.tk-l').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });
 })();
+</script>
+<script>
+  // Card hover video loops — lazy-load on first hover, never on touch or reduced motion.
+  // Same fx as /work; the video fades in over the poster on rollover.
+  if (window.matchMedia('(hover: hover)').matches &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.frame[data-video]').forEach(function(frame){
+      var card = frame.closest('.card') || frame;
+      var vid = null, resetTimer = null;
+      card.addEventListener('mouseenter', function(){
+        clearTimeout(resetTimer);
+        if(!vid){
+          vid = document.createElement('video');
+          vid.muted = true; vid.loop = true; vid.playsInline = true;
+          vid.className = 'hover-video';
+          var src = frame.dataset.video, base = src.replace(/\.mp4$/, '');
+          // Cloudflare Stream serves only default.mp4 (no .webm) — offer .webm only for local files.
+          var exts = /cloudflarestream\.com/.test(src)
+            ? [['mp4','video/mp4']]
+            : [['webm','video/webm'],['mp4','video/mp4']];
+          exts.forEach(function(pair){
+            var s = document.createElement('source');
+            s.src = base + '.' + pair[0]; s.type = pair[1];
+            vid.appendChild(s);
+          });
+          frame.appendChild(vid);
+        }
+        vid.play().then(function(){ vid.classList.add('playing'); }).catch(function(){});
+      });
+      card.addEventListener('mouseleave', function(){
+        if(!vid) return;
+        vid.pause();
+        vid.classList.remove('playing');
+        resetTimer = setTimeout(function(){ vid.currentTime = 0; }, 420);
+      });
+    });
+  }
 </script>
 <!-- PS Craft Layer -->
 <script src="ps-spice.js"></script>

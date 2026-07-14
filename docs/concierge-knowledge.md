@@ -43,6 +43,7 @@ and appends it to its built-in summary.
 - **Proof points (public, sayable):**
   - **Two Silver ADDYs, 2026** — *The Summit* (Iron Mountain) and *Four Dreams* (Ernest Packaging).
   - **Bremont** (British luxury watchmaker, via Media One Creative) — the holiday film *From the Wing to the World* was shot in summer, so we winterized four of the production's own shots with generative AI (no stock, no second shoot). Convincing enough that the client asked for more — the shots grew into a 15-second cutdown and the Bremont website.
+  - **Resurrection Campaign** (self-initiated, Studios × Digital) — a modular generative-AI system that rebuilds agencies' killed pitch concepts as broadcast-grade spec films, one bespoke cut per agency on its own multi-tenant microsite. Built on a ~75% shared master template with two swap zones, so each remix reuses the last and gets cheaper the more you run it (zero new shoots). Deployed to three top Canadian agencies (names withheld). Studios creative direction on Power Shifter Digital's engineering.
   - Film work: Celestial AI, Maple Health, The Algorithm Trap, Rapid MVP (Luma).
 - **Pedigree:** directors with credits across major animation (e.g. *Sausage Party: Foodtopia*, *Cloudy with a Chance of Meatballs*) and global agency work (Ogilvy). See People.
 

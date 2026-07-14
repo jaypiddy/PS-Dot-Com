@@ -614,9 +614,9 @@
   @media(max-width:640px){.work-grid{grid-template-columns:1fr}}
 
   /* Hover video loop — sits above the still, fades in when playing */
-  .wframe .hover-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  .wframe .hover-video,.frame .hover-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
     opacity:0;transition:opacity .35s ease;pointer-events:none;z-index:1}
-  .wframe .hover-video.playing{opacity:1}
+  .wframe .hover-video.playing,.frame .hover-video.playing{opacity:1}
 
   /* Rise-in: case cells use the site reveal motion, staggered by column */
   .work-grid .wcard.reveal{transition-delay:calc(var(--d,0)*70ms)}
@@ -982,9 +982,9 @@
      Summit</i>", "Ernest Packaging — <i>Four Dreams</i>", "Rapid MVP
      — <i>Luma</i>").
 
-     Layout: 6 films in 4-up (Iron Mountain lives in the featured card
+     Layout: 7 films in 4-up (Iron Mountain lives in the featured card
      above, not here — see Notes 17) wraps to row 1 (4 cards) + row 2
-     (2 cards + 2 placeholders). Placeholders fill out row 2 with .card
+     (3 cards + 1 placeholder). Placeholders fill out row 2 with .card
      ink bg so the line-light gap rhythm stays consistent. -->
 <section class="work" id="films">
   <div class="wrap">
@@ -1022,9 +1022,19 @@
     </a>
 
     <div class="cards four-up reveal">
+      <!-- Poster = Stream thumbnail (graveyard open). -->
+      <a class="card" href="/work/resurrection-campaign">
+        <div class="frame" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/48adbb2a39c6d77078fbe63d7015a16b/downloads/default.mp4"><img src="/images/resurrection/card.jpg" alt="Resurrection Campaign &mdash; a lone crow over a fog-shrouded CN Tower" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="meta">
+          <span class="tag">Original &middot; Campaign</span>
+          <h3>Resurrection Campaign</h3>
+          <p>Dead pitch concepts, rebuilt as broadcast-grade film &mdash; remixed per agency.</p>
+          <span class="go swipe">Watch the film &rarr;</span>
+        </div>
+      </a>
       <!-- Poster = Stream thumbnail (winterized Wing). Local still TBD (JP image pass). -->
       <a class="card" href="/work/bremont-from-the-wing-to-the-world">
-        <div class="frame"><img src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/39e4451cac7d633ea257f58121a4c170/thumbnails/thumbnail.jpg?time=4s" alt="Bremont &mdash; From the Wing to the World" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="frame" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/39e4451cac7d633ea257f58121a4c170/downloads/default.mp4"><img src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/39e4451cac7d633ea257f58121a4c170/thumbnails/thumbnail.jpg?time=4s" alt="Bremont &mdash; From the Wing to the World" style="width:100%;height:100%;object-fit:cover"></div>
         <div class="meta">
           <span class="tag">Branded &middot; VFX</span>
           <h3>Bremont &mdash; <i>From the Wing to the World</i></h3>
@@ -1033,7 +1043,7 @@
         </div>
       </a>
       <a class="card" href="/work/ernest-packaging">
-        <div class="frame"><img src="images/ernest.jpg" alt="Ernest Packaging Four Dreams" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="frame" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/2b96917c422b12b28dea9abd5954387f/downloads/default.mp4"><img src="images/ernest.jpg" alt="Ernest Packaging Four Dreams" style="width:100%;height:100%;object-fit:cover"></div>
         <div class="meta">
           <span class="tag">Branded &middot; Character</span>
           <h3>Ernest Packaging &mdash; <i>Four Dreams</i></h3>
@@ -1042,7 +1052,7 @@
         </div>
       </a>
       <a class="card" href="/work/celestial-ai">
-        <div class="frame"><img src="images/celestial.jpg" alt="Celestial AI" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="frame" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/87ec29d3cc9f5398737db68159c524f9/downloads/default.mp4"><img src="images/celestial.jpg" alt="Celestial AI" style="width:100%;height:100%;object-fit:cover"></div>
         <div class="meta">
           <span class="tag">Branded &middot; AI</span>
           <h3>Celestial AI</h3>
@@ -1051,7 +1061,7 @@
         </div>
       </a>
       <a class="card" href="/work/algorithm-trap">
-        <div class="frame"><img src="images/algorithm_trap.jpg" alt="The Algorithm Trap" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="frame" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/4f762cc9a0078ab7e4cfe883fe87de29/downloads/default.mp4"><img src="images/algorithm_trap.jpg" alt="The Algorithm Trap" style="width:100%;height:100%;object-fit:cover"></div>
         <div class="meta">
           <span class="tag">Original &middot; Short</span>
           <h3>The Algorithm Trap</h3>
@@ -1060,7 +1070,7 @@
         </div>
       </a>
       <a class="card" href="/work/maple-health">
-        <div class="frame"><img src="images/maple_health.jpg" alt="Maple Health" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="frame" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/56f4e8fad4600363519febdb22631780/downloads/default.mp4"><img src="images/maple_health.jpg" alt="Maple Health" style="width:100%;height:100%;object-fit:cover"></div>
         <div class="meta">
           <span class="tag">Branded &middot; Animation</span>
           <h3>Maple Health</h3>
@@ -1069,7 +1079,7 @@
         </div>
       </a>
       <a class="card" href="/work/rapid-mvp-launch">
-        <div class="frame"><img src="images/rapid_mvp.jpg" alt="Rapid MVP &mdash; Luma" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="frame" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/b95bdf8570cc633d7f96867d40bad336/downloads/default.mp4"><img src="images/rapid_mvp.jpg" alt="Rapid MVP &mdash; Luma" style="width:100%;height:100%;object-fit:cover"></div>
         <div class="meta">
           <span class="tag">Original &middot; IP</span>
           <h3>Rapid MVP &mdash; <i>Luma</i></h3>
@@ -1077,7 +1087,6 @@
           <span class="go swipe">Watch the film &rarr;</span>
         </div>
       </a>
-      <div class="card placeholder" aria-hidden="true"></div>
       <div class="card placeholder" aria-hidden="true"></div>
     </div>
   </div>
@@ -1110,7 +1119,7 @@
         <div class="lead-portrait"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/6e359c0f-840e-4c2e-8ce7-c44bf6216300/public" alt="Johnny Darrell, Director / Editor" loading="lazy"></div>
         <h3>Johnny Darrell</h3>
         <p class="lead-role">Director / Editor</p>
-        <p class="lead-bio">Twenty-five years in CGI animation and storytelling. Directed on <em>Sausage Party: Foodtopia</em> (Amazon) and Lord Miller's <em>Cloudy with a Chance of Meatballs</em> (Sony). Was directing synthetic performances before the machines made it easy.</p>
+        <p class="lead-bio">Directing synthetics before machines made it easy, his directorial work has been shown on Disney, Cartoon Network, Netflix, Amazon, Sony &amp; more. His generative AI has been featured in various festivals and <em>The New York Times</em>.</p>
       </article>
       <article class="lead-card reveal">
         <div class="lead-portrait"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/34c9a2f0-a9ac-4df1-e60d-deefcb749100/public" alt="Russ Jarman Price, Chairman" loading="lazy"></div>
@@ -1360,8 +1369,8 @@
   // Hover video loops: lazy-load on first hover, never on touch or reduced motion
   if (window.matchMedia('(hover: hover)').matches &&
       !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    document.querySelectorAll('.wframe[data-video]').forEach(frame=>{
-      const card = frame.closest('.wcard') || frame;
+    document.querySelectorAll('.wframe[data-video], .frame[data-video]').forEach(frame=>{
+      const card = frame.closest('.wcard, .card') || frame;
       let vid = null, resetTimer = null;
       card.addEventListener('mouseenter', ()=>{
         clearTimeout(resetTimer);

@@ -889,6 +889,10 @@
   .cs-dossier .proof-row{grid-template-columns:repeat(3,1fr)}
   @media(max-width:760px){.cs-dossier .proof-row{grid-template-columns:1fr}}
 
+  /* Masthead showcase video — the finished platform in the wild, after the dossier. */
+  .cs-masthead{padding-top:clamp(28px,4vw,52px)}
+  .cs-masthead-vid{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--ink-soft)}
+
   /* // shear motif on pull quotes — the hero slash-field SVG, scaled down */
   .pull{position:relative}
   .pull-slash{position:absolute;top:10px;right:0;width:clamp(30px,3.4vw,46px);height:auto;
@@ -1155,6 +1159,13 @@
     <div class="stat"><b><span class="sr-only">100</span><span class="odo" aria-hidden="true"><span class="col" style="--d:1"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span></b><span>accessibility, best practices &amp; SEO: perfect Lighthouse scores</span></div>
     <div class="stat"><b><span class="sr-only">5</span><span class="odo" aria-hidden="true"><span class="col" style="--d:5"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span></b><span>weeks: corporate rebrand + 10-page site, live for the investor window</span></div>
   </div>
+</section>
+
+<!-- Showcase — the finished AHG platform in the wild (Cloudflare Stream f388b9eb, autoplay muted loop). -->
+<section class="cs-masthead wrap reveal">
+  <video class="cs-masthead-vid" autoplay muted loop playsinline preload="metadata"
+    poster="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/f388b9ebab5a8af89a707109094d7bdd/thumbnails/thumbnail.jpg?time=3s"
+    src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/f388b9ebab5a8af89a707109094d7bdd/downloads/default.mp4"></video>
 </section>
 
 <!-- Body — five-section authored structure -->

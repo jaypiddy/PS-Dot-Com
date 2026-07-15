@@ -32,7 +32,7 @@ immediately everywhere.
    ```
 3. Commit + push. Vercel auto-deploys; every page picks up the new loop.
 
-(Simplest alternative: overwrite `images/scratches-v2.webp` in place and push — zero
+(Simplest alternative: overwrite `images/scratches-v3.webp` in place and push — zero
 code changes, but the old loop may be served from cache for a while. Versioning avoids that.)
 
 ## If you only have a video/GIF (convert to animated WebP with ffmpeg)

@@ -72,6 +72,18 @@ _Site-wide footer. Logo + tagline (left), nav list (centre), newsletter signup (
 
 **CTA:** Subscribe
 
+_Wiring (2026-07-14): posts to the concierge Worker's `POST /subscribe` → **Campaign Monitor** list `fc63da7e`. Client is `ps-signal.js`, class-based on `form.js-signal` — a page can carry two (the footer `.news` block plus an in-body `.signal` block on `article.html` / `design-sprint-day-four.html`). **Until 2026-07-14 this field was a dead placeholder** — no form, no handler, no endpoint; it took an address and silently did nothing. See `worker/README.md` → "Newsletter route"._
+
+**STATUS — success:** You're on the list. Watch for The Signal.
+
+**STATUS — invalid email:** That email doesn't look right.
+
+**STATUS — rate limited:** One moment — try that again shortly.
+
+**STATUS — failure:** Couldn't sign you up just now — email jp@powershifter.com and we'll add you.
+
+_These four are the only feedback a subscriber ever sees; the rule is that a signup either confirms or says why, and never fails silently again. The failure line names a real human fallback rather than a dead end. Edit them in `ps-signal.js`._
+
 ### Land acknowledgement
 
 **BODY:** We acknowledge that we live and work uninvited on the unceded territories of the xwməθkwəy̓əm (Musqueam), Sḵwx̱wú7mesh (Squamish), Sel̓íl̓witulh (Tsleil-Waututh), Syilx tmixw (Okanagan), Nłeʔkepmx Tmíxw (Nlaka'pamux), Niitsítpiis-stahkoii (Blackfoot / Niitsítapi), Mi'kma'ki, the Mississaugas of the Credit, Anishnabeg, Chippewa, Haudenosaunee, and Wendat peoples. We are grateful for the opportunity to build our agency and communities on land that is cared for by these Nations.

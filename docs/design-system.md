@@ -116,15 +116,32 @@ underline) is a non-text graphic → only needs 3:1, so brand `--magenta` is fin
   scroll (`darkBands()`); `header.on-light` on paper sections.
 - **Pink takeover** (`.takeover`, bg `--magenta`): full-viewport, numbered link list
   (`.tk-l` → `.tk-n` mono numeral + `.tk-t` display word + `.tk-ar` arrow). Words fill
-  with the `scratches-v2.webp` texture on hover (`background-clip:text`). Signature
-  moment — keep it.
+  with the `scratches-v3.webp` texture on hover (`background-clip:text`). Signature
+  moment — keep it. (Texture is v3 since 2026-07-14 — v2 had a black tail and
+  screen-grab handles; see `menu-hover-loop.md`.)
+- **Opening it is CLICK-ONLY** (2026-07-14). The button toggles; Close, Escape, or a
+  link click dismiss. **Do not re-add hover-open** — opening a nav on hover is
+  inconsistent with the pattern people expect (QA, agreed by JP), and it was the root
+  of a recurring bug class: it needed a `pointerType` gate + a 150ms timer + a 500ms
+  suppression window purely to stop a tap's synthetic `mouseenter` re-opening a menu
+  the tap had just closed. Hover-close (dismiss on pointer leaving the overlay) went
+  with it — equally surprising. Link-*text* hover (the texture fill) is unrelated and stays.
 - **Active page:** `.tk-l.is-current` + `aria-current="page"` → persistent arrow +
   solid numeral. Set on the link matching the current route.
 - **Link wiring (canonical, extensionless):** Work→`/work`, Digital→`/digital`,
-  Studios→`/studios`, Insights→`/insights`, About→`/about`. **Contact removed from the nav**
-  (the `#contact` page-closer + the concierge handle contact now). Careers→`#` until the page
-  exists. Legal links live in the footer: `/terms-and-conditions`, `/privacy-policy`.
-- **Mobile:** takeover scrolls if short; foot stacks; type clamps down (≤560px).
+  Studios→`/studios`, Insights→`/insights`, About→`/about`, Careers→`/careers` (page
+  shipped 2026-07-09). **Contact removed from the nav** (the `#contact` page-closer + the
+  concierge handle contact now). Legal links live in the footer: `/terms-and-conditions`,
+  `/privacy-policy`.
+- **Short viewports — the takeover does NOT scroll.** Body scroll is locked while it's
+  open and `.tk-links` has no overflow, so anything that doesn't fit is unreachable, not
+  scrollable. The type is therefore sized off **both** axes —
+  `.tk-t{font-size:clamp(38px,min(6vw,7.2vh),76px)}` — so the stack shrinks to fit
+  instead of clipping. Sized off `6vw` alone it pinned to the 76px ceiling on any wide
+  viewport and needed ~921px, so a MacBook Pro (~850–892px of viewport after browser
+  chrome) clipped row 06 and pushed the footer off entirely (QA 2026-07-14, JP).
+  **If you add a 7th link, re-check the fit** — `min()` buys headroom, it isn't infinite.
+  ≥~975px tall still renders the full 76px; mobile still floors at 38px.
 
 ### Hero — canonical `sub-hero`
 The standard subpage hero. Ink bg, **min-height 50vh**, bottom-aligned, animated
@@ -284,7 +301,7 @@ are proportional with no `tnum`, so odometer digits are centered (§1 weight not
   `/insights`): see generator `tools/blog-renderer/` (has its own README).
 - Case studies and blog posts are the two page sets in this repo nested one directory down
   (under `/work` and `/insights` respectively) — see §11 below for why that mattered for both.
-- Fonts: Adobe Typekit kit `xkk7api` (see §1). Menu hover loop: `images/scratches-v2.webp`
+- Fonts: Adobe Typekit kit `xkk7api` (see §1). Menu hover loop: `images/scratches-v3.webp`
   (animated WebP, filled into nav words via `background-clip:text`) — swap per `docs/menu-hover-loop.md`.
 - Shared chrome copy: `docs/copy/_shared.md` · per-page copy: `docs/copy/*.md`
 

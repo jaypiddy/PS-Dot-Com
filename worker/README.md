@@ -86,9 +86,48 @@ detail is echoed to the client — exceptions are logged server-side only). The
 page shows a graceful "reach us by phone/email" fallback. A `429` means the
 per-IP rate limit tripped; the widget shows a friendly "one at a time" message.
 
-Routes: `POST /` (chat), `POST /contact` (form → email), `POST /log`
-(transcript → email on session end; token travels in the body since the
-keepalive unload request can't set headers).
+Routes: `POST /` (chat), `POST /contact` (form → email), `POST /subscribe`
+(newsletter → Campaign Monitor), `POST /log` (transcript → email on session end;
+token travels in the body since the keepalive unload request can't set headers).
+
+## Newsletter route (`POST /subscribe`) — "The Signal"
+
+The footer signup on every page (and the in-body `.signal` block on `article.html`
+/ `design-sprint-day-four.html`) posts here; the Worker forwards to **Campaign
+Monitor**. It goes through the Worker for the same reason the chat does: the API
+key must never reach the browser.
+
+**Heads up — this field shipped dead.** Until 2026-07-14 it was a pure design
+placeholder: no `<form>`, no `action`, no `name`, `button type="button"`, no
+handler, no endpoint. It accepted an address and silently did nothing, so anyone
+who "subscribed" believed they were on the list. If you ever see a form here with
+no `js-signal` class, assume it's decorative until proven otherwise.
+
+Setup:
+1. `CM_LIST_ID` in `wrangler.toml` — the target list's ID (not a secret).
+   Campaign Monitor → Lists & subscribers → *list* → Change name/type.
+2. `CM_API_KEY` as a **secret** — `npx wrangler secret put CM_API_KEY`. Never in
+   `wrangler.toml`, never in git, never on the command line (shell history).
+   Note: it is **not** usable from Vercel — the site is static HTML with no
+   functions or build step, so nothing there can read an env var at runtime.
+3. `CM_CONSENT_TO_TRACK` — `"Yes"` or `"No"`. CM requires an explicit value when
+   adding a subscriber; `"Yes"` asserts they consented to open/click tracking, so
+   it must match what the form and privacy policy actually disclose (CASL).
+4. Client: `ps-signal.js` (loaded on every page, class-based on `form.js-signal`).
+
+CM auth is HTTP Basic with the **API key as the username** and any non-empty
+password. A subscribe returns `201` on success; the Worker maps a CM `400` to
+`{"error":"invalid email"}` and anything else to a `502`, so the page can say
+something true rather than failing silently. `Resubscribe: true` — someone typing
+their address into a public box is a fresh opt-in.
+
+Verify end-to-end (Origin + token satisfy the gates):
+```bash
+curl -sS -X POST https://ps-concierge.<sub>.workers.dev/subscribe \
+  -H "Origin: https://powershifter.com" -H "X-PS-Token: <CLIENT_TOKEN>" \
+  -H "Content-Type: application/json" -d '{"email":"you+test@example.com"}'
+# => {"ok":true}   (and the address appears in the CM list)
+```
 
 ## How the knowledge base flows
 
@@ -117,16 +156,17 @@ header injection (CRLF stripped from header-bound fields; bodies are
    `ratelimit` bindings in `wrangler.toml` (`[[ratelimits]]`):
    - `CHAT_LIMITER` — 10 chat msgs / 60s / IP (bounds Anthropic spend)
    - `FORM_LIMITER` — 3 submissions / 60s / IP, separate keys for `/contact`
-     vs `/log` (bounds Resend / inbox spam)
+     vs `/log` vs `/subscribe` (bounds Resend / inbox spam and Campaign Monitor
+     writes; the separate keys stop a signup and an inquiry starving each other)
    Keyed on `CF-Connecting-IP` (Cloudflare-set, unforgeable). **Fails OPEN**:
    if a binding is missing the request proceeds, so code and config can deploy
    in either order. Enforced *per Cloudflare colo* (not global) and eventually
    consistent — a distributed botnet gets more headroom than one machine.
    The namespaces are provisioned automatically by `wrangler deploy` (no manual
    dashboard step). `period` must be `10` or `60`.
-4. **Honeypot** — `/contact` reads a `company` field the page renders
-   visually-hidden (offscreen, not `display:none`). Non-empty ⇒ form bot ⇒
-   pretend success, send nothing.
+4. **Honeypot** — `/contact` and `/subscribe` read a `company` field the page
+   renders visually-hidden (offscreen, not `display:none`). Non-empty ⇒ form bot ⇒
+   pretend success, send/write nothing.
 
 **Token / cost caps:** per-message 4k chars, per-thread 16k, 24 turns
 (`sanitize()`), `max_tokens` 1024. Combined with rate limiting, per-call and

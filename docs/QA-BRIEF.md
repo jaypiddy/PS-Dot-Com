@@ -27,13 +27,16 @@ a **173-URL redirect map**, and **canonical + structured data** site-wide.
 | # | Test | Expected |
 |---|---|---|
 | A1 | Top nav links (Work, Digital, Studios, Insights, About) | Each loads the correct page; current page shows active state |
-| A2 | "Menu +" opens the full-screen takeover; Close button | Overlay opens, links navigate, closes cleanly (no scroll-lock left behind) |
+| A2 | "Menu +" opens the full-screen takeover; Close button | Overlay opens on **click**, links navigate, closes cleanly (no scroll-lock left behind). Close / Escape / a link click all dismiss |
+| A2a | **Hover** the "Menu +" button without clicking; then open it and move the pointer off the overlay | Hovering must **not** open it, and leaving the overlay must **not** close it — click-only since 2026-07-14 (do not "fix" this back) |
+| A2b | Open the menu on a **short** window (a MacBook Pro, ~850–892px viewport) | All six links **and** the phone/city footer are visible. The menu does not scroll, so anything clipped is unreachable — type shrinks to fit instead (regression 2026-07-14) |
 | A3 | Logo click | Returns to home `/` |
 | A4 | Scroll a long page | Nav color inverts correctly over dark vs. light sections (no stuck/wrong color) |
 | A5 | Footer nav + Terms/Privacy links | All resolve |
 | A6 | Concierge bubble (bottom-left) → open, ask a question | AI chat returns a real reply |
 | A7 | Concierge/contact form → submit a test message | Success state shown; email actually received (bd@powershifter.com) |
-| A8 | Footer newsletter field | Behaves as designed (confirm expected behavior with team) |
+| A8 | Footer newsletter ("The signal") → submit a real address | Confirms inline: "You're on the list. Watch for The Signal." — and the address actually appears in the Campaign Monitor list. **Never accept a silent success:** if nothing happens on submit, it's broken. (This field shipped dead until 2026-07-14 — no form, no handler, no endpoint — and read as working, which is how it survived earlier QA. Verify the address lands, not just that the message appears.) |
+| A8a | Submit a junk value ("abc") and an empty field | Says "That email doesn't look right." — the form must always confirm or explain, never fail silently |
 
 ### B. Links & routing
 | # | Test | Expected |

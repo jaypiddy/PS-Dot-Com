@@ -41,7 +41,7 @@ All motion uses `cubic-bezier(.76,0,.24,1)` and is disabled under `prefers-reduc
 
 **Highlight swipe (secondary links).** `.swipe` wraps the last word of the label in `.hl` — set in serif italic at 1.18em. Hover scales a magenta box in from the left behind the word and flips it to paper. All swipe labels are two or more words; the JS skips single-word labels.
 
-**Pink takeover menu.** Nav bar is logo + "MENU +". The takeover is a full-viewport magenta panel sliding from the top: numbered links (01 Work → 06 Contact) in 900 grotesque with staggered rise, footer with phone and city. Click, hover-open (pointer devices only), Escape, and scroll-lock are wired. Logo links home on both pages; on work.html the section links resolve to `index.html#…` anchors.
+**Pink takeover menu.** Nav bar is logo + "MENU +". The takeover is a full-viewport magenta panel sliding from the top: numbered links (01 Work → 06 Careers) in 900 grotesque with staggered rise, footer with phone and city. **Click-only** — the button toggles; Close, Escape, or a link click dismiss, and scroll-lock is wired. (Hover-open and hover-close were removed 2026-07-14: opening a nav on hover fights the expected pattern and caused a recurring tap bug — don't re-add them. See `docs/design-system.md`.) Link words fill with an animated texture on hover via `background-clip:text`. Logo links home on both pages; on work.html the section links resolve to `index.html#…` anchors.
 
 **F1 ink-fill filters (work page).** Pill tabs with cascade labels and grey counts. Active state fills ink with a magenta count. Hybrid's count reads "In production" in serif italic. Filtering toggles cards by `data-cat`.
 

@@ -28,6 +28,31 @@ Pages that stay flat at the root (`/work`, `/digital`, `/studios`, `/insights`,
 case studies and blog posts now ARE nested (one directory under their listing
 page), so any new one is automatically in scope for this rule.
 
+## Critical rule: site chrome is COPIED into all 99 pages, not shared
+
+There is no layout/include system. The header, takeover menu, footer (incl. "The
+signal" signup), and the CSS/JS that drive them are **duplicated verbatim into every
+`.html` file** — 11 root + 25 `work/` + 63 `insights/`. A chrome change is a 99-file
+change, every time.
+
+- **Always script it, then verify by count.** The blocks are byte-identical across
+  pages, so an exact-string replace works; then `grep -rl '<new thing>' --include='*.html' . | wc -l`
+  must read **99** (and the old string **0**). A partial sweep is the failure mode —
+  it leaves a handful of pages silently on the old behaviour.
+- **`article.html` is in scope and is the trap.** It's simultaneously a live page *and*
+  the blog renderer's template. **Skip it and the next `render_blog.py` run reverts your
+  change across all 63 posts.** Include it and re-renders carry the fix forward.
+- **Two pages carry a second copy of a chrome component**: `article.html` (in its
+  placeholder body) and `design-sprint-day-four.html` both have an in-body `.signal`
+  block alongside the footer one — 101 signup forms across 99 pages. Don't assume
+  one-per-page; prefer class hooks (`form.js-signal`) over ids.
+- Root pages reference scripts relatively (`src="ps-spice.js"`); nested pages and
+  `article.html` must use root-absolute (`src="/ps-spice.js"`) — see the rule above.
+  A scripted sweep has to honour both conventions.
+
+Real cases (all 2026-07-14): the menu hover removal, the takeover type-size fix, the
+`scratches-v2→v3` swap, and wiring the Signal form were each 99-file edits.
+
 ## Where things live
 
 - **Case studies** — hand-published from Notion, one `.html` per case at

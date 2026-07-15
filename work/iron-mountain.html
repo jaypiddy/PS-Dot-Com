@@ -1327,9 +1327,8 @@ document.querySelectorAll('.swipe').forEach(function(el){
   var ov = document.getElementById('takeover');
   var close = document.getElementById('menuClose');
   if(!btn || !ov) return;
-  var hoverTimer = null, suppressUntil = 0, lockedScrollY = 0;
+  var lockedScrollY = 0;
   function setOpen(open){
-    if(!open) suppressUntil = Date.now() + 500; // grace: closing parks the cursor on the button
     ov.classList.toggle('open', open);
     document.body.classList.toggle('menu-open', open);
     btn.setAttribute('aria-expanded', open);
@@ -1362,24 +1361,14 @@ document.querySelectorAll('.swipe').forEach(function(el){
       window.scrollTo({top: lockedScrollY, left: 0, behavior: 'instant'});
     }
   }
+  // Click-only (2026-07-14). Hover-open — and hover-close on overlay leave —
+  // were removed: opening a nav on hover is inconsistent with the pattern people
+  // expect, and the synthetic-hover-before-tap dance it required on hybrid
+  // devices was a recurring QA bug. Open/close is now explicit: the button
+  // toggles; Close, Escape, or a link click dismiss.
   btn.addEventListener('click', function(){
-    clearTimeout(hoverTimer); // a tap's synthetic hover must not re-open right after this toggle
     setOpen(!ov.classList.contains('open'));
   });
-  // Hover-open is a MOUSE-only affordance. Gate on pointerType, not (hover:hover):
-  // that media query also matches hybrid/emulated devices, where a tap fires a
-  // synthetic mouseenter before click — the queued timer then re-opened a menu
-  // the tap had just closed (the intermittent "menu won't close/open" QA saw).
-  btn.addEventListener('pointerenter', function(e){
-    if(e.pointerType !== 'mouse') return;
-    if(Date.now() < suppressUntil) return;
-    hoverTimer = setTimeout(function(){
-      if(Date.now() < suppressUntil) return; // re-check at fire time, not just arm time
-      setOpen(true);
-    }, 150);
-  });
-  btn.addEventListener('pointerleave', function(e){ if(e.pointerType === 'mouse') clearTimeout(hoverTimer); });
-  ov.addEventListener('pointerleave', function(e){ if(e.pointerType === 'mouse') setOpen(false); });
   if(close) close.addEventListener('click', function(){ setOpen(false); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setOpen(false); });
   ov.querySelectorAll('.tk-l').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });

@@ -84,7 +84,7 @@ _The receipts: four numeric proof points presented as scroll-triggered odometers
 | STAT | +40 | % | organic leads — Angel Oak |
 | STAT | 2 | × Silver ADDY | Power Shifter Studios, 2026 |
 
-_(The "+40%" on Angel Oak and the "2× Silver ADDY" both currently sit in the canon parking lot for proof-claim verification before paid reuse.)_
+_(The "+40%" on Angel Oak and the "2× Silver ADDY" were **confirmed by JP 2026-07-14** and are out of the canon parking lot — both are cleared for paid reuse, PR, and outbound. Do not re-flag as unverified.)_
 
 ### Client wall
 

@@ -45,7 +45,7 @@ _High-contrast strip above the films index. No header. One declarative line of t
 
 **BODY:** *The Summit* (Iron Mountain) · *Four Dreams* (Ernest Packaging) — judged against everything, not just the AI category.
 
-_Open call: verify the judging-category claim before "judged against everything" ships. If the ADDYs were entered in an AI-specific category, the qualifying sentence dies._
+_**CONFIRMED 2026-07-14 (JP):** the judging-category claim is verified — the ADDYs were not entered in an AI-specific category, so "judged against everything" stands. Cleared for paid outbound and PR reuse. (Resolved open call — do not re-flag.)_
 
 ---
 
@@ -315,7 +315,7 @@ _Carried from the companion copy doc; resolve before this page goes LIVE._
 ### Open calls to resolve before build
 
 1. **"Ask Toronto"** — in or out, pending the Leo Burnett relationship's referenceability. If the relationship formalizes, name it; if it stays informal, cut.
-2. **ADDY judging-context claim** — verify category before "judged against everything" ships in the proof bar.
+2. ~~**ADDY judging-context claim** — verify category before "judged against everything" ships in the proof bar.~~ **RESOLVED 2026-07-14 (JP): confirmed, not an AI-specific category. The qualifier stands and is cleared for paid reuse.**
 3. **Film ordering** — award-first proposed; override if a stronger opener exists in the unreleased pipeline. Akamai, when public, likely takes slot one.
 
 ### Dependency on /about
@@ -353,7 +353,7 @@ _Append-only. New notes added at the bottom; references in the codebase cite by 
     Each film tile uses its uploaded poster image from `/images/<slug>.jpg` (sourced June 2026: `iron_mountain.jpg`, `ernest.jpg`, `celestial.jpg`, `algorithm_trap.jpg`, `maple_health.jpg`, `rapid_mvp.jpg`). Inline video previews (the `.work` `.media + <video>` pattern from `/work`) are a follow-up — they require encoding each film to muted-loop MP4 + WebM, generating frame-0 posters, and uploading to `/videos`. The play badge (`.film-play`) sits on the poster image as a visual affordance for the future video-on-hover behavior.
 
 6. **"Judged against everything" claim — UNVERIFIED. (Open call carried.)**
-    The Block 2 proof bar's qualifying line `judged against everything, not just the AI category` ships in the static prototype but remains an unverified claim. If the ADDYs were entered in an AI-specific category, the qualifier dies and the bar shortens to just the award + film names + agencies. Verify the judging-context before any paid outbound, PR pitch, or production publish. Carried open call from `studios.md` original brief.
+    **RESOLVED 2026-07-14 (JP): confirmed.** The Block 2 proof bar's qualifying line `judged against everything, not just the AI category` is verified — the ADDYs were not entered in an AI-specific category. The qualifier stands as shipped and is cleared for paid outbound, PR pitch, and production publish. (Original open call from the `studios.md` brief; kept here for provenance — do not re-flag as unverified.)
 
 7. **Roster — direct paste from `/digital`, identical 9-logo set.**
     Same 9 logos, same widths, same `.proof-spine` + `.logos` + `.cell` + `.logo-mask` HTML structure as `/digital` line ~992. The roster's cross-practice mix (Telus, Deloitte, KPMG, Grammarly, Akamai → Digital; Iron Mountain, Energizer, Lululemon, Canucks → Studios-adjacent) is intentional per the one-masterbrand-two-doors IA. If a Studios-specific subset is wanted later, override the 9 logos in this file's HTML and update the roster grid; the underlying CSS doesn't need to change.

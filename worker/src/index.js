@@ -186,6 +186,15 @@ export default {
       return handleContact(request, env, cors);
     }
 
+    // Route: POST /subscribe → "The Signal" footer signup → Campaign Monitor.
+    // Shares FORM_LIMITER with /contact but on its own key, so a signup and an
+    // inquiry don't eat each other's budget.
+    if (path.endsWith("/subscribe")) {
+      if (!(await allowed(env.FORM_LIMITER, ip + ":subscribe")))
+        return json({ error: "rate_limited" }, 429, cors);
+      return handleSubscribe(request, env, cors);
+    }
+
     // Chat is the paid path (Anthropic tokens) — cap per-IP message rate.
     if (!(await allowed(env.CHAT_LIMITER, ip)))
       return json({ error: "rate_limited" }, 429, cors);
@@ -292,6 +301,62 @@ async function handleContact(request, env, cors) {
     return json({ ok: true }, 200, cors);
   } catch (err) {
     console.error("contact exception", String(err));
+    return json({ error: "exception" }, 500, cors);
+  }
+}
+
+// POST /subscribe — adds an email to the Campaign Monitor list behind "The
+// Signal" (the footer newsletter field on every page).
+// Needs secret CM_API_KEY and var CM_LIST_ID (+ optional CM_CONSENT_TO_TRACK).
+//
+// Campaign Monitor auth is HTTP Basic with the API key as the USERNAME and any
+// non-empty password — the key never reaches the browser, which is the whole
+// reason this goes through the Worker rather than posting from the page.
+async function handleSubscribe(request, env, cors) {
+  let body;
+  try { body = await request.json(); } catch { return json({ error: "bad json" }, 400, cors); }
+
+  // Honeypot — same contract as /contact: the page renders a visually-hidden
+  // "company" field humans never see. Anything filling it is a bot; pretend
+  // success rather than tipping it off or burning the CM quota.
+  if (body.company) return json({ ok: true }, 200, cors);
+
+  const email = String(body.email == null ? "" : body.email).trim().slice(0, 200);
+  if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))
+    return json({ error: "invalid email" }, 400, cors);
+  if (!env.CM_API_KEY || !env.CM_LIST_ID || /REPLACE/.test(env.CM_LIST_ID))
+    return json({ error: "server not configured" }, 500, cors);
+
+  try {
+    const resp = await fetch(
+      `https://api.createsend.com/api/v3.3/subscribers/${env.CM_LIST_ID}.json`,
+      {
+        method: "POST",
+        headers: {
+          "Authorization": "Basic " + btoa(env.CM_API_KEY + ":x"),
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          EmailAddress: email,
+          // CM requires an explicit tracking-consent value on add. Kept as a var
+          // so it can be flipped to "No" without a code change — see wrangler.toml.
+          ConsentToTrack: env.CM_CONSENT_TO_TRACK || "Yes",
+          // Someone typing their address into a public signup box is a fresh
+          // opt-in, so honour it even if they'd unsubscribed before.
+          Resubscribe: true,
+        }),
+      }
+    );
+    if (!resp.ok) {
+      // CM returns 400 + {Code,Message} for addresses it rejects after our regex.
+      const detail = await resp.text();
+      console.error("campaign monitor error", resp.status, detail);
+      if (resp.status === 400) return json({ error: "invalid email" }, 400, cors);
+      return json({ error: "subscribe failed" }, 502, cors);
+    }
+    return json({ ok: true }, 200, cors);
+  } catch (err) {
+    console.error("subscribe exception", String(err));
     return json({ error: "exception" }, 500, cors);
   }
 }

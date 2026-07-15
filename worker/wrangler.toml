@@ -40,6 +40,18 @@ CLIENT_TOKEN = "7d771b12790faeefb8eaac7af37e5892"
 CONTACT_TO = "bd@powershifter.com"
 CONTACT_FROM = "POWER SHIFTER <concierge@mailupdates.powershifter.com>"
 
+# "The Signal" footer signup -> Campaign Monitor (POST /subscribe).
+# CM_LIST_ID is the target list's ID (not a secret - it's just an identifier).
+#   Find it: Campaign Monitor > Lists & subscribers > <list> > Change name/type,
+#   the List ID is shown there. Or GET /api/v3.3/clients/{clientid}/lists.json
+# The API key is a SECRET and must NOT live in this file:
+#   cd worker && npx wrangler secret put CM_API_KEY
+# ConsentToTrack is required by CM on add ("Yes" | "No"). Kept here so it can be
+# flipped without a code change - "Yes" claims the subscriber consented to open/
+# click tracking, which should match what the form + privacy policy disclose.
+CM_LIST_ID = "fc63da7ed1dbe8569b61ffae1c874c19"
+CM_CONSENT_TO_TRACK = "Yes"
+
 # SECRETS — never in this file. Set once in the dashboard (Variables and secrets
 # → Secret), or via:
 #   wrangler secret put ANTHROPIC_API_KEY

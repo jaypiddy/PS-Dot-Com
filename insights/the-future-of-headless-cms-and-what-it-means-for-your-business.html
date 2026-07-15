@@ -225,6 +225,12 @@
   .news input:focus-visible{outline:2px solid var(--magenta-ink);outline-offset:2px}
   .news button{background:var(--paper);color:var(--ink);border:0;font-family:var(--text);font-weight:700;font-size:13px;padding:0 20px;cursor:pointer;transition:background .2s ease-out,color .2s ease-out}
   .news button:hover{background:var(--magenta);color:var(--paper)}
+  /* Honeypot — off-canvas, never focusable. Bots fill it; the Worker drops those. */
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+  /* Signup feedback. Reserves its line so confirming/erroring doesn't shift the layout.
+     Both Signal blocks (footer .news + in-body .signal) sit on ink, so one style covers them. */
+  .signal-msg{font-size:13px;line-height:1.5;margin-top:10px;min-height:1.2em;color:rgba(250,250,247,.65)}
+  .signal-msg.is-err{color:var(--magenta)}
   .ack{padding:34px 0;font-size:12.5px;line-height:1.7;color:rgba(250,250,247,.5);max-width:110ch;border-bottom:1px solid var(--line-light)}
   .legal{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:26px;font-size:12.5px;color:rgba(250,250,247,.5)}
   .legal a{margin-left:18px}
@@ -943,10 +949,12 @@
       <div class="news">
         <h4>The signal</h4>
         <p>What we're learning from shipping software and cinema on AI pipelines. Monthly, short, no filler.</p>
-        <div class="field">
-          <input type="email" placeholder="Email address" aria-label="Email address">
-          <button type="button">Subscribe</button>
-        </div>
+        <form class="field js-signal" novalidate>
+          <input type="email" name="email" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
+          <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="signal-msg" role="status" aria-live="polite"></p>
       </div>
     </div>
     <p class="ack">We acknowledge that we live and work uninvited on the unceded territories of the Coast Salish peoples — the Lekwungen (Songhees and Esquimalt) and W̱SÁNEĆ around Victoria, the Quw'utsun (Cowichan) at Cowichan Bay, the many Hul'q'umi'num- and SENĆOŦEN-speaking Nations of Salt Spring Island, and the Sḵwx̱wú7mesh Úxwumixw (Squamish) at Gibsons. As a team working coast to coast, we extend that respect to all the Indigenous lands and treaty territories our people call home. We are grateful to share this land cared for by these Nations.</p>
@@ -1157,5 +1165,6 @@ document.querySelectorAll('.swipe').forEach(function(el){
 <script src="/ps-spice.js"></script>
 <!-- PS Concierge -->
 <script src="/ps-concierge.js"></script>
+<script src="/ps-signal.js"></script>
 </body>
 </html>

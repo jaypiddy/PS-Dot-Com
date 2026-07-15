@@ -99,12 +99,13 @@ a **173-URL redirect map**, and **canonical + structured data** site-wide.
 ---
 
 ## Outstanding — tracked, not yet actioned
-- **TELUS Rewards card has no video yet** (`/work` and `/digital`). The video hasn't been
-  rendered. At rest both show the static poster (`images/telus.jpg`); on `/digital` the card's
-  hover-loop currently reuses `videos/koodo_loop.mp4` as a placeholder (wrong clip), and on
-  `/work` the card is static (no hover-loop). **Leave as-is for now.** Once the TELUS Rewards
-  loop is rendered, wire it to both cards (add/point `data-video` to the real clip, matching the
-  other hover-video cards). — added 2026-07-14
+- ~~**TELUS Rewards card has no video yet** (`/work` and `/digital`).~~ **RESOLVED 2026-07-14.**
+  The clip landed (Stream UID `9ae6ac44cd107543db4cc0c7c6160392`, 5s, 1920×1080) and is wired to
+  three places: the `/work` `.wframe` hover-loop, the `/digital` `.frame` hover-loop (which had
+  been reusing the wrong `videos/koodo_loop.mp4` clip), and a new bottom-of-page `.cs-reel` on
+  the case study itself. **Also fixed in passing:** the `/digital` card was titled "TELUS Rewards"
+  with the TELUS Rewards stat but its `href` pointed at `/work/case-telus-koodo` — a different
+  case study ("TELUS & Koodo Dealer Accessories Platform"). Now points at `/work/telus-rewards`.
 
 ## Known / expected states — DO NOT log these as bugs
 - **Canonical, sitemap, and robots point to `powershifter.com`.** Correct for now; they flip to `powershifter.com` at cutover.

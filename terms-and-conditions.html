@@ -493,7 +493,15 @@
   .takeover.open .tk-l{opacity:1;transform:translateY(0);transition-delay:var(--td,0s)}
   .tk-n{font-family:var(--mono,ui-monospace,Menlo,monospace);font-size:12px;color:rgba(18,19,21,.6);min-width:2ch}
   .tk-t{font-family:var(--display);font-weight:900;letter-spacing:-.02em;line-height:1;
-    font-size:clamp(38px,6vw,76px);transition:transform .3s ease,color .3s ease}
+    font-size:clamp(38px,min(6vw,7.2vh),76px);transition:transform .3s ease,color .3s ease}
+  /* Height-aware: the takeover is 6 rows + header + footer. Sized off 6vw alone,
+     the type maxed at 76px on any wide viewport and the stack needed ~921px —
+     so on a short-but-wide screen (MacBook Pro, ~850-892px of viewport once
+     browser chrome is taken) row 06 (Careers) clipped and the footer was pushed
+     off entirely, with no scroll to reach them (body scroll is locked). Taking
+     min() against 7.8vh shrinks the type only when height is the binding
+     constraint; >=975px tall still renders the full 76px, and mobile portrait
+     still floors at 38px. QA 2026-07-14 (JP, MBP M4). */
   /* Texture-clipped hover needs vertical room: descenders and the last glyph's
      right shoulder get clipped if the inline box is tight. Pad the label and
      widen the background box so the texture covers the full glyph extent. */

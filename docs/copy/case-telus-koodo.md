@@ -213,7 +213,7 @@ _Magenta CTA band at the foot of the page, above the footer. Same scale as the h
 - **SUB-VOICE:** Let's build.
 _(SUB-VOICE renders as serif italic in magenta — `em.voice.mag`. Identical to `article.md`'s page closer.)_
 
-**BODY:** Cinema in days. Software in weeks. You'll work directly with the people who make it — no account layer, no brief telephone.
+**BODY:** You'll work directly with the people who make it — no account layer, no game of telephone.
 
 **CTA (solid):** Start a project →
 **CTA (tel):** +1 (604) 227-9952

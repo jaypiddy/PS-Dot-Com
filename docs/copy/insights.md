@@ -205,11 +205,11 @@ _Single CTA below the grid in the static rough-in. Production paginates from Not
 _Magenta CTA band at the foot of the page, above the footer. Same scale as the homepage closer; page-specific H2 + sub-voice._
 
 **H2 (CAPS + SUB-VOICE pair):**
-- **CAPS:** Enough reading.
-- **SUB-VOICE:** Start something.
+- **CAPS:** That's the thinking.
+- **SUB-VOICE:** Let's do the making.
 _(SUB-VOICE renders as serif italic in magenta — `em.voice.mag`.)_
 
-**BODY:** Cinema in days. Software in weeks. You'll work directly with the people who make it — no account layer, no brief telephone.
+**BODY:** You'll work directly with the people who make it — no account layer, no game of telephone.
 
 **CTA (solid):** Start a project →
 **CTA (tel):** +1 (604) 227-9952

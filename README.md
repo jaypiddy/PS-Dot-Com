@@ -29,7 +29,8 @@ _The whole site is now **built and live on [powershifter.com](https://powershift
 **Approved lines.**
 - "Made to use. Made to remember." — hero / footer
 - "Anyone can generate. Few can direct." — Studios
-- "Working software in weeks, not quarters." — Digital
+- "Products people choose, not endure." — Digital
+- "Products people use. Films people remember." — masterbrand
 
 **Sub-page header pattern.** Magenta caps eyebrow → 900 grotesque H1 → pink serif-italic sub-voice line. Work page: "Twenty-two projects. Two practices. One room."
 

@@ -182,7 +182,7 @@ _("reading" in serif italic + magenta — `em.voice.mag`.)_
 
 - **INDEX:** 02
 - **STREAM:** Process
-- **REL-TITLE:** Working software in weeks, not months
+- **REL-TITLE:** Products people choose, not endure
 - **MICRO (date):** April 3, 2026
 
 ### Row 03 (dynamic)
@@ -203,7 +203,7 @@ _Magenta CTA band at the foot of the page, above the footer. Same scale as the h
 - **SUB-VOICE:** Let's build.
 _(SUB-VOICE renders as serif italic in magenta — `em.voice.mag`.)_
 
-**BODY:** Cinema in days. Software in weeks. You'll work directly with the people who make it — no account layer, no brief telephone.
+**BODY:** You'll work directly with the people who make it — no account layer, no game of telephone.
 
 **CTA (solid):** Start a project →
 **CTA (tel):** +1 (604) 227-9952

@@ -97,4 +97,5 @@ The lines below are the canonical Power Shifter brand statements. They appear in
 
 1. Made to use. / Made to remember.
 2. Anyone can generate. / Few can direct.
-3. Working software in weeks, not months.
+3. Products people choose, / not endure.  _(Digital — replaced "Working software in weeks, not months." 2026-07-15; see Retired.)_
+4. Products people use. / Films people remember.  _(masterbrand — homepage og:title. Added 2026-07-15.)_

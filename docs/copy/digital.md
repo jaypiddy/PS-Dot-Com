@@ -16,7 +16,7 @@ _Identity-first hero. Eyebrow names the practice scope; H1 makes the velocity cl
 **EYEBROW:** Digital — product strategy, design & engineering
 
 **H1:** Products people choose, *not endure.*
-_("not months" rendered as serif italic via `em.voice`. Matches the homepage doors block's Digital door lead line exactly — same wording, scaled up to H1 for the hub page._
+_("not endure." rendered as serif italic via `em.voice`. Matches the homepage doors block's Digital door lede exactly — same wording, scaled up to H1 for the hub page (`index.html:558`). Canon #3, replaced "Working software in weeks, not months." 2026-07-15 on legal review._
 
 **BODY:** Designers at heart, all the way down to the dev team. **AI does the volume. Senior people make the calls.** MVPs in 4–6 weeks; platforms that hold at enterprise scale.
 _Renders inside `<p class="sub-body">` — a new sibling of the existing `.sub-voice` class (which carries serif-italic-on-magenta lines). `.sub-body` is plain prose with bolded mid-sections, intended for hub pages where the hero needs to qualify the H1 with weighted prose rather than an italic voice flourish._
@@ -207,7 +207,8 @@ _Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of th
 
 ## Notes & conflicts
 
-1. **Hero H1 — resolved to canon "not months."**
+1. **Hero H1 — resolved to canon "not months." ⚠️ SUPERSEDED 2026-07-15.**
+   **Both wordings below are now RETIRED.** Canon #3 is **"Products people choose, / not endure."** Legal struck the whole-practice timeline framing entirely (see Note 13 and the ledger in `README.md`) — so neither "not quarters" nor "not months" may be revived. The note below is kept as history of how the line got to the point where legal killed it.
    The original v1 prototype's hero read "Working software in weeks, not quarters." Resolved on June 23 2026 (stub commit) to the current canon "Working software in weeks, *not months.*" — matching `home.md`, `article.html`, `_shared.md` taglines, and the deck overview. The H1 now renders with `em.voice` on "not months." mirroring the homepage doors block's Digital door lead line exactly. The "not quarters" wording is retired permanently.
 
 2. **Energizer caption wording — resolved to homepage form.**

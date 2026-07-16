@@ -230,5 +230,5 @@ _(SUB-VOICE renders as serif italic in magenta — `em.voice.mag`.)_
 6. **Embedded video and podcast destinations.**
    The video embed currently targets a Rick Astley placeholder URL; the podcast embed targets a Podbean placeholder. Both ship as broken until real destinations are wired. Per-article values come from Notion fields on the Blogs record.
 
-7. **"Working software in weeks, not months" in Row 02.**
-   This canonical line appears as a related-reading title — both an article subject and a piece of canon. When the canon shifts (it just did, from "not quarters" to "not months"), this row's title needs to track. Already aligned at sync commit `a64031d`.
+7. **Canon in Row 02 — now "Products people choose, not endure."**
+   This row's title is a canonical line, so it tracks the canon rather than standing alone. The rule held twice: "not quarters" → "not months" (June 2026), then **"not months" → "Products people choose, not endure." (2026-07-15, legal review — the whole timeline framing was retired, not just reworded).** The REL-TITLE spec above is aligned. The template's placeholder body is inert (`/article` 308s to `/insights`, and the renderer replaces the body) — but it is still updated, because a retired canon line left sitting in the template is exactly what resurfaces later.

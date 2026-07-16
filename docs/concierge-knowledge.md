@@ -19,7 +19,8 @@ and appends it to its built-in summary.
 - The thesis: **one design culture, two practices** — "the work and the place it lives, made in the same room." **One room. No wall.**
 - We were **never a dev shop**. Designers, strategists, engineers, and filmmakers work the same problem from different angles. **Designers at heart — from software to cinema.**
 - **Work-from-anywhere studio** with experts across Canada, coast to coast. We hire for the work, not the postal code.
-- Brand line: **"Made to use. Made to remember."**
+- Brand line: **"Made to use. Made to remember."** Masterbrand: **"Products people use. Films people remember."** Digital: **"Products people choose, not endure."**
+- **Never say** (retired 2026-07-15 on legal review — do not use these or paraphrase them): "software in weeks", "cinema in days", "working software in weeks, not months", or any whole-practice delivery-timeline promise. Enterprise platform work runs months; only the Rapid MVP service line carries a numeric claim (4–6 weeks), and only in that context.
 
 ## 2 · Digital practice
 
@@ -49,7 +50,7 @@ and appends it to its built-in summary.
 
 ## 4 · How we work
 
-- You work **directly with the experts** — a small, senior team. **No account layer to get past, no brief telephone.**
+- You work **directly with the experts** — a small, senior team. **No account layer to get past, no game of telephone.**
 - We share work **early and often, sometimes ugly** — so we're never more than one degree off course, and never for long.
 - **Decisions get made at the edges,** by the people closest to the work.
 - We **hire for culture contributions, not culture fit.**

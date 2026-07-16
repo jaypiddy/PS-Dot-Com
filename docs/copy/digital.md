@@ -15,7 +15,7 @@ _Identity-first hero. Eyebrow names the practice scope; H1 makes the velocity cl
 
 **EYEBROW:** Digital — product strategy, design & engineering
 
-**H1:** Working software in weeks, *not months.*
+**H1:** Products people choose, *not endure.*
 _("not months" rendered as serif italic via `em.voice`. Matches the homepage doors block's Digital door lead line exactly — same wording, scaled up to H1 for the hub page._
 
 **BODY:** Designers at heart, all the way down to the dev team. **AI does the volume. Senior people make the calls.** MVPs in 4–6 weeks; platforms that hold at enterprise scale.
@@ -196,9 +196,9 @@ _Webflow line removed: the v1 prototype was authored before the Webflow directio
 
 _Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of the input and reinforces the visibility + direct-collaboration promise (timeline-agnostic — holds for both service lines); two CTAs._
 
-**H2:** The roadmap isn't the product. *Bring the idea.*
+**H2:** Your product idea doesn't need another pitch deck. *It needs to exist.*
 
-**BODY:** You'll see the work in progress, not reveal meetings — and you'll work directly with the people making it. No account layer, no brief telephone.
+**BODY:** You'll see the work in progress, not reveal meetings — and you'll work directly with the people making it. No account layer, no game of telephone.
 
 **CTA (solid):** Start a project →
 **CTA (tel):** +1 (604) 227-9952
@@ -257,7 +257,9 @@ _Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of th
 13. **Editorial constraint — "six weeks" / "4-6 weeks" claims scoped to Rapid MVP only.**
     The specific-number cadence claim is the Rapid MVP service line's claim, not a whole-practice claim. The reality of the Product Design & Engineering offer is that platforms — even AI-assisted, even agentic-pipeline-supported — still run months, not weeks. Putting a specific timeframe number into any whole-page surface (page closer, partner pitches, About page positioning) reads as an overpromise on the enterprise build work that is the larger part of the practice's actual delivery.
 
-    **Scope of this constraint:** specific-number claims like `six weeks`, `4–6 weeks`, `30 days`, or any numeric duration framing. The H1's generic `Working software in weeks, not months.` is a different category — directional brand canon, paired with the contrasting `not months.` clause, deliberately ambiguous on which projects land in weeks vs which run longer. That phrasing is shared with the homepage doors block, the shared chrome taglines, the article template's related-reading row, and the deck overview — it stays as-is. If the H1 framing is ever revisited, that's a cross-page edit and its own decision.
+    **Scope of this constraint:** specific-number claims like `six weeks`, `4–6 weeks`, `30 days`, or any numeric duration framing.
+
+    **⚠️ RESOLVED 2026-07-15 — the H1 framing WAS revisited.** This note used to carve the H1 out as "a different category — directional brand canon... deliberately ambiguous... it stays as-is," and to say that revisiting it would be "a cross-page edit and its own decision." That decision has now happened. **Legal declined the carve-out**, and the reasoning was the paragraph directly above this one: this very document states in writing that platform work "still run[s] months, not weeks" and is "the larger part of the practice's actual delivery." An internal record that contradicts the public promise is the exposure — the ambiguity defence does not survive contact with our own copy deck. Every whole-practice timeline claim is now retired site-wide (see the ledger). What remains is exactly what this note always permitted: the numeric claim, inside service-line context.
 
     **Where the specific-number claim IS allowed on `/digital`** (each one qualified by service-line context):
     - **Hero body:** "MVPs in 4–6 weeks; platforms that hold at enterprise scale." — "MVPs" is the explicit qualifier, and the second clause explicitly contrasts the platform side. The two-clause structure carries the scoping.
@@ -268,7 +270,7 @@ _Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of th
     - **Page closer.** The closer body is page-level and spans both service lines. The original closer body ("In six weeks you'll be testing software, not reviewing decks…") was rewritten on June 23 2026 to drop the timeframe entirely and lean on visibility + direct collaboration instead — both true regardless of project length. New body: "You'll see the work in progress, not reveal meetings — and you'll work directly with the people making it. No account layer, no brief telephone." Echoes the "Early and often" engine band's visibility promise.
     - **Future Studios cross-link copy, About page positioning, Partners pitch deck reuse** — anywhere a whole-practice numeric claim would land.
 
-    The homepage closer ("Cinema in days. Software in weeks.") is a masterbrand-velocity claim covering both Digital and Studios. "Cinema in days" is itself a numeric duration claim (the Studios analogue of "MVPs in 4-6 weeks") and the same scoping logic applies — when revisited, those claims should sit inside service-line context, not at the masterbrand level. Its own editorial call.
+    **RESOLVED 2026-07-15.** The homepage closer ("Cinema in days. Software in weeks.") was a masterbrand-velocity claim covering both Digital and Studios, and "Cinema in days" was itself a numeric duration claim (the Studios analogue of "MVPs in 4–6 weeks"). This note anticipated it correctly — it was retired in the same sweep, along with the closer H2 ("Great work used to take months. Now it takes nerve."), which was the same claim unqualified and which no prior audit had caught because it used none of the weeks/days vocabulary. No masterbrand-level velocity claim remains.
 
 14. **Validator section — flipped to ink background, terminal replaced with Cloudflare Stream explainer video.**
     JP feedback on June 23 2026: "The rapid MVP section kind of blurs in with the page. I want this to feel like a stronger call to action, so I would like to use the black background. I also don't think that the image we have there with the mono text, monotype text is of a benefit. We've got an explainer video that I think is much stronger for being able to convey the idea of what the Rapid MVP is."

@@ -17,7 +17,7 @@ _Full-bleed hero with looping reel as background. The H1 sets the two-voices pai
 - **CAPS:** Made to use.
 - **SUB-VOICE:** Made to remember.
 
-**BODY:** A product studio and a film studio with one design culture. Software in weeks, cinema in days — made in the same room.
+**BODY:** A product studio and a film studio with one design culture. Products people use, films people remember — made in the same room.
 
 **CTA (solid):** Digital →
 **CTA (outline):** Studios →
@@ -34,7 +34,7 @@ _Two-up "doors" introducing the practices. Each door has its own eyebrow, name, 
 
 **H2:** Digital
 
-**LEDE (BODY + SUB-VOICE):** Working software in weeks, *not months.*
+**LEDE (BODY + SUB-VOICE):** Products people choose, *not endure.*
 
 **BODY:** Product strategy, design, and engineering — designers at heart, all the way down to the dev team. MVPs in 4–6 weeks. Platforms that hold at enterprise scale.
 
@@ -62,8 +62,8 @@ The track repeats this six-phrase sequence:
 
 1. **CAPS:** Made to use
 2. **SUB-VOICE:** Made to remember
-3. **CAPS:** Software in weeks
-4. **SUB-VOICE:** Cinema in days
+3. **CAPS:** Anyone can generate
+4. **SUB-VOICE:** Few can direct
 
 _(The HTML duplicates the sequence to fill the marquee track; edits should be made to the sequence above and copied into every duplicate in the markup.)_
 
@@ -198,11 +198,11 @@ _("public" rendered as serif italic on a magenta block; paper-white text; slight
 _Page-end CTA block. H2 pairs grotesque with a magenta-highlighted Late Serif sub-voice. One body line, two CTAs: a "Start a project" button and a tel link._
 
 **H2 (CAPS + SUB-VOICE pair):**
-- **CAPS:** Great work used to take months.
-- **SUB-VOICE:** Now it takes nerve.
+- **CAPS:** You already have the idea.
+- **SUB-VOICE:** We're how it gets made.
 _(SUB-VOICE here uses the magenta-on-cream variant — `em.voice.mag` — for emphasis.)_
 
-**BODY:** Cinema in days. Software in weeks. Bring the idea — you'll work directly with the people who make it. There's no account layer to get past.
+**BODY:** Bring the idea — you'll work directly with the people who make it. There's no account layer to get past.
 
 **CTA (solid):** Start a project →
 **CTA (tel):** +1 (604) 227-9952
@@ -215,7 +215,7 @@ These canonical lines appear on this page and should be edited via global find-a
 
 - Made to use. / Made to remember. (hero H1; tagline in `_shared.md` footer)
 - Anyone can generate. / Few can direct. (Studios door lede)
-- Working software in weeks, not months. (Digital door lede — wording recently changed from "not quarters")
+- Products people choose, / not endure. (Digital door lede — canon #3. Replaced "Working software in weeks, not months." 2026-07-15 on legal review; that line had itself replaced "not quarters".)
 
 ---
 
@@ -225,6 +225,6 @@ _Canonical `<head>` copy for `index.html`. The homepage is the top share target 
 
 - **Title tag:** POWER SHIFTER — Digital Products & Generative Films | Vancouver
 - **Meta description:** Made to use. Made to remember. A product studio and a film studio with one design culture — the work and the place it lives, made in the same room. Software in weeks, cinema in days.
-- **OG title:** POWER SHIFTER — Software in weeks. Cinema in days.
+- **OG title:** Power Shifter — Products people use. Films people remember. _(59/60 hard limit — nothing may be appended. Title case matches the site's og:title convention; the homepage was the lone POWER SHIFTER outlier.)_
 - **OG description:** Two studios, one design culture: digital products and generative film, made in the same room. Made to use. Made to remember.
 - **OG image:** `/images/og/og-home.png` (twitter:card = summary_large_image; twitter title/desc/image fall back to the OG tags, matching the other core pages).

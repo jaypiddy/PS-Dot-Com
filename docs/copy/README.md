@@ -99,3 +99,34 @@ The lines below are the canonical Power Shifter brand statements. They appear in
 2. Anyone can generate. / Few can direct.
 3. Products people choose, / not endure.  _(Digital — replaced "Working software in weeks, not months." 2026-07-15; see Retired.)_
 4. Products people use. / Films people remember.  _(masterbrand — homepage og:title. Added 2026-07-15.)_
+
+### Retired 2026-07-15 (legal) — and the line that matters
+
+**RETIRED, never revive:** "Working software in weeks, not months." / "…not quarters." /
+"Software in weeks, cinema in days." / "Cinema in days. Software in weeks." /
+"Great work used to take months. Now it takes nerve." / "Enough reading. Start something." /
+"The roadmap isn't the product. Bring the idea." / "no brief telephone" (→ "no game of telephone") /
+"Bold, cinematic content for brands that won't wait."
+
+**What was retired is the WHOLE-PRACTICE PROMISE — not the "in X, not Y" construction.**
+This distinction is the whole point, and it is easy to get wrong in both directions:
+
+- ❌ **Retired:** a timeline promise covering the practice at large. Our own `digital.md` Note 13
+  states platform work "still run[s] months, not weeks" and is "the larger part of the practice's
+  actual delivery" — so a blanket promise is contradicted by our own record. That contradiction
+  *is* the exposure.
+- ✅ **Permitted:** a timeline claim **scoped to one named service line, or a fact about one
+  completed project.** Live and approved (JP, 2026-07-15):
+  - Iron Mountain next-case card — "a generative brand film in **weeks**, not months"
+    (`work/case-telus-koodo.html`, `work/energizer.html`). One named, shipped film.
+    Corrected from "days" — that was an overclaim.
+  - Rapid MVP post + `/insights` card — "Validate product ideas in weeks, not months."
+    Scoped to the Rapid MVP service line, which is exactly where Note 13 permits it.
+  - Energizer — "validated in 30 days." A fact about completed work.
+  - `/digital` — "MVPs in 4–6 weeks; platforms that hold at enterprise scale." The two-clause
+    structure carries the scoping.
+
+**So: do NOT sweep by grepping the shape.** Grep for the *claim* — a promise about what the
+practice will do for a future client. Several of these lines survived earlier audits precisely
+because auditors grepped vocabulary ("weeks", "days") instead of meaning; one retired line
+("Great work used to take months. Now it takes nerve.") used neither word.

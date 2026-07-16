@@ -198,7 +198,7 @@ _("case" in serif italic + magenta — `em.voice.mag`.)_
 
 **STREAM:** Studios · Iron Mountain
 
-**H3:** "The Summit" — a generative brand film in days, not months
+**H3:** "The Summit" — a generative brand film in weeks, not months
 
 **MICRO (date):** 2026
 
@@ -223,7 +223,7 @@ _(SUB-VOICE renders as serif italic in magenta — `em.voice.mag`. Identical to 
 ## Cross-page canon used on this page
 
 - **Anyone can generate. / Few can direct.** — referenced inside the Iron Mountain next-case card title.
-- **Working software in weeks, not months.** — referenced in spirit by the "a generative brand film in days, not months" wording on the Iron Mountain next-case card.
+- **PERMITTED, not a violation (JP, 2026-07-15).** The Iron Mountain card reads "a generative brand film in **weeks**, not months" (corrected from "days" — that was the overclaim; the film took weeks). It reuses the retired canon's "in X, not months" construction, but it is **scoped to one named, completed film** — a fact about work we shipped, not a forward promise about the practice. That is the same category as Energizer's "validated in 30 days", and it is what Note 13 permits. **What was retired is the WHOLE-PRACTICE promise, not the construction.** Do not "fix" this by grepping for the shape.
 
 ---
 

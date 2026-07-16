@@ -3,25 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<!-- Google tag (gtag.js) — GA4 (POWERSHiFTER - GA4 - Webflow 2022) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP8HNWVMHS"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EP8HNWVMHS');</script>
-<title>Digital — POWER SHIFTER | Product strategy, design & engineering | Vancouver</title>
-<meta name="description" content="Power Shifter designs and engineers digital products people actually use — web, mobile, and platform work built by a senior Vancouver team.">
-<link rel="canonical" href="https://powershifter.com/digital">
-<meta property="og:title" content="Digital — POWER SHIFTER">
-<meta property="og:description" content="Products people choose, not endure. AI does the volume; senior people make the calls.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://powershifter.com/images/og/og-digital.png">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://use.typekit.net" crossorigin>
-<link rel="preconnect" href="https://p.typekit.net" crossorigin>
+<title>MVP Validator — POWER SHIFTER | Pressure-test your MVP before you build it.</title>
+<meta name="description" content="Stop guessing. Get a free, instant assessment of your MVP’s market viability, technical complexity, and roadmap execution risks.">
 <link rel="stylesheet" href="https://use.typekit.net/xkk7api.css">
-<link rel="preload" as="image" href="images/scratches-v3.webp">
+<link rel="preload" as="image" href="images/scratches-v2.webp">
 <!-- PS Craft Layer (design-spice pass) -->
 <link rel="stylesheet" href="ps-spice.css">
 <!-- PS Concierge (corner AI concierge) -->
@@ -31,11 +16,10 @@
     --ink:#121315;
     --ink-soft:#1A1B1E;
     --paper:#FAFAF7;
-    --grey:#6B6E73;
+    --grey:#6E7176;
     --line:rgba(18,19,21,.14);
     --line-light:rgba(250,250,247,.18);
     --magenta:#FD2E90;
-    --magenta-ink:#CD2575; /* dark magenta — small text on light, WCAG AA */
     --display:"articulat-heavy-cf","Helvetica Neue",Helvetica,Arial,sans-serif;
     --text:"articulat-cf","Helvetica Neue",Helvetica,Arial,sans-serif;
     --mono:"config-mono-vf",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -119,7 +103,7 @@
   /* ---------- Block 3 — Proof spine ---------- */
   .proof{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .proof-inner{padding-top:30px;padding-bottom:30px}
-  .proof .eyebrow{color:var(--magenta-ink);margin-bottom:18px}
+  .proof .eyebrow{color:var(--magenta);margin-bottom:18px}
   .proof-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
   .stat{padding:6px 28px 6px 0;border-right:1px solid var(--line);opacity:0;transform:translateY(14px);transition:opacity .5s ease-out,transform .5s ease-out}
   .proof-row.in .stat{opacity:1;transform:none}
@@ -130,15 +114,13 @@
   .stat + .stat{padding-left:28px}
   .stat b{font-family:var(--display);font-weight:700;font-size:clamp(26px,2.6vw,40px);letter-spacing:-.015em;display:block;line-height:1.1}
   .stat > span{font-size:13.5px;color:var(--grey);display:block;margin-top:6px;line-height:1.4}
-  /* The vestigial `.logos` flex-wrap wordmark strip (used `<span>` children
-     with .lc/.mc modifiers) was removed June 23 2026 — see digital.md Notes 17.
-     The live `.logos` pattern is the 3x3 image-mask grid defined ~line 479
-     (Pattern F in docs/design-system-audit.md). Mixing the two created a
-     leaked `padding-top:26px` on the grid which rendered as a grey bar
-     above the first row of cells. */
+  .logos{display:flex;flex-wrap:wrap;align-items:baseline;gap:18px 40px;margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
+  .logos span{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.06em;color:var(--grey);opacity:.75;transition:color .2s ease-out,opacity .2s ease-out;cursor:default}
+  .logos span.lc{text-transform:lowercase;letter-spacing:.01em}
+  .logos span.mc{letter-spacing:.01em}
+  .logos span:not(.lc):not(.mc){text-transform:uppercase;font-size:13.5px;letter-spacing:.1em}
+  .logos span:hover{color:var(--ink);opacity:1}
   @media(max-width:860px){.proof-row{grid-template-columns:1fr 1fr}.stat{border-right:0;border-bottom:1px solid var(--line);padding:14px 0}.stat + .stat{padding-left:0}}
-  /* Phones: give each receipt its own row — "300,000+" is wider than a half-width cell. */
-  @media(max-width:560px){.proof-row{grid-template-columns:1fr}}
 
   /* ---------- Block 4 — The seam ---------- */
   .engine{padding-top:clamp(90px,12vh,160px);padding-bottom:clamp(90px,12vh,160px)}
@@ -203,15 +185,9 @@
   .news p{font-size:14px;color:rgba(250,250,247,.65);max-width:38ch;margin-bottom:16px}
   .news .field{display:flex;border:1px solid var(--line-light)}
   .news input{flex:1;background:transparent;border:0;color:var(--paper);font-family:var(--text);font-size:14px;padding:12px 14px}
-  .news input:focus-visible{outline:2px solid var(--magenta-ink);outline-offset:2px}
+  .news input:focus{outline:none}
   .news button{background:var(--paper);color:var(--ink);border:0;font-family:var(--text);font-weight:700;font-size:13px;padding:0 20px;cursor:pointer;transition:background .2s ease-out,color .2s ease-out}
   .news button:hover{background:var(--magenta);color:var(--paper)}
-  /* Honeypot — off-canvas, never focusable. Bots fill it; the Worker drops those. */
-  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
-  /* Signup feedback. Reserves its line so confirming/erroring doesn't shift the layout.
-     Both Signal blocks (footer .news + in-body .signal) sit on ink, so one style covers them. */
-  .signal-msg{font-size:13px;line-height:1.5;margin-top:10px;min-height:1.2em;color:rgba(250,250,247,.65)}
-  .signal-msg.is-err{color:var(--magenta)}
   .ack{padding:34px 0;font-size:12.5px;line-height:1.7;color:rgba(250,250,247,.5);max-width:110ch;border-bottom:1px solid var(--line-light)}
   .legal{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:26px;font-size:12.5px;color:rgba(250,250,247,.5)}
   .legal a{margin-left:18px}
@@ -256,42 +232,41 @@
      Register contrast, not volume contrast.
      Sans = the vessel (Digital). Serif = the film (Studios). Mono = labels & numerals.
      Loaded via Adobe Fonts kit xkk7api:
-       --display articulat-heavy-cf · --text articulat-cf · --serif la-mericana · --mono config-mono-vf */
+       --display articulat-heavy-cf · --text articulat-cf · --serif fraunces-variable · --mono config-mono-vf */
   :root{
-    --serif:"la-mericana",Georgia,"Times New Roman",serif;
+    --serif:"fraunces-variable",Georgia,"Times New Roman",serif;
     --serif-vset:'opsz' 54, 'wght' 615, 'SOFT' 100, 'WONK' 1;
     --paper:#F6F3EC; /* warmed — Lando cream, not gallery white */
   }
   .voice, em.voice{
-    font-family:var(--serif);font-variation-settings:var(--serif-vset); font-style:italic; font-weight:800;
+    font-family:var(--serif);font-variation-settings:var(--serif-vset); font-style:italic; font-weight:500;
     letter-spacing:-.02em; text-transform:none; font-size:1.04em; line-height:1;
   }
   /* Hero: caps grotesque vs serif italic — the tagline performs itself */
   .hero h1 .caps{font-weight:900;text-transform:uppercase;letter-spacing:-.02em}
-  .hero h1 em.voice{font-style:italic;color:var(--magenta);font-weight:800}
+  .hero h1 em.voice{font-style:italic;color:var(--magenta);font-weight:400}
   /* Studios door speaks serif */
-  .door.studios h2{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;font-size:clamp(38px,4vw,62px)}
-    .door.studios .lead em.voice{font-weight:800}
+  .door.studios h2{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500;font-size:clamp(38px,4vw,62px)}
+    .door.studios .lead em.voice{font-weight:400}
   /* Proof: serif numerals — data with a face */
-  .proof-row .stat{container-type:inline-size}
-  .stat b{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-weight:800;font-size:clamp(34px,18cqi,88px);letter-spacing:-.02em;line-height:1;display:flex;align-items:flex-start}
+  .stat b{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-weight:500;font-size:clamp(52px,5.4vw,96px);letter-spacing:-.02em;line-height:1;display:flex;align-items:flex-start}
   .stat b .sfx{font-size:.34em;font-style:italic;margin-left:.08em}
   /* Odometer: each digit is a 0-9 column that rolls to rest */
-.odo{--step:1.35em;display:inline-flex;overflow:hidden;height:var(--step);vertical-align:baseline;align-items:flex-start}
+.odo{--step:1.18em;display:inline-flex;overflow:hidden;height:var(--step);vertical-align:baseline;align-items:flex-start}
   .odo .col span,.odo .ch,.odo .col{font-size:inherit;color:inherit;margin:0}
-  .odo .col{display:flex;flex-direction:column;align-items:center;transform:translateY(0);
+  .odo .col{display:flex;flex-direction:column;transform:translateY(0);
     transition:transform 1.6s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i,0)*80ms + 100ms)}
-  .odo .col span,.odo .ch{height:var(--step);line-height:var(--step);display:block;text-align:center}
+  .odo .col span,.odo .ch{height:var(--step);line-height:var(--step);display:block}
   .proof-row.go .odo .col{transform:translateY(calc((var(--d) + 10) * var(--step) * -1))}
   @media(prefers-reduced-motion:reduce){.odo .col{transition:none}}
   /* Featured work italics inherit the voice */
-  h3 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-weight:800}
+  h3 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-weight:500}
   /* Stitch marquee */
   .stitch{background:var(--ink);color:var(--paper);overflow:hidden;border-block:1px solid var(--line-light);padding:14px 0}
   .stitch-track{display:flex;gap:34px;width:max-content;white-space:nowrap;animation:stitch 38s linear infinite;align-items:baseline}
   .stitch:hover .stitch-track{animation-play-state:paused}
   .stitch .g{font-family:var(--display);font-weight:900;font-size:15px;letter-spacing:.08em;text-transform:uppercase}
-  .stitch .v{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;font-size:18px;letter-spacing:-.02em}
+  .stitch .v{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500;font-size:18px;letter-spacing:-.02em}
   .stitch .dot{color:var(--magenta);font-size:15px}
   .stitch span{margin-right:34px}
   @keyframes stitch{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -337,7 +312,7 @@
     .slash-field .sa,.slash-field .sb{animation:none}
   }
   .sub-hero-inner{position:relative;z-index:2;width:100%}
-  .sub-hero .eyebrow{color:var(--magenta-ink);display:block;margin-bottom:18px}
+  .sub-hero .eyebrow{color:var(--magenta);display:block;margin-bottom:18px}
   .sub-hero h1{
     font-family:var(--display);font-weight:900;
     font-size:clamp(52px,7vw,108px);line-height:.96;letter-spacing:-.02em;
@@ -348,186 +323,15 @@
     animation:settle .6s ease-out .55s forwards;
   }
   .sub-hero .sub-voice em{
-    font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;
+    font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500;
     font-size:clamp(26px,3.2vw,52px);letter-spacing:-.02em;
     color:var(--magenta);line-height:1.1;display:block;
     padding:0 .1em .16em 0;
   }
 
-  /* The .sub-hero-ctas pattern (Pattern A in docs/design-system-audit.md) was
-     removed June 23 2026 — see digital.md Notes 18. JP's call: the pills and
-     letter spacing read off from the rest of the page's square `.btn.solid`
-     vocabulary, AND the Validator/MVP section sits one section below the
-     hero — pre-driving to it from the hero CTA row was redundant. "Start a
-     project" persists in the page closer (line ~1054) and the takeover menu,
-     so no path-to-conversion was lost. Pattern A is decommissioned from
-     /digital and stays catalogued in the audit doc only if a future hub
-     page (Studios, About) genuinely needs hero-level CTAs in a non-pill
-     treatment — not as the current pill design. */
-
-  /* Sub-hero body paragraph — alternative to .sub-voice when the page wants
-     regular prose with bold mid-sections instead of the italic-magenta voice line.
-     Sibling of .streams (defined inside .sub-hero on insights.html). */
-  .sub-hero .sub-body{
-    margin-top:18px;font-size:clamp(16px,1.3vw,19px);line-height:1.5;
-    color:var(--paper);opacity:.85;max-width:62ch;
-    opacity:0;transform:translateY(12px);
-    animation:settle .6s ease-out .55s forwards;
-  }
-  .sub-hero .sub-body strong{font-weight:700;color:var(--paper);opacity:1}
-
-  /* Card grid 4-up variant — pattern 4b extension for /digital.
-     Pattern reference: docs/design-system-audit.md §2 (pattern 4b).
-     Adds a 4-column desktop layout to the existing .cards/.card system. The
-     :nth-child(n+2) rule widens the homepage's (2),(3) selector so every card
-     beyond the first picks up the inner-gutter padding-left, which keeps the
-     left edge of each card's meta block flush with its frame. */
-  .cards.four-up{grid-template-columns:repeat(4,1fr)}
-  .cards.four-up .card:nth-child(n+2) .meta{padding-left:26px}
-  @media(max-width:1100px){.cards.four-up{grid-template-columns:repeat(2,1fr)}.cards.four-up .card:nth-child(2n+1) .meta{padding-left:0}.cards.four-up .card:nth-child(2n) .meta{padding-left:26px}}
-  @media(max-width:680px){.cards.four-up{grid-template-columns:1fr}.cards.four-up .card .meta{padding-left:0}}
-  /* Empty ink cell filling the 4-up remainder (same pattern as /studios). */
-  .work .card.placeholder{pointer-events:none;padding:0}
-  /* Hover lift on cards — make the .go arrow light up magenta as the visited cue */
-  .card:hover h3{color:var(--magenta)}
-  .card:hover .go{color:var(--magenta)}
-  .work .all:hover{color:var(--magenta);border-color:var(--magenta)}
-
-  /* Offers section — wraps a .doors block on a sub-page.
-     The homepage doors block IS the section (no separate H2); on /digital the
-     offers section needs an introductory "Two ways to product success" H2 above the doors. */
-  .offers-section{padding-top:clamp(70px,10vh,120px);background:var(--paper)}
-  .offers-section .wrap{padding-bottom:24px}
-  .offers-h{font-family:var(--display);font-weight:500;font-size:clamp(34px,4vw,60px);letter-spacing:-.015em}
-
-  /* Doors compact variant — sub-page scale.
-     The homepage .doors uses min-height:84vh because doors IS the page block.
-     On a sub-page, that's too tall. .doors.compact removes the min-height
-     constraint and dials the per-door min-height down from 54-84vh to ~48vh. */
-  .doors.compact{min-height:auto}
-  .doors.compact .door{min-height:48vh}
-  @media(max-width:860px){.doors.compact .door{min-height:38vh}}
-
-  /* Validator-band — engine variant, INK background.
-     Pattern reference: docs/design-system-audit.md §"New patterns".
-     Three departures from the canonical .engine band:
-     (1) INK background (var(--ink)) with paper text — flips the section from
-         paper-on-paper to ink-on-paper, creating a paper/ink/paper sandwich
-         between offers above and how-we-work below. Makes the Validator read
-         as the page's strongest call-to-action rather than blending into the
-         surrounding sections. (June 23 2026 edit — see digital.md Notes 14.)
-     (2) 1fr/1fr grid instead of 5fr/7fr — the left column needs room for
-         H2 + body + CTA, and the right column carries the explainer video
-         at 16:9 (which needs roughly half-page width to land at viewable size).
-     (3) H2 dialed from clamp(40px,4.6vw,72px) to clamp(32px,3.6vw,54px) so
-         the headline doesn't overflow the half-width column. */
-  .validator-band{background:var(--ink);color:var(--paper)}
-  .validator-band .engine-grid{grid-template-columns:1fr 1fr;align-items:center;gap:clamp(32px,4vw,72px)}
-  .validator-band h2{font-size:clamp(32px,3.6vw,54px);color:var(--paper)}
-  .validator-band h2 em.voice{color:var(--magenta)}
-  .validator-band p{font-size:clamp(16px,1.3vw,19px);margin-top:18px;max-width:48ch;color:rgba(250,250,247,.86)}
-  .validator-band p strong{color:var(--paper)}
-  .validator-band .vbtn{margin-top:24px;display:inline-block}
-  @media(max-width:860px){.validator-band .engine-grid{grid-template-columns:1fr;gap:36px}}
-
-  /* NEW pattern — .engine.mirror — alternating layout variant for the one-two punch.
-     Pairs with the canonical .engine pattern to create JP's "alternating one-two
-     punch" rhythm on services pages: Module 1 runs canonical 5fr/7fr (H2 left,
-     body right), Module 2 runs mirrored 7fr/5fr (body left, H2 right). The two
-     modules read as a zigzag at desktop scale. On mobile (≤860px) both stack
-     identically — H2 over body — because the "mirror" rhythm doesn't read at
-     narrow widths and stacking H2-first preserves source order + cognitive flow.
-     Source order in HTML stays H2-first → body-second for every module
-     regardless of layout, for accessibility and progressive enhancement. */
-  .engine.mirror .engine-grid{grid-template-columns:7fr 5fr}
-  .engine.mirror .engine-grid > div:first-child{order:2}
-  .engine.mirror .engine-grid > div:nth-child(2){order:1}
-  @media(max-width:860px){
-    .engine.mirror .engine-grid{grid-template-columns:1fr}
-    .engine.mirror .engine-grid > div:first-child{order:0}
-    .engine.mirror .engine-grid > div:nth-child(2){order:0}
-  }
-
-  /* NEW pattern — .video-frame.
-     Pattern reference: docs/design-system-audit.md §"New patterns" C
-     (to be catalogued on next audit-doc pass — see digital.md Notes 14).
-     Generic 16:9 video container for section-column embeds. Distinct from
-     the article-body .embed.video pattern (which is .article-body .prose-scoped
-     and supports .breakout for full-bleed). The .video-frame is the
-     section-column variant — used here on /digital for the Cloudflare Stream
-     explainer; reusable wherever a marketing/explainer video lives inside
-     a section grid column. Dark placeholder bg holds the box while the
-     Stream iframe loads its own poster. Soft radius matches the terminal
-     pattern's previous treatment, preserving the section's visual silhouette. */
-  .video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#0a0b0c;
-    border-radius:8px;overflow:hidden;box-shadow:0 18px 44px rgba(0,0,0,.32)}
-  .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
-
-  /* NEW pattern C — .partners + .partners-strip.
-     Pattern reference: docs/design-system-audit.md §"New patterns" C.
-     Lede sentence + horizontal flex row of partner-tier chips. Each chip pairs
-     a display-weight name with a serif-italic tier descriptor (echoes the .voice
-     italic-on-serif treatment used everywhere else on the site). Magenta surfaces
-     only on hover — single-magenta budget per viewport already committed elsewhere
-     in this section's neighbours, this just provides the interaction cue. */
-  .partners{padding-top:clamp(60px,8vh,100px);padding-bottom:clamp(60px,8vh,100px);
-    background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .partners-lede{font-size:clamp(16px,1.3vw,19px);line-height:1.5;color:var(--grey);max-width:62ch;margin-bottom:30px}
-  .partners-strip{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-  .ptier{display:inline-flex;gap:10px;align-items:baseline;padding:12px 20px;
-    border:1px solid var(--line);border-radius:999px;
-    transition:border-color .2s ease,color .2s ease}
-  .ptier b{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.005em}
-  .ptier em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;font-size:14px;color:var(--grey);transition:color .2s ease}
-  .ptier:hover{border-color:var(--magenta);color:var(--magenta)}
-  .ptier:hover em{color:var(--magenta)}
-
-  /* NEW pattern — .proof-spine + .logos (mirrored from homepage Block 3).
-     Pattern reference: docs/design-system-audit.md §"New patterns" F
-     (catalogued in audit doc on this commit). Direct reuse of the homepage's
-     proof-spine .logos pattern — 3-col grid with 1px gap exposing the line
-     bg, checkerboard alternation (odd cells ink/paper, even cells paper/ink),
-     magenta hover state on every cell. The .logo-mask technique renders each
-     logo as a CSS mask-image so the logo inherits currentColor — allowing
-     the same PNG to render paper-on-ink or ink-on-paper without separate
-     asset variants. Position on /digital: between Selected Work and Partners.
-     Functions as the visible-clients trust signal at section scope,
-     complementing the per-project named outcome strip above and the
-     platform-certification Partners strip below. See digital.md Notes 15. */
-  .logo-mask{display:inline-block;background-color:currentColor;
-    -webkit-mask-image:var(--mask-image);-webkit-mask-size:contain;
-    -webkit-mask-repeat:no-repeat;-webkit-mask-position:center;vertical-align:middle}
-  .proof-spine{padding:clamp(80px,11vh,140px) 0;background:var(--paper)}
-  .proof-spine .eyebrow{display:block;font-family:var(--text);font-weight:700;
-    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--magenta);margin-bottom:24px}
-  .logos{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-    background:var(--line);border:1px solid var(--line)}
-  .logos .cell{display:flex;align-items:center;justify-content:center;
-    padding:clamp(24px,3vw,38px) 16px;
-    transition:background-color .45s cubic-bezier(.4,0,.2,1),
-               color .45s cubic-bezier(.4,0,.2,1)}
-  .logos .cell .logo-mask{opacity:.88;max-width:72%;
-    transition:opacity .45s cubic-bezier(.4,0,.2,1),
-               background-color .45s cubic-bezier(.4,0,.2,1)}
-  .logos .cell:hover .logo-mask{opacity:1}
-  .logos .cell:nth-child(odd){background:var(--ink);color:var(--paper)}
-  .logos .cell:nth-child(odd):hover{color:var(--magenta)}
-  .logos .cell:nth-child(even){background:var(--paper);color:var(--ink)}
-  .logos .cell:nth-child(even):hover{background:var(--magenta);color:var(--paper)}
-  @media(max-width:640px){
-    .logos{grid-template-columns:repeat(2,1fr)}
-    .logos .cell:last-child{grid-column:span 2}
-  }
-
-  /* Outcome-strip text stat — when a .stat carries text instead of an .odo numeral.
-     Inherits .stat b's serif at the same 52-96px scale; <em> adds the italic
-     read so it feels like a category value rather than a measurement. */
-  .stat b > em{font-style:italic;font-family:var(--serif);font-variation-settings:var(--serif-vset);font-weight:800}
-
   /* Filter bar */
   .work-filter{
-    position:sticky;top:62px;z-index:40; /* below the fixed 63px ink header (QA: tabs were sliding underneath it) */
+    position:sticky;top:0;z-index:40;
     background:var(--paper);border-bottom:1px solid var(--line);
   }
   .filter-row{display:flex;gap:6px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap;align-items:center}
@@ -543,7 +347,7 @@
   .ftab.on .fc{color:var(--magenta)}
   /* whole-button hover triggers the label cascade */
   .ftab:hover .cascade .lt span{transform:translateY(-100%)}
-  .pending{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;
+  .pending{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500;
     font-size:1.16em !important;letter-spacing:-.01em;color:var(--magenta) !important}
   .ftab.on .pending{color:var(--magenta) !important}
 
@@ -577,7 +381,7 @@
     font-family:var(--display);font-weight:700;
     font-size:clamp(22px,2.4vw,36px);letter-spacing:-.01em;margin:10px 0 8px;
   }
-  .wcard-overlay h2 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800}
+  .wcard-overlay h2 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500}
   .wcard-overlay p{font-size:15px;color:rgba(250,250,247,.78);max-width:54ch;margin-bottom:12px}
   .wtag{
     font-family:var(--text);font-weight:700;font-size:11px;
@@ -588,7 +392,7 @@
     font-family:var(--display);font-weight:700;
     font-size:clamp(18px,1.8vw,26px);letter-spacing:-.008em;margin-bottom:8px;
   }
-  .wcard h3 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800}
+  .wcard h3 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500}
   .wcard > p{font-size:14.5px;color:var(--grey);max-width:44ch;margin-bottom:10px}
   .wgo{font-weight:700;font-size:13.5px;letter-spacing:.04em;margin-top:auto}
   
@@ -624,9 +428,9 @@
   @media(max-width:640px){.work-grid{grid-template-columns:1fr}}
 
   /* Hover video loop — sits above the still, fades in when playing */
-  .wframe .hover-video,.frame .hover-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  .wframe .hover-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
     opacity:0;transition:opacity .35s ease;pointer-events:none;z-index:1}
-  .wframe .hover-video.playing,.frame .hover-video.playing{opacity:1}
+  .wframe .hover-video.playing{opacity:1}
 
   /* Rise-in: case cells use the site reveal motion, staggered by column */
   .work-grid .wcard.reveal{transition-delay:calc(var(--d,0)*70ms)}
@@ -650,7 +454,7 @@
 
   /* Secondary — highlight swipe on last word */
   .hl{position:relative;display:inline-block;z-index:0;
-    font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;
+    font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500;
     font-size:1.18em;letter-spacing:-.01em;line-height:1;
     padding:.06em .2em .1em .14em;margin:-.06em -.14em -.1em -.1em}
   .hl::before{content:"";position:absolute;inset:0;background:var(--magenta);
@@ -668,8 +472,8 @@
   .menu-btn{font-family:var(--text);font-weight:700;font-size:12px;letter-spacing:.1em;
     text-transform:uppercase;display:inline-flex;align-items:center;gap:9px;cursor:pointer;
     background:none;border:0;color:inherit;padding:6px 0}
-  .menu-btn .plus{display:inline-block;color:var(--magenta);
-    transition:transform .35s cubic-bezier(.76,0,.24,1)}
+  .menu-btn .plus{font-weight:400;font-size:16px;line-height:1;display:inline-block;
+    transition:transform .35s cubic-bezier(.76,0,.24,1);color:var(--magenta)}
   .menu-btn:hover .plus{transform:rotate(90deg)}
 
   .takeover{position:fixed;inset:0;z-index:90;background:var(--magenta);color:var(--ink);
@@ -688,7 +492,7 @@
   .tk-close{font-family:var(--text);font-weight:700;font-size:12px;letter-spacing:.1em;
     text-transform:uppercase;display:inline-flex;align-items:center;gap:9px;cursor:pointer;
     background:none;border:0;color:var(--ink);padding:6px 0}
-  .tk-close .x{display:inline-block;
+  .tk-close .x{font-weight:400;font-size:16px;line-height:1;display:inline-block;
     transition:transform .35s cubic-bezier(.76,0,.24,1)}
   .tk-close:hover .x{transform:rotate(90deg)}
 
@@ -701,25 +505,17 @@
   .takeover.open .tk-l{opacity:1;transform:translateY(0);transition-delay:var(--td,0s)}
   .tk-n{font-family:var(--mono,ui-monospace,Menlo,monospace);font-size:12px;color:rgba(18,19,21,.6);min-width:2ch}
   .tk-t{font-family:var(--display);font-weight:900;letter-spacing:-.02em;line-height:1;
-    font-size:clamp(38px,min(6vw,7.2vh),76px);transition:transform .3s ease,color .3s ease}
-  /* Height-aware: the takeover is 6 rows + header + footer. Sized off 6vw alone,
-     the type maxed at 76px on any wide viewport and the stack needed ~921px —
-     so on a short-but-wide screen (MacBook Pro, ~850-892px of viewport once
-     browser chrome is taken) row 06 (Careers) clipped and the footer was pushed
-     off entirely, with no scroll to reach them (body scroll is locked). Taking
-     min() against 7.8vh shrinks the type only when height is the binding
-     constraint; >=975px tall still renders the full 76px, and mobile portrait
-     still floors at 38px. QA 2026-07-14 (JP, MBP M4). */
+    font-size:clamp(38px,6vw,76px);transition:transform .3s ease,color .3s ease}
   /* Texture-clipped hover needs vertical room: descenders and the last glyph's
      right shoulder get clipped if the inline box is tight. Pad the label and
      widen the background box so the texture covers the full glyph extent. */
   .tk-t{padding:.18em .12em}
   .tk-l:hover .tk-t{transform:translateX(12px);color:transparent;
-    background:url('images/scratches-v3.webp') center/cover var(--paper);
+    background:url('images/scratches-v2.webp') center/cover var(--paper);
     background-origin:content-box;
     -webkit-background-clip:text;background-clip:text}
   .tk-l:hover .tk-t em{color:transparent}
-  .tk-t em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;font-size:1.06em;
+  .tk-t em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:500;font-size:1.06em;
     letter-spacing:-.02em;padding-right:.08em}
   .tk-ar{font-size:clamp(20px,2.4vw,30px);opacity:0;transform:translateX(-14px);
     transition:opacity .3s ease,transform .3s ease;margin-left:auto;color:var(--paper)}
@@ -736,9 +532,89 @@
   }
 </style>
 
+<style id="rapidmvp">
+  /* RapidMVP landing — built on the POWER SHIFTER work-page system */
+  .sub-hero{min-height:82vh}
+  .rm-badge{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line-light);padding:8px 15px;color:var(--paper)}
+  .rm-badge .dot{width:7px;height:7px;background:var(--magenta);border-radius:50%}
+  .sub-hero h1{max-width:18ch}
+  .rm-hero-sub{margin-top:26px;font-size:clamp(18px,1.5vw,21px);line-height:1.55;max-width:60ch;color:rgba(250,250,247,.82)}
+  .rm-cta-row{margin-top:38px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+  .rm-note{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:rgba(250,250,247,.62);text-transform:uppercase}
+  .rm-note.dark{color:var(--grey)}
+
+  .rm-section{padding-top:clamp(72px,10vh,140px);padding-bottom:clamp(72px,10vh,140px)}
+  .rm-dark{background:var(--ink);color:var(--paper)}
+  .rm-light{background:var(--paper);color:var(--ink)}
+  .rm-bordered{border-top:1px solid var(--line)}
+  .rm-head{max-width:62ch;margin-bottom:clamp(40px,6vh,68px)}
+  .rm-head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .rm-h2{font-family:var(--display);font-weight:500;font-size:clamp(32px,4vw,56px);letter-spacing:-.02em;line-height:1.04;margin-top:14px}
+  .rm-lead{margin-top:16px;font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:var(--grey);max-width:60ch}
+  .rm-head.center .rm-lead{margin-left:auto;margin-right:auto}
+  .eyebrow.pink{color:var(--magenta)}
+
+  /* Testimonials */
+  .rm-quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2vw,28px)}
+  .rm-quote{border:1px solid var(--line);background:rgba(255,255,255,.45);padding:30px 28px;display:flex;flex-direction:column}
+  .rm-quote blockquote{font-size:16.5px;line-height:1.55;margin-bottom:26px;flex:1}
+  .rm-quote figcaption{display:flex;align-items:center;gap:13px}
+  .rm-quote img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
+  .rm-quote figcaption span{display:flex;flex-direction:column;font-size:13px;color:var(--grey);line-height:1.4}
+  .rm-quote figcaption b{font-family:var(--text);font-weight:700;font-size:14.5px;color:var(--ink);margin-bottom:2px}
+  @media(max-width:860px){.rm-quotes{grid-template-columns:1fr;max-width:520px;margin:0 auto}}
+
+  /* Steps */
+  .rm-steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,44px)}
+  .rm-step{padding-top:26px;border-top:1px solid var(--ink)}
+  .rm-step h3{font-family:var(--display);font-weight:500;font-size:20px;letter-spacing:-.01em;margin-bottom:10px}
+  .rm-step p{font-size:15.5px;line-height:1.55;color:var(--grey);max-width:34ch}
+  .rm-chip-dur{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--magenta);border:1px solid var(--line);padding:5px 11px}
+  @media(max-width:860px){.rm-steps{grid-template-columns:1fr;max-width:520px;margin:0 auto}}
+
+  .rm-cta-center{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:clamp(44px,6vh,72px);text-align:center}
+
+  /* Founder */
+  .rm-founder{display:grid;grid-template-columns:300px 1fr;gap:clamp(36px,5vw,72px);align-items:center}
+  .rm-founder-photo{width:100%;aspect-ratio:4/5}
+  .rm-founder-photo image-slot{width:100%;height:100%;display:block;border-radius:14px;overflow:hidden}
+  .rm-pull{font-family:var(--display);font-weight:500;font-size:clamp(20px,1.9vw,27px);line-height:1.4;letter-spacing:-.01em;margin-bottom:18px;max-width:48ch}
+  .rm-founder-by{margin-top:26px}
+  .rm-founder-by b{font-family:var(--text);font-weight:700;font-size:16px;display:block}
+  .rm-founder-by span{font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--magenta)}
+  @media(max-width:860px){.rm-founder{grid-template-columns:1fr;max-width:520px;margin:0 auto}}
+
+  /* Decision close */
+  .rm-decision{max-width:980px;margin:0 auto;text-align:center}
+  .rm-big{font-family:var(--display);font-weight:900;font-size:clamp(34px,5vw,72px);line-height:1.02;letter-spacing:-.02em;max-width:20ch;margin:0 auto}
+  .rm-decision-body{max-width:64ch;margin:30px auto 0;display:flex;flex-direction:column;gap:16px;font-size:clamp(17px,1.4vw,20px);line-height:1.6;color:var(--grey)}
+  .rm-strong{color:var(--ink);font-weight:700}
+  .rm-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 16px;margin-top:34px}
+  .rm-chip{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:500;border:1px solid var(--line);padding:9px 16px;color:var(--ink)}
+  .rm-chip i{width:7px;height:7px;border-radius:50%;background:var(--magenta);flex-shrink:0}
+  .rm-subnote{font-size:13px;color:var(--grey);font-style:italic}
+
+  /* FAQ */
+  .rm-faqwrap{max-width:840px;margin:0 auto}
+  .rm-faq{border-top:1px solid var(--line)}
+  .rm-faq details{border-bottom:1px solid var(--line)}
+  .rm-faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:24px;align-items:center;padding:24px 4px;font-family:var(--display);font-weight:500;font-size:clamp(18px,1.7vw,22px);letter-spacing:-.01em;transition:color .2s ease}
+  .rm-faq summary::-webkit-details-marker{display:none}
+  .rm-faq summary:hover{color:var(--magenta)}
+  .rm-faq .chev{flex-shrink:0;width:22px;height:12px;position:relative;transition:transform .3s ease}
+  .rm-faq .chev::before,.rm-faq .chev::after{content:"";position:absolute;top:5px;width:12px;height:2px;background:var(--magenta)}
+  .rm-faq .chev::before{left:0;transform:rotate(45deg)}
+  .rm-faq .chev::after{right:0;transform:rotate(-45deg)}
+  .rm-faq details[open] .chev{transform:rotate(180deg)}
+  .rm-faq details p{padding:0 4px 28px;font-size:16.5px;line-height:1.6;color:var(--grey);max-width:72ch}
+
+  /* Ink button for light sections */
+  .btn.ink{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .btn.ink.cascade .lt .b{color:var(--magenta)}
+  .btn.ink:hover,.btn.ink.cascade:not(.solid):hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+</style>
 </head>
 <body>
-
 
 <header>
   <div class="nav on-dark" id="nav">
@@ -759,11 +635,10 @@
 <path d="M139.924 18.4306L137.006 12.8909C137.538 12.757 138.035 12.5078 138.461 12.1609C138.918 11.7888 139.29 11.3235 139.552 10.796C139.82 10.2581 139.958 9.66476 139.955 9.06372C139.961 8.36637 139.774 7.681 139.414 7.08371C139.06 6.49643 138.568 6.00433 137.98 5.64996C137.377 5.28845 136.685 5.10107 135.982 5.10862H131.256C131.105 5.11115 130.961 5.17228 130.854 5.2791C130.747 5.38592 130.686 5.53008 130.684 5.68113V18.703C130.683 18.7774 130.698 18.8511 130.728 18.9193C130.758 18.9874 130.802 19.0484 130.857 19.0983C130.964 19.203 131.107 19.2619 131.256 19.2623C131.332 19.2644 131.408 19.2509 131.479 19.2227C131.55 19.1945 131.614 19.1522 131.668 19.0983C131.72 19.0474 131.762 18.9865 131.79 18.9191C131.818 18.8517 131.833 18.7793 131.832 18.7062V6.25528H135.986C136.485 6.25024 136.977 6.38184 137.408 6.63587C137.829 6.88379 138.181 7.23281 138.433 7.6513C138.688 8.07857 138.82 8.56794 138.814 9.06536C138.818 9.56521 138.687 10.0569 138.433 10.4876C138.183 10.9099 137.83 11.2621 137.408 11.5113C136.977 11.7653 136.485 11.8969 135.986 11.8918H133.175C133.026 11.893 132.884 11.9518 132.777 12.0559C132.722 12.1091 132.678 12.1728 132.648 12.2433C132.618 12.3137 132.603 12.3895 132.603 12.466C132.603 12.5425 132.618 12.6182 132.648 12.6887C132.678 12.7591 132.722 12.8229 132.777 12.8761C132.829 12.9288 132.892 12.9705 132.96 12.9986C133.029 13.0268 133.103 13.0409 133.177 13.0401H135.802L138.945 18.9835C139.014 19.1144 139.132 19.2128 139.273 19.2574C139.326 19.2744 139.381 19.2832 139.437 19.2837C139.537 19.2817 139.634 19.2565 139.722 19.2098C139.844 19.1351 139.933 19.0183 139.973 18.8818C139.996 18.8072 140.004 18.7287 139.995 18.6511C139.987 18.5736 139.963 18.4985 139.924 18.4306Z"></path>
 </svg></a>
     <nav aria-label="Primary">
-      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="takeover">Menu <svg class="plus" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M8 2v12M2 8h12"/></svg></button>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="takeover">Menu <span class="plus">+</span></button>
     </nav>
   </div>
 </header>
-<main id="main" tabindex="-1">
 <div class="takeover" id="takeover" aria-hidden="true">
   <div class="tk-top">
     <a class="logo" tabindex="-1" href="/" aria-label="POWER SHIFTER home"><svg class="wordmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 25" fill="currentColor" aria-hidden="true" focusable="false">
@@ -782,15 +657,14 @@
 <path d="M128.391 18.0501H122.219V12.6366H127.334C127.485 12.6337 127.629 12.5723 127.735 12.4656C127.842 12.3588 127.903 12.2149 127.905 12.0641C127.909 11.9877 127.896 11.9114 127.868 11.8404C127.839 11.7694 127.796 11.7053 127.741 11.6523C127.635 11.5472 127.492 11.4883 127.342 11.4883H122.219V6.25529H128.391C128.468 6.25753 128.545 6.24316 128.616 6.21317C128.687 6.18317 128.752 6.13824 128.804 6.0814C128.906 5.9738 128.963 5.83112 128.963 5.68278C128.963 5.53443 128.906 5.39174 128.804 5.28414C128.751 5.22764 128.687 5.18294 128.616 5.15297C128.545 5.123 128.468 5.10844 128.391 5.11026H121.647C121.496 5.1136 121.352 5.175 121.246 5.28165C121.139 5.3883 121.078 5.53199 121.074 5.68278V18.6226C121.077 18.7736 121.138 18.9178 121.245 19.0246C121.352 19.1314 121.496 19.1926 121.647 19.1951H128.391C128.468 19.1969 128.545 19.1824 128.616 19.1524C128.687 19.1224 128.751 19.0777 128.804 19.0212C128.909 18.915 128.968 18.7718 128.968 18.6226C128.971 18.5467 128.958 18.471 128.93 18.4003C128.902 18.3296 128.86 18.2653 128.807 18.2116C128.753 18.1579 128.689 18.1158 128.618 18.088C128.547 18.0602 128.471 18.0473 128.396 18.0501H128.391Z"></path>
 <path d="M139.924 18.4306L137.006 12.8909C137.538 12.757 138.035 12.5078 138.461 12.1609C138.918 11.7888 139.29 11.3235 139.552 10.796C139.82 10.2581 139.958 9.66476 139.955 9.06372C139.961 8.36637 139.774 7.681 139.414 7.08371C139.06 6.49643 138.568 6.00433 137.98 5.64996C137.377 5.28845 136.685 5.10107 135.982 5.10862H131.256C131.105 5.11115 130.961 5.17228 130.854 5.2791C130.747 5.38592 130.686 5.53008 130.684 5.68113V18.703C130.683 18.7774 130.698 18.8511 130.728 18.9193C130.758 18.9874 130.802 19.0484 130.857 19.0983C130.964 19.203 131.107 19.2619 131.256 19.2623C131.332 19.2644 131.408 19.2509 131.479 19.2227C131.55 19.1945 131.614 19.1522 131.668 19.0983C131.72 19.0474 131.762 18.9865 131.79 18.9191C131.818 18.8517 131.833 18.7793 131.832 18.7062V6.25528H135.986C136.485 6.25024 136.977 6.38184 137.408 6.63587C137.829 6.88379 138.181 7.23281 138.433 7.6513C138.688 8.07857 138.82 8.56794 138.814 9.06536C138.818 9.56521 138.687 10.0569 138.433 10.4876C138.183 10.9099 137.83 11.2621 137.408 11.5113C136.977 11.7653 136.485 11.8969 135.986 11.8918H133.175C133.026 11.893 132.884 11.9518 132.777 12.0559C132.722 12.1091 132.678 12.1728 132.648 12.2433C132.618 12.3137 132.603 12.3895 132.603 12.466C132.603 12.5425 132.618 12.6182 132.648 12.6887C132.678 12.7591 132.722 12.8229 132.777 12.8761C132.829 12.9288 132.892 12.9705 132.96 12.9986C133.029 13.0268 133.103 13.0409 133.177 13.0401H135.802L138.945 18.9835C139.014 19.1144 139.132 19.2128 139.273 19.2574C139.326 19.2744 139.381 19.2832 139.437 19.2837C139.537 19.2817 139.634 19.2565 139.722 19.2098C139.844 19.1351 139.933 19.0183 139.973 18.8818C139.996 18.8072 140.004 18.7287 139.995 18.6511C139.987 18.5736 139.963 18.4985 139.924 18.4306Z"></path>
 </svg></a>
-    <button class="tk-close" id="menuClose">Close <svg class="x" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
+    <button class="tk-close" id="menuClose">Close <span class="x">×</span></button>
   </div>
   <div class="tk-links">
-    <a class="tk-l" style="--td:0.08s" href="work"><span class="tk-n">01</span><span class="tk-t">Work</span><span class="tk-ar">→</span></a>
-    <a class="tk-l is-current" aria-current="page" style="--td:0.13s" href="digital"><span class="tk-n">02</span><span class="tk-t">Digital</span><span class="tk-ar">→</span></a>
+    <a class="tk-l is-current" aria-current="page" style="--td:0.08s" href="work"><span class="tk-n">01</span><span class="tk-t">Work</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.13s" href="digital"><span class="tk-n">02</span><span class="tk-t">Digital</span><span class="tk-ar">→</span></a>
     <a class="tk-l" style="--td:0.18s" href="studios"><span class="tk-n">03</span><span class="tk-t">Studios</span><span class="tk-ar">→</span></a>
     <a class="tk-l" style="--td:0.23s" href="insights"><span class="tk-n">04</span><span class="tk-t">Insights</span><span class="tk-ar">→</span></a>
     <a class="tk-l" style="--td:0.28s" href="about"><span class="tk-n">05</span><span class="tk-t">About</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.33s" href="careers"><span class="tk-n">06</span><span class="tk-t">Careers</span><span class="tk-ar">→</span></a>
   </div>
   <div class="tk-foot">
     <a href="tel:+16042279952">+1 (604) 227-9952</a>
@@ -800,334 +674,161 @@
 
 
 
-<!-- Sub-page hero: 50vh, .sub-hero pattern from /work and siblings.
-     The .sub-hero-ctas hero-CTA row was removed June 23 2026 — JP's call;
-     see digital.md Notes 18. Hero now stands on H1 + sub-body alone; the
-     visitor scrolls into the Outcome strip and Validator section directly.
-     "Start a project" persists in the page closer + the takeover menu, so
-     no path-to-conversion was lost.
-     Body paragraph uses .sub-body alongside the existing .sub-voice pattern — see audit. -->
+<!-- Sub-page hero: same DNA as homepage, ~50vh, clearly a sub-section -->
 <section class="sub-hero">
   <svg class="slash-field" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="pair" transform="translate(1060 230) scale(2.2)" style="--dur:15.6s;--dly:0s;--sh:10.4px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(780 460) scale(1.3)" style="--dur:20.4s;--dly:-9s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1260 520) scale(1.7)" style="--dur:13.2s;--dly:-15s;--sh:9.2px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(640 260) scale(1.0)" style="--dur:18s;--dly:-4s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(940 560) scale(1.1)" style="--dur:22.8s;--dly:-21s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1380 360) scale(1.2)" style="--dur:18.6s;--dly:-6s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g></svg>
   <div class="sub-hero-inner wrap">
-    <span class="eyebrow">Digital — product strategy, design &amp; engineering</span>
-    <h1 class="rise">Products people choose, <em class="voice">not&nbsp;endure.</em></h1>
-    <p class="sub-body">Designers at heart, all the way down to the dev team. <strong>AI does the volume. Senior people make the calls.</strong> MVPs in 4–6 weeks; platforms that hold at enterprise scale.</p>
-  </div>
-</section>
-
-
-<!-- Outcome strip — .proof + .proof-row + .stat + .odo pattern.
-     Pattern reference: docs/design-system-audit.md §2 (pattern 6).
-     Source: index.html:517-540, CSS index.html:99-138, 275.
-     Stats 1-3 copied verbatim from the homepage proof spine (identical captions; the
-     receipts shouldn't drift between the homepage and the practice page). Stat 4 is
-     text-only ("Best UX") — no odometer, no suffix, just <em> for italic serif.
-     The #proofRow id hooks into the existing reveal+go observer in this file's <script>
-     (graceful no-op on pages without #proofRow, see digital.html:921-934). Logos strip
-     is intentionally omitted — that's the homepage's job; the practice page doesn't
-     repeat the client wall. -->
-<section class="proof">
-  <div class="wrap proof-inner reveal">
-    <span class="eyebrow">Proof — the receipts</span>
-    <div class="proof-row" id="proofRow">
-      <div class="stat"><b><span class="sr-only">300,000</span><span class="odo" aria-hidden="true"><span class="col" style="--d:3"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="ch">,</span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx">+</span></b><span>enrollments in six months — TELUS Rewards</span></div>
-      <div class="stat"><b><span class="sr-only">30</span><span class="odo" aria-hidden="true"><span class="col" style="--d:3"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx"> days</span></b><span>from idea to validated proof of concept — Energizer</span></div>
-      <div class="stat"><b><span class="sr-only">+40</span><span class="odo" aria-hidden="true"><span class="ch">+</span><span class="col" style="--d:4"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span><span class="col" style="--d:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="sfx">%</span></b><span>organic leads — Angel Oak</span></div>
-      <div class="stat"><b><em>Best UX</em></b><span>Vancouver UX Awards — Delta Controls</span></div>
+    <span class="eyebrow rm-badge"><span class="dot"></span>Build safer, build faster</span>
+    <h1 class="rise">Pressure-test your MVP <em class="voice mag">before you build it.</em></h1>
+    <p class="rm-hero-sub">Stop wasting months — and burning capital — building products nobody wants. Get <em class="voice mag">instant, free feedback</em> on your market, solution, and build complexity.</p>
+    <div class="rm-cta-row">
+      <a class="btn solid cascade" href="validate">Validate my MVP →</a>
+      <span class="rm-note">100% Free • No Credit Card Required</span>
     </div>
   </div>
 </section>
 
-<!-- Offers — "Two ways to product success" — .doors + .door two-up comparison.
-     Pattern reference: docs/design-system-audit.md §2 (pattern 5).
-     Source: index.html:493-510, CSS index.html:80-96, 207-208.
-     Both offers are .door.digital (paper-on-paper) — they're sequential stages, not
-     paired opposites like the homepage Digital-vs-Studios contrast. Differentiation
-     comes from the numbered eyebrows + the H2 + the lead emphasis, not the background.
-     Using .door.studios styling here would visually misread as "this is the Studios
-     offer" — kept light on both sides on purpose. NEW: .doors.compact reduces the
-     min-height from 84vh (homepage takeover scale) to ~48vh (sub-page section scale)
-     — see audit doc for the new variant. -->
-<section class="offers-section" id="offers">
-  <div class="wrap reveal">
-    <h2 class="offers-h">Two ways to product success</h2>
-  </div>
-  <div class="doors compact" aria-label="Two ways to engage Digital">
-    <a class="door digital" href="rapidmvp">
-      <span class="eyebrow">Offer 01 — pressure-test</span>
-      <h2>Rapid MVP</h2>
-      <p class="lead">A working MVP in 4–6 weeks — <em class="voice">pressure-tested before a dollar is committed.</em></p>
-      <p class="body">Start with the Validator. Then six weeks to a real product in market, scoped against what we've already shipped.</p>
-      <span class="enter swipe">Start with the Validator</span>
-    </a>
-    <div class="seam" aria-hidden="true"></div>
-    <a class="door digital" href="#contact">
-      <span class="eyebrow">Offer 02 — build</span>
-      <h2>Product Design &amp; Engineering</h2>
-      <p class="lead">The core discipline — platforms and products designed and built by one team, <em class="voice">holding at enterprise scale.</em></p>
-      <p class="body">Designers, strategists and engineers in the same room. No account layer. Senior people on the work, AI in the pipeline.</p>
-      <span class="enter swipe" data-cc-contact role="button" tabindex="0">Start a project</span>
-    </a>
-  </div>
-</section>
-
-<!-- Validator — .engine + .engine-grid two-column band, INK background variant.
-     Pattern reference: docs/design-system-audit.md §2 (pattern 7) + .validator-band
-     ink variant + new .video-frame pattern (see CSS additions block above and
-     digital.md Notes 14 for the editorial rationale on the section flip).
-     Source: index.html:541-555, CSS index.html:141-146, 209-210, 304-305.
-     The .validator-band modifier scopes the engine to a 1fr/1fr split, flips
-     the section to ink (paper-on-paper above and below → ink-on-paper here
-     creates a sandwich that reads as the page's strongest CTA), and dials
-     the H2 down from the canonical 40-72px to 32-54px so the headline
-     doesn't overflow the half-width column.
-     The right column carries the Cloudflare Stream explainer video for the
-     Rapid MVP service line — a marketing/explainer video the visitor plays
-     deliberately (controls, audio, captions handled by Cloudflare's Stream
-     iframe player), which is a different pattern from the decorative card
-     loops on /work (plain <video> tag, autoplay-muted, frame-0 poster — see
-     docs/VIDEO_PIPELINE.md). The split between the two patterns is
-     codified in digital.md Notes 14. -->
-<section class="engine validator-band" id="validator">
-  <div class="wrap engine-grid reveal">
-    <div>
-      <h2 class="rise">Don't take the meeting yet.<br><em class="voice">Take the test.</em></h2>
-      <p>Run your idea through the MVP Validator — execution risk, scope realism, and technical feasibility, scored against everything we've ever shipped. <strong>You'll know what to cut before we ever talk.</strong></p>
-      <a class="btn solid cascade vbtn" href="rapidmvp">Validate your MVP →</a>
-    </div>
-    <div>
-      <!-- Cloudflare Stream explainer video — Rapid MVP service line.
-           Customer subdomain shared with the homepage hero reel STREAM config:
-             customer-xv1aafyshr3tbknu.cloudflarestream.com
-           Video UID (UPDATED June 23 2026): b95bdf8570cc633d7f96867d40bad336.
-           Appears in two places below — iframe src and the URL-encoded poster
-           param (the poster is generated from the same UID's thumbnails
-           endpoint at 24s — the "RAPID MVP!" whiteboard title card; frame 0
-           is a black fade-in). No further configuration needed — Cloudflare
-           handles controls, poster, captions (if uploaded), lazy load, and
-           adaptive HLS streaming inside the iframe player. -->
-      <div class="video-frame" aria-label="Rapid MVP explainer video">
-        <iframe
-          src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/b95bdf8570cc633d7f96867d40bad336/iframe?poster=https%3A%2F%2Fcustomer-xv1aafyshr3tbknu.cloudflarestream.com%2Fb95bdf8570cc633d7f96867d40bad336%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D24s"
-          loading="lazy"
-          allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-          allowfullscreen="true"
-          title="Rapid MVP explainer video"
-        ></iframe>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- How we work — TWO-MODULE ONE-TWO PUNCH (June 23 2026).
-     JP's brief: the practice is built on two paired principles — "early and
-     often, sometimes ugly" AND "direct-to-expert" — that need to read as a
-     one-two punch on the services pages. Implemented as two adjacent .engine
-     bands with alternating layouts: Module 1 (Early & Often) runs canonical
-     5fr/7fr; Module 2 (Direct-to-Expert) runs mirrored 7fr/5fr via the new
-     .engine.mirror modifier. Copy is verbatim from JP's off-platform draft —
-     do not edit without re-syncing with him. Same copy ships verbatim on
-     /studios when that page builds (see docs/copy/studios.md). -->
-
-<!-- Module 1 — Early and often. Sometimes ugly. (canonical .engine layout) -->
-<section class="engine how-band" id="how-we-work">
-  <div class="wrap engine-grid reveal">
-    <div>
-      <h2 class="rise">Early and often.<br><em class="voice">Sometimes ugly.</em></h2>
-      <span class="rule"></span>
-    </div>
-    <div>
-      <p>You will see the work while it is still changing: rough cuts, wireframes mid-thought, builds mid-sprint.</p>
-      <p>That keeps us close to the problem and able to <strong>correct course before a small miss becomes an expensive one.</strong></p>
-      <p>We avoid ta-da moments at all costs. No polished surprise in week eleven. Just visible progress, sharper decisions, and work that gets better because you saw it early enough to shape it.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Module 2 — Expertise compounds. (mirrored .engine.mirror layout) -->
-<section class="engine mirror how-band" id="direct-to-expert">
-  <div class="wrap engine-grid reveal">
-    <div>
-      <h2 class="rise"><em class="voice">Expertise compounds.</em></h2>
-      <span class="rule"></span>
-    </div>
-    <div>
-      <p>You are the experts in your business. We are the experts in turning complex digital problems into products people want to use.</p>
-      <p>Put the right people in the same room and progress compounds. You work directly with the strategists, designers, and engineers doing the work. <strong>No account-layer relay. No game of telephone.</strong></p>
-      <p>Your expertise. Ours. One team, solving the right problem sooner.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Selected work — "Digital, selected" — .work + .cards.four-up + .card.
-     Pattern reference: docs/design-system-audit.md §2 (pattern 4b).
-     Source: index.html:557-594 (homepage 3-up), CSS index.html:148-167.
-     Extended to 4-up via NEW .cards.four-up modifier (adds the 4th column at desktop,
-     breaks to 2-up at ≤1100px, 1-up at ≤680px). The :nth-child padding rule is widened
-     from (2),(3) to (n+2) so cards 2-4 all get the inner gutter. Only TELUS Rewards
-     links to a real case study (case-telus-koodo.html) at the moment — the other three
-     point to # until those cases are built. -->
-<section class="work" id="selected-work">
+<!-- ===== Proof / Testimonials ===== -->
+<section class="rm-section rm-light" id="proof">
   <div class="wrap">
-    <div class="head reveal">
-      <h2 class="rise">Digital, selected</h2>
-      <a class="all swipe" href="work">All work →</a>
+    <div class="rm-head">
+      <span class="eyebrow pink">Proof</span>
+      <h2 class="rise rm-h2">Trusted by product leaders <em class="voice mag">who ship.</em></h2>
+      <p class="rm-lead">Don’t just take our word for it. See how others are using data to build with confidence.</p>
     </div>
-    <div class="cards four-up reveal">
-      <!-- Poster = Stream thumbnail (graveyard open). The Digital half of a hybrid case. -->
-      <a class="card" href="/work/resurrection-campaign">
-        <div class="frame" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/48adbb2a39c6d77078fbe63d7015a16b/downloads/default.mp4"><img src="/images/resurrection/card.jpg" alt="Resurrection Campaign &mdash; a lone crow over a fog-shrouded CN Tower" style="width:100%;height:100%;object-fit:cover"></div>
-        <div class="meta">
-          <span class="tag">Studios &times; Digital</span>
-          <h3>Resurrection Campaign</h3>
-          <p>One master film, remixed per agency on a self-serve, multi-tenant microsite.</p>
-          <span class="go swipe">Read the case &rarr;</span>
-        </div>
-      </a>
-      <a class="card" href="/work/telus-rewards">
-        <div class="frame" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/9ae6ac44cd107543db4cc0c7c6160392/downloads/default.mp4"><img src="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/9ae6ac44cd107543db4cc0c7c6160392/thumbnails/thumbnail.jpg?time=0s&amp;width=1280" alt="TELUS Rewards" style="width:100%;height:100%;object-fit:cover"></div>
-        <div class="meta">
-          <span class="tag">Platform</span>
-          <h3>TELUS Rewards</h3>
-          <p>300,000 enrollments in six months.</p>
-          <span class="go swipe">Read the case →</span>
-        </div>
-      </a>
-      <a class="card" href="#">
-        <div class="frame" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/13b3c4ffad635214521fa0802561ba47/downloads/default.mp4"><img src="images/energizer.jpg" alt="Energizer" style="width:100%;height:100%;object-fit:cover"></div>
-        <div class="meta">
-          <span class="tag">Rapid MVP</span>
-          <h3>Energizer</h3>
-          <p>Product-market fit validated in 30 days.</p>
-          <span class="go swipe">Read the case →</span>
-        </div>
-      </a>
-      <a class="card" href="#">
-        <div class="frame" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/c3c4fad22e67aff6876a528a8d1d9739/downloads/default.mp4"><img src="images/delta_controls.jpg" alt="Delta Controls" style="width:100%;height:100%;object-fit:cover"></div>
-        <div class="meta">
-          <span class="tag">Product · Best UX, VUX</span>
-          <h3>Delta Controls</h3>
-          <p>IoT configuration, moved to the cloud.</p>
-          <span class="go swipe">Read the case →</span>
-        </div>
-      </a>
-      <a class="card" href="#">
-        <div class="frame" data-video="https://customer-xv1aafyshr3tbknu.cloudflarestream.com/f1f321f6bf50f85044d39cff482d298b/downloads/default.mp4"><img src="images/angel_oak.jpg" alt="Angel Oak" style="width:100%;height:100%;object-fit:cover"></div>
-        <div class="meta">
-          <span class="tag">Web · SEO</span>
-          <h3>Angel Oak</h3>
-          <p>+40% organic leads from a user-first redesign.</p>
-          <span class="go swipe">Read the case →</span>
-        </div>
-      </a>
-      <div class="card placeholder" aria-hidden="true"></div>
-      <div class="card placeholder" aria-hidden="true"></div>
-      <div class="card placeholder" aria-hidden="true"></div>
+    <div class="rm-quotes">
+      <figure class="rm-quote reveal">
+        <blockquote>“The Power Shifter team truly feels like an extension of our own. Their flexibility, problem-solving mindset, and ability to pivot without losing momentum made a big impact.”</blockquote>
+        <figcaption>
+          <img src="https://storage.googleapis.com/jp-images-for-apps/MVP%20Validator/1718286212323.jpeg" alt="Joseph Santry">
+          <span><b>Joseph Santry</b>Senior Director, Futures Innovation at lululemon</span>
+        </figcaption>
+      </figure>
+      <figure class="rm-quote reveal">
+        <blockquote>“Thrilled with the work POWERSHiFTER has done under very tight timelines and customizing the solution for our unique needs.”</blockquote>
+        <figcaption>
+          <img src="https://storage.googleapis.com/jp-images-for-apps/MVP%20Validator/1726361063792.jpeg" alt="Achin Kansal">
+          <span><b>Achin Kansal</b>VP of Marketing, Phinity</span>
+        </figcaption>
+      </figure>
+      <figure class="rm-quote reveal">
+        <blockquote>“They have been a sincere pleasure to work with and have enabled the launch of XYON’s complex and beautiful commerce site, which we expect will be the foundation of a successful brand.”</blockquote>
+        <figcaption>
+          <img src="https://storage.googleapis.com/jp-images-for-apps/MVP%20Validator/1639696128312.jpeg" alt="Simon Pimstone">
+          <span><b>Simon Pimstone</b>Co-Founder and CEO, XYON</span>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<!-- Social proof — .proof-spine — visible-clients trust signal at section scope.
-     Pattern reference: docs/design-system-audit.md §"New patterns" F +
-     digital.md Notes 15. Inserted June 23 2026 in response to JP's social
-     proof brief. Direct reuse of the homepage's proof-spine .logos block
-     (index.html Block 3, lines 527-537) — same 9 logos, same 3x3 checkerboard,
-     same .logo-mask currentColor technique. Position: between Selected Work
-     (named-clients-with-project-context) and Partners (platform-certifications).
-     The three surfaces compose /digital's full social proof stack:
-       outcome-strip      named quantitative outcomes
-       Selected Work      named clients + project context
-       proof-spine        client logos as standalone roster (this)
-       Partners           platform certifications
-     Same pattern ships verbatim on /studios when that page builds — the
-     Studios voice spec ("Every flex attached to a name, a credit, or a
-     trophy") fits a logo-roster cleanly. See studios.md cross-reference.
-     Logo widths in inline style attributes are calibrated per-logo to
-     normalize visual weight across asset ratios — copied verbatim from the
-     homepage; do not re-eyeball without re-measuring. -->
-<!-- Client testimonial banner — above the roster. The logos say WHO trusts us;
-     this says what it FELT like. Real, approved lululemon testimonial (Joseph
-     Santry) from the Client Testimonials Notion DB. -->
-<section class="quote-banner">
-  <div class="wrap reveal">
-    <blockquote>
-      <span class="qb-mark" aria-hidden="true">&ldquo;</span>
-      <p class="quote-t">The POWER SHIFTER team truly feels like an extension of our own. Their flexibility, problem-solving mindset, and ability to pivot without losing momentum made a big impact.</p>
-      <p class="quote-by">
-        <span class="qb-name">Joseph Santry</span>
-        <span class="qb-role">Senior Director, Futures Innovation, lululemon</span>
-      </p>
-    </blockquote>
-  </div>
-</section>
-
-<section class="proof-spine" id="proof-spine">
-  <div class="wrap reveal">
-    <span class="eyebrow">Digital — selected clients</span>
-    <div class="logos" aria-label="Selected clients">
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/telus.png'); width: 141px; height: 28px;" aria-label="Telus"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/energizer.png'); width: 110px; height: 28px;" aria-label="Energizer"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/lululemon.png'); width: 28px; height: 28px;" aria-label="Lululemon"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/deloitte.png'); width: 150px; height: 28px;" aria-label="Deloitte"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/kpmg.png'); width: 68px; height: 28px;" aria-label="KPMG"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/grammarly.png'); width: 131px; height: 28px;" aria-label="Grammarly"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/akamai.png'); width: 68px; height: 28px;" aria-label="Akamai"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/iron-mountain.png'); width: 98px; height: 28px;" aria-label="Iron Mountain"></span></div>
-      <div class="cell"><span class="logo-mask" style="--mask-image: url('images/logos/canucks.png'); width: 29px; height: 28px;" aria-label="Canucks"></span></div>
+<!-- ===== How it works ===== -->
+<section class="rm-section rm-light rm-bordered" id="how">
+  <div class="wrap">
+    <div class="rm-head center">
+      <span class="eyebrow pink">The Process</span>
+      <h2 class="rise rm-h2">From idea to execution plan <em class="voice mag">in minutes.</em></h2>
+    </div>
+    <ol class="rm-steps">
+      <li class="rm-step reveal">
+        <h3>1. Input your Idea</h3>
+        <p>Describe your product vision in plain English. No technical specs required—just your goal and core features.</p>
+        <span class="rm-chip-dur">~2 min</span>
+      </li>
+      <li class="rm-step reveal">
+        <h3>2. AI Pressure Test</h3>
+        <p>Our engine analyzes your concept against millions of data points to identify risks, competitors, and technical complexity.</p>
+        <span class="rm-chip-dur">Instant</span>
+      </li>
+      <li class="rm-step reveal">
+        <h3>3. Get Your Roadmap</h3>
+        <p>Receive a comprehensive report with a tech stack, estimated build time, and a step-by-step execution plan.</p>
+        <span class="rm-chip-dur">Free Report</span>
+      </li>
+    </ol>
+    <div class="rm-cta-center">
+      <a class="btn ink cascade" href="validate">Validate my MVP →</a>
+      <span class="rm-note dark">100% Free • No Credit Card Required</span>
     </div>
   </div>
 </section>
 
-<!-- Partners — NEW .partners-strip pattern.
-     Pattern reference: docs/design-system-audit.md §"New patterns" C.
-     No precedent on the site (distinct from .logos which masks client logos on the
-     homepage proof spine — that's customers we've shipped for, this is platforms
-     we're certified on). Lede + horizontal row of partner-tier chips with serif-italic
-     tier label. Webflow is RE-SCOPED, not dropped (this comment said "dropped" while
-     the markup below served it — corrected 2026-07-15): the prototype's "Enterprise
-     Partner" claim went, since we moved off Webflow; "Enterprise Certified Expert"
-     is live, because the certification survives leaving the platform. All FOUR tier
-     standings still need verification before paid reuse — "Certified Expert" is a
-     specific, checkable credential (see Notes 3 and the parking-lot item). -->
-<section class="partners">
-  <div class="wrap reveal">
-    <p class="partners-lede">Certified, not just familiar — and this site runs on the same stack we build for clients.</p>
-    <div class="partners-strip">
-      <span class="ptier"><b>Webflow</b> <em>Enterprise Certified Expert</em></span>
-      <span class="ptier"><b>Contentful</b> <em>Silver Partner</em></span>
-      <span class="ptier"><b>Sanity</b> <em>Agency Partner</em></span>
-      <span class="ptier"><b>Vercel</b> <em>Expert</em></span>
+<!-- ===== Founder note ===== -->
+<section class="rm-section rm-dark" id="founder">
+  <div class="wrap rm-founder">
+    <div class="rm-founder-photo">
+      <image-slot id="jp-founder" shape="rounded" radius="14" placeholder="Drop JP Holecka’s photo"></image-slot>
+    </div>
+    <div class="rm-founder-body">
+      <h2 class="rm-h2" style="margin-bottom:22px">Why I built this</h2>
+      <p class="rm-pull">After 20 years of shipping products for global brands, I’ve seen too many great ideas fail—not because they weren’t brilliant, but because they were built blindly.</p>
+      <p class="rm-pull">We created this validator to give you the honest, data-backed signal I wish I had starting out. No fluff, just the execution reality check you need before writing that first line of code.</p>
+      <div class="rm-founder-by"><b>JP Holecka</b><span>Founder &amp; CEO</span></div>
     </div>
   </div>
 </section>
 
+<!-- ===== Decision close ===== -->
+<section class="rm-section rm-light rm-bordered" id="decision">
+  <div class="wrap rm-decision">
+    <h2 class="rise rm-big">Before you build anything — <em class="voice mag">make the call that matters.</em></h2>
+    <div class="rm-decision-body">
+      <p>Most MVPs fail for reasons that were visible early — overbuilt scope, underestimated complexity, or the wrong thing built first.</p>
+      <p>This validator exists to surface those risks before they cost you months of time, burned capital, or a stalled product.</p>
+      <p class="rm-strong">You don’t need more opinions. You need a clear execution signal.</p>
+    </div>
+    <div class="rm-chips">
+      <span class="rm-chip"><i></i>20+ years shipping real products</span>
+      <span class="rm-chip"><i></i>Trusted by product leaders</span>
+      <span class="rm-chip"><i></i>Free &amp; obligation-free</span>
+    </div>
+    <div class="rm-cta-center">
+      <a class="btn ink cascade" href="validate">Validate my MVP now →</a>
+      <span class="rm-note dark">Takes ~2 minutes · No credit card</span>
+      <span class="rm-subnote">Guessing feels faster. Validation is cheaper.</span>
+    </div>
+  </div>
+</section>
 
-<!-- Global page closer — same scale as homepage, page-specific copy.
-     Pattern: .page-closer (audit §2 pattern 9). Source: work.html:829-839 (representative).
-     H2 sourced from docs/copy/digital.md closer section.
-     EDITORIAL CONSTRAINT (June 23 2026): the "six weeks" / "4-6 weeks" claim is
-     scoped to the Rapid MVP service line only — it appears in the hero body
-     (qualified by "MVPs"), in Offer 01's lead and body (inside the Rapid MVP
-     card), and nowhere else. The page closer is page-level — it spans both
-     Rapid MVP AND Product Design & Engineering — so it can't claim that
-     cadence without overpromising on the enterprise platform work that
-     actually runs months. Closer body echoes the "Early and often" engine
-     band's visibility promise instead, which is true for both service lines. -->
+<!-- ===== FAQ ===== -->
+<section class="rm-section rm-light rm-bordered" id="faq">
+  <div class="wrap rm-faqwrap">
+    <div class="rm-head center">
+      <h2 class="rise rm-h2">Common questions <em class="voice mag">before building an MVP</em></h2>
+      <p class="rm-lead">Everything you should pressure-test before committing time, budget, or a team.</p>
+    </div>
+    <div class="rm-faq">
+      <details open><summary>What is an MVP — and what is it not?<span class="chev"></span></summary><p>An MVP (Minimum Viable Product) is the smallest version of a product that allows you to test real assumptions with real users. It is not a feature-complete product, a polished production release, or a guarantee of product–market fit. The goal of an MVP is learning, not perfection. This validator focuses on whether that learning can happen efficiently and responsibly.</p></details>
+      <details><summary>How long should an MVP take to build?<span class="chev"></span></summary><p>There is no universal timeline. Most teams underestimate complexity and overbuild early. A well-scoped MVP typically takes weeks, not months — but only when scope, sequencing, and risk are tightly controlled. This validator provides a directional estimate, not a promise, based on known execution patterns.</p></details>
+      <details><summary>Can this tool tell me if my idea will succeed?<span class="chev"></span></summary><p>No. This tool does not predict market success — it evaluates execution feasibility. It helps assess technical realism, scope appropriateness, and where teams commonly overbuild or mis-sequence.</p></details>
+      <details><summary>Is this meant for startups or enterprise teams?<span class="chev"></span></summary><p>Both. Founders use it to avoid wasting time and capital early. Enterprise teams use it to pressure-test initiatives before allocating internal resources. The execution risks are the same regardless of company size.</p></details>
+      <details><summary>What happens after I complete the validation?<span class="chev"></span></summary><p>You’ll receive a concise report by email that includes an MVP validation score, key execution risks, and guidance on what to build now versus later. There’s no obligation to engage further.</p></details>
+      <details><summary>Is my idea safe? Who owns it?<span class="chev"></span></summary><p>Your idea remains 100% yours. Submissions are not treated as Power Shifter IP and are never reused. This tool exists to reduce waste, not extract concepts.</p></details>
+      <details><summary>Why should I trust this assessment?<span class="chev"></span></summary><p>This validator is built on nearly 20 years of real product delivery. It reflects patterns from startup MVPs, enterprise innovation programs, and products that shipped — and those that stalled. It’s designed to surface uncomfortable truths early, when they’re cheapest to address.</p></details>
+      <details><summary>What if my MVP scores poorly?<span class="chev"></span></summary><p>That’s often the most valuable outcome. A weak signal early can prevent months of wasted effort and gives you the opportunity to cut scope, re-sequence features, rethink the approach, or decide not to build yet.</p></details>
+      <details><summary>Is this free? What’s the catch?<span class="chev"></span></summary><p>The MVP validation is free and takes about two minutes. No credit card is required, and there’s no obligation to move forward. If it makes sense to talk, you’ll know — and so will we.</p></details>
+    </div>
+    <div class="rm-cta-center">
+      <a class="btn ink cascade" href="validate">Validate my MVP now →</a>
+      <span class="rm-note dark">Takes ~2 minutes · No credit card</span>
+    </div>
+  </div>
+</section>
+
+<!-- Global page closer — same scale as homepage, page-specific copy -->
 <section class="page-closer" id="contact">
   <div class="wrap">
-    <h2 class="rise">Your product idea doesn't need another pitch deck. <em class="voice mag">It needs to exist.</em></h2>
-    <p>You'll see the work in progress, not reveal meetings — and you'll work directly with the people making it. No account layer, no game of telephone.</p>
+    <h2 class="rise">Stop guessing. <em class="voice mag">Validate.</em></h2>
+    <p>Get a free, instant assessment of your MVP’s market viability, technical complexity, and roadmap execution risks.</p>
     <div class="pc-row">
-      <a class="btn solid cascade" href="#contact" data-cc-contact>Start a project →</a>
-      <a class="tel" href="tel:+16042279952">+1 (604) 227-9952</a>
+      <a class="btn solid cascade" href="validate">Validate my MVP →</a>
+      <span class="tel">100% Free · No credit card</span>
     </div>
   </div>
 </section>
 
 
 
-</main>
 <footer>
   <div class="wrap foot">
     <div class="foot-top">
@@ -1136,25 +837,23 @@
         <p class="tagline">Made to use.<br><em class="voice">Made to remember.</em></p>
       </div>
       <ul>
-        <li><a href="work">Work</a></li>
-        <li><a href="digital" aria-current="page">Digital</a></li>
+        <li><a href="work" aria-current="page">Work</a></li>
+        <li><a href="digital">Digital</a></li>
         <li><a href="studios">Studios</a></li>
         <li><a href="insights">Insights</a></li>
         <li><a href="about">About</a></li>
-        <li><a href="careers">Careers</a></li>
+        <li><a href="#">Careers</a></li>
       </ul>
       <div class="news">
         <h4>The signal</h4>
-        <p>What we're learning from shipping software and cinema on AI pipelines. Monthly, short, no filler.</p>
-        <form class="field js-signal" novalidate>
-          <input type="email" name="email" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
-          <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button type="submit">Subscribe</button>
-        </form>
-        <p class="signal-msg" role="status" aria-live="polite"></p>
+        <p>What we're learning shipping software and cinema on AI pipelines. Monthly, short, no filler.</p>
+        <div class="field">
+          <input type="email" placeholder="Email address" aria-label="Email address">
+          <button type="button">Subscribe</button>
+        </div>
       </div>
     </div>
-    <p class="ack">We acknowledge that we live and work uninvited on the unceded territories of the Coast Salish peoples — the Lekwungen (Songhees and Esquimalt) and W̱SÁNEĆ around Victoria, the Quw'utsun (Cowichan) at Cowichan Bay, the many Hul'q'umi'num- and SENĆOŦEN-speaking Nations of Salt Spring Island, and the Sḵwx̱wú7mesh Úxwumixw (Squamish) at Gibsons. As a team working coast to coast, we extend that respect to all the Indigenous lands and treaty territories our people call home. We are grateful to share this land cared for by these Nations.</p>
+    <p class="ack">We acknowledge that we live and work uninvited on the unceded territories of the xwməθkwəy̓əm (Musqueam), Sḵwx̱wú7mesh (Squamish), Sel̓íl̓witulh (Tsleil-Waututh), Syilx tmixw (Okanagan), Nłeʔkepmx Tmíxw (Nlaka'pamux), Niitsítpiis-stahkoii (Blackfoot / Niitsítapi), Mi'kma'ki, the Mississaugas of the Credit, Anishnabeg, Chippewa, Haudenosaunee, and Wendat peoples. We are grateful for the opportunity to build our agency and communities on land that is cared for by these Nations.</p>
     <div class="legal">
       <span>© <span id="yr"></span> Power Shifter Digital Inc. All rights reserved.</span>
       <span><a href="terms-and-conditions">Terms &amp; Conditions</a><a href="privacy-policy">Privacy Policy</a><a href="privacy-policy">Cookies</a></span>
@@ -1165,7 +864,32 @@
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
 
-  // Nav color flip lives in ps-spice.js (shared IntersectionObserver) — QA 2026-07
+  // Nav color flips against light sections
+  const nav = document.getElementById('nav');
+  const lightSections = document.querySelectorAll('.proof, .engine, .insights, .door.digital');
+  const navObserver = new IntersectionObserver(entries=>{
+    let onLight = false;
+    entries.forEach(e=>{ if(e.isIntersecting && e.boundingClientRect.top < 80) onLight = true; });
+  },{rootMargin:'-0% 0px -92% 0px'});
+  // simpler: flip nav based on scroll position bands
+  const darkBands = () => {
+    const y = window.scrollY + 40;
+    const hero   = document.querySelector('.hero, .sub-hero');
+    const workEl = document.getElementById('work');
+    const closer = document.getElementById('contact');
+    const heroH  = hero   ? hero.offsetTop + hero.offsetHeight   : 0;
+    const workT  = workEl ? workEl.offsetTop                     : Infinity;
+    const workB  = workEl ? workEl.offsetTop + workEl.offsetHeight: Infinity;
+    const closerT= closer ? closer.offsetTop                     : Infinity;
+    const inDark =
+      (heroH  > 0 && y < heroH)  ||
+      (workEl && y > workT && y < workB) ||
+      (closer && y > closerT);
+    nav.style.color = inDark ? 'var(--paper)' : 'var(--ink)';
+    document.querySelector('header').classList.toggle('on-light', !inDark);
+  };
+  darkBands();
+  window.addEventListener('scroll', darkBands, {passive:true});
 
   // Word-mask splitter for .rise headlines
   const reduceM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1242,8 +966,8 @@
   // Hover video loops: lazy-load on first hover, never on touch or reduced motion
   if (window.matchMedia('(hover: hover)').matches &&
       !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    document.querySelectorAll('.wframe[data-video], .frame[data-video]').forEach(frame=>{
-      const card = frame.closest('.wcard, .card') || frame;
+    document.querySelectorAll('.wframe[data-video]').forEach(frame=>{
+      const card = frame.closest('.wcard') || frame;
       let vid = null, resetTimer = null;
       card.addEventListener('mouseenter', ()=>{
         clearTimeout(resetTimer);
@@ -1251,13 +975,8 @@
           vid = document.createElement('video');
           vid.muted = true; vid.loop = true; vid.playsInline = true;
           vid.className = 'hover-video';
-          const src = frame.dataset.video, base = src.replace(/\.mp4$/, '');
-          // Cloudflare Stream serves only default.mp4 (no .webm); requesting .webm 404s and
-          // stalls the rollover — only offer .webm for local files that actually have one.
-          const exts = /cloudflarestream\.com/.test(src)
-            ? [['mp4','video/mp4']]
-            : [['webm','video/webm'],['mp4','video/mp4']];
-          exts.forEach(([ext,type])=>{
+          const base = frame.dataset.video.replace(/\.mp4$/, '');
+          [['webm','video/webm'],['mp4','video/mp4']].forEach(([ext,type])=>{
             const s = document.createElement('source');
             s.src = base + '.' + ext; s.type = type;
             vid.appendChild(s);
@@ -1309,7 +1028,7 @@
 <script>
   // Filter
   const ftabs = document.querySelectorAll('.ftab');
-  const wcards = document.querySelectorAll('[data-cat]:not(.ftab)');
+  const wcards = document.querySelectorAll('[data-cat]');
   ftabs.forEach(tab => {
     tab.addEventListener('click', () => {
       ftabs.forEach(t => t.classList.remove('on'));
@@ -1356,48 +1075,24 @@ document.querySelectorAll('.swipe').forEach(function(el){
   var ov = document.getElementById('takeover');
   var close = document.getElementById('menuClose');
   if(!btn || !ov) return;
-  var lockedScrollY = 0;
+  var hoverTimer = null, suppressUntil = 0;
   function setOpen(open){
+    if(!open) suppressUntil = Date.now() + 500; // grace: closing parks the cursor on the button
     ov.classList.toggle('open', open);
     document.body.classList.toggle('menu-open', open);
     btn.setAttribute('aria-expanded', open);
     ov.setAttribute('aria-hidden', !open);
-    // Scroll lock: overflow:hidden alone doesn't reliably stop touch-scroll on
-    // mobile (QA 2026-07-10 — the browser's own toolbar was visibly collapsing
-    // and re-expanding while the takeover was open, meaning the page was
-    // genuinely scrolling behind it). Take body out of the scroll flow
-    // entirely instead, and restore the exact position on close.
-    if(open){
-      lockedScrollY = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = (-lockedScrollY) + 'px';
-      document.body.style.left = '0';
-      document.body.style.right = '0';
-    } else {
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.left = '';
-      document.body.style.right = '';
-      void document.documentElement.offsetHeight; // force reflow — scrollTo below would
-      // otherwise race the browser's layout and land back on the stale
-      // (fixed, zero-height) box, clamping the restore to 0 (verified live).
-      // Explicit instant — the legacy 2-arg form is governed by CSS
-      // scroll-behavior (this site sets html{scroll-behavior:smooth}
-      // globally for anchor nav), so it was animating toward
-      // lockedScrollY instead of jumping, and losing the race against
-      // the surrounding layout changes (verified live — root cause of
-      // the QA 2026-07-10 restore-lands-on-0 bug).
-      window.scrollTo({top: lockedScrollY, left: 0, behavior: 'instant'});
-    }
   }
-  // Click-only (2026-07-14). Hover-open — and hover-close on overlay leave —
-  // were removed: opening a nav on hover is inconsistent with the pattern people
-  // expect, and the synthetic-hover-before-tap dance it required on hybrid
-  // devices was a recurring QA bug. Open/close is now explicit: the button
-  // toggles; Close, Escape, or a link click dismiss.
-  btn.addEventListener('click', function(){
-    setOpen(!ov.classList.contains('open'));
-  });
+  btn.addEventListener('click', function(){ setOpen(!ov.classList.contains('open')); });
+  // Hover opens on pointer devices (150ms intent delay); mouse out of the takeover closes
+  if(window.matchMedia('(hover: hover)').matches){
+    btn.addEventListener('mouseenter', function(){
+      if(Date.now() < suppressUntil) return;
+      hoverTimer = setTimeout(function(){ setOpen(true); }, 150);
+    });
+    btn.addEventListener('mouseleave', function(){ clearTimeout(hoverTimer); });
+    ov.addEventListener('mouseleave', function(){ setOpen(false); });
+  }
   if(close) close.addEventListener('click', function(){ setOpen(false); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setOpen(false); });
   ov.querySelectorAll('.tk-l').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });
@@ -1409,6 +1104,6 @@ document.querySelectorAll('.swipe').forEach(function(el){
 <script src="ps-spice.js"></script>
 <!-- PS Concierge -->
 <script src="ps-concierge.js"></script>
-<script src="ps-signal.js"></script>
+<script src="image-slot.js"></script>
 </body>
 </html>

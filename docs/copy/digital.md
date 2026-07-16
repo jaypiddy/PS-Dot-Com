@@ -182,13 +182,14 @@ _Credentialed partnerships strip. No header. Lead sentence + a horizontal row of
 
 **BODY:** Certified, not just familiar — and this site runs on the same stack we build for clients.
 
-**Partners row:**
+**Partners row:** _(4 chips, in live order)_
 
+- Webflow · Enterprise Certified Expert
 - Contentful · Silver Partner
 - Sanity · Agency Partner
 - Vercel · Expert
 
-_Webflow line removed: the v1 prototype was authored before the Webflow direction was abandoned. Partner tier standings for the three remaining still need verification before paid reuse — see Notes 3._
+_⚠️ Corrected 2026-07-15 to match production. Webflow is **live** on the page and was NOT removed — it was **re-scoped**: the prototype claimed "Webflow · Enterprise **Partner**" (a partnership tier, which would misrepresent the stack since we moved off Webflow); the live chip claims "Webflow · Enterprise **Certified Expert**" (a certification the team holds, which survives moving off the platform). All four tier standings still need verification before paid reuse — see Notes 3._
 
 ---
 
@@ -214,8 +215,10 @@ _Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of th
 2. **Energizer caption wording — resolved to homepage form.**
    The outcome strip on /digital now reads "from idea to validated proof of concept — Energizer," matching the homepage proof spine verbatim. The v1 prototype's shorter "idea to validated…" wording is retired. Both pages now carry identical caption text — the receipts don't drift between the homepage and the practice page.
 
-3. **Webflow partner line dropped; remaining tier verification still open.**
-   The v1 prototype carried four partner-tier chips: Contentful Silver, Sanity Agency, Vercel Expert, Webflow Enterprise. Webflow was dropped on the build-out commit (June 23 2026) — Power Shifter moved off Webflow to static HTML on Vercel, so naming Webflow as a current partner would misrepresent the stack. The three remaining tier standings (Contentful Silver, Sanity Agency, Vercel Expert) still need verification before paid reuse — these were unflagged in the prototype and should be confirmed against current partner-portal status before this page is used in paid outbound or pitches.
+3. **Webflow re-scoped, not dropped. ⚠️ CORRECTED 2026-07-15 — this note was wrong.**
+   The v1 prototype carried four chips: Contentful Silver, Sanity Agency, Vercel Expert, Webflow **Enterprise Partner**. The *partner* framing was dropped on the build-out commit (June 23 2026) — we moved off Webflow to static HTML on Vercel, so claiming a current partnership would misrepresent the stack. **But Webflow was later re-added as "Enterprise Certified Expert" and is live on the page today** (first chip, 4 total). That is a different claim and a defensible one: a certification the team earned survives moving off the platform, and `concierge-knowledge.md` states it independently ("Stack & certifications: Webflow Enterprise Certified Expert").
+   This note, `digital.html`'s section comment, and the Notion page all still said "dropped" while production served it — a drift nobody caught for ~3 weeks. Reconciled to production.
+   **STILL OPEN — all four tier standings need verification before paid reuse.** These were unflagged in the prototype and should be confirmed against current partner-portal / certification status before this page is used in paid outbound or pitches. Now more pointed than before: legal reviewed our claims in July 2026 and struck the velocity line. "Enterprise Certified Expert" is a **specific, checkable credential claim** — it should be confirmed, not assumed.
 
 4. **Stats parity with the homepage.**
    The Best UX / Delta Controls stat replaces the "2× Silver ADDY" stat used on the homepage proof spine. Each page should pick the four proof points most relevant to its dialect. Both stats are real; this is a curation choice, not a conflict.
@@ -242,7 +245,7 @@ _Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of th
     - **Validator:** `.engine.validator-band` (new variant — 1fr/1fr grid instead of canonical 5fr/7fr, H2 dialed to clamp(32px,3.6vw,54px) so it fits the half-width column). Right column carries the new `.terminal` component.
     - **How we work:** canonical `.engine` band (5fr/7fr), second one on the page — deliberate rhythm reuse. H2 left with magenta `.rule`, 3-paragraph prose body right ending in the bench credentials line.
     - **Selected work:** `.work` section with `.cards.four-up` (new variant — extends homepage 3-up to 4-up; breaks to 2-up at ≤1100px, 1-up at ≤680px). Only TELUS Rewards links to a real case study; the other three point to `#` until those cases are built.
-    - **Partners:** new `.partners-strip` — 3 partner-tier chips (Contentful Silver, Sanity Agency, Vercel Expert). Webflow dropped per Notes 3.
+    - **Partners:** new `.partners-strip` — 4 partner-tier chips (Webflow Enterprise Certified Expert, Contentful Silver, Sanity Agency, Vercel Expert). _(Was written as 3 with "Webflow dropped"; corrected 2026-07-15 to match production — see Notes 3.)_
     Page status moves from INTERIM to LIVE on this commit. Inherited work.html JS (`.work-grid`/`.wcard`/`[data-cat]` bindings) remains in place as harmless no-ops — JS cleanup is a separate follow-on pass.
 
 11. **New design-system patterns now in production.**

@@ -93,7 +93,12 @@ When a word or phrase has a non-obvious visual treatment baked in (e.g. magenta 
 
 ### Approved canon lines
 
-The lines below are the canonical Power Shifter brand statements. They appear in multiple places; when one changes, every appearance updates in the same commit (and the Notion master updates first).
+The lines below are the canonical Power Shifter brand statements. They appear in multiple places; **when one changes, every appearance updates in the same change** — the HTML, these decks, the Notion Copy Deck, and `concierge-knowledge.md` (the bot will otherwise keep speaking the old line in our voice).
+
+**Source of truth: the live site.** _(Corrected 2026-07-15 — this used to say "the Notion master updates first.")_
+Nobody works that way. Copy changes land in the HTML, ship to production, and Notion is reconciled after. The old rule described an order that was never followed, which is exactly how Notion drifted into claiming `/digital` was "Status: INTERIM — page not yet built" while it had been live for weeks, and how the Webflow partner chip contradicted production for ~3 weeks (see `digital.md` Notes 3).
+
+So: **`powershifter.com` is what we actually claim.** The repo is the working copy; `docs/copy/` and the Notion Copy Deck are both *mirrors* and both must be reconciled in the same change. If a mirror disagrees with production, **production wins and the mirror is the bug** — do not "fix" the site to match a deck.
 
 1. Made to use. / Made to remember.
 2. Anyone can generate. / Few can direct.

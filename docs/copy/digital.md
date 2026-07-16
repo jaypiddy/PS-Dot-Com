@@ -226,8 +226,17 @@ _Page-end CTA. H2 reframes deliverable; one-line BODY repositions the role of th
 5. **Studios cross-link absent.**
    The prototype has no link out to /studios from this page. The masterbrand-two-doors IA probably wants a seam at the bottom (or in the engine band of the homepage) routing readers across. Decide when the page builds.
 
-6. **Validator linkage.**
-   The Validator is a separately deployed Next.js app at `https://rapidmvp.powershifter.com/`, branded "Rapid MVP Validator" (currently v1.5-flash, build 2026-01-28). The prototype's hero CTA `Validate your idea in just a few minutes →` and the in-page section's `Validate your MVP →` both target the on-page `#validator` anchor on the Digital hub. When this page builds, both should route to `https://rapidmvp.powershifter.com/validate` — the in-page Validator section becomes a tease for the standalone app, not a destination. The terminal demo on the hub stays as marketing flourish; the actual validation happens on the rapidmvp subdomain. JP has flagged that the validator app's own styling will change post-launch of the main site, so the hub's visual treatment is the lead, not vice versa.
+6. **Validator linkage — ✅ RESOLVED. Verified live 2026-07-15.**
+   All CTAs route to `https://rapidmvp.powershifter.com/validate` (returns 200). **Zero** CTAs target the on-page `#validator` anchor. Two live links:
+   - **"Validate your MVP →"** — the Validator section CTA (`digital.html:897`)
+   - **Offer 01 door** — "Rapid MVP / A working MVP in 4–6 weeks…" (`digital.html:857`)
+
+   The third CTA this note worried about — the hero's "Validate your idea in just a few minutes →" — **no longer exists**: the whole `.sub-hero-ctas` row was removed June 23 2026 (see Notes 18). Only the decommission comments remain.
+
+   The in-page Validator section is now a tease for the standalone app, not a destination — exactly as this note prescribed. The terminal demo stays as marketing flourish.
+
+   _Still true and still open (separate repo, `jaypiddy/idea-validator-app`): the app's own `~2 min` hero claim and `/validate`'s "Takes ~5 minutes" intro were never brought in line with the "just a few minutes" decision (Notes 9). Same instinct legal applied to the velocity line: don't lock to a number you have to defend._
+
 
 7. **AI Content Operations removed.**
    The prototype HTML carries a third offer card titled "AI Content Operations" between Rapid MVP and Product Design & Engineering. JP confirmed on June 23 2026 that this isn't an offering Power Shifter actually has — it appears to have been invented during the Claude Design prototype session and slipped into the v1 file. The deck now lists two offers, the H2 reads "Two ways in," and Product Design & Engineering is renumbered from 03 to 02. Do not reintroduce from the prototype HTML.

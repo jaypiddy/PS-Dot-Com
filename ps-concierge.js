@@ -213,6 +213,8 @@
 
     var form = el('form','cc-form');
     input = el('textarea','cc-input'); input.rows=1; input.placeholder='Tell us what you\u2019re building…';
+    // placeholder is not an accessible name — it vanishes on input and is skipped by some AT
+    input.setAttribute('aria-label','Tell us what you\u2019re building');
     sendBtn = el('button','cc-send'); sendBtn.type='submit'; sendBtn.setAttribute('aria-label','Send');
     sendBtn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
     form.appendChild(input); form.appendChild(sendBtn);

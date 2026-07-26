@@ -1281,17 +1281,23 @@ document.querySelectorAll('.cascade').forEach(function(btn){
   var raw = btn.textContent.replace(/\u2192/g,'').trim();
   var hasArrow = /\u2192/.test(btn.textContent);
   btn.textContent = '';
+  // a11y: the roll-up needs TWO copies of every glyph, which shreds the
+  // accessible name — "Start a project" computed as "SSttaarrttaapprroojjeecctt",
+  // and a screen reader says "S-S-t-t-a-a-r-r-t-t". Same garbage reaches text
+  // extractors and crawlers. So: name the control explicitly from the original
+  // label, and hide the decorative glyph machinery from assistive tech.
+  btn.setAttribute('aria-label', raw);
   var i = 0;
   raw.split('').forEach(function(ch){
-    if(ch === ' '){ var sp = document.createElement('span'); sp.className = 'sp'; btn.appendChild(sp); return; }
-    var lt = document.createElement('span'); lt.className = 'lt';
+    if(ch === ' '){ var sp = document.createElement('span'); sp.className = 'sp'; sp.setAttribute('aria-hidden','true'); btn.appendChild(sp); return; }
+    var lt = document.createElement('span'); lt.className = 'lt'; lt.setAttribute('aria-hidden','true');
     var a = document.createElement('span'); a.textContent = ch;
     var b = document.createElement('span'); b.className = 'b'; b.textContent = ch;
     lt.appendChild(a); lt.appendChild(b);
     lt.style.setProperty('--d', (i * 0.014).toFixed(3) + 's');
     btn.appendChild(lt); i++;
   });
-  if(hasArrow){ var ar = document.createElement('span'); ar.className = 'ar'; ar.textContent = '\u2192'; btn.appendChild(ar); }
+  if(hasArrow){ var ar = document.createElement('span'); ar.className = 'ar'; ar.setAttribute('aria-hidden','true'); ar.textContent = '\u2192'; btn.appendChild(ar); }
 });
 
 // Secondary: highlight swipe — pink box behind the final word

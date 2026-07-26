@@ -9,11 +9,21 @@
 :root{ --cc-ease:cubic-bezier(.76,0,.24,1); }
 
 .cc-root,.cc-root *{box-sizing:border-box}
-.cc-root{position:fixed;right:24px;bottom:24px;z-index:9000;font-family:var(--text);display:flex;justify-content:flex-end}
+/* pointer-events:none is load-bearing, not cosmetic. Below 560px the rule under
+   this one stretches .cc-root to left:14px;right:14px so the panel can open
+   full-bleed — which left a 362x60 INVISIBLE fixed bar (z-index:9000) lying
+   across the bottom of every phone screen, swallowing taps in the thumb zone.
+   The closer's "Start a project" CTA, the closer phone link and the takeover's
+   phone link all landed in it and silently did nothing (verified by hit-test at
+   390x844: 5 of 6 probe points across the band returned .cc-root). The container
+   must never be a hit target; its children opt back in individually below. */
+.cc-root{position:fixed;right:24px;bottom:24px;z-index:9000;font-family:var(--text);display:flex;justify-content:flex-end;pointer-events:none}
 @media(max-width:560px){.cc-root{left:14px;bottom:14px;right:14px}}
 
 /* ---------- Launcher (soft circular ink mark) ---------- */
-.cc-launch{position:relative;width:60px;height:60px;border-radius:50%;
+/* opts back in from the container's pointer-events:none — see the note above.
+   .cc-panel does its own none/auto toggle further down, so it needs nothing here. */
+.cc-launch{position:relative;pointer-events:auto;width:60px;height:60px;border-radius:50%;
   /* --ink at 80% alpha: softens over light sections ("not quite as black"),
      still reads black over dark ones; the ring below keeps it visible either way. */
   background:rgba(18,19,21,.8);color:var(--paper);border:0;cursor:pointer;

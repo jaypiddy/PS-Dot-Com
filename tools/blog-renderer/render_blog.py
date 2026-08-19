@@ -23,7 +23,7 @@ DEFAULT_POSTS = (REPO / "tools/blog-renderer/posts.json")
 # (case-insensitive): Slug, Categories ("Build,Frames"), Featured ("Yes"/checked),
 # Photo Credit. Merged by slug; absent file → falls back to old_categories.
 OVERRIDES_CSV = (REPO / "tools/blog-renderer/blog-meta.csv")
-TITLE_SUFFIX = " — POWER SHIFTER Insights"
+TITLE_SUFFIX = " — POWER SHIFTER"
 BASE = "https://powershifter.com"   # canonical host (apex) — flipped at the 2026-07-13 cutover
 ORG = {"@type": "Organization", "name": "POWER SHIFTER", "url": BASE + "/"}
 
@@ -291,7 +291,7 @@ def sub_hero(post):
   <div class="hero-tint"></div>
   {SLASH}
   <div class="sub-hero-inner wrap">
-    <a class="back swipe" href="/insights">← Back to all Insights</a>
+    <a class="back swipe" href="/insights">← Back to Thinking in public</a>
     <h1 class="rise" id="title">{esc(post['title'])}</h1>
     <p class="sub-voice"><em class="voice mag" id="excerpt">{esc(post.get('meta_description',''))}</em></p>
     <div class="byline" id="byline">
@@ -360,7 +360,7 @@ def cat_dcat(tag):
 
 def insights_card(post, n):
     cats = cats_of(post)
-    tag = cats[0] if cats else 'Insights'
+    tag = cats[0] if cats else 'Thinking'
     dcat = cat_dcat(tag)
     img = post.get('masthead_url') or post.get('thumbnail_url') or ''
     h3 = f'<h3>{esc(post["seo_title"])}</h3>'
@@ -382,7 +382,7 @@ def insights_card(post, n):
 
 def feature_card(post, n):
     cats = cats_of(post)
-    tag = cats[0] if cats else 'Insights'
+    tag = cats[0] if cats else 'Thinking'
     img = post.get('masthead_url') or post.get('thumbnail_url') or ''
     return f'''  <a class="wcard feature" data-cat="{cat_dcat(tag)}" href="/insights/{post['slug']}" id="featured">
     <div class="wframe">
@@ -435,7 +435,7 @@ def main():
     else:
         print("no blog-meta.csv override found — using old_categories fallback, no Featured card")
     lookup = {p['slug']: {'title': p['title'],
-                          'stream': (cats_of(p)[0] if cats_of(p) else 'Insights'),
+                          'stream': (cats_of(p)[0] if cats_of(p) else 'Thinking'),
                           'date': fmt_date(p.get('publish_date'))} for p in pub}
     for p in pub:
         render_article(p, lookup)

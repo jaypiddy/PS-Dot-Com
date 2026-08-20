@@ -9,7 +9,7 @@ from each work/<slug>.html. Eyebrow = POWER//SHIFTER — <CLIENT>, client
 taken from the case sub-hero eyebrow ("Digital · Angel Oak Home Loans")."""
 import csv, html as htmlmod, pathlib, re, subprocess, sys
 
-REPO = pathlib.Path("/Users/jpholecka2025/PS-Dot-Com")
+REPO = pathlib.Path(__file__).resolve().parents[2]
 OUT = REPO / "og-export"
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 OUT.mkdir(exist_ok=True)

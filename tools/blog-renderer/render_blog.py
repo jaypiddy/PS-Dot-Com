@@ -16,7 +16,7 @@ Vercel clean URLs) and rewrites the insights.html card grid.
 import json, re, sys, html, pathlib
 from datetime import datetime
 
-REPO = pathlib.Path("/Users/jpholecka2025/PS-Dot-Com")
+REPO = pathlib.Path(__file__).resolve().parents[2]
 DEFAULT_POSTS = (REPO / "tools/blog-renderer/posts.json")
 # Optional export from the Notion Blogs DB to fill the NEW taxonomy + Featured +
 # Photo Credit (posts.json ships these empty). Notion view → CSV export. Columns

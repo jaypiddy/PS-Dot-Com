@@ -4,7 +4,7 @@ fix two card titles, and insert a TELUS Support placeholder card. Already run on
 (2026-06-29) — kept for reference/reuse on a future repoint pass; not idempotent
 against current work.html (the href="#" targets it looks for are already gone)."""
 import pathlib
-W = pathlib.Path("/Users/jpholecka2025/PS-Dot-Com/work.html")
+W = pathlib.Path(__file__).resolve().parents[2] / "work.html"
 lines = W.read_text(encoding="utf-8").splitlines(keepends=True)
 
 # (h3 substring, slug, optional new h3 text)

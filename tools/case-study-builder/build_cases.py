@@ -4,7 +4,7 @@ the body region per case. Tier 2/3 fact-sheet layout (no odometer dossier).
 Run from the repo root. Reads cases from cases_data.py."""
 import re, sys, pathlib
 
-REPO = pathlib.Path("/Users/jpholecka2025/PS-Dot-Com")
+REPO = pathlib.Path(__file__).resolve().parents[2]
 OUT_DIR = REPO / "work"
 BASE = (OUT_DIR / "xyon.html").read_text(encoding="utf-8")
 

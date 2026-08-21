@@ -1,0 +1,58 @@
+name = "ps-images"
+main = "src/index.js"
+# Match the date set in the Cloudflare dashboard so a deploy doesn't downgrade it.
+compatibility_date = "2026-06-25"
+preview_urls = false
+
+# Deliberately a SECOND Worker rather than another route on ps-concierge.
+# That one is browser-facing and gated by CLIENT_TOKEN, which ships inside
+# ps-concierge.js and is documented there as a speed-bump, not a secret. An
+# upload endpoint holding a Cloudflare Images write token cannot sit behind a
+# credential that is published in page source. Different trust model, different
+# Worker.
+
+[vars]
+
+# Cloudflare account that owns Images and Stream. Not a secret — it appears in
+# every API URL and in the dashboard address bar.
+CF_ACCOUNT_ID = ""
+
+# Delivery hash for imagedelivery.net URLs. Also not a secret: it is in the
+# public URL of every image already on the site.
+# Recover it from any live image URL, or from webflow_cloudflare_image_map.csv.
+CF_IMAGES_HASH = "So76NP_fFT3s9jNLvxCRFw"
+
+# Named variants to return URLs for. Create these in the Images dashboard
+# before relying on them; an undefined variant 404s at delivery time.
+#   masthead  1920x1080 cover   in-article hero
+#   thumb      800x450  cover   listing cards
+#   og        1200x630  cover   social — 1.91:1, NOT the 16:9 hero crop
+IMAGE_VARIANTS = "masthead,thumb,og,public"
+
+# Largest upload accepted, bytes. Cloudflare Images caps at 10 MB.
+MAX_IMAGE_BYTES = "10485760"
+
+# SECRETS — never in this file:
+#   cd worker-images && npx wrangler secret put CF_IMAGES_TOKEN
+#   cd worker-images && npx wrangler secret put UPLOAD_KEY
+#
+# CF_IMAGES_TOKEN  a Cloudflare API token scoped to Cloudflare Images: Edit
+#                  (add Stream: Edit only if you use /upload/video). Scope it
+#                  to this account. It must NOT be a Global API Key.
+# UPLOAD_KEY       a shared secret the caller sends as X-Upload-Key. Generate
+#                  with: openssl rand -hex 32
+#                  Unlike ps-concierge's CLIENT_TOKEN this never ships to a
+#                  browser, so it is a real credential.
+
+[observability]
+enabled = true
+
+[observability.logs]
+enabled = true
+
+# Per-IP cap. Uploads are rare and human-driven; this is an abuse ceiling, not
+# a throttle. Fails open if the binding is missing, same as ps-concierge.
+[[ratelimits]]
+name = "UPLOAD_LIMITER"
+namespace_id = "2001"
+simple = { limit = 20, period = 60 }

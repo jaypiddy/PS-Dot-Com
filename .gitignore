@@ -10,3 +10,6 @@ og-export/
 
 # local Notion integration token (never commit)
 tools/blog-renderer/.notion-token
+
+# wrangler local state
+.wrangler/

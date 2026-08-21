@@ -15,7 +15,7 @@ preview_urls = false
 
 # Cloudflare account that owns Images and Stream. Not a secret — it appears in
 # every API URL and in the dashboard address bar.
-CF_ACCOUNT_ID = ""
+CF_ACCOUNT_ID = "4401c2b152dda60605d559623042f516"
 
 # Delivery hash for imagedelivery.net URLs. Also not a secret: it is in the
 # public URL of every image already on the site.

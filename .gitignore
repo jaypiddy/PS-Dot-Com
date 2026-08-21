@@ -7,3 +7,6 @@ __pycache__/
 
 # Generated OG images (uploaded to Cloudflare Images, not served from the repo)
 og-export/
+
+# local Notion integration token (never commit)
+tools/blog-renderer/.notion-token

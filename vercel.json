@@ -294,7 +294,7 @@
     },
     {
       "source": "/product-design-insights-great-reads-for-april",
-      "destination": "/insights/product-design-insights-great-reads-for-april",
+      "destination": "/insights",
       "permanent": true
     },
     {
@@ -769,7 +769,7 @@
     },
     {
       "source": "/blog/product-design-insights-great-reads-for-april",
-      "destination": "/insights/product-design-insights-great-reads-for-april",
+      "destination": "/insights",
       "permanent": true
     },
     {
@@ -890,6 +890,11 @@
     {
       "source": "/marketing/:path*",
       "destination": "/digital",
+      "permanent": true
+    },
+    {
+      "source": "/insights/product-design-insights-great-reads-for-april",
+      "destination": "/insights",
       "permanent": true
     }
   ],

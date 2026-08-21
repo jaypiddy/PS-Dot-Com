@@ -10,7 +10,7 @@ This reads vercel.json and applies the same rules Vercel does:
   * cleanUrls     /insights          -> insights.html
                   /insights/foo      -> insights/foo.html
   * trailingSlash /about/            -> 301 /about
-  * redirects     all 178 rules, with the configured status code
+  * redirects     every rule in file order, exact and pattern alike
 
 Stdlib only, no install step:
 
@@ -19,14 +19,42 @@ Stdlib only, no install step:
 
 Ctrl-C to stop.
 """
-import http.server, json, os, socketserver, sys, urllib.parse
+import http.server, json, os, re, socketserver, sys, urllib.parse
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CFG = json.load(open(os.path.join(ROOT, "vercel.json"), encoding="utf-8"))
 CLEAN = CFG.get("cleanUrls", False)
 TRAIL = CFG.get("trailingSlash", False)
-REDIRECTS = {r["source"].rstrip("/") or "/": (r["destination"],
-             308 if r.get("permanent") else 307) for r in CFG.get("redirects", [])}
+def _pattern(src):
+    """A Vercel source pattern -> a compiled regex.
+       /blog/:path*  matches /blog and everything under it
+       /x/:id        matches exactly one more segment"""
+    out = []
+    for seg in src.strip("/").split("/"):
+        if seg.startswith(":") and seg.endswith("*"):
+            out.append("(?:/.*)?")
+            break
+        if seg.startswith(":"):
+            out.append("/[^/]+")
+        else:
+            out.append("/" + re.escape(seg))
+    return re.compile("^" + "".join(out) + "$")
+
+
+# One ordered list, because Vercel evaluates redirects in array order and the
+# first match wins. That ordering is load-bearing here: 63 explicit
+# /blog/<slug> rules sit ahead of the /blog/:path* catch-all, so each legacy
+# post reaches its own page instead of all of them landing on the index. A
+# dict of exact rules checked before any pattern would happen to agree today
+# and quietly disagree the moment a rule moves.
+RULES = []
+for _r in CFG.get("redirects", []):
+    _src, _dst = _r["source"], _r["destination"]
+    _code = 308 if _r.get("permanent") else 307
+    if ":" in _src or "*" in _src:
+        RULES.append((_pattern(_src), _dst, _code))
+    else:
+        RULES.append((_src.rstrip("/") or "/", _dst, _code))
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
@@ -45,9 +73,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
         # configured redirects (exact match, as Vercel does for these rules)
         key = path.rstrip("/") or "/"
-        if key in REDIRECTS:
-            dest, code = REDIRECTS[key]
-            return self._send_redirect(dest + suffix, code)
+        for match, dest, code in RULES:
+            hit = match == key if isinstance(match, str) else match.match(key)
+            if hit:
+                return self._send_redirect(dest + suffix, code)
 
         # trailingSlash:false -> strip it
         if not TRAIL and len(path) > 1 and path.endswith("/"):
@@ -86,7 +115,7 @@ if __name__ == "__main__":
     with socketserver.TCPServer(("", port), Handler) as httpd:
         print(f"""
   POWER SHIFTER — local preview
-  cleanUrls={CLEAN}  trailingSlash={TRAIL}  redirects={len(REDIRECTS)}
+  cleanUrls={CLEAN}  trailingSlash={TRAIL}  redirects={len(RULES)}
 
     http://localhost:{port}/
     http://localhost:{port}/insights

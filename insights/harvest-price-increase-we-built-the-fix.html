@@ -10,22 +10,43 @@
 <!-- Google tag (gtag.js) — GA4 (POWERSHiFTER - GA4 - Webflow 2022) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EP8HNWVMHS"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EP8HNWVMHS');</script>
-<title>Thinking in Public — POWER SHIFTER</title>
-<meta name="description" content="Build — how we make software with AI. Frames — how we make films with it. Founder's Focus — where it's all going, whether you agree or not.">
-<link rel="canonical" href="https://powershifter.com/insights">
-<meta property="og:title" content="Thinking in Public — POWER SHIFTER">
-<meta property="og:description" content="How we make software and film with AI — and where it's all going. Build, Frames, and Founder's Focus.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://powershifter.com/images/og/og-insights.png">
+<title>Harvest Price Increase — We Shipped the Fix in 2 Days — POWER SHIFTER</title>
+<meta name="description" content="Our Harvest bill went from $90 to $600 a month. Instead of an angry LinkedIn post, we shipped a price-impact calculator in two days — here's what we learned.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Harvest Price Increase — We Shipped the Fix in 2 Days">
+<meta property="og:description" content="Our Harvest bill went from $90 to $600 a month. Instead of an angry LinkedIn post, we shipped a price-impact calculator in two days — here's what we learned.">
+<meta property="og:image" content="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/59a2b057-93ba-4b0c-948e-44e0ff0a7000/public">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://powershifter.com/insights/harvest-price-increase-we-built-the-fix">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Harvest Price Increase — We Shipped the Fix in 2 Days",
+  "description": "Our Harvest bill went from $90 to $600 a month. Instead of an angry LinkedIn post, we shipped a price-impact calculator in two days — here's what we learned.",
+  "image": "https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/59a2b057-93ba-4b0c-948e-44e0ff0a7000/public",
+  "url": "https://powershifter.com/insights/harvest-price-increase-we-built-the-fix",
+  "author": {
+    "@type": "Organization",
+    "name": "POWER SHIFTER",
+    "url": "https://powershifter.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "POWER SHIFTER",
+    "url": "https://powershifter.com/"
+  },
+  "datePublished": "2026-09-01T00:00:00.000Z"
+}
+</script>
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="preconnect" href="https://p.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/xkk7api.css">
-<link rel="preload" as="image" href="images/scratches-v3.webp">
+<link rel="preload" as="image" href="/images/scratches-v3.webp">
 <!-- PS Craft Layer (design-spice pass) -->
-<link rel="stylesheet" href="ps-spice.css">
+<link rel="stylesheet" href="/ps-spice.css">
 <!-- PS Concierge (corner AI concierge) -->
-<link rel="stylesheet" href="ps-concierge.css">
+<link rel="stylesheet" href="/ps-concierge.css">
 <style>
   :root{
     --ink:#121315;
@@ -170,6 +191,8 @@
   /* ---------- Block 6 — Insights ---------- */
   .insights{padding-top:clamp(80px,10vh,130px);padding-bottom:clamp(80px,10vh,130px);border-bottom:1px solid var(--line)}
   .insights h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,3.6vw,54px);letter-spacing:-.015em;margin-bottom:18px}
+  .insights .streams{font-size:17px;line-height:1.6;max-width:74ch;color:var(--grey);margin-bottom:46px}
+  .insights .streams b{color:var(--ink);font-weight:700}
   .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px)}
   .post{border-top:1px solid var(--ink);padding-top:18px}
   .post .stream{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--magenta);display:block;margin-bottom:10px}
@@ -350,121 +373,81 @@
     padding:0 .1em .16em 0;
   }
 
-  /* Filter bar */
-  .work-filter{
-    position:sticky;top:62px;z-index:40; /* below the fixed 63px ink header (QA: tabs were sliding underneath it) */
-    background:var(--paper);border-bottom:1px solid var(--line);
-  }
-  .filter-row{display:flex;gap:6px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap;align-items:center}
-  .ftab{
-    font-family:var(--text);font-weight:700;font-size:15px;letter-spacing:.02em;
-    padding:14px 24px;border:1px solid var(--line);background:transparent;
-    color:var(--ink);cursor:pointer;display:flex;gap:10px;align-items:baseline;
-    transition:background-color .3s ease,color .3s ease,border-color .3s ease;
-  }
-  .ftab .fc{color:var(--grey);font-weight:400;font-size:13px;transition:color .3s ease,opacity .3s ease}
-  .ftab:hover{border-color:var(--ink)}
-  .ftab.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-  .ftab.on .fc{color:var(--magenta)}
-  /* whole-button hover triggers the label cascade */
-  .ftab:hover .cascade .lt span{transform:translateY(-100%)}
-  .pending{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;
-    font-size:1.16em !important;letter-spacing:-.01em;color:var(--magenta) !important}
-  .ftab.on .pending{color:var(--magenta) !important}
+  /* ---------- Article page ---------- */
+  /* Sub-hero, article dialect: same component, smaller H1 so a 124-char title holds */
+  .sub-hero .back{display:inline-block;margin-bottom:28px;
+    font-family:var(--text);font-weight:700;font-size:13.5px;letter-spacing:.03em}
+  .byline .cats{color:rgba(250,250,247,.55);font-weight:400}
+  .byline .cats a:hover{color:var(--magenta)}
+  .byline .vbar{padding:0 2px}
+  .sub-hero.article h1{font-size:clamp(36px,4.4vw,72px);line-height:1.02;max-width:22ch;text-wrap:balance}
+  .sub-hero.article .eyebrow a:hover{border-bottom:1px solid currentColor}
+  .sub-hero.article .sub-voice em{font-size:clamp(20px,2.2vw,32px);line-height:1.25;display:block;max-width:38em}
+  .byline{display:flex;gap:12px;flex-wrap:wrap;align-items:baseline;margin-top:26px;
+    padding-top:18px;border-top:1px solid var(--line-light);
+    font-family:var(--text);font-weight:700;font-size:13.5px;letter-spacing:.02em;
+    opacity:0;animation:settle .6s ease-out .75s forwards}
+  .byline .date,.byline .sep{color:rgba(250,250,247,.55);font-weight:400}
+  .byline a:hover{color:var(--magenta)}
 
-  /* Work grid */
-  .work-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:clamp(24px,3vw,44px);
-    padding-top:clamp(48px,6vh,72px);
-    padding-bottom:clamp(64px,8vh,100px);
-  }
-  .wcard{display:flex;flex-direction:column;position:relative}
-  .wcard.feature{grid-column:1 / -1}
-  .wframe{
-    aspect-ratio:16/9;background:var(--ink-soft);position:relative;
-    overflow:hidden;margin-bottom:18px;
-  }
-  .wcard.feature .wframe{aspect-ratio:21/9}
-  .wframe img{transition:transform .6s cubic-bezier(.22,1,.36,1)}
-  .wcard:hover .wframe img{transform:scale(1.03)}
-  .slot-frame{background:var(--ink-soft)}
-  .slot-frame.light{background:#e9e9e4}
-  .wtint{
-    position:absolute;inset:0;
-    background:linear-gradient(transparent 30%, rgba(18,19,21,.72) 100%);
-    z-index:1;pointer-events:none;
-  }
-  .wcard-overlay{
-    position:absolute;bottom:0;left:0;right:0;padding:clamp(22px,3vw,38px);
-    z-index:2;color:var(--paper);
-  }
-  .wcard-overlay h2{
-    font-family:var(--display);font-weight:700;
-    font-size:clamp(22px,2.4vw,36px);letter-spacing:-.01em;margin:10px 0 8px;
-  }
-  .wcard-overlay h2 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800}
-  .wcard-overlay p{font-size:15px;color:rgba(250,250,247,.78);max-width:54ch;margin-bottom:12px}
-  .wtag{
-    font-family:var(--text);font-weight:700;font-size:11px;
-    letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);
-    display:block;margin-bottom:10px;
-  }
-  .wcard h3{
-    font-family:var(--display);font-weight:700;
-    font-size:clamp(18px,1.8vw,26px);letter-spacing:-.008em;margin-bottom:8px;
-  }
-  .wcard h3 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800}
-  .wcard > p{font-size:14.5px;color:var(--grey);max-width:44ch;margin-bottom:10px}
-  .wgo{font-weight:700;font-size:13.5px;letter-spacing:.04em;margin-top:auto}
-  
-  .wcard-overlay .wgo{color:rgba(250,250,247,.9);font-size:14px}
-  
-  .slot-tag.dark{color:rgba(18,19,21,.35);border-color:rgba(18,19,21,.25)}
+  /* Masthead plate — wframe/wtint pattern from the work cards */
+  .masthead{padding-top:clamp(28px,4vh,52px)}
+  .masthead .wframe{aspect-ratio:21/9;margin-bottom:0}
+  .masthead .wframe img{width:100%;height:100%;object-fit:cover}
+  .masthead .wtint{display:none}
+  .masthead .wframe.dark .wtint{display:block}
+  .photo-credit{position:absolute;right:16px;bottom:12px;z-index:2;
+    font-size:11px;letter-spacing:.06em;color:rgba(250,250,247,.85);
+    text-shadow:0 1px 10px rgba(18,19,21,.6)}
 
-  /* Hybrid pending state */
-  .hybrid-slot .wframe{outline:1px dashed var(--line);outline-offset:-8px}
-  .pending-tag{color:var(--grey) !important}
-  .pending-go{color:var(--grey);pointer-events:none}
+  /* Image hero — masthead promoted behind the headline; >=20% black tint on every post */
+  .sub-hero.article{min-height:66vh;padding-top:clamp(132px,20vh,220px)}
+  .sub-hero .hero-media{position:absolute;inset:0;z-index:0;overflow:hidden;background:var(--ink)}
+  .sub-hero .hero-media img{width:100%;height:100%;object-fit:cover;display:block}
+  .sub-hero .hero-tint{position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(180deg,rgba(18,19,21,.34) 0%,rgba(18,19,21,.20) 40%,rgba(18,19,21,.66) 100%)}
+  .sub-hero.dark-overlay .hero-tint{
+    background:linear-gradient(180deg,rgba(18,19,21,.52) 0%,rgba(18,19,21,.44) 40%,rgba(18,19,21,.80) 100%)}
+  /* Article dialect: the headline + magenta deck sit in the bottom third over
+     arbitrary post imagery — hold the ink band darker through that text zone
+     (QA: the deck was fighting midtone photos, mostly on mobile crops). */
+  .sub-hero.article.dark-overlay .hero-tint{
+    background:linear-gradient(180deg,rgba(18,19,21,.52) 0%,rgba(18,19,21,.46) 35%,rgba(18,19,21,.78) 65%,rgba(18,19,21,.88) 100%)}
+  .sub-hero.article .sub-voice em{
+    text-shadow:0 1px 2px rgba(18,19,21,.45),0 2px 18px rgba(18,19,21,.55)}
+  .sub-hero.article .photo-credit{right:18px;bottom:14px;z-index:3}
 
-  /* ---------- Insights collection page ---------- */
-  /* H1 carries the homepage tease: magenta box on the serif word */
-  .sub-hero .boxed{
-    font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;letter-spacing:-.02em;
-    background:var(--magenta);color:var(--paper);display:inline-block;
-    padding:.08em .18em .14em;border-radius:2px;transform:translateY(.04em);
-  }
-  .sub-hero .sub-body{
-    margin-top:22px;max-width:74ch;font-size:17px;line-height:1.6;
-    color:rgba(250,250,247,.72);
-    opacity:0;animation:settle .6s ease-out .55s forwards;
-  }
-  .sub-hero .sub-body b{color:var(--paper);font-weight:700}
-
-  /* Card additions on top of the wcard system */
-  .wcard .excerpt{
-    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
-  }
-  .idate{font-size:12.5px;color:var(--grey);display:block;margin-top:10px}
-  .wcard.feature .idate{color:rgba(250,250,247,.6)}
-
-  /* Founder's Focus dialect — pure typography on ink, no image */
-  .wcard.ff{background:var(--ink);color:var(--paper);padding:clamp(24px,2.6vw,38px);
-    display:flex;flex-direction:column;min-height:100%}
-  .wcard.ff h3{
-    font-family:var(--display);font-weight:900;letter-spacing:-.015em;
-    font-size:clamp(22px,2.2vw,30px);line-height:1.12;margin-bottom:14px;
-  }
-  .wcard.ff h3 em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800}
-  .wcard.ff > p{color:rgba(250,250,247,.7)}
-  .wcard.ff .idate{color:rgba(250,250,247,.55)}
-  .wcard.ff .wgo{color:rgba(250,250,247,.9)}
-
-  /* Load more */
-  .more-row{display:flex;justify-content:center;padding-bottom:clamp(72px,10vh,110px)}
-  .more-row .btn{border-color:var(--ink);color:var(--ink)}
-  .more-row .btn:hover{background:transparent;color:var(--ink)}
+  /* Body — reading column 700px, figures and embeds break to 980px */
+  .article-body{padding-top:clamp(48px,7vh,90px);padding-bottom:clamp(64px,9vh,110px)}
+  .prose{max-width:700px}
+  .prose>*+*{margin-top:1.35em}
+  .prose p{font-size:18px;line-height:1.65}
+  .prose a{color:var(--magenta);border-bottom:1px solid currentColor;transition:opacity .2s ease-out}
+  .prose a:hover{opacity:.7}
+  .prose h2{font-family:var(--display);font-weight:700;letter-spacing:-.015em;
+    font-size:clamp(26px,2.6vw,36px);line-height:1.12;margin-top:2.2em}
+  .prose h3{font-family:var(--display);font-weight:700;letter-spacing:-.01em;
+    font-size:clamp(20px,1.9vw,24px);line-height:1.2;margin-top:1.9em}
+  .prose ul,.prose ol{padding-left:1.4em}
+  .prose li{font-size:18px;line-height:1.65;margin-top:.5em}
+  .prose ul li::marker{color:var(--magenta)}
+  .prose ol li::marker{font-weight:700}
+  .prose ul ul,.prose ol ol{margin-top:.5em}
+  /* Quote — the body's serif voice moment */
+  .prose blockquote{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;letter-spacing:-.02em;
+    font-size:clamp(22px,2.4vw,30px);line-height:1.3;
+    border-left:2px solid var(--magenta);padding-left:clamp(20px,2.5vw,34px);
+    margin-top:2em;margin-bottom:2em}
+  .prose figure{width:min(980px,100%);margin-top:2.2em;margin-bottom:2.2em}
+  .prose figure img{width:100%;background:var(--ink-soft)}
+  .prose figcaption{font-size:13px;color:var(--grey);padding-top:10px;
+    border-top:1px solid var(--line);max-width:700px}
+  .embed{width:min(980px,100%);margin-top:2.2em;margin-bottom:2.2em;background:var(--ink-soft)}
+  .embed.video{aspect-ratio:16/9}
+  .embed.podcast{height:150px;background:transparent}
+  .embed iframe{width:100%;height:100%;border:0;display:block}
+  /* Related uses the homepage insights .post pattern as-is */
+  .insights .posts .post{display:block}
 
   /* ---- Global page closer — token-driven, reuse across all key pages ----
      Matches homepage closer in scale. Swap h2 text + p + btn label per page.
@@ -485,8 +468,6 @@
   .page-closer .tel{font-family:var(--text);font-weight:700;font-size:15px;color:rgba(250,250,247,.78)}
   .page-closer .tel:hover{color:var(--magenta)}
 
-  @media(max-width:980px){.work-grid{grid-template-columns:1fr 1fr}.wcard.feature{grid-column:1/-1}}
-  @media(max-width:640px){.work-grid{grid-template-columns:1fr}}
 
   /* ---------- Button system ---------- */
   /* Primary — letter cascade */
@@ -571,7 +552,7 @@
      widen the background box so the texture covers the full glyph extent. */
   .tk-t{padding:.18em .12em}
   .tk-l:hover .tk-t{transform:translateX(12px);color:transparent;
-    background:url('images/scratches-v3.webp') center/cover var(--paper);
+    background:url('/images/scratches-v3.webp') center/cover var(--paper);
     background-origin:content-box;
     -webkit-background-clip:text;background-clip:text}
   .tk-l:hover .tk-t em{color:transparent}
@@ -592,91 +573,182 @@
   }
 </style>
 
-<style id="insights-v3">
-  /* ============ COLLECTION V3 — ruled sheet, indexed cards ============
-     Hero, filter, closer, footer untouched. The grid becomes the homepage
-     work-section's hairline-ruled sheet; every post is an indexed cell with
-     a mono meta row. Stream dialects: Build = grotesque, Frames = serif
-     accent, Founder's Focus = 900 on ink with magenta serif voice. */
-  .work-grid{display:block;padding-top:clamp(40px,5vh,64px);padding-bottom:clamp(28px,4vh,48px)}
-  .sheet{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-  /* Category cross-fade: ease-out fade-in (180ms), faster fade-out (120ms) while the
-     cards swap behind the transparent grid. Opacity-only — stays on the GPU. */
-  .sheet{transition:opacity 180ms cubic-bezier(.215,.61,.355,1)}
-  .sheet.switching{opacity:0;transition-duration:120ms}
-  @media(prefers-reduced-motion:reduce){.sheet{transition:none}}
-  .sheet .wcard{background:var(--paper);margin:0;padding:clamp(20px,2.4vw,32px);display:flex;flex-direction:column}
-  .sheet .wcard.feature{grid-column:1/-1;padding:0}
-  .sheet .wcard.ff{background:var(--ink);color:var(--paper)}
+<style id="article-v2">
+  /* ============ ARTICLE BODY V2 — editorial magazine × dense Swiss ============
+     Hero, nav, masthead, closer, footer untouched. Reading column 700px,
+     breakouts 980px, Signal band full-bleed. Sections are indexed; the serif
+     speaks in the pull quote and the ledger numerals — Two Voices, in body form. */
+  body{overflow-x:clip}
+  .article-body{padding-top:clamp(56px,8vh,104px);padding-bottom:clamp(72px,10vh,120px)}
+  .prose{max-width:700px;margin-inline:auto;counter-reset:sect}
+  .prose>*+*{margin-top:1.5em}
+  .prose p{font-size:18px;line-height:1.68}
 
-  /* Meta row — mono index · stream · date */
-  .cmeta{display:flex;gap:16px;align-items:baseline;margin-bottom:16px}
-  .cn{font-family:var(--mono,ui-monospace,Menlo,monospace);font-size:11px;letter-spacing:.12em;
-    color:var(--grey);transition:color .25s ease-out}
-  .wcard:hover .cn{color:var(--magenta)}
-  .cmeta .wtag{margin-bottom:0}
-  .cmeta .idate{margin-left:auto;margin-top:0}
-  .idate{font-family:var(--mono,ui-monospace,Menlo,monospace);font-size:11px;letter-spacing:.06em;
-    text-transform:uppercase;color:var(--grey)}
-  .wcard.ff .idate{color:rgba(250,250,247,.5)}
-  .wcard.ff .cn{color:rgba(250,250,247,.5)}
+  /* Breakout machinery — centered on the column */
+  .prose .breakout{width:min(980px,calc(100vw - 2*var(--gutter)));margin-left:50%;transform:translateX(-50%)}
 
-  /* Frame — thumbnail slot fills the plate */
-  .sheet .wframe{margin-bottom:0}
-  .sheet .wframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
-    transition:transform .6s cubic-bezier(.22,1,.36,1)}
-  .wcard:hover .wframe img{transform:scale(1.03)}
+  /* Lede — drop cap opener */
+  .prose .lede{font-size:21px;line-height:1.62}
+  .prose .lede::first-letter{
+    font-family:var(--serif);font-variation-settings:var(--serif-vset);font-weight:800;
+    float:left;font-size:4.6em;line-height:.8;
+    padding:.04em .16em 0 0;
+  }
+  /* lede opening on punctuation/a link (e.g. a bracketed series-nav aside) — no drop-cap */
+  .prose .lede.nodrop::first-letter{float:none;font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit;padding:0}
 
-  /* Type scale up */
-  .sheet .wcard h3{font-family:var(--display);font-weight:700;letter-spacing:-.012em;line-height:1.14;
-    font-size:clamp(21px,1.9vw,28px);margin:18px 0 10px;text-wrap:pretty}
-  .sheet .wcard h3 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;letter-spacing:-.01em}
-  .sheet .wcard .excerpt{font-size:15px;line-height:1.55;color:var(--grey);margin-bottom:16px;max-width:46ch}
-  .sheet .wgo{margin-top:auto;padding-top:6px}
-
-  /* Headline overlaid on the thumbnail — saves the vertical space the H3 took below.
-     Light bottom scrim + a soft black glow keep the type legible over any image. */
-  .sheet .wframe.has-overlay{margin-bottom:18px}
-  .wframe.has-overlay .wtint{background:linear-gradient(transparent 42%, rgba(18,19,21,.55) 100%)}
-  /* z-index:8 sits above the Craft Layer's reveal scrim (body.sp-reveal .wtint = z6,
-     .wframe::after = z4) so the type is always the top layer over the thumbnail. */
-  .sheet .wcard .wframe.has-overlay h3{
-    position:absolute;left:0;right:0;bottom:0;z-index:8;margin:0;
-    padding:clamp(14px,1.7vw,22px);color:var(--paper);
-    text-shadow:0 1px 2px rgba(0,0,0,.55), 0 2px 16px rgba(0,0,0,.6), 0 0 34px rgba(0,0,0,.45);
+  /* Numbered section heads — rule, index, title */
+  .prose h2{
+    font-family:var(--display);font-weight:700;letter-spacing:-.015em;
+    font-size:clamp(30px,3.4vw,44px);line-height:1.05;
+    margin-top:3em;padding-top:26px;border-top:2px solid var(--ink);
+  }
+  .prose h2::before{
+    counter-increment:sect;content:"0" counter(sect);
+    display:block;
+    font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
+    font-size:12px;letter-spacing:.16em;color:var(--magenta);
+    margin-bottom:16px;
   }
 
-  /* Featured — full-bleed overlay cell, statement type */
-  .sheet .feature .wcard-overlay{padding:clamp(26px,3.4vw,48px)}
-  .fmeta{display:flex;gap:16px;align-items:baseline}
-  .fmeta .cn{color:rgba(250,250,247,.6)}
-  .fmeta .idate{color:rgba(250,250,247,.6)}
-  .sheet .feature .wcard-overlay h2{font-weight:900;letter-spacing:-.02em;line-height:1;
-    font-size:clamp(30px,3.8vw,58px);max-width:18ch;margin:14px 0 14px}
-  .sheet .feature .wcard-overlay h2 i{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800}
-  .sheet .feature .excerpt{font-size:16px;line-height:1.5;max-width:60ch;color:rgba(250,250,247,.8)}
-  .sheet .feature .wgo{margin-top:16px;display:inline-block}
+  /* Ledger — the three failure modes as indexed rows */
+  .ledger{margin-top:2em}
+  .ledger .lrow{
+    display:grid;grid-template-columns:84px 1fr;gap:0 26px;align-items:start;
+    padding:28px 0;border-top:1px solid var(--line);
+  }
+  .ledger .lrow:last-child{border-bottom:1px solid var(--line)}
+  .ledger .ln{
+    font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;
+    font-size:clamp(44px,5vw,64px);line-height:.85;color:var(--magenta);
+  }
+  .ledger h3{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.01em;margin:0 0 8px}
+  .ledger p{font-size:16.5px;line-height:1.6;opacity:.85;max-width:54ch;margin:0}
+  @media(max-width:620px){.ledger .lrow{grid-template-columns:48px 1fr;gap:0 16px}}
 
-  /* Founder's Focus dialect — opinion in 900, the voice in magenta serif */
-  .sheet .wcard.ff h3{font-weight:900;letter-spacing:-.018em;line-height:1.08;
-    font-size:clamp(24px,2.3vw,34px);margin-top:20px}
-  .sheet .wcard.ff h3 em{font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;color:var(--magenta)}
-  .sheet .wcard.ff .excerpt{color:rgba(250,250,247,.65)}
+  /* Pull quote — the body's voice moment, breakout width */
+  .pull{margin-top:3.2em;margin-bottom:3.2em;padding:30px 0 38px;
+    border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
+  .pull .eyebrow{color:var(--magenta-ink);display:block;margin-bottom:24px}
+  .pull p{
+    font-family:var(--serif);font-variation-settings:var(--serif-vset);font-style:italic;font-weight:800;letter-spacing:-.02em;
+    font-size:clamp(28px,3.6vw,46px);line-height:1.22;max-width:30ch;
+  }
 
-  /* Rise-in: cells use the site reveal motion, staggered by column */
-  .sheet .wcard.reveal{transition-delay:calc(var(--d,0)*70ms)}
+  /* Spec list — what we changed */
+  .prose ul.changes{list-style:none;padding:0}
+  .prose ul.changes>li{
+    position:relative;padding:18px 0 18px 32px;margin:0;
+    border-top:1px solid var(--line);font-size:17.5px;line-height:1.6;
+  }
+  .prose ul.changes>li:last-child{border-bottom:1px solid var(--line)}
+  .prose ul.changes>li::before{
+    content:"";position:absolute;left:2px;top:28px;width:8px;height:8px;background:var(--magenta);
+  }
+  .prose ul.changes ul{list-style:none;padding:0;margin-top:.6em}
+  .prose ul.changes ul li{font-size:15.5px;color:var(--grey);padding-left:20px;position:relative;margin-top:.4em}
+  .prose ul.changes ul li::before{content:"—";position:absolute;left:0;color:var(--magenta)}
 
-  @media(max-width:980px){.sheet{grid-template-columns:1fr 1fr}}
+  /* Sequence — indexed steps */
+  .prose ol.seq{list-style:none;padding:0;counter-reset:seq}
+  .prose ol.seq li{
+    counter-increment:seq;display:grid;grid-template-columns:56px 1fr;align-items:baseline;
+    padding:16px 0;margin:0;border-top:1px solid var(--line);
+    font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.01em;line-height:1.3;
+  }
+  .prose ol.seq li:last-child{border-bottom:1px solid var(--line)}
+  .prose ol.seq li::before{
+    content:"0" counter(seq);
+    font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
+    font-size:12px;letter-spacing:.16em;color:var(--magenta);
+  }
+
+  /* Figure — plate + spec caption */
+  .prose figure.breakout{margin-top:3em;margin-bottom:3em}
+  .fig-art{display:block;width:100%;height:auto;aspect-ratio:16/9;background:var(--ink-soft);object-fit:cover}
+  .prose figure.breakout figcaption{
+    display:flex;gap:16px;align-items:baseline;
+    font-size:13px;color:var(--grey);line-height:1.5;
+    padding-top:12px;margin-top:12px;border-top:1px solid var(--ink);max-width:none;
+  }
+  .prose figure.breakout figcaption b{
+    font-family:var(--mono,ui-monospace,Menlo,monospace);font-weight:400;
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--magenta);white-space:nowrap;
+  }
+
+  /* Signal band — full-bleed mid-article capture */
+  .prose .signal{
+    width:100vw;margin-left:50%;transform:translateX(-50%);
+    background:var(--ink);color:var(--paper);
+    margin-top:3.4em;margin-bottom:3.4em;
+  }
+  .signal-in{
+    max-width:980px;margin-inline:auto;
+    padding:clamp(44px,7vh,72px) var(--gutter);
+    display:grid;grid-template-columns:1.5fr 1fr;gap:36px;align-items:center;
+  }
+  .sig-line{
+    font-family:var(--display);font-weight:500;letter-spacing:-.01em;
+    font-size:clamp(22px,2.4vw,30px) !important;line-height:1.25 !important;
+  }
+  .signal .field{display:flex;border:1px solid var(--line-light)}
+  .signal input{flex:1;min-width:0;background:transparent;border:0;color:var(--paper);font-family:var(--text);font-size:14px;padding:13px 14px}
+  .signal input:focus{outline:none}
+  .signal button{background:var(--paper);color:var(--ink);border:0;font-family:var(--text);font-weight:700;font-size:13px;padding:0 22px;cursor:pointer;transition:background .2s ease-out,color .2s ease-out}
+  .signal button:hover{background:var(--magenta);color:var(--paper)}
+  @media(max-width:760px){.signal-in{grid-template-columns:1fr;gap:24px}}
+
+  /* End mark */
+  .prose p.end::after{
+    content:"";display:inline-block;width:10px;height:10px;
+    background:var(--magenta);margin-left:10px;
+  }
+
+  /* Masthead slot */
+  .masthead .wframe{position:relative;overflow:hidden}
+  .masthead .wframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .masthead .wtint{position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(rgba(18,19,21,.38),rgba(18,19,21,.12) 45%,rgba(18,19,21,.52))}
+
+  /* Related — editorial index rows */
+  .related-v2{padding:clamp(72px,10vh,120px) 0;border-top:1px solid var(--line)}
+  .rel-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:36px}
+  .rel-head h2{font-family:var(--display);font-weight:500;font-size:clamp(32px,3.6vw,52px);letter-spacing:-.015em}
+  .rel-head .swipe{font-family:var(--text);font-weight:700;font-size:14px;letter-spacing:.03em}
+  .rel-rows{display:flex;flex-direction:column}
+  .rel-row{
+    display:grid;grid-template-columns:3ch 1fr auto 28px;
+    gap:clamp(14px,2.4vw,32px);align-items:baseline;
+    padding:24px 0;border-top:1px solid var(--ink);
+  }
+  .rel-row:last-child{border-bottom:1px solid var(--ink)}
+  .rel-n{font-family:var(--mono,ui-monospace,Menlo,monospace);font-size:12px;letter-spacing:.1em;color:var(--magenta)}
+  .rel-row .stream{
+    font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--grey);display:block;margin-bottom:7px;transition:color .2s ease-out;
+  }
+  .rel-row .rel-title{
+    display:block;
+    font-family:var(--display);font-weight:700;letter-spacing:-.01em;line-height:1.12;
+    font-size:clamp(21px,2.4vw,30px);transition:transform .3s cubic-bezier(.22,1,.36,1);
+  }
+  .rel-date{font-size:13px;color:var(--grey);white-space:nowrap}
+  .rel-ar{font-size:20px;color:var(--magenta);opacity:0;transform:translateX(-10px);
+    transition:opacity .25s ease-out,transform .25s ease-out}
+  .rel-row:hover .rel-title{transform:translateX(10px)}
+  .rel-row:hover .stream{color:var(--magenta)}
+  .rel-row:hover .rel-ar{opacity:1;transform:translateX(0)}
   @media(max-width:640px){
-    .sheet{grid-template-columns:1fr}
-    .sheet .feature .wframe{aspect-ratio:auto}
-    .sheet .feature .wcard-overlay{position:relative;inset:auto;padding-top:58vw}
-    .sheet .feature .wtint{background:linear-gradient(180deg,rgba(18,19,21,.18) 0%,rgba(18,19,21,.62) 42%,rgba(18,19,21,.9) 72%)}
-    .sheet .feature .wcard-overlay h2{font-size:clamp(26px,7vw,34px)}
+    .rel-row{grid-template-columns:3ch 1fr 22px}
+    .rel-date{display:none}
   }
+
+  /* Rise-in: index rows use the site reveal motion, staggered by row */
+  .rel-row.reveal{transition-delay:calc(var(--d,0)*70ms)}
+
   @media(prefers-reduced-motion:reduce){
-    .sheet .wframe img{transition:none}
-    .wcard:hover .wframe img{transform:none}
+    .rel-row .rel-title,.rel-ar{transition:none}
   }
 </style>
 
@@ -729,12 +801,12 @@
     <button class="tk-close" id="menuClose">Close <svg class="x" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
   </div>
   <div class="tk-links">
-    <a class="tk-l" style="--td:0.08s" href="work"><span class="tk-t">Work</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.13s" href="digital"><span class="tk-t">Digital</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.18s" href="studios"><span class="tk-t">Studios</span><span class="tk-ar">→</span></a>
-    <a class="tk-l is-current" aria-current="page" style="--td:0.23s" href="insights"><span class="tk-t">Thinking</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.28s" href="about"><span class="tk-t">About</span><span class="tk-ar">→</span></a>
-    <a class="tk-l" style="--td:0.33s" href="careers"><span class="tk-t">Careers</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.08s" href="/work"><span class="tk-t">Work</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.13s" href="/digital"><span class="tk-t">Digital</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.18s" href="/studios"><span class="tk-t">Studios</span><span class="tk-ar">→</span></a>
+    <a class="tk-l is-current" aria-current="page" style="--td:0.23s" href="/insights"><span class="tk-t">Thinking</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.28s" href="/about"><span class="tk-t">About</span><span class="tk-ar">→</span></a>
+    <a class="tk-l" style="--td:0.33s" href="/careers"><span class="tk-t">Careers</span><span class="tk-ar">→</span></a>
   </div>
   <div class="tk-foot">
     <a href="tel:+16042279952">+1 (604) 227-9952</a>
@@ -744,491 +816,455 @@
 
 
 
-<!-- Sub-page hero: the homepage tease becomes the page H1 -->
-<section class="sub-hero">
+<!-- Sub-page hero: same DNA as homepage, ~50vh, clearly a sub-section -->
+<section class="sub-hero article">
+  <div class="hero-media"><img id="heroImg" src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/59a2b057-93ba-4b0c-948e-44e0ff0a7000/public" alt=""></div>
+  <div class="hero-tint"></div>
   <svg class="slash-field" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="pair" transform="translate(1060 230) scale(2.2)" style="--dur:15.6s;--dly:0s;--sh:10.4px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(780 460) scale(1.3)" style="--dur:20.4s;--dly:-9s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1260 520) scale(1.7)" style="--dur:13.2s;--dly:-15s;--sh:9.2px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(640 260) scale(1.0)" style="--dur:18s;--dly:-4s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(940 560) scale(1.1)" style="--dur:22.8s;--dly:-21s;--sh:8.1px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g><g class="pair" transform="translate(1380 360) scale(1.2)" style="--dur:18.6s;--dly:-6s;--sh:6.9px"><path class="sa" d="M45.07,31.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L.16,143.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L45.35,34.34c.18-.82,.09-1.63-.27-2.41Z"/><path class="sb" d="M93.57,1.93c-.37-.79-.98-1.37-1.87-1.77-.92-.27-1.81-.2-2.64,.21-.83,.42-1.4,1.06-1.68,1.9L49.11,113.95c-.28,.92-.2,1.81,.21,2.64,.42,.85,1.1,1.38,2.03,1.58,.39,.16,.77,.24,1.15,.24,.45,0,.9-.12,1.33-.35,.77-.4,1.35-1.02,1.74-1.89L93.84,4.34c.18-.82,.09-1.63-.27-2.41Z"/></g></svg>
   <div class="sub-hero-inner wrap">
-    <span class="eyebrow">Build, frames &amp; founder&rsquo;s focus</span>
-    <h1 class="rise">Thinking in <span class="boxed">public</span></h1>
-    <p class="sub-body"><b>Build</b> — how to make products people love.<br><b>Frames</b> — how to make films that are remembered.<br><b>Founder's Focus</b> — where it's all going, whether you agree or not.</p>
+    <a class="back swipe" href="/insights">← Back to Thinking in public</a>
+    <h1 class="rise" id="title">Harvest got expensive. Two days later, we shipped the fix.</h1>
+    <p class="sub-voice"><em class="voice mag" id="excerpt">Our Harvest bill went from $90 to $600 a month. Instead of an angry LinkedIn post, we shipped a price-impact calculator in two days — here's what we learned.</em></p>
+    <div class="byline" id="byline">
+      <a href="/insights" id="authorEl">By J.P. Holecka</a>
+      <span class="sep" id="authorSep">·</span>
+      <span class="date">September 1, 2026</span>
+      <span class="sep vbar" id="catSep">|</span>
+      <span class="cats" id="cats"><a href="/insights">Founder's Focus</a></span>
+    </div>
   </div>
+  <span class="photo-credit" id="photoCredit">Power Shifter Studios</span>
 </section>
 
-<!-- Stream filter — F1 ink fill + cascade, counts read from Notion at build -->
-<div class="work-filter" id="workFilter">
-  <div class="wrap filter-row">
-    <button class="ftab on" data-cat="all"><span class="fl cascade">All</span> <span class="fc">63</span></button>
-    <button class="ftab" data-cat="build"><span class="fl cascade">Build</span> <span class="fc">34</span></button>
-    <button class="ftab" data-cat="frames"><span class="fl cascade">Frames</span> <span class="fc">4</span></button>
-    <button class="ftab" data-cat="ff"><span class="fl cascade">Founder's Focus</span> <span class="fc">25</span></button>
+<article class="article-body wrap">
+  <div class="prose">
+    <p class="lede">Our Harvest bill went from $90 a month to $600 a month. Same team, same projects, same work as the month before. A very different number at the bottom of the invoice.</p>
+
+<!-- [[fig:harvest-odometer]] — the monthly bill rolling $90 → $600 on a 7s
+     loop, with the +567% stamp landing on the way up. Self-contained. -->
+<figure class="breakout ps-fig ps-fig--odo" data-ps-anim="odo">
+  <style>
+  .ps-fig--odo{ --ps-digit-h:84px; }
+  .ps-fig--odo .ps-odo{background:var(--ink);color:var(--paper);padding:56px 32px;
+    display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+  .ps-fig--odo .ps-odo__meta{display:flex;flex-direction:column;gap:6px}
+  .ps-fig--odo .ps-odo__eyebrow{font-family:var(--mono);font-weight:700;text-transform:uppercase;
+    letter-spacing:.14em;font-size:10px;color:var(--magenta)}
+  .ps-fig--odo .ps-odo__label{font-family:var(--mono);font-weight:700;text-transform:uppercase;
+    letter-spacing:.14em;font-size:12px;color:var(--paper)}
+  .ps-fig--odo .ps-odo__rule{width:48px;height:1px;background:var(--line-light);margin-top:6px}
+  .ps-fig--odo .ps-odo__note{font-family:var(--text);font-size:13px;color:rgba(250,250,247,.55);margin-top:4px}
+  .ps-fig--odo .ps-odo__dial{position:relative;display:flex;align-items:center}
+  .ps-fig--odo .ps-odo__cur{font-family:var(--serif);font-style:italic;font-size:64px;
+    line-height:1;color:var(--paper);margin-right:4px}
+  .ps-fig--odo .ps-odo__col{height:var(--ps-digit-h);overflow:hidden;width:52px}
+  .ps-fig--odo .ps-odo__strip{will-change:transform}
+  .ps-fig--odo .ps-odo__digit{height:var(--ps-digit-h);display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-style:italic;font-size:64px;line-height:1;color:var(--paper)}
+  .ps-fig--odo .ps-odo__stamp{position:absolute;top:-26px;right:-56px;background:var(--magenta);
+    color:var(--paper);font-family:var(--mono);font-weight:700;text-transform:uppercase;
+    letter-spacing:.1em;font-size:12px;padding:6px 10px;opacity:0;transform:scale(.8) rotate(-3deg)}
+  @media (max-width:640px){
+    .ps-fig--odo .ps-odo{padding:40px 24px;gap:28px}
+    .ps-fig--odo .ps-odo__stamp{right:0;top:-30px}
+  }
+  /* Reduced motion holds the end state rather than hiding the payload. */
+  @media (prefers-reduced-motion:reduce){
+    .ps-fig--odo .ps-odo__stamp{opacity:1;transform:scale(1) rotate(-3deg)}
+  }
+  </style>
+
+  <div class="ps-odo">
+    <div class="ps-odo__meta">
+      <div class="ps-odo__eyebrow">The invoice line</div>
+      <div class="ps-odo__label">Harvest — monthly</div>
+      <div class="ps-odo__rule"></div>
+      <div class="ps-odo__note">Same team. Same projects.</div>
+    </div>
+    <div class="ps-odo__dial">
+      <span class="ps-odo__cur">$</span>
+      <div class="ps-odo__col"><div class="ps-odo__strip" data-odo="100"></div></div>
+      <div class="ps-odo__col"><div class="ps-odo__strip" data-odo="10"></div></div>
+      <div class="ps-odo__col"><div class="ps-odo__strip" data-odo="1"></div></div>
+      <div class="ps-odo__stamp" data-stamp>+567%</div>
+    </div>
   </div>
-</div>
 
-<!-- Post grid — ruled sheet, indexed cells -->
-<section class="work-grid wrap">
-  <div class="sheet">
+  <figcaption><b>Fig. 01</b><span>Our own bill. Nobody added a user.</span></figcaption>
 
-  <a class="wcard feature" data-cat="frames" href="/insights/power-shifter-studios-takes-home-two-silver-addy-awards" id="featured">
-    <div class="wframe">
-      <img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/58784108-25e2-4298-0640-e2885faf7f00/public" alt="" style="width:100%;height:100%;object-fit:cover">
-      <div class="wtint"></div>
-      <div class="wcard-overlay">
-        <span class="fmeta"><span class="cn">01</span><span class="wtag">Frames · Featured</span><span class="idate">May 31, 2026</span></span>
-        <h2>Power Shifter Studios Wins Two Silver ADDYs</h2>
-        <p class="excerpt">Two Silver ADDY Awards for our work with Iron Mountain and Ernest Packaging—proof that human creativity, amplified by AI, delivers commercial-grade results.</p>
-        <span class="wgo swipe">Read the post →</span>
+  <script>
+  (function () {
+    var fig = document.currentScript.closest('figure');
+    if (!fig || fig.dataset.psBound) return; fig.dataset.psBound = 1;
+    var E = function (x) { return x <= 0 ? 0 : x >= 1 ? 1 : x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x+2, 3)/2; };
+    var sg = function (t,a,b) { return E((t-a)/(b-a)); };
+    var an = function (t,a,b,f,to) { return f + (to-f)*sg(t,a,b); };
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var H = 84;
+
+    // 0-9 then 0 again: the strip has to carry a second zero or the roll from
+    // 9 back to 0 snaps backwards through every digit.
+    var strips = [].slice.call(fig.querySelectorAll('[data-odo]'));
+    strips.forEach(function (strip) {
+      strip.innerHTML = [0,1,2,3,4,5,6,7,8,9,0]
+        .map(function (d) { return '<div class="ps-odo__digit">' + d + '</div>'; }).join('');
+    });
+    var stamp = fig.querySelector('[data-stamp]');
+
+    function paint(T) {
+      var t = reduce ? 5 : T % 7;
+      var v = t < 6 ? an(t,1,3.5,90,600) : an(t,6,6.8,600,90);
+      strips.forEach(function (strip) {
+        var p = +strip.getAttribute('data-odo');
+        // Each column only starts turning in the last tenth of the column
+        // below it, which is what makes it read as gears rather than counters.
+        var off = p === 1 ? v % 10
+                : (Math.floor(v / p) % 10 + Math.max(0, ((v % p) / p - 0.9) * 10));
+        var hide = p === 100 && v < 100 && off < 0.02;
+        strip.style.transform = 'translateY(' + (-off * H) + 'px)';
+        strip.style.opacity = hide ? 0 : 1;
+      });
+      if (!reduce) {
+        var sv = sg(t,3.7,4.1);
+        stamp.style.opacity = (t > 3.7 && t < 6) ? sv : 0;
+        stamp.style.transform = 'scale(' + (0.8 + 0.25*sv) + ') rotate(-3deg)';
+      }
+    }
+
+    if (reduce) { paint(0); return; }
+    var on = true;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { on = es[0].isIntersecting; },
+        { rootMargin: '120px 0px' }).observe(fig);
+    }
+    var t0 = performance.now();
+    (function loop(now) { if (on) paint((now - t0) / 1000); requestAnimationFrame(loop); })(t0);
+  })();
+  </script>
+</figure>
+
+    <p>We weren't alone. Other agency owners we know started comparing bills and seeing the same thing. Nobody had suddenly doubled their team or dramatically changed how they worked. The bill just moved.</p>
+
+    <p>I could have written the angry LinkedIn post. Screenshot the invoice, complain about SaaS pricing, collect a few sympathetic comments and move on. I've read plenty of those posts. I have never once seen one change a price.</p>
+
+    <blockquote><em>I've read plenty of those posts. I have never once seen one change a price.</em></blockquote>
+
+    <p>So we built something instead.</p>
+
+    <h2>Somebody put a meter on the tap</h2>
+
+    <p>Harvest has been one of those boring, dependable tools that agencies quietly build their businesses around. We've used it for years for time tracking and invoicing, and it has largely just done its job.</p>
+
+    <p>Its pricing model changed from predictable per-seat pricing toward a model that also charges based on usage. Projects, tasks, clients, invoices and other activity can now affect what you pay. It's a bit like somebody putting a meter on your kitchen tap. You didn't start using more water. Nobody moved into the house. You just woke up one morning and discovered that something previously included in the rent was now being measured.</p>
+
+    <p>For us, that meant roughly $90 a month became $600 a month ($1,080 a year to $7,200 a year).</p>
+
+<!-- [[fig:harvest-meter]] — flat $90 against the metered stack building to
+     $600 (Base 65 / Activity 120 / Forecast 85 / Projects 330) on a 9s loop. -->
+<figure class="breakout ps-fig ps-fig--meter" data-ps-anim="meter">
+  <style>
+  .ps-fig--meter{ --ps-ink3:#26272B; --ps-ink4:#44464B; --ps-stack-h:280px; }
+  .ps-fig--meter .ps-meter{background:#fff;padding:44px 32px 36px;border:1px solid var(--line)}
+  .ps-fig--meter .ps-meter__row{display:flex;justify-content:center;align-items:flex-end;gap:96px}
+  .ps-fig--meter .ps-meter__col{display:flex;flex-direction:column;align-items:center;gap:10px}
+  .ps-fig--meter .ps-meter__stackA{height:var(--ps-stack-h);width:120px;display:flex;flex-direction:column;justify-content:flex-end}
+  .ps-fig--meter .ps-meter__flat{height:38px;background:var(--ps-ink3);display:flex;align-items:center;
+    justify-content:center;color:var(--paper);font-family:var(--mono);font-weight:700;font-size:13px}
+  .ps-fig--meter .ps-meter__stackB{position:relative;height:var(--ps-stack-h);width:120px;display:flex;
+    flex-direction:column;justify-content:flex-end}
+  .ps-fig--meter .ps-meter__old{position:absolute;left:-24px;right:-24px;bottom:38px;
+    border-top:1px dashed var(--line)}
+  /* Sits fully outside the stack. Left-positioned it flows back under the
+     segments, which are later siblings and paint over it. */
+  .ps-fig--meter .ps-meter__oldlab{position:absolute;right:calc(100% + 28px);bottom:42px;
+    white-space:nowrap;text-align:right;font-family:var(--mono);
+    font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:9px;color:var(--grey)}
+  .ps-fig--meter .ps-meter__seg{display:flex;align-items:center;justify-content:center;overflow:hidden;height:0}
+  .ps-fig--meter .ps-meter__seg span{color:var(--paper);font-family:var(--mono);font-weight:700;
+    font-size:11px;white-space:nowrap;opacity:0}
+  .ps-fig--meter .ps-meter__total{position:absolute;left:132px;bottom:0;font-family:var(--serif);
+    font-style:italic;font-size:40px;line-height:1;color:var(--ink);white-space:nowrap;opacity:0}
+  .ps-fig--meter .ps-meter__totunit{font-family:var(--mono);font-style:normal;font-size:11px;
+    font-weight:700;letter-spacing:.14em;color:var(--grey)}
+  .ps-fig--meter .ps-meter__cap{font-family:var(--mono);font-weight:700;text-transform:uppercase;
+    letter-spacing:.14em;font-size:10px;color:var(--grey);text-align:center}
+  .ps-fig--meter .ps-meter__cap--new{color:var(--magenta)}
+  @media (max-width:640px){
+    .ps-fig--meter .ps-meter{padding:32px 20px 28px}
+    .ps-fig--meter .ps-meter__row{gap:56px}
+    .ps-fig--meter .ps-meter__total{left:auto;right:-8px;font-size:28px}
+  }
+  </style>
+
+  <div class="ps-meter">
+    <div class="ps-meter__row">
+      <div class="ps-meter__col">
+        <div class="ps-meter__stackA"><div class="ps-meter__flat">$90</div></div>
+        <div class="ps-meter__cap">Flat — in the rent</div>
+      </div>
+      <div class="ps-meter__col">
+        <div class="ps-meter__stackB" data-meterstack>
+          <div class="ps-meter__old"></div>
+          <div class="ps-meter__oldlab">Old bill</div>
+          <div class="ps-meter__total" data-metertotal>$0<span class="ps-meter__totunit"> / MO</span></div>
+        </div>
+        <div class="ps-meter__cap ps-meter__cap--new">Metered — the new deal</div>
       </div>
     </div>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/harvest-price-increase-we-built-the-fix">
-    <span class="cmeta"><span class="cn">02</span><span class="wtag">Founder's Focus</span><span class="idate">September 1, 2026</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/59a2b057-93ba-4b0c-948e-44e0ff0a7000/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Harvest Price Increase — We Shipped the Fix in 2 Days</h3></div>
-    <p class="excerpt">Our Harvest bill went from $90 to $600 a month. Instead of an angry LinkedIn post, we shipped a price-impact calculator in two days — here's what we learned.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/power-shifter-launches-rapid-mvp-service-combining-product-expertise-with-generative-ai-to-bring-ideas-to-life----fast">
-    <span class="cmeta"><span class="cn">03</span><span class="wtag">Build</span><span class="idate">August 1, 2025</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/88fcc99a-7f3b-4edb-5688-b7c337ad9b00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Power Shifter Launches Its Rapid MVP Service</h3></div>
-    <p class="excerpt">Validate product ideas in weeks, not months. Our new Rapid MVP service pairs an expert team with generative AI to build fully working prototypes—fast.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/turning-priorities-into-prototypes-laying-the-groundwork-for-ai-driven-design">
-    <span class="cmeta"><span class="cn">04</span><span class="wtag">Build</span><span class="idate">June 26, 2025</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Design Sprint Day Four: From Priorities to Prototypes</h3></div>
-    <p class="excerpt">Day Four of our AI sprint: we mapped every must-have to real user needs, then set the stage for AI tools like Figma Make and Miro to take over.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/design-sprint-day-three-recap---prioritize-debate-and-drift-from-the-vibe">
-    <span class="cmeta"><span class="cn">05</span><span class="wtag">Build</span><span class="idate">June 18, 2025</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Design Sprint Day Three: Prioritize, Debate, Drift</h3></div>
-    <p class="excerpt">Day Three of our AI sprint: the team prioritized features and debated trade-offs—and drifted from vibe design workflows. What that drift taught us.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/design-sprint-day-two-recap-pt-2---sketch-share-and-stress-test">
-    <span class="cmeta"><span class="cn">06</span><span class="wtag">Build</span><span class="idate">June 16, 2025</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Design Sprint Day Two, Pt 2: Sketch, Share, Stress-Test</h3></div>
-    <p class="excerpt">Day Two, part 2 of our AI sprint: the team put AI sketch tools—Miro, Claude, Stitch—to work generating and stress-testing early Farmstand user flows.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/design-sprint-day-two-recap-pt-1---from-hunches-to-high-fidelity-directions">
-    <span class="cmeta"><span class="cn">07</span><span class="wtag">Build</span><span class="idate">June 12, 2025</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Design Sprint Day Two, Pt 1: Hunches to Directions</h3></div>
-    <p class="excerpt">Day Two, part 1 of our AI sprint: turning rough hunches into high-fidelity directions for the Farmstand app, and choosing our AI-first toolset.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/design-sprint-day-one-recap---planning-the-farmstand-app-experiment">
-    <span class="cmeta"><span class="cn">08</span><span class="wtag">Build</span><span class="idate">June 11, 2025</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Design Sprint Day One: Planning the Farmstand App</h3></div>
-    <p class="excerpt">Day One of our two-week AI sprint: can tools for vibe design and coding help a small team build a real mobile app? We set the plan and the rules.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/can-vibe-design-and-coding-ai-apps-build-a-real-product">
-    <span class="cmeta"><span class="cn">09</span><span class="wtag">Build</span><span class="idate">June 10, 2025</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/3cbfb739-b07e-4d52-22dc-1a9c9b0c8b00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Can AI Vibe Tools Build a Real Product in Two Weeks?</h3></div>
-    <p class="excerpt">We're putting AI vibe design and coding tools—Figma Make, Claude Code, Bolt and more—to the test, building a real farm-stand app in just 14 days.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/composable-development-ai-agents">
-    <span class="cmeta"><span class="cn">10</span><span class="wtag">Build</span><span class="idate">March 22, 2025</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/a948eeac-e25e-4d9f-a5c9-7f5bb549c600/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Why Composable Development Powers Smarter AI Agents</h3></div>
-    <p class="excerpt">Composable systems aren't just flexible—they're the foundation AI agents need for real-time access to structured, modular content and live data.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/everything-you-need-to-know-about-ai-agents-faqs-answered">
-    <span class="cmeta"><span class="cn">11</span><span class="wtag">Build</span><span class="idate">February 21, 2025</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/11c47483-e98e-40c9-1546-52cfb1667f00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Everything You Need to Know About AI Agents: FAQs</h3></div>
-    <p class="excerpt">AI agents are reshaping business automation—but how do they actually work? Straight answers to the most common questions, pitfalls, and best practices.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/designing-for-rage-how-platforms-profit-from-chaos">
-    <span class="cmeta"><span class="cn">12</span><span class="wtag">Founder's Focus</span><span class="idate">January 21, 2025</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/9b03fab6-3e15-473e-591b-65f6cdf8e300/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Designing for Rage: How Platforms Profit from Chaos</h3></div>
-    <p class="excerpt">The platforms we use daily are tuned for engagement at any cost. How rage-driven algorithms shape social media and elections—and what we can do about it.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="frames" href="/insights/integrating-product-design-and-brand-experience-insights-from-episode-2-with-katie-deloso">
-    <span class="cmeta"><span class="cn">13</span><span class="wtag">Frames</span><span class="idate">August 23, 2024</span></span>
-    <div class="wframe slot-frame light"><span class="slot-tag dark">No thumbnail</span></div>
-    <h3>Brand Meets Product: Insights from Katie Deloso</h3>
-    <p class="excerpt">Episode 2 of The Brand Experience: Nurture's Katie Deloso on the "yellable why," storytelling, onboarding, and weaving brand into every product detail.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/collaborating-effectively-in-a-headless-environment">
-    <span class="cmeta"><span class="cn">14</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Collaborating Effectively in a Headless Environment</h3></div>
-    <p class="excerpt">Chapter 5: going headless changes how teams work. Strategies for keeping content, design, and development in sync with Contentful or Sanity.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/common-pitfalls-in-migrating-to-headless-cms">
-    <span class="cmeta"><span class="cn">15</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Common Pitfalls in Migrating to a Headless CMS</h3></div>
-    <p class="excerpt">Chapter 2: the most common mistakes teams make when migrating to a headless CMS like Contentful or Sanity—and how to avoid the costly ones.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/enhancing-user-experience-with-headless-cms">
-    <span class="cmeta"><span class="cn">16</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Enhancing User Experience with a Headless CMS</h3></div>
-    <p class="excerpt">Chapter 6: how headless platforms like Contentful and Sanity help you deliver consistent, personalized content that keeps users coming back.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/integrating-third-party-tools-with-headless-cms">
-    <span class="cmeta"><span class="cn">17</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Integrating Third-Party Tools with a Headless CMS</h3></div>
-    <p class="excerpt">Chapter 8: how to connect third-party tools to a headless CMS like Contentful or Sanity to extend functionality and streamline content management.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/measuring-the-success-of-your-headless-cms-implementation">
-    <span class="cmeta"><span class="cn">18</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Measuring the Success of Your Headless CMS</h3></div>
-    <p class="excerpt">Chapter 9: the metrics and KPIs that show whether your headless CMS—Contentful or Sanity—is actually delivering results worth the investment.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/optimizing-content-delivery-with-api-driven-architecture">
-    <span class="cmeta"><span class="cn">19</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Optimizing Content Delivery with API-Driven Architecture</h3></div>
-    <p class="excerpt">Chapter 3: how API-driven architecture speeds content delivery in a headless CMS like Contentful or Sanity—for faster, more efficient performance.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/scaling-your-content-strategy-with-headless-cms">
-    <span class="cmeta"><span class="cn">20</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Scaling Your Content Strategy with a Headless CMS</h3></div>
-    <p class="excerpt">Chapter 7: how to scale content with a headless CMS like Contentful or Sanity—reaching new audiences without losing consistency as you grow.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/structuring-your-content-for-maximum-flexibility">
-    <span class="cmeta"><span class="cn">21</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Structuring Headless CMS Content for Flexibility</h3></div>
-    <p class="excerpt">Chapter 4: how to structure content in a headless CMS like Contentful or Sanity so it stays reusable and adaptable across every platform you publish to.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/the-future-of-headless-cms-and-what-it-means-for-your-business">
-    <span class="cmeta"><span class="cn">22</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>The Future of Headless CMS and Your Business</h3></div>
-    <p class="excerpt">Chapter 10: where headless CMS is heading, the trends worth watching, and what platforms like Contentful and Sanity mean for your content strategy.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/understanding-the-basics-of-headless-cms-a-comprehensive-guide">
-    <span class="cmeta"><span class="cn">23</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Headless CMS Basics: A Beginner's Guide</h3></div>
-    <p class="excerpt">Chapter 1 of our headless CMS guide: the basics of going headless with Contentful and Sanity, the common pitfalls, and where the approach is headed.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/unlocking-the-power-of-headless-cms">
-    <span class="cmeta"><span class="cn">24</span><span class="wtag">Build</span><span class="idate">August 22, 2024</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42363800-2ae9-4c01-569c-8cf58a09e900/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Unlocking Headless CMS with Contentful and Sanity</h3></div>
-    <p class="excerpt">Why agility and flexibility are now essential—and how headless platforms like Contentful and Sanity help you adapt, personalize, and scale content.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="frames" href="/insights/the-brand-experience-podcast">
-    <span class="cmeta"><span class="cn">25</span><span class="wtag">Frames</span><span class="idate">August 14, 2024</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/6f7d5c68-552a-4cda-eae8-e31b609f9c00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>The Brand Experience Podcast</h3></div>
-    <p class="excerpt">A podcast on what makes brands stick—where design, service, and purpose-driven storytelling meet. Conversations with the people shaping them.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="frames" href="/insights/the-brand-experience-youtube-channel-and-podcast">
-    <span class="cmeta"><span class="cn">26</span><span class="wtag">Frames</span><span class="idate">August 14, 2024</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/63e0a037-1d94-41db-8c80-3713e3f42c00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Launching The Brand Experience YouTube &amp; Podcast</h3></div>
-    <p class="excerpt">Our new YouTube channel and podcast on how purpose-driven brands use digital experience to grow. Conversations with the CIOs and CTOs making the calls.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/when-and-when-not-to-include-ai-in-digital-products-a-practical-guide">
-    <span class="cmeta"><span class="cn">27</span><span class="wtag">Build</span><span class="idate">June 5, 2024</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/4cff3f0b-50b6-4c94-37d7-ed6277295800/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>When (and When Not) to Include AI in Products</h3></div>
-    <p class="excerpt">Knowing when to build AI into your product—and when to keep it simple—can make or break it. A practical guide to making that call with confidence.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/one-year-on---the-evolving-role-of-chief-artificial-intelligence-officers">
-    <span class="cmeta"><span class="cn">28</span><span class="wtag">Founder's Focus</span><span class="idate">May 9, 2024</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/b9149a19-bb98-4169-3e70-f93ef7f50100/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>One Year On: The Evolving Role of the CAIO</h3></div>
-    <p class="excerpt">A year ago, the Chief AI Officer was speculation. Now it's real. How the CAIO role has matured—and what it signals about AI's place in strategy.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/the-strategic-advantage-of-proprietary-large-language-models-for-brands">
-    <span class="cmeta"><span class="cn">29</span><span class="wtag">Founder's Focus</span><span class="idate">May 8, 2024</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/0a6aa63c-8136-49f9-b8b7-6a6533d6e700/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>The Strategic Advantage of Proprietary LLMs for Brands</h3></div>
-    <p class="excerpt">Some brands fear their agencies using AI. Why proprietary large language models can actually boost brand consistency, security, and control instead.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/the-risks-of-trusting-llms-gpts-for-all-of-your-knowledge-needs">
-    <span class="cmeta"><span class="cn">30</span><span class="wtag">Founder's Focus</span><span class="idate">May 7, 2024</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/d09f4122-2dcf-410d-16d7-0cc4b59f0f00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>The Risks of Trusting LLMs and GPTs With Everything</h3></div>
-    <p class="excerpt">LLMs are powerful, but they shouldn't answer every question. The risks of over-trusting them—and why tools like RAG and governance matter for accuracy.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/how-to-be-the-boss-of-the-bots----why-humanities-might-hold-the-key">
-    <span class="cmeta"><span class="cn">31</span><span class="wtag">Founder's Focus</span><span class="idate">May 6, 2024</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/bbfb65be-2339-4b19-5eb1-389ebccec600/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>How to Be the Boss of the Bots: Why Humanities Matter</h3></div>
-    <p class="excerpt">As AI reshapes work, creativity and empathy matter more, not less. Why pairing tech skills with the humanities is how you future-proof a career.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/headless-cms-help-ebook">
-    <span class="cmeta"><span class="cn">32</span><span class="wtag">Build</span><span class="idate">May 2, 2024</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/5026aefd-9107-44cf-57df-6d44dcb54800/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Top 10 Mistakes When Moving to a Headless CMS</h3></div>
-    <p class="excerpt">Our free eBook on the ten most common headless CMS mistakes—and how to avoid them. Drawn from 75+ headless projects and eight years of experience.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/ready-to-switch-to-webflow-heres-where-to-start">
-    <span class="cmeta"><span class="cn">33</span><span class="wtag">Build</span><span class="idate">August 15, 2023</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/39317a06-4079-4bf0-9c7b-c31801a9d000/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Ready to Switch to Webflow? Here's Where to Start</h3></div>
-    <p class="excerpt">We're long-time fans of low-code and no-code platforms like Webflow. A practical starting point for moving your site, web app, or product over.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/designing-with-diversity-increasing-accessibility-in-the-insurance-industry">
-    <span class="cmeta"><span class="cn">34</span><span class="wtag">Build</span><span class="idate">August 11, 2023</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/4d7939b5-a1ac-45b7-6875-1cd657f35000/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Designing With Diversity: Accessibility in Insurance</h3></div>
-    <p class="excerpt">"Differences are our greatest strengths." How we partnered with accessibility experts Wandke Consulting to make insurance more usable for everyone.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/why-scoping-digital-product-and-software-development-projects-is-challenging-and-what-to-do-about-it">
-    <span class="cmeta"><span class="cn">35</span><span class="wtag">Build</span><span class="idate">June 6, 2023</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/729b2b56-ae85-4f64-7e28-fe36a0981f00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Why Scoping Software Projects Is So Hard</h3></div>
-    <p class="excerpt">Scoping is one of the hardest parts of building software—an upfront guessing game. Why it's so difficult, and a more reliable way to approach it.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/power-shifter-ceo-jp-holecka-named-bcs-2022-ceo-of-the-year">
-    <span class="cmeta"><span class="cn">36</span><span class="wtag">Founder's Focus</span><span class="idate">January 23, 2023</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/4e754c57-4431-4590-b025-440564e4ac00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>JP Holecka Named BC's 2022 CEO of the Year</h3></div>
-    <p class="excerpt">Our CEO JP Holecka has been named BC's 2022 CEO of the Year—recognition of years of growth, award-winning work, and leading with empathy and simplicity.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/everythings-gone-headless-is-your-organization-ready">
-    <span class="cmeta"><span class="cn">37</span><span class="wtag">Founder's Focus</span><span class="idate">October 28, 2022</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/b731a92a-1efd-4391-a21f-6e1e74606b00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Everything's Gone Headless—Is Your Org Ready?</h3></div>
-    <p class="excerpt">Headless has hit a tipping point, and the options are overwhelming. How to cut through the noise and decide whether headless is right for your business.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/where-curling-entrepreneurship-and-neurodivergence-meet-why-power-shifter-is-a-proud-sponsor-of-team-ladouceur">
-    <span class="cmeta"><span class="cn">38</span><span class="wtag">Founder's Focus</span><span class="idate">September 23, 2022</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/96936be2-6d0e-40d9-06b0-e013b4c64100/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Why We Sponsor Team Ladouceur</h3></div>
-    <p class="excerpt">A digital agency and a women's curling team have more in common than you'd think—where curling, entrepreneurship, and neurodivergence meet.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/when-creating-digital-products-its-time-for-it-professionals-to-embrace-the-lean-startup-movement">
-    <span class="cmeta"><span class="cn">39</span><span class="wtag">Founder's Focus</span><span class="idate">August 31, 2022</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/a9b036c1-2466-4f0e-04bc-bd8621fa3700/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Why IT Teams Should Embrace the Lean Startup Approach</h3></div>
-    <p class="excerpt">When you're not quite fluent, it's safer to keep it simple. Why IT teams that adopt a Lean Startup mindset help their clients, partners, and people win.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/the-creator-middle-class-is-powered-by-third-party-tech-platforms">
-    <span class="cmeta"><span class="cn">40</span><span class="wtag">Founder's Focus</span><span class="idate">August 19, 2022</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/0b656b03-de4b-429c-89c7-bb0666f5e000/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>The "Creator Middle Class" Runs on Third-Party Tech</h3></div>
-    <p class="excerpt">First came the side hustle. Now a "creator middle class" is emerging—powered by the third-party platforms that digital transformation made possible.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/apps-what-you-experience-is-only-the-tip-of-the-iceberg">
-    <span class="cmeta"><span class="cn">41</span><span class="wtag">Build</span><span class="idate">August 24, 2021</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/37344aea-9545-48bf-a2e5-85d47e3fb700/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Apps: What You See Is Only the Tip of the Iceberg</h3></div>
-    <p class="excerpt">Cheap apps rarely succeed, and users expect more than ever. We go beneath the surface to reveal the true cost of building an app that adds real value.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/dev-shops-creative-agencies-business-consultants-and-digital-product-studios-who-should-you-partner-with">
-    <span class="cmeta"><span class="cn">42</span><span class="wtag">Founder's Focus</span><span class="idate">June 29, 2021</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/732dd315-c560-4d98-64c8-88360e191600/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Who Should You Partner With on Your Next Product?</h3></div>
-    <p class="excerpt">Dev shop, creative agency, consultant, or product studio? Our white paper weighs the benefits and drawbacks of each so you can pick the right team.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/betting-on-ourselves-the-future-of-luxury-watch-shopping">
-    <span class="cmeta"><span class="cn">43</span><span class="wtag">Founder's Focus</span><span class="idate">April 22, 2021</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/b27b3360-5f7d-4ecf-f949-4ac26ea49200/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Betting on Ourselves: The Future of Luxury Watch Shopping</h3></div>
-    <p class="excerpt">We've built hundreds of products for clients. Now we're building one for ourselves—a new take on luxury watch shopping, with our own skin in the game.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/unsplash-disrupting-the-stock-photo-industry">
-    <span class="cmeta"><span class="cn">44</span><span class="wtag">Founder's Focus</span><span class="idate">February 2, 2021</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/5e859542-5eba-4f38-06b2-ab2f00437100/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Unsplash: Disrupting the Stock Photo Industry</h3></div>
-    <p class="excerpt">How Unsplash turned a side-of-desk hustle into a multi-layered business model—and what product teams can learn from the way it found its profit.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/webinar-rethinking-cx-needs-during-covid-19-and-beyond">
-    <span class="cmeta"><span class="cn">45</span><span class="wtag">Build</span><span class="idate">January 6, 2021</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/6bd955db-f19e-46af-c638-18064762e200/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Webinar: Rethinking CX Needs in 2021</h3></div>
-    <p class="excerpt">More than 80% of leaders planned lasting changes to how they serve customers. Our webinar on applying Lean Service Design to your 2021 CX strategy.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/powershifter-ventures-announces-closed-beta-launch-applications-for-luxxee">
-    <span class="cmeta"><span class="cn">46</span><span class="wtag">Build</span><span class="idate">December 9, 2020</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/e9e091ca-0cb0-4733-52cb-0023e5b61400/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>luxxee Closed Beta: Apply for Early Access</h3></div>
-    <p class="excerpt">After seven months building quietly in the luxury watch space, we're opening a two-month closed beta for luxxee. Apply to help shape what's next.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/powershifter-wins-ux-for-product-at-the-vancouver-user-experience-awards">
-    <span class="cmeta"><span class="cn">47</span><span class="wtag">Build</span><span class="idate">December 2, 2020</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/4a7d56a7-ad5e-4252-d09c-eaf027f93600/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Power Shifter Wins UX for Product at the VanUX Awards</h3></div>
-    <p class="excerpt">Our work with Delta Controls won Best UX for Product at the Vancouver User Experience Awards—a win for our team and a standout client collaboration.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/education-in-a-pandemic-crash-course-in-agile-product-design-from-leading-edtech-experts">
-    <span class="cmeta"><span class="cn">48</span><span class="wtag">Build</span><span class="idate">November 16, 2020</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/f2019e5e-a453-461c-7dda-691933b07a00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>A Crash Course in Agile Product Design from EdTech</h3></div>
-    <p class="excerpt">COVID-19 stopped in-person learning cold and exposed how far behind EdTech had fallen. What agile product design can teach any industry under pressure.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/advent-of-lean-service-design-in-the-age-of-covid19">
-    <span class="cmeta"><span class="cn">49</span><span class="wtag">Build</span><span class="idate">October 14, 2020</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/5f17bd65-91a6-482d-02fb-ab4c3b517f00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>The Advent of Lean Service Design in the COVID-19 Age</h3></div>
-    <p class="excerpt">COVID-19 compressed roadmaps from years into weeks. Why service design is shifting from big engagements to smaller ones focused on business outcomes.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/jp-holecka-elected-to-ica-board-of-directors">
-    <span class="cmeta"><span class="cn">50</span><span class="wtag">Founder's Focus</span><span class="idate">September 1, 2020</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/06cdc753-6232-4712-bf96-0f6888e4be00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Power Shifter CEO Elected to the ICA Board</h3></div>
-    <p class="excerpt">CEO JP Holecka has been elected to the board of the Institute of Communication Agencies, which represents Canada's most influential agencies.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/4-tips-to-select-ai-project-that-is-not-set-to-fail-from-get-go">
-    <span class="cmeta"><span class="cn">51</span><span class="wtag">Build</span><span class="idate">August 28, 2020</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/0697c9a3-2208-429d-7960-f6d3e599f600/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>4 Tips to Choose an AI Project That Won't Fail</h3></div>
-    <p class="excerpt">Data science partner Hamid Omid shares four practical tips for picking an AI project that's set up to succeed—before you sink time and budget into it.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/new-way-to-write-rfps">
-    <span class="cmeta"><span class="cn">52</span><span class="wtag">Founder's Focus</span><span class="idate">May 21, 2020</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/7502fc8b-48a9-4479-60c1-358d86505600/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>A New Way to Write RFPs</h3></div>
-    <p class="excerpt">Part 3 of 3 on the RFP problem: how to refine, refresh, and reimagine the process so you actually find the agency that's right for your project.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/think-an-rfp-is-your-only-option-for-hiring-an-agency">
-    <span class="cmeta"><span class="cn">53</span><span class="wtag">Founder's Focus</span><span class="idate">May 14, 2020</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/ab1cf4a2-847e-43aa-120a-d196a7080400/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Think an RFP Is Your Only Option? Think Again.</h3></div>
-    <p class="excerpt">Part 2 of 3 on the RFP problem: five effective ways to find a qualified agency partner for your next project—without defaulting to a request for proposal.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/4-reasons-why-great-agencies-arent-responding-to-your-rfps">
-    <span class="cmeta"><span class="cn">54</span><span class="wtag">Founder's Focus</span><span class="idate">May 6, 2020</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/a7ab6771-eb9d-468e-1d15-8b3adc873400/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>4 Reasons Great Agencies Aren't Answering Your RFPs</h3></div>
-    <p class="excerpt">Part 1 of 3 on the RFP problem: why the best agencies quietly pass on your request for proposal—and what that signals about the process itself.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/5-problems-with-relying-on-zoom-during-the-covid-19-pandemic">
-    <span class="cmeta"><span class="cn">55</span><span class="wtag">Founder's Focus</span><span class="idate">April 22, 2020</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/42ddc3cb-6dc7-49c2-dd93-092a8dcd6500/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>5 Problems With Relying on Zoom During the Pandemic</h3></div>
-    <p class="excerpt">Zoom became a lifeline for remote work overnight. But the rush exposed real drawbacks for users—five problems worth weighing before you depend on it.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/why-stand-the-f-back">
-    <span class="cmeta"><span class="cn">56</span><span class="wtag">Founder's Focus</span><span class="idate">April 8, 2020</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/a305b941-5265-4582-3889-b651b61d8700/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Why "Stand the F Back"? Our COVID-19 Campaign</h3></div>
-    <p class="excerpt">A look at why provocative swag became our way of helping change behaviour—and flatten the curve—during the early days of the COVID-19 pandemic.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/applying-service-design-principles-during-a-pandemic">
-    <span class="cmeta"><span class="cn">57</span><span class="wtag">Build</span><span class="idate">April 2, 2020</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/c3c80e1e-eb09-4e50-b81c-2c86f96ede00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Applying Service Design Principles During a Pandemic</h3></div>
-    <p class="excerpt">Grocery stores rewrote the rules of shopping overnight. A look at how service design principles played out in real time during COVID-19.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/jp-holecka-accepted-into-forbes-agency-council">
-    <span class="cmeta"><span class="cn">58</span><span class="wtag">Founder's Focus</span><span class="idate">March 2, 2020</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/aa901201-29f2-4f14-6c56-194562ac3100/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Power Shifter CEO Joins the Forbes Agency Council</h3></div>
-    <p class="excerpt">CEO JP Holecka has been accepted into the Forbes Agency Council, an invitation-only community for leaders of top PR, media, creative, and ad agencies.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/clutch-top-agency-in-canada">
-    <span class="cmeta"><span class="cn">59</span><span class="wtag">Founder's Focus</span><span class="idate">February 3, 2020</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/6d267ca4-c9f8-4635-ad01-b01f4ad97500/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Power Shifter Named a Top Agency in Canada by Clutch</h3></div>
-    <p class="excerpt">For the second year running, Clutch has named us a top Canadian digital product studio—based on real client feedback. A look back at the recognition.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/stop-designing-for-your-industry-start-designing-for-your-customers">
-    <span class="cmeta"><span class="cn">60</span><span class="wtag">Founder's Focus</span><span class="idate">January 16, 2020</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/52a54b9b-35aa-43f0-9b8c-53dce2dbaf00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Stop Designing for Your Industry, Start With Customers</h3></div>
-    <p class="excerpt">Vertical specialists are overrated. Why the best user experiences come from studios that bring cross-industry thinking—not the same template every time.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/outsourcing-digital-product-design">
-    <span class="cmeta"><span class="cn">61</span><span class="wtag">Founder's Focus</span><span class="idate">November 5, 2019</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/c74d49c2-6b52-4f13-8933-3180f8fac700/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Should You Keep Product Development In-House?</h3></div>
-    <p class="excerpt">Done right, digital products do a lot for your business. Why outsourcing product design—rather than forcing it in-house—often delivers a better result.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="build" href="/insights/how-empathy-in-ux-enhances-cx">
-    <span class="cmeta"><span class="cn">62</span><span class="wtag">Build</span><span class="idate">October 9, 2019</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/62968d5c-a503-4ee5-3008-276680dd7c00/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>The Human Touch: How Empathy in UX Strengthens CX</h3></div>
-    <p class="excerpt">Design is more scientific than it looks—but empathy is what makes it work. How the human behind the process shapes UX, and the customer experience.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <a class="wcard" data-cat="ff" href="/insights/clutch-top-agencies-canada-2019">
-    <span class="cmeta"><span class="cn">63</span><span class="wtag">Founder's Focus</span><span class="idate">February 6, 2019</span></span>
-    <div class="wframe has-overlay"><img src="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/0378558a-d754-4bf2-4ef4-6a2f291db600/public" alt="" style="width:100%;height:100%;object-fit:cover"><div class="wtint"></div><h3>Power Shifter Named a 2019 Clutch Leader</h3></div>
-    <p class="excerpt">Clutch.co has ranked Power Shifter a 2019 leader among Canadian product designers—based on verified client reviews on the B2B ratings platform.</p>
-    <span class="wgo swipe">Read the post →</span>
-  </a>
-
-  <!-- /grid -->
   </div>
-</section>
 
-<!-- Static rough-in: production paginates from Notion -->
-<div class="more-row wrap">
-  <a class="btn cascade" href="#">Load more →</a>
-</div>
+  <figcaption><b>Fig. 02</b><span>You didn't start taking longer showers. Somebody attached a meter.</span></figcaption>
 
-<!-- Global page closer — same scale as homepage, page-specific copy -->
+  <script>
+  (function () {
+    var fig = document.currentScript.closest('figure');
+    if (!fig || fig.dataset.psBound) return; fig.dataset.psBound = 1;
+    var E = function (x) { return x <= 0 ? 0 : x >= 1 ? 1 : x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x+2, 3)/2; };
+    var sg = function (t,a,b) { return E((t-a)/(b-a)); };
+    var fmt = function (n) { return '$' + Math.round(n).toLocaleString('en-US'); };
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // label, dollars, colour, grow-in start, grow-in end (seconds)
+    var METER = [['Base',65,'#26272B',1,1.8],['Activity',120,'#6E7176',2,2.8],
+                 ['Forecast',85,'#44464B',3,3.8],['Projects',330,'#FD2E90',4,6]];
+    var stack = fig.querySelector('[data-meterstack]');
+    var total = fig.querySelector('[data-metertotal]');
+    METER.forEach(function (d) {
+      var seg = document.createElement('div');
+      seg.className = 'ps-meter__seg';
+      seg.style.background = d[2];
+      seg.innerHTML = '<span>' + d[0] + ' $' + d[1] + '</span>';
+      stack.insertBefore(seg, total);
+    });
+    var segs = fig.querySelectorAll('.ps-meter__seg');
+    var SCALE = 0.42;   // dollars → px, so $600 fills the 280px column
+
+    function paint(T) {
+      var t = reduce ? 7 : T % 9;
+      var collapse = 1 - sg(t,8,8.8);
+      var px = 0;
+      METER.forEach(function (d, i) {
+        var h = d[1] * SCALE * sg(t, d[3], d[4]) * collapse;
+        px += h;
+        if (segs[i]) {
+          segs[i].style.height = h + 'px';
+          // The label only appears once its band is tall enough to hold it.
+          segs[i].firstChild.style.opacity = h > 20 ? 1 : 0;
+        }
+      });
+      var dollars = px / SCALE;
+      total.firstChild.nodeValue = fmt(dollars);
+      total.style.opacity = dollars > 5 ? 1 : 0;
+    }
+
+    if (reduce) { paint(0); return; }
+    var on = true;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { on = es[0].isIntersecting; },
+        { rootMargin: '120px 0px' }).observe(fig);
+    }
+    var t0 = performance.now();
+    (function loop(now) { if (on) paint((now - t0) / 1000); requestAnimationFrame(loop); })(t0);
+  })();
+  </script>
+</figure>
+
+    <p>I run a product studio, so I have a hard time leaving problems like this alone. This one had all the right ingredients. It was a real problem happening right now, lots of people were asking the same question, and most importantly, it was solvable.</p>
+
+    <p>Nobody needed another forty-page analysis of SaaS pricing or my hot take on software acquisitions. They needed to answer a much simpler question. What is Harvest actually going to cost me now?</p>
+
+    <h2>Two days later</h2>
+
+    <p>We scoped the idea down to one job. Help someone understand what the pricing change could mean for their business and give them some alternatives.</p>
+
+    <p>That's how <a href="https://www.harvestsomesavings.com">harvestsomesavings.com</a> came about. Two days from idea to a real product on a real domain.</p>
+
+    <p>We didn't build a platform. We built a bathroom scale. Step on, get a number, decide what to do next.</p>
+
+    <blockquote><em>We didn't build a platform. We built a bathroom scale.</em></blockquote>
+
+    <p>The site includes a pricing calculator that compares the old pricing against an estimate of the new pricing, along with alternatives to Harvest, a migration guide and answers to the questions people were already asking. Nothing particularly complicated, and nothing that didn't directly help answer the original problem.</p>
+
+    <p>That constraint is probably why we got it out the door.</p>
+
+    <h2>Then we got it wrong</h2>
+
+    <p>Shortly after launch, a friend who runs an agency put his real numbers into the calculator. Twenty-nine seats and 173 active projects. The estimate looked ridiculous.</p>
+
+    <p>He was right.</p>
+
+<!-- [[fig:harvest-calculator]] — the Harvest price-impact calculator, running
+     itself on a 10s loop. Self-contained: scoped CSS, own rAF driver, no CDN.
+     Pauses off-screen and paints a single end state under reduced motion. -->
+<figure class="breakout ps-fig ps-fig--calc" data-ps-anim="calc">
+  <style>
+  .ps-fig--calc{
+    /* Local tokens only. The site owns --ink/--paper/--line/--mono/--magenta;
+       these are the shades the demo introduced that the design system has no
+       name for, kept prefixed so they cannot collide with a future token. */
+    --ps-ink2:#0A0A0A; --ps-track:#E7E5E4; --ps-orange:#EA580C;
+  }
+  .ps-fig--calc .ps-calc{background:#fff;padding:32px;border:1px solid var(--line)}
+  .ps-fig--calc .ps-calc__card{max-width:520px;margin:0 auto;border:1px solid var(--ps-ink2);background:#fff;padding:24px}
+  .ps-fig--calc .ps-calc__head{border-bottom:1px solid var(--ps-ink2);padding-bottom:12px;margin-bottom:18px}
+  .ps-fig--calc .ps-calc__title{font-family:var(--text);font-weight:800;color:var(--ps-ink2);font-size:18px;line-height:1.25}
+  .ps-fig--calc .ps-calc__sub{font-family:var(--text);font-size:12px;line-height:1.4;color:#404040;margin-top:3px}
+  .ps-fig--calc .ps-calc__rows{display:flex;flex-direction:column;gap:18px}
+  .ps-fig--calc .ps-calc__lab{display:flex;justify-content:space-between;font-family:var(--text);font-size:13px;font-weight:700;color:var(--ps-ink2)}
+  .ps-fig--calc .ps-calc__val{color:var(--ps-orange);font-weight:800;font-variant-numeric:tabular-nums}
+  .ps-fig--calc .ps-slider{position:relative;height:14px;margin-top:8px}
+  .ps-fig--calc .ps-slider__track{position:absolute;top:5px;left:0;right:0;height:4px;background:var(--ps-track)}
+  .ps-fig--calc .ps-slider__fill{position:absolute;top:5px;left:0;height:4px;background:var(--ps-orange);width:0}
+  .ps-fig--calc .ps-slider__thumb{position:absolute;top:0;width:14px;height:14px;border-radius:50%;
+    background:var(--ps-orange);transform:translateX(-50%);left:0}
+  .ps-fig--calc .ps-calc__toggle{display:flex;justify-content:space-between;align-items:center;
+    font-family:var(--text);font-size:13px;font-weight:700;color:var(--ps-ink2)}
+  .ps-fig--calc .ps-calc__box{border:1px solid var(--ps-ink2);margin-top:18px;padding:16px}
+  .ps-fig--calc .ps-calc__line{display:flex;justify-content:space-between;font-family:var(--text);
+    font-size:13px;color:#404040;font-variant-numeric:tabular-nums;margin-bottom:8px}
+  .ps-fig--calc .ps-calc__total{display:flex;justify-content:space-between;align-items:center;
+    border-top:1px solid var(--ps-ink2);padding-top:12px;margin-top:4px}
+  .ps-fig--calc .ps-calc__total span:first-child{font-family:var(--text);font-size:13px;font-weight:700;color:var(--ps-ink2)}
+  .ps-fig--calc .ps-calc__pct{font-size:20px;font-weight:800;color:var(--ps-orange);font-variant-numeric:tabular-nums}
+  @media (max-width:560px){ .ps-fig--calc .ps-calc{padding:20px} }
+  </style>
+
+  <div class="ps-calc">
+    <div class="ps-calc__card">
+      <div class="ps-calc__head">
+        <div class="ps-calc__title">Harvest Price Impact Calculator</div>
+        <div class="ps-calc__sub">Estimate your legacy flat rate vs. the new base-plus-usage model.</div>
+      </div>
+      <div class="ps-calc__rows">
+        <div>
+          <div class="ps-calc__lab"><span>Team Size (Seats):</span><span class="ps-calc__val" data-seats>5</span></div>
+          <div class="ps-slider"><div class="ps-slider__track"></div>
+            <div class="ps-slider__fill" data-seatfill></div><div class="ps-slider__thumb" data-seatthumb></div></div>
+        </div>
+        <div>
+          <div class="ps-calc__lab"><span>Active Projects:</span><span class="ps-calc__val" data-proj>12</span></div>
+          <div class="ps-slider"><div class="ps-slider__track"></div>
+            <div class="ps-slider__fill" data-projfill></div><div class="ps-slider__thumb" data-projthumb></div></div>
+        </div>
+        <div class="ps-calc__toggle"><span>Include Forecast scheduling</span><span class="ps-calc__val">On</span></div>
+      </div>
+      <div class="ps-calc__box">
+        <div class="ps-calc__line"><span>Legacy monthly bill</span><span data-legacy>$60</span></div>
+        <div class="ps-calc__line"><span>New base + usage</span><span data-new>$150</span></div>
+        <div class="ps-calc__total"><span>Effective Cost Increase:</span><span class="ps-calc__pct" data-pct>+150%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <figcaption><b>Fig. 03</b><span>harvestsomesavings.com — a friend's real numbers: 29 seats, 173 projects.</span></figcaption>
+
+  <script>
+  (function () {
+    var fig = document.currentScript.closest('figure');
+    if (!fig || fig.dataset.psBound) return; fig.dataset.psBound = 1;
+    var E = function (x) { return x <= 0 ? 0 : x >= 1 ? 1 : x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x+2, 3)/2; };
+    var an = function (t,a,b,f,to) { return f + (to-f)*E((t-a)/(b-a)); };
+    var fmt = function (n) { return '$' + Math.round(n).toLocaleString('en-US'); };
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var q = function (s) { return fig.querySelector(s); };
+
+    function paint(T) {
+      var t = reduce ? 7 : T % 10;
+      var seats = Math.round(t < 8.5 ? an(t,1,3,5,29)    : an(t,8.5,9.5,29,5));
+      var proj  = Math.round(t < 8.5 ? an(t,3.5,6,12,173): an(t,8.5,9.5,173,12));
+      var legacy = seats * 12;
+      var nw = seats * 18 + Math.max(0, proj - 3) * 10;
+      var pct = Math.round((nw - legacy) / legacy * 100);
+      var sp = (seats - 1) / 99 * 100, pp = (proj - 4) / 246 * 100;
+      q('[data-seats]').textContent = seats;
+      q('[data-proj]').textContent = proj;
+      q('[data-seatfill]').style.width = sp + '%';
+      q('[data-seatthumb]').style.left = sp + '%';
+      q('[data-projfill]').style.width = pp + '%';
+      q('[data-projthumb]').style.left = pp + '%';
+      q('[data-legacy]').textContent = fmt(legacy);
+      q('[data-new]').textContent = fmt(nw);
+      q('[data-pct]').textContent = (pct >= 0 ? '+' : '') + pct + '%';
+    }
+
+    if (reduce) { paint(0); return; }
+    // Off-screen figures stop painting. Three of these run on the Harvest post
+    // and none of them should burn a frame while the reader is elsewhere.
+    var on = true;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { on = es[0].isIntersecting; },
+        { rootMargin: '120px 0px' }).observe(fig);
+    }
+    var t0 = performance.now();
+    (function loop(now) { if (on) paint((now - t0) / 1000); requestAnimationFrame(loop); })(t0);
+  })();
+  </script>
+</figure>
+
+    <p>Our model worked reasonably well for smaller teams but became too aggressive as usage increased. Harvest doesn't publish all of the underlying usage rates, so we were modelling from reported bills and the information available to us. The math was internally consistent, but our curve was wrong at scale.</p>
+
+    <p>So we changed it.</p>
+
+    <p>We rebuilt the model, checked it against real examples and pushed the fix. Because the site was already running on an automated deployment pipeline, the correction went from feedback to live almost immediately.</p>
+
+    <p>The advantage wasn't being right on day one. It was how quickly we could stop being wrong.</p>
+
+    <blockquote><em>The advantage wasn't being right on day one. It was how quickly we could stop being wrong.</em></blockquote>
+
+    <p>I think this is one of the biggest misunderstandings about moving fast. Fast doesn't mean careless. It means making the smallest useful thing you can, putting it in front of real people and learning what you couldn't possibly learn sitting around a conference table.</p>
+
+    <p>There is an argument that we shouldn't have shipped the calculator until the math was bulletproof. I don't really buy that. The math is never going to be bulletproof when you're modelling a pricing structure where the vendor doesn't publish all of the underlying rates. The fastest way to find the flaw was to put it in front of somebody with a real invoice and let them challenge it.</p>
+
+    <p>Version one being wrong wasn't the problem. Being slow to fix it would have been.</p>
+
+    <!-- [[newsletter]] — the site's own .signal component, wired to the
+         ps-concierge Worker's POST /subscribe by js-signal in the page chrome.
+         [[newsletter: A custom lead clause.]] replaces the opening sentence. -->
+    <div class="signal">
+      <div class="signal-in">
+        <p class="sig-line">Shipping before the math is bulletproof is one dispatch of many. <em class="voice mag">The Signal</em> ships what we're learning — monthly, short, no filler.</p>
+        <form class="field js-signal" novalidate>
+          <input type="email" name="email" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
+          <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="signal-msg" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <h2>Fast isn't the same as careless</h2>
+
+    <p>There was another obvious issue we had to account for. We were an annoyed customer building a tool about the company that had annoyed us. That's a bias, and pretending otherwise would have been ridiculous.</p>
+
+    <p>So we tried to build against it. Claims about Harvest's pricing are qualified because we're working from reported behaviour, available information and our own experience rather than a complete published rate card. Affiliate relationships are disclosed. We tell people pricing changes and that they should confirm it at the source.</p>
+
+    <p>We also didn't build a Harvest hate site. Harvest is a good product that a lot of businesses have relied on for years. The company that owns it made a pricing decision that some customers, including us, didn't like. Those are two different things.</p>
+
+    <p>You can move quickly and still do the work properly. Claims need sources, assumptions need to be clear, commercial relationships need disclosure and when you don't know something, you should say you don't know it.</p>
+
+    <p>Speed isn't an excuse to lower the bar. It just shortens the distance between assumption and reality.</p>
+
+    <blockquote><em>Speed isn't an excuse to lower the bar. It just shortens the distance between assumption and reality.</em></blockquote>
+
+    <h2>The metric I care about</h2>
+
+    <p>None of this is really about Harvest. It's about the distance between noticing something and shipping something.</p>
+
+    <p>Most organizations measure that distance in months or quarters. I think it is becoming one of the most important competitive advantages a company can have, because the tools required to design, build and deploy software have become dramatically more accessible. AI has compressed that distance even further.</p>
+
+    <p>Which means the bottleneck increasingly isn't technology. It's deciding what is worth building, cutting away everything that doesn't matter and getting something useful into the hands of real people.</p>
+
+    <p>The pattern isn't particularly complicated. Spot the problem while it's relevant. Decide what actually needs solving. Build the smallest useful version. Put it in front of people. Learn from what happens, fix what you got wrong and repeat.</p>
+
+    <p>That's the muscle we're trying to build. <a href="http://harvestsomesavings.com">harvestsomesavings.com</a> is just the latest rep.</p>
+
+    <p class="end">Your next product idea probably doesn't need another pitch deck. It needs to exist.</p>
+  </div>
+</article>
+
 <section class="page-closer" id="contact">
   <div class="wrap">
-    <h2 class="rise">That's the thinking. <em class="voice mag">Let's do the making.</em></h2>
+    <h2 class="rise">Read enough? <em class="voice mag">Let's build.</em></h2>
     <p>You'll work directly with the people who make it — no account layer, no game of telephone.</p>
     <div class="pc-row">
       <a class="btn solid cascade" href="#contact" data-cc-contact>Start a project →</a>
@@ -1248,12 +1284,12 @@
         <p class="tagline">Made to use.<br><em class="voice">Made to remember.</em></p>
       </div>
       <ul>
-        <li><a href="work">Work</a></li>
-        <li><a href="digital">Digital</a></li>
-        <li><a href="studios">Studios</a></li>
-        <li><a href="insights" aria-current="page">Thinking</a></li>
-        <li><a href="about">About</a></li>
-        <li><a href="careers">Careers</a></li>
+        <li><a href="/work">Work</a></li>
+        <li><a href="/digital">Digital</a></li>
+        <li><a href="/studios">Studios</a></li>
+        <li><a href="/insights" aria-current="page">Thinking</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/careers">Careers</a></li>
       </ul>
       <div class="news">
         <h3>The signal</h3>
@@ -1269,7 +1305,7 @@
     <p class="ack">We acknowledge that we live and work uninvited on the unceded territories of the Coast Salish peoples — the Lekwungen (Songhees and Esquimalt) and W̱SÁNEĆ around Victoria, the Quw'utsun (Cowichan) at Cowichan Bay, the many Hul'q'umi'num- and SENĆOŦEN-speaking Nations of Salt Spring Island, and the Sḵwx̱wú7mesh Úxwumixw (Squamish) at Gibsons. As a team working coast to coast, we extend that respect to all the Indigenous lands and treaty territories our people call home. We are grateful to share this land cared for by these Nations.</p>
     <div class="legal">
       <span>© <span id="yr"></span> Power Shifter Digital Inc. All rights reserved.</span>
-      <span><a href="terms-and-conditions">Terms &amp; Conditions</a><a href="privacy-policy">Privacy Policy</a><a href="privacy-policy">Cookies</a></span>
+      <span><a href="/terms-and-conditions">Terms &amp; Conditions</a><a href="/privacy-policy">Privacy Policy</a><a href="/privacy-policy">Cookies</a></span>
     </div>
   </div>
 </footer>
@@ -1351,11 +1387,13 @@
   })();
 
 
-  // Collection cells rise on scroll entry, staggered by column
-  document.querySelectorAll('.sheet .wcard').forEach((c,i)=>{
-    c.classList.add('reveal');
-    c.style.setProperty('--d', String(i%3));
-    ro.observe(c);
+  // Related index rows rise on scroll entry, staggered top-to-bottom
+  const relHead = document.querySelector('.rel-head');
+  if (relHead) { relHead.classList.add('reveal'); ro.observe(relHead); }
+  document.querySelectorAll('.rel-row').forEach((r,i)=>{
+    r.classList.add('reveal');
+    r.style.setProperty('--d', String(i));
+    ro.observe(r);
   });
 
   // Proof spine: only runs if proofRow exists (homepage only)
@@ -1383,39 +1421,6 @@
 
 
 <script>
-  // Filter — cross-fade the grid between category states.
-  const ftabs = document.querySelectorAll('.ftab');
-  // scope to grid cards only — [data-cat] alone also matches the .ftab tabs (which
-  // carry data-cat), so a broad selector hid the other tab buttons on click.
-  const wcards = document.querySelectorAll('.sheet .wcard');
-  const grid = document.querySelector('.sheet');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let fadePending;
-  function applyFilter(cat){
-    wcards.forEach(c => { c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none'; });
-  }
-  ftabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      ftabs.forEach(t => t.classList.remove('on'));
-      tab.classList.add('on');
-      const cat = tab.dataset.cat;
-      if (!grid || reduceMotion.matches) {
-        // cancel any in-flight fade so a stale timeout can't re-apply an old category
-        clearTimeout(fadePending);
-        if (grid) grid.classList.remove('switching');
-        applyFilter(cat);
-        return;
-      }
-      // dip the grid to transparent, swap the cards while invisible, fade back in
-      clearTimeout(fadePending);
-      grid.classList.add('switching');
-      fadePending = setTimeout(() => {
-        applyFilter(cat);
-        grid.classList.remove('switching');
-      }, 130);
-    });
-  });
-
 // ---------- Button system ----------
 // Primary: letter cascade
 document.querySelectorAll('.cascade').forEach(function(btn){
@@ -1508,9 +1513,9 @@ document.querySelectorAll('.swipe').forEach(function(el){
 
 
 <!-- PS Craft Layer -->
-<script src="ps-spice.js"></script>
+<script src="/ps-spice.js"></script>
 <!-- PS Concierge -->
-<script src="ps-concierge.js"></script>
-<script src="ps-signal.js"></script>
+<script src="/ps-concierge.js"></script>
+<script src="/ps-signal.js"></script>
 </body>
 </html>

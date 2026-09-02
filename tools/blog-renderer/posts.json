@@ -864,8 +864,8 @@
   },
   {
     "slug": "harvest-price-increase-we-built-the-fix",
-    "status": "Draft",
-    "publish_date": null,
+    "status": "Published",
+    "publish_date": "2026-09-01T00:00:00.000Z",
     "seo_title": "Harvest Price Increase — We Shipped the Fix in 2 Days",
     "title": "Harvest got expensive. Two days later, we shipped the fix.",
     "meta_description": "Our Harvest bill went from $90 to $600 a month. Instead of an angry LinkedIn post, we shipped a price-impact calculator in two days — here's what we learned.",

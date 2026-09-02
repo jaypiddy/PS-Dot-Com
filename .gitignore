@@ -13,3 +13,9 @@ tools/blog-renderer/.notion-token
 
 # wrangler local state
 .wrangler/
+
+# scratch — device_bash cannot delete, so removals land here for JP to bin
+_to_delete/
+
+# .impeccable tooling cache
+.impeccable/

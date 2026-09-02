@@ -1,0 +1,109 @@
+<!-- [[fig:harvest-meter]] — flat $90 against the metered stack building to
+     $600 (Base 65 / Activity 120 / Forecast 85 / Projects 330) on a 9s loop. -->
+<figure class="breakout ps-fig ps-fig--meter" data-ps-anim="meter">
+  <style>
+  .ps-fig--meter{ --ps-ink3:#26272B; --ps-ink4:#44464B; --ps-stack-h:280px; }
+  .ps-fig--meter .ps-meter{background:#fff;padding:44px 32px 36px;border:1px solid var(--line)}
+  .ps-fig--meter .ps-meter__row{display:flex;justify-content:center;align-items:flex-end;gap:96px}
+  .ps-fig--meter .ps-meter__col{display:flex;flex-direction:column;align-items:center;gap:10px}
+  .ps-fig--meter .ps-meter__stackA{height:var(--ps-stack-h);width:120px;display:flex;flex-direction:column;justify-content:flex-end}
+  .ps-fig--meter .ps-meter__flat{height:38px;background:var(--ps-ink3);display:flex;align-items:center;
+    justify-content:center;color:var(--paper);font-family:var(--mono);font-weight:700;font-size:13px}
+  .ps-fig--meter .ps-meter__stackB{position:relative;height:var(--ps-stack-h);width:120px;display:flex;
+    flex-direction:column;justify-content:flex-end}
+  .ps-fig--meter .ps-meter__old{position:absolute;left:-24px;right:-24px;bottom:38px;
+    border-top:1px dashed var(--line)}
+  /* Sits fully outside the stack. Left-positioned it flows back under the
+     segments, which are later siblings and paint over it. */
+  .ps-fig--meter .ps-meter__oldlab{position:absolute;right:calc(100% + 28px);bottom:42px;
+    white-space:nowrap;text-align:right;font-family:var(--mono);
+    font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:9px;color:var(--grey)}
+  .ps-fig--meter .ps-meter__seg{display:flex;align-items:center;justify-content:center;overflow:hidden;height:0}
+  .ps-fig--meter .ps-meter__seg span{color:var(--paper);font-family:var(--mono);font-weight:700;
+    font-size:11px;white-space:nowrap;opacity:0}
+  .ps-fig--meter .ps-meter__total{position:absolute;left:132px;bottom:0;font-family:var(--serif);
+    font-style:italic;font-size:40px;line-height:1;color:var(--ink);white-space:nowrap;opacity:0}
+  .ps-fig--meter .ps-meter__totunit{font-family:var(--mono);font-style:normal;font-size:11px;
+    font-weight:700;letter-spacing:.14em;color:var(--grey)}
+  .ps-fig--meter .ps-meter__cap{font-family:var(--mono);font-weight:700;text-transform:uppercase;
+    letter-spacing:.14em;font-size:10px;color:var(--grey);text-align:center}
+  .ps-fig--meter .ps-meter__cap--new{color:var(--magenta)}
+  @media (max-width:640px){
+    .ps-fig--meter .ps-meter{padding:32px 20px 28px}
+    .ps-fig--meter .ps-meter__row{gap:56px}
+    .ps-fig--meter .ps-meter__total{left:auto;right:-8px;font-size:28px}
+  }
+  </style>
+
+  <div class="ps-meter">
+    <div class="ps-meter__row">
+      <div class="ps-meter__col">
+        <div class="ps-meter__stackA"><div class="ps-meter__flat">$90</div></div>
+        <div class="ps-meter__cap">Flat — in the rent</div>
+      </div>
+      <div class="ps-meter__col">
+        <div class="ps-meter__stackB" data-meterstack>
+          <div class="ps-meter__old"></div>
+          <div class="ps-meter__oldlab">Old bill</div>
+          <div class="ps-meter__total" data-metertotal>$0<span class="ps-meter__totunit"> / MO</span></div>
+        </div>
+        <div class="ps-meter__cap ps-meter__cap--new">Metered — the new deal</div>
+      </div>
+    </div>
+  </div>
+
+  <figcaption><b>{{FIG}}</b><span>You didn't start taking longer showers. Somebody attached a meter.</span></figcaption>
+
+  <script>
+  (function () {
+    var fig = document.currentScript.closest('figure');
+    if (!fig || fig.dataset.psBound) return; fig.dataset.psBound = 1;
+    var E = function (x) { return x <= 0 ? 0 : x >= 1 ? 1 : x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x+2, 3)/2; };
+    var sg = function (t,a,b) { return E((t-a)/(b-a)); };
+    var fmt = function (n) { return '$' + Math.round(n).toLocaleString('en-US'); };
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // label, dollars, colour, grow-in start, grow-in end (seconds)
+    var METER = [['Base',65,'#26272B',1,1.8],['Activity',120,'#6E7176',2,2.8],
+                 ['Forecast',85,'#44464B',3,3.8],['Projects',330,'#FD2E90',4,6]];
+    var stack = fig.querySelector('[data-meterstack]');
+    var total = fig.querySelector('[data-metertotal]');
+    METER.forEach(function (d) {
+      var seg = document.createElement('div');
+      seg.className = 'ps-meter__seg';
+      seg.style.background = d[2];
+      seg.innerHTML = '<span>' + d[0] + ' $' + d[1] + '</span>';
+      stack.insertBefore(seg, total);
+    });
+    var segs = fig.querySelectorAll('.ps-meter__seg');
+    var SCALE = 0.42;   // dollars → px, so $600 fills the 280px column
+
+    function paint(T) {
+      var t = reduce ? 7 : T % 9;
+      var collapse = 1 - sg(t,8,8.8);
+      var px = 0;
+      METER.forEach(function (d, i) {
+        var h = d[1] * SCALE * sg(t, d[3], d[4]) * collapse;
+        px += h;
+        if (segs[i]) {
+          segs[i].style.height = h + 'px';
+          // The label only appears once its band is tall enough to hold it.
+          segs[i].firstChild.style.opacity = h > 20 ? 1 : 0;
+        }
+      });
+      var dollars = px / SCALE;
+      total.firstChild.nodeValue = fmt(dollars);
+      total.style.opacity = dollars > 5 ? 1 : 0;
+    }
+
+    if (reduce) { paint(0); return; }
+    var on = true;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { on = es[0].isIntersecting; },
+        { rootMargin: '120px 0px' }).observe(fig);
+    }
+    var t0 = performance.now();
+    (function loop(now) { if (on) paint((now - t0) / 1000); requestAnimationFrame(loop); })(t0);
+  })();
+  </script>
+</figure>

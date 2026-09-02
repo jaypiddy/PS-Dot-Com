@@ -23,6 +23,14 @@ DEFAULT_POSTS = (REPO / "tools/blog-renderer/posts.json")
 # (case-insensitive): Slug, Categories ("Build,Frames"), Featured ("Yes"/checked),
 # Photo Credit. Merged by slug; absent file → falls back to old_categories.
 OVERRIDES_CSV = (REPO / "tools/blog-renderer/blog-meta.csv")
+# Hand-authored HTML partials dropped into the body by a [[marker]] line in the
+# Notion draft. This exists because some posts need a bespoke thing — an inline
+# animation, a diagram that is really a small program — and the alternative is
+# hand-patching insights/<slug>.html after every render, which the next render
+# silently overwrites. The marker keeps the source of truth in Notion and the
+# artifact in the repo.
+BLOCKS_DIR = (REPO / "tools/blog-renderer/blocks")
+MISSING_BLOCKS = []
 TITLE_SUFFIX = " — POWER SHIFTER"
 BASE = "https://powershifter.com"   # canonical host (apex) — flipped at the 2026-07-13 cutover
 ORG = {"@type": "Organization", "name": "POWER SHIFTER", "url": BASE + "/"}
@@ -104,6 +112,11 @@ def parse_blocks(md):
             blocks.append(('h2', s[3:])); i += 1; continue
         if s.startswith('# '):
             blocks.append(('h2', s[2:])); i += 1; continue
+        # A line that is nothing but [[name]] or [[name: argument]]. Notion's
+        # markdown export backslash-escapes brackets, so tolerate \[\[ too.
+        bm = re.fullmatch(r'\\?\[\\?\[\s*([a-zA-Z][\w:.-]*)\s*(?::\s*(.*?))?\s*\\?\]\\?\]', s)
+        if bm:
+            blocks.append(('block', (bm.group(1), (bm.group(2) or '').strip()))); i += 1; continue
         m = re.fullmatch(r'!\[(.*)\]\(([^)]+)\)', s)  # alt may contain nested [..](..) links
         if m:
             blocks.append(('img', (m.group(1), m.group(2).strip()))); i += 1; continue
@@ -163,7 +176,40 @@ def render_quote(text):
     body = ' '.join(s for s in text.split('\n') if s.strip()).strip()
     return f'    <blockquote>{inline(body)}</blockquote>'
 
-def convert_body(md):
+def render_block(name, arg, fig_n, slug):
+    """A [[marker]] line → a hand-authored partial from blocks/.
+
+    Two shapes. `[[fig:foo]]` pulls blocks/fig-foo.html and takes the next
+    figure number, so a bespoke animation sits in the same Fig. 01/02/03 series
+    as the plain images around it — the numbering is the whole reason these are
+    not just pasted into the generated file. `[[anything-else]]` pulls
+    blocks/anything-else.html untouched and outside the numbering.
+
+    A missing file is recorded rather than raised: one bad marker should not
+    abort a 62-post render, but it must not pass silently either, so main()
+    reports every one and exits non-zero.
+    """
+    fname = ("fig-" + name.split(":", 1)[1]) if name.startswith("fig:") else name
+    path = BLOCKS_DIR / (fname + ".html")
+    if not path.exists():
+        MISSING_BLOCKS.append((slug, name, path.name))
+        return fig_n, f'    <!-- missing block: {esc(fname)}.html -->'
+    body = path.read_text(encoding="utf-8").rstrip()
+    if name.startswith("fig:"):
+        fig_n += 1
+        body = body.replace("{{FIG}}", f"Fig. {fig_n:02d}").replace("{{N}}", f"{fig_n:02d}")
+    # {{ARG}} is whatever followed the colon-space, so one partial can carry a
+    # per-post line without a second near-identical file.
+    if arg:
+        body = body.replace("{{ARG}}", inline(arg))
+    else:
+        # Take the trailing space with it. A partial writes `{{ARG}} <em>...`
+        # expecting a sentence; with no argument that gap renders as a stray
+        # leading space before the next word.
+        body = body.replace("{{ARG}} ", "").replace("{{ARG}}", "")
+    return fig_n, body
+
+def convert_body(md, slug=''):
     blocks = parse_blocks(md)
     p_positions = [k for k, b in enumerate(blocks) if b[0] == 'p']
     def _substantive(txt):
@@ -198,6 +244,9 @@ def convert_body(md):
                        f'      <img class="fig-art" src="{attr(url)}" alt="{attr(alt)}">\n'
                        f'      <figcaption><b>Fig. {fig_n:02d}</b>{cap}</figcaption>\n'
                        f'    </figure>')
+        elif typ == 'block':
+            fig_n, frag = render_block(data[0], data[1], fig_n, slug)
+            out.append(frag)
         elif typ == 'ul':
             out.append(render_ul(data))
         elif typ == 'ol':
@@ -338,7 +387,7 @@ def related_section(post, lookup):
 """
 
 def render_article(post, lookup):
-    body = convert_body(post.get('body_markdown', ''))
+    body = convert_body(post.get('body_markdown', ''), post.get('slug', ''))
     page = (patch_head(post)
             + sub_hero(post) + "\n\n"
             + '<article class="article-body wrap">\n  <div class="prose">\n'
@@ -444,6 +493,15 @@ def main():
     no_mast = [p['slug'] for p in pub if not (p.get('masthead_url') or p.get('thumbnail_url'))]
     if no_mast:
         print("  no-image (slot-frame fallback):", no_mast)
+    if MISSING_BLOCKS:
+        # Non-zero exit: a marker that resolves to nothing leaves a hole in a
+        # published page, and a warning scrolled off the top of a 62-post run is
+        # a warning nobody sees.
+        print("\nmissing block partials — these markers rendered as empty comments:",
+              file=sys.stderr)
+        for slug, marker, fname in MISSING_BLOCKS:
+            print(f"  {slug}: [[{marker}]] wants blocks/{fname}", file=sys.stderr)
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()

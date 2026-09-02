@@ -1,0 +1,14 @@
+    <!-- [[newsletter]] — the site's own .signal component, wired to the
+         ps-concierge Worker's POST /subscribe by js-signal in the page chrome.
+         [[newsletter: A custom lead clause.]] replaces the opening sentence. -->
+    <div class="signal">
+      <div class="signal-in">
+        <p class="sig-line">{{ARG}} <em class="voice mag">The Signal</em> ships what we're learning — monthly, short, no filler.</p>
+        <form class="field js-signal" novalidate>
+          <input type="email" name="email" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
+          <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="signal-msg" role="status" aria-live="polite"></p>
+      </div>
+    </div>

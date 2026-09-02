@@ -55,15 +55,31 @@ key is account-wide and cannot be limited to Images.
 
 ```
 npx wrangler deploy
-curl https://ps-images.<subdomain>.workers.dev/health
+curl https://ps-images.jp-440.workers.dev/health
 ```
 
 ## Using it
 
+Deployed at **`https://ps-images.jp-440.workers.dev`**.
+
+Day to day this is one command, because the key lives in the macOS keychain
+rather than in a shell variable you have to remember to export. Add to `~/.zshrc`:
+
 ```
-curl -X POST https://ps-images.<subdomain>.workers.dev/upload \
-  -H "X-Upload-Key: $UPLOAD_KEY" \
-  -F file=@hero.jpg
+psupload() {
+  curl -s -X POST https://ps-images.jp-440.workers.dev/upload \
+    -H "X-Upload-Key: $(security find-generic-password -s ps-images-key -w)" \
+    -F file=@"$1"
+}
+```
+
+The key itself went in once, with `security add-generic-password -a "$USER" -s
+ps-images-key -w`, and the same value was piped to `wrangler secret put
+UPLOAD_KEY`. Pipe it with `printf %s "$(...)"` if you ever rotate it — a
+trailing newline makes the two copies differ by a byte and every upload 401s.
+
+```
+psupload hero.jpg
 ```
 
 ```json

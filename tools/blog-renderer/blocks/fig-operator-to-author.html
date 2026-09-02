@@ -1,0 +1,151 @@
+<!-- [[fig:operator-to-author]] — 2025 vs 2026 dumbbell. Five signals, one story:
+     the generic operator title falls while authorship, craft language and crew
+     structure rise. Ink = 2025, magenta = 2026 (validated ΔE 36 protan). Both
+     ends carry a value label, so identity never rests on colour alone. -->
+<figure class="breakout ps-fig ps-fig--shift" data-ps-anim="shift">
+  <style>
+  .ps-fig--shift{ --ps-a:#121315; --ps-b:#FD2E90; }
+  .ps-fig--shift .ps-shift{background:#fff;border:1px solid var(--line);padding:30px 30px 24px}
+  .ps-fig--shift .ps-shift__lg{display:flex;gap:22px;align-items:center;flex-wrap:wrap;
+    font-family:var(--mono);font-weight:700;text-transform:uppercase;letter-spacing:.14em;
+    font-size:9px;color:var(--grey);padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .ps-fig--shift .ps-shift__lg span{display:flex;align-items:center;gap:7px}
+  .ps-fig--shift .ps-shift__sw{width:9px;height:9px;border-radius:50%;display:inline-block}
+  .ps-fig--shift .ps-shift__sw.a{background:var(--ps-a)}
+  .ps-fig--shift .ps-shift__sw.b{background:var(--ps-b)}
+  .ps-fig--shift .ps-shift__r{display:grid;grid-template-columns:236px minmax(0,1fr) 52px;gap:18px;
+    align-items:center;padding:9px 0;border-bottom:1px solid rgba(18,19,21,.07)}
+  .ps-fig--shift .ps-shift__r:last-of-type{border-bottom:0}
+  .ps-fig--shift .ps-shift__k{font-family:var(--text);font-size:13.5px;line-height:1.3;color:var(--ink)}
+  .ps-fig--shift .ps-shift__k s{display:block;text-decoration:none;font-size:11.5px;color:var(--grey);margin-top:2px}
+  .ps-fig--shift .ps-shift__tr{position:relative;height:40px}
+  .ps-fig--shift .ps-shift__ln{position:absolute;top:19px;height:2px;background:rgba(18,19,21,.16);width:0}
+  .ps-fig--shift .ps-shift__d{position:absolute;top:14px;width:12px;height:12px;border-radius:50%;
+    box-shadow:0 0 0 2px #fff;opacity:0}
+  .ps-fig--shift .ps-shift__d.a{background:var(--ps-a)}
+  .ps-fig--shift .ps-shift__d.b{background:var(--ps-b)}
+  .ps-fig--shift .ps-shift__lab{position:absolute;top:0;transform:translateX(-50%);
+    font-family:var(--mono);font-style:normal;font-weight:700;
+    font-size:10px;color:var(--grey);white-space:nowrap;opacity:0;font-variant-numeric:tabular-nums}
+  .ps-fig--shift .ps-shift__lab.b{color:var(--magenta-ink,#CD2575);top:auto;bottom:0}
+  .ps-fig--shift .ps-shift__dl{font-family:var(--mono);font-weight:700;font-size:12px;text-align:right;
+    font-variant-numeric:tabular-nums;color:var(--magenta-ink,#CD2575)}
+  .ps-fig--shift .ps-shift__dl.dn{color:var(--grey)}
+  .ps-fig--shift .ps-shift__ax{display:flex;justify-content:space-between;
+    padding-top:12px;border-top:1px solid var(--line);margin-top:6px}
+  .ps-fig--shift .ps-shift__ax span{font-family:var(--mono);font-size:9px;
+    letter-spacing:.1em;color:var(--grey)}
+  /* Narrow: the dumbbell cannot share a line with its label, so the row
+     becomes two — label and delta on top, a full-width track beneath. */
+  @media (max-width:640px){
+    .ps-fig--shift .ps-shift{padding:22px 16px 16px}
+    .ps-fig--shift .ps-shift__r{grid-template-columns:minmax(0,1fr) auto;
+      grid-template-areas:"k dl" "tr tr";gap:2px 12px;padding:12px 0}
+    .ps-fig--shift .ps-shift__k{grid-area:k;font-size:13px}
+    .ps-fig--shift .ps-shift__dl{grid-area:dl;align-self:start}
+    .ps-fig--shift .ps-shift__tr{grid-area:tr;height:44px;margin-top:2px}
+    .ps-fig--shift .ps-shift__ln{top:21px}
+    .ps-fig--shift .ps-shift__d{top:16px}
+  }
+  </style>
+
+  <div class="ps-shift">
+    <div class="ps-shift__lg">
+      <span><i class="ps-shift__sw a"></i>2025 · n=222</span>
+      <span><i class="ps-shift__sw b"></i>2026 · n=174</span>
+      <span style="letter-spacing:.1em">Share of listings</span>
+    </div>
+    <div data-shifthost></div>
+    <div class="ps-shift__ax"><span>0%</span><span>45%</span></div>
+  </div>
+
+  <figcaption><b>{{FIG}}</b><span>{{ARG}}</span></figcaption>
+
+  <script>
+  (function () {
+    var fig = document.currentScript.closest('figure');
+    if (!fig || fig.dataset.psBound) return; fig.dataset.psBound = 1;
+
+    // label, sublabel, 2025, 2026
+    var ROWS = [
+      ['Film-grammar language', 'shot, framing, coverage, lens, composition', 17, 41],
+      ['Character and visual consistency', 'the same face across every shot', 21, 35],
+      ['Filmmaker and Director roles', 'share of all postings', 7.7, 16.1],
+      ['Team-leadership language', 'mentoring, managing, running a crew', 6, 16],
+      ['The generic "AI Artist" bucket', 'share of all postings', 36, 25]
+    ];
+    var MAX = 45;
+    var host = fig.querySelector('[data-shifthost]');
+    var anim = [];
+
+    ROWS.forEach(function (d) {
+      var a = d[2] / MAX * 100, b = d[3] / MAX * 100, dl = d[3] - d[2];
+      var r = document.createElement('div');
+      r.className = 'ps-shift__r';
+      r.innerHTML =
+        '<div class="ps-shift__k">' + d[0] + '<s>' + d[1] + '</s></div>' +
+        '<div class="ps-shift__tr">' +
+          '<i class="ps-shift__ln"></i>' +
+          '<i class="ps-shift__d a"></i><i class="ps-shift__d b"></i>' +
+          '<em class="ps-shift__lab a">' + d[2] + '%</em>' +
+          '<em class="ps-shift__lab b">' + d[3] + '%</em>' +
+        '</div>' +
+        '<div class="ps-shift__dl' + (dl < 0 ? ' dn' : '') + '">' +
+          (dl > 0 ? '+' : '') + dl.toFixed(1) + '</div>';
+      r.title = d[0] + ' — 2025: ' + d[2] + '% · 2026: ' + d[3] + '%';
+      host.appendChild(r);
+      anim.push({
+        ln: r.querySelector('.ps-shift__ln'),
+        da: r.querySelector('.ps-shift__d.a'), db: r.querySelector('.ps-shift__d.b'),
+        la: r.querySelector('.ps-shift__lab.a'), lb: r.querySelector('.ps-shift__lab.b'),
+        a: a, b: b
+      });
+    });
+
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function paint(p) {
+      anim.forEach(function (r, i) {
+        var lag = i / anim.length * 0.4;
+        var t = (p - lag) / 0.6;
+        t = t <= 0 ? 0 : t >= 1 ? 1 : 1 - Math.pow(1 - t, 3);
+        // The 2025 dot lands first; the 2026 dot travels out from it.
+        var here = r.a + (r.b - r.a) * t;
+        var lo = Math.min(r.a, here), hi = Math.max(r.a, here);
+        r.ln.style.left = lo + '%'; r.ln.style.width = (hi - lo) + '%';
+        r.da.style.left = 'calc(' + r.a + '% - 6px)'; r.da.style.opacity = t > 0 ? 1 : 0;
+        r.db.style.left = 'calc(' + here + '% - 6px)'; r.db.style.opacity = t > 0 ? 1 : 0;
+        r.la.style.left = r.a + '%'; r.la.style.opacity = t;
+        r.lb.style.left = here + '%'; r.lb.style.opacity = t;
+      });
+    }
+    // The finished chart is the default state, not the animation's end point:
+    // if the observer never fires (deep link, no IO, a stalled rAF) the reader
+    // still gets a correct chart rather than an empty frame.
+    paint(1);
+    if (reduce) return;
+
+    function run() {
+      var t0 = performance.now();
+      (function loop(now) {
+        var p = (now - t0) / 1500;
+        paint(p < 1 ? p : 1);
+        if (p < 1) requestAnimationFrame(loop);
+      })(t0);
+    }
+    if ('IntersectionObserver' in window) {
+      var armed = false, done = false;
+      var io = new IntersectionObserver(function (es) {
+        if (!es[0].isIntersecting) { if (!armed) { armed = true; paint(0); } return; }
+        io.disconnect(); done = true;
+        if (armed) run();   // scrolled into view — play it
+      }, { rootMargin: '0px 0px -15% 0px' });
+      io.observe(fig);
+      // Rewinding to an empty frame is only safe if something guarantees the
+      // refill. If the observer has not reported the figure visible by now,
+      // stop waiting and show the finished chart.
+      setTimeout(function () { if (!done) { io.disconnect(); paint(1); } }, 5000);
+    }
+  })();
+  </script>
+</figure>

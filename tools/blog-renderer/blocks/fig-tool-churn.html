@@ -1,0 +1,138 @@
+<!-- [[fig:tool-churn]] — change in percentage points, 2025 → 2026, split into two
+     labelled bands. The generative models swing hard; the craft tools drift up and
+     none of them collapses. Diverging around a zero baseline: magenta for gains,
+     ink for the single loss. One scale either side of zero. The 2026 level rides
+     alongside each bar so the reader keeps the absolute, not just the delta. -->
+<figure class="breakout ps-fig ps-fig--churn" data-ps-anim="churn">
+  <style>
+  .ps-fig--churn{ --ps-up:#FD2E90; --ps-dn:#121315; --ps-zero:11%; }
+  .ps-fig--churn .ps-churn{background:#fff;border:1px solid var(--line);padding:30px 30px 24px}
+  .ps-fig--churn .ps-churn__band{font-family:var(--mono);font-weight:700;text-transform:uppercase;
+    letter-spacing:.14em;font-size:9px;color:var(--grey);padding:0 0 8px;
+    border-bottom:1px solid var(--line);margin-bottom:4px}
+  .ps-fig--churn .ps-churn__band:not(:first-child){margin-top:22px}
+  .ps-fig--churn .ps-churn__r{display:grid;grid-template-columns:132px 1fr 70px;gap:14px;
+    align-items:center;padding:7px 0}
+  .ps-fig--churn .ps-churn__k{font-family:var(--text);font-size:13.5px;color:var(--ink)}
+  .ps-fig--churn .ps-churn__tr{position:relative;height:17px}
+  .ps-fig--churn .ps-churn__zero{position:absolute;left:var(--ps-zero);top:-3px;bottom:-3px;
+    width:1px;background:rgba(18,19,21,.28)}
+  .ps-fig--churn .ps-churn__b{position:absolute;top:2px;bottom:2px;width:0;
+    background:var(--ps-up);border-radius:0 3px 3px 0}
+  .ps-fig--churn .ps-churn__r[data-dn] .ps-churn__b{background:var(--ps-dn);border-radius:3px 0 0 3px}
+  .ps-fig--churn .ps-churn__v{font-family:var(--mono);font-weight:700;font-size:11.5px;
+    text-align:right;font-variant-numeric:tabular-nums;color:var(--magenta-ink,#CD2575)}
+  .ps-fig--churn .ps-churn__r[data-dn] .ps-churn__v{color:var(--grey)}
+  .ps-fig--churn .ps-churn__v s{display:block;text-decoration:none;font-weight:400;
+    font-size:9.5px;letter-spacing:.06em;color:var(--grey)}
+  .ps-fig--churn .ps-churn__r:hover .ps-churn__b{opacity:.72}
+  .ps-fig--churn .ps-churn__ax{font-family:var(--mono);font-size:9px;letter-spacing:.1em;
+    color:var(--grey);padding-top:14px;border-top:1px solid var(--line);margin-top:14px}
+  /* Narrow: same two-line row. The 2026 level moves inline beside the delta
+     rather than wrapping to three lines in a 56px column. */
+  @media (max-width:640px){
+    .ps-fig--churn .ps-churn{padding:22px 16px 16px}
+    .ps-fig--churn .ps-churn__r{grid-template-columns:minmax(0,1fr) auto;
+      grid-template-areas:"k v" "tr tr";gap:2px 10px;padding:9px 0}
+    .ps-fig--churn .ps-churn__k{grid-area:k;font-size:13px}
+    .ps-fig--churn .ps-churn__v{grid-area:v}
+    .ps-fig--churn .ps-churn__v s{display:inline;margin-left:7px}
+    .ps-fig--churn .ps-churn__tr{grid-area:tr;margin-top:3px}
+  }
+  </style>
+
+  <div class="ps-churn">
+    <div data-churnhost></div>
+    <div class="ps-churn__ax">Change in share of listings naming the tool, 2025 to 2026 · percentage points</div>
+  </div>
+
+  <figcaption><b>{{FIG}}</b><span>{{ARG}}</span></figcaption>
+
+  <script>
+  (function () {
+    var fig = document.currentScript.closest('figure');
+    if (!fig || fig.dataset.psBound) return; fig.dataset.psBound = 1;
+
+    var GROUPS = [
+      ['Generative models', [
+        ['Seedance', 1.8, 19.0], ['Kling', 13.1, 29.9],
+        ['Nano Banana', 1.8, 12.6], ['Higgsfield', 1.8, 10.9]
+      ]],
+      ['Craft tools', [
+        ['DaVinci Resolve', 8.1, 15.5], ['Photoshop', 8.6, 12.1],
+        ['Premiere', 16.2, 18.4], ['After Effects', 14.9, 13.8]
+      ]]
+    ];
+    // One scale either side of zero. Zero sits at 11% of the track, which buys
+    // ~2pt of negative headroom against an +18pt positive reach — enough for the
+    // single loss on the list, and the same points-per-pixel in both directions.
+    var ZERO = 11, POS = 18, PT = (100 - ZERO) / POS;
+    var host = fig.querySelector('[data-churnhost]');
+    var bars = [];
+
+    GROUPS.forEach(function (g) {
+      var h = document.createElement('div');
+      h.className = 'ps-churn__band';
+      h.textContent = g[0];
+      host.appendChild(h);
+
+      g[1].forEach(function (d) {
+        var dl = d[2] - d[1], dn = dl < 0;
+        var r = document.createElement('div');
+        r.className = 'ps-churn__r';
+        if (dn) r.setAttribute('data-dn', '');
+        r.innerHTML =
+          '<div class="ps-churn__k">' + d[0] + '</div>' +
+          '<div class="ps-churn__tr"><i class="ps-churn__zero"></i><i class="ps-churn__b"></i></div>' +
+          '<div class="ps-churn__v">' + (dl > 0 ? '+' : '') + dl.toFixed(1) +
+            '<s>' + d[2].toFixed(0) + '% in 26</s></div>';
+        r.title = d[0] + ' — 2025: ' + d[1] + '% · 2026: ' + d[2] + '%';
+        host.appendChild(r);
+        // Full width of this bar as a % of the track, and which side of zero.
+        var w = Math.abs(dl) * PT;
+        bars.push([r.querySelector('.ps-churn__b'), w, dn]);
+      });
+    });
+
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function paint(p) {
+      bars.forEach(function (b, i) {
+        var lag = i / bars.length * 0.45;
+        var t = (p - lag) / 0.55;
+        t = t <= 0 ? 0 : t >= 1 ? 1 : 1 - Math.pow(1 - t, 3);
+        var w = b[1] * t;
+        if (b[2]) { b[0].style.right = (100 - ZERO) + '%'; b[0].style.left = 'auto'; }
+        else { b[0].style.left = ZERO + '%'; b[0].style.right = 'auto'; }
+        b[0].style.width = w + '%';
+      });
+    }
+    // The finished chart is the default state, not the animation's end point:
+    // if the observer never fires (deep link, no IO, a stalled rAF) the reader
+    // still gets a correct chart rather than an empty frame.
+    paint(1);
+    if (reduce) return;
+
+    function run() {
+      var t0 = performance.now();
+      (function loop(now) {
+        var p = (now - t0) / 1400;
+        paint(p < 1 ? p : 1);
+        if (p < 1) requestAnimationFrame(loop);
+      })(t0);
+    }
+    if ('IntersectionObserver' in window) {
+      var armed = false, done = false;
+      var io = new IntersectionObserver(function (es) {
+        if (!es[0].isIntersecting) { if (!armed) { armed = true; paint(0); } return; }
+        io.disconnect(); done = true;
+        if (armed) run();   // scrolled into view — play it
+      }, { rootMargin: '0px 0px -15% 0px' });
+      io.observe(fig);
+      // Rewinding to an empty frame is only safe if something guarantees the
+      // refill. If the observer has not reported the figure visible by now,
+      // stop waiting and show the finished chart.
+      setTimeout(function () { if (!done) { io.disconnect(); paint(1); } }, 5000);
+    }
+  })();
+  </script>
+</figure>

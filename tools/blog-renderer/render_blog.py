@@ -126,7 +126,13 @@ def parse_blocks(md):
             blocks.append(('h2', s[2:])); i += 1; continue
         # A line that is nothing but [[name]] or [[name: argument]]. Notion's
         # markdown export backslash-escapes brackets, so tolerate \[\[ too.
-        bm = re.fullmatch(r'\\?\[\\?\[\s*([a-zA-Z][\w:.-]*)\s*(?::\s*(.*?))?\s*\\?\]\\?\]', s)
+        _BLOCK_RE = r'\\?\[\\?\[\s*([a-zA-Z][\w:.-]*)\s*(?::\s*(.*?))?\s*\\?\]\\?\]'
+        bm = re.fullmatch(_BLOCK_RE, s)
+        if not bm:
+            # Markers written through the Notion API come back with the colons
+            # escaped too (\[\[fig\:name\: caption\]\]), not just the brackets.
+            # Retry against a de-escaped copy rather than widening the pattern.
+            bm = re.fullmatch(_BLOCK_RE, re.sub(r'\\([!-/:-@\[-`{-~])', r'\1', s))
         if bm:
             blocks.append(('block', (bm.group(1), (bm.group(2) or '').strip()))); i += 1; continue
         m = re.fullmatch(r'!\[(.*)\]\(([^)]+)\)', s)  # alt may contain nested [..](..) links

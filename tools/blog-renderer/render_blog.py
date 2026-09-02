@@ -56,13 +56,25 @@ def fmt_date(s):
             continue
     return s
 
-_ESC_MAP = {'<': '&lt;', '>': '&gt;', '*': '&#42;', '_': '&#95;', '[': '&#91;',
-            ']': '&#93;', '(': '&#40;', ')': '&#41;', '`': '&#96;', '\\': '&#92;',
-            '#': '#', '.': '.', '-': '-', '!': '!', '+': '+', '"': '&quot;'}
+# CommonMark lets a backslash escape ANY ASCII punctuation, and Notion's
+# markdown export uses that liberally — \$600, 100\%, CIO Association \|
+# Representing CIOs. An earlier hand-written subset covered only the characters
+# the converter itself cares about, so every other escape survived into the page
+# as a visible backslash. Nine paragraphs across seven published posts read
+# "\$21.8 billion" before this.
+#
+# Characters that would be re-read by esc() or by the markdown regexes below
+# become numeric entities; the rest are just themselves. esc()'s
+# &(?!#?\w+;) lookahead leaves those entities alone on the next pass.
+_ESC_SIGNIFICANT = {'<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;',
+                    '*': '&#42;', '_': '&#95;', '[': '&#91;', ']': '&#93;',
+                    '(': '&#40;', ')': '&#41;', '`': '&#96;', '\\': '&#92;'}
+_ESC_MAP = {c: _ESC_SIGNIFICANT.get(c, c)
+            for c in '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'}
 def inline(t):
     """Inline markdown → HTML. Resolve backslash escapes, then links, bold, italic."""
     # markdown backslash-escapes → literal entities (so they survive esc + md regexes)
-    t = re.sub(r'\\([<>*_\[\]()`\\#.\-!+"])', lambda m: _ESC_MAP[m.group(1)], t or '')
+    t = re.sub(r'\\([!-/:-@\[-`{-~])', lambda m: _ESC_MAP[m.group(1)], t or '')
     t = esc(t)
     t = re.sub(r'\[([^\]]+)\]\(([^)]+)\)',
                lambda m: f'<a href="{m.group(2).strip().replace(chr(34), "&quot;")}">{m.group(1)}</a>', t)

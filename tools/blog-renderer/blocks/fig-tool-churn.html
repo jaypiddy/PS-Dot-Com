@@ -120,19 +120,26 @@
         if (p < 1) requestAnimationFrame(loop);
       })(t0);
     }
-    if ('IntersectionObserver' in window) {
-      var armed = false, done = false;
+    // Arm only after load, when the document has its real height. The
+    // observer's first callback arrives while the page is still laying out and
+    // reports a figure far down the page as on-screen, which silently skipped
+    // the animation for every figure below the first.
+    if (!('IntersectionObserver' in window)) return;
+
+    function arm() {
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      // Already on screen: keep the finished chart rather than flash and replay.
+      if (fig.getBoundingClientRect().top < vh * 0.85) return;
+      paint(0);
       var io = new IntersectionObserver(function (es) {
-        if (!es[0].isIntersecting) { if (!armed) { armed = true; paint(0); } return; }
-        io.disconnect(); done = true;
-        if (armed) run();   // scrolled into view — play it
-      }, { rootMargin: '0px 0px -15% 0px' });
+        if (!es[0].isIntersecting) return;
+        io.disconnect();
+        run();
+      }, { rootMargin: '0px 0px -20% 0px' });
       io.observe(fig);
-      // Rewinding to an empty frame is only safe if something guarantees the
-      // refill. If the observer has not reported the figure visible by now,
-      // stop waiting and show the finished chart.
-      setTimeout(function () { if (!done) { io.disconnect(); paint(1); } }, 5000);
     }
+    if (document.readyState === 'complete') arm();
+    else window.addEventListener('load', arm, { once: true });
   })();
   </script>
 </figure>

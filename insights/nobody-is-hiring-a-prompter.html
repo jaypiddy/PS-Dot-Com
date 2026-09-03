@@ -11,10 +11,10 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EP8HNWVMHS"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EP8HNWVMHS');</script>
 <title>Nobody is hiring a prompter — 531 AI job posts — POWER SHIFTER</title>
-<meta name="description" content="An analysis of 531 AI production job postings from 2024 to 2026: what the roles actually are, why AI Artist is splitting apart, and where the real moat sits.">
+<meta name="description" content="An analysis of over 500 AI production job postings from 2024 to 2026: what the roles actually are, why AI Artist is splitting apart, and where the real moat sits.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nobody is hiring a prompter — 531 AI job posts">
-<meta property="og:description" content="An analysis of 531 AI production job postings from 2024 to 2026: what the roles actually are, why AI Artist is splitting apart, and where the real moat sits.">
+<meta property="og:description" content="An analysis of over 500 AI production job postings from 2024 to 2026: what the roles actually are, why AI Artist is splitting apart, and where the real moat sits.">
 <meta property="og:image" content="https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/2b38c7fd-0e9c-426b-04a0-e8fffa899400/public">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://powershifter.com/insights/nobody-is-hiring-a-prompter">
@@ -23,7 +23,7 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Nobody is hiring a prompter — 531 AI job posts",
-  "description": "An analysis of 531 AI production job postings from 2024 to 2026: what the roles actually are, why AI Artist is splitting apart, and where the real moat sits.",
+  "description": "An analysis of over 500 AI production job postings from 2024 to 2026: what the roles actually are, why AI Artist is splitting apart, and where the real moat sits.",
   "image": "https://imagedelivery.net/So76NP_fFT3s9jNLvxCRFw/2b38c7fd-0e9c-426b-04a0-e8fffa899400/public",
   "url": "https://powershifter.com/insights/nobody-is-hiring-a-prompter",
   "author": {
@@ -824,13 +824,13 @@
   <div class="sub-hero-inner wrap">
     <a class="back swipe" href="/insights">← Back to Thinking in public</a>
     <h1 class="rise" id="title">Nobody is hiring a prompter</h1>
-    <p class="sub-voice"><em class="voice mag" id="excerpt">An analysis of 531 AI production job postings from 2024 to 2026: what the roles actually are, why AI Artist is splitting apart, and where the real moat sits.</em></p>
+    <p class="sub-voice"><em class="voice mag" id="excerpt">An analysis of over 500 AI production job postings from 2024 to 2026: what the roles actually are, why AI Artist is splitting apart, and where the real moat sits.</em></p>
     <div class="byline" id="byline">
       <a href="/insights" id="authorEl">By J.P. Holecka</a>
       <span class="sep" id="authorSep">·</span>
       <span class="date">September 2, 2026</span>
       <span class="sep vbar" id="catSep">|</span>
-      <span class="cats" id="cats"><a href="/insights">Founder's Focus</a></span>
+      <span class="cats" id="cats"><a href="/insights">Frames</a></span>
     </div>
   </div>
   <span class="photo-credit" id="photoCredit">Power Shifter Studios</span>
@@ -838,23 +838,15 @@
 
 <article class="article-body wrap">
   <div class="prose">
-    <p class="lede">Somebody forwarded me a job posting last spring for an AI Filmmaker.</p>
+    <p class="lede">I've been curious to know what new roles are being created in the generative AI film space. Are they net new roles? Are they a combination of roles into one? Or is there new labelling and nomenclature?</p>
 
-    <p>Salaried. Benefits. A real studio behind it.</p>
+    <p>So I went looking.</p>
 
-    <p>I remember reading it twice, because eighteen months earlier that title would have looked like a typo.</p>
-
-    <p>So I went looking for more.</p>
-
-    <p>I pulled thirty months of them. 531 job postings scraped off the public web between March 2024 and August 2026, across 434 different employers. I sorted every one by what the title claimed and what the description actually asked for, then read the whole pile.</p>
+    <p>I pulled thirty months of them. Over 500 job postings scraped off the public web between 2024 and 2026, across more than 400 different employers. I sorted every one by what the title claimed and what the description actually asked for, then read the whole pile.</p>
 
     <p>One number really stood out.</p>
 
     <p><em>Prompt writing</em> appears in one posting out of five. And where it does appear, it is usually a single line buried in a much longer list of duties.</p>
-
-    <p>The market has already decided that prompting isn't a job.</p>
-
-    <p>It's a keystroke.</p>
 
     <blockquote><em>Prompting is assumed, not hired for.</em></blockquote>
 
@@ -957,19 +949,26 @@
         if (p < 1) requestAnimationFrame(loop);
       })(t0);
     }
-    if ('IntersectionObserver' in window) {
-      var armed = false, done = false;
+    // Arm only after load, when the document has its real height. The
+    // observer's first callback arrives while the page is still laying out and
+    // reports a figure far down the page as on-screen, which silently skipped
+    // the animation for every figure below the first.
+    if (!('IntersectionObserver' in window)) return;
+
+    function arm() {
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      // Already on screen: keep the finished chart rather than flash and replay.
+      if (fig.getBoundingClientRect().top < vh * 0.85) return;
+      paint(0);
       var io = new IntersectionObserver(function (es) {
-        if (!es[0].isIntersecting) { if (!armed) { armed = true; paint(0); } return; }
-        io.disconnect(); done = true;
-        if (armed) run();   // scrolled into view — play it
-      }, { rootMargin: '0px 0px -15% 0px' });
+        if (!es[0].isIntersecting) return;
+        io.disconnect();
+        run();
+      }, { rootMargin: '0px 0px -20% 0px' });
       io.observe(fig);
-      // Rewinding to an empty frame is only safe if something guarantees the
-      // refill. If the observer has not reported the figure visible by now,
-      // stop waiting and show the finished chart.
-      setTimeout(function () { if (!done) { io.disconnect(); paint(1); } }, 5000);
     }
+    if (document.readyState === 'complete') arm();
+    else window.addEventListener('load', arm, { once: true });
   })();
   </script>
 </figure>
@@ -982,21 +981,17 @@
 
     <p>The interesting information isn't the prefix. It's the noun that follows.</p>
 
-    <p>A handful of genuinely new names have shown up too. Creative Technologist, Agentic Workflow Specialist, AI Worldbuilder, Prompter, GenAI Wizard.</p>
+    <p>A handful of genuinely new names have shown up too. <strong>Creative Technologist</strong>,<strong> Agentic Workflow Specialist</strong>,<strong> AI Worldbuilder</strong>, <strong>GenAI Wizard</strong>.</p>
 
-    <p>GenAI Wizard is apparently a job now.</p>
+    <p><strong>GenAI Wizard</strong> is apparently a job now.</p>
 
     <p>But not one of these new titles has really caught on. The market isn't inventing new professions so much as re-labelling old ones and hoping the label survives contact with a recruiter's search box.</p>
 
-    <p>We've seen this movie before.</p>
-
-    <p>Around 2001, there was a job called webmaster, and one person did all of it. The HTML, the server, the graphics, the copy, and the thing your uncle called “the internet.”</p>
+    <p>We've seen this movie before. Around 2001, there was a job called webmaster, and one person did it all. The HTML, the server, the graphics, the copy, and the thing your uncle called “the internet.”</p>
 
     <p>Nobody killed the webmaster.</p>
 
-    <p>The work just got big enough to need names.</p>
-
-    <p>Inside a few years, it had split into front-end, back-end, information architecture, SEO, DevOps, and a dozen more specialties. The title didn't die of embarrassment. It died of scale.</p>
+    <p>The work just got big enough to need names. Inside a few years, it had split into front-end, back-end, information architecture, SEO, DevOps, and a dozen more specialties. The title didn't die of embarrassment. It died of scale.</p>
 
     <p>“AI Artist” is the webmaster of 2026.</p>
 
@@ -1004,15 +999,11 @@
 
     <h2>The operator is being replaced by the author</h2>
 
-    <p>You can watch it happening in the numbers.</p>
-
-    <p>The generic AI Artist bucket was 36% of postings in 2025. In 2026 it's 25%.</p>
+    <p>You can watch it happening in the numbers. The generic AI Artist bucket was 36% of postings in 2025. In 2026 it's 25%.</p>
 
     <p>Meanwhile, Filmmaker and Director roles more than doubled their share, from 7.7% to 16.1%. Producing rose alongside them. Team-leadership language like mentoring, managing and running a crew nearly tripled, from 6% of listings to 16%.</p>
 
-    <p>The language underneath the titles is the part that surprised me.</p>
-
-    <p>Film-grammar words like shot, framing, coverage, lens and composition went from 17% of listings to 41% in a single year.</p>
+    <p>The language underneath the titles surprised me. Film-grammar words like shot, framing, coverage, lens and composition went from 17% of listings to 41% in a single year.</p>
 
     <p>And traditional post-production tools get named more often than any generative model. Premiere, After Effects and Resolve show up in 27% of the pile.</p>
 
@@ -1151,30 +1142,35 @@
         if (p < 1) requestAnimationFrame(loop);
       })(t0);
     }
-    if ('IntersectionObserver' in window) {
-      var armed = false, done = false;
+    // Arm only after load, when the document has its real height. The
+    // observer's first callback arrives while the page is still laying out and
+    // reports a figure far down the page as on-screen, which silently skipped
+    // the animation for every figure below the first.
+    if (!('IntersectionObserver' in window)) return;
+
+    function arm() {
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      // Already on screen: keep the finished chart rather than flash and replay.
+      if (fig.getBoundingClientRect().top < vh * 0.85) return;
+      paint(0);
       var io = new IntersectionObserver(function (es) {
-        if (!es[0].isIntersecting) { if (!armed) { armed = true; paint(0); } return; }
-        io.disconnect(); done = true;
-        if (armed) run();   // scrolled into view — play it
-      }, { rootMargin: '0px 0px -15% 0px' });
+        if (!es[0].isIntersecting) return;
+        io.disconnect();
+        run();
+      }, { rootMargin: '0px 0px -20% 0px' });
       io.observe(fig);
-      // Rewinding to an empty frame is only safe if something guarantees the
-      // refill. If the observer has not reported the figure visible by now,
-      // stop waiting and show the finished chart.
-      setTimeout(function () { if (!done) { io.disconnect(); paint(1); } }, 5000);
     }
+    if (document.readyState === 'complete') arm();
+    else window.addEventListener('load', arm, { once: true });
   })();
   </script>
 </figure>
 
     <blockquote><em>The market started by hiring people who could drive the tools. It's now hiring people who can be held responsible for the film.</em></blockquote>
 
-    <p>That's the whole shift in one sentence.</p>
-
     <p>Driving the tools is table stakes now. Somebody still has to answer for whether the thing is any good.</p>
 
-    <h2>The moat is the boring part</h2>
+    <h2>The one word that stood out the most for me</h2>
 
     <p>Here's the pain point that keeps surfacing in these postings.</p>
 
@@ -1182,51 +1178,42 @@
 
     <p>Character and visual consistency is named in 23% of all postings, and it climbed from 21% to 35% year over year. It is, by some distance, the thing employers write into a job spec because they've already been burned by it.</p>
 
-    <p>Nobody is paying you for a nice shot.</p>
-
-    <p>Anyone can get a nice shot.</p>
-
-    <p>They're paying for the <em>same</em> character across forty shots. Same jawline. Same coat. Same light.</p>
+    <p>Anyone can get a nice shot. They're paying for the <em>same</em> character across forty shots. Same jawline. Same coat. Same light.</p>
 
     <p>And they're paying for that on the Thursday afternoon the client rewrites the third act and eleven of those shots have to come back by Monday.</p>
 
     <p>The difference between a talented home cook and a restaurant isn't the best single plate. It's the four hundredth identical plate on a Saturday night, at nine o'clock, with two people out sick.</p>
 
-    <p>That's not a recipe problem.</p>
-
-    <p>That's a kitchen problem.</p>
-
     <p>Consistency is a workflow problem, not a prompting problem. Which is exactly why it separates a studio with real pipeline discipline from a very good freelancer with a Kling subscription.</p>
 
     <h2>The market is renting, not hiring</h2>
 
-    <p>This is a freelance market wearing a staff-job costume.</p>
+    <p>This is a freelance market wearing a staff-job costume. Fifty-one percent of listings are contract, freelance or per-project. Twenty-eight percent are salaried full-time. And 382 of the 434 employers posted exactly once.</p>
 
-    <p>Fifty-one percent of listings are contract, freelance or per-project. Twenty-eight percent are salaried full-time.</p>
-
-    <p>And 382 of the 434 employers posted exactly once.</p>
-
-    <p>One project. One hire. Gone.</p>
-
-    <p>The exceptions tell you where companies have conviction.</p>
-
-    <p>Engineering and ML roles are 92% full-time. Design and graphics, 68%.</p>
-
-    <p>Where the work is genuinely infrastructural, companies hire staff. Where it's generative content, they buy it by the project and move on.</p>
+    <p>The exceptions tell you where companies have conviction. Engineering and ML roles are 92% full-time. Design and graphics, 68%. Where the work is genuinely infrastructural, companies hire staff. Where it's generative content, they buy it by the project and move on.</p>
 
     <p>Only 57 of the 531 listings disclose pay, so I wouldn't build a business plan around the salary data.</p>
 
-    <p>The salaried roles cluster in a $99K to $176K band, with a median of $120K. Hourly contract work sits at a median of $37.50 an hour, in a range of $20 to $65.</p>
+    <blockquote>The salaried roles cluster in a $99K to $176K band, with a median of $120K. Hourly contract work sits at a median of $37.50 an hour, in a range of $20 to $65.</blockquote>
 
-    <p>Run the hourly number out at full utilization and you get about $78K a year.</p>
-
-    <p>Except no freelancer is fully utilized.</p>
-
-    <p>There are gaps between projects. Sales. Admin. Revisions you didn't price properly. The Tuesday afternoon where you're trying to figure out where the next job is coming from.</p>
+    <p>Run the hourly number out at full utilization, and you get about $78K a year.</p>
 
     <p>Against a $120K median salary with benefits attached, the same skill is worth substantially more inside a company than outside it, while the freelancer carries the risk of everything between the projects.</p>
 
-    <p>To me, that spread is the entire argument for building a studio instead of being a freelancer with a very good reel.</p>
+    <!-- [[newsletter]] — the site's own .signal component, wired to the
+         ps-concierge Worker's POST /subscribe by js-signal in the page chrome.
+         [[newsletter: A custom lead clause.]] replaces the opening sentence. -->
+    <div class="signal">
+      <div class="signal-in">
+        <p class="sig-line">Reading 500 job posts so you don't have to is one dispatch of many. <em class="voice mag">The Signal</em> ships what we're learning — monthly, short, no filler.</p>
+        <form class="field js-signal" novalidate>
+          <input type="email" name="email" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
+          <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="signal-msg" role="status" aria-live="polite"></p>
+      </div>
+    </div>
 
     <h2>Tool fluency depreciates in months</h2>
 
@@ -1236,9 +1223,7 @@
 
     <p>And in the same twelve months, Premiere grew.</p>
 
-    <p>Resolve grew.</p>
-
-    <p>Photoshop grew.</p>
+    <p>Resolve and Photoshop grew.</p>
 
 <!-- [[fig:tool-churn]] — change in percentage points, 2025 → 2026, split into two
      labelled bands. The generative models swing hard; the craft tools drift up and
@@ -1362,38 +1347,41 @@
         if (p < 1) requestAnimationFrame(loop);
       })(t0);
     }
-    if ('IntersectionObserver' in window) {
-      var armed = false, done = false;
+    // Arm only after load, when the document has its real height. The
+    // observer's first callback arrives while the page is still laying out and
+    // reports a figure far down the page as on-screen, which silently skipped
+    // the animation for every figure below the first.
+    if (!('IntersectionObserver' in window)) return;
+
+    function arm() {
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      // Already on screen: keep the finished chart rather than flash and replay.
+      if (fig.getBoundingClientRect().top < vh * 0.85) return;
+      paint(0);
       var io = new IntersectionObserver(function (es) {
-        if (!es[0].isIntersecting) { if (!armed) { armed = true; paint(0); } return; }
-        io.disconnect(); done = true;
-        if (armed) run();   // scrolled into view — play it
-      }, { rootMargin: '0px 0px -15% 0px' });
+        if (!es[0].isIntersecting) return;
+        io.disconnect();
+        run();
+      }, { rootMargin: '0px 0px -20% 0px' });
       io.observe(fig);
-      // Rewinding to an empty frame is only safe if something guarantees the
-      // refill. If the observer has not reported the figure visible by now,
-      // stop waiting and show the finished chart.
-      setTimeout(function () { if (!done) { io.disconnect(); paint(1); } }, 5000);
     }
+    if (document.readyState === 'complete') arm();
+    else window.addEventListener('load', arm, { once: true });
   })();
   </script>
 </figure>
 
-    <p>I think that's the part people should pay attention to.</p>
+    <p>I think that's the part people should pay attention to. Every hot model on that list will be replaced. Probably by something that doesn't exist yet as I write this.</p>
 
-    <p>Every hot model on that list will be replaced. Probably by something that doesn't exist yet as I write this.</p>
-
-    <p>The craft underneath it won't be.</p>
+    <p>The talent underneath it won't be.</p>
 
     <p>Coverage. Pacing. Performance. Composition. Knowing what to do when the client changes their mind. The discipline to deliver on a date.</p>
 
     <p>Those things have survived every format change the industry has thrown at them since sound.</p>
 
-    <p>So a studio that sells named-model expertise is selling a depreciating asset. It's selling a skill with a shelf life measured in quarters to a client who will probably read about its replacement in a newsletter next month.</p>
-
     <p>A studio that sells consistency, coverage and delivery is selling something else entirely.</p>
 
-    <p>It's selling the thing 531 employers keep asking for and mostly can't find.</p>
+    <p>It's selling the thing over 500 employers keep asking for and mostly can't find.</p>
 
     <p>That's the bet we've made at Power Shifter Studios, and this data is the closest thing to a second opinion I've been able to get.</p>
 
@@ -1405,9 +1393,9 @@
 
     <p>---</p>
 
-    <p><strong>Method.</strong> 531 job listings collected from publicly posted roles between March 2024 and August 2026, including archived posts. Role families were assigned by keyword precedence on the title, falling back to the description. Responsibility and tool figures are keyword prevalence across full description text, so they undercount employers who describe a duty without using its common name. 57 listings carry no date and are excluded from year-over-year figures only.</p>
+    <p><strong>Method.</strong> 500+ job listings collected from publicly posted roles between 2024 and 2026, including archived posts. We assigned role families by keyword precedence in the title, falling back to the description. Responsibility and tool figures are keyword prevalence across full description text, so they undercount employers who describe a duty without using its common name.</p>
 
-    <p class="end"><strong>Caveats.</strong> This is the AI-filmmaking talent market, not the AI job market. One slice, one community. A small number of large employers account for outsized blocks of postings, which pulls the full-time and salaried figures upward. Salary figures rest on 57 disclosures out of 531.</p>
+    <p class="end"><strong>Caveats.</strong> This is the AI-filmmaking talent market, not the AI job market. One slice, one community. A small number of large employers account for outsized blocks of postings, which pulls the full-time and salaried figures upward.</p>
   </div>
 </article>
 

@@ -377,7 +377,9 @@ def related_section(post, lookup):
         if slug not in lookup:      # only link to rendered (Published) posts
             continue
         meta = lookup[slug]
-        rows.append((rel.get('title') or meta['title'], meta['stream'], meta['date'], slug))
+        # Card grid headlines come from seo_title; use the same one here so a post
+        # is called the same thing everywhere. Notion's long `title` is the fallback.
+        rows.append((meta['title'] or rel.get('title'), meta['stream'], meta['date'], slug))
         if len(rows) == 3:
             break
     if not rows:
@@ -501,7 +503,7 @@ def main():
         print(f"merged overrides for {merged} rows · {n_cat}/{len(pub)} have new Categories · {n_feat} Featured")
     else:
         print("no blog-meta.csv override found — using old_categories fallback, no Featured card")
-    lookup = {p['slug']: {'title': p['title'],
+    lookup = {p['slug']: {'title': p.get('seo_title') or p['title'],
                           'stream': (cats_of(p)[0] if cats_of(p) else 'Thinking'),
                           'date': fmt_date(p.get('publish_date'))} for p in pub}
     for p in pub:

@@ -893,6 +893,11 @@
       "permanent": true
     },
     {
+      "source": "/insights/nobody-is-hiring-a-prompter",
+      "destination": "/insights/what-500-generative-ai-film-job-postings-ask-for",
+      "permanent": true
+    },
+    {
       "source": "/insights/product-design-insights-great-reads-for-april",
       "destination": "/insights",
       "permanent": true
